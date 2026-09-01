@@ -23,6 +23,7 @@ import type { Http, Output } from "../base.ts";
 import { jsonapiCollection, jsonapiIndex, register, wants } from "../base.ts";
 import * as calendarpages from "../calendarpages.ts";
 import { enrich as enrichCourseText } from "../coursetext.ts";
+import * as cogsmodules from "./cogsmodules.ts";
 
 export const CAMPUSES: Record<string, string> = {
   vancouver: "vancouver.calendar.ubc.ca",
@@ -71,7 +72,7 @@ export const AcademicCalendar = register(
       "and specialization requirement pages on their own; the term dates and " +
       "drop deadlines; and the faculty, school, department and subject hierarchy " +
       "for both campuses.";
-    sources = Object.values(CAMPUSES).map((host) => `https://${host}/jsonapi`);
+    sources = [...Object.values(CAMPUSES).map((host) => `https://${host}/jsonapi`), cogsmodules.URL];
 
     async collect(http: Http, out: Output): Promise<void> {
       const unavailable: Record<string, string[]> = {};
@@ -113,6 +114,21 @@ export const AcademicCalendar = register(
         }
 
         await this.derived(out, pages, campus, host);
+
+        // The COGS module-course list is calendar-adjacent (the calendar's own
+        // COGS pages defer to it) but lives on cogsys.ubc.ca, Vancouver only.
+        if (campus === "vancouver") {
+          try {
+            const modules = await cogsmodules.fetch(http);
+            if (modules.length > 0) {
+              await out.table(`${campus}/cogs_module_courses`, modules, { source: cogsmodules.URL });
+            }
+          } catch {
+            // The site's bot challenge or an outage; the dataset simply isn't
+            // refreshed this run.
+            missing.push(cogsmodules.URL);
+          }
+        }
 
         if (missing.length > 0) unavailable[campus] = missing;
       }

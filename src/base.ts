@@ -601,8 +601,8 @@ export class Http {
     return this.request("GET", withParams(url, opts.params));
   }
 
-  async getText(url: string, opts: { params?: Params } = {}): Promise<string> {
-    return (await this.request("GET", withParams(url, opts.params))).text();
+  async getText(url: string, opts: { params?: Params; headers?: Record<string, string> } = {}): Promise<string> {
+    return (await this.request("GET", withParams(url, opts.params), { headers: opts.headers })).text();
   }
 
   async getJson(url: string, opts: { params?: Params } = {}): Promise<unknown> {

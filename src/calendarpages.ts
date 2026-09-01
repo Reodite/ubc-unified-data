@@ -88,7 +88,17 @@ const DEGREE_SLUG_SUFFIXES_BY_LEVEL: Array<[string, string]> = [
   ["-phd", "doctoral"],
   ["-dma", "doctoral"],
   ["-edd", "doctoral"],
+  // Programs titled "<X> Degree Program" whose slug carries no credential
+  // abbreviation at all -- the Dental Hygiene Degree Program (B.D.Sc.) is the
+  // one live example, and its subtree was invisible without this.
+  ["-degree-program", "undergraduate"],
 ];
+
+// "<X> Degree Program" -- a title shape UBC uses when the credential name
+// doesn't lead (e.g. "Dental Hygiene Degree Program"). Paired with the
+// "-degree-program" slug suffix above so an ordinary prose page that merely
+// mentions the words can't qualify on title alone.
+const DEGREE_PROGRAM_TITLE_RE = /\bdegree program\s*$/i;
 
 const LEVEL_RULES: Array<[RegExp, string]> = [
   [/^(bachelor|ubc bachelor|b\.[a-z])/i, "undergraduate"],
@@ -129,7 +139,8 @@ function degree(alias: string, title: string): [boolean, string] {
   const prefixHit = DEGREE_SLUG_PREFIXES.some((prefix) => slugText.startsWith(prefix));
   const suffixLevel = DEGREE_SLUG_SUFFIXES_BY_LEVEL.find(([suffix]) => slugText.endsWith(suffix))?.[1];
   if (!prefixHit && suffixLevel === undefined) return [false, ""];
-  if (!title || (!DEGREE_TITLE_RE.test(title) && !TRAILING_ABBREV_RE.test(title))) return [false, ""];
+  if (!title || (!DEGREE_TITLE_RE.test(title) && !TRAILING_ABBREV_RE.test(title) && !DEGREE_PROGRAM_TITLE_RE.test(title)))
+    return [false, ""];
   for (const [pattern, level] of LEVEL_RULES) {
     if (pattern.test(title)) return [true, level];
   }
@@ -196,6 +207,20 @@ export function enrich(
     page["level"] = isDegree ? level : "";
   }
 
+  // Degree roots by terminal slug. UBC publishes some subtrees under two
+  // alias spellings (e.g. /faculty-forestry/buf-bachelor-urban-forestry/... vs
+  // /faculty-forestry-and-environmental-stewardship/buf-bachelor-urban-forestry),
+  // and the root page exists in only one of them -- walking the other tree's
+  // aliases finds no ancestor. The terminal slug is the same in both trees, so
+  // it bridges them. First writer wins, matching byAlias.
+  const rootsBySlug: Record<string, Record<string, unknown>> = {};
+  for (const page of pages) {
+    if (!page["is_degree_root"]) continue;
+    const parts = ((page["alias"] as string) || "").split("/").filter(Boolean);
+    const last = parts[parts.length - 1];
+    if (last && !(last in rootsBySlug)) rootsBySlug[last] = page;
+  }
+
   for (const page of pages) {
     const alias = (page["alias"] as string) || "";
     const title = ((page["title"] as string) || "").trim();
@@ -213,6 +238,17 @@ export function enrich(
       for (let i = ancestors.length - 1; i >= 0; i--) {
         if (ancestors[i]!["is_degree_root"]) {
           programPage = ancestors[i]!;
+          break;
+        }
+      }
+    }
+    if (programPage === null) {
+      // No degree root up this alias tree: try the same path segments against
+      // roots known by terminal slug from the sibling alias tree.
+      for (let i = segments.length - 1; i >= 0; i--) {
+        const twin = rootsBySlug[segments[i]!];
+        if (twin) {
+          programPage = twin;
           break;
         }
       }

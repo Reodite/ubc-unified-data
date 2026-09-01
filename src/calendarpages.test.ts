@@ -75,6 +75,42 @@ describe("enrich", () => {
     expect(pages[0]!["level"]).toBe("doctoral");
   });
 
+  it("detects a '<X> Degree Program' root with no credential in slug or title", () => {
+    const pages = [
+      page({
+        title: "Dental Hygiene Degree Program",
+        alias: "/faculties-colleges-and-schools/faculty-dentistry/dental-hygiene-degree-program",
+      }),
+      page({
+        title: "Degree Requirements",
+        alias: "/faculties-colleges-and-schools/faculty-dentistry/dental-hygiene-degree-program/degree-requirements",
+      }),
+    ];
+    enrich(pages, { host: "vancouver.calendar.ubc.ca" });
+    expect(pages[0]!["is_degree_root"]).toBe(true);
+    expect(pages[0]!["level"]).toBe("undergraduate");
+    expect(pages[1]!["program"]).toBe("Dental Hygiene Degree Program");
+  });
+
+  it("resolves a program across UBC's dual alias trees via the terminal slug", () => {
+    const pages = [
+      page({
+        title: "B.U.F. (Bachelor of Urban Forestry)",
+        alias:
+          "/faculties-colleges-and-schools/faculty-forestry-and-environmental-stewardship/buf-bachelor-urban-forestry",
+      }),
+      // The requirements page lives under the short-form faculty alias, where
+      // no degree-root ancestor exists.
+      page({
+        title: "Degree Requirements",
+        alias: "/faculties-colleges-and-schools/faculty-forestry/buf-bachelor-urban-forestry/degree-requirements",
+      }),
+    ];
+    enrich(pages, { host: "vancouver.calendar.ubc.ca" });
+    expect(pages[1]!["program"]).toBe("B.U.F. (Bachelor of Urban Forestry)");
+    expect(pages[1]!["level"]).toBe("undergraduate");
+  });
+
   it("keeps a minor under a bachelor from being a degree itself", () => {
     const pages = [
       page({ title: "Bachelor of Arts", alias: "/bachelor-arts" }),
