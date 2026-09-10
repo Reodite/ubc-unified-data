@@ -1,0 +1,170 @@
+[
+  {
+    "id": "prose:wellbeing:wellbeing:1f942fc0-627c-4752-abc1-f6343e80db69",
+    "category": "prose",
+    "subcategory": "wellbeing",
+    "source_id": "wellbeing",
+    "source_url": "https://wellbeing.ubc.ca/move-ubc-classroom-stretching-video",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/node/resources/1f942fc0-627c-4752-abc1-f6343e80db69",
+    "upstream_id": "wellbeing:1f942fc0-627c-4752-abc1-f6343e80db69",
+    "title": "Move UBC Classroom Stretching Video",
+    "content_markdown": "[Embedded iframe \\(view source\\)](https://www.youtube.com/embed/7JuFVntDDR8)\n\nWe spend 50\\-70% of our day sitting, and this sedentary behaviour can have negative implications for our health and wellbeing\\. The [Kinesiology Undergraduate Society](http://kus.ubc.ca/) shares their top tips for moving more, even when facing a busy day of classes and studying, by incorporating small stretches and exercises into the classroom\\. \n\n*Learn more about Move UBC [here](http://www.move.ubc.ca/)\\.*",
+    "content_sha256": "0e10558f30fbf204b979b23f7d32438f61382e5f7ede4deee60bf816d6677ac5",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:17:05.679Z",
+    "source_records": [
+      {
+        "path": "student-support/wellbeing_resources.json",
+        "id": "wellbeing:1f942fc0-627c-4752-abc1-f6343e80db69"
+      }
+    ],
+    "links": [
+      {
+        "text": "Embedded iframe (view source)",
+        "url": "https://www.youtube.com/embed/7JuFVntDDR8"
+      },
+      {
+        "text": "Kinesiology Undergraduate Society",
+        "url": "http://kus.ubc.ca/"
+      },
+      {
+        "text": "here",
+        "url": "http://www.move.ubc.ca/"
+      }
+    ],
+    "warnings": [
+      "Embedded content is linked rather than embedded; consult the source for its full content."
+    ],
+    "markdown_path": "prose/wellbeing/markdown/55944603a378feadc16c0b9fc29772a84a8c65bb14074ddf63d2633e49b0164c.md"
+  },
+  {
+    "id": "prose:wellbeing:wellbeing:5a119b52-bea6-42b6-b1c1-8016fa63050e",
+    "category": "prose",
+    "subcategory": "wellbeing",
+    "source_id": "wellbeing",
+    "source_url": "https://wellbeing.ubc.ca/suicide-awareness-intervention-training-sait",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/node/resources/5a119b52-bea6-42b6-b1c1-8016fa63050e",
+    "upstream_id": "wellbeing:5a119b52-bea6-42b6-b1c1-8016fa63050e",
+    "title": "Suicide Awareness & Intervention Training (SAIT)",
+    "content_markdown": "In response to the needs of our campus community, UBC has transitioned from the QPR program and has created the custom Suicide Awareness and Intervention Training \\(SAIT\\) that is from a post\\-secondary context, is trauma\\-informed, and has cultural context\\.  \n  \nThis is a free, introductory course for any UBC Vancouver and Okanagan students, faculty, staff and alumni\\. There are no prerequisites; while training will give you skills to help someone, you’re not expected to become an expert\\. \n\n[Learn more about SAIT](https://wellbeing.ubc.ca/sait)\n\n2\\.5\\-3 hrs",
+    "content_sha256": "0894324462d0df70bf2bb478820a56dd83f6b81532c8fcd747d47e6f59d2270b",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:17:06.214Z",
+    "source_records": [
+      {
+        "path": "student-support/wellbeing_resources.json",
+        "id": "wellbeing:5a119b52-bea6-42b6-b1c1-8016fa63050e"
+      }
+    ],
+    "links": [
+      {
+        "text": "Learn more about SAIT",
+        "url": "https://wellbeing.ubc.ca/sait"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/wellbeing/markdown/33ce8f25da069547aa611db7df9843feb08dae50344e41631b206f061f892422.md"
+  },
+  {
+    "id": "prose:wellbeing:wellbeing:7d9fe76e-82b7-4b6b-82af-ec66e7a4d4a3",
+    "category": "prose",
+    "subcategory": "wellbeing",
+    "source_id": "wellbeing",
+    "source_url": "https://wellbeing.ubc.ca/wellness-workshops-students",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/node/resources/7d9fe76e-82b7-4b6b-82af-ec66e7a4d4a3",
+    "upstream_id": "wellbeing:7d9fe76e-82b7-4b6b-82af-ec66e7a4d4a3",
+    "title": "Wellness Workshops for Students",
+    "content_markdown": "The [UBC Wellness Centre](https://students.ubc.ca/health/wellness-centre) offers a variety of workshops for students\\. Learn to balance your academic commitments with your physical and mental wellness, manage your time effectively, communicate about sex, sexual health and consent, and much more\\. \n\nVisit the [Wellness Workshops page](https://students.ubc.ca/health/wellness-centre/wellness-workshops) for a full list of workshops for students\\. You can also request a workshop for a specific group\\.",
+    "content_sha256": "1aa8669693272e7abb8ed5cf486b84c517453e264270db788c51e043b71340ba",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:17:06.718Z",
+    "source_records": [
+      {
+        "path": "student-support/wellbeing_resources.json",
+        "id": "wellbeing:7d9fe76e-82b7-4b6b-82af-ec66e7a4d4a3"
+      }
+    ],
+    "links": [
+      {
+        "text": "UBC Wellness Centre",
+        "url": "https://students.ubc.ca/health/wellness-centre"
+      },
+      {
+        "text": "Wellness Workshops page",
+        "url": "https://students.ubc.ca/health/wellness-centre/wellness-workshops"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/wellbeing/markdown/5e6fed4dc75204a4b16fbecbb57c95aa3611b87a611cc2adf8fdbc260881f80e.md"
+  },
+  {
+    "id": "prose:wellbeing:wellbeing:7f15668b-0817-4e40-8cec-50afa55b2a67",
+    "category": "prose",
+    "subcategory": "wellbeing",
+    "source_id": "wellbeing",
+    "source_url": "https://wellbeing.ubc.ca/nurs-180-stress-and-strategies-promote-wellbeing",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/node/resources/7f15668b-0817-4e40-8cec-50afa55b2a67",
+    "upstream_id": "wellbeing:7f15668b-0817-4e40-8cec-50afa55b2a67",
+    "title": "NURS 180 Stress and Strategies to Promote Wellbeing",
+    "content_markdown": "This nursing elective course offers an introduction to foundational knowledge related to stress, stressors, resilience, social support, and strategies to foster physical, mental, emotional, and spiritual health\\. Open to all students interested in learning about managing and navigating the stressors of student life\\.\n\n[Learn more here](https://nursing.ubc.ca/undergraduate/nurs-elective-courses)",
+    "content_sha256": "c025f7a16e266f9bd653cc06aa2cbfc41088430619dd40953c7a75115a08b092",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:17:07.104Z",
+    "source_records": [
+      {
+        "path": "student-support/wellbeing_resources.json",
+        "id": "wellbeing:7f15668b-0817-4e40-8cec-50afa55b2a67"
+      }
+    ],
+    "links": [
+      {
+        "text": "Learn more here",
+        "url": "https://nursing.ubc.ca/undergraduate/nurs-elective-courses"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/wellbeing/markdown/af0d486b233a40d32822826cb93c9edda5831e871ab919422b75848fc595f8cc.md"
+  },
+  {
+    "id": "prose:wellbeing:wellbeing:c9fde04f-9102-473e-b8e2-fd32f50b88ef",
+    "category": "prose",
+    "subcategory": "wellbeing",
+    "source_id": "wellbeing",
+    "source_url": "https://wellbeing.ubc.ca/wellness-workshops-student-leaders",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/node/resources/c9fde04f-9102-473e-b8e2-fd32f50b88ef",
+    "upstream_id": "wellbeing:c9fde04f-9102-473e-b8e2-fd32f50b88ef",
+    "title": "Wellness Workshops for Student Leaders",
+    "content_markdown": "The [UBC Wellness Centre](https://students.ubc.ca/health/wellness-centre) offers a variety of workshops for student leaders\\. Workshops will help you navigate conversations with peers in need of support, plan inclusive health and wellness events, learn to be a role\\-model for wellbeing, and more\\.\n\nVisit the [Wellness Workshops page](https://students.ubc.ca/health/wellness-centre/wellness-workshops) for more information on workshops for student leaders\\. You can also request a workshop for a specific group\\.",
+    "content_sha256": "957998d60fc75137df917f4da816ee0717215f23146ef82ac11bdb2c7e86172f",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:17:07.715Z",
+    "source_records": [
+      {
+        "path": "student-support/wellbeing_resources.json",
+        "id": "wellbeing:c9fde04f-9102-473e-b8e2-fd32f50b88ef"
+      }
+    ],
+    "links": [
+      {
+        "text": "UBC Wellness Centre",
+        "url": "https://students.ubc.ca/health/wellness-centre"
+      },
+      {
+        "text": "Wellness Workshops page",
+        "url": "https://students.ubc.ca/health/wellness-centre/wellness-workshops"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/wellbeing/markdown/ce2d52610494f786c8b1d6ccf016b62f95565fd8012033731e924e91e94e2999.md"
+  }
+]

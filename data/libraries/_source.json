@@ -1,0 +1,41 @@
+{
+  "authority": "University of British Columbia Library",
+  "source": "https://hours.library.ubc.ca/",
+  "scope": "undergraduate-relevant shared student facilities",
+  "representation": "facts_and_links",
+  "retrieved_at": "2026-09-10T23:22:28Z",
+  "local_date": "2026-09-10",
+  "months": [
+    {
+      "year": 2026,
+      "month": 9
+    },
+    {
+      "year": 2026,
+      "month": 10
+    },
+    {
+      "year": 2026,
+      "month": 11
+    },
+    {
+      "year": 2026,
+      "month": 12
+    }
+  ],
+  "branches": 15,
+  "schedules": 60,
+  "dated_hours": 1830,
+  "unknown_days": 0,
+  "excluded_by_campus": [
+    "okanagan",
+    "ubcospcoll",
+    "ubcocommons"
+  ],
+  "notes": [
+    "The window is the current Vancouver calendar month plus three months. Dates outside it are not collected; unpublished or ambiguous hours remain unknown, not closed.",
+    "This source reports opening hours, not room vacancy, occupancy or booking availability. A source label open does not mean currently open.",
+    "Research Commons is listed at Koerner floors 4-5. The existing room-booking dataset's building code may differ; use the source address and do not infer a building-code crosswalk from matching location names.",
+    "Only location/contact facts, calendar rules and links are published. Branch descriptions, other page prose and HTML are excluded. Linked accessibility pages are not automatically crawled."
+  ]
+}

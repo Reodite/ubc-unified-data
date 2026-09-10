@@ -5,8 +5,15 @@ gathered from official UBC sources and kept in plain JSON/CSV/GeoJSON files.
 
 The goal is the stuff that helps students: where things are, what's taught, when
 it's taught, where you can sit down and study, what it costs, who teaches it,
-and what's happening on campus. **No student data** (no grades, no historical
-class sizes, no individual records).
+and what's happening on campus. **No individual student records.** The existing
+`grades` collection contains historical aggregate distributions from a third-party
+mirror, not a direct, current UBC feed.
+
+Housing, library, student-support and policy collections focus on **undergraduates**.
+See [UNDERGRADUATE-SOURCES.md](UNDERGRADUATE-SOURCES.md) for official sources,
+coverage, exclusions, refresh instructions and Reogent integration.
+[PROSE.md](PROSE.md) describes the unified `prose` category and its Markdown
+corpus, organized into subcategories such as `workday` and `student-housing`.
 
 ```text
 Unified-UBC-Data/
@@ -29,6 +36,34 @@ Unified-UBC-Data/
 | `people`     | `data/people/`            | Public faculty and staff profiles, tagged with the site each came from. **Partial coverage:** only 5 of 43 probed UBC sites expose profiles over an API: Applied Science, Nursing, Law, Pharmaceutical Sciences and Science (1,712 profiles). The rest (Arts, Sauder, Medicine, Forestry, Education, Grad Studies…) aren't on the shared Drupal platform and return no `/jsonapi`. `_sites.json` records which host gave what.                                                                                                                                              |
 | `services`   | `data/campus-services/`   | Food outlets, parking locations, permits and parking maps, facilities and learning-space resource libraries, recreation and student-services pages, UBC news, and the statutory holidays UBC observes (including the two that are UBC's own rather than BC's).                                                                                                                                                                                                                                                                                                              |
 | `reports`    | `data/reports/`           | An index of UBC's published institutional documents (annual financial reports, budgets, Statements of Financial Information, annual enrolment reports, Facts & Figures), each with a direct download URL, file type and source page. Rates and fees are not here; they are in `finances`.                                                                                                                                                                                                                                                                                   |
+
+## Undergraduate collections
+
+Four groups cover undergraduate services. Counts describe the September 10, 2026
+snapshot:
+
+| Group       | Folder                  | Coverage                                                                                                                                     |
+| ----------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `housing`   | `data/housing/`         | 14 undergraduate-serving residences, 12 room types, 16 fee pages with 22 fee tables, and 20 selected application/first-year guidance pages   |
+| `libraries` | `data/libraries/`       | 15 physical/virtual library-service locations and 1,830 dated opening-hour records across four months, including holiday and exam exceptions |
+| `support`   | `data/student-support/` | 19 student-facing IT services, 5 undergraduate/shared wellbeing resources, 34 Learning Commons pages, and their taxonomy definitions         |
+| `policies`  | `data/policies/`        | 17 undergraduate-relevant policy index records with canonical links, identifiers and dates; explanatory prose belongs to `prose`             |
+
+The four groups contain structured facts and source-link indexes, with citation
+URLs, timestamps and record hashes. Housing fee observations retain numeric
+values and short labels; consult the source for conditions. Library hours
+describe schedules, not room availability.
+
+Explanatory content lives under **`data/prose/<subcategory>/`** as common article
+arrays, CSV exports and standalone sanitized Markdown. Its own `_catalog.json`,
+`_manifest.json` and per-source coverage ledgers distinguish complete inventories,
+exclusions and failures. The repository includes these generated exports.
+Run `npm run collect:prose` to refresh them and `npm run validate:prose` before
+committing. Raw response caches remain under the ignored `.cache/prose/` directory.
+
+See [PROSE.md](PROSE.md) for collection, schemas and limitations, and the
+[source guide](UNDERGRADUATE-SOURCES.md) for structured-data qualifications and
+the housing certificate-chain workaround.
 
 ## Finding your way around
 
@@ -257,7 +292,7 @@ npm install
 npm run update
 ```
 
-Running it rebuilds everything under `data/`, regenerates `data/manifest.json`
+Running it refreshes the registered public groups under `data/`, regenerates `data/manifest.json`
 with per-file record counts, sizes, sources and timestamps, and
 `data/catalog.json` with the table-level index described above.
 
@@ -265,7 +300,11 @@ with per-file record counts, sizes, sources and timestamps, and
 npm run update -- --list              # what's available
 npm run update -- courses events      # refresh just these groups
 npm run update -- --skip people       # everything except one group
-npm run update -- --min-interval 0.2  # go easier on the source servers
+npm run update -- --min-interval 300 # milliseconds between requests
+npm run update -- housing libraries support policies # undergraduate collections
+npm run validate:undergrad            # offline checks for structured facts
+npm run collect:prose                # generate Markdown articles
+npm run validate:prose               # prose safety, exports and inventory accounting
 ```
 
 A group that fails is reported and recorded in the manifest, but the rest of the
@@ -278,23 +317,27 @@ Run `npm run update` or trigger the `Sync data` workflow.
 
 ## Sources
 
-Everything comes from a public UBC endpoint: no credentials, no scraping behind
-a login, no student data.
+The institutional collections use public UBC endpoints: no credentials and no
+scraping behind a login. The existing `grades` collector is an exception to direct
+UBC sourcing: it uses a third-party mirror of aggregate distributions.
+Undergraduate sources and their endpoints appear in
+[UNDERGRADUATE-SOURCES.md](UNDERGRADUATE-SOURCES.md#official-sources-and-selection).
+The additional Markdown source collections appear in [PROSE.md](PROSE.md#sources).
 
-| Source                                                                                                                                                                            | Used for                                                                                                                                                                                                                                                                                                                                                                                                  |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [UBCGeodata/ubc-geospatial-opendata](https://github.com/UBCGeodata/ubc-geospatial-opendata)                                                                                       | `geospatial`: pinned to the current commit SHA, recorded in `_source.json`                                                                                                                                                                                                                                                                                                                                |
-| [UBCGeodata/ubcv-parking](https://github.com/UBCGeodata/ubcv-parking)                                                                                                             | `geospatial`: parking facilities with rates, permits and payment links, mounted at `ubcv/parking/`. The org's other repos (`ubcv-locations`, `ubcv-buildings`, `ubcv-routes`, `ubcv-landscape`, `ubcv-context`) were folded into the consolidated repo and are **not** mirrored: their copies are stale, with 437 POIs against the current 489, 270 buildings against 449, and 2,892 trees against 9,324. |
-| [DonneyF/ubc-pair-grade-data](https://github.com/DonneyF/ubc-pair-grade-data)                                                                                                     | `grades`: raw per-subject CSVs mirrored under `raw/`, then derived into `distributions.json`                                                                                                                                                                                                                                                                                                              |
-| [courses.students.ubc.ca](https://courses.students.ubc.ca/) Drupal JSON:API                                                                                                       | `courses`                                                                                                                                                                                                                                                                                                                                                                                                 |
-| [vancouver.calendar.ubc.ca](https://vancouver.calendar.ubc.ca/) / [okanagan.calendar.ubc.ca](https://okanagan.calendar.ubc.ca/) JSON:API                                          | `calendar`                                                                                                                                                                                                                                                                                                                                                                                                |
-| [learningspaces.ubc.ca Find a Space](https://learningspaces.ubc.ca/find-a-space/)                                                                                                 | `spaces`                                                                                                                                                                                                                                                                                                                                                                                                  |
-| [events.ubc.ca](https://events.ubc.ca/resources/webdev/) Events Calendar REST API                                                                                                 | `events`                                                                                                                                                                                                                                                                                                                                                                                                  |
-| [you.ubc.ca](https://you.ubc.ca/programs/) program finder + WP REST, and its `requirements_load_programs` AJAX action                                                             | `admissions`                                                                                                                                                                                                                                                                                                                                                                                              |
-| [vancouver.calendar.ubc.ca/fees](https://vancouver.calendar.ubc.ca/fees) tuition and fee tables, plus you.ubc.ca's cost estimator                                                 | `finances`                                                                                                                                                                                                                                                                                                                                                                                                |
-| UBC faculty/unit sites on the shared Drupal platform                                                                                                                              | `people`                                                                                                                                                                                                                                                                                                                                                                                                  |
-| food.ubc.ca, parking.ubc.ca, facilities.ubc.ca, students.ubc.ca, recreation.ubc.ca, news.ubc.ca, [hr.ubc.ca statutory holidays](https://hr.ubc.ca/working-ubc/statutory-holidays) | `services`                                                                                                                                                                                                                                                                                                                                                                                                |
-| finance.ubc.ca, [pair.ubc.ca](https://pair.ubc.ca/) (Planning, Analytics & Institutional Research)                                                                                | `reports`                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Source                                                                                                                                                                            | Used for                                                                                                                                                                                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [UBCGeodata/ubc-geospatial-opendata](https://github.com/UBCGeodata/ubc-geospatial-opendata)                                                                                       | `geospatial`: pinned to the current commit SHA, recorded in `_source.json`                                                                                                                                                                                                   |
+| [UBCGeodata/ubcv-parking](https://github.com/UBCGeodata/ubcv-parking)                                                                                                             | `geospatial`: parking facilities with rates, permits and payment links, mounted at `ubcv/parking/`. The location, building, route, landscape and context themes use `ubc-geospatial-opendata`; their standalone repositories have incomplete snapshots and are not mirrored. |
+| [DonneyF/ubc-pair-grade-data](https://github.com/DonneyF/ubc-pair-grade-data)                                                                                                     | `grades`: raw per-subject CSVs mirrored under `raw/`, then derived into `distributions.json`                                                                                                                                                                                 |
+| [courses.students.ubc.ca](https://courses.students.ubc.ca/) Drupal JSON:API                                                                                                       | `courses`                                                                                                                                                                                                                                                                    |
+| [vancouver.calendar.ubc.ca](https://vancouver.calendar.ubc.ca/) / [okanagan.calendar.ubc.ca](https://okanagan.calendar.ubc.ca/) JSON:API                                          | `calendar`                                                                                                                                                                                                                                                                   |
+| [learningspaces.ubc.ca Find a Space](https://learningspaces.ubc.ca/find-a-space/)                                                                                                 | `spaces`                                                                                                                                                                                                                                                                     |
+| [events.ubc.ca](https://events.ubc.ca/resources/webdev/) Events Calendar REST API                                                                                                 | `events`                                                                                                                                                                                                                                                                     |
+| [you.ubc.ca](https://you.ubc.ca/programs/) program finder + WP REST, and its `requirements_load_programs` AJAX action                                                             | `admissions`                                                                                                                                                                                                                                                                 |
+| [vancouver.calendar.ubc.ca/fees](https://vancouver.calendar.ubc.ca/fees) tuition and fee tables, plus you.ubc.ca's cost estimator                                                 | `finances`                                                                                                                                                                                                                                                                   |
+| UBC faculty/unit sites on the shared Drupal platform                                                                                                                              | `people`                                                                                                                                                                                                                                                                     |
+| food.ubc.ca, parking.ubc.ca, facilities.ubc.ca, students.ubc.ca, recreation.ubc.ca, news.ubc.ca, [hr.ubc.ca statutory holidays](https://hr.ubc.ca/working-ubc/statutory-holidays) | `services`                                                                                                                                                                                                                                                                   |
+| finance.ubc.ca, [pair.ubc.ca](https://pair.ubc.ca/) (Planning, Analytics & Institutional Research)                                                                                | `reports`                                                                                                                                                                                                                                                                    |
 
 ### Notes on a few of them
 
@@ -351,11 +394,11 @@ a login, no student data.
   parser tells them apart, so `applies_to` and `event` mean the same thing in
   every row. Multi-week windows are kept rather than dropped: `span_days` is
   there to filter on if you only want single-day deadlines.
-- **Statutory holidays are the one HTML scrape.** UBC publishes them on hr.ubc.ca
-  as a page, with no API behind it, so `src/collectors/holidays.ts` reads the
-  tables. It uses `src/htmldoc.ts`: headings and tables pulled out with a small
-  dependency-free tokenizer, which is why the project has no runtime
-  dependencies.
+- **Statutory holidays use HTML.** UBC publishes them on hr.ubc.ca as a page,
+  with no API behind it, so `src/collectors/holidays.ts` reads the tables through
+  the dependency-free tokenizer in `src/htmldoc.ts`. The undergraduate housing
+  and library collectors also read public HTML, using Cheerio for DOM selection
+  and the shared text/table helpers for extraction.
 - **Instructors sit on sections.** `courses/sections.json` has
   `field_instructors` populated on every row sampled, along with `field_days`,
   `field_start_time`/`field_end_time` and start/end dates. `courses/courses.json`
@@ -434,11 +477,8 @@ is the fastest way for a reader to misread this repo. Name the same stem you
 pass to `table()`; both the JSON and the CSV pick it up. `columns` does not have
 to be exhaustive: describe the ones that are not self-evident.
 
-## Licence and reuse
+## Source provenance
 
-These are scrapers; do whatever you want with the code. The data is a different
-matter: it belongs to UBC and its terms apply, so check the source before
-redistributing, particularly the
-[geospatial repository's licence](https://github.com/UBCGeodata/ubc-geospatial-opendata)
-and UBC's site terms. Be a good citizen with the endpoints: `--min-interval`
-exists for a reason.
+Source URLs and timestamps identify each snapshot. Cite the official source page
+and check its dates before using time-sensitive information. `--min-interval`
+controls request spacing.

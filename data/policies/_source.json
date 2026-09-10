@@ -1,0 +1,37 @@
+{
+  "source": "https://universitycounsel.ubc.ca/jsonapi/node/policy",
+  "authority": "University of British Columbia, Office of the University Counsel",
+  "representation": "facts_and_links",
+  "campus": null,
+  "retrieved_at": "2026-09-10T23:22:07Z",
+  "records": 17,
+  "upstream_records": 90,
+  "scope": "undergraduate",
+  "selected_policy_codes": [
+    "FM1",
+    "LR4",
+    "LR7",
+    "LR8",
+    "LR10",
+    "SC1",
+    "SC2",
+    "SC5",
+    "SC6",
+    "SC7",
+    "SC9",
+    "SC12",
+    "SC13",
+    "SC14",
+    "SC16",
+    "SC17",
+    "SC18"
+  ],
+  "excluded_by_scope": 73,
+  "robots_url": "https://universitycounsel.ubc.ca/robots.txt",
+  "notes": [
+    "Institution-wide metadata applies to both campuses; no campus filter is applied.",
+    "UBC requests linking to the canonical explanatory-notes page for the current documents. Policy PDFs and their direct download URLs are not collected.",
+    "Neither policy text nor explanatory-note prose is published. Consult the canonical source page for the current documents.",
+    "Historical entries remain distinguishable by lifecycle. listed is not a determination of legal status."
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "name": "UBC open data",
-  "generated_at": "2026-08-11T11:12:00Z",
+  "generated_at": "2026-09-10T23:22:43Z",
   "campus": "vancouver",
   "how_to_read": "Index of every table in this dataset. One entry per table, not per file: `json` and `csv` hold the same rows, the JSON keeping nested values intact and the CSV encoding them into the cell. `grain` says what a single row is, `columns` describes the ones worth knowing about (not always all of them), and `joins` names the other tables a row can be linked to and on which column. Start here rather than guessing from filenames. manifest.json has the same information plus per-file sizes, sources and run status.",
   "groups": {
@@ -12869,6 +12869,473 @@
           "records": null,
           "csv": "grades/raw/2025W/UBCV-2025W-WRDS.csv",
           "source": "https://github.com/DonneyF/ubc-pair-grade-data/blob/18af317b9ded65047f8438b854317b4ff7fcb88d/tableau-dashboard-v2/UBCV/2025W/UBCV-2025W-WRDS.csv"
+        }
+      ]
+    },
+    "support": {
+      "title": "IT services, wellbeing resources and academic learning support",
+      "description": "Student-facing IT and undergraduate/shared Wellbeing service metadata and taxonomy labels, plus a Learning Commons source-link index. Page prose and HTML are not published; staff-only and graduate-only resources are excluded.",
+      "folder": "student-support",
+      "status": "ok",
+      "updated_at": "2026-09-10T23:22:07Z",
+      "sources": [
+        "https://it.ubc.ca/jsonapi/node/service",
+        "https://wellbeing.ubc.ca/jsonapi/node/resources",
+        "https://learningcommons.ubc.ca/wp-json/wp/v2/pages"
+      ],
+      "tables": [
+        {
+          "name": "_sources",
+          "path": "student-support/_sources",
+          "records": 3,
+          "json": "student-support/_sources.json"
+        },
+        {
+          "name": "_unavailable",
+          "path": "student-support/_unavailable",
+          "records": 4,
+          "json": "student-support/_unavailable.json",
+          "source": "https://wellbeing.ubc.ca/jsonapi/node/resources"
+        },
+        {
+          "name": "it_audiences",
+          "path": "student-support/it_audiences",
+          "records": 6,
+          "json": "student-support/it_audiences.json",
+          "grain": "one official Drupal taxonomy term",
+          "columns": {
+            "id": "Upstream UUID referenced by a resource's related fields",
+            "name": "Official label"
+          },
+          "joins": [],
+          "source": "https://it.ubc.ca/jsonapi/taxonomy_term/audience",
+          "csv": "student-support/it_audiences.csv"
+        },
+        {
+          "name": "it_categories",
+          "path": "student-support/it_categories",
+          "records": 33,
+          "json": "student-support/it_categories.json",
+          "grain": "one official Drupal taxonomy term",
+          "columns": {
+            "id": "Upstream UUID referenced by a resource's related fields",
+            "name": "Official label"
+          },
+          "joins": [],
+          "source": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category",
+          "csv": "student-support/it_categories.csv"
+        },
+        {
+          "name": "it_services",
+          "path": "student-support/it_services",
+          "records": 19,
+          "json": "student-support/it_services.json",
+          "grain": "one UBC IT service whose official audience taxonomy includes Students",
+          "columns": {
+            "id": "Stable identifier used for joins and ingestion",
+            "source_url": "Official service/guidance page for details; pricing, eligibility prose and page bodies are not republished",
+            "api_url": "Public source record endpoint, when available",
+            "source_modified_at": "Publisher modification timestamp, not necessarily a fee's effective date",
+            "retrieved_at": "UTC collection time; factual snapshots can become stale",
+            "record_sha256": "SHA-256 of published fact fields excluding retrieval time and this hash",
+            "campus": "vancouver, okanagan, or null for shared/unlabelled information",
+            "audiences": "Resolved official audience taxonomy labels; do not assume every service is available to every student",
+            "related": "Original Drupal relationship UUIDs; the literal missing sentinel denotes an unavailable target and is not a foreign key",
+            "unavailable_relationships": "Relationship names containing UBC's missing sentinel; no labels are inferred for those targets"
+          },
+          "joins": [
+            "related.audience[] -> student-support/it_audiences.id",
+            "related.service_category -> student-support/it_categories.id"
+          ],
+          "source": "https://it.ubc.ca/jsonapi/node/service",
+          "csv": "student-support/it_services.csv"
+        },
+        {
+          "name": "learning_commons_pages",
+          "path": "student-support/learning_commons_pages",
+          "records": 34,
+          "json": "student-support/learning_commons_pages.json",
+          "grain": "one published Vancouver Learning Commons guidance page",
+          "columns": {
+            "id": "Stable identifier used for joins and ingestion",
+            "source_url": "Official service/guidance page for details; pricing, eligibility prose and page bodies are not republished",
+            "api_url": "Public source record endpoint, when available",
+            "source_modified_at": "Publisher modification timestamp, not necessarily a fee's effective date",
+            "retrieved_at": "UTC collection time; factual snapshots can become stale",
+            "record_sha256": "SHA-256 of published fact fields excluding retrieval time and this hash",
+            "campus": "vancouver, okanagan, or null for shared/unlabelled information",
+            "audiences": "Resolved official audience taxonomy labels; do not assume every service is available to every student",
+            "related": "Original Drupal relationship UUIDs; the literal missing sentinel denotes an unavailable target and is not a foreign key",
+            "unavailable_relationships": "Relationship names containing UBC's missing sentinel; no labels are inferred for those targets"
+          },
+          "joins": [],
+          "source": "https://learningcommons.ubc.ca/wp-json/wp/v2/pages",
+          "csv": "student-support/learning_commons_pages.csv"
+        },
+        {
+          "name": "wellbeing_audiences",
+          "path": "student-support/wellbeing_audiences",
+          "records": 3,
+          "json": "student-support/wellbeing_audiences.json",
+          "grain": "one official Drupal taxonomy term",
+          "columns": {
+            "id": "Upstream UUID referenced by a resource's related fields",
+            "name": "Official label"
+          },
+          "joins": [],
+          "source": "https://wellbeing.ubc.ca/jsonapi/taxonomy_term/audience_category",
+          "csv": "student-support/wellbeing_audiences.csv"
+        },
+        {
+          "name": "wellbeing_campuses",
+          "path": "student-support/wellbeing_campuses",
+          "records": 3,
+          "json": "student-support/wellbeing_campuses.json",
+          "grain": "one official Drupal taxonomy term",
+          "columns": {
+            "id": "Upstream UUID referenced by a resource's related fields",
+            "name": "Official label"
+          },
+          "joins": [],
+          "source": "https://wellbeing.ubc.ca/jsonapi/taxonomy_term/campus_category",
+          "csv": "student-support/wellbeing_campuses.csv"
+        },
+        {
+          "name": "wellbeing_categories",
+          "path": "student-support/wellbeing_categories",
+          "records": 3,
+          "json": "student-support/wellbeing_categories.json",
+          "grain": "one official Drupal taxonomy term",
+          "columns": {
+            "id": "Upstream UUID referenced by a resource's related fields",
+            "name": "Official label"
+          },
+          "joins": [],
+          "source": "https://wellbeing.ubc.ca/jsonapi/taxonomy_term/resource_category",
+          "csv": "student-support/wellbeing_categories.csv"
+        },
+        {
+          "name": "wellbeing_populations",
+          "path": "student-support/wellbeing_populations",
+          "records": 2,
+          "json": "student-support/wellbeing_populations.json",
+          "grain": "one official Drupal taxonomy term",
+          "columns": {
+            "id": "Upstream UUID referenced by a resource's related fields",
+            "name": "Official label"
+          },
+          "joins": [],
+          "source": "https://wellbeing.ubc.ca/jsonapi/taxonomy_term/student_population",
+          "csv": "student-support/wellbeing_populations.csv"
+        },
+        {
+          "name": "wellbeing_resources",
+          "path": "student-support/wellbeing_resources",
+          "records": 5,
+          "json": "student-support/wellbeing_resources.json",
+          "grain": "one student-facing UBC Wellbeing resource for undergraduates or an unspecified student population",
+          "columns": {
+            "id": "Stable identifier used for joins and ingestion",
+            "source_url": "Official service/guidance page for details; pricing, eligibility prose and page bodies are not republished",
+            "api_url": "Public source record endpoint, when available",
+            "source_modified_at": "Publisher modification timestamp, not necessarily a fee's effective date",
+            "retrieved_at": "UTC collection time; factual snapshots can become stale",
+            "record_sha256": "SHA-256 of published fact fields excluding retrieval time and this hash",
+            "campus": "vancouver, okanagan, or null for shared/unlabelled information",
+            "audiences": "Resolved official audience taxonomy labels; do not assume every service is available to every student",
+            "related": "Original Drupal relationship UUIDs; the literal missing sentinel denotes an unavailable target and is not a foreign key",
+            "unavailable_relationships": "Relationship names containing UBC's missing sentinel; no labels are inferred for those targets"
+          },
+          "joins": [
+            "related.resource_campus[] -> student-support/wellbeing_campuses.id",
+            "related.resource_audience_category[] -> student-support/wellbeing_audiences.id",
+            "related.resource_category[] -> student-support/wellbeing_categories.id",
+            "related.resource_student_pop[] -> student-support/wellbeing_populations.id"
+          ],
+          "source": "https://wellbeing.ubc.ca/jsonapi/node/resources",
+          "csv": "student-support/wellbeing_resources.csv"
+        }
+      ]
+    },
+    "policies": {
+      "title": "Undergraduate-relevant university policy index",
+      "description": "Identifiers, dates and canonical links for undergraduate-relevant policies. Shared policies may also apply to other groups. No policy PDFs or explanatory-note prose are published.",
+      "folder": "policies",
+      "status": "ok",
+      "updated_at": "2026-09-10T23:22:11Z",
+      "sources": [
+        "https://universitycounsel.ubc.ca/jsonapi/node/policy",
+        "https://universitycounsel.ubc.ca/policies"
+      ],
+      "tables": [
+        {
+          "name": "_source",
+          "path": "policies/_source",
+          "records": null,
+          "json": "policies/_source.json",
+          "source": "https://universitycounsel.ubc.ca/jsonapi/node/policy"
+        },
+        {
+          "name": "index",
+          "path": "policies/index",
+          "records": 17,
+          "json": "policies/index.json",
+          "grain": "one undergraduate-relevant University Counsel policy record; this is a selected subset, not the full policy index",
+          "columns": {
+            "id": "Stable identifier used for joins and ingestion",
+            "source_url": "Official source page to consult and cite; page bodies are not republished",
+            "api_url": "Public source record endpoint, when available",
+            "source_modified_at": "Publisher modification timestamp, not necessarily a fee's effective date",
+            "retrieved_at": "UTC collection time; factual snapshots can become stale",
+            "record_sha256": "SHA-256 of published fact fields excluding retrieval time and this hash",
+            "campus": "vancouver, okanagan, or null for shared/unlabelled information",
+            "policy_number": "Current UBC policy code (e.g. SC7); preserve as a string",
+            "legacy_policy_number": "Previous numeric policy code, when published",
+            "lifecycle": "repealed/retired only when the title says so; listed does not certify that a policy is in force",
+            "policy_date": "Published policy date; distinct from the web page modification timestamp",
+            "content_kind": "policy_index: identifiers and dates only, not explanatory notes or binding policy text",
+            "linked_from_search": "Whether UBC's record permits linking from its search results"
+          },
+          "joins": [
+            "related.related_policies[] -> policies/index.upstream_id"
+          ],
+          "source": "https://universitycounsel.ubc.ca/jsonapi/node/policy",
+          "csv": "policies/index.csv"
+        }
+      ]
+    },
+    "housing": {
+      "title": "Undergraduate residences, housing fees and application guidance",
+      "description": "Residences whose official quick facts explicitly identify undergraduate residents, their room types and fee tables, plus selected first-year, eligibility, waitlist and application guidance. No vacancies, waitlist positions or housing offers are collected.",
+      "folder": "housing",
+      "status": "ok",
+      "updated_at": "2026-09-10T23:22:28Z",
+      "sources": [
+        "https://vancouver.housing.ubc.ca/wp-sitemap-posts-residences-1.xml",
+        "https://vancouver.housing.ubc.ca/wp-sitemap-posts-rooms-1.xml",
+        "https://vancouver.housing.ubc.ca/wp-json/wp/v2/pages?parent=48",
+        "https://vancouver.housing.ubc.ca/applications/"
+      ],
+      "tables": [
+        {
+          "name": "_source",
+          "path": "housing/_source",
+          "records": null,
+          "json": "housing/_source.json"
+        },
+        {
+          "name": "fee_pages",
+          "path": "housing/fee_pages",
+          "records": 16,
+          "json": "housing/fee_pages.json",
+          "grain": "one fee page for retained residences or shared summer/early-arrival guidance",
+          "columns": {
+            "id": "Stable identifier used for joins and ingestion",
+            "source_url": "Official source page to consult and cite; page bodies are not republished",
+            "api_url": "Public source record endpoint, when available",
+            "source_modified_at": "Publisher modification timestamp, not necessarily a fee's effective date",
+            "retrieved_at": "UTC collection time; factual snapshots can become stale",
+            "record_sha256": "SHA-256 of published fact fields excluding retrieval time and this hash",
+            "campus": "vancouver, okanagan, or null for shared/unlabelled information",
+            "beds": "Published bed count, not vacancies or rooms; null if no unambiguous count appears",
+            "front_desk_text": "Published front-desk contact/address, which can be in a different residence",
+            "undergraduate_audience": "True when UBC's quick facts explicitly mention an undergraduate audience; not an eligibility guarantee",
+            "residence_ids": "Links to housing/residences.id"
+          },
+          "joins": [
+            "id -> housing/fee_tables.page_id"
+          ],
+          "source": "https://vancouver.housing.ubc.ca/wp-json/wp/v2/pages",
+          "csv": "housing/fee_pages.csv"
+        },
+        {
+          "name": "fee_tables",
+          "path": "housing/fee_tables",
+          "records": 22,
+          "json": "housing/fee_tables.json",
+          "grain": "one source fee table represented as labelled numeric observations, not copied HTML or inferred annual prices",
+          "columns": {
+            "id": "Stable identifier used for joins and ingestion",
+            "source_url": "Official source page to consult and cite; page bodies are not republished",
+            "api_url": "Public source record endpoint, when available",
+            "source_modified_at": "Publisher modification timestamp, not necessarily a fee's effective date",
+            "retrieved_at": "UTC collection time; factual snapshots can become stale",
+            "record_sha256": "SHA-256 of published fact fields excluding retrieval time and this hash",
+            "campus": "vancouver, okanagan, or null for shared/unlabelled information",
+            "page_id": "Source index entry in housing/fee_pages",
+            "residence_ids": "Residence ids when a direct official fee link exists; empty for shared guidance",
+            "section_labels": "Short source labels identifying fee year/building, when available",
+            "values": "Numeric price observations with row, column and contract-date labels; amount_cents is exact, while a source dash/blank remains null",
+            "source_context_required": "Always true: eligibility, approval conditions and footnote prose are not reproduced. Consult source_url before applying a rate. Never add payment instalments to a total or assume all variants are undergraduate-eligible."
+          },
+          "joins": [
+            "page_id -> housing/fee_pages.id",
+            "residence_ids[] -> housing/residences.id"
+          ],
+          "source": "https://vancouver.housing.ubc.ca/wp-json/wp/v2/pages?parent=48",
+          "csv": "housing/fee_tables.csv"
+        },
+        {
+          "name": "guidance",
+          "path": "housing/guidance",
+          "records": 20,
+          "json": "housing/guidance.json",
+          "grain": "one selected undergraduate/shared housing guidance page; this is not a full site mirror",
+          "columns": {
+            "id": "Stable identifier used for joins and ingestion",
+            "source_url": "Official source page to consult and cite; page bodies are not republished",
+            "api_url": "Public source record endpoint, when available",
+            "source_modified_at": "Publisher modification timestamp, not necessarily a fee's effective date",
+            "retrieved_at": "UTC collection time; factual snapshots can become stale",
+            "record_sha256": "SHA-256 of published fact fields excluding retrieval time and this hash",
+            "campus": "vancouver, okanagan, or null for shared/unlabelled information",
+            "beds": "Published bed count, not vacancies or rooms; null if no unambiguous count appears",
+            "front_desk_text": "Published front-desk contact/address, which can be in a different residence",
+            "undergraduate_audience": "True when UBC's quick facts explicitly mention an undergraduate audience; not an eligibility guarantee",
+            "residence_ids": "Links to housing/residences.id"
+          },
+          "joins": [],
+          "source": "https://vancouver.housing.ubc.ca/wp-json/wp/v2/pages",
+          "csv": "housing/guidance.csv"
+        },
+        {
+          "name": "residences",
+          "path": "housing/residences",
+          "records": 14,
+          "json": "housing/residences.json",
+          "grain": "one residence explicitly described as serving undergraduate students",
+          "columns": {
+            "id": "Stable identifier used for joins and ingestion",
+            "source_url": "Official source page to consult and cite; page bodies are not republished",
+            "api_url": "Public source record endpoint, when available",
+            "source_modified_at": "Publisher modification timestamp, not necessarily a fee's effective date",
+            "retrieved_at": "UTC collection time; factual snapshots can become stale",
+            "record_sha256": "SHA-256 of published fact fields excluding retrieval time and this hash",
+            "campus": "vancouver, okanagan, or null for shared/unlabelled information",
+            "beds": "Published bed count, not vacancies or rooms; null if no unambiguous count appears",
+            "front_desk_text": "Published front-desk contact/address, which can be in a different residence",
+            "undergraduate_audience": "True when UBC's quick facts explicitly mention an undergraduate audience; not an eligibility guarantee",
+            "residence_ids": "Links to housing/residences.id"
+          },
+          "joins": [
+            "room_type_ids[] -> housing/room_types.id",
+            "fee_page_ids[] -> housing/fee_pages.id"
+          ],
+          "source": "https://vancouver.housing.ubc.ca/wp-sitemap-posts-residences-1.xml",
+          "csv": "housing/residences.csv"
+        },
+        {
+          "name": "room_types",
+          "path": "housing/room_types",
+          "records": 12,
+          "json": "housing/room_types.json",
+          "grain": "one room-type page linked to at least one retained undergraduate residence",
+          "columns": {
+            "id": "Stable identifier used for joins and ingestion",
+            "source_url": "Official source page to consult and cite; page bodies are not republished",
+            "api_url": "Public source record endpoint, when available",
+            "source_modified_at": "Publisher modification timestamp, not necessarily a fee's effective date",
+            "retrieved_at": "UTC collection time; factual snapshots can become stale",
+            "record_sha256": "SHA-256 of published fact fields excluding retrieval time and this hash",
+            "campus": "vancouver, okanagan, or null for shared/unlabelled information",
+            "beds": "Published bed count, not vacancies or rooms; null if no unambiguous count appears",
+            "front_desk_text": "Published front-desk contact/address, which can be in a different residence",
+            "undergraduate_audience": "True when UBC's quick facts explicitly mention an undergraduate audience; not an eligibility guarantee",
+            "residence_ids": "Links to housing/residences.id"
+          },
+          "joins": [
+            "residence_ids[] -> housing/residences.id"
+          ],
+          "source": "https://vancouver.housing.ubc.ca/wp-sitemap-posts-rooms-1.xml",
+          "csv": "housing/room_types.csv"
+        }
+      ]
+    },
+    "libraries": {
+      "title": "Library locations and dated opening hours",
+      "description": "Official library locations, contact details and accessibility links, with four calendar months of opening hours, holiday/exam exceptions and overnight closing indicators. These shared student facilities serve undergraduates; hours are not room-booking availability.",
+      "folder": "libraries",
+      "status": "ok",
+      "updated_at": "2026-09-10T23:22:43Z",
+      "sources": [
+        "https://hours.library.ubc.ca/",
+        "https://hours.library.ubc.ca/includes/calendar.inc.php"
+      ],
+      "tables": [
+        {
+          "name": "_source",
+          "path": "libraries/_source",
+          "records": null,
+          "json": "libraries/_source.json",
+          "source": "https://hours.library.ubc.ca/"
+        },
+        {
+          "name": "branches",
+          "path": "libraries/branches",
+          "records": 15,
+          "json": "libraries/branches.json",
+          "grain": "one physical library/service location or virtual service; several locations can share a building",
+          "columns": {
+            "id": "Stable identifier used for joins and ingestion",
+            "source_url": "Official source page to consult and cite; page bodies are not republished",
+            "api_url": "Public source record endpoint, when available",
+            "source_modified_at": "Publisher modification timestamp, not necessarily a fee's effective date",
+            "retrieved_at": "UTC collection time; factual snapshots can become stale",
+            "record_sha256": "SHA-256 of published fact fields excluding retrieval time and this hash",
+            "campus": "vancouver, okanagan, or null for shared/unlabelled information",
+            "hours_id": "Identifier used by hours.library.ubc.ca, not a LibCal booking id",
+            "booking_lid": "Explicit name-verified LibCal location crosswalk; not a building-code join",
+            "latitude": "Latitude supplied in UBC's map link, not a geocoded inference",
+            "longitude": "Longitude supplied in UBC's map link",
+            "accessibility_url": "Official accessibility-guide link, not an assertion that all entrances are accessible"
+          },
+          "joins": [
+            "id -> libraries/hours.branch_id",
+            "id -> libraries/monthly_schedules.branch_id",
+            "booking_lid -> room-bookings/locations.lid (explicit crosswalk; verify building separately)"
+          ],
+          "source": "https://hours.library.ubc.ca/",
+          "csv": "libraries/branches.csv"
+        },
+        {
+          "name": "hours",
+          "path": "libraries/hours",
+          "records": 1830,
+          "json": "libraries/hours.json",
+          "grain": "one library location and local calendar date, including closed or unresolved days",
+          "columns": {
+            "status": "open, closed or unknown; open means scheduled hours, not currently open",
+            "opens": "Derived local HH:mm opening time, or null",
+            "closes": "Derived local HH:mm closing time, or null",
+            "closes_next_day": "True for overnight closings (including midnight); never infer a zero-length interval",
+            "category": "regular, exception, holiday, exam, or null, copied from the source calendar cell",
+            "hours_text": "Exact applicable published rule, or null if absent/ambiguous",
+            "timezone": "America/Vancouver is the documented local-time interpretation, not an offset supplied by UBC",
+            "retrieved_at": "Snapshot time; refresh before answering time-sensitive questions"
+          },
+          "joins": [
+            "branch_id -> libraries/branches.id",
+            "schedule_id -> libraries/monthly_schedules.id"
+          ],
+          "source": "https://hours.library.ubc.ca/includes/calendar.inc.php",
+          "csv": "libraries/hours.csv"
+        },
+        {
+          "name": "monthly_schedules",
+          "path": "libraries/monthly_schedules",
+          "records": 60,
+          "json": "libraries/monthly_schedules.json",
+          "grain": "one library location and calendar month",
+          "columns": {
+            "rules": "Verbatim heading, selector and hours-text rules; retain them when a daily value is unresolved",
+            "additional_hours_urls": "Official links for separate reference/service hours; page notes and prose are not republished",
+            "request_parameters": "Read-only calendar navigation form parameters for reproduction"
+          },
+          "joins": [
+            "branch_id -> libraries/branches.id"
+          ],
+          "source": "https://hours.library.ubc.ca/includes/calendar.inc.php",
+          "csv": "libraries/monthly_schedules.csv"
         }
       ]
     }

@@ -1,0 +1,172 @@
+[
+  {
+    "url": "https://universitycounsel.ubc.ca/policies/alcohol-policy",
+    "discovered_by": [
+      "policies/index.json"
+    ],
+    "source_modified_at": "2025-10-27T23:04:55+00:00",
+    "status": "collected",
+    "article_id": "prose:policies:university_counsel:dafae7cc-7150-45d7-9f88-69957adf1cec",
+    "reason": null
+  },
+  {
+    "url": "https://universitycounsel.ubc.ca/policies/disability-accommodation-policy",
+    "discovered_by": [
+      "policies/index.json"
+    ],
+    "source_modified_at": "2025-10-27T23:04:43+00:00",
+    "status": "collected",
+    "article_id": "prose:policies:university_counsel:b08b1710-a8cb-438b-a0b2-adc835a320f6",
+    "reason": null
+  },
+  {
+    "url": "https://universitycounsel.ubc.ca/policies/discrimination-policy",
+    "discovered_by": [
+      "policies/index.json"
+    ],
+    "source_modified_at": "2025-10-27T23:04:55+00:00",
+    "status": "collected",
+    "article_id": "prose:policies:university_counsel:8634e4f2-f79b-486b-91e7-1a757d8dfe1a",
+    "reason": null
+  },
+  {
+    "url": "https://universitycounsel.ubc.ca/policies/extreme-environmental-conditions-policy",
+    "discovered_by": [
+      "policies/index.json"
+    ],
+    "source_modified_at": "2025-10-27T23:04:43+00:00",
+    "status": "collected",
+    "article_id": "prose:policies:university_counsel:e428eb44-313a-46d6-a976-1ad1a2785a80",
+    "reason": null
+  },
+  {
+    "url": "https://universitycounsel.ubc.ca/policies/financial-aid-policy",
+    "discovered_by": [
+      "policies/index.json"
+    ],
+    "source_modified_at": "2025-11-07T21:54:28+00:00",
+    "status": "collected",
+    "article_id": "prose:policies:university_counsel:58e7a71b-04f8-46d7-add2-ef5108a939e0",
+    "reason": null
+  },
+  {
+    "url": "https://universitycounsel.ubc.ca/policies/health-and-safety-policy",
+    "discovered_by": [
+      "policies/index.json"
+    ],
+    "source_modified_at": "2026-02-02T20:57:44+00:00",
+    "status": "collected",
+    "article_id": "prose:policies:university_counsel:8d3d7951-d30a-41ad-9797-8416a1e4e3fd",
+    "reason": null
+  },
+  {
+    "url": "https://universitycounsel.ubc.ca/policies/information-systems-policy",
+    "discovered_by": [
+      "policies/index.json"
+    ],
+    "source_modified_at": "2026-05-11T23:39:56+00:00",
+    "status": "collected",
+    "article_id": "prose:policies:university_counsel:d58be87b-fbc5-41e1-a85c-355a4f167335",
+    "reason": null
+  },
+  {
+    "url": "https://universitycounsel.ubc.ca/policies/late-payment-policy",
+    "discovered_by": [
+      "policies/index.json"
+    ],
+    "source_modified_at": "2025-10-27T23:04:55+00:00",
+    "status": "collected",
+    "article_id": "prose:policies:university_counsel:0b40bb20-740f-422f-af5c-e3f6e43bfeb0",
+    "reason": null
+  },
+  {
+    "url": "https://universitycounsel.ubc.ca/policies/retaliation-policy",
+    "discovered_by": [
+      "policies/index.json"
+    ],
+    "source_modified_at": "2026-06-18T00:58:17+00:00",
+    "status": "collected",
+    "article_id": "prose:policies:university_counsel:bb6c699d-ff76-44b4-ab18-3e5e28d126e3",
+    "reason": null
+  },
+  {
+    "url": "https://universitycounsel.ubc.ca/policies/risk-behaviour-policy",
+    "discovered_by": [
+      "policies/index.json"
+    ],
+    "source_modified_at": "2026-06-18T00:46:30+00:00",
+    "status": "collected",
+    "article_id": "prose:policies:university_counsel:9a511d07-650b-411b-9c80-09dc16a3f70b",
+    "reason": null
+  },
+  {
+    "url": "https://universitycounsel.ubc.ca/policies/scholarly-integrity-policy",
+    "discovered_by": [
+      "policies/index.json"
+    ],
+    "source_modified_at": "2025-10-27T23:04:55+00:00",
+    "status": "collected",
+    "article_id": "prose:policies:university_counsel:2b64cf5a-2360-4d1d-83c2-8ec384a69457",
+    "reason": null
+  },
+  {
+    "url": "https://universitycounsel.ubc.ca/policies/sexual-misconduct-policy",
+    "discovered_by": [
+      "policies/index.json"
+    ],
+    "source_modified_at": "2026-06-18T01:07:42+00:00",
+    "status": "collected",
+    "article_id": "prose:policies:university_counsel:fe7cb22e-f824-4df5-beb4-1b020ab05568",
+    "reason": null
+  },
+  {
+    "url": "https://universitycounsel.ubc.ca/policies/smoking-vaping-policy",
+    "discovered_by": [
+      "policies/index.json"
+    ],
+    "source_modified_at": "2026-06-18T00:37:22+00:00",
+    "status": "collected",
+    "article_id": "prose:policies:university_counsel:cb9bb3e4-4af3-444e-9f6f-133231121db9",
+    "reason": null
+  },
+  {
+    "url": "https://universitycounsel.ubc.ca/policies/students-abroad-policy",
+    "discovered_by": [
+      "policies/index.json"
+    ],
+    "source_modified_at": "2025-10-27T23:04:43+00:00",
+    "status": "collected",
+    "article_id": "prose:policies:university_counsel:375c14c5-3041-45d1-9f26-b86a4042e5a7",
+    "reason": null
+  },
+  {
+    "url": "https://universitycounsel.ubc.ca/policies/technology-equity-policy",
+    "discovered_by": [
+      "policies/index.json"
+    ],
+    "source_modified_at": "2026-02-02T20:31:17+00:00",
+    "status": "collected",
+    "article_id": "prose:policies:university_counsel:f93e947a-a4fc-42e0-b07c-2ae4be1c61c0",
+    "reason": null
+  },
+  {
+    "url": "https://universitycounsel.ubc.ca/policies/tuition-consultation-policy",
+    "discovered_by": [
+      "policies/index.json"
+    ],
+    "source_modified_at": "2025-10-27T23:04:43+00:00",
+    "status": "collected",
+    "article_id": "prose:policies:university_counsel:b0818aa4-3313-4ab0-a8a5-9c6faaddcd0d",
+    "reason": null
+  },
+  {
+    "url": "https://universitycounsel.ubc.ca/policies/video-cameras-policy",
+    "discovered_by": [
+      "policies/index.json"
+    ],
+    "source_modified_at": "2026-06-18T01:02:17+00:00",
+    "status": "collected",
+    "article_id": "prose:policies:university_counsel:73118046-8abe-4866-9db9-c312752fe0e8",
+    "reason": null
+  }
+]

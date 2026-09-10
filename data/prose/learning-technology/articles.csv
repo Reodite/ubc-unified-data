@@ -1,0 +1,1591 @@
+id,category,subcategory,source_id,source_url,api_url,upstream_id,title,content_markdown,content_sha256,campus,audience,source_modified_at,retrieved_at,source_records,links,warnings,markdown_path
+prose:learning-technology:10541,prose,learning-technology,learning-technology,https://lthub.ubc.ca/guides/canvas-student-guide/,https://lthub.ubc.ca/wp-json/wp/v2/pages/10541,10541,Canvas Student Guide,"[Image](https://lthub.ubc.ca/files/2020/07/Canvas-Logo-150x150.png)
+
+**Canvas provides a secure, online classroom for each of your courses at UBC**\. Your instructors may use Canvas to communicate, share course materials, and assign course work to you and your classmates\.
+
+|  |  |  |
+| --- | --- | --- |
+| **Access** | *Immediate* | [**Log in to Canvas**](https://canvas.ubc.ca/) |
+| **Bandwidth** | *Yes* | Low demand on internet connections\. |
+| **Privacy** | *Yes* | Complies with UBC’s privacy requirements\. |
+
+### What will I use it for?
+
+Your instructor may have you use Canvas to do any of the following:
+
+-   Read course content
+-   Attend online lectures
+-   Submit assignments
+-   Participate in discussion boards
+-   Collaborate in groups
+-   Take assessments
+-   View your grades
+
+> ### A note about Canvas
+> 
+> **By default, student access to most courses in Canvas will start at the beginning of the term and end eight weeks after the last day of class, although instructors may choose an earlier start and end date**\. After this date, access to course materials will no longer be available, but you will still be able to [download all your previous assignment submissions](https://community.canvaslms.com/t5/Student-Guide/How-do-I-download-assignment-submissions-from-all-my-courses/ta-p/298)\. Please see the [UBC Academic Calendar](https://vancouver.calendar.ubc.ca/dates-and-deadlines) for the term start and finish dates\.
+
+This tool guide was last reviewed in April 2026\.
+
+## What do I need to use Canvas?
+
+### A supported web browser
+
+Canvas runs in your web browser and supports Chrome, Edge, Firefox, or Safari\. For more information on which versions work, visit the [Canvas supported browser page](https://community.canvaslms.com/t5/Canvas-Basics-Guide/What-are-the-browser-and-computer-requirements-for-Canvas/ta-p/66)\. Please note that Canvas does not work with Internet Explorer\.
+
+For the best experience with a screen reader, use a combination of Firefox or Chrome and JAWS \(Windows\) / NVDA \(Windows\) or Voiceover \(Mac and iOS mobile\) / Talkback \(Android Mobile\)\.
+
+#### Tips
+
+-   **You will log in to [Canvas](http://canvas.ubc.ca/) using your UBC CWL \(Campus\-Wide Login\)\.** If you do not have one, please [sign up for a UBC CWL](https://activate.id.ubc.ca/iamweb/) first\.
+-   **You can also access Canvas on your mobile device using the [Canvas Student app](https://community.canvaslms.com/t5/Canvas-Mobile/ct-p/canvas_mobile?tab=recent)\.** However, it is not recommended to use the mobile app for assessments, as the small screen size does not always fit the quiz layout\.
+-   **Before you get started, familiarize yourself with the Canvas interface\.** Global Navigation refers to the left\-most navigation bar containing “Account”, “Dashboard”, and “Courses”\. Course Navigation refers to the navigation bar that appears to the right of Global Navigation when you access a course, with items including “Home”, “Modules”, and “Grades”\.
+-   **You can adjust your Canvas interface settings to improve accessibility by toggling on “[Use High Contrast UI](https://community.instructure.com/en/kb/articles/662906-how-do-i-enable-the-high-contrast-user-interface-in-canvas)” or “[Use a Dyslexia Friendly Font](https://community.instructure.com/en/discussion/650308/dyslexia-friendly-font-offering-more-accessibility-options-to-our-users)” options\.** These settings can be found by clicking “Account” in Global Navigation\.
+
+## How do I use Canvas?
+
+All academic courses at UBC have a matching Canvas course created at the beginning of term, and you are automatically added to any courses that you are enrolled in\.
+
+Click any accordion bar below to find instructions and tips for using Canvas\.
+
+Expand All
+
+[&gt; Access your Canvas courses](https://lthub.ubc.ca/guides/canvas-student-guide/#access-courses)
+
+### Access your Canvas courses
+
+1.  Log in to [Canvas](https://canvas.ubc.ca/) and you will be taken to your Canvas Dashboard\.
+2.  In the Card View, under ""Published Courses"", you will see a course card for each course that you are enrolled in\. You can access a **course** by clicking it, which will take you to that course's home page\.
+    -   By clicking the **three dots** next to Dashboard, you can switch between [different dashboard views](https://community.instructure.com/en/kb/articles/662812-how-do-i-use-the-dashboard-as-a-student)\.
+3.  If you cannot find your course on the Canvas Dashboard, click **Courses** in the Global Navigation, then click **All Courses** at the top\. If you still cannot find your course after doing this, check that your instructor has published the course\. If you recently registered for a course, please note that it can take up to 24 hours for it to appear in Canvas\. You can also review the [FAQ below](https://lthub.ubc.ca/guides/canvas-student-guide/#access-issues) for steps to take if your Canvas course is not visible\.
+
+#### Tips
+
+-   **You can download course content for offline viewing, if your instructor enables it**\. Click ""Account"" in the Global Navigation, then click ""Settings""\. Click “Download Course Content” on the right\-hand side to see which courses are available\.
+
+[&gt; Set your Canvas name and pronouns](https://lthub.ubc.ca/guides/canvas-student-guide/#set-profile)
+
+### Set your Canvas name and pronouns
+
+-   [Edit your name](https://lthub.ubc.ca/guides/canvas-student-guide/#Edityourname-199)
+-   [Edit your pronouns](https://lthub.ubc.ca/guides/canvas-student-guide/#Edityourpronouns-200)
+
+Your Canvas name is set by the preferred name you have on record with Workday\. You can follow the [steps for updating your preferred name in Workday](https://workday.students.ubc.ca/personal-information/updating-your-preferred-name/)\.
+
+1.  Log in to [Canvas](https://canvas.ubc.ca/) with your UBC CWL\.
+2.  Click **Account** in the Global Navigation and select **Settings**\.
+3.  On the far right of the page, click **Edit Settings**\. You may need to scroll to the bottom of the page if you do not see this button on the right side\.
+4.  Choose your **pronouns** from the drop\-down\.
+5.  Click **Update Settings**\.
+
+[&gt; View Canvas course announcements](https://lthub.ubc.ca/guides/canvas-student-guide/#view-announcements)
+
+### View Canvas course announcements
+
+Your instructor may use announcements in your course to communicate important information\.
+
+1.  Log in to [Canvas](https://canvas.ubc.ca/) with your UBC CWL and select your **course**\.
+2.  Click **Announcements** in the Course Navigation\.
+    -   Please note that if your instructor has not made any announcements yet, this item will not appear in the Course Navigation\.
+3.  By default, announcements with the most recent activity will appear at the top\. Click any **announcement title** for more information or to leave a reply\.
+4.  To receive notifications of announcements outside of Canvas, ensure that the email you use in Canvas is updated:
+    -   Click **Account** in the Global Navigation and select **Settings**\.
+    -   Under ""Email Addresses"", click **\+ Email Address** to add a new email address\. If you add a new email, you will receive an email at the new address about the change\. Please click the confirmation link that it contains, so the email can be set as your default address\.
+    -   You can then change your default email address by hovering over the email address and clicking the **star icon** that appears\. Please note that you will not receive any notifications if you are only switching your default email\.
+
+#### Tips
+
+-   **You can use multiple emails for Canvas notifications\.** You can then receive notifications in all your inboxes\. However, the email with the star will be the default email address for all Canvas notifications, so make sure it is an address that you regularly check\.
+
+[&gt; Communicate with Canvas Inbox](https://lthub.ubc.ca/guides/canvas-student-guide/#communicate)
+
+### Communicate with Canvas Inbox
+
+You can communicate with your instructor, teaching assistants, and other students in your class using the Canvas Inbox\. The Inbox is similar to a personal email tool within Canvas\.
+
+1.  Log in to [Canvas](https://canvas.ubc.ca/) with your UBC CWL\.
+2.  Click **Inbox** in the Global Navigation\.
+3.  Click the **pencil icon** at the upper right of the page\. A window will pop up with the title  ""Compose Message""\.
+4.  In the ""Course"" drop\-down, select the **course** or **groups** where you want to send your message\.
+5.  To specify individual recipients from the course to receive the message, search for a person by typing the name in the ""To"" field\.
+6.  Complete the subject and text for the message, then click **Send**\.
+
+#### Tips
+
+-   **You can right\-click the ""Inbox"" link to open it in another tab or window**\. This action keeps the Inbox handy while doing other tasks in Canvas\.
+-   **Once a course has concluded, you will no longer be able to message anyone in that course using your Inbox**\. However, you will still be able to see past messages exchanged in the course\.
+
+[&gt; Submit your Canvas assignments](https://lthub.ubc.ca/guides/canvas-student-guide/#submit-assignments)
+
+### Submit your Canvas assignments
+
+As you complete your course, you may be asked to submit assignments in Canvas\. The steps for submitting a traditional assignment are below\.
+
+Other types of activities in Canvas may appear as assignments\. Steps for completing assignments that are [Canvas assessments](https://lthub.ubc.ca/guides/canvas-student-guide/#complete-assessments) or [Canvas graded discussions](https://lthub.ubc.ca/guides/canvas-student-guide/#participate-in-discussions) are available in the accordion sections further below\.
+
+1.  Log in to [Canvas](https://canvas.ubc.ca/) with your UBC CWL and select your **course**\.
+2.  Click **Assignments** in the Course Navigation\.
+3.  Click the **assignment title** to open it\.
+4.  Click **Start Assignment** to access the submission page\.
+    -   If you do not see this button, you may need to complete your assignment in a tool that is external to Canvas\. Click the button you see to open the tool, and follow the prompts in the tool instead of these instructions\.
+5.  Make sure to carefully read the instructions on how to submit your assignments, as they might be different from assignment to assignment\.
+6.  Click **Submit Assignment**\.
+
+#### Tips
+
+-   **You can also access your assignments through your Canvas Dashboard**\. Look for the list of assignments from different courses on the ""To Do"" list on the right side of the Canvas Dashboard\.
+-   **Assignment uploads are limited to 5GB for files and 500MB for media\.** If you can submit using the Canvas text editor, the Kaltura \(rainbow sun\) icon in the text editor toolbar will let you upload media up to 2GB\.
+-   **Instructors may set restrictions on the types of files you can upload\.** Be sure to check these in advance of your due date\.
+-   **Some instructors may allow an unlimited number of ""attempts"", so you can re\-submit your assignment until the assignment closes\.** If this option has been enabled, click ""New Attempt"" and follow the prompts\.
+
+[&gt; Participate in Canvas discussion boards](https://lthub.ubc.ca/guides/canvas-student-guide/#participate-in-discussions)
+
+### Participate in Canvas discussion boards
+
+You may be asked to participate in a class discussion, either by responding to your instructor’s discussion question or responding to another student’s comment or thread\.
+
+1.  Log in to [Canvas](https://canvas.ubc.ca/) with your UBC CWL and select your **course**\.
+2.  Click **Discussions** in the Course Navigation\.
+3.   Click the **discussion title** that you want to participate in\.
+4.  Click **Reply** and enter your response in the textbox\.
+    -   Depending on how the instructor has set up the discussion, you can also click **Reply** to respond to an individual student’s comment\.
+5.  Click **Post Reply**\.
+
+#### Tips
+
+-   **Your professor may decide to make a graded discussion\.** Graded discussions appear under ""Assignments"" in the Course Navigation, but they function the same way as regular discussions\.
+-   **If ""Discussions"" is not available in the Course Navigation, try accessing it in another area of the course\.** Some instructors may put discussions under ""Modules"" or ""Assignments"" in the Course Navigation\.
+-   **You can reply with text, links, photos, equations, and/or multimedia using the response textbox**\. If your instructor allows, you may also be able to attach files\.
+
+[&gt; Use Canvas course groups](https://lthub.ubc.ca/guides/canvas-student-guide/#use-groups)
+
+### Use Canvas course groups
+
+Although Canvas groups create private group areas that only members can access, please note that instructors can also see all activities in the course groups\.
+
+-   [Access instructor\-created groups](https://lthub.ubc.ca/guides/canvas-student-guide/#Accessinstructorcreatedgroups-201)
+-   [Set up your own groups](https://lthub.ubc.ca/guides/canvas-student-guide/#Setupyourowngroups-202)
+
+You may be asked to work with other students in a group in your Canvas course\. Each group will have its own private group area to work in, which contains announcements, pages, discussions, and files that are shared only within the group\.
+
+1.  Log into [Canvas](https://canvas.ubc.ca/) with your UBC CWL and select your **course**\.
+2.  Click **People** in the Course Navigation\.
+3.  Select the **Groups** tab\.
+4.  Click **Visit** next to the title of your assigned group to access your private group area\.
+
+You may be able to set up your own student group to collaborate with other students in your course, if your instructor has allowed it in the course\. Like course groups, student groups have their own private area to work in, which contains announcements, pages, discussions, and files shared only within the group\.
+
+1.  Log into [Canvas](https://canvas.ubc.ca/) with your UBC CWL and select your **course**\.
+2.  Click **People** in the Course Navigation\.
+3.  Select the **Groups** tab\.
+4.  Click **\+Group**\.
+5.  Name your group\.
+6.  Decide how you will have other students join the group:
+    -   To allow anyone in the course to join, select **Course Members are Free to Join** from the ""Joining"" drop\-down\.
+    -   To invite only certain people, select **Membership by Invitation Only** from the ""Joining"" drop\-down\. Then invite members to the group by searching for their names under “Invite Students”\.
+7.  Click **Submit**\.
+
+#### Tips
+
+-   **Another way to access groups is to click ""Groups"" in the Global Navigation\.** You will see a list of the groups that you are in, along with the courses they are associated with\.
+-   **Student\-created groups need to be enabled by your instructor before you can set one up yourself\.** If you do not see ""People"" in the Course Navigation or if you do not see the ""\+Group"" button after accessing the ""People"" page, your instructor has not enabled this feature\. You may ask to have it turned on\.
+-   **Read more about Canvas student groups in the [People and Groups section](https://community.canvaslms.com/t5/Student-Guide/tkb-p/student#PeopleandGroups) of the Canvas student documentation\.** This information explains the different functionalities available in student groups\.
+
+[&gt; Complete Canvas assessments](https://lthub.ubc.ca/guides/canvas-student-guide/#complete-assessments)
+
+### Complete Canvas assessments
+
+Please note that we do not recommend completing any Canvas assessments on mobile devices\. The small screen does not fit the quiz layout very well, and you may miss important contents\.
+
+1.  Log into [Canvas](https://canvas.ubc.ca/) with your UBC CWL and select your **course**\.
+2.  Find your assessment under **Quizzes** or **Modules** in the Course Navigation\.
+    -   If you see “Requires Respondus LockDown browser” after the quiz name, you will need to [install LockDown Browser](https://www.respondus.com/lockdown/download.php?id=695714529) first\. With this browser, you will not be able to print or copy questions, visit other websites, access other applications, or close the assessment until it is submitted\. For help or additional tips, see [UBC's LockDown Browser student guide](https://lthub.ubc.ca/guides/lockdown-browser-student-guide/)\.
+3.  Click the **quiz title** that you want to take\. Before you begin, you will be able to see the due date, the time limit and the number of attempts allowed for the quiz\.
+4.  Click either **Take the Quiz** or **Begin** \(whichever you see\) to start your assessment\.
+    -   Before you start the exam, you may be prompted to type in an access code\. Your instructor should give this code to you ahead of time\.
+5.  Complete the assessment and click either **Submit Quiz** or **Submit** \(whichever you see\) when you reach the end\.
+
+#### Tips
+
+-   **Canvas will always call your assessment a “quiz”\.** Your instructor may also use a Canvas quiz for larger\-stakes assessments, like exams\.
+-   **Once the quiz begins, you will be able to see the time remaining\.** A reminder will also appear 30 seconds before the quiz ends\.
+-   **Avoid leaving a timed quiz midway through\.** The timer will continue running while you are gone, and the quiz will auto\-submit when the time runs out\.
+-   **If you get logged out in the middle of a quiz, you can resume it\.** Find your way to the question you were on by navigating to the question list in the sidebar\.
+-   **If you do not see a video where you expect to in a quiz, your browser may be set to block third\-party cookies\.** You will need to [enable third\-party cookies](https://lthub.ubc.ca/guides/kaltura-instructor-guide/#third-party-cookies) so that the video appears as expected\.
+-   **If you experience technical issues during a timed assessment, please contact your instructor right away\.** You can also refer to the [support information](https://lthub.ubc.ca/guides/canvas-student-guide/#support) for additional help\.
+
+[&gt; View your Canvas grades](https://lthub.ubc.ca/guides/canvas-student-guide/#view-grades)
+
+### View your Canvas grades
+
+Depending on how your instructor has set up grading, you will either see grades immediately \(after you take a quiz\) or when the instructor manually releases the grades\.
+
+To see the grades currently available to you, follow these steps:
+
+1.  Log into [Canvas](https://canvas.ubc.ca/) with your UBC CWL and select your **course**\.
+2.  Click **Grades** in the Course Navigation\.
+3.  In the new page that loads, you will see the list of assignments for that course and your grades\. You can use the ""Arrange by"" drop\-down to sort grades by assignment group, due date, module, or name
+4.  Click the **assignment title** to view the specific details of an assignment\.
+
+#### Tips
+
+-   **Note that your Canvas grade may not reflect your official grade\.** Your official final grade will be posted on [Workday](http://myworkday.ubc.ca/)\. You can follow the [steps to view your grades and academic record on Workday](https://workday.students.ubc.ca/degree-planning/viewing-your-grades-and-academic-record/)\.
+-   **Your grades on Canvas and Workday are different than an official transcript\.** You can [order an official UBC transcript](https://students.ubc.ca/enrolment/records/ordering-transcript/) by contacting Enrolment Services\.
+
+[&gt; Manage Canvas notifications](https://lthub.ubc.ca/guides/canvas-student-guide/#manage-notifications)
+
+### Manage Canvas notifications
+
+You can change the default notification settings in Canvas by selecting your preferences\.
+
+1.  Log into [Canvas](https://canvas.ubc.ca/) with your UBC CWL and select your **course**\.
+2.  Click **Account** in the Global Navigation and select **Notifications\.**
+3.  Under the “Settings for” filter, select whether you want to change notifications for your whole Canvas account or for a specific course\. Please keep in mind that any changes to course notification settings will override your account notification settings\.
+4.  Once you set up the filter, you will see a table of all the emails associated with your Canvas account and all types of notifications that each can receive\. Select the notifications you want by clicking the **email notification icon** under each address\.
+
+#### Tips
+
+-   **Keep your email address updated in Canvas\.** If you do not see the desired email when checking notifications, you can change it\. Click ""Account"" in the Global Navigation and select ""Settings""\. On the settings page, use the list on the right to add a new email or change which email is your default \(the ""starred"" one\)\. You may get an email at the new address about the change\. Make sure to click the confirmation link that it contains, or it cannot be set as the default email\.
+-   **Visit the Canvas student documentation to learn more about [managing Canvas notification settings](https://community.canvaslms.com/t5/Student-Guide/How-do-I-manage-my-Canvas-notification-settings-as-a-student/ta-p/434)\.** The page contains more information on notification frequency and [Canvas Student app](https://community.canvaslms.com/t5/Canvas-Mobile/ct-p/canvas_mobile?tab=recent) notifications\.
+
+## Canvas FAQ
+
+Find UBC\-specific answers to frequently asked questions by clicking any accordion bar below\.
+
+[&gt; How is personal information in Canvas used by UBC?](https://lthub.ubc.ca/guides/canvas-student-guide/#personal-information-use)
+
+Canvas complies with the BC Freedom of Information and Protection of Privacy Act \([FIPPA](https://universitycounsel.ubc.ca/subject-areas/access-and-privacy-general/access-to-information/about-fippa/)\), meaning it follows provincial privacy policies, and its data is stored securely in Canada by Amazon Web Services\.
+
+Under FIPPA, personal information can be used for the purpose it was collected or for a consistent purpose\. That means your personal information in Canvas will be used for the purpose of delivering your courses\. Personal information may also be used in providing course support, in detecting academic misconduct, and for tools that support the quality of teaching and learning \(such as dashboards for monitoring progress or tools that provide feedback\)\. Additionally, personal information may be combined for statistical analysis purposes, but only after anonymizing it by stripping out identifiers so no personal information is tied to a specific individual\.
+
+You can find more information about Canvas analytics and statistics that teaching teams can use to better support your learning on the [UBC Learning Analytics website](https://learninganalytics.ubc.ca/)\.
+
+More details about Canvas privacy policies are in the ""Acceptable Use Policy"", which is linked from the footer of the Canvas Dashboard\. The UBC [Canvas instructor guide FAQ](https://lthub.ubc.ca/guides/canvas-instructor-guide/#faq) also answers more questions about privacy and Canvas\.
+
+[&gt; Can I use Canvas on my phone or tablet?](https://lthub.ubc.ca/guides/canvas-student-guide/#mobile-use)
+
+You can use the Canvas on your phone or tablet to read course content, watch live or recorded lectures, submit assignments, participate in discussion boards, collaborate in groups, and view grades\. You can best access Canvas on these devices through the [Canvas Student app](https://community.canvaslms.com/t5/Canvas-Mobile/ct-p/canvas_mobile?tab=recent)\.
+
+However, you should not use your phone or tablet for Canvas assessments\. The small screen size does not always accommodate the quiz layout and you may miss important contents\.
+
+[&gt; Why is my browser not working with Canvas?](https://lthub.ubc.ca/guides/canvas-student-guide/#browser-issues)
+
+Canvas supports Chrome, Edge, Firefox, or Safari\. For more information on which versions work, check the [Canvas supported browser page](https://community.canvaslms.com/t5/Canvas-Basics-Guide/What-are-the-browser-and-computer-requirements-for-Canvas/ta-p/66)\. Please note that Canvas is not compatible with Internet Explorer\.
+
+If you are using a supported browser and still encountering issues, try logging out of Canvas, [clearing your browser cookies](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/browser-help#clear), and logging back in\. You may also want to disable any browser extensions or plugins you have added to check if they are causing any issues\.
+
+If the issue persists, try switching to another supported browser or using an incognito/private browsing window\. Chrome is the recommended and most ideal browser for accessing Canvas\.
+
+If you still cannot access Canvas, [get UBC Canvas help](https://lthub.ubc.ca/guides/canvas-student-guide/#support)\.
+
+[&gt; I cannot get to my course in Canvas\. What can I do?](https://lthub.ubc.ca/guides/canvas-student-guide/#access-issues)
+
+First, you may want to confirm that you are registered in the course as expected\. [Log in to Workday](http://myworkday.ubc.ca/) with your UBC CWL to view your registered courses\. For help resolving registration issues, [contact Enrolment Services](https://students.ubc.ca/about-student-services/enrolment-services-advisors/#contact-us)\. If you recently registered for a course, please note that it can take up to 24 hours for it to appear in Canvas\.
+
+Back in Canvas, make sure you are viewing all your courses\. Click **Courses** in the Global Navigation, then click **All Courses** at the top\. Please also note that Canvas courses may not appear until the first day of the term, and access typically ends eight weeks after the last day of class\.
+
+If you cannot find your course on the ""All Courses"" page and classes have begun, first check with your instructor that the course has been published\. Unpublished courses will not be visible to you in Canvas\.
+
+If you still cannot find your course or cannot access Canvas at all, [get UBC Canvas help](https://lthub.ubc.ca/guides/canvas-student-guide/#support)\.
+
+[&gt; How long will each course be available to me in Canvas?](https://lthub.ubc.ca/guides/canvas-student-guide/#course-availability)
+
+If your instructor uses the default end date, your access to a course in Canvas will end eight weeks after the last day of class\. However, instructors may change the default to an earlier end date\. It is best to assume that you will not have access to course materials after the end of the term\. You can also reach out to your instructors directly to ask about the Canvas course start and end dates\.
+
+[&gt; Why are parts of my course not being marked as done?](https://lthub.ubc.ca/guides/canvas-student-guide/#course-progress)
+
+Depending on how your instructor has set up the course, items in a module may or may not be automatically marked as done as you go\. Assessments will always be automatically marked as done after you have submitted them and will allow you to progress through the module\. Pages and assignments will sometimes have a “Mark as done” button, which you will have to manually check before moving on\.
+
+[&gt; What should I do if I'm auditing a course?](https://lthub.ubc.ca/guides/canvas-student-guide/#student-auditors)
+
+-   If you are auditing a course as an undergraduate student, you should [register as an auditor](https://students.ubc.ca/enrolment/courses/auditing-courses) through Enrolment Services\.
+-   If you are a graduate student auditing either an undergraduate or a graduate course, you should register as an auditor through the [Faculty of Graduate Studies](https://www.grad.ubc.ca/current-students/managing-your-program/audit) and the [Change of Registration form\.](https://www.grad.ubc.ca/forms/registration-change-registration-form)
+
+Once registered, you will be automatically enrolled in the Canvas course in the ""Student"" role, providing you with the same access to the course as other enrolled students\.
+
+If you have questions or issues with auditing a course in Canvas, [get UBC Canvas help](https://lthub.ubc.ca/guides/canvas-student-guide/#support)\.
+
+## Where can I get more support with Canvas?
+
+### Technical support
+
+**If you cannot find your course or have trouble accessing Canvas:**
+
+-   Contact the UBC [IT Service Centre Help Desk](https://it.ubc.ca/got-question-about-it-products-and-support#helpdesk):  
+    604 822 2008 or fill out the [UBC IT request form](https://ubc.service-now.com/selfservice?id=sc_cat_item_v2&amp;sys_id=cc7f5fb9874e0100bbee70406d434df9)\.
+
+**If you have technical issues while taking a timed assessment in Canvas:**
+
+-   Reach out to your instructors or teaching assistants right away, as they often have a lot of experience with Canvas\.
+-   If you are still experiencing technical issues, please [contact us](https://lthub.ubc.ca/support/lt-hub/)\.
+
+---
+
+### Online learning support
+
+-   Visit UBC’s [Keep Learning site](http://keeplearning.ubc.ca/) and the Chapman Learning Common’s [student toolkits](https://learningcommons.ubc.ca/category/type/interactive/)\.
+-   Visit the [UBC Vancouver’s Centre for Accessibility page](https://students.ubc.ca/about-student-services/centre-for-accessibility) or the [UBC Okanagan’s Disability Resource Centre page](https://students.ok.ubc.ca/academic-success/disability-resources/) to learn more about available support for students with disabilities and ongoing medical conditions\.
+
+#### Learn more
+
+-   For more how\-to instructions, explore the [Canvas student documentation](https://community.canvaslms.com/t5/Student-Guide/tkb-p/student)\.
+-   For more answers to questions about privacy and Canvas, please check out the [Canvas instructor guide FAQ](https://lthub.ubc.ca/guides/canvas-instructor-guide/#faq)\.
+
+---
+
+[« See all tools](https://lthub.ubc.ca/guides/)
+
+#### Tell us about this guide
+
+[Embedded content: This iframe contains the logic required to handle Ajax powered Gravity Forms\.](https://lthub.ubc.ca/guides/canvas-student-guide/)",9a06208b23e500086062ac8703a898ce3a69cb2720cb2a3fbb5ebc5d9c635041,,undergraduate_and_shared,2026-04-16T00:21:55+00:00,2026-09-11T05:07:31.671Z,[],"[{""text"": ""Image"", ""url"": ""https://lthub.ubc.ca/files/2020/07/Canvas-Logo-150x150.png""}, {""text"": ""Log in to Canvas"", ""url"": ""https://canvas.ubc.ca/""}, {""text"": ""download all your previous assignment submissions"", ""url"": ""https://community.canvaslms.com/t5/Student-Guide/How-do-I-download-assignment-submissions-from-all-my-courses/ta-p/298""}, {""text"": ""UBC Academic Calendar"", ""url"": ""https://vancouver.calendar.ubc.ca/dates-and-deadlines""}, {""text"": ""Canvas supported browser page"", ""url"": ""https://community.canvaslms.com/t5/Canvas-Basics-Guide/What-are-the-browser-and-computer-requirements-for-Canvas/ta-p/66""}, {""text"": ""Canvas"", ""url"": ""http://canvas.ubc.ca/""}, {""text"": ""sign up for a UBC CWL"", ""url"": ""https://activate.id.ubc.ca/iamweb/""}, {""text"": ""Canvas Student app"", ""url"": ""https://community.canvaslms.com/t5/Canvas-Mobile/ct-p/canvas_mobile?tab=recent""}, {""text"": ""Use High Contrast UI"", ""url"": ""https://community.instructure.com/en/kb/articles/662906-how-do-i-enable-the-high-contrast-user-interface-in-canvas""}, {""text"": ""Use a Dyslexia Friendly Font"", ""url"": ""https://community.instructure.com/en/discussion/650308/dyslexia-friendly-font-offering-more-accessibility-options-to-our-users""}, {""text"": ""> Access your Canvas courses"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#access-courses""}, {""text"": ""Canvas"", ""url"": ""https://canvas.ubc.ca/""}, {""text"": ""different dashboard views"", ""url"": ""https://community.instructure.com/en/kb/articles/662812-how-do-i-use-the-dashboard-as-a-student""}, {""text"": ""FAQ below"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#access-issues""}, {""text"": ""> Set your Canvas name and pronouns"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#set-profile""}, {""text"": ""Edit your name"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#Edityourname-199""}, {""text"": ""Edit your pronouns"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#Edityourpronouns-200""}, {""text"": ""steps for updating your preferred name in Workday"", ""url"": ""https://workday.students.ubc.ca/personal-information/updating-your-preferred-name/""}, {""text"": ""> View Canvas course announcements"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#view-announcements""}, {""text"": ""> Communicate with Canvas Inbox"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#communicate""}, {""text"": ""> Submit your Canvas assignments"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#submit-assignments""}, {""text"": ""Canvas assessments"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#complete-assessments""}, {""text"": ""Canvas graded discussions"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#participate-in-discussions""}, {""text"": ""> Participate in Canvas discussion boards"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#participate-in-discussions""}, {""text"": ""> Use Canvas course groups"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#use-groups""}, {""text"": ""Access instructor-created groups"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#Accessinstructorcreatedgroups-201""}, {""text"": ""Set up your own groups"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#Setupyourowngroups-202""}, {""text"": ""People and Groups section"", ""url"": ""https://community.canvaslms.com/t5/Student-Guide/tkb-p/student#PeopleandGroups""}, {""text"": ""> Complete Canvas assessments"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#complete-assessments""}, {""text"": ""install LockDown Browser"", ""url"": ""https://www.respondus.com/lockdown/download.php?id=695714529""}, {""text"": ""UBC's LockDown Browser student guide"", ""url"": ""https://lthub.ubc.ca/guides/lockdown-browser-student-guide/""}, {""text"": ""enable third-party cookies"", ""url"": ""https://lthub.ubc.ca/guides/kaltura-instructor-guide/#third-party-cookies""}, {""text"": ""support information"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#support""}, {""text"": ""> View your Canvas grades"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#view-grades""}, {""text"": ""Workday"", ""url"": ""http://myworkday.ubc.ca/""}, {""text"": ""steps to view your grades and academic record on Workday"", ""url"": ""https://workday.students.ubc.ca/degree-planning/viewing-your-grades-and-academic-record/""}, {""text"": ""order an official UBC transcript"", ""url"": ""https://students.ubc.ca/enrolment/records/ordering-transcript/""}, {""text"": ""> Manage Canvas notifications"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#manage-notifications""}, {""text"": ""managing Canvas notification settings"", ""url"": ""https://community.canvaslms.com/t5/Student-Guide/How-do-I-manage-my-Canvas-notification-settings-as-a-student/ta-p/434""}, {""text"": ""> How is personal information in Canvas used by UBC?"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#personal-information-use""}, {""text"": ""FIPPA"", ""url"": ""https://universitycounsel.ubc.ca/subject-areas/access-and-privacy-general/access-to-information/about-fippa/""}, {""text"": ""UBC Learning Analytics website"", ""url"": ""https://learninganalytics.ubc.ca/""}, {""text"": ""Canvas instructor guide FAQ"", ""url"": ""https://lthub.ubc.ca/guides/canvas-instructor-guide/#faq""}, {""text"": ""> Can I use Canvas on my phone or tablet?"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#mobile-use""}, {""text"": ""> Why is my browser not working with Canvas?"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#browser-issues""}, {""text"": ""clearing your browser cookies"", ""url"": ""https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/browser-help#clear""}, {""text"": ""get UBC Canvas help"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#support""}, {""text"": ""> I cannot get to my course in Canvas. What can I do?"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#access-issues""}, {""text"": ""Log in to Workday"", ""url"": ""http://myworkday.ubc.ca/""}, {""text"": ""contact Enrolment Services"", ""url"": ""https://students.ubc.ca/about-student-services/enrolment-services-advisors/#contact-us""}, {""text"": ""> How long will each course be available to me in Canvas?"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#course-availability""}, {""text"": ""> Why are parts of my course not being marked as done?"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#course-progress""}, {""text"": ""> What should I do if I'm auditing a course?"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#student-auditors""}, {""text"": ""register as an auditor"", ""url"": ""https://students.ubc.ca/enrolment/courses/auditing-courses""}, {""text"": ""Faculty of Graduate Studies"", ""url"": ""https://www.grad.ubc.ca/current-students/managing-your-program/audit""}, {""text"": ""Change of Registration form."", ""url"": ""https://www.grad.ubc.ca/forms/registration-change-registration-form""}, {""text"": ""IT Service Centre Help Desk"", ""url"": ""https://it.ubc.ca/got-question-about-it-products-and-support#helpdesk""}, {""text"": ""UBC IT request form"", ""url"": ""https://ubc.service-now.com/selfservice?id=sc_cat_item_v2&sys_id=cc7f5fb9874e0100bbee70406d434df9""}, {""text"": ""contact us"", ""url"": ""https://lthub.ubc.ca/support/lt-hub/""}, {""text"": ""Keep Learning site"", ""url"": ""http://keeplearning.ubc.ca/""}, {""text"": ""student toolkits"", ""url"": ""https://learningcommons.ubc.ca/category/type/interactive/""}, {""text"": ""UBC Vancouver’s Centre for Accessibility page"", ""url"": ""https://students.ubc.ca/about-student-services/centre-for-accessibility""}, {""text"": ""UBC Okanagan’s Disability Resource Centre page"", ""url"": ""https://students.ok.ubc.ca/academic-success/disability-resources/""}, {""text"": ""Canvas student documentation"", ""url"": ""https://community.canvaslms.com/t5/Student-Guide/tkb-p/student""}, {""text"": ""« See all tools"", ""url"": ""https://lthub.ubc.ca/guides/""}, {""text"": ""Embedded content: This iframe contains the logic required to handle Ajax powered Gravity Forms."", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/""}]","[""Removed executable markup, form controls, or event attributes."", ""Embedded content is linked rather than embedded; consult the source for its full content."", ""A headerless table receives an empty Markdown header; all source rows remain data rows.""]",prose/learning-technology/markdown/8f5488ee6db690dc6f93f1304ffe091b8043281346364b6194f4c28f7f65c698.md
+prose:learning-technology:10551,prose,learning-technology,learning-technology,https://lthub.ubc.ca/guides/webwork-student-guide/,https://lthub.ubc.ca/wp-json/wp/v2/pages/10551,10551,Webwork Student Guide,"[Image](https://elearning5.sites.olt.ubc.ca/files/2024/06/1289488.png)
+
+**Webwork is an online assignment and quiz tool that focuses on numerical problems and equations where you can solve assigned problems as part of homework or assessments**\. Depending on your instructor’s setup, you may receive instant feedback after answering each problem and/or have multiple attempts to enhance your learning\.
+
+|  |  |  |
+| --- | --- | --- |
+| **Access** | *Immediate* | If your instructor creates an assignment in Webwork, you can access it through Canvas\. |
+| **Bandwidth** | *Yes* | Low demand on internet connections\. |
+| **Privacy** | *Yes* | Complies with UBC’s privacy requirements\. |
+
+### What will I use it for?
+
+Your instructor may have you use Webwork for solving numerical problems and equations in a variety of ways:
+
+-   Practice and submit problem sets within homework assignments
+-   Complete problems as parts of quizzes
+-   Take midterms or final exams
+
+This tool guide was last reviewed in June 2024 with version 2\.18 of Webwork\.
+
+## What do I need to use Webwork?
+
+### A supported web browser
+
+Webwork runs in your web browser and supports using Chrome, Firefox, Safari, and Edge\. However, we recommend that you use Chrome or Firefox for the best experience\. Some browser extensions \(mainly adblockers\) can prevent filling in form fields in Webwork, so you may need to pause any extensions you have added for Webwork to function properly\.
+
+Additionally, if you have previously disabled JavaScript, please re\-enable JavaScript in your browser so that you can see any interactive elements and content\.
+
+#### Tips
+
+-   **You can download the [Canvas Student app](https://community.canvaslms.com/t5/Canvas-Mobile/ct-p/canvas_mobile?tab=recent) to access Webwork assignments on your mobile device**\. However, when taking a quiz, we recommend using a desktop or laptop computer and logging out from Webwork on all other devices to prevent technical issues in a time\-limited scenario\.
+
+## How do I use Webwork?
+
+Click any accordion bar below to find instructions and tips for using Webwork\.
+
+Expand All
+
+[&gt; Access Webwork from Canvas](https://lthub.ubc.ca/guides/webwork-student-guide/#access-from-canvas)
+
+### Access Webwork from Canvas
+
+You can access Webwork exclusively through your Canvas course\. Depending on how your instructor sets up the Canvas course, you may access all of your Webwork assignments through the Canvas Course Navigation or through individual Canvas assignments\.
+
+1.  Log in to your Canvas course with your UBC CWL \(Campus\-Wide Login\) and select your course\.
+2.  Click **Webwork** in the Course Navigation\.
+    -   If you do not see this option, click **Assignments** in the Course Navigation and click the **assignment name**\. Then, click **Load in a new window** to be redirected to Webwork\.
+3.  Webwork will open in a new window with the Webwork assignment page or your course dashboard, depending on your instructor's setup\.
+
+#### Tips
+
+-   **To use multiple tabs in Webwork, please open additional links from within Webwork itself, rather than opening Webwork from Canvas multiple times**\. Opening multiple tabs from the Canvas Course Navigation more than once may cause errors in Webwork\.
+
+[&gt; Complete a Webwork homework set](https://lthub.ubc.ca/guides/webwork-student-guide/#complete-assignment)
+
+### Complete a Webwork homework set
+
+Homework sets are groups of problems that make up Webwork assignments\.
+
+1.  Once you have accessed Webwork through Canvas, click the **homework set** to be completed\.
+    -   On the homework set page, you will see the list of problems that the set contains\. Each problem shows the number of allowed attempts, number of remaining attempts, how many points each question is worth, and the question's completion status\.
+2.  To get started, select a **problem** to work on by clicking it\. There will be empty fields where you can input your answers\.
+    -   For fill\-in\-the\-blank questions, you can click the **button** to the right of the answer input field to use the Equation Editor\. The Equation Editor provides access to shortcuts to mathematical symbols and operators and allows you to preview your answer in mathematical form\.
+3.  After typing your answer, you can click **Preview My Answers** to see your entry in its final mathematical form\. If this previewed answer is not what you expected, you can adjust your answer\.
+4.  Once you are satisfied with your answer, click **Submit Answers**\.
+    -   After you submit your answer, Webwork will tell you if you got the answer correct or incorrect\.
+    -   If the problem has multiple attempts, you will be able to submit your answer again\.
+5.  To access the next question, click the **Next Problem** button at the top\.
+
+#### Tips
+
+-   **You can download and print the homework set before inputting your answers online\.** You can do this by viewing the homework set page and selecting ""Download PDF or TeX Hardcopy for Current Set""\.
+-   **Use the list of problems on the left side to access the other problems in the set**\. You are not restricted in taking the problems in a fixed order and can navigate between different problems\.
+-   **Preview your answers before you submit to check the syntax of your answers\.** If you do not have extra attempts, you may not be able to re\-attempt the problem as there is no way to undo an answer submission\. Previewing your answers does not submit them, and your answers will only become final once you submit\.
+-   **If Webwork says your answer is incorrect but you can see it is correct, use the preview button to check the syntax of your answer for errors**\. For example, ensure you have used brackets where appropriate or the correct number of decimal places throughout your calculations, as the answer format can be very specific\.
+-   **If you have technical issues you cannot resolve on your own, contact your instructor or teaching assistant\.** For access issues, reach out to the support contacts at the bottom of this guide\.
+
+[&gt; Complete a Webwork quiz or exam](https://lthub.ubc.ca/guides/webwork-student-guide/#complete-assessment)
+
+### Complete a Webwork quiz or exam
+
+A Webwork Test is a quiz or exam version of a homework set, which may or may not by proctored\. A proctored test will prompt you to enter a password to take the test\. Your instructor should provide this password to you\.
+
+1.  Before starting, ensure that you are prepared for the test by familiarizing yourself with the time limit, instructions, and course content\.
+2.  Once you have accessed Webwork through Canvas, click the Webwork **Test name** to be completed\.
+    -   For proctored tests, enter the proctor password distributed by your instructor\.
+3.  Once you begin, use the **preview answers** button at the bottom right corner of each question to check the syntax of answers as you go, which will also save your answer\.
+4.  After you have finished all the questions, click the **Preview Test** button at the bottom of the page to check the format of all your answers\.
+5.  Once you are satisfied with the mathematical form of your answers, click the **Grade Test** button at the bottom of the page to submit the test\.
+
+#### Tips
+
+-   **Webwork Tests share characteristics similar to quizzes in Canvas, such as the following**:
+    -   Time limits
+    -   Different question sets per student
+    -   Multiple pages for one set
+    -   Hidden scores after completion
+-   **The time limit can be found on the top right corner of your screen\.** The timer will start as soon as you begin a test\.
+-   **Click the ""preview answers"" button periodically to check the syntax of your answers\.** Previewing your answers will enable you to see the format of your answer and trigger the auto\-saving feature\.
+-   **Only click the ""Grade Test"" button when you are ready to submit your entire quiz**\. There is no undo once you click the ""Grade Test"" button\.
+
+[&gt; View your Webwork grades](https://lthub.ubc.ca/guides/webwork-student-guide/#view-grades)
+
+### View your Webwork grades
+
+Grades in Canvas for your Webwork assignments may not be accurate right away, as the grades will only sync from Webwork to Canvas once per day\. If you would like to see your grades, you can try checking them on Webwork directly\.
+
+1.  Once you have accessed Webwork through Canvas, click **Grades** in the left\-hand navigation menu\.
+2.  A table of the homework sets assigned to you will show your corresponding score and percentage for each set\.
+
+#### Tips
+
+-   **Accessing Webwork grades in Canvas is dependent on how your instructor sets up Webwork with Canvas\.** To see if your grades are available in Canvas, click ""Grades"" in the Course Navigation of your Canvas course\.
+
+## Where can I get more support with Webwork?
+
+### Technical support
+
+**If you have trouble accessing Webwork:**
+
+-   *Students in the UBCV Faculty of Science can first contact Skylight for assistance:*  
+    604 822 2749 or [LT\.support@science\.ubc\.ca](mailto:LT.support@science.ubc.ca) or visit the [Skylight online](https://skylight.science.ubc.ca/lt/training-and-support)\.
+-   *Anyone can contact us for assistance:*  
+    604 827 4775 or [LT\.hub@ubc\.ca](mailto:LT.hub@ubc.ca) or visit the [LT Hub online](https://lthub.ubc.ca/dropin/)\.
+-   For time\-sensitive questions, also reach out to your instructors or teaching assistants, as they may be able to provide real\-time assistance in helping you resolve issues\.
+
+---
+
+### Online learning support
+
+-   Visit UBC’s [Keep Learning site](http://keeplearning.ubc.ca/) and the Chapman Learning Common’s [student toolkits](https://learningcommons.ubc.ca/category/type/interactive/)\.
+-   Visit the [UBC Vancouver’s Centre for Accessibility page](https://students.ubc.ca/about-student-services/centre-for-accessibility) or the [UBC Okanagan’s Disability Resource Centre page](https://students.ok.ubc.ca/academic-success/disability-resources/) to learn more about available support for students with disabilities and ongoing medical conditions\.
+
+#### Learn more
+
+-   For more information geared at students, explore [Webwork’s student Wiki pages](https://webwork.maa.org/wiki/Student_Information)\.
+
+---
+
+[« See all tools](https://lthub.ubc.ca/guides/)
+
+#### Tell us about this guide
+
+[Embedded content: This iframe contains the logic required to handle Ajax powered Gravity Forms\.](https://lthub.ubc.ca/guides/webwork-student-guide/)",ebb13d2e5042c895c32236c1aaead7766c79d7476a2f6ba134d5da0b3f531f40,,undergraduate_and_shared,2025-05-06T17:55:24+00:00,2026-09-11T05:07:31.671Z,[],"[{""text"": ""Image"", ""url"": ""https://elearning5.sites.olt.ubc.ca/files/2024/06/1289488.png""}, {""text"": ""Canvas Student app"", ""url"": ""https://community.canvaslms.com/t5/Canvas-Mobile/ct-p/canvas_mobile?tab=recent""}, {""text"": ""> Access Webwork from Canvas"", ""url"": ""https://lthub.ubc.ca/guides/webwork-student-guide/#access-from-canvas""}, {""text"": ""> Complete a Webwork homework set"", ""url"": ""https://lthub.ubc.ca/guides/webwork-student-guide/#complete-assignment""}, {""text"": ""> Complete a Webwork quiz or exam"", ""url"": ""https://lthub.ubc.ca/guides/webwork-student-guide/#complete-assessment""}, {""text"": ""> View your Webwork grades"", ""url"": ""https://lthub.ubc.ca/guides/webwork-student-guide/#view-grades""}, {""text"": ""LT.support@science.ubc.ca"", ""url"": ""mailto:LT.support@science.ubc.ca""}, {""text"": ""Skylight online"", ""url"": ""https://skylight.science.ubc.ca/lt/training-and-support""}, {""text"": ""LT.hub@ubc.ca"", ""url"": ""mailto:LT.hub@ubc.ca""}, {""text"": ""LT Hub online"", ""url"": ""https://lthub.ubc.ca/dropin/""}, {""text"": ""Keep Learning site"", ""url"": ""http://keeplearning.ubc.ca/""}, {""text"": ""student toolkits"", ""url"": ""https://learningcommons.ubc.ca/category/type/interactive/""}, {""text"": ""UBC Vancouver’s Centre for Accessibility page"", ""url"": ""https://students.ubc.ca/about-student-services/centre-for-accessibility""}, {""text"": ""UBC Okanagan’s Disability Resource Centre page"", ""url"": ""https://students.ok.ubc.ca/academic-success/disability-resources/""}, {""text"": ""Webwork’s student Wiki pages"", ""url"": ""https://webwork.maa.org/wiki/Student_Information""}, {""text"": ""« See all tools"", ""url"": ""https://lthub.ubc.ca/guides/""}, {""text"": ""Embedded content: This iframe contains the logic required to handle Ajax powered Gravity Forms."", ""url"": ""https://lthub.ubc.ca/guides/webwork-student-guide/""}]","[""Removed executable markup, form controls, or event attributes."", ""Embedded content is linked rather than embedded; consult the source for its full content."", ""A headerless table receives an empty Markdown header; all source rows remain data rows.""]",prose/learning-technology/markdown/9d232ef032e0a2a88bf8a0e80a775716066672d92c3ee905df097d46de6ba2ee.md
+prose:learning-technology:10553,prose,learning-technology,learning-technology,https://lthub.ubc.ca/guides/zoom-student-guide/,https://lthub.ubc.ca/wp-json/wp/v2/pages/10553,10553,Zoom Student Guide,"[Zoom logo](https://lthub.ubc.ca/files/2021/07/zoom-logo.png)
+
+**Zoom is a video/audio web\-conferencing and collaboration tool that lets you, your peers, and your instructors meet in real time online**\. Through Zoom, you can attend lectures and meetings, present using whiteboards, share screens and slides, interact by chat or Q&amp;A, have small group discussions, and take part in polls\.
+
+The lecture sessions may be recorded by your instructor and made available to you later\.
+
+|  |  |  |
+| --- | --- | --- |
+| **Access** | *Immediate* | You can access Zoom from your computer as soon as you [install the Zoom application](https://lthub.ubc.ca/guides/zoom-student-guide/#install-app)\. |
+| **Bandwidth** | *Partial* | High demand on internet connections\. |
+| **Privacy** | *Partial* | Complies with UBC’s privacy requirements, provided you either do not use a free Zoom account for UBC purposes or use a free Zoom account with anonymized information\. More details are available in the note section below\. |
+
+### What will I use it for?
+
+Your instructor may have you use Zoom for any of the following real\-time interactions:
+
+-   Attend lectures and/or office hours
+-   Participate in group discussions
+-   Give presentations
+-   Respond to polls and quizzes
+-   Take invigilated exams remotely
+
+> ### A note about Zoom
+> 
+> **Only UBC Zoom accounts—not free Zoom accounts—should be used for UBC purposes\.** UBC has conducted a [privacy assessment of the UBC version of Zoom](https://it.ubc.ca/news/ubc%E2%80%99s-response-zoom-privacy-concerns) to confirm that it meets the security and legal requirements for a teaching and learning tool\. However, this assessment did not include the free version of Zoom, meaning that a free Zoom account should not be used to participate in any UBC courses\.
+> 
+> This restriction on free Zoom accounts should not affect your course participation, since you do not need an account to attend Zoom sessions\. If you encounter a situation where a student Zoom account is possibly needed, your instructor will either create a UBC Zoom account for you or ask you to [sign up for a free Zoom account](https://zoom.us/signup)\. When signing up for a free Zoom account, you can use an alias instead of your real email or name, if you are concerned about your privacy\.
+
+This tool guide was last reviewed in June 2024 with version 6\.0\.11 of Zoom\.
+
+## What do I need to use Zoom?
+
+### The Zoom application
+
+You do not need a Zoom account to attend lectures, but you will need to install the Zoom application\. You can do this ahead of time using the instructions in the next accordion section or following the automatic prompts when you join your first Zoom session\.
+
+---
+
+### Audio/visual equipment
+
+To do web\-conferencing with Zoom, you will need a webcam and/or a microphone\. To ensure good audio quality, we recommend using either an external microphone or headphones with a microphone attached\.
+
+#### Tips
+
+-   **We recommend always joining sessions through the Zoom application or by clicking the Zoom link, rather than dialing in**\. Fees may apply when joining a session by calling in on a phone, depending on your phone plan and where you are located\.
+
+## How do I use Zoom?
+
+Click any accordion bar below to find instructions and tips for using Zoom\.
+
+Expand All
+
+[&gt; Install the Zoom application](https://lthub.ubc.ca/guides/zoom-student-guide/#install-app)
+
+### Install the Zoom application
+
+1.  Go to the [Zoom download center](https://ubc.zoom.us/download), and click the Zoom Workspace **download button** for your system\.
+    -   For Windows, we recommend selecting **Download \(64\-bit\)**\.
+2.  Open the Zoom installer that downloads and follow the steps to install the application\.
+3.  After you have completed installing Zoom, a pop\-up window may appear asking if you would like to automatically keep the Zoom application updated\. We recommend enabling this option\.
+
+#### Tips
+
+-   **For the best and most secure experience, always use the most recent version of Zoom\.** Once you have Zoom installed, make sure to regularly [update your Zoom application to the latest version](https://support.zoom.com/hc/en/article?id=zm_kb&amp;sysparm_article=KB0060716)\.
+-   **You can also download the Zoom mobile application\.** It is available from the [iOS App Store](https://apps.apple.com/us/app/zoom-workplace/id546505307) or [Google Play Store](https://play.google.com/store/apps/details?id=us.zoom.videomeetings&amp;hl=en_CA)\.
+
+[&gt; Join a real\-time session in Zoom](https://lthub.ubc.ca/guides/zoom-student-guide/#join-session)
+
+### Join a real\-time session in Zoom
+
+The most common way to join a session is from your Canvas course\.
+
+1.  Log in to your Canvas course and click **Zoom** in the Course Navigation\.
+    -   If you do not see the Zoom option in your Course Navigation, contact your instructor\. This option needs to be enabled by your instructor for you to see it\.
+2.  Click **Join** next to the session you want to join\.
+3.  A new tab in your browser will open\. Follow the prompt to join the Zoom session\.
+    -   If you have not downloaded Zoom, follow the prompts to install the application first\.
+4.  Once you are in the session, you can customize your name to let your instructors and classmates better identify you:
+    -   Click **Participants** in the bottom toolbar\.
+    -   In the panel that opens, hover over your name, click **More**, and select **Rename**\.
+    -   Enter the name you would like displayed and click **Rename** to save your changes\.
+
+#### Tips
+
+-   **Not all courses will use Zoom through Canvas, and your instructor may send you a direct link to the Zoom session instead**\. You can use this link to join the session\.
+-   **Close any applications that you do not need to use before you join the Zoom session**\. Having fewer apps open can give you a better connection during the session\.
+-   **Join the Zoom session a few minutes early to test your connection, microphone, and camera\.** You can also visit this [Zoom test meeting](http://ubc.zoom.us/test) to test your setup in a meeting that includes just you\.
+-   **If you do not see the option to rename yourself, your instructor might have disabled this feature**\. You can ask your instructor to enable it\.
+
+[&gt; Participate during a Zoom session](https://lthub.ubc.ca/guides/zoom-student-guide/#participate-during-session)
+
+### Participate during a Zoom session
+
+What you can do during a Zoom session depends on your instructor's settings\. Many of the options can be found at the bottom toolbar of the Zoom application; if you do not see an option, try clicking **More** first\. The ways you can engage as a participant may include any of the following:
+
+-   Share your microphone audio by clicking **Audio**\.
+-   Share your webcam video by clicking **Video**\.
+-   Compose and send a message to everyone or to an individual by clicking **Chat**\.
+-   Give basic reactions or send other non\-verbal feedback \(e\.g\., raise your hand, request to slow down, give thumbs\-up or applause\) by clicking **React**\.
+-   Present PowerPoints, documents, images, or videos by clicking **Share** to share your screen\. Learn more about screen\-sharing in the next accordion bar\.
+-   Ask questions by clicking **Q&amp;A**, if your instructor has enabled it\.
+-   See captions by clicking **Show captions**, selecting the speaking language, and clicking **Save**\.
+-   Participate in a breakout room with a smaller group of classmates by clicking **Join breakout room**, if your instructor has set one up\.
+-   Take part in polls or quizzes, if your instructor launches them, using the pop\-up window with the question\(s\)\.
+-   Annotate a shared whiteboard or screen by clicking **Annotate**, if your instructor has enabled it\. Select an annotation option from the new toolbar that will appear on your screen\.
+
+You can also personalize the options in the bottom toolbar to suit your needs\. Certain options will always be visible to you, but you can add or remove others by clicking **More** and dragging whichever options you like to the toolbar\.
+
+#### Tips
+
+-   **If you cannot join a scheduled Zoom session due to internet connectivity or other remote issues, please talk to your instructor as soon as you can**\. Together, you can find the best way to address these challenges\.
+-   **Please keep your microphone muted unless you are talking\.** Muting reduces echoes and prevents background noise in your space from interfering with the class\.
+-   **If you share your webcam video, make sure there is nothing behind you that will be distracting or revealing for others to see**\. If your instructor allows it, you can also enable a [blurred background in Zoom](https://support.zoom.com/hc/en/article?id=zm_kb&amp;sysparm_article=KB0061066) \(which blurs your background on supported devices\) or use a [Zoom virtual background](https://support.zoom.com/hc/en/article?id=zm_kb&amp;sysparm_article=KB0060387) by clicking the up arrow next to the video icon\.
+-   **If you are experiencing technical delays or glitches, you can try turning off your webcam video\.** Video uses a lot of bandwidth, and sometimes turning it off can improve your connection\.
+-   **If your instructors choose to record the Zoom session, be assured that they may not share your participation with anyone outside of the course without your consent\.** If you have other privacy concerns with a Zoom session recording, please reach out to your instructor\.
+
+[&gt; Present your work during a Zoom session](https://lthub.ubc.ca/guides/zoom-student-guide/#present-work)
+
+### Present your work during a Zoom session
+
+Instructors can temporarily make you the presenter for a session\. As a presenter, you can share your screen\.
+
+1.  In the active Zoom session, you can choose to share your entire screen, a specific application, a whiteboard, a video from your device, or just your computer audio by clicking **Share**\. If you do not see this option, you may need to click **More** first, then select **Share**\.
+    -   If you are sharing a video, make sure to check both the **Optimize for video clip** and **Share sound** boxes\. These options will share your screen at a better resolution and enable participants to hear your video's audio\.
+2.  Click **Share**\.
+3.  Pause sharing at any time by clicking **Pause** in the floating toolbar\. You can continue sharing by clicking **Resume**\.
+4.  When you are done, click **Stop share**\.
+
+#### Tips
+
+-   **When presenting slides, you can [use Zoom slide control](https://support.zoom.com/hc/en/article?id=zm_kb&amp;sysparm_article=KB0061986#h_01FJN0WQR0NFFNHYN0XAEEV6QZ) to give other participants control of the slide progression\.** This option can be helpful during a group presentation when your peers are presenting their portion of the slides\.
+-   **You can annotate documents, presentations, or applications that you share, if your instructor enables this setting**\. When sharing your screen, click ""Annotate"" in the floating toolbar to open the annotation options\. If you do not see this icon, your instructor might have disabled this feature\.
+-   **Send a copy of your presentation to your instructor or a fellow student ahead of time\.** Sending this creates a back\-up plan, so someone else can share on your behalf if you have technical difficulties\.
+
+[&gt; Participate in a Zoom breakout room](https://lthub.ubc.ca/guides/zoom-student-guide/#participate-in-breakout-room)
+
+### Participate in a Zoom breakout room
+
+Instructors may create breakout rooms for you during a session\. In a room, you can share video, audio, slides, whiteboards, and screens with a smaller group of classmates\.
+
+1.  The instructor will invite you to a breakout room\. Click **Join**, if prompted\.
+    -   If you do not see a prompt to join a breakout room, your instructor might have allowed you to pick a room to join\. Click **More** and select **Join breakout room**\. Click **Join** next to the room you want to join\.
+2.  Once you have joined, you can access room\-specific controls similar to what you can access in the main session\.
+3.  If you need assistance in the breakout room, click **Ask for help** in the toolbar or use the chat to let your instructor know\. If you do not see this option, you may need to click **More** first\.
+4.  You can leave the breakout room at any time and return to the main session\. Click **Leave room**, then select **Leave breakout room**\.
+5.  If your instructor ends the breakout room for you, you will be given the option to return to the main session immediately or after a short countdown\.
+
+#### Tips
+
+-   **Breakout rooms may also be used by instructors to support interactions beyond group discussions\.** For example, they may use rooms for virtual office hours, private one\-on\-one meetings, or invigilated exams\.
+
+[&gt; Access recorded Zoom sessions](https://lthub.ubc.ca/guides/zoom-student-guide/#access-recordings)
+
+### Access recorded Zoom sessions
+
+If your instructor records a session that you join from Canvas, the recording should automatically upload to the Zoom area of your Canvas course\. Recordings typically take a day or two to be uploaded, and the instructor must make the recording public before you can access it\.
+
+1.  Log in to your Canvas course and click **Zoom** in the Course Navigation\.
+2.  Click the **Cloud Recordings** tab\.
+3.  Click the **recording name**\.
+    -   If you don’t see the recording you expect to, contact your instructor\. The instructor may still need to make the recording public for you to see it, or they may provide you with another way to access the recording \(e\.g\., a link\)\.
+4.  In the new page that loads, you will see two playable files\. One is the recording with both audio and video, while the other is just the audio\. Click the **recording** that you want to play\.
+    -   For added security, instructors may require a passcode to access recordings\. When you select a recording to play, the passcode will automatically be copied on your device\. You can then paste the passcode to access the recording\.
+
+#### Tips
+
+-   **Your instructor may send a link to the recording \(and the recording passcode\) instead\.** In this case, you may not be able to see the recording in Canvas\.
+-   **Recordings are considered confidential and should only be accessible to students currently enrolled in the course**\. If your instructor allows downloading course recordings, please do not share them with anyone outside the current term of the course\.
+
+[&gt; Take exams during a Zoom session](https://lthub.ubc.ca/guides/zoom-student-guide/#take-exams)
+
+### Take exams during a Zoom session
+
+Exams are typically monitored or invigilated online with a breakout room\. This experience is similar to attending an in\-person exam\. You will be in a “room” with other students, and an invigilator \(e\.g\., instructor or teaching assistant\) will be available to answer questions and make sure everyone is playing fair\.
+
+1.  Your instructor will provide instructions on how to join the invigilated session\. Follow the provided instructions carefully\.
+2.  Join the session using the name that is on file for you with UBC, if you are comfortable doing so\. Joining with this information helps your invigilator confirm your exam attendance\.
+    -   If you are not comfortable using your real name on Zoom, use only your preferred name or a nickname when you join the session\. Please also inform your instructor of the alternate name you will use so they can still mark your exam attendance\.
+3.  At the start of the exam, you may be asked to show your student ID card to verify your identity\. To protect your privacy, cover the first four digits of your student number when you show it to the exam invigilator\.
+    -   If you are not comfortable doing this in a shared session with other students, ask the invigilator to create a separate breakout room where you can show your ID one\-on\-one\.
+4.  You will need to keep your camera on throughout the exam, but please keep your microphone turned off unless the instructor explicitly requests otherwise\.
+
+#### Tips
+
+-   **You may be asked to share your screen during an exam\.** If you need help with this, you can follow the [steps for presenting your work](https://lthub.ubc.ca/guides/zoom-student-guide/#present-work) in the accordion section above\.
+-   **If you are bumped out of the exam at any point, you can rejoin by clicking the session link again**\. You might rejoin the session in a virtual waiting room\. From there, your instructor will be able to re\-admit you to the exam\.
+
+## Zoom FAQ
+
+Find UBC\-specific answers to frequently asked questions by clicking any accordion bar below\.
+
+[&gt; How do I get a Zoom account?](https://lthub.ubc.ca/guides/zoom-student-guide/#account-creation)
+
+You should not need a free Zoom account to participate in most UBC courses\. If you do encounter a situation where a student Zoom account is possibly needed, your instructor will either create a UBC Zoom account for you or ask you to [sign up for a free Zoom account](https://zoom.us/signup)\. When signing up for a free account, you can use an alias instead of your real email or name, if you are concerned about your privacy\.
+
+[&gt; Can I use Zoom without an account?](https://lthub.ubc.ca/guides/zoom-student-guide/#zoom-accounts)
+
+Yes\. You do not need an account to attend Zoom sessions\. To join lectures, office hours, or other meetings, you can click the session links that your instructors send or share in Canvas\. However, if you want to schedule your own sessions through Zoom, you will need an account\.
+
+In either case, you will need to [install the Zoom application](https://lthub.ubc.ca/guides/zoom-student-guide/#install-app)\.
+
+[&gt; How can I host meetings beyond the 40\-minute limit on free Zoom accounts?](https://lthub.ubc.ca/guides/zoom-student-guide/#longer-sessions)
+
+Unless an instructor has created a UBC Zoom account for you, you will be constrained by the 40\-minute limit on free Zoom accounts\. UBC currently does not offer students licensed UBC Zoom accounts, unless an instructor requests them due to a course need\.
+
+For longer meetings, you can [use Microsoft Teams to host meetings](https://lthub.ubc.ca/guides/microsoft-teams-guide/#schedule-meeting) instead\. Microsoft Teams is an all\-in\-one collaboration tool that includes a web\-conferencing feature, with meetings allowed to last a whole day\. Everyone at UBC has access to Microsoft Teams for free\.
+
+[&gt; What if I am uncomfortable using Zoom for exams?](https://lthub.ubc.ca/guides/zoom-student-guide/#exam-privacy)
+
+To protect your privacy during exams, you can do the following:
+
+-   Use a preferred name or nickname when you join the session, so long as you inform your instructor of the name that you will use\.
+-   If asked to show your student ID card to verify your identity, cover the first four digits of your student number\.
+-   If you are uncomfortable showing your ID in a shared session with other students, ask the invigilator to create a breakout room where you can show your ID one\-on\-one\.
+
+Talk to your instructor and/or teaching staff, if you still have concerns\.
+
+[&gt; Where is Zoom data stored?](https://lthub.ubc.ca/guides/zoom-student-guide/#data-storage)
+
+Since July 5, 2020, UBC's institutional Zoom account has used Canadian\-based hosting\. No data about you is stored on servers outside of Canada for Zoom lectures or other academic sessions, provided that
+
+-   your instructor uses a UBC Zoom account to schedule the session, and
+-   you are not logged in to a free Zoom account when attending the session\.
+
+[&gt; I have privacy concerns with using Zoom\. What can I do?](https://lthub.ubc.ca/guides/zoom-student-guide/#privacy-protection)
+
+If you have privacy concerns about Zoom, you may want to consider doing the following:
+
+-   Attend Zoom sessions without creating or using a free Zoom account\.
+-   Join sessions only by clicking the Zoom links that your instructors send or post in Canvas\.
+-   Provide only your preferred name or a nickname when you join a session\.
+-   Keep your camera off and microphone muted, when they are not needed\.
+-   Try to avoid sharing any identifying information about yourself or others \(e\.g\., real names\)\.
+
+[&gt; Is data from UBC Zoom accounts being used for Zoom's Artificial Intelligence \(AI\) training?](https://lthub.ubc.ca/guides/zoom-student-guide/#ai-training)
+
+No, data from UBC Zoom accounts is not—and will not be—used for training Zoom or other third\-party AI models without your consent\.
+
+In March 2023, Zoom did change their terms of service to allow some customer content to be used for AI\-training purposes\. However, these changes do not apply to institutions like UBC that have an educational institution license\.
+
+Furthermore, [Zoom has assured users that data from organizations will not be used for AI training](https://www.zoom.com/en/blog/zooms-term-service-ai/) without explicit customer consent and a means to opt\-out\. This data includes audio, video, chat, screen\-sharing, attachments, and other communications content \(e\.g\., reactions, whiteboards, polls\)\.
+
+[&gt; How do I update my Zoom application to the latest version?](https://lthub.ubc.ca/guides/zoom-student-guide/#app-updates)
+
+If you do not have a Zoom account, you can do the following:
+
+1.  Open the Zoom application\.
+2.  Check for updates based on your operating system:
+    -   On Mac, click **Zoom Workplace** in the top menu bar, and select **Check for updates**\.
+    -   On Windows, a small Zoom icon will appear on the far right side of the bottom taskbar\. Right\-click this small Zoom icon and select **Check for Updates**\.
+        -   If the small Zoom icon does not automatically appear, right\-click the bottom taskbar and select **Taskbar settings**\. In the pop\-up that appears, click **Other system tray icons** and toggle ""Zoom Meetings"" on\.
+3.  If a new version is available, you can follow the prompts to download and install it\.
+
+If you have a Zoom account, you can do the following:
+
+1.  Log in to the Zoom application\.
+2.  Click your **profile** on the top right and select **Check for updates**\.
+3.  A pop\-up window will appear providing any new available updates\. Click **Install** to update to the latest version\.
+
+[&gt; Why am I unable to join my Zoom session in Canvas?](https://lthub.ubc.ca/guides/zoom-student-guide/#connection-troubleshooting)
+
+If your screen appears to be blank when trying to join a Zoom session in Canvas, it is commonly due to cookies being blocked in your browser\. Walk through the steps below to troubleshoot the issue\.
+
+-   [Double\-check that your browser cookie settings are enabled\.](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/browser-help#cookies)
+-   [Clear your browser's cache and cookies](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/browser-help#clear), and disable any extensions or ad\-blockers you may have added on to your browser\.
+-   Use a different browser in incognito/private mode, or use a different device\.
+
+## Where can I get more support with Zoom?
+
+### Technical support
+
+**If you have trouble accessing Zoom:**
+
+-   Contact the UBC [IT Service Centre Help Desk](https://it.ubc.ca/got-question-about-it-products-and-support#helpdesk):  
+    604 822 2008 or fill out the [UBC IT request form](https://ubc.service-now.com/selfservice?id=sc_cat_item_v2&amp;sys_id=cc7f5fb9874e0100bbee70406d434df9)\.
+-   During a live Zoom session, reach out to your instructors or teaching assistants, as they may be able to provide real\-time assistance in helping you resolve issues\.
+
+---
+
+### Online learning support
+
+-   Visit UBC’s [Keep Learning site](http://keeplearning.ubc.ca/) and the Chapman Learning Common’s [student toolkits](https://learningcommons.ubc.ca/category/type/interactive/)\.
+-   Visit the [UBC Vancouver’s Centre for Accessibility page](https://students.ubc.ca/about-student-services/centre-for-accessibility) or the [UBC Okanagan’s Disability Resource Centre page](https://students.ok.ubc.ca/academic-success/disability-resources/) to learn more about available support for students with disabilities and ongoing medical conditions\.
+
+#### Learn more
+
+-   For UBC\-specific, student\-focused guidance with using Zoom, check out the [Foundational Skills video tutorials](https://www.youtube.com/playlist?list=PLFtMU2M6sWuzkKlbwUwJ5_pqBq8se4CKG) about Zoom produced by the Chapman Learning Commons\.
+-   For more how\-to instructions, explore [Zoom’s help center documentation](https://support.zoom.us/hc/en-us)\.
+
+---
+
+[« See all tools](https://lthub.ubc.ca/guides/)
+
+#### Tell us about this guide
+
+[Embedded content: This iframe contains the logic required to handle Ajax powered Gravity Forms\.](https://lthub.ubc.ca/guides/zoom-student-guide/)",8b318198dcc8b8bc0b4a9bd70402ca99eada74f04479c0350e85b9151ebfce8e,,undergraduate_and_shared,2025-05-06T17:55:35+00:00,2026-09-11T05:07:31.671Z,[],"[{""text"": ""Zoom logo"", ""url"": ""https://lthub.ubc.ca/files/2021/07/zoom-logo.png""}, {""text"": ""install the Zoom application"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#install-app""}, {""text"": ""privacy assessment of the UBC version of Zoom"", ""url"": ""https://it.ubc.ca/news/ubc%E2%80%99s-response-zoom-privacy-concerns""}, {""text"": ""sign up for a free Zoom account"", ""url"": ""https://zoom.us/signup""}, {""text"": ""> Install the Zoom application"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#install-app""}, {""text"": ""Zoom download center"", ""url"": ""https://ubc.zoom.us/download""}, {""text"": ""update your Zoom application to the latest version"", ""url"": ""https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0060716""}, {""text"": ""iOS App Store"", ""url"": ""https://apps.apple.com/us/app/zoom-workplace/id546505307""}, {""text"": ""Google Play Store"", ""url"": ""https://play.google.com/store/apps/details?id=us.zoom.videomeetings&hl=en_CA""}, {""text"": ""> Join a real-time session in Zoom"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#join-session""}, {""text"": ""Zoom test meeting"", ""url"": ""http://ubc.zoom.us/test""}, {""text"": ""> Participate during a Zoom session"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#participate-during-session""}, {""text"": ""blurred background in Zoom"", ""url"": ""https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0061066""}, {""text"": ""Zoom virtual background"", ""url"": ""https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0060387""}, {""text"": ""> Present your work during a Zoom session"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#present-work""}, {""text"": ""use Zoom slide control"", ""url"": ""https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0061986#h_01FJN0WQR0NFFNHYN0XAEEV6QZ""}, {""text"": ""> Participate in a Zoom breakout room"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#participate-in-breakout-room""}, {""text"": ""> Access recorded Zoom sessions"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#access-recordings""}, {""text"": ""> Take exams during a Zoom session"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#take-exams""}, {""text"": ""steps for presenting your work"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#present-work""}, {""text"": ""> How do I get a Zoom account?"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#account-creation""}, {""text"": ""> Can I use Zoom without an account?"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#zoom-accounts""}, {""text"": ""> How can I host meetings beyond the 40-minute limit on free Zoom accounts?"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#longer-sessions""}, {""text"": ""use Microsoft Teams to host meetings"", ""url"": ""https://lthub.ubc.ca/guides/microsoft-teams-guide/#schedule-meeting""}, {""text"": ""> What if I am uncomfortable using Zoom for exams?"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#exam-privacy""}, {""text"": ""> Where is Zoom data stored?"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#data-storage""}, {""text"": ""> I have privacy concerns with using Zoom. What can I do?"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#privacy-protection""}, {""text"": ""> Is data from UBC Zoom accounts being used for Zoom's Artificial Intelligence (AI) training?"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#ai-training""}, {""text"": ""Zoom has assured users that data from organizations will not be used for AI training"", ""url"": ""https://www.zoom.com/en/blog/zooms-term-service-ai/""}, {""text"": ""> How do I update my Zoom application to the latest version?"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#app-updates""}, {""text"": ""> Why am I unable to join my Zoom session in Canvas?"", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/#connection-troubleshooting""}, {""text"": ""Double-check that your browser cookie settings are enabled."", ""url"": ""https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/browser-help#cookies""}, {""text"": ""Clear your browser's cache and cookies"", ""url"": ""https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/browser-help#clear""}, {""text"": ""IT Service Centre Help Desk"", ""url"": ""https://it.ubc.ca/got-question-about-it-products-and-support#helpdesk""}, {""text"": ""UBC IT request form"", ""url"": ""https://ubc.service-now.com/selfservice?id=sc_cat_item_v2&sys_id=cc7f5fb9874e0100bbee70406d434df9""}, {""text"": ""Keep Learning site"", ""url"": ""http://keeplearning.ubc.ca/""}, {""text"": ""student toolkits"", ""url"": ""https://learningcommons.ubc.ca/category/type/interactive/""}, {""text"": ""UBC Vancouver’s Centre for Accessibility page"", ""url"": ""https://students.ubc.ca/about-student-services/centre-for-accessibility""}, {""text"": ""UBC Okanagan’s Disability Resource Centre page"", ""url"": ""https://students.ok.ubc.ca/academic-success/disability-resources/""}, {""text"": ""Foundational Skills video tutorials"", ""url"": ""https://www.youtube.com/playlist?list=PLFtMU2M6sWuzkKlbwUwJ5_pqBq8se4CKG""}, {""text"": ""Zoom’s help center documentation"", ""url"": ""https://support.zoom.us/hc/en-us""}, {""text"": ""« See all tools"", ""url"": ""https://lthub.ubc.ca/guides/""}, {""text"": ""Embedded content: This iframe contains the logic required to handle Ajax powered Gravity Forms."", ""url"": ""https://lthub.ubc.ca/guides/zoom-student-guide/""}]","[""Removed executable markup, form controls, or event attributes."", ""Embedded content is linked rather than embedded; consult the source for its full content."", ""A headerless table receives an empty Markdown header; all source rows remain data rows.""]",prose/learning-technology/markdown/a612927166917f3ba7b19f56eb629fe861601f1532d2330b3e892d59861f7899.md
+prose:learning-technology:11228,prose,learning-technology,learning-technology,https://lthub.ubc.ca/guides/gradescope-student-guide/,https://lthub.ubc.ca/wp-json/wp/v2/pages/11228,11228,Gradescope Student Guide,"[Image](https://lthub.ubc.ca/files/2019/08/gradescope-150x150.png)
+
+**Gradescope is an online application for submitting assignments and exams and receiving detailed marks and feedback on your work**\. Gradescope is designed to help your instructors and teaching assistants collaborate consistently on grading, so they can return learning outcomes to you efficiently and fairly\.
+
+|  |  |  |
+| --- | --- | --- |
+| **Access** | *Not immediate* | Your instructor will need to set up a Gradescope course first\. Then you can access it through Canvas\. |
+| **Bandwidth** | *Yes* | Low demand on internet connections\. |
+| **Privacy** | *Yes* | Complies with UBC’s privacy requirements\. |
+
+### What will I use it for?
+
+Your instructor may have you use Gradescope for any of the following:
+
+-   Hand in scans of paper\-based assignments, quizzes, or exams
+-   Complete online assignments, quizzes, or exams
+-   View grades and written feedback for your work
+
+This tool guide was last reviewed in July 2024\.
+
+## What do I need to use Gradescope?
+
+### A supported web browser
+
+Gradescope runs in your web browser and supports using the latest versions of Chrome, Edge, Firefox, or Safari\. For more information regarding compatible versions, please check the [Gradescope supported browser page](https://help.gradescope.com/article/lg4xdpvdpe-what-browsers-does-gradescope-support)\.
+
+#### Tips
+
+-   **We recommend that you access Gradescope through the link from your Canvas course**\. However, you can [log in to Gradescope directly](https://www.gradescope.ca/) once you have been enrolled in a Gradescope course and set up a password\.
+
+## How do I use Gradescope?
+
+Your instructor will set up access to Gradescope from your Canvas course and ensure you are enrolled\. You can then participate in the course activities your instructor assigns within Gradescope\.
+
+Click any accordion bar below to find instructions and tips for using Gradescope\.
+
+Expand All
+
+[&gt; Access and hand in your work with Gradescope](https://lthub.ubc.ca/guides/gradescope-student-guide/#hand-in-work)
+
+### Access and hand in your work with Gradescope
+
+You can access Gradescope through your Canvas course in the Course Navigation\. Some instructors may also have you access Gradescope assignments through individual Canvas assignments\.
+
+Whether your instructor has asked you to hand in an assignment, quiz, or exam, Gradescope will list your work as an assignment\.
+
+1.  Log in to your Canvas course and click **Gradescope** in the Course Navigation\.
+    -   If you do not see this option in your Course Navigation, please contact your instructor\. This link needs to be enabled in your Canvas course for you to see it\.
+    -   You may also be able to access your Gradescope assignment directly through a Canvas assignment, if your instructor has set it up\. Click **Assignments** in the Course Navigation and click the **assignment name**, if you see it\. Then click **Load in a New Window**\.
+2.  Gradescope will open in a new window with your course dashboard and all your active assignments\.
+3.  Select the assignment you would like to submit\.
+4.  You may see a page telling you that your assignment will be timed\. Click **Start Assignment** when you are ready\.
+5.  Gradescope assignments are completed based on how your instructor has set them up\. You may see different file options to submit, depending on the assignment\. When you are ready to hand in your work, follow the prompts to submit your work\.
+6.  If you would like to submit a PDF:
+    -   Click **Submit PDF**, if prompted\.
+    -   Select and upload your PDF\.
+    -   If you see an ""Assign Questions and Pages"" page, follow the instructions to match your pages with the questions\.
+    -   If a success message pops up, you have completed the assignment\. You will then see a list of the questions on the right and your PDF pages on the left\. You can click each question to verify that it highlights the part of your PDF that contains the answer to that question\. If the questions and answers do not align, click **Resubmit** to follow the process again\.
+7.  If you would like to submit images:
+    -   Click **Submit Image**, if prompted\.
+    -   Select an image for each question\. Depending on your instructor's assignment settings, accepted file types may include PNG, JPEG, GIF, and HEIC, with a maximum submission size up to 100 MB\.
+    -   Once you have finished, click **Submit Assignment**\.
+    -   If a success message pops up, you have completed the assignment\. You will then see a list of the questions on the right and images on the left\. You can click each question to verify that it shows the image that contains the answer to that question\. If the questions and answers do not align, click **Resubmit** to follow the process again\.
+8.  If you see a series of questions with varying ways to respond:
+    -   Enter answers as indicated in text boxes, radio buttons, and checkboxes or by uploading a file\. For untimed assignments, click **Save Answer** for each question as you go\. For timed assessments, your answers are saved automatically\.
+    -   When you have answered all the questions, click **Submit &amp; View Submission**\.
+    -   You will then see a list of the questions on the right and answers on the left\. You can click each question to verify your answer to that question\. To edit your answers, click **Resubmit**\.
+9.  If you would like to submit code:
+    -   Select a submission method\. Depending on the method you choose, acceptable file types may include Python \(\.py\), JavaScript \(\.js\), or a ZIP file\. If your code is stored on Github or Bitbucket, click either **Connect to Github** or **Connect to Bitbucket**, and follow the prompts to connect your account\. Once your account is connected, select a **Repository**\.
+    -   Click **Upload** to submit your assignment\.
+    -   If a success message pops up, you have completed the assignment\. You will then see an autograder running  your code, as well as a copy of your code for your reference\. If you would like to submit a different code before the deadline, click **Resubmit** to follow the process again\.
+10.  Gradescope will email you confirmation of your submitted work with a link to the submission\.
+
+#### Tips
+
+-   **You are enrolled in Gradescope courses based on your primary email address in Canvas\.** You can check and change which email you have listed in Canvas by following the [instructions for keeping your email up to date in Canvas](https://lthub.ubc.ca/guides/canvas-student-guide/#manage-notifications)\.
+
+[&gt; Troubleshoot issues with handing in Gradescope work](https://lthub.ubc.ca/guides/gradescope-student-guide/#troubleshoot-issues)
+
+### Troubleshoot issues with handing in Gradescope work
+
+In general, we recommend that you submit PDF files, rather than images\. If you will be scanning your work, we suggest that you refer to [Gradescope's recommended scanning apps and instructions](https://help.gradescope.com/article/0chl25eed3-student-scan-mobile-device)\. These instructions will help you create PDFs that are small in file size, have high resolution, and will most likely work with Gradescope\.
+
+If you have followed the best practices above and are still having issues submitting your work, please try the following:
+
+-   Review [Gradescope's submission troubleshooting tips](https://help.gradescope.com/article/tp9kl4yx4q-student-troubleshooting-submissions) to try to fix the error yourself\. Keep in mind how much time you have before the due date passes or before the timer runs out\. Contact your instructor if you are worried about missing the deadline due to technical problems\.
+-   Once you have tried to troubleshoot the issue, try to open the assignment in Gradescope again and submit or resubmit your work\.
+-   If you still have issues submitting your work, contact [help@gradescope\.com](mailto:help@gradescope.com) from the email address associated with your Gradescope account\. Include the name of the course, the assignment, and the text and/or screenshot of any error notifications that you see\.
+    -   You can find what email address is associated with your account in Gradescope by clicking **Account** at the bottom left in Gradescope and selecting **Edit Account**\. You will see your Gradescope account details, including your associated email addresses, on the new page that loads\.
+
+[&gt; Review your graded work in Gradescope](https://lthub.ubc.ca/guides/gradescope-student-guide/#review-graded-work)
+
+### Review your graded work in Gradescope
+
+Not all instructors will release grades using Gradescope\. Please ask your instructor or teaching assistants if you are not sure what to expect in your course\.
+
+1.  Once you have accessed Gradescope through Canvas, select the **assignment** you would like to review\.
+2.  Before your instructors and teaching assistants have finished grading, you will see an ungraded version of this assignment\. Once your grades are published, the status will change to graded\. On the graded assignment, you will see your total score, as well as individual scores and any written feedback for each question\. Click a **question** on the right to view its details\.
+3.  Once you have clicked a particular question, you may see written comments either below the question score on the right or—for uploaded files—annotated on the submitted file itself\. Gradescope will not indicate which questions have written comments or annotations, so it is best to go through each question by clicking **Next Question**\.
+
+#### Tips
+
+-   **Your instructor may choose to email you when graded work is available in Gradescope**\. You can click the link in the email to be taken directly to your work\.
+-   **You can also check your final grades for Gradescope assignments in Canvas, if your instructor has set this up\.** To check your grades in Canvas, click ""Grades"" in the Course Navigation, and then click the assignment that you would like to review grades for\.
+-   **You may be able to request a regrade from the submission review page**\. Click a question and look for a ""Regrade Request"" button at the bottom of the page\. Repeat this process for any other questions you would like regraded\.
+-   **If you have uploaded PDF or image file\(s\) as your submission, you can download a graded copy\.** Click the ""Download Graded Copy"" button at the bottom of the page and select the option ""Download Graded Copy""\. You may need to click ""More"" first to see this option\. This copy will contain your scores and any written comments or annotations\.
+
+## Where can I get more support with Gradescope?
+
+### Technical support
+
+**If you have trouble accessing Gradescope:**
+
+-   Contact the UBC [IT Service Centre Help Desk](https://it.ubc.ca/got-question-about-it-products-and-support#helpdesk):  
+    604 822 2008 or fill out the [UBC IT request form](https://ubc.service-now.com/selfservice?id=sc_cat_item_v2&amp;sys_id=cc7f5fb9874e0100bbee70406d434df9)\.
+-   Reach out to your instructors or teaching assistants with questions too\. They may be able to provide real\-time assistance in helping you resolve issues\.
+
+**If you have technical issues using Gradescope:**
+
+-   Contact Gradescope directly: [help@gradescope\.com](mailto:help@gradescope.com)\.
+
+---
+
+### Online learning support
+
+-   Visit UBC’s [Keep Learning site](http://keeplearning.ubc.ca/) and the Chapman Learning Common’s [student toolkits](https://learningcommons.ubc.ca/category/type/interactive/)\.
+-   Visit the [UBC Vancouver’s Centre for Accessibility page](https://students.ubc.ca/about-student-services/centre-for-accessibility) or the [UBC Okanagan’s Disability Resource Centre page](https://students.ok.ubc.ca/academic-success/disability-resources/) to learn more about available support for students with disabilities and ongoing medical conditions\.
+
+#### Learn more
+
+-   For more how\-to instructions, explore [Gradescope’s help documentation for students](https://guides.gradescope.com/hc/en-us/categories/21540043398413-Student-Hub)\.
+
+---
+
+[« See all tools](https://lthub.ubc.ca/guides/)
+
+#### Tell us about this guide
+
+[Embedded content: This iframe contains the logic required to handle Ajax powered Gravity Forms\.](https://lthub.ubc.ca/guides/gradescope-student-guide/)",3821d959e4d341d4a3f999965d0339d3b9129724d7832fbaf0e561260d49e447,,undergraduate_and_shared,2025-04-07T18:32:56+00:00,2026-09-11T05:07:31.671Z,[],"[{""text"": ""Image"", ""url"": ""https://lthub.ubc.ca/files/2019/08/gradescope-150x150.png""}, {""text"": ""Gradescope supported browser page"", ""url"": ""https://help.gradescope.com/article/lg4xdpvdpe-what-browsers-does-gradescope-support""}, {""text"": ""log in to Gradescope directly"", ""url"": ""https://www.gradescope.ca/""}, {""text"": ""> Access and hand in your work with Gradescope"", ""url"": ""https://lthub.ubc.ca/guides/gradescope-student-guide/#hand-in-work""}, {""text"": ""instructions for keeping your email up to date in Canvas"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#manage-notifications""}, {""text"": ""> Troubleshoot issues with handing in Gradescope work"", ""url"": ""https://lthub.ubc.ca/guides/gradescope-student-guide/#troubleshoot-issues""}, {""text"": ""Gradescope's recommended scanning apps and instructions"", ""url"": ""https://help.gradescope.com/article/0chl25eed3-student-scan-mobile-device""}, {""text"": ""Gradescope's submission troubleshooting tips"", ""url"": ""https://help.gradescope.com/article/tp9kl4yx4q-student-troubleshooting-submissions""}, {""text"": ""help@gradescope.com"", ""url"": ""mailto:help@gradescope.com""}, {""text"": ""> Review your graded work in Gradescope"", ""url"": ""https://lthub.ubc.ca/guides/gradescope-student-guide/#review-graded-work""}, {""text"": ""IT Service Centre Help Desk"", ""url"": ""https://it.ubc.ca/got-question-about-it-products-and-support#helpdesk""}, {""text"": ""UBC IT request form"", ""url"": ""https://ubc.service-now.com/selfservice?id=sc_cat_item_v2&sys_id=cc7f5fb9874e0100bbee70406d434df9""}, {""text"": ""Keep Learning site"", ""url"": ""http://keeplearning.ubc.ca/""}, {""text"": ""student toolkits"", ""url"": ""https://learningcommons.ubc.ca/category/type/interactive/""}, {""text"": ""UBC Vancouver’s Centre for Accessibility page"", ""url"": ""https://students.ubc.ca/about-student-services/centre-for-accessibility""}, {""text"": ""UBC Okanagan’s Disability Resource Centre page"", ""url"": ""https://students.ok.ubc.ca/academic-success/disability-resources/""}, {""text"": ""Gradescope’s help documentation for students"", ""url"": ""https://guides.gradescope.com/hc/en-us/categories/21540043398413-Student-Hub""}, {""text"": ""« See all tools"", ""url"": ""https://lthub.ubc.ca/guides/""}, {""text"": ""Embedded content: This iframe contains the logic required to handle Ajax powered Gravity Forms."", ""url"": ""https://lthub.ubc.ca/guides/gradescope-student-guide/""}]","[""Removed executable markup, form controls, or event attributes."", ""Embedded content is linked rather than embedded; consult the source for its full content."", ""A headerless table receives an empty Markdown header; all source rows remain data rows.""]",prose/learning-technology/markdown/9f0a3fc267d07469be79dd876f73b585d868b46971beab96e899aafefef99ccd.md
+prose:learning-technology:11539,prose,learning-technology,learning-technology,https://lthub.ubc.ca/guides/lockdown-browser-student-guide/,https://lthub.ubc.ca/wp-json/wp/v2/pages/11539,11539,LockDown Browser Student Guide,"[Image](https://lthub.ubc.ca/files/2020/08/LockDown-Browser-Icon-e1597346097854-299x300.png)
+
+**LockDown Browser is a web browser that controls what you can do during a Canvas assessment\.** When your instructor has you use LockDown Browser for an assessment, you will not be able to print or copy questions, visit other websites, access other applications, including tools that create overlays or interact with your screen\. You will also not be able to close the assessment until it is submitted\. Assessments created for use with LockDown Browser cannot be taken with standard browsers\.
+
+|  |  |  |
+| --- | --- | --- |
+| **Access** | *Immediate* | You can access LockDown Browser from your computer as soon as you [download LockDown Browser](https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#download)\. |
+| **Bandwidth** | *Yes* | Low demand on internet connections\. |
+| **Privacy** | *Yes* | Complies with UBC’s privacy requirements\. |
+
+### What will I use it for?
+
+Your instructor may have you use LockDown Browser for course assessments:
+
+-   Take assessments in Canvas with restrictions intended to ensure fairness
+-   Review outcomes of assessments in Canvas with restrictions intended to protect the questions and answers
+
+This tool guide was last reviewed in March 2026\.
+
+## What do I need to use LockDown Browser?
+
+### A desktop or laptop computer with LockDown Browser
+
+You will need to download the LockDown Browser web browser on a desktop or laptop computer\.
+
+Although you can download the [LockDown Browser app](https://apps.apple.com/us/app/lockdown-browser/id659101775) on an iPad, we do not recommend using an iPad due to technical difficulties and incompatibilities that can occur\.
+
+Chromebooks and other mobile devices do not work with LockDown Browser at UBC\. You can view the [minimum technical requirements for LockDown Browser](https://support.respondus.com/hc/en-us/articles/4409607170459-What-are-the-computer-requirements-for-installations-of-Respondus-LockDown-Browser-) on LockDown Browser’s support site\.
+
+#### Tips
+
+-   **You can uninstall LockDown Browser once you finish your assessment\.** Follow the [steps for uninstalling LockDown Browser](https://support.respondus.com/hc/en-us/articles/4409595418907-How-do-I-uninstall-or-remove-LockDown-Browser-) on LockDown Browser’s support site\.
+-   **You can use LockDown Browser on a UBC computer instead of downloading it on your own device\.** Find details in our FAQ on [other options for taking LockDown Browser assessments](https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#other-options) below\.
+-   **Avoid virtual machines or Linux\.** LockDown Browser does not run on virtual machines or Linux\-based systems\. Use a Windows or macOS computer instead\.
+
+## How do I use LockDown Browser?
+
+You will first need to download LockDown Browser, then prepare to take your LockDown Browser assessment in Canvas\.
+
+Click any accordion bar below for instructions and tips for using LockDown Browser\.
+
+Expand All
+
+[&gt; Download LockDown Browser](https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#download)
+
+### Download LockDown Browser
+
+If you see ""Requires Respondus LockDown Browser"" next to an assessment name in Canvas, you will need to download LockDown Browser\. You will not be able to take a LockDown Browser assessment in a standard browser \(e\.g\., Chrome, Firefox, Safari\)\.
+
+1.  Go to the [LockDown Browser download page](https://www.respondus.com/lockdown/download.php?id=695714529)\.
+2.  Click **Download**\.
+3.  Follow the on\-screen instructions to complete the download\.
+
+#### Tips
+
+-   **If you have used LockDown Browser before, make sure it is updated to the latest version\.** To check and update your version, open LockDown Browser and click the info button \(the ""i"" button\) in the toolbar\.
+
+[&gt; Prepare for a LockDown Browser assessment](https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#prepare-for-assessment)
+
+### Prepare for a LockDown Browser assessment
+
+-   **Ensure that LockDown Browser is ready in advance\.** Confirm that you meet the [minimum technical requirements for LockDown Browser](https://support.respondus.com/hc/en-us/articles/4409607170459-What-are-the-computer-requirements-for-installations-of-Respondus-LockDown-Browser) by downloading, installing, and opening the browser ahead of time\.
+-   **Complete any LockDown Browser mock quiz, or request for one to be set up\.** This practice allows you to try out the experience before the stakes are high\. You can also enroll yourself in the [Chapman Learning Common's Exam Practice Course](https://canvas.ubc.ca/enroll/C7TG94) and test out the LockDown Browser mock quiz that is set up there\.
+-   **Know that your instructor will be able to set up access to any files, websites, or tools you might need for the exam\.** For example, you will be able to open a spreadsheet in a quiz question, click a link in a quiz question, or use a calculator tool as needed\.
+-   **Avoid running AI tools or apps that use virtual environment\.** Apps that create overlays, run in sandboxes, or use virtual machine\-style environments, including some AI study tools, can cause LockDown Browser to block your exam attempt\. Respondus may treat these tools as bypass attempts, which can lead to an account ban\. [What should I do if I see a LockDown Browser ban message?](https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#banned)
+
+#### Tips
+
+-   **If you need to submit an assessment in a language different from your default keyboard, you can update your keyboard settings ahead of time\.** Find details below in our FAQ on [how to set up a different language keyboard in LockDown Browser\.](https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#keyboard)
+
+[&gt; Take a LockDown Browser assessment in Canvas](https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#take-assessment)
+
+### Take a LockDown Browser assessment in Canvas
+
+If you see ""Requires Respondus LockDown Browser"" next to an assessment name in Canvas, you will need to use LockDown Browser to take that assessment\. We recommend taking any timed assessment on a desktop or laptop computer, as they are more reliable than using the iPad app\.
+
+> Note that once in LockDown Browser, you will not be able to access these instructions; you can read them for now\.
+
+1.  Open the LockDown Browser application\.
+2.  If a prompt appears from LockDown Browser to close a blocked program \(e\.g\., screen capture, instant messaging\), choose to close the process or application\.
+3.  You will automatically be directed to log in to Canvas using your UBC CWL \(Campus\-Wide Login\)\. Navigate to your Canvas course and click **Quizzes** in the Course Navigation\.
+    -   You may need to complete a multi\-factor authentication on your phone or hardware token before you are logged in to Canvas\.
+4.  Click the **assessment name**\.
+    -   If you are unable to open the assessment through LockDown Browser, you can try to access it from a standard browser\. In your regular browser, log in to your Canvas course and re\-enter the assessment\. Click to begin, then click **Open LockDown Browser** to open the assessment in LockDown Browser\.
+5.  You may be prompted to enter an ""Access Code"" before you can begin, which your instructor will have given to you\. After entering the access code, click **Submit**\.
+6.  Click either **Take the Quiz** or **Begin** \(whichever you see\)\.
+    -   You might be prompted to restart LockDown Browser\. This prompt is normal for a certain type of Canvas quiz and not a reason to be concerned\.
+7.  Once you have completed the assessment, click either **Submit Quiz** or **Submit** \(whichever you see\)\.
+8.  You can now close LockDown Browser\. You can also [uninstall LockDown Browser](https://support.respondus.com/hc/en-us/articles/4409595418907-How-do-I-uninstall-or-remove-LockDown-Browser-) from your device, if you would like\.
+
+#### Tips
+
+-   **If LockDown Browser closes your assessment unexpectedly, remain calm and notify your instructor\.** Then come back to this page to follow the troubleshooting steps in the accordion section below\.
+-   **We do not recommend taking assessments on iPad, but instructions with screenshots are available\.** Follow the [steps for using LockDown Browser on iPad for different types of Canvas quizzes](https://support.respondus.com/hc/en-us/articles/4409607211163-Can-an-iPad-be-used-to-take-a-LockDown-Browser-exam-instructions-for-students-) on LockDown Browser's support site\.
+
+[&gt; Troubleshoot issues with a LockDown Browser assessment in Canvas](https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#troubleshoot-issues)
+
+### Troubleshoot issues with a LockDown Browser assessment in Canvas
+
+When LockDown Browser closes or appears to freeze, it is commonly due to one of the following: having a pop\-up from another application appear behind LockDown Browser \(meaning it will be hidden from you\), clicking a corrupted web link \(which LockDown Browser will block\), or losing your internet connection\.
+
+In these cases, you may get bumped out of the assessment temporarily\. Try to remain calm and walk through the steps below\.
+
+1.  Let your instructor or TA know that you are having an issue, particularly if you are in a timed assessment\.
+2.  If you are taking the assessment in a space with an in\-person invigilator, ask the invigilator to enter the ""Proctor Exit Password"" to close LockDown Browser for you\.
+3.  If you are using an iPad, switch to a desktop or laptop computer\.
+4.  If LockDown Browser has closed, open it again and attempt to re\-enter the assessment\. Find your way back to the question you were on using the question list in the sidebar of the Canvas quiz\.
+5.  If re\-entering the assessment does not work, restart your device\. You can force a restart by holding down the device's power button for 5\-20 seconds or longer\.
+6.  After you restart, close all programs that start up automatically\. Ideally, LockDown Browser should be the only application running on your device\.
+7.  Disconnect any additional screens or displays connected to your device\.
+8.  Temporarily disable any extra spyware detection or anti\-virus software you have added to the device\.
+9.  Ensure that LockDown Browser is updated to the latest version\. To check and update your version, open LockDown Browser and click the **info button** \(the ""i"" button\)\.
+10.  If you are at home, reset your internet connection or, if you are in a public space, forget and re\-join the network\. Then turn your internet connection off and on\.
+     -   For a full reset, you can also optionally [uninstall LockDown Browser](https://support.respondus.com/hc/en-us/articles/4409595418907-How-do-I-uninstall-or-remove-LockDown-Browser-) and download it again using the instructions in the earlier accordion section of this guide\.
+11.  Open LockDown Browser and attempt to re\-enter the assessment again\. Find your way back to the question you were on using the question list in the sidebar of the Canvas quiz\.
+12.  If you still have issues, contact the help desk below\.
+
+## LockDown Browser FAQ
+
+Find UBC\-specific answers to frequently asked questions by clicking any accordion bar below\.
+
+[&gt; How can I practice using LockDown Browser before an assessment?](https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#practice)
+
+You can test LockDown Browser before an exam by taking a mock quiz that may be set up by your instructor in Canvas\. Taking a LockDown Browser mock quiz will give you a sense of what using LockDown Browser is like and help confirm that your device is compatible and nothing installed creates conflicts\.
+
+Testing in advance is strongly recommended, even if you have used LockDown Browser before\. A practice attempt can help identify software or system conflicts early, when there is time to address them\. This reduces the chance of unexpected issues that could prevent you from starting an exam\.
+
+If your instructor has not set up a mock quiz in your course, you can ask if one could be set up\. You can also [enrol in the Chapman Learning Common's Exam Practice Course](https://canvas.ubc.ca/enroll/C7TG94) on Canvas and take the mock quiz that is set up there\. Once you are enrolled in the course, click **Quizzes** in the Course Navigation and select the **Lockdown Browser Exam \- Requires Respondus LockDown Browser** mock quiz\.
+
+[&gt; What should I do if I see a LockDown Browser ban message?](https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#student-account-ban)
+
+If LockDown Browser shows a message saying your account has been banned, do not panic\. This does not mean you have done something wrong\. It simply means the system detected software or activity that could interfere with LockDown Browser and has temporarily blocked access as a precaution\.
+
+A ban is a technical flag, not an academic misconduct decision\.
+
+In some cases, issues like this can be avoided by testing LockDown Browser in advance using a practice or mock quiz\. Testing early helps identify potential software conflicts before exam day, when there is time to resolve them\.
+
+Bans are uncommon and are used as a last\-resort security measure\. When a ban is in place, you will not be able to start exams that require LockDown Browser, even in other courses, until the issue is reviewed\.
+
+If you see a ban message:
+
+1.  Write down the reference code shown in the message\. This code is required to investigate what happened\.
+2.  Contact your instructor as soon as possible and share the reference code with them\.
+3.  Your instructor will connect with the LT Hub to review the situation\.
+4.  The LT Hub will work with Respondus Support to have the ban removed\.
+
+A LockDown Browser ban is linked to your user account, not your computer\. Reinstalling LockDown Browser, switching devices, or changing networks will not resolve the issue\.
+
+The important thing to know is that support is available, and most situations can be reviewed and resolved once the reference code is shared\.
+
+[&gt; Can I use a device other than my own to take an assessment with LockDown Browser?](https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#other-options)
+
+Yes\. If your device does not meet the minimum technical requirements, or if it has software or system settings that may interfere with LockDown Browser, we recommend borrowing a UBC desktop or laptop computer\. At UBC Vancouver, you can [borrow a laptop from the Irving K\. Barber Learning Centre](https://services.library.ubc.ca/computers-technology/technology-borrowing/) or [use a desktop computer in the Chapman Learning Commons](https://learningcommons.ubc.ca/use-our-computers/)\.
+
+At UBC Okanagan, please consult the list of [UBCO Computer Labs \- Hardware and Software](https://it.ok.ubc.ca/services/computers-printers/labs/lab-details/) to find where Respondus LockDown Browser is installed\. UBCO computer labs are available for student use when not previously booked by a class\.
+
+[&gt; How can I use a different language keyboard in LockDown Browser?](https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#keyboard)
+
+Follow LockDown Browser's instructions to update keyboard language [on Windows](https://support.respondus.com/hc/en-us/articles/4409607381275-Windows-How-to-Setup-Keyboard-Language-Switching-for-LockDown-Browser) or [on mac\.](https://support.respondus.com/hc/en-us/articles/4409595702811-Mac-How-to-Setup-Keyboard-Language-Switching-for-LockDown-Browser) After adding the new keyboard to your device, you can review the tips below for additional recommendations\.
+
+-   Avoid using the ALT key as it may trigger warnings in LockDown Browser\. To prevent this, change your language‑switching hotkey to **CTRL \+ SHIFT** or another combination that does not use the **ALT** key\.
+-   Since the taskbar is hidden in LockDown Browser, you will need another way to confirm your current input language\. You can display the language pop\-up menu by holding your language\-switching keys\.
+    -   For Windows, the floating language bar that you set up following the instructions from LockDown Browser may not appear for certain languages\. Instead, if your shortcut is **CTRL \+ SHIFT**, press and hold **CTRL** and tap **SHIFT** repeatedly\. A pop\-up menu will appear showing your available languages\.
+    -   For Mac, when you switch between languages, your computer device will automatically display a small window showing the current input language\.
+-   If you are switching to the Japanese keyboard, the default alphabet is Romaji\. As you are typing with the keyboard, you can see a list of suggested words to choose from\. You can also use the following shortcuts to manually change alphabets:
+    -   Tap **CTRL \+ CAPSLOCK** to switch to Hiragana
+    -   Tap **CTRL \+ SHIFT** to switch to Romaji
+    -   To type in Katakana:
+        1.  First switch to the Hiragana alphabet
+        2.  Type out your word without pressing **Enter**
+        3.  Press **F7** to convert it to Katakana\. If you would like to convert the Katakana back to Hiragana, press **F6**
+        4.  Please note that if your **Fn** Lock is off, you can complete the conversion by pressing **Fn \+ F6** or **F7** accordingly\. You can also toggle on/off the **Fn** lock by pressing **Fn \+ Esc**\.
+
+## Where can I get more support with LockDown Browser?
+
+### Technical support
+
+**If you have trouble with Canvas or LockDown Browser:**
+
+-   Contact the UBC [IT Service Centre Help Desk](https://it.ubc.ca/got-question-about-it-products-and-support#helpdesk):  
+    604 822 2008 or fill out the [UBC IT request form](https://ubc.service-now.com/selfservice?id=sc_cat_item_v2&amp;sys_id=cc7f5fb9874e0100bbee70406d434df9)\.
+
+**If you have technical issues while taking a LockDown Browser timed assessment:**
+
+-   Let your instructor or teaching assistant know right away\.
+
+---
+
+### Online learning support
+
+-   Visit UBC’s [Keep Learning site](http://keeplearning.ubc.ca/) and the Chapman Learning Common’s [student toolkits](https://learningcommons.ubc.ca/category/type/interactive/)\.
+-   Visit the [UBC Vancouver’s Centre for Accessibility page](https://students.ubc.ca/about-student-services/centre-for-accessibility) or the [UBC Okanagan’s Disability Resource Centre page](https://students.ok.ubc.ca/academic-success/disability-resources/) to learn more about available support for students with disabilities and ongoing medical conditions\.
+
+#### Learn more
+
+-   Read the [Student Support FAQ](https://support.respondus.com/hc/en-us/sections/4409607115931-Student-Support) available on LockDown Browser’s support site\.
+
+---
+
+[« See all tools](https://lthub.ubc.ca/guides/)
+
+#### Tell us about this guide
+
+[Embedded content: This iframe contains the logic required to handle Ajax powered Gravity Forms\.](https://lthub.ubc.ca/guides/lockdown-browser-student-guide/)",ce78bba8cf13a0ffafe27531a8a8d5aee16269daf7b8998e9387df900c4090c7,,undergraduate_and_shared,2026-04-18T00:04:28+00:00,2026-09-11T05:07:31.671Z,[],"[{""text"": ""Image"", ""url"": ""https://lthub.ubc.ca/files/2020/08/LockDown-Browser-Icon-e1597346097854-299x300.png""}, {""text"": ""download LockDown Browser"", ""url"": ""https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#download""}, {""text"": ""LockDown Browser app"", ""url"": ""https://apps.apple.com/us/app/lockdown-browser/id659101775""}, {""text"": ""minimum technical requirements for LockDown Browser"", ""url"": ""https://support.respondus.com/hc/en-us/articles/4409607170459-What-are-the-computer-requirements-for-installations-of-Respondus-LockDown-Browser-""}, {""text"": ""steps for uninstalling LockDown Browser"", ""url"": ""https://support.respondus.com/hc/en-us/articles/4409595418907-How-do-I-uninstall-or-remove-LockDown-Browser-""}, {""text"": ""other options for taking LockDown Browser assessments"", ""url"": ""https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#other-options""}, {""text"": ""> Download LockDown Browser"", ""url"": ""https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#download""}, {""text"": ""LockDown Browser download page"", ""url"": ""https://www.respondus.com/lockdown/download.php?id=695714529""}, {""text"": ""> Prepare for a LockDown Browser assessment"", ""url"": ""https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#prepare-for-assessment""}, {""text"": ""minimum technical requirements for LockDown Browser"", ""url"": ""https://support.respondus.com/hc/en-us/articles/4409607170459-What-are-the-computer-requirements-for-installations-of-Respondus-LockDown-Browser""}, {""text"": ""Chapman Learning Common's Exam Practice Course"", ""url"": ""https://canvas.ubc.ca/enroll/C7TG94""}, {""text"": ""What should I do if I see a LockDown Browser ban message?"", ""url"": ""https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#banned""}, {""text"": ""how to set up a different language keyboard in LockDown Browser."", ""url"": ""https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#keyboard""}, {""text"": ""> Take a LockDown Browser assessment in Canvas"", ""url"": ""https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#take-assessment""}, {""text"": ""uninstall LockDown Browser"", ""url"": ""https://support.respondus.com/hc/en-us/articles/4409595418907-How-do-I-uninstall-or-remove-LockDown-Browser-""}, {""text"": ""steps for using LockDown Browser on iPad for different types of Canvas quizzes"", ""url"": ""https://support.respondus.com/hc/en-us/articles/4409607211163-Can-an-iPad-be-used-to-take-a-LockDown-Browser-exam-instructions-for-students-""}, {""text"": ""> Troubleshoot issues with a LockDown Browser assessment in Canvas"", ""url"": ""https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#troubleshoot-issues""}, {""text"": ""> How can I practice using LockDown Browser before an assessment?"", ""url"": ""https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#practice""}, {""text"": ""enrol in the Chapman Learning Common's Exam Practice Course"", ""url"": ""https://canvas.ubc.ca/enroll/C7TG94""}, {""text"": ""> What should I do if I see a LockDown Browser ban message?"", ""url"": ""https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#student-account-ban""}, {""text"": ""> Can I use a device other than my own to take an assessment with LockDown Browser?"", ""url"": ""https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#other-options""}, {""text"": ""borrow a laptop from the Irving K. Barber Learning Centre"", ""url"": ""https://services.library.ubc.ca/computers-technology/technology-borrowing/""}, {""text"": ""use a desktop computer in the Chapman Learning Commons"", ""url"": ""https://learningcommons.ubc.ca/use-our-computers/""}, {""text"": ""UBCO Computer Labs - Hardware and Software"", ""url"": ""https://it.ok.ubc.ca/services/computers-printers/labs/lab-details/""}, {""text"": ""> How can I use a different language keyboard in LockDown Browser?"", ""url"": ""https://lthub.ubc.ca/guides/lockdown-browser-student-guide/#keyboard""}, {""text"": ""on Windows"", ""url"": ""https://support.respondus.com/hc/en-us/articles/4409607381275-Windows-How-to-Setup-Keyboard-Language-Switching-for-LockDown-Browser""}, {""text"": ""on mac."", ""url"": ""https://support.respondus.com/hc/en-us/articles/4409595702811-Mac-How-to-Setup-Keyboard-Language-Switching-for-LockDown-Browser""}, {""text"": ""IT Service Centre Help Desk"", ""url"": ""https://it.ubc.ca/got-question-about-it-products-and-support#helpdesk""}, {""text"": ""UBC IT request form"", ""url"": ""https://ubc.service-now.com/selfservice?id=sc_cat_item_v2&sys_id=cc7f5fb9874e0100bbee70406d434df9""}, {""text"": ""Keep Learning site"", ""url"": ""http://keeplearning.ubc.ca/""}, {""text"": ""student toolkits"", ""url"": ""https://learningcommons.ubc.ca/category/type/interactive/""}, {""text"": ""UBC Vancouver’s Centre for Accessibility page"", ""url"": ""https://students.ubc.ca/about-student-services/centre-for-accessibility""}, {""text"": ""UBC Okanagan’s Disability Resource Centre page"", ""url"": ""https://students.ok.ubc.ca/academic-success/disability-resources/""}, {""text"": ""Student Support FAQ"", ""url"": ""https://support.respondus.com/hc/en-us/sections/4409607115931-Student-Support""}, {""text"": ""« See all tools"", ""url"": ""https://lthub.ubc.ca/guides/""}, {""text"": ""Embedded content: This iframe contains the logic required to handle Ajax powered Gravity Forms."", ""url"": ""https://lthub.ubc.ca/guides/lockdown-browser-student-guide/""}]","[""Removed executable markup, form controls, or event attributes."", ""Embedded content is linked rather than embedded; consult the source for its full content."", ""A headerless table receives an empty Markdown header; all source rows remain data rows.""]",prose/learning-technology/markdown/b611ac31fb0547647ca701bbf2c2b1fbbb3f57aa4ab6af71038314d5e99e6748.md
+prose:learning-technology:12509,prose,learning-technology,learning-technology,https://lthub.ubc.ca/guides/locr-student-guide/,https://lthub.ubc.ca/wp-json/wp/v2/pages/12509,12509,LOCR Student Guide,"[Image](https://lthub.ubc.ca/files/2020/07/UBC-Library-Logo-150x150.jpg)
+
+**Library Online Course Reserves \(LOCR\) is where you can access certain required readings and other content items for courses called course reserves**\. Instructors make these course reserves available for you through the UBC Library\.
+
+|  |  |  |
+| --- | --- | --- |
+| **Access** | *Immediate* | You can access LOCR through Canvas if your instructor has set this up, or you can [log in to LOCR](https://courses.library.ubc.ca/) outside of Canvas\. |
+| **Bandwidth** | *Yes* | Low demand on internet connections\. |
+| **Privacy** | *Yes* | Complies with UBC’s privacy requirements\. |
+
+### What will I use it for?
+
+Your instructor may ask you to use LOCR to access library items specific to the course:
+
+-   Read electronic or physical articles and books
+-   View web and media resources
+-   Access PDFs of book chapters
+
+This tool guide was last reviewed in April 2025\.
+
+## What do I need to use LOCR?
+
+### A supported web browser
+
+LOCR runs in your web browser and supports the latest versions of Chrome, Edge, Firefox, or Safari\.
+
+---
+
+### A UBC course that uses course reserves
+
+You will only see a list of items in LOCR for a course if your instructor has requested them\.
+
+#### Tips
+
+-   **If you recently registered for a course that uses LOCR, it may take up to 48 hours to gain access to LOCR**\. If you still have trouble accessing your course reserves after several days, please contact your instructor\.
+
+## How do I use LOCR?
+
+Click any accordion bar below for instructions and tips for using LOCR\.
+
+Expand All
+
+[&gt; Access your course reserves in LOCR](https://lthub.ubc.ca/guides/locr-student-guide/#access-course-reserves)
+
+### Access your course reserves in LOCR
+
+There are two ways you can access course reserves in LOCR: from inside a Canvas course \(if your instructor has enabled this\) or from the standalone LOCR site\.
+
+Please note that your course reserves might not yet appear in LOCR if they are still awaiting approval by the UBC Library\. You can speak with your instructor to confirm which resources you should currently have access to in LOCR\.
+
+-   [From a Canvas course](https://lthub.ubc.ca/guides/locr-student-guide/#FromaCanvascourse-225)
+-   [From the LOCR site](https://lthub.ubc.ca/guides/locr-student-guide/#FromtheLOCRsite-226)
+
+1.  Log in to your Canvas course and click **Library Online Course Reserves** in the Course Navigation\.
+2.  The LOCR site will open in a new tab, and you will see a list of the available course reserves\.
+
+#### Tips
+
+-   **Not all instructors will add LOCR to the Course Navigation in Canvas**\. If you cannot find LOCR in the Course Navigation, check if your instructor has published links to course reserves in the course modules instead\. You can also log in directly to the [standalone LOCR site](https://courses.library.ubc.ca/)\.
+
+1.  Log in to the [standalone LOCR site](https://courses.library.ubc.ca/login.form) using your UBC CWL \(Campus\-Wide Login\)\.
+2.  Select the **course** in the ""Course"" column\.
+3.  You will see a list of the available course reserves\.
+
+#### Tips
+
+-   **You can filter your list of courses in LOCR**\. Check the ""Show current and future courses only"" and/or ""Show courses with readings only"" boxes\. The ""Show current and future courses only"" filter is turned on by default\. You can also turn off these filters to access course reserves from past courses, if they are still available\.
+
+[&gt; Interact with your course reserves in LOCR](https://lthub.ubc.ca/guides/locr-student-guide/#interact-with-course-reserves)
+
+### Interact with your course reserves in LOCR
+
+In LOCR, you can click any course to see its course reserves list\. Use the search box to search for a specific course reserve item by title, author, or tag\. Instructors may use tags to describe and organize the course reserves\. For example, an instructor might add a ""Week 1"" tag to all items that should be read in the first week of the course\.
+
+Under the ""Read"" column, each item in the course reserves list will indicate if you have previously accessed it\. Clicking any item title will allow you to view an electronic item directly or see where a physical item is available on campus\.
+
+Each electronic item has a set start and end date that indicates its availability to you in LOCR\. These availability dates mean that you may not be able to access all the course reserves after the course ends, so please download any electronic items you want to continue accessing\.
+
+## Where can I get more support with LOCR?
+
+### Technical support
+
+**If you have trouble with LOCR:**
+
+-   Contact your instructor or teaching assistant as your first point of contact\.
+-   If you are having trouble accessing LOCR from Canvas, please log in to the [standalone LOCR site](https://courses.library.ubc.ca/) to access your course reserves\.
+-   If you encounter errors when accessing an electronic item, contact Koerner Library at [koerner\.reserve@ubc\.ca](mailto:koerner.reserve@ubc.ca)\.
+-   Contact us at the LT Hub for further assistance:  
+    604 827 4775 or [LT\.hub@ubc\.ca](mailto:LT.hub@ubc.ca) or visit the [LT Hub online](https://lthub.ubc.ca/dropin)\.
+
+---
+
+### Online learning support
+
+-   Visit UBC’s [Keep Learning site](http://keeplearning.ubc.ca/) and the Chapman Learning Common’s [student toolkits](https://learningcommons.ubc.ca/category/type/interactive/)\.
+-   Visit the [UBC Vancouver’s Centre for Accessibility page](https://students.ubc.ca/about-student-services/centre-for-accessibility) or the [UBC Okanagan’s Disability Resource Centre page](https://students.ok.ubc.ca/academic-success/disability-resources/) to learn more about available support for students with disabilities and ongoing medical conditions\.
+
+#### Learn more
+
+-   Explore the UBC Library’s [“Student Resources” tab for LOCR](https://services.library.ubc.ca/borrowing-services/using-course-reserves/#StudentResources-1) on the Library’s course reserves page\.
+
+---
+
+[« See all tools](https://lthub.ubc.ca/guides/)
+
+#### Tell us about this guide
+
+[Embedded content: This iframe contains the logic required to handle Ajax powered Gravity Forms\.](https://lthub.ubc.ca/guides/locr-student-guide/)",78d7ba4b6521830b0d349f6b037d66341831efc333490d89fdc91897809cd9ce,,undergraduate_and_shared,2025-04-10T20:40:17+00:00,2026-09-11T05:07:31.671Z,[],"[{""text"": ""Image"", ""url"": ""https://lthub.ubc.ca/files/2020/07/UBC-Library-Logo-150x150.jpg""}, {""text"": ""log in to LOCR"", ""url"": ""https://courses.library.ubc.ca/""}, {""text"": ""> Access your course reserves in LOCR"", ""url"": ""https://lthub.ubc.ca/guides/locr-student-guide/#access-course-reserves""}, {""text"": ""From a Canvas course"", ""url"": ""https://lthub.ubc.ca/guides/locr-student-guide/#FromaCanvascourse-225""}, {""text"": ""From the LOCR site"", ""url"": ""https://lthub.ubc.ca/guides/locr-student-guide/#FromtheLOCRsite-226""}, {""text"": ""standalone LOCR site"", ""url"": ""https://courses.library.ubc.ca/""}, {""text"": ""standalone LOCR site"", ""url"": ""https://courses.library.ubc.ca/login.form""}, {""text"": ""> Interact with your course reserves in LOCR"", ""url"": ""https://lthub.ubc.ca/guides/locr-student-guide/#interact-with-course-reserves""}, {""text"": ""koerner.reserve@ubc.ca"", ""url"": ""mailto:koerner.reserve@ubc.ca""}, {""text"": ""LT.hub@ubc.ca"", ""url"": ""mailto:LT.hub@ubc.ca""}, {""text"": ""LT Hub online"", ""url"": ""https://lthub.ubc.ca/dropin""}, {""text"": ""Keep Learning site"", ""url"": ""http://keeplearning.ubc.ca/""}, {""text"": ""student toolkits"", ""url"": ""https://learningcommons.ubc.ca/category/type/interactive/""}, {""text"": ""UBC Vancouver’s Centre for Accessibility page"", ""url"": ""https://students.ubc.ca/about-student-services/centre-for-accessibility""}, {""text"": ""UBC Okanagan’s Disability Resource Centre page"", ""url"": ""https://students.ok.ubc.ca/academic-success/disability-resources/""}, {""text"": ""“Student Resources” tab for LOCR"", ""url"": ""https://services.library.ubc.ca/borrowing-services/using-course-reserves/#StudentResources-1""}, {""text"": ""« See all tools"", ""url"": ""https://lthub.ubc.ca/guides/""}, {""text"": ""Embedded content: This iframe contains the logic required to handle Ajax powered Gravity Forms."", ""url"": ""https://lthub.ubc.ca/guides/locr-student-guide/""}]","[""Removed executable markup, form controls, or event attributes."", ""Embedded content is linked rather than embedded; consult the source for its full content."", ""A headerless table receives an empty Markdown header; all source rows remain data rows.""]",prose/learning-technology/markdown/bac69aaa93aaba25c9625735c1c7335a65253ae08363afdbd35934d26da86cc6.md
+prose:learning-technology:14171,prose,learning-technology,learning-technology,https://lthub.ubc.ca/guides/peerscholar-student-guide/,https://lthub.ubc.ca/wp-json/wp/v2/pages/14171,14171,peerScholar Student Guide,"[peerScholar Logo](https://lthub.ubc.ca/files/2017/11/peerScholar.png)
+
+**peerScholar is a peer review tool that allows you to exchange feedback on assignments with peers in your course**\. peerScholar assignments have three phases: creating your work, assessing your peers’ work and providing feedback, and reflecting on your own work\.
+
+|  |  |  |
+| --- | --- | --- |
+| **Access** | *Immediate* | You can access peerScholar through Canvas\. |
+| **Bandwidth** | *Yes* | Low demand on internet connections\. |
+| **Privacy** | *Yes* | Complies with UBC’s privacy requirements\. |
+
+### What will I use it for?
+
+Your instructor may have you use peerScholar to participate in peer review:
+
+-   Submit assignments for peers to evaluate
+-   Evaluate your peers’ work and provide feedback
+-   Evaluate your own work
+-   Reflect on your peers’ feedback
+-   Evaluate your peers’ feedback and/or revise your work
+
+This tool guide was last reviewed in November 2024\.
+
+## What do I need to use peerScholar?
+
+### A supported web browser
+
+peerScholar runs in your web browser and supports Chrome, Firefox, or Safari\. For more information on which versions work, check the [peerScholar supported browser page](http://pearsoned.ca/highered/weir_6ce/support/system-requirements.html)\.
+
+---
+
+### A peerScholar student account
+
+A peerScholar account will be created for you after you open a peerScholar assignment from Canvas\. To make sure this account is created properly, please follow the steps for enrolling as outlined in the accordion section below\.
+
+## How do I use peerScholar?
+
+You will first access peerScholar through your Canvas course\. Then you can participate in the course activities within the peerScholar application\.
+
+Click any accordion bar below to find instructions and tips for using peerScholar\.
+
+Expand All
+
+[&gt; Enroll in your peerScholar course](https://lthub.ubc.ca/guides/peerscholar-student-guide/#enroll-in-course)
+
+### Enroll in your peerScholar course
+
+By default, a peerScholar account will be created for you when you open a peerScholar assignment from Canvas\. To make sure your account is created properly, please follow the steps for enrolling in a peerScholar course as outlined below\.
+
+1.  Log in to your Canvas course and find your peerScholar assignment\.
+2.  Click the **peerScholar assignment** you want to open\. If prompted, click **Load \[assignment name\] in a new window**\. To ensure the assignment opens properly, please allow pop\-up windows in your browser\.
+3.  If you are able to see an overview of your assigned peerScholar activities, then you have successfully enrolled in your peerScholar course\. If you do not see this overview, contact your instructor or teaching assistants so they can check your status in the peerScholar course\.
+
+#### Tips
+
+-   **Although peerScholar is a separate application from Canvas, you will need to access peerScholar through Canvas for each course**\. Accessing peerScholar this way ensures you are properly registered in each peerScholar course and your grades can sync with Canvas\.
+-   **Assignments in peerScholar are called ""activities""**\. These terms are interchangeable\.
+
+[&gt; Understand the peerScholar workflow](https://lthub.ubc.ca/guides/peerscholar-student-guide/#understand-workflow)
+
+### Understand the peerScholar workflow
+
+Assessments in peerScholar are completed in three stages:
+
+1.  **Create** \- You will submit a digital assignment\. Submissions can be written or include other mediums, like images or other multimedia\.
+2.  **Assess** \- You will see your peers' work to review, mark, and provide feedback on based on a set of customized rubrics from your instructor\. You may also be required to assess your own work, if your instructor has set this up\.
+3.  **Reflect** \- You will read and consider your peers' feedback on your own work\. Depending on the assignment, you may be asked to evaluate each piece of feedback and/or revise and resubmit your original work based on the feedback provided\.
+
+To learn more about the purposes and impacts of peerScholar's phases, you can read the [peerScholar vision document](https://cogneeto.s3.amazonaws.com/docs/vision/GrawemeyerLong.pdf)\.
+
+[&gt; Submit work with peerScholar](https://lthub.ubc.ca/guides/peerscholar-student-guide/#submit-work)
+
+### Submit work with peerScholar
+
+To access peerScholar, you will first need to open the peerScholar assignment from your Canvas course\.
+
+1.  Log in to your Canvas course and find your peerScholar assignment\.
+2.  Click the **peerScholar assignment** you want to open\. If prompted, click **Load \[assignment name\] in a new window**\. To ensure the assignment opens properly, please allow pop\-up windows in your browser\.
+3.  You will see an overview of the activities assigned to your course\. Click one of the phases \(**Create**, **Assess**, or **Reflect**\) to complete that part of the assignment\.
+4.  Read the instructions for each phase carefully, taking note of the objectives and prompts\. Most instructors will provide a customized rubric to guide you in completing each part of the peer assessment process\. Click **Let's Go\!** to proceed\.
+5.  To complete the phase, you may be instructed to type up a response, attach a file, or carry out a task\.
+6.  Once you are satisfied with your response, click **Submit** or **Save and Submit**\.
+    -   If you are not ready to submit, click **Save as Draft**\. You can continue to work on your response while the phase is still open; it will be marked as ""Complete"" only after you submit your response\.
+7.  You can resubmit work until the due date passes or the instructor manually closes the phase\. Once the phase closes, your submission will be locked and you can no longer resubmit for that phase\.
+
+#### Tips
+
+-   **The contextual commenting \(annotating\) feature in the ""Assess"" phase varies depending on the file type submitted**\. To annotate a peer's text submission, select the text you would like to comment on and click the pencil icon that appears above the highlighted text\. Click ""Save"" after writing your comment\. Please note that you cannot directly annotate on an attached file\.
+
+[&gt; Troubleshoot issues with submitting peerScholar work](https://lthub.ubc.ca/guides/peerscholar-student-guide/#troubleshoot-issues)
+
+### Troubleshoot issues with submitting peerScholar work
+
+If something goes wrong while you are trying to submit your assignment, you can try to resolve certain issues yourself\. Your instructor will also be able to check your progress throughout the assignment and confirm your submission\.
+
+#### General troubleshooting tips
+
+1.  Ensure that you have a stable internet connection\.
+2.  Switch to a computer if you are submitting from a mobile device\.
+3.  Update your web browser to the latest version or try a different browser\. We recommend using Chrome or Firefox for the most reliable experience\.
+4.  Disable any extensions/add\-ons in your web browser\.
+5.  Disable any VPN \(Virtual Private Network\)\.
+6.  Restart your device and try to submit your assignment again\.
+
+#### Unable to complete a phase
+
+The assignment schedule set by your instructor will affect when you can complete each phase of the assignment\. First, check the status of the phase\.
+
+-   Is the phase still open? You can only complete a phase when it is green, has an upcoming due date, and/or its status is ""In Progress""\.
+-   If you would like to complete a phase but its status is now ""Closed"" or the submission deadline has passed, please contact your instructor or teaching assistant for your next steps\.
+
+[&gt; Review your graded work in peerScholar](https://lthub.ubc.ca/guides/peerscholar-student-guide/#review-graded-work)
+
+### Review your graded work in peerScholar
+
+Not all instructors will release grades using peerScholar; please reach out directly if you are not sure what to expect in your course\.
+
+1.  Log in to your Canvas course and find your peerScholar assignment\.
+2.  Click the **peerScholar assignment** you want to review\. If prompted, click **Load \[assignment name\] in a new window**\. To ensure the assignment opens properly, please allow pop\-up windows in your browser\.
+3.  On the left sidebar in peerScholar, click **Marks &amp; Review**\.
+    -   You will be able to see the grades you received for each activity\. Grades will be listed as ""Not Available"" if your instructor has not yet released the grades\.
+4.  Click **Review** to see your original submission, your grade for each phase of the activity, and your instructor's or teaching assistant's feedback\.
+
+## peerScholar FAQ
+
+Find UBC\-specific answers to frequently asked questions by clicking any accordion bar below\.
+
+[&gt; My instructor said that everyone would receive a certain number of reviews from peers, so why did I receive fewer?](https://lthub.ubc.ca/guides/peerscholar-student-guide/#amount-of-review)
+
+You may receive fewer reviews than the instructor set if students assigned to your work do not complete their reviews\.
+
+[&gt; Can I choose which assignments I get to review?](https://lthub.ubc.ca/guides/peerscholar-student-guide/#choice-of-reviews)
+
+No, the assignments you receive to review are distributed randomly by peerScholar\.
+
+[&gt; Can I choose which group I'm in for group work activities?](https://lthub.ubc.ca/guides/peerscholar-student-guide/#choice-of-group)
+
+Instructors may set up the peerScholar groups randomly, manually, or by letting the students choose\. If students are allowed to choose their groups, you will be able to select the group you would like to work in\. Otherwise, it will be chosen by your instructor or by peerScholar\.
+
+[&gt; What is the maximum file size I can upload to peerScholar?](https://lthub.ubc.ca/guides/peerscholar-student-guide/#maximum-upload-size)
+
+The maximum file size is 500MB\.
+
+## Where can I get more support with peerScholar?
+
+### Technical support
+
+**If you have trouble accessing peerScholar:**
+
+-   Contact us for assistance:  
+    604 827 4775 or [LT\.hub@ubc\.ca](mailto:LT.hub@ubc.ca) or visit the [LT Hub online](https://lthub.ubc.ca/dropin)\.
+
+**If you experience technical issues while using peerScholar:**
+
+-   Submit a request to the [peerScholar Support Center](https://support.peerscholar.com/hc/en-us/requests/new)\.
+-   Reach out to your instructors or teaching assistants for time\-sensitive questions, as they can provide real\-time assistance in helping you resolve issues\.
+
+---
+
+### Online learning support
+
+-   Visit UBC’s [Keep Learning site](http://keeplearning.ubc.ca/) and the Chapman Learning Common’s [student toolkits](https://learningcommons.ubc.ca/category/type/interactive/)\.
+-   Visit the [UBC Vancouver’s Centre for Accessibility page](https://students.ubc.ca/about-student-services/centre-for-accessibility) or the [UBC Okanagan’s Disability Resource Centre page](https://students.ok.ubc.ca/academic-success/disability-resources/) to learn more about available support for students with disabilities and ongoing medical conditions\.
+
+#### Learn more
+
+-   For more information on peerScholar, including video demos and research, explore [peerScholar’s videos website](https://videos.peerscholar.com/)\.
+
+---
+
+[« See all tools](https://lthub.ubc.ca/guides/)
+
+#### Tell us about this guide
+
+[Embedded content: This iframe contains the logic required to handle Ajax powered Gravity Forms\.](https://lthub.ubc.ca/guides/peerscholar-student-guide/)",fe9d833498123a91b8976a1ef316868165f37428e09f01fa017338c3d830d218,,undergraduate_and_shared,2025-05-06T17:54:27+00:00,2026-09-11T05:07:31.671Z,[],"[{""text"": ""peerScholar Logo"", ""url"": ""https://lthub.ubc.ca/files/2017/11/peerScholar.png""}, {""text"": ""peerScholar supported browser page"", ""url"": ""http://pearsoned.ca/highered/weir_6ce/support/system-requirements.html""}, {""text"": ""> Enroll in your peerScholar course"", ""url"": ""https://lthub.ubc.ca/guides/peerscholar-student-guide/#enroll-in-course""}, {""text"": ""> Understand the peerScholar workflow"", ""url"": ""https://lthub.ubc.ca/guides/peerscholar-student-guide/#understand-workflow""}, {""text"": ""peerScholar vision document"", ""url"": ""https://cogneeto.s3.amazonaws.com/docs/vision/GrawemeyerLong.pdf""}, {""text"": ""> Submit work with peerScholar"", ""url"": ""https://lthub.ubc.ca/guides/peerscholar-student-guide/#submit-work""}, {""text"": ""> Troubleshoot issues with submitting peerScholar work"", ""url"": ""https://lthub.ubc.ca/guides/peerscholar-student-guide/#troubleshoot-issues""}, {""text"": ""> Review your graded work in peerScholar"", ""url"": ""https://lthub.ubc.ca/guides/peerscholar-student-guide/#review-graded-work""}, {""text"": ""> My instructor said that everyone would receive a certain number of reviews from peers, so why did I receive fewer?"", ""url"": ""https://lthub.ubc.ca/guides/peerscholar-student-guide/#amount-of-review""}, {""text"": ""> Can I choose which assignments I get to review?"", ""url"": ""https://lthub.ubc.ca/guides/peerscholar-student-guide/#choice-of-reviews""}, {""text"": ""> Can I choose which group I'm in for group work activities?"", ""url"": ""https://lthub.ubc.ca/guides/peerscholar-student-guide/#choice-of-group""}, {""text"": ""> What is the maximum file size I can upload to peerScholar?"", ""url"": ""https://lthub.ubc.ca/guides/peerscholar-student-guide/#maximum-upload-size""}, {""text"": ""LT.hub@ubc.ca"", ""url"": ""mailto:LT.hub@ubc.ca""}, {""text"": ""LT Hub online"", ""url"": ""https://lthub.ubc.ca/dropin""}, {""text"": ""peerScholar Support Center"", ""url"": ""https://support.peerscholar.com/hc/en-us/requests/new""}, {""text"": ""Keep Learning site"", ""url"": ""http://keeplearning.ubc.ca/""}, {""text"": ""student toolkits"", ""url"": ""https://learningcommons.ubc.ca/category/type/interactive/""}, {""text"": ""UBC Vancouver’s Centre for Accessibility page"", ""url"": ""https://students.ubc.ca/about-student-services/centre-for-accessibility""}, {""text"": ""UBC Okanagan’s Disability Resource Centre page"", ""url"": ""https://students.ok.ubc.ca/academic-success/disability-resources/""}, {""text"": ""peerScholar’s videos website"", ""url"": ""https://videos.peerscholar.com/""}, {""text"": ""« See all tools"", ""url"": ""https://lthub.ubc.ca/guides/""}, {""text"": ""Embedded content: This iframe contains the logic required to handle Ajax powered Gravity Forms."", ""url"": ""https://lthub.ubc.ca/guides/peerscholar-student-guide/""}]","[""Removed executable markup, form controls, or event attributes."", ""Embedded content is linked rather than embedded; consult the source for its full content."", ""A headerless table receives an empty Markdown header; all source rows remain data rows.""]",prose/learning-technology/markdown/5efad6abf247afbeb0c8fd50c4c4936fe0291f16b81e8d58501712eb0abeb492.md
+prose:learning-technology:9771,prose,learning-technology,learning-technology,https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/,https://lthub.ubc.ca/wp-json/wp/v2/pages/9771,9771,iClicker Cloud Student Guide,"[iClicker Cloud logo](https://lthub.ubc.ca/2020/07/iClicker-Cloud-Logo-150x150.png)
+
+**iClicker Cloud is an online student response system that allows you to respond to polls and quizzes during a class session, using your computer or mobile device**\. When you answer questions, your instructor receives your responses instantly and may share the results and the correct answers during the class session or afterward\.
+
+|  |  |  |
+| --- | --- | --- |
+| **Access** | *Immediate* | You can [set up an iClicker student account](https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#set-up-account), then use the same account to [log in to iClicker](https://student.iclicker.com/#/login)\. |
+| **Bandwidth** | *Yes* | Low demand on internet connections\. |
+| **Privacy** | *Yes* | Complies with UBC’s privacy requirements\. |
+
+### What will I use it for?
+
+Your instructor may have you use iClicker Cloud for a variety of activities:
+
+-   Test your understanding or share your opinions at different points during a class session
+-   Participate in peer instruction, where you answer a question, discuss it in small groups, and answer again
+-   Record your attendance at a class session
+-   Study outside of class sessions
+
+This tool guide was last reviewed in November 2025 with version 7\.2\.0 of iClicker Cloud\.
+
+## What do I need to use iClicker Cloud?
+
+### A supported web browser
+
+iClicker runs in your web browser and supports Chrome, Edge, Firefox, or Safari\. You may find it more convenient to use the iClicker Student application that is available on mobile devices, especially if you are using your computer for other course activities\. For more information regarding compatible versions, please refer to the [iClicker Student app requirements](https://mhe.my.site.com/iclicker/s/article/What-are-the-system-requirements-for-using-the-iClicker-student-app)\.
+
+---
+
+### A UBC iClicker Cloud student account
+
+You will need to create an iClicker account that is associated with UBC, as outlined in the accordion section below\.
+
+#### Tips
+
+-   **The student version of iClicker Cloud is called iClicker Student on both the website and the mobile app**\. These two terms are interchangeable, and you may see your instructor use either one\.
+-   **If you encounter issues connecting to iClicker, you can try to troubleshoot them yourself using the [iClicker troubleshooting tips](https://mhe.my.site.com/iclicker/s/article/How-to-Troubleshoot-Your-Connection-to-the-iClicker-Student-App)\.** You can also reach out to your instructor or teaching assistants, as they may be able to provide real\-time assistance in helping you resolve issues\. If the iClicker issues are still not resolved, you may [contact us](https://lthub.ubc.ca/support/lt-hub/#contact-info) at the LT Hub\.
+
+## How do I use iClicker Cloud?
+
+You will need to set up an iClicker account to get started\. After setting up your account, you can join a live class session and participate in the iClicker activities that your instructor facilitates during lectures\.
+
+Click any accordion bar below to find instructions and tips for setting up and participating with iClicker Cloud\.
+
+Expand All
+
+[&gt; Set up an iClicker Cloud account](https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#set-up-account)
+
+### Set up an iClicker Cloud account
+
+Note that if you have already made an iClicker Cloud account for another course, you can use that same account to log in and [manually add another iClicker course to your account](https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#add-course)\.
+
+1.  If you have not already made an iClicker account for another course, go to the [iClicker Student account creation page](https://app.reef-education.com/#/account/create)\.
+2.  Type ""University of British Columbia"" into the ""Find Your Institution"" field, choose **University of British Columbia** from the search results, and click **Next**\.
+3.  Enter the rest of your information\.
+    -   For iClicker and Canvas to sync, your iClicker account email must match your default email in your Canvas account\. You can check and change which email you have listed as default in Canvas by following the [instructions under “Tips” section of the “Manage Canvas notifications” accordion](https://lthub.ubc.ca/guides/canvas-student-guide/#manage-notifications)\.
+    -   Make sure to enter your UBC student number into the ""Student ID"" field\. This number will link your Canvas account to your iClicker account, so please enter it accurately and only use it for one iClicker account\.
+4.  Once you are ready, agree to the **Privacy Notice / Terms of Use** and the **treatment of personal information**, then click **Create Account**\.
+    -   If you are not comfortable agreeing to these items with your regular email address, you can set up an anonymized email address to use instead\. Please note that your instructor may see this email address in the iClicker activity reports\.
+5.  You now have an account and are ready to add a course following the instructions in the accordion directly below\.
+
+#### Tips
+
+-   **You only need to complete these steps once**\. After you have created your UBC iClicker account the first time, you should use the same account to access any subsequent UBC courses that have iClicker activities\.
+
+[&gt; Add an iClicker Cloud course to your account](https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#add-course)
+
+### Add an iClicker Cloud course to your account
+
+Most instructors will sync iClicker with Canvas\. As long as you have added your UBC student number to your iClicker account, you will automatically be enrolled in your course\(s\) with no extra steps needed\.
+
+However, if you do not see your course in iClicker, your instructor may have set up your iClicker course to allow students to self\-enroll\. In this case, you can enroll yourself manually:
+
+1.  [Log in to iClicker](https://student.iclicker.com/) using your iClicker account email and password\.
+2.  Click the **plus sign** in the top\-right corner of the screen, choose **University of British Columbia** from the available options, and type in the name of the iClicker course that your instructor has provided\.
+3.  Click the **course** you would like to join, and click **Add this course**\.
+4.  You will now see and be able to access this course on your Courses page\.
+
+[&gt; Join a class session in iClicker Cloud](https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#join-class-session)
+
+### Join a class session in iClicker Cloud
+
+After you add a course to your account, you will join that course in iClicker each time there is a class session to attend\.
+
+1.  [Log in to iClicker](https://student.iclicker.com/#/login) using your iClicker account email and password\.
+    -   If you do not have an account, follow the [steps to set up an iClicker account](https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#set-up-account)\.
+2.  Click the **course name**\.
+3.  Click **Join** when it appears on your screen \(it may take a minute to show up\)\. Note that this button only displays once your instructor has manually started the class on their instructor iClicker account\. The option to join the course will not be available if you log in early\.
+4.  You will see a confirmation message, and your instructor will see from their iClicker instructor account that you have joined the class\.
+
+#### Tips
+
+-   **Joining a class session enables you to participate in the iClicker activities during class\.** These activities include answering polls or quizzes\.
+-   **The time when you join a class session is recorded and visible to your instructor\.** To ensure you receive full participation credit, it is best to join on time\.
+-   **Not all instructors track attendance with iClicker Cloud\.** You can ask your instructor if you are not sure\.
+
+[&gt; Participate in iClicker Cloud activities](https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#participate-in-activities)
+
+### Participate in iClicker Cloud activities
+
+When your instructor initiates an iClicker activity during the class session, you will see the options for responding to it in the iClicker interface\.
+
+-   For polls, you may see a screenshot of the question to answer alongside the response options\.
+-   For quizzes, you will only see the response options\.
+-   For both activity types, your instructor will share the questions with you in the live class, though the format will vary based on whether your class is in person, online, or hybrid\.
+
+Please note that some instructors may choose to show questions only for those students in attendance, so you may have to be present in class in real time \(whether it is in person or online\) to see the questions\. Instructors may also limit attendance\-taking only to those students whose devices are in the physical classroom\. You can ask if you are not sure whether these features will be used\.
+
+1.  Once you have [logged in to iClicker](https://student.iclicker.com/#/login) and joined the class session, wait for your instructor to initiate an activity\.
+2.  When an activity starts, you will see a question number and your options for responding on your screen:
+    -   For [polls](https://mhe.my.site.com/iclicker/s/article/How-to-Participate-in-a-Poll-with-the-iClicker-Student-App), you may be able to see a screenshot of the question to answer\. You will respond to a single question in one of several ways, depending on how your instructor has set it up: by choosing one or more multiple\-choice items, writing a short answer \(up to 140 characters\), typing a numeric or formula\-based answer, or clicking part of an image\.
+    -   For [quizzes](https://mhe.my.site.com/iclicker/s/article/How-to-Participate-in-a-Quiz-with-the-iClicker-Student-App), you will answer a set of questions by choosing a multiple\-choice item for each, then reviewing and submitting all your answers together\.
+3.  Follow the prompts on screen to submit each answer\. When completing a poll, you will see an “Answer Received” for each question\. For a quiz, you will see a ""Quiz Submitted"" once you have finished the set of questions and submitted your entire response\.
+4.  When an activity ends, your instructor may choose to share the correct poll response and/or class results\. Quiz results may also be available after the class session ends\. Viewing the iClicker poll and/or quiz results is dependent on whether or not your instructor chooses to share the results\. Check with your instructor if you are not sure\.
+
+#### Tips
+
+-   **You may change your answer as many times as you like, up until the point your instructor closes the answering period**\. Instructors cannot re\-open polls or quizzes, so make sure to review your answers before submitting your responses\.
+-   **If you see an anonymous icon for a question, your answer will not be tied to your identity**\. However, your response to an anonymous question may still count for participation points\.
+-   **Re\-join the session if you accidentally close or get bumped out of iClicker during a lecture \(e\.g\., you lose your internet connection\)**\. If you miss any iClicker activities during a class session, let your instructor know, as they may be willing to adjust your participation for that session\.
+-   **You can review iClicker polls outside of class to help you study, as every question asked is recorded as part of the course**\. Click the “Class History” tab when you first log in, and read about the available [iClicker features that can help you study](https://mhe.my.site.com/iclicker/s/article/How-to-Use-iClicker-s-Student-Study-Tools)\.
+-   **Make sure your iClicker work honestly reflects your learning and not anybody else's**\. Letting someone else answer your questions with your iClicker account counts as [academic misconduct](https://academicintegrity.ubc.ca/regulation-process/academic-misconduct/)\.
+
+## iClicker Cloud FAQ
+
+Find UBC\-specific answers to frequently asked questions by clicking any accordion bar below\.
+
+[&gt; What can I do if I cannot see my course in iClicker?](https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#course-access)
+
+If you do not see the course in your list of courses, try to [manually add an iClicker course to your account](https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#add-course)\.
+
+If you still cannot see your course:
+
+1.  Make sure your UBC student number has been added correctly to your iClicker account\.
+    -   To verify, [log in to iClicker](https://student.iclicker.com/#/login), click the **three lines** at the top\-left corner, and select **Profile**\.
+    -   Ensure that you entered your UBC student number—not your UBC CWL—in the ""Student ID"" field\.
+2.  If you have added your UBC student number to your iClicker account correctly, it is possible that you have multiple iClicker accounts with the same student number\. iClicker will not add duplicate student numbers to the same iClicker course\.
+    -   If you think this might be the case, [log in to iClicker](https://student.iclicker.com/#/login) using your duplicate account\(s\) and remove your UBC student number from the “Student ID” field\. Please ensure that your student number remains linked to the account you wish to continue using\.
+    -   Log in to the iClicker account you wish to continue using\. Your courses should now appear under Courses\.
+    -   If you still do not see your courses, please contact your instructor and have them re\-sync the course roster\.
+3.  Make sure that your default email in Canvas matches the email that you used to make an iClicker account\. This matching will ensure that the right iClicker account is added to your iClicker course\.
+    -   You can check and change which email you have listed in Canvas by following the [instructions under “Tips” section of the “Manage Canvas notifications” accordion](https://lthub.ubc.ca/guides/canvas-student-guide/#manage-notifications)\.
+4.  If you are still experiencing issues with seeing your course, please [contact us](https://lthub.ubc.ca/support/lt-hub/#contact-info) at the LT Hub for further assistance\.
+
+[&gt; What can I do if I cannot see my iClicker grades in Canvas?](https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#grade-access)
+
+If you have properly linked your iClicker account with Canvas \(i\.e\., by ensuring both your iClicker and Canvas emails match and your UBC student number is correctly entered in “Student ID”\), and you cannot see your grades in Canvas, it is possible that your instructor has not set up iClicker to sync grades with Canvas\. Not all instructors plan to release iClicker grades in Canvas\. Please ask your instructor or teaching assistants if you are not sure\.
+
+If your instructor has set up grade syncing between iClicker and Canvas and you are still having trouble seeing your grades, please [contact us](https://lthub.ubc.ca/support/lt-hub/#contact-info) at the LT Hub for assistance\.
+
+[&gt; What can I do if I have trouble connecting during a class session?](https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#connection-issues)
+
+You can try to troubleshoot some connection issues yourself using the [iClicker troubleshooting tips](https://mhe.my.site.com/iclicker/s/article/How-to-Troubleshoot-Your-Connection-to-the-iClicker-Student-App)\.
+
+You can also reach out to your instructors or teaching assistants, as they may be able to provide real\-time assistance in helping you resolve issues\. If not, they will at least know that you were trying to participate but could not connect during the class session\.
+
+## Where can I get more support with iClicker Cloud?
+
+### Technical support
+
+**If you have trouble with iClicker:**
+
+-   Contact the [UBC IT Service Centre Help Desk](https://it.ubc.ca/got-question-about-it-products-and-support#helpdesk):  
+    604 822 2008 or fill out the [UBC IT request form](https://ubc.service-now.com/selfservice?id=sc_cat_item_v2&amp;sys_id=cc7f5fb9874e0100bbee70406d434df9)\.
+-   Contact iClicker support directly for further assistance:  
+    Fill out the [iClicker support web form](https://mhe.my.site.com/iclicker/s/contactsupport)\.
+-   For time\-sensitive questions, reach out to your instructors or teaching assistants, as they may be able to provide real\-time assistance in helping you resolve issues\.
+
+---
+
+### Online learning support
+
+-   Visit UBC’s [Keep Learning site](http://keeplearning.ubc.ca/) and the Chapman Learning Common’s [student toolkits](https://learningcommons.ubc.ca/category/type/interactive/)\.
+-   Visit the [UBC Vancouver’s Centre for Accessibility page](https://students.ubc.ca/about-student-services/centre-for-accessibility) or the [UBC Okanagan’s Disability Resource Centre page](https://students.ok.ubc.ca/academic-success/disability-resources/) to learn more about available support for students with disabilities and ongoing medical conditions\.
+
+#### Learn more
+
+-   For more how\-to instructions, explore [iClicker’s help documentation for students](https://mhe.my.site.com/iclicker/s/iclicker-student)\.
+
+---
+
+[« See all tools](https://lthub.ubc.ca/guides/)
+
+#### Tell us about this guide
+
+[Embedded content: This iframe contains the logic required to handle Ajax powered Gravity Forms\.](https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/)",41d5dd125c72cc9eecab19f800aedc6c6f93f120b49044598a96c0bb664632ee,,undergraduate_and_shared,2025-12-05T23:32:52+00:00,2026-09-11T05:07:31.671Z,[],"[{""text"": ""iClicker Cloud logo"", ""url"": ""https://lthub.ubc.ca/2020/07/iClicker-Cloud-Logo-150x150.png""}, {""text"": ""set up an iClicker student account"", ""url"": ""https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#set-up-account""}, {""text"": ""log in to iClicker"", ""url"": ""https://student.iclicker.com/#/login""}, {""text"": ""iClicker Student app requirements"", ""url"": ""https://mhe.my.site.com/iclicker/s/article/What-are-the-system-requirements-for-using-the-iClicker-student-app""}, {""text"": ""iClicker troubleshooting tips"", ""url"": ""https://mhe.my.site.com/iclicker/s/article/How-to-Troubleshoot-Your-Connection-to-the-iClicker-Student-App""}, {""text"": ""contact us"", ""url"": ""https://lthub.ubc.ca/support/lt-hub/#contact-info""}, {""text"": ""> Set up an iClicker Cloud account"", ""url"": ""https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#set-up-account""}, {""text"": ""manually add another iClicker course to your account"", ""url"": ""https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#add-course""}, {""text"": ""iClicker Student account creation page"", ""url"": ""https://app.reef-education.com/#/account/create""}, {""text"": ""instructions under “Tips” section of the “Manage Canvas notifications” accordion"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/#manage-notifications""}, {""text"": ""> Add an iClicker Cloud course to your account"", ""url"": ""https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#add-course""}, {""text"": ""Log in to iClicker"", ""url"": ""https://student.iclicker.com/""}, {""text"": ""> Join a class session in iClicker Cloud"", ""url"": ""https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#join-class-session""}, {""text"": ""Log in to iClicker"", ""url"": ""https://student.iclicker.com/#/login""}, {""text"": ""steps to set up an iClicker account"", ""url"": ""https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#set-up-account""}, {""text"": ""> Participate in iClicker Cloud activities"", ""url"": ""https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#participate-in-activities""}, {""text"": ""logged in to iClicker"", ""url"": ""https://student.iclicker.com/#/login""}, {""text"": ""polls"", ""url"": ""https://mhe.my.site.com/iclicker/s/article/How-to-Participate-in-a-Poll-with-the-iClicker-Student-App""}, {""text"": ""quizzes"", ""url"": ""https://mhe.my.site.com/iclicker/s/article/How-to-Participate-in-a-Quiz-with-the-iClicker-Student-App""}, {""text"": ""iClicker features that can help you study"", ""url"": ""https://mhe.my.site.com/iclicker/s/article/How-to-Use-iClicker-s-Student-Study-Tools""}, {""text"": ""academic misconduct"", ""url"": ""https://academicintegrity.ubc.ca/regulation-process/academic-misconduct/""}, {""text"": ""> What can I do if I cannot see my course in iClicker?"", ""url"": ""https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#course-access""}, {""text"": ""manually add an iClicker course to your account"", ""url"": ""https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#add-course""}, {""text"": ""> What can I do if I cannot see my iClicker grades in Canvas?"", ""url"": ""https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#grade-access""}, {""text"": ""> What can I do if I have trouble connecting during a class session?"", ""url"": ""https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/#connection-issues""}, {""text"": ""UBC IT Service Centre Help Desk"", ""url"": ""https://it.ubc.ca/got-question-about-it-products-and-support#helpdesk""}, {""text"": ""UBC IT request form"", ""url"": ""https://ubc.service-now.com/selfservice?id=sc_cat_item_v2&sys_id=cc7f5fb9874e0100bbee70406d434df9""}, {""text"": ""iClicker support web form"", ""url"": ""https://mhe.my.site.com/iclicker/s/contactsupport""}, {""text"": ""Keep Learning site"", ""url"": ""http://keeplearning.ubc.ca/""}, {""text"": ""student toolkits"", ""url"": ""https://learningcommons.ubc.ca/category/type/interactive/""}, {""text"": ""UBC Vancouver’s Centre for Accessibility page"", ""url"": ""https://students.ubc.ca/about-student-services/centre-for-accessibility""}, {""text"": ""UBC Okanagan’s Disability Resource Centre page"", ""url"": ""https://students.ok.ubc.ca/academic-success/disability-resources/""}, {""text"": ""iClicker’s help documentation for students"", ""url"": ""https://mhe.my.site.com/iclicker/s/iclicker-student""}, {""text"": ""« See all tools"", ""url"": ""https://lthub.ubc.ca/guides/""}, {""text"": ""Embedded content: This iframe contains the logic required to handle Ajax powered Gravity Forms."", ""url"": ""https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/""}]","[""Removed executable markup, form controls, or event attributes."", ""Embedded content is linked rather than embedded; consult the source for its full content."", ""A headerless table receives an empty Markdown header; all source rows remain data rows.""]",prose/learning-technology/markdown/490cd36f90a7692ebf40bb764792c2d32d8806369e5d99e027f382be87f8886e.md

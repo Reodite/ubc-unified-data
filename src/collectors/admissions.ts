@@ -1,17 +1,16 @@
 /** Admissions: the undergraduate degree/program finder and its supporting pages.
  *
- * Source: you.ubc.ca. The program finder is a client-side app whose full dataset
- * is inlined into /programs/ as `var programsListData = { programs, taxonomies }`
- * (the finder moved to slug-keyed taxonomies and dropped the old per-dataset
- * `var programs = [...]` / `var degrees = {...}` literals and their WP term
- * ids), so we parse that literal rather than driving the search UI. Admission
- * requirement, cost and deadline content lives in the WP REST pages collection.
+ * Source: you.ubc.ca. The program finder inlines its full dataset into /programs/
+ * as `var programsListData = { programs, taxonomies }`, with slug-keyed taxonomies,
+ * so we parse that literal rather than driving the search UI. Separate dataset
+ * literals such as `var programs = [...]` and `var degrees = {...}` with WP term
+ * ids are also supported. Admission requirement, cost and deadline content lives
+ * in the WP REST pages collection.
  *
- * The requirements themselves are a separate exercise -- see `admissionreqs`.
- * What a given program demands of you depends on where you went to school, so
- * they are not on the program page at all: the page ships a dropdown of provinces
- * and countries and fetches the matching rules over AJAX. That module drives the
- * same endpoint and lands the answers as tables.
+ * `admissionreqs` collects curriculum-specific requirements. Province and country
+ * rules are fetched over AJAX for the program page's location dropdowns; the IB
+ * tab is rendered in the page HTML. That module collects both forms and writes
+ * the answers as tables.
  */
 
 import type { Http, Output } from "../base.ts";
@@ -33,11 +32,11 @@ export const TAXONOMIES = ["program-areas", "student-groups", "ubc-life-topics",
 // blobs. `finances` reshapes it properly; keep the original next to that.
 export const NESTED_VARS = new Set(["costEstimatorData"]);
 
-// The program finder used to inline one `var` per dataset with WP term ids;
-// you.ubc.ca now ships a single `programsListData` keyed by taxonomy slug.
+// The finder inlines programs and slug-keyed taxonomies in one object;
+// per-dataset literals with WP term ids are also supported.
 export const FINDER_VAR = "programsListData";
 
-// finder taxonomy key -> dataset stem it lands in, matching the old shape.
+// Finder taxonomy key -> output dataset stem.
 export const FINDER_TAXONOMIES: Readonly<Record<string, string>> = {
   campuses: "campuses",
   degree: "degrees",
@@ -45,8 +44,8 @@ export const FINDER_TAXONOMIES: Readonly<Record<string, string>> = {
   interests: "interests",
 };
 
-// Stable term id from a slug. The finder dropped WP's ids; the joins below
-// (`programs` -> `finances`/`admissionreqs`) only need the two sides to match.
+// Stable term id from a taxonomy slug. Both sides of the joins below
+// (`programs` -> `finances`/`admissionreqs`) must use the same slug mapping.
 export function termIdFor(slug: string): number {
   let hash = 2166136261;
   for (let i = 0; i < slug.length; i += 1) {
@@ -56,8 +55,8 @@ export function termIdFor(slug: string): number {
   return hash >>> 0;
 }
 
-/** Reshape the finder's `programsListData` into the old per-dataset shape, or
- *  null when the page still ships the pre-rename literals. */
+/** Reshape `programsListData` into program and taxonomy tables.
+ * Return null when the literal is missing or cannot be parsed. */
 export function programFinderDatasets(html: string): Record<string, Array<AnyJson>> | null {
   let raw: AnyJson;
   try {
@@ -104,7 +103,7 @@ export function programFinderDatasets(html: string): Record<string, Array<AnyJso
 }
 
 export function campusIds(campuses: Array<AnyJson>): Set<string> {
-  /** The campus term ids in scope (9 = Vancouver, 10 = Okanagan). */
+  /** Campus term ids in scope, selected by campus name rather than numeric id. */
   const ids = new Set<string>();
   for (const term of campuses) {
     if (
@@ -173,8 +172,8 @@ export const Admissions = register(
 
       const datasets: Record<string, Array<AnyJson>> = {};
 
-      // Current finder page ships one slug-keyed literal; the per-dataset
-      // literals below are the pre-rename fallback.
+      // Prefer the slug-keyed finder object; per-dataset literals below supply
+      // datasets that are absent from that object.
       const finder = programFinderDatasets(html);
       if (finder) {
         for (const [name, rows] of Object.entries(finder)) datasets[name] = rows;

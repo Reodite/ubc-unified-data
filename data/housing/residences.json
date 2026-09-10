@@ -1,0 +1,371 @@
+[
+  {
+    "id": "housing_residence:brock-commons",
+    "source_id": "housing_residence",
+    "source_url": "https://vancouver.housing.ubc.ca/residences/brock-commons/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Brock Commons",
+    "source_modified_at": "2026-02-23T13:52:22-08:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "brock-commons",
+    "beds": 1002,
+    "undergraduate_audience": true,
+    "front_desk_text": "Brock Commons Front Desk Brock Commons North 6177 Walter Gage Road Vancouver, B.C. V6T 1Z1 Tel: 604 822 2001 information@housing.ubc.ca",
+    "fee_urls": [
+      "https://vancouver.housing.ubc.ca/applications/fees-payments/brock-commons-tallwood-house-fees/"
+    ],
+    "fee_page_ids": [
+      "housing_page:8566"
+    ],
+    "room_type_ids": [
+      "housing_room:four-bedroom-suite",
+      "housing_room:studio-suite",
+      "housing_room:accessible-rooms-and-suites"
+    ],
+    "record_sha256": "6ab3e5d067df15d5525640c9fa2575b87dc2c2e52ebbab37c4c2c74a8985ad6a"
+  },
+  {
+    "id": "housing_residence:exchange",
+    "source_id": "housing_residence",
+    "source_url": "https://vancouver.housing.ubc.ca/residences/exchange/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Exchange",
+    "source_modified_at": "2025-04-25T17:58:42-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "exchange",
+    "beds": 650,
+    "undergraduate_audience": true,
+    "front_desk_text": "Exchange Front Desk Front Desk at tə šxʷhəleləm̓s tə k̓ʷaƛ̓kʷəʔaʔɬ 5955 Student Union Blvd. Vancouver, BC V6T 1K2 Tel: 604 822 6565 information@housing.ubc.ca",
+    "fee_urls": [
+      "https://vancouver.housing.ubc.ca/applications/fees-payments/exchange-fees/"
+    ],
+    "fee_page_ids": [
+      "housing_page:11293"
+    ],
+    "room_type_ids": [
+      "housing_room:one-bedroom-suite",
+      "housing_room:two-bedroom-suite",
+      "housing_room:four-bedroom-suite",
+      "housing_room:studio-suite",
+      "housing_room:nano",
+      "housing_room:townhouse",
+      "housing_room:accessible-rooms-and-suites"
+    ],
+    "record_sha256": "ae53eaac1cd63cce62a0e9fde4e0906f44747bfc34e4b6cee8654b6753a05d91"
+  },
+  {
+    "id": "housing_residence:fairview-crescent",
+    "source_id": "housing_residence",
+    "source_url": "https://vancouver.housing.ubc.ca/residences/fairview-crescent/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Fairview Crescent",
+    "source_modified_at": "2025-04-25T17:59:00-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "fairview-crescent",
+    "beds": 772,
+    "undergraduate_audience": true,
+    "front_desk_text": "Fairview Crescent Front Desk 2707 Tennis Crescent Vancouver, B.C. V6T 2C1 Tel: 604 822 3172 information@housing.ubc.ca",
+    "fee_urls": [
+      "https://vancouver.housing.ubc.ca/applications/fees-payments/fairview-crescent/"
+    ],
+    "fee_page_ids": [
+      "housing_page:1059"
+    ],
+    "room_type_ids": [
+      "housing_room:one-bedroom-suite",
+      "housing_room:four-bedroom-suite",
+      "housing_room:six-bedroom"
+    ],
+    "record_sha256": "3430faef0bd38933b36033f7e3818850d3ce74d3eb5af83e6c16d043e743889d"
+  },
+  {
+    "id": "housing_residence:fraser-hall",
+    "source_id": "housing_residence",
+    "source_url": "https://vancouver.housing.ubc.ca/residences/fraser-hall/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Fraser Hall",
+    "source_modified_at": "2026-05-06T16:12:45-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "fraser-hall",
+    "beds": 132,
+    "undergraduate_audience": true,
+    "front_desk_text": "Front Desk 2707 Tennis Crescent Vancouver, B.C. V6T 2C1 Tel: 604 822 3172 information@housing.ubc.ca",
+    "fee_urls": [
+      "https://vancouver.housing.ubc.ca/applications/fees-payments/fraser-hall/"
+    ],
+    "fee_page_ids": [
+      "housing_page:1062"
+    ],
+    "room_type_ids": [
+      "housing_room:six-bedroom"
+    ],
+    "record_sha256": "8ac02098c2c5e8db9b5aa3dfa0e51fde62da3a0fd263923d2a03fb332984ad41"
+  },
+  {
+    "id": "housing_residence:houses-of-ones-belonging-to-saltwater",
+    "source_id": "housing_residence",
+    "source_url": "https://vancouver.housing.ubc.ca/residences/houses-of-ones-belonging-to-saltwater/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "tə šxʷhəleləm̓s tə k̓ʷaƛ̓kʷəʔaʔɬ",
+    "source_modified_at": "2025-10-20T15:21:48-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "houses-of-ones-belonging-to-saltwater",
+    "beds": 744,
+    "undergraduate_audience": true,
+    "front_desk_text": "Front Desk at tə šxʷhəleləm̓s tə k̓ʷaƛ̓kʷəʔaʔɬ 5955 Student Union Blvd. Vancouver, BC V6T 1K2 Tel: 604 822 6565 information@housing.ubc.ca",
+    "fee_urls": [
+      "https://vancouver.housing.ubc.ca/applications/fees-payments/houses-of-ones-belonging-to-saltwater-fees/"
+    ],
+    "fee_page_ids": [
+      "housing_page:14266"
+    ],
+    "room_type_ids": [
+      "housing_room:four-bedroom-suite",
+      "housing_room:studio-suite",
+      "housing_room:accessible-rooms-and-suites"
+    ],
+    "record_sha256": "b384ac29e9b470975298c4b77e10f41462ff797f0c84292652e37a2a650ff3e8"
+  },
+  {
+    "id": "housing_residence:iona-house",
+    "source_id": "housing_residence",
+    "source_url": "https://vancouver.housing.ubc.ca/residences/iona-house/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Iona House",
+    "source_modified_at": "2026-07-02T15:41:21-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "iona-house",
+    "beds": 23,
+    "undergraduate_audience": true,
+    "front_desk_text": "Iona House Front Desk (Brock Commons North Front Desk) 6177 Walter Gage Road Vancouver, B.C. V6T 1Z1 Tel: 604 822 2001 information@housing.ubc.ca",
+    "fee_urls": [
+      "https://vancouver.housing.ubc.ca/applications/fees-payments/iona-house-fees/"
+    ],
+    "fee_page_ids": [
+      "housing_page:7588"
+    ],
+    "room_type_ids": [
+      "housing_room:one-bedroom-suite",
+      "housing_room:two-bedroom-suite",
+      "housing_room:studio-suite"
+    ],
+    "record_sha256": "9ffda5b8c9e371639dde8a0997400091a2f902b4cbbfdeb4d91b56ce96b413c0"
+  },
+  {
+    "id": "housing_residence:marine-drive-residence",
+    "source_id": "housing_residence",
+    "source_url": "https://vancouver.housing.ubc.ca/residences/marine-drive-residence/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Marine Drive",
+    "source_modified_at": "2025-12-01T16:32:40-08:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "marine-drive-residence",
+    "beds": 1603,
+    "undergraduate_audience": true,
+    "front_desk_text": "Marine Drive Front Desk 2205 Lower Mall Vancouver, B.C. V6T 1Z4 Tel: 604 827 3242 information@housing.ubc.ca",
+    "fee_urls": [
+      "https://vancouver.housing.ubc.ca/applications/fees-payments/marine-drive/"
+    ],
+    "fee_page_ids": [
+      "housing_page:1067"
+    ],
+    "room_type_ids": [
+      "housing_room:two-bedroom-suite",
+      "housing_room:three-bedroom-suite",
+      "housing_room:four-bedroom-suite",
+      "housing_room:studio-suite",
+      "housing_room:accessible-rooms-and-suites"
+    ],
+    "record_sha256": "219772cf048dbee82b74208a378e4585f751cbffd8e68f7474d79d85ceb62f28"
+  },
+  {
+    "id": "housing_residence:orchard-commons",
+    "source_id": "housing_residence",
+    "source_url": "https://vancouver.housing.ubc.ca/residences/orchard-commons/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Orchard Commons",
+    "source_modified_at": "2025-04-25T18:01:38-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "orchard-commons",
+    "beds": 1035,
+    "undergraduate_audience": true,
+    "front_desk_text": "Orchard Commons Front Desk 6363 Agronomy Road Vancouver, B.C. V6T 1Z4 Tel: 604 827 2778 information@housing.ubc.ca",
+    "fee_urls": [
+      "https://vancouver.housing.ubc.ca/applications/fees-payments/orchard-commons/"
+    ],
+    "fee_page_ids": [
+      "housing_page:7759"
+    ],
+    "room_type_ids": [
+      "housing_room:connected-single-room",
+      "housing_room:shared-room"
+    ],
+    "record_sha256": "84a07be0cf25e22ee435da128305a1f2f1d8d6858671b5124ebfdfccfeb9705d"
+  },
+  {
+    "id": "housing_residence:place-vanier",
+    "source_id": "housing_residence",
+    "source_url": "https://vancouver.housing.ubc.ca/residences/place-vanier/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Place Vanier",
+    "source_modified_at": "2025-12-01T16:28:20-08:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "place-vanier",
+    "beds": 1422,
+    "undergraduate_audience": true,
+    "front_desk_text": "Place Vanier Front Desk 1935 Lower Mall Vancouver, B.C. V6T 1X1 Tel: 604 822 2642 information@housing.ubc.ca",
+    "fee_urls": [
+      "https://vancouver.housing.ubc.ca/applications/fees-payments/place-vanier/"
+    ],
+    "fee_page_ids": [
+      "housing_page:1046"
+    ],
+    "room_type_ids": [
+      "housing_room:single-traditional-room",
+      "housing_room:shared-room"
+    ],
+    "record_sha256": "a820e295ee612a05ef94d09e781c46ff6e7d4f3ecf2e3cf5704ed4d2a33a1a4e"
+  },
+  {
+    "id": "housing_residence:ponderosa-commons",
+    "source_id": "housing_residence",
+    "source_url": "https://vancouver.housing.ubc.ca/residences/ponderosa-commons/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Ponderosa Commons",
+    "source_modified_at": "2025-12-01T16:29:58-08:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "ponderosa-commons",
+    "beds": 1156,
+    "undergraduate_audience": true,
+    "front_desk_text": "Ponderosa Commons Front Desk 2075 West Mall Vancouver, BC V6T 1Z2 Tel: 604 822 2708 information@housing.ubc.ca",
+    "fee_urls": [
+      "https://vancouver.housing.ubc.ca/applications/fees-payments/ponderosa-commons/"
+    ],
+    "fee_page_ids": [
+      "housing_page:1069"
+    ],
+    "room_type_ids": [
+      "housing_room:two-bedroom-suite",
+      "housing_room:four-bedroom-suite",
+      "housing_room:studio-suite",
+      "housing_room:accessible-rooms-and-suites"
+    ],
+    "record_sha256": "11cf99f7486555cd5f995e87b3c190a2ad1a50dfb7e5ae33aeb01d42491eca81"
+  },
+  {
+    "id": "housing_residence:ritsumeikan-ubc-house",
+    "source_id": "housing_residence",
+    "source_url": "https://vancouver.housing.ubc.ca/residences/ritsumeikan-ubc-house/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Ritsumeikan-UBC House",
+    "source_modified_at": "2025-04-25T18:05:06-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "ritsumeikan-ubc-house",
+    "beds": 205,
+    "undergraduate_audience": true,
+    "front_desk_text": "Ritsumeikan-UBC House/Orchard Commons Front Desk 6363 Agronomy Road Vancouver, B.C. V6T 1Z4 Tel: 604 827 2778 information@housing.ubc.ca",
+    "fee_urls": [
+      "https://vancouver.housing.ubc.ca/applications/fees-payments/ritsumeiken-ubc/"
+    ],
+    "fee_page_ids": [
+      "housing_page:1071"
+    ],
+    "room_type_ids": [
+      "housing_room:four-bedroom-suite"
+    ],
+    "record_sha256": "30ea4ffefcf8d0a5c68acd56592fe26b2d81fdaad634e01497168c809a685bd4"
+  },
+  {
+    "id": "housing_residence:thunderbird",
+    "source_id": "housing_residence",
+    "source_url": "https://vancouver.housing.ubc.ca/residences/thunderbird/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Thunderbird",
+    "source_modified_at": "2025-10-10T10:31:32-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "thunderbird",
+    "beds": 634,
+    "undergraduate_audience": true,
+    "front_desk_text": "Thunderbird Front Desk 6335 Thunderbird Crescent Vancouver, B.C. V6T 2G9 Tel: 604 822 1233 information@housing.ubc.ca",
+    "fee_urls": [
+      "https://vancouver.housing.ubc.ca/applications/fees-payments/thunderbird/"
+    ],
+    "fee_page_ids": [
+      "housing_page:1073"
+    ],
+    "room_type_ids": [
+      "housing_room:one-bedroom-suite",
+      "housing_room:two-bedroom-suite",
+      "housing_room:four-bedroom-suite",
+      "housing_room:studio-suite",
+      "housing_room:accessible-rooms-and-suites"
+    ],
+    "record_sha256": "8814cb21baa6478cb76cf8e3cd384deec6ca5bdb8eaa8bd2749df3d675fabb21"
+  },
+  {
+    "id": "housing_residence:totem-park",
+    "source_id": "housing_residence",
+    "source_url": "https://vancouver.housing.ubc.ca/residences/totem-park/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Totem Park",
+    "source_modified_at": "2025-04-25T18:07:48-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "totem-park",
+    "beds": 2088,
+    "undergraduate_audience": true,
+    "front_desk_text": "Totem Park Front Desk 2525 West Mall Vancouver, B.C. V6T 1W9 Tel: 604 822 3304 information@housing.ubc.ca",
+    "fee_urls": [
+      "https://vancouver.housing.ubc.ca/applications/fees-payments/totem-park"
+    ],
+    "fee_page_ids": [
+      "housing_page:1075"
+    ],
+    "room_type_ids": [
+      "housing_room:single-traditional-room",
+      "housing_room:connected-single-room",
+      "housing_room:shared-room",
+      "housing_room:accessible-rooms-and-suites"
+    ],
+    "record_sha256": "4d9355538ff0dce7b650627ada27769c4d2710934a99b20576d90457b81ae611"
+  },
+  {
+    "id": "housing_residence:walter-gage",
+    "source_id": "housing_residence",
+    "source_url": "https://vancouver.housing.ubc.ca/residences/walter-gage/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Walter Gage",
+    "source_modified_at": "2025-10-10T10:33:25-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "walter-gage",
+    "beds": 1334,
+    "undergraduate_audience": true,
+    "front_desk_text": "Walter Gage Front Desk 5959 Student Union Blvd. Vancouver, B.C. V6T 1K2 Tel: 604 822 1020 information@housing.ubc.ca",
+    "fee_urls": [
+      "https://vancouver.housing.ubc.ca/applications/fees-payments/walter-gage/"
+    ],
+    "fee_page_ids": [
+      "housing_page:1077"
+    ],
+    "room_type_ids": [
+      "housing_room:one-bedroom-suite",
+      "housing_room:six-bedroom",
+      "housing_room:studio-suite",
+      "housing_room:accessible-rooms-and-suites"
+    ],
+    "record_sha256": "9776abb3583a97757fa55da87ef3a9af035d3abbed4f8ce9db9c3b29216a1f81"
+  }
+]

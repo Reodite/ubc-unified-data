@@ -69,6 +69,12 @@ describe("plainText", () => {
     expect(plainText(null)).toBe("");
     expect(plainText(123)).toBe("");
   });
+  it("decodes entity references once, preserving escaped literal references", () => {
+    expect(plainText("&#0")).toBe("\uFFFD");
+    expect(plainText("&copy")).toBe("©");
+    expect(plainText("&amp;#0")).toBe("&#0");
+    expect(plainText("&amp;copy")).toBe("&copy");
+  });
 });
 
 describe("enrich", () => {
@@ -84,9 +90,9 @@ describe("enrich", () => {
   });
 });
 
-// Property P3: for any description built from a vector and label clauses,
-// re-parsing its own output reproduces the hours_vector and first clauses.
-describe("Property P3: course-text stable", () => {
+// Generated clauses are literal text, not HTML entity references.
+// Escape ampersands so source-HTML decoding preserves the intended clause.
+describe("generated course-text clauses", () => {
   const label = fc.record({
     name: fc.constantFrom("Prerequisite", "Pre-requisite", "Corequisite", "Equivalency"),
     body: fc.string({ minLength: 1, maxLength: 20 }).filter((s) => !/[<\s;.]/.test(s)),
@@ -102,10 +108,10 @@ describe("Property P3: course-text stable", () => {
     label,
   });
 
-  it("extracted vector and first label clauses re-appear", () => {
+  it("preserves generated vectors and literal label clauses", () => {
     fc.assert(
       fc.property(description, ({ lead, vector, label }) => {
-        const text = `${lead} [${vector}] ${label.name}: ${label.body}.`;
+        const text = `${lead} [${vector}] ${label.name}: ${label.body.replaceAll("&", "&amp;")}.`;
         const parsed = parseCourseText(text);
         expect(parsed.hours_vector).toBe(vector);
         const key = label.name.startsWith("Pre")
@@ -115,7 +121,11 @@ describe("Property P3: course-text stable", () => {
             : "equivalency";
         expect(parsed[key]).toBe(`${label.body}.`);
       }),
-      { numRuns: 200 },
+      {
+        numRuns: 200,
+        seed: 921659461,
+        examples: [[{ lead: "", vector: "0-0", label: { name: "Prerequisite", body: "&#0" } }]],
+      },
     );
   });
 });

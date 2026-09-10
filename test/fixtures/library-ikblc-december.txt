@@ -1,0 +1,91 @@
+<section class="hours">
+  <button class="prev-month" value="6">&lt; Prev</button>
+  <button class="next-month" value="6">Next &gt;</button>
+
+  <span class="monthheading">December 2026</span>
+
+  <section class="hours-table">
+    <h6><span class="hours-category regular"></span>Regular Hours (Sep 1-Dec 22)</h6>
+    <dl class="regular">
+      <dt>Mon-Sun</dt>
+      <dd>6am - 12am</dd>
+    </dl>
+    <h6><span class="hours-category exam"></span>Exam Hours (Dec 12-Dec 22)</h6>
+    <dl class="exam">
+      <dt>Mon-Sun</dt>
+      <dd>6am - 1am</dd>
+    </dl>
+    <h6><span class="hours-category holiday"></span>Holiday Hours</h6>
+    <dl class="holiday">
+      <dt>Dec 23-31</dt>
+      <dd>8am - 8pm</dd>
+    </dl>
+  </section>
+  <!-- closes hours table -->
+
+  <section class="calendar">
+    <table class="month">
+      <thead>
+        <tr>
+          <th>Su</th>
+          <th>Mo</th>
+          <th>Tu</th>
+          <th>We</th>
+          <th>Th</th>
+          <th>Fr</th>
+          <th>Sa</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td class="regular">1</td>
+          <td class="regular">2</td>
+          <td class="regular">3</td>
+          <td class="regular">4</td>
+          <td class="regular">5</td>
+        </tr>
+        <tr>
+          <td class="regular">6</td>
+          <td class="regular">7</td>
+          <td class="regular">8</td>
+          <td class="regular">9</td>
+          <td class="regular">10</td>
+          <td class="regular">11</td>
+          <td class="exam">12</td>
+        </tr>
+        <tr>
+          <td class="exam">13</td>
+          <td class="exam">14</td>
+          <td class="exam">15</td>
+          <td class="exam">16</td>
+          <td class="exam">17</td>
+          <td class="exam">18</td>
+          <td class="exam">19</td>
+        </tr>
+        <tr>
+          <td class="exam">20</td>
+          <td class="exam">21</td>
+          <td class="exam">22</td>
+          <td class="holiday">23</td>
+          <td class="holiday">24</td>
+          <td class="holiday">25</td>
+          <td class="holiday">26</td>
+        </tr>
+        <tr>
+          <td class="holiday">27</td>
+          <td class="holiday">28</td>
+          <td class="holiday">29</td>
+          <td class="holiday">30</td>
+          <td class="holiday">31</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <!-- closes calendar -->
+</section>
+<!-- closes hours -->

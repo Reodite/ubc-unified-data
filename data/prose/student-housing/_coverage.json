@@ -1,0 +1,43 @@
+{
+  "source": "student-housing",
+  "status": "complete_with_unavailable",
+  "mode": "wordpress",
+  "format": "markdown",
+  "inventory_urls": 695,
+  "articles": 216,
+  "dispositions": {
+    "collected": 216,
+    "excluded": 458,
+    "unavailable": 2,
+    "failed": 0,
+    "duplicate": 9,
+    "no_prose": 10
+  },
+  "discovery_errors": [],
+  "discovery_notes": [
+    "https://vancouver.housing.ubc.ca/wp-json/wp/v2/posts: 28 advertised records, 28 identified, 0 unexposed placeholders.",
+    "https://vancouver.housing.ubc.ca/wp-json/wp/v2/pages: 184 advertised records, 179 identified, 5 unexposed placeholders.",
+    "Inventory: https://vancouver.housing.ubc.ca/wp-json/wp/v2/posts?per_page=100&page=1&order=asc&orderby=id&_fields=id%2Clink%2Ctitle%2Ccontent%2Cparent%2Cslug%2Cstatus%2Ctype%2Cmodified_gmt%2Cdate_gmt%2Ccategories%2Ctags%2Cexcerpt",
+    "Inventory: https://vancouver.housing.ubc.ca/wp-json/wp/v2/pages?per_page=100&page=1&order=asc&orderby=id&_fields=id%2Clink%2Ctitle%2Ccontent%2Cparent%2Cslug%2Cstatus%2Ctype%2Cmodified_gmt%2Cdate_gmt%2Ccategories%2Ctags%2Cexcerpt",
+    "Inventory: https://vancouver.housing.ubc.ca/wp-json/wp/v2/pages?per_page=100&page=2&order=asc&orderby=id&_fields=id%2Clink%2Ctitle%2Ccontent%2Cparent%2Cslug%2Cstatus%2Ctype%2Cmodified_gmt%2Cdate_gmt%2Ccategories%2Ctags%2Cexcerpt",
+    "Non-article author/taxonomy sitemap excluded: https://vancouver.housing.ubc.ca/wp-sitemap-taxonomies-category-1.xml",
+    "Non-article author/taxonomy sitemap excluded: https://vancouver.housing.ubc.ca/wp-sitemap-taxonomies-post_tag-1.xml",
+    "Non-article author/taxonomy sitemap excluded: https://vancouver.housing.ubc.ca/wp-sitemap-taxonomies-event_location-1.xml",
+    "Non-article author/taxonomy sitemap excluded: https://vancouver.housing.ubc.ca/wp-sitemap-taxonomies-event_organizer-1.xml",
+    "Non-article author/taxonomy sitemap excluded: https://vancouver.housing.ubc.ca/wp-sitemap-taxonomies-event_type-1.xml",
+    "Non-article author/taxonomy sitemap excluded: https://vancouver.housing.ubc.ca/wp-sitemap-taxonomies-event_type_2-1.xml",
+    "Non-article author/taxonomy sitemap excluded: https://vancouver.housing.ubc.ca/wp-sitemap-users-1.xml",
+    "Inventory: https://vancouver.housing.ubc.ca/wp-sitemap.xml",
+    "Inventory: https://vancouver.housing.ubc.ca/wp-sitemap-posts-post-1.xml",
+    "Inventory: https://vancouver.housing.ubc.ca/wp-sitemap-posts-page-1.xml",
+    "Inventory: https://vancouver.housing.ubc.ca/wp-sitemap-posts-ajde_events-1.xml",
+    "Inventory: https://vancouver.housing.ubc.ca/wp-sitemap-posts-residences-1.xml",
+    "Inventory: https://vancouver.housing.ubc.ca/wp-sitemap-posts-rooms-1.xml"
+  ],
+  "definitions": {
+    "complete": "Declared source inventories and discovered in-scope links are exhausted; not a claim about unlinked pages or the entire UBC web.",
+    "unavailable": "Advertised URL is unavailable after bounded retries, or blocked by access/robots restrictions; the inventory records the reason.",
+    "no_prose": "No explanatory body remained in the retrieved representation; interactive-only material is not reconstructed.",
+    "mirror": "Coverage refers to the existing mirrored article inventory, with its original timestamps; missing bodies may be fetched from their public pages."
+  }
+}

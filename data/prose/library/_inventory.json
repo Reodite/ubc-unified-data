@@ -1,0 +1,2627 @@
+[
+  {
+    "url": "https://answers.library.ubc.ca/",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/access/",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/access/faq/214258",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/access/faq/214410",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/access/faq/215341",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/access/faq/215342",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/access/faq/215343",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/access/faq/215489",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/access/faq/215500",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/access/faq/215502",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/access/faq/215503",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/access/faq/215504",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/access/faq/215505",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/access/faq/215507",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/access/faq/215984",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/access/faq/216074",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/adminoffice/",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/adminoffice/faq/215783",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/214408",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:572dd449793d4b96e80017dc",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/214408"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/215544",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:c36a407d7e632fe21d5efe0b",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/215544"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/215545",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:d8053bdcb8398c11ae81d028",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/215545"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/215672",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:941679f8f99eb159f186e145",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/215672"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/215678",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:f58190a8bd6a56d94b321c8f",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/215678"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/215679",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:c0a8fa845a118458d66f9cb0",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/215679"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/215687",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:a51e3bbf3f3c4c187dad005d",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/215687"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/215690",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:43d89fc81bfb487cc1f49ed4",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/215690"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/215693",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:469ad35c5a6867542ff49da9",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/215693"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/215694",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:3e0fc17955277d53194838a6",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/215694"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216141",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:146152fe62ca1d60158e8f8f",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216141"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216164",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:765152390249333154d5d1d1",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216164"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216165",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:566116eacba0fe10c72a8f4c",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216165"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216166",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:e9641c6a33af1463480518ed",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216166"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216167",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:14dbfe11d17890240ea41e3e",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216167"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216168",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:930b9b7560ab0022a4f68d5c",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216168"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216169",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:c5be6c9dabae1af90ec5d3b1",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216169"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216170",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:14271c16db78708970e80cf9",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216170"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216171",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:5eb3b3cf260dbbffd1a6b0c0",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216171"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216172",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:ed0f67849ed2d88947c4902b",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216172"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216173",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:7343887dc02f4304c2d0d8e8",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216173"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216174",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:2dc1737d63e3614c34680195",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216174"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216175",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:74be2db2da3d5aad3a9b1044",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216175"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216176",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:16e5968d6d9f6bd89db7cd9c",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216176"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216177",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:4ae255f62af07419496b268c",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216177"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216178",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:e83bf407aad9ad72a5a1b094",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216178"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216180",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:ab0948d844ec22ac08e18930",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216180"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216224",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:b15da1dfa51561eb101c2d6b",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216224"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216228",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:424cda0fedee7018feac3b32",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216228"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216229",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:8555a4306505624143ddeb60",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216229"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216231",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:608b2b285576390c9c0692b0",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216231"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216245",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:c6536f84ebcba13d750a1be0",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216245"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216333",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:c7bde5e9c20887e1f3d4869a",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216333"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216334",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:c486aa0d7e5274a80e77ccbc",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216334"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216336",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:9452fd5c8d51372c5201914c",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216336"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216339",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:a7f2900134b3815aeac634fb",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216339"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216340",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:51e7041f5f819ec7275d6af7",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216340"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216341",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:d4261510f6bd5aa078228a71",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216341"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216342",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:d6df0056064659ad4469a81a",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216342"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216345",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:59fc478bdbb31c98394e85c8",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216345"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216356",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:1f08eac1275bdb4f58489c3d",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216356"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216357",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:8fc3f8ba8b6c111679c6868f",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216357"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216358",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:988161054e7ec3be8c032b76",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216358"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216665",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:3d65243f0915411087a76189",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216665"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askus/faq/216673",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:library:ffe99ac0b61f793b94dd9aad",
+    "resolved_url": "https://answers.library.ubc.ca/askus/faq/216673"
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askussupportteam/",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askussupportteam/faq/216145",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askussupportteam/faq/216243",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/askussupportteam/faq/216246",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/collections/",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/collections/faq/214423",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/collections/faq/215469",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/collections/faq/215683",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/collections/faq/216323",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/comm/",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dm/",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dm/faq/215496",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dm/faq/215547",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dm/faq/215811",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dm/faq/215814",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dm/faq/215887",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dm/faq/215888",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dm/faq/216020",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216078",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216080",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216081",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216082",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216083",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216084",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216087",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216088",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216089",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216090",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216091",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216092",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216139",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216140",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216143",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216144",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216183",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216188",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216217",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216249",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216252",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216255",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216268",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216271",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216273",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216277",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216326",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216347",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216348",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216349",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216385",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216386",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216411",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216412",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216444",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216464",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216472",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216475",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216476",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216551",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216628",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216758",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216786",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/dmteam/faq/216839",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/facilities/",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/facilities/faq/214912",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/facilities/faq/214913",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/facilities/faq/214926",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/facilities/faq/215779",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/hr/",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/hr/faq/214429",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/hr/faq/214430",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215403",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215404",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215411",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215412",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215554",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215555",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215556",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215557",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215558",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215561",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215562",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215563",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215564",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215565",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215566",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215567",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215576",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215578",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215581",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215582",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215583",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215584",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215585",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215586",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215587",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215619",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215620",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215621",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215622",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215623",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215634",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215660",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215662",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215663",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215673",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215675",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215721",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215837",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215879",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215880",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215881",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215882",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215883",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215885",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215886",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215897",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215921",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215987",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/215988",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/216190",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/216218",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/216270",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/216359",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/216408",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/216409",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/216410",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/216413",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/216414",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/216734",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/libdata/faq/216927",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/215955",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216186",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216187",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216191",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216192",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216193",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216194",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216196",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216199",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216200",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216202",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216203",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216204",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216205",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216206",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216207",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216208",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216209",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216210",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216211",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216212",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216213",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216214",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216215",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/lmp/faq/216977",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/okan/",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/okan/faq/215780",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/215402",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/215468",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/215540",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/215715",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/215823",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/215891",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/215961",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/215981",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/216001",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/216014",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/216015",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/216016",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/216023",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/216059",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/216071",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/216072",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/216075",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/216346",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/216471",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/216501",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/216535",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/216580",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/tech/faq/216621",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/testing/",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/testing/faq/216155",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/testing/faq/216156",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/testing/faq/216157",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/testing/faq/216158",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/testing/faq/216159",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/testing/faq/216160",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/testing/faq/216161",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/testing/faq/216162",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  },
+  {
+    "url": "https://answers.library.ubc.ca/testing/faq/216163",
+    "discovered_by": [
+      "https://answers.library.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Outside the public Ask Us FAQ article collection.",
+    "article_id": null
+  }
+]

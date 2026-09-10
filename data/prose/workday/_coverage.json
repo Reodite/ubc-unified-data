@@ -1,0 +1,31 @@
+{
+  "source": "workday",
+  "status": "complete",
+  "mode": "wordpress",
+  "format": "markdown",
+  "inventory_urls": 60,
+  "articles": 60,
+  "dispositions": {
+    "collected": 60,
+    "excluded": 0,
+    "unavailable": 0,
+    "failed": 0,
+    "duplicate": 0,
+    "no_prose": 0
+  },
+  "discovery_errors": [],
+  "discovery_notes": [
+    "https://workday.students.ubc.ca/wp-json/wp/v2/posts: 0 advertised records, 0 identified, 0 unexposed placeholders.",
+    "https://workday.students.ubc.ca/wp-json/wp/v2/pages: 60 advertised records, 60 identified, 0 unexposed placeholders.",
+    "Inventory: https://workday.students.ubc.ca/wp-json/wp/v2/posts?per_page=100&page=1&order=asc&orderby=id&_fields=id%2Clink%2Ctitle%2Ccontent%2Cparent%2Cslug%2Cstatus%2Ctype%2Cmodified_gmt%2Cdate_gmt%2Ccategories%2Ctags%2Cexcerpt",
+    "Inventory: https://workday.students.ubc.ca/wp-json/wp/v2/pages?per_page=100&page=1&order=asc&orderby=id&_fields=id%2Clink%2Ctitle%2Ccontent%2Cparent%2Cslug%2Cstatus%2Ctype%2Cmodified_gmt%2Cdate_gmt%2Ccategories%2Ctags%2Cexcerpt",
+    "Inventory: https://workday.students.ubc.ca/wp-sitemap.xml",
+    "Inventory: https://workday.students.ubc.ca/page-sitemap.xml"
+  ],
+  "definitions": {
+    "complete": "Declared source inventories and discovered in-scope links are exhausted; not a claim about unlinked pages or the entire UBC web.",
+    "unavailable": "Advertised URL is unavailable after bounded retries, or blocked by access/robots restrictions; the inventory records the reason.",
+    "no_prose": "No explanatory body remained in the retrieved representation; interactive-only material is not reconstructed.",
+    "mirror": "Coverage refers to the existing mirrored article inventory, with its original timestamps; missing bodies may be fetched from their public pages."
+  }
+}

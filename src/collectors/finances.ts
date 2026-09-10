@@ -560,10 +560,10 @@ export const Finances = register(
         living.push(...livingRows(campus as string, (payload["expenses"] ?? {}) as AnyJson));
       }
 
-      // The page ships both campuses; the estimates above are already filtered,
-      // so the programs attached to them have to be filtered the same way. The
-      // program literals moved into `programsListData`; fall back to the old
-      // `var programs` shape if the page ever predates that rename.
+      // The page ships both campuses; filter programs to the same campus scope
+      // as their estimates. Read program, campus and degree datasets from
+      // `programsListData`, with individual `var` literals as the fallback for
+      // pages that publish each dataset separately.
       const finder = programFinderDatasets(html);
       const programsLiteral = finder?.["programs"];
       const campusesLiteral = finder?.["campuses"];

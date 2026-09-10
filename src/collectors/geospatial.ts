@@ -5,16 +5,12 @@
  * operational geometry for both campuses. Files are mirrored verbatim so the
  * GeoJSON stays valid and the accompanying field-definition CSVs come along.
  *
- * One correction is applied on the way through. Five CSVs under
- * `ubcv/locations/csv/` label their coordinate columns the wrong way round: `LAT`
- * holds the longitude and `LONG` holds the latitude. Mirroring that verbatim ships
- * coordinates that put UBC in the Southern Ocean for anyone who trusts the header,
- * so `fixSwappedCoordinates` swaps the two names -- see the note on that
- * function for why only the header line is touched, and why the test is a property
- * of the numbers rather than a list of filenames. Every file corrected is named in
- * `_source.json` under `corrections`, so the divergence from upstream is on the
- * record rather than silent. The GeoJSON alongside these CSVs is already correct
- * and is never touched.
+ * Some CSVs under `ubcv/locations/csv/` label their coordinate columns the
+ * wrong way round: `LAT` holds longitude and `LONG` holds latitude.
+ * `fixSwappedCoordinates` identifies these from sampled values rather than
+ * filenames and swaps only the header names, preserving every data byte.
+ * `_source.json` names each corrected file under `corrections`, so the
+ * divergence from upstream is explicit. The GeoJSON stays untouched.
  */
 
 import type { Http, Output } from "../base.ts";
@@ -24,12 +20,12 @@ export const ORG = "UBCGeodata";
 
 // Repository -> where its files are mounted in `data/geospatial/`.
 //
-// `ubc-geospatial-opendata` is UBC's consolidated publication and already uses
+// `ubc-geospatial-opendata` is UBC's consolidated publication and uses
 // the `<campus>/<theme>/<format>/` layout this directory mirrors, so it mounts at
-// the root. `ubcv-parking` is a separate, still-maintained repo that predates
-// that consolidation and is flat (`csv/`, `geojson/`, `metadata/`), so it is
-// mounted as a theme to keep one layout across the whole directory -- which is
-// also what lets `_index` keep deriving campus and theme from the path.
+// the root. The separate `ubcv-parking` repository has a flat layout
+// (`csv/`, `geojson/`, `metadata/`), so it mounts under `ubcv/parking/` to keep
+// the campus/theme structure consistent across this directory. `_index` derives
+// campus and theme from these paths.
 export const REPOS: Record<string, string> = {
   "ubc-geospatial-opendata": "",
   "ubcv-parking": "ubcv/parking",
@@ -48,7 +44,7 @@ function medianOf(rows: string[][], index: number): number | null {
   for (const row of rows) {
     if (index < row.length) {
       const raw = row[index];
-      // Number("") is 0; a blank cell is no coordinate, matching float("").
+      // Number("") is 0; exclude blank cells so they do not count as coordinates.
       const value = Number(raw);
       if (raw !== undefined && raw.trim() !== "" && !Number.isNaN(value)) values.push(value);
     }
@@ -68,8 +64,8 @@ function stripBom(bytes: Uint8Array): Uint8Array {
 
 /** Parse CSV text into rows: `,` delimiter, `""` escapes, quoting that may
  * span newlines, and `\r\n` treatable as a line break. Only used to read the
- * header and a
- * coordinate sample, so correctness on weird rows matters more than speed. */
+ * header and a coordinate sample, so correctness on unusual rows matters
+ * more than speed. */
 function csvRead(text: string): string[][] {
   const rows: string[][] = [];
   let row: string[] = [];
@@ -153,7 +149,8 @@ export function fixSwappedCoordinates(path: string, content: Uint8Array): [Uint8
   return [new TextEncoder().encode(newHeader + rest), true];
 }
 
-/** Header-line write, matching `csv.writer(f, lineterminator="")`. */
+/** Write a minimally quoted CSV header with doubled embedded quotes and no
+ * line terminator; quote a lone empty cell when `singleColumn` is true. */
 function csvField(cells: string[], singleColumn = false): string {
   return cells
     .map((cell) => {

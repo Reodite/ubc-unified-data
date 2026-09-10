@@ -1,0 +1,1537 @@
+[
+  {
+    "url": "https://you.ubc.ca/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-07-30T23:57:40",
+    "status": "collected",
+    "article_id": "prose:admissions:8",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/academic-essentials/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-07-21T17:00:41",
+    "status": "collected",
+    "article_id": "prose:admissions:563642",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/admitted-welcome/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-04-30T17:01:21",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/ambassador/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-01-08T17:41:28",
+    "status": "collected",
+    "article_id": "prose:admissions:561419",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/appliedscience/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-03T02:35:37",
+    "status": "collected",
+    "article_id": "prose:admissions:569905",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/apply/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-08-07T19:07:26",
+    "status": "collected",
+    "article_id": "prose:admissions:577148",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-08-07T19:12:08",
+    "status": "collected",
+    "article_id": "prose:admissions:76",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/admitted/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-05-19T21:27:22",
+    "status": "collected",
+    "article_id": "prose:admissions:561909",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/admitted/deferring-admission/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-06-16T17:02:58",
+    "status": "collected",
+    "article_id": "prose:admissions:1193",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/admitted/degree-planning/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-05-12T19:23:26",
+    "status": "collected",
+    "article_id": "prose:admissions:561932",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/admitted/explore-academics-ok/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-02-26T18:26:54",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/admitted/explore-academics/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-02-26T18:47:50",
+    "status": "collected",
+    "article_id": "prose:admissions:561927",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/admitted/find-housing-ok/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-03-06T00:05:53",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/admitted/find-housing/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-03-06T00:02:44",
+    "status": "collected",
+    "article_id": "prose:admissions:561923",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/admitted/get-ready-ok/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-02T16:21:59",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/admitted/get-ready/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-02-03T20:00:26",
+    "status": "collected",
+    "article_id": "prose:admissions:561936",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/admitted/health-wellness/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-08-25T17:40:48",
+    "status": "collected",
+    "article_id": "prose:admissions:561925",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/admitted/keep-offer/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-10-16T20:35:23",
+    "status": "collected",
+    "article_id": "prose:admissions:552534",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/admitted/register/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-06-09T19:03:01",
+    "status": "collected",
+    "article_id": "prose:admissions:561934",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/admitted/study-permit/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-05-05T22:03:35",
+    "status": "collected",
+    "article_id": "prose:admissions:561917",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/admitted/study-permit/study-permit-concierge/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-03-12T17:05:25",
+    "status": "collected",
+    "article_id": "prose:admissions:576755",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/admitted/your-finances/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-02-25T23:55:58",
+    "status": "collected",
+    "article_id": "prose:admissions:561919",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/admitted/your-offer/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-05-05T23:27:36",
+    "status": "collected",
+    "article_id": "prose:admissions:561914",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/application-evaluation/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-02T21:04:46",
+    "status": "collected",
+    "article_id": "prose:admissions:559439",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/applied/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-05-08T18:21:04",
+    "status": "collected",
+    "article_id": "prose:admissions:559436",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/applied/admission-appeals/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-03T01:55:53",
+    "status": "collected",
+    "article_id": "prose:admissions:559448",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/applied/admissions-decisions/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-03-12T23:12:14",
+    "status": "collected",
+    "article_id": "prose:admissions:577153",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/applied/change-degree/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-01-29T23:08:02",
+    "status": "collected",
+    "article_id": "prose:admissions:576723",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/applied/first-year-credit-ok/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-07-23T23:23:11",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/applied/first-year-credit/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-07-23T23:50:06",
+    "status": "collected",
+    "article_id": "prose:admissions:559443",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/applied/first-year-study-options/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-05-12T22:26:19",
+    "status": "collected",
+    "article_id": "prose:admissions:561691",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/applied/submit-documents/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-07-20T23:25:44",
+    "status": "collected",
+    "article_id": "prose:admissions:559441",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/dates-deadlines/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-06-09T23:48:07",
+    "status": "collected",
+    "article_id": "prose:admissions:559451",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/how-to-apply/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-10-01T20:45:17",
+    "status": "collected",
+    "article_id": "prose:admissions:559420",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/how-to-apply/application/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-01-29T19:10:54",
+    "status": "collected",
+    "article_id": "prose:admissions:559429",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/how-to-apply/choosing-a-university/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-10-21T19:01:44",
+    "status": "collected",
+    "article_id": "prose:admissions:575818",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/how-to-apply/course-planning/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-05-08T18:50:42",
+    "status": "collected",
+    "article_id": "prose:admissions:559423",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/how-to-apply/degrees-programs/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-10-09T22:36:03",
+    "status": "collected",
+    "article_id": "prose:admissions:559426",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/how-to-apply/disability/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-10-01T17:18:45",
+    "status": "collected",
+    "article_id": "prose:admissions:559433",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/how-to-apply/personal-profile/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-12-12T00:32:23",
+    "status": "collected",
+    "article_id": "prose:admissions:559431",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/how-to-apply/working-with-an-education-agent/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-04-22T17:59:18",
+    "status": "collected",
+    "article_id": "prose:admissions:569365",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/indigenous-admissions/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-08-07T19:24:58",
+    "status": "collected",
+    "article_id": "prose:admissions:569344",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/indigenous-admissions/indigenous-transfer-partnership/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-05-01T21:10:06",
+    "status": "collected",
+    "article_id": "prose:admissions:553763",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/requirements/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-08-07T19:11:09",
+    "status": "collected",
+    "article_id": "prose:admissions:559291",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/requirements/advanced-placement/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-08-07T19:19:54",
+    "status": "collected",
+    "article_id": "prose:admissions:559390",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/requirements/canadian-high-schools-ok/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-24T19:22:25",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/requirements/canadian-high-schools/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-08-07T19:13:05",
+    "status": "collected",
+    "article_id": "prose:admissions:559313",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/requirements/english-language-competency-ok/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-01-22T17:53:17",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/requirements/english-language-competency/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-08-07T19:22:57",
+    "status": "collected",
+    "article_id": "prose:admissions:559407",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/requirements/english-language-competency/conditional-admission-program/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-08-07T19:23:53",
+    "status": "collected",
+    "article_id": "prose:admissions:559416",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/requirements/english-language-competency/development-programs/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-04-28T17:41:25",
+    "status": "collected",
+    "article_id": "prose:admissions:559413",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/requirements/english-language-competency/elas-countries/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-05-01T21:47:14",
+    "status": "collected",
+    "article_id": "prose:admissions:438432",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/requirements/international-baccalaureate-ok/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-24T18:48:35",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/requirements/international-baccalaureate/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-08-07T19:18:51",
+    "status": "collected",
+    "article_id": "prose:admissions:559382",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/requirements/international-high-schools-ok/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-24T18:47:43",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/requirements/international-high-schools/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-08-07T19:13:57",
+    "status": "collected",
+    "article_id": "prose:admissions:559311",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/requirements/mature-students/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-08-07T19:21:57",
+    "status": "collected",
+    "article_id": "prose:admissions:559404",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/applying-ubc/requirements/university-college-transfer/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-08-07T19:20:52",
+    "status": "collected",
+    "article_id": "prose:admissions:559395",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/arts-okanagan/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-11-13T16:22:53",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/arts-vancouver/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-11-03T18:14:44",
+    "status": "collected",
+    "article_id": "prose:admissions:576352",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/big-question/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-07-21T20:18:13",
+    "status": "collected",
+    "article_id": "prose:admissions:577083",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/canadian/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-05-14T21:47:43",
+    "status": "collected",
+    "article_id": "prose:admissions:576246",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/commerce-okanagan/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-10-15T18:21:29",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/commerce/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-11-13T16:22:11",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/connectubc/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-03T01:27:55",
+    "status": "collected",
+    "article_id": "prose:admissions:570095",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/contact-us/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-06-22T20:09:05",
+    "status": "collected",
+    "article_id": "prose:admissions:568788",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/counsellors/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-05-13T20:57:53",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "School counsellor/representative-only section."
+  },
+  {
+    "url": "https://you.ubc.ca/counsellors/counsellor-updates/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-04-22T18:21:20",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "School counsellor/representative-only section."
+  },
+  {
+    "url": "https://you.ubc.ca/counsellors/events-for-canadian-counsellors/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-08-10T21:07:38",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "School counsellor/representative-only section."
+  },
+  {
+    "url": "https://you.ubc.ca/counsellors/ubc-degrees/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-01-24T00:16:14",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "School counsellor/representative-only section."
+  },
+  {
+    "url": "https://you.ubc.ca/destination-ubc/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-01-15T22:00:29",
+    "status": "collected",
+    "article_id": "prose:admissions:562552",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/destination-ubc/getting-to-ubc-okanagan/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-01T19:48:56",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/destination-ubc/getting-to-ubc-vancouver/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-01T19:48:32",
+    "status": "collected",
+    "article_id": "prose:admissions:569713",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/destination-ubc/meals-and-what-to-pack/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-01T19:48:04",
+    "status": "collected",
+    "article_id": "prose:admissions:573278",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/discoverubco/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-09-24T18:15:08",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/engineering/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-03T01:26:46",
+    "status": "collected",
+    "article_id": "prose:admissions:573282",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/expired-link/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-02-23T20:28:03",
+    "status": "collected",
+    "article_id": "prose:admissions:577041",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-06-09T23:55:58",
+    "status": "collected",
+    "article_id": "prose:admissions:429",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/cost/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-07-10T17:19:43",
+    "status": "collected",
+    "article_id": "prose:admissions:431",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/financial-schedule/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-07-07T18:30:58",
+    "status": "collected",
+    "article_id": "prose:admissions:259921",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/loans-bursaries/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2013-06-26T18:40:28",
+    "status": "collected",
+    "article_id": "prose:admissions:465",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/loans-bursaries/awards-students-disabilities/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2013-06-26T18:40:28",
+    "status": "collected",
+    "article_id": "prose:admissions:475",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/loans-bursaries/bursaries/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2013-06-26T18:40:28",
+    "status": "collected",
+    "article_id": "prose:admissions:467",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/loans-bursaries/funding-for-veterans/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-02T21:10:29",
+    "status": "collected",
+    "article_id": "prose:admissions:555513",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/loans-bursaries/loans-canadian-us-students/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2013-06-26T18:40:28",
+    "status": "collected",
+    "article_id": "prose:admissions:471",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/loans-bursaries/youth-in-care-funding/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-02T21:10:28",
+    "status": "collected",
+    "article_id": "prose:admissions:149353",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/scholarships-awards-canadian-students/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-06-09T18:57:54",
+    "status": "collected",
+    "article_id": "prose:admissions:439",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/scholarships-awards-canadian-students/beyond-tomorrow/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-12-02T00:17:56",
+    "status": "collected",
+    "article_id": "prose:admissions:566200",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/scholarships-awards-canadian-students/entrance-award/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-12-02T00:19:09",
+    "status": "collected",
+    "article_id": "prose:admissions:556756",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/scholarships-awards-canadian-students/indigenous-students/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-05-11T17:31:25",
+    "status": "collected",
+    "article_id": "prose:admissions:479",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/scholarships-awards-canadian-students/loran-awards/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-02T21:10:28",
+    "status": "collected",
+    "article_id": "prose:admissions:556743",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/scholarships-awards-canadian-students/presidential-scholars/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-04-28T17:55:18",
+    "status": "collected",
+    "article_id": "prose:admissions:441",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/scholarships-awards-canadian-students/schulich-leader/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-01-12T18:06:01",
+    "status": "collected",
+    "article_id": "prose:admissions:445",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-07-30T23:38:00",
+    "status": "collected",
+    "article_id": "prose:admissions:549378",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-07-30T23:38:50",
+    "status": "collected",
+    "article_id": "prose:admissions:554695",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/financial-planning/tuition-fees/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-10T20:53:04",
+    "status": "collected",
+    "article_id": "prose:admissions:561183",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/iframe-form/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-07-10T16:13:57",
+    "status": "collected",
+    "article_id": "prose:admissions:577285",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/indigenous-events/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-10-03T17:10:31",
+    "status": "collected",
+    "article_id": "prose:admissions:565513",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/indigenous/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-05-05T17:58:33",
+    "status": "collected",
+    "article_id": "prose:admissions:547800",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/info-sessions/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-03T02:44:38",
+    "status": "collected",
+    "article_id": "prose:admissions:570260",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/international/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-03-23T17:19:04",
+    "status": "collected",
+    "article_id": "prose:admissions:576235",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/itsyours/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-08-10T21:51:56",
+    "status": "collected",
+    "article_id": "prose:admissions:566762",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/jump-start-vancouver/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-07-13T16:36:10",
+    "status": "collected",
+    "article_id": "prose:admissions:562854",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/jump-start-vancouver/jump-start-vancouvers-frequently-asked-questions/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-01-27T22:30:58",
+    "status": "collected",
+    "article_id": "prose:admissions:573279",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/landfoodsystems/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-11-06T19:23:28",
+    "status": "unavailable",
+    "article_id": null,
+    "reason": "ProseFetchError: HTTP 404: https://you.ubc.ca/landfoodsystems/",
+    "http_status": 404
+  },
+  {
+    "url": "https://you.ubc.ca/naturalresources/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-10-28T22:37:36",
+    "status": "collected",
+    "article_id": "prose:admissions:573283",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/okanagan-campus-tour-promotion-2025/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-12-01T19:40:43",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/plan-for-ubc/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-06-18T17:08:08",
+    "status": "collected",
+    "article_id": "prose:admissions:575054",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/planforubcquiz/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-08-08T16:48:15",
+    "status": "collected",
+    "article_id": "prose:admissions:575117",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/privacy/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2013-07-31T01:27:37",
+    "status": "collected",
+    "article_id": "prose:admissions:37108",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/programs/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-08-10T19:24:07",
+    "status": "collected",
+    "article_id": "prose:admissions:531",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/science/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-06-16T23:05:13",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/shapeyourfuture/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-12-11T18:08:58",
+    "status": "unavailable",
+    "article_id": null,
+    "reason": "ProseFetchError: HTTP 404: https://you.ubc.ca/shapeyourfuture/",
+    "http_status": 404
+  },
+  {
+    "url": "https://you.ubc.ca/sponsors/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-09-23T18:47:54",
+    "status": "collected",
+    "article_id": "prose:admissions:569724",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/statement-of-activities/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-10-16T19:20:45",
+    "status": "collected",
+    "article_id": "prose:admissions:576125",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/sustainability-2/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-10-15T19:38:08",
+    "status": "unavailable",
+    "article_id": null,
+    "reason": "ProseFetchError: HTTP 500: https://you.ubc.ca/sustainability-2/",
+    "http_status": 500
+  },
+  {
+    "url": "https://you.ubc.ca/sustainability/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-11-06T19:13:36",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/thank-you/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-07-24T20:00:22",
+    "status": "collected",
+    "article_id": "prose:admissions:573280",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/tours-events/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-02T21:10:30",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections.",
+    "resolved_url": "https://account.you.ubc.ca/s/events"
+  },
+  {
+    "url": "https://you.ubc.ca/tours-events/campus-tours/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-12-03T00:30:36",
+    "status": "collected",
+    "article_id": "prose:admissions:566350",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/tours-events/fairs/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-02T21:10:30",
+    "status": "collected",
+    "article_id": "prose:admissions:566379",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/tours-events/information-sessions/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-02T21:10:30",
+    "status": "collected",
+    "article_id": "prose:admissions:566449",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/tours-events/school-visits/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-02T21:10:30",
+    "status": "collected",
+    "article_id": "prose:admissions:566369",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/tours-events/student-experience-ok/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-02-25T23:35:00",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/tours-events/student-experience/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-02-25T23:33:35",
+    "status": "collected",
+    "article_id": "prose:admissions:566284",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/tours-events/student-meetings/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-02T21:10:31",
+    "status": "collected",
+    "article_id": "prose:admissions:566359",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/tours-events/virtual-tour/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-10-07T18:10:03",
+    "status": "collected",
+    "article_id": "prose:admissions:75389",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-24T18:00:56",
+    "status": "collected",
+    "article_id": "prose:admissions:40",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/academics-learning/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-07-15T17:48:22",
+    "status": "collected",
+    "article_id": "prose:admissions:28",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/academics-learning/interdisciplinary-studies-innovative-programs/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-07-29T23:10:12",
+    "status": "collected",
+    "article_id": "prose:admissions:30",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/arts-and-culture/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-02T19:00:23",
+    "status": "collected",
+    "article_id": "prose:admissions:341345",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/campus-community/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-05-02T17:48:41",
+    "status": "collected",
+    "article_id": "prose:admissions:54",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/campus-community/orientations/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-06-26T17:58:26",
+    "status": "collected",
+    "article_id": "prose:admissions:60",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/campus-community/students-disabilities/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-09-17T21:43:30",
+    "status": "collected",
+    "article_id": "prose:admissions:64",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/former-youth-in-care/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-02T19:13:26",
+    "status": "collected",
+    "article_id": "prose:admissions:560938",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/getting-involved/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-06-17T17:42:54",
+    "status": "collected",
+    "article_id": "prose:admissions:259940",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/getting-involved/clubs/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-03-31T22:10:49",
+    "status": "collected",
+    "article_id": "prose:admissions:50",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/getting-involved/leadership-volunteering/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-03T02:27:56",
+    "status": "collected",
+    "article_id": "prose:admissions:52",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/getting-involved/work-programs/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-12-01T22:17:43",
+    "status": "collected",
+    "article_id": "prose:admissions:469",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/okanagan/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-07-30T22:27:33",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/okanagan/living-off-campus-ok/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-03T02:23:24",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/okanagan/residence-ok/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-03T02:22:53",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/sports-recreation/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-02T17:25:03",
+    "status": "collected",
+    "article_id": "prose:admissions:42",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/vancouver/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-07-30T22:05:15",
+    "status": "collected",
+    "article_id": "prose:admissions:566809",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/vancouver/off-campus/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-03T02:21:58",
+    "status": "collected",
+    "article_id": "prose:admissions:18",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-life/vancouver/residence/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-03T02:21:30",
+    "status": "collected",
+    "article_id": "prose:admissions:16",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/ubc-okanagan-peer-mentors/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-03-17T17:02:28",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/ubcokanagancampus/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-12-11T18:09:13",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/ubcokanagancampus/chat-student-ambassador-okanagan/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-07-30T22:50:30",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://you.ubc.ca/ubcplan/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-07-29T18:47:21",
+    "status": "unavailable",
+    "article_id": null,
+    "reason": "ProseFetchError: HTTP 404: https://you.ubc.ca/ubcplan/",
+    "http_status": 404
+  },
+  {
+    "url": "https://you.ubc.ca/unacceptable-a-level-courses/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-02-10T19:39:13",
+    "status": "collected",
+    "article_id": "prose:admissions:546328",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/visiting-students-start-here/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2025-04-02T23:19:11",
+    "status": "collected",
+    "article_id": "prose:admissions:552787",
+    "reason": null
+  },
+  {
+    "url": "https://you.ubc.ca/website-research-participation-survey/",
+    "discovered_by": [
+      "admissions/pages.json"
+    ],
+    "source_modified_at": "2026-02-09T19:31:30",
+    "status": "collected",
+    "article_id": "prose:admissions:576875",
+    "reason": null
+  }
+]

@@ -3,8 +3,8 @@
  * UBC ships course detail as one prose blob. The Academic Calendar *has*
  * dedicated `field_course_prerequisite`, `field_course_co_requistite`,
  * `field_course_vector` and `field_course_equivalency` fields, but they are
- * empty on every record we sampled -- UBC writes all of it into the
- * description instead. So we parse it back out. These fields are *derived*,
+ * empty in sampled records; UBC includes those details in the description.
+ * Parse the description into separate columns. These fields are *derived*,
  * not fetched -- the original text is always kept alongside.
  */
 

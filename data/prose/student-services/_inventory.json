@@ -1,0 +1,4672 @@
+[
+  {
+    "url": "https://students.ubc.ca/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-31T12:29:31",
+    "status": "collected",
+    "article_id": "prose:student-services:1097",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/about-student-services/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T22:28:36",
+    "status": "collected",
+    "article_id": "prose:student-services:1177",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/about-student-services/black-student-space/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-06T16:44:19",
+    "status": "collected",
+    "article_id": "prose:student-services:1178",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/about-student-services/centre-community-engaged-learning/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-01-05T19:10:20",
+    "status": "collected",
+    "article_id": "prose:student-services:1179",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/about-student-services/centre-for-accessibility/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-08T18:55:24",
+    "status": "collected",
+    "article_id": "prose:student-services:1180",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/about-student-services/centre-for-accessibility/accessible-housing-for-students-with-disabilities/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-19T20:50:21",
+    "status": "collected",
+    "article_id": "prose:student-services:5957",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/about-student-services/centre-for-accessibility/after-registering-with-the-centre-for-accessibility/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-19T21:09:22",
+    "status": "collected",
+    "article_id": "prose:student-services:6038",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/about-student-services/centre-for-accessibility/frequently-asked-questions-about-policy-lr7-accommodation-disabilities/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-06T19:01:43",
+    "status": "collected",
+    "article_id": "prose:student-services:1212",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/about-student-services/centre-for-accessibility/registering-centre-accessibility/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-22T21:59:03",
+    "status": "collected",
+    "article_id": "prose:student-services:1213",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/about-student-services/centre-for-accessibility/ubc-accessibility-shuttle/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-18T17:58:15",
+    "status": "collected",
+    "article_id": "prose:student-services:1214",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/about-student-services/centre-student-development-leadership/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-09-29T16:49:09",
+    "status": "collected",
+    "article_id": "prose:student-services:1181",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/about-student-services/enrolment-services-advisors/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-08T17:03:29",
+    "status": "collected",
+    "article_id": "prose:student-services:1182",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/about-student-services/food-hub-market/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-08T20:44:39",
+    "status": "collected",
+    "article_id": "prose:student-services:7384",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/about-student-services/simon-k-y-lee-global-lounge-resource-centre/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-25T20:58:01",
+    "status": "collected",
+    "article_id": "prose:student-services:1202",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/about-student-services/simon-k-y-lee-global-lounge-resource-centre/booking-global-lounge/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-01-23T19:41:10",
+    "status": "collected",
+    "article_id": "prose:student-services:1203",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/about-student-services/ubc-career-centre/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-27T18:01:43",
+    "status": "collected",
+    "article_id": "prose:student-services:1184",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/about-student-services/ubc-life-building/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-03-12T16:58:41",
+    "status": "collected",
+    "article_id": "prose:student-services:1185",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/about-student-services/ubc-life-building/ubc-life-building-bookings/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-29T17:34:35",
+    "status": "collected",
+    "article_id": "prose:student-services:1205",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-31T12:29:34",
+    "status": "collected",
+    "article_id": "prose:student-services:1091",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/campus-safety/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-09T19:26:22",
+    "status": "collected",
+    "article_id": "prose:student-services:1220",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/equity-diversity-inclusion-resources/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-16T20:10:23",
+    "status": "collected",
+    "article_id": "prose:student-services:1107",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/equity-diversity-inclusion-resources/2slgbtqia-resources/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-09T20:39:00",
+    "status": "collected",
+    "article_id": "prose:student-services:1108",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/equity-diversity-inclusion-resources/resources-who-are-parents/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-07T01:13:52",
+    "status": "collected",
+    "article_id": "prose:student-services:1240",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/equity-diversity-inclusion-resources/resources-who-are-parents/child-care-school-registration/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T17:44:53",
+    "status": "collected",
+    "article_id": "prose:student-services:1241",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/equity-diversity-inclusion-resources/resources-who-are-parents/community-programs-for-students-with-children/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T17:18:06",
+    "status": "collected",
+    "article_id": "prose:student-services:7584",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/equity-diversity-inclusion-resources/resources-who-are-parents/family-health-for-students-with-children/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T17:27:42",
+    "status": "collected",
+    "article_id": "prose:student-services:7535",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/equity-diversity-inclusion-resources/responding-discrimination/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-09T20:26:45",
+    "status": "collected",
+    "article_id": "prose:student-services:1242",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-26T18:19:40",
+    "status": "collected",
+    "article_id": "prose:student-services:1109",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/funding-project/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-09T17:13:26",
+    "status": "collected",
+    "article_id": "prose:student-services:1243",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/funding-project/innovative-projects-fund/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-10T16:41:31",
+    "status": "collected",
+    "article_id": "prose:student-services:7224",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/funding-project/walter-gage-memorial-fund/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-08T18:44:22",
+    "status": "collected",
+    "article_id": "prose:student-services:7351",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/funding-project/william-murrin-fund/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-09T17:12:04",
+    "status": "collected",
+    "article_id": "prose:student-services:7772",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/peer-programs/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-02-10T19:23:39",
+    "status": "collected",
+    "article_id": "prose:student-services:1110",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/peer-programs/arts-peer-academic-coaches-apac/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-03-02T18:21:47",
+    "status": "collected",
+    "article_id": "prose:student-services:1166",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/peer-programs/associate-career-advisors/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-02-23T19:41:45",
+    "status": "collected",
+    "article_id": "prose:student-services:7195",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/peer-programs/food-hub-market-volunteers/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-03-24T21:29:43",
+    "status": "collected",
+    "article_id": "prose:student-services:7213",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/peer-programs/kinesiology-peer-academic-coaches-kpac/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-03-02T18:35:57",
+    "status": "collected",
+    "article_id": "prose:student-services:1167",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/peer-programs/lfs-academic-career-engagement-ace-team/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-03-02T18:34:14",
+    "status": "collected",
+    "article_id": "prose:student-services:1168",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/peer-programs/peer-health-educators/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-03-09T16:32:11",
+    "status": "collected",
+    "article_id": "prose:student-services:1169",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/peer-programs/ubthechange-community-activators/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-03-09T16:34:48",
+    "status": "collected",
+    "article_id": "prose:student-services:1172",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/peer-programs/ubthechange-student-activators/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-03-09T16:39:40",
+    "status": "collected",
+    "article_id": "prose:student-services:1173",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/peer-programs/vantage-peer-mentors/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-03-09T16:40:52",
+    "status": "collected",
+    "article_id": "prose:student-services:1174",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/ubc-orientation-transition-leadership/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-01-08T18:18:34",
+    "status": "collected",
+    "article_id": "prose:student-services:1245",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/ubc-orientation-transition-leadership/imagine-ubc-orientation-leaders/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-05T17:01:50",
+    "status": "collected",
+    "article_id": "prose:student-services:1165",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/ubc-orientation-transition-leadership/imagine-ubc-senior-orientation-leaders/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-03-09T16:30:17",
+    "status": "collected",
+    "article_id": "prose:student-services:1249",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/involved/ubc-orientation-transition-leadership/jump-start-collegia-leader/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-01-26T22:09:19",
+    "status": "collected",
+    "article_id": "prose:student-services:1250",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/organizing-campus-events/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-01T18:54:50",
+    "status": "collected",
+    "article_id": "prose:student-services:1111",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/organizing-campus-events/booking-an-event-space/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-10-01T21:44:55",
+    "status": "collected",
+    "article_id": "prose:student-services:1112",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/organizing-campus-events/booking-general-teaching-space-campus/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-21T18:25:21",
+    "status": "collected",
+    "article_id": "prose:student-services:1253",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/organizing-campus-events/event-planning-policies-guidelines/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-01T18:57:51",
+    "status": "collected",
+    "article_id": "prose:student-services:1255",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/organizing-campus-events/events-food/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-28T17:37:54",
+    "status": "collected",
+    "article_id": "prose:student-services:1254",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/organizing-campus-events/serving-alcohol-campus-events/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-26T23:00:39",
+    "status": "collected",
+    "article_id": "prose:student-services:1257",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/organizing-campus-events/serving-alcohol-campus-events/faculty-departmental-signing-authorities/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-08T21:31:18",
+    "status": "collected",
+    "article_id": "prose:student-services:1258",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/organizing-campus-events/serving-alcohol-campus-events/special-event-permit-indoor-space/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-26T23:08:54",
+    "status": "collected",
+    "article_id": "prose:student-services:1259",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-03-24T20:15:19",
+    "status": "collected",
+    "article_id": "prose:student-services:1217",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/brock-commons-south-community-space/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-02-11T21:41:32",
+    "status": "collected",
+    "article_id": "prose:student-services:4880",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:51:56",
+    "status": "collected",
+    "article_id": "prose:student-services:1218",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/anglican-chaplain/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:54:01",
+    "status": "collected",
+    "article_id": "prose:student-services:1221",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/anglican-church-canada-chaplain/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:54:01",
+    "status": "collected",
+    "article_id": "prose:student-services:1222",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/baptist-chaplains/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:54:02",
+    "status": "collected",
+    "article_id": "prose:student-services:1223",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/brethren-tradition-chaplain/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:54:02",
+    "status": "collected",
+    "article_id": "prose:student-services:1224",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/buddhist-chaplain/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:54:03",
+    "status": "collected",
+    "article_id": "prose:student-services:1225",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/chabad-jewish-chaplain/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:54:04",
+    "status": "collected",
+    "article_id": "prose:student-services:1226",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/christian-missionary-alliance-cma-chaplain/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:54:04",
+    "status": "collected",
+    "article_id": "prose:student-services:1227",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/every-nation-chaplain/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:54:05",
+    "status": "collected",
+    "article_id": "prose:student-services:1228",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/jewish-chaplain/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:54:05",
+    "status": "collected",
+    "article_id": "prose:student-services:1229",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/mennonite-brethren-chaplain/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:54:06",
+    "status": "collected",
+    "article_id": "prose:student-services:1230",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/muslim-association-chaplain/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:54:06",
+    "status": "collected",
+    "article_id": "prose:student-services:1231",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/pentecostal-chaplain/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:54:07",
+    "status": "collected",
+    "article_id": "prose:student-services:1232",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/presbyterian-chaplain/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:54:07",
+    "status": "collected",
+    "article_id": "prose:student-services:1233",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/roman-catholic-chaplain/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:54:08",
+    "status": "collected",
+    "article_id": "prose:student-services:1234",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/sikh-chaplain/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:54:08",
+    "status": "collected",
+    "article_id": "prose:student-services:1235",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/ubc-thaqalayn-muslim-association/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:54:09",
+    "status": "collected",
+    "article_id": "prose:student-services:1236",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/united-church-canada-chaplain/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T22:54:09",
+    "status": "collected",
+    "article_id": "prose:student-services:1237",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/chaplains/zen-buddhist-chaplain/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:45:46",
+    "status": "collected",
+    "article_id": "prose:student-services:1238",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/ubc-multifaith-prayer-rooms/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:28:13",
+    "status": "collected",
+    "article_id": "prose:student-services:1219",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/ubc-multifaith-prayer-rooms/ams-prayer-space/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:44:59",
+    "status": "collected",
+    "article_id": "prose:student-services:4410",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/ubc-multifaith-prayer-rooms/brock-commons-south-multifaith-prayer-and-quiet-contemplation-room/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:45:00",
+    "status": "collected",
+    "article_id": "prose:student-services:4403",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/ubc-multifaith-prayer-rooms/marine-drive-residence-prayer-room/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:45:06",
+    "status": "collected",
+    "article_id": "prose:student-services:4409",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/ubc-multifaith-prayer-rooms/wesbrook-building-prayer-room/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:45:06",
+    "status": "collected",
+    "article_id": "prose:student-services:4407",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/religion-spirituality/ubc-multifaith-prayer-rooms/west-mall-swing-space-prayer-room/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-16T19:38:24",
+    "status": "collected",
+    "article_id": "prose:student-services:4408",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/campus-life/student-code-conduct/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-17T17:35:20",
+    "status": "collected",
+    "article_id": "prose:student-services:1216",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-31T12:29:34",
+    "status": "collected",
+    "article_id": "prose:student-services:1090",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/campus-jobs/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-07-25T17:49:49",
+    "status": "collected",
+    "article_id": "prose:student-services:1590",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-11-14T18:52:11",
+    "status": "collected",
+    "article_id": "prose:student-services:1113",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/career-resources-for-students-from-specific-communities/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:42:30",
+    "status": "collected",
+    "article_id": "prose:student-services:5554",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/career-resources-for-students-from-specific-communities/career-resources-graduate/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-10-15T16:56:49",
+    "status": "collected",
+    "article_id": "prose:student-services:1569",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/career-resources-for-students-from-specific-communities/career-resources-lgbtq-students/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-10-15T17:17:42",
+    "status": "collected",
+    "article_id": "prose:student-services:1572",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/career-resources-for-students-from-specific-communities/career-resources-students-disabilities/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-10-15T17:18:01",
+    "status": "collected",
+    "article_id": "prose:student-services:1574",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/curricula-vitae/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:42:29",
+    "status": "collected",
+    "article_id": "prose:student-services:1575",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/design-career/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:42:09",
+    "status": "collected",
+    "article_id": "prose:student-services:1576",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/find-mentor/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:42:10",
+    "status": "collected",
+    "article_id": "prose:student-services:1553",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/informational-interviews/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:42:08",
+    "status": "collected",
+    "article_id": "prose:student-services:1577",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/interviews/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:42:06",
+    "status": "collected",
+    "article_id": "prose:student-services:1578",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/job-offer-negotiations/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:42:07",
+    "status": "collected",
+    "article_id": "prose:student-services:1586",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/job-posting-scams/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:42:10",
+    "status": "collected",
+    "article_id": "prose:student-services:1579",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/job-search/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:42:04",
+    "status": "collected",
+    "article_id": "prose:student-services:1580",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/make-most-linkedin/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:42:08",
+    "status": "collected",
+    "article_id": "prose:student-services:1581",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/networking/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:42:07",
+    "status": "collected",
+    "article_id": "prose:student-services:1582",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/pursuing-graduate-professional-school/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:42:11",
+    "status": "collected",
+    "article_id": "prose:student-services:1584",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/resumes-cover-letters/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:42:18",
+    "status": "collected",
+    "article_id": "prose:student-services:1585",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/career-resources/self-assessment-tools-resources/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:42:09",
+    "status": "collected",
+    "article_id": "prose:student-services:1587",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/co-op/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-07-25T17:49:31",
+    "status": "collected",
+    "article_id": "prose:student-services:1117",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/community-experiences/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-22T19:33:36",
+    "status": "collected",
+    "article_id": "prose:student-services:1114",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/community-experiences/ccel-workshops/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-23T18:38:31",
+    "status": "collected",
+    "article_id": "prose:student-services:1210",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/community-experiences/grants-community-projects/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-24T18:23:12",
+    "status": "collected",
+    "article_id": "prose:student-services:1554",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/community-experiences/social-impact-lab/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-15T19:10:14",
+    "status": "collected",
+    "article_id": "prose:student-services:1211",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/community-experiences/ubthechange/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-22T19:29:16",
+    "status": "collected",
+    "article_id": "prose:student-services:1556",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/events-workshops/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-02-04T21:28:08",
+    "status": "collected",
+    "article_id": "prose:student-services:1152",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/events-workshops/graduate-professional-schools-fair/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-19T17:45:55",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Graduate-only topic outside the undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://students.ubc.ca/career/events-workshops/launch-career-canada/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-02-12T18:47:14",
+    "status": "collected",
+    "article_id": "prose:student-services:1155",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/events-workshops/multidisciplinary-undergraduate-research-conference/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-09T20:27:33",
+    "status": "collected",
+    "article_id": "prose:student-services:1156",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/events-workshops/multidisciplinary-undergraduate-research-conference/join-murc-planning-committee/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T22:18:36",
+    "status": "collected",
+    "article_id": "prose:student-services:1162",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/events-workshops/multidisciplinary-undergraduate-research-conference/present-murc/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-02-10T17:57:32",
+    "status": "collected",
+    "article_id": "prose:student-services:1163",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/events-workshops/multidisciplinary-undergraduate-research-conference/volunteer-murc/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:44:41",
+    "status": "collected",
+    "article_id": "prose:student-services:1164",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/events-workshops/spring-career-fair/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-03-09T22:01:11",
+    "status": "collected",
+    "article_id": "prose:student-services:1158",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/events-workshops/ubc-career-days/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-02-12T18:35:53",
+    "status": "collected",
+    "article_id": "prose:student-services:1159",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/events-workshops/ubc-purpose-driven/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-02-13T21:46:02",
+    "status": "collected",
+    "article_id": "prose:student-services:1154",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/events-workshops/west-coast-virtual-fairs/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-02-12T18:53:17",
+    "status": "collected",
+    "article_id": "prose:student-services:1161",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/events-workshops/what-do-after-attending-career-events/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-06-26T16:47:18",
+    "status": "collected",
+    "article_id": "prose:student-services:1558",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/events-workshops/what-do-before-attending-career-events/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-06-27T21:00:26",
+    "status": "collected",
+    "article_id": "prose:student-services:1557",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/undergraduate-research/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-09-25T16:33:03",
+    "status": "collected",
+    "article_id": "prose:student-services:1118",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/undergraduate-student-research-awards-nserc-cihr-sshrc/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-03-17T22:34:12",
+    "status": "collected",
+    "article_id": "prose:student-services:1592",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/undergraduate-student-research-awards-nserc-cihr-sshrc/black-student-researchers-pathway-usra/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-01-30T22:42:38",
+    "status": "collected",
+    "article_id": "prose:student-services:1593",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/undergraduate-student-research-awards-nserc-cihr-sshrc/indigenous-student-researchers-pathway-nserc-usra/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-03-24T21:40:41",
+    "status": "collected",
+    "article_id": "prose:student-services:1601",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/undergraduate-student-research-awards-nserc-cihr-sshrc/usra-award-details/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-12-19T21:59:36",
+    "status": "collected",
+    "article_id": "prose:student-services:1594",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/undergraduate-student-research-awards-nserc-cihr-sshrc/usra-eligibility-requirements/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-02-12T17:33:55",
+    "status": "collected",
+    "article_id": "prose:student-services:1595",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/undergraduate-student-research-awards-nserc-cihr-sshrc/usra-faculty-school-application-details/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-02-03T23:49:39",
+    "status": "collected",
+    "article_id": "prose:student-services:1596",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/work-learn-international-undergraduate-research-awards/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-03-26T16:16:27",
+    "status": "collected",
+    "article_id": "prose:student-services:1589",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/work-learn-international-undergraduate-research-awards/award-details-work-learn-international-undergraduate-research-awards/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-11-10T17:49:54",
+    "status": "collected",
+    "article_id": "prose:student-services:1603",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/work-learn-international-undergraduate-research-awards/eligibility-requirements-work-learn-international-undergraduate-research-awards/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-22T21:11:52",
+    "status": "collected",
+    "article_id": "prose:student-services:1604",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/work-learn-program/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-14T21:50:49",
+    "status": "collected",
+    "article_id": "prose:student-services:1151",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:12",
+    "status": "collected",
+    "article_id": "prose:student-services:1119",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:14",
+    "status": "collected",
+    "article_id": "prose:student-services:1452",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/acting/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:12",
+    "status": "collected",
+    "article_id": "prose:student-services:1457",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/ancient-mediterranean-near-eastern-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:11",
+    "status": "collected",
+    "article_id": "prose:student-services:1458",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/anthropology/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:11",
+    "status": "collected",
+    "article_id": "prose:student-services:1459",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/art-history/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:10",
+    "status": "collected",
+    "article_id": "prose:student-services:1460",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/asian-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:09",
+    "status": "collected",
+    "article_id": "prose:student-services:1461",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/canadian-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:04",
+    "status": "collected",
+    "article_id": "prose:student-services:1462",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/central-eastern-northern-european-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:03",
+    "status": "collected",
+    "article_id": "prose:student-services:1463",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/cinema-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:43:41",
+    "status": "collected",
+    "article_id": "prose:student-services:1470",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/cognitive-systems/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:43:41",
+    "status": "collected",
+    "article_id": "prose:student-services:1464",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/computer-science/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:43:41",
+    "status": "collected",
+    "article_id": "prose:student-services:1465",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/creative-writing/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:43:42",
+    "status": "collected",
+    "article_id": "prose:student-services:1466",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/economics/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:43:42",
+    "status": "collected",
+    "article_id": "prose:student-services:1467",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/english/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:43:43",
+    "status": "collected",
+    "article_id": "prose:student-services:1468",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/film-production/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:43:43",
+    "status": "collected",
+    "article_id": "prose:student-services:1469",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/first-nations-endangered-languages/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:50",
+    "status": "collected",
+    "article_id": "prose:student-services:1471",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/first-nations-indigenous-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:49",
+    "status": "collected",
+    "article_id": "prose:student-services:1472",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/french-hispanic-italian-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:46",
+    "status": "collected",
+    "article_id": "prose:student-services:1473",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/gender-race-sexuality-social-justice/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:46",
+    "status": "collected",
+    "article_id": "prose:student-services:1474",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/geography/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:44",
+    "status": "collected",
+    "article_id": "prose:student-services:1475",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/health-and-society/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-08-25T23:07:25",
+    "status": "collected",
+    "article_id": "prose:student-services:5454",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/history/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:42",
+    "status": "collected",
+    "article_id": "prose:student-services:1476",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/interdisciplinary-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:41",
+    "status": "collected",
+    "article_id": "prose:student-services:5903",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/international-relations/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:40",
+    "status": "collected",
+    "article_id": "prose:student-services:1477",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/latin-american-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:39",
+    "status": "collected",
+    "article_id": "prose:student-services:1478",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/linguistics/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:39",
+    "status": "collected",
+    "article_id": "prose:student-services:1479",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/mathematics/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:37",
+    "status": "collected",
+    "article_id": "prose:student-services:1480",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/media-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:36",
+    "status": "collected",
+    "article_id": "prose:student-services:1481",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/medieval-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:35",
+    "status": "collected",
+    "article_id": "prose:student-services:1482",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/music/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:34",
+    "status": "collected",
+    "article_id": "prose:student-services:1483",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/philosophy/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:32",
+    "status": "collected",
+    "article_id": "prose:student-services:1485",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/political-science/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:31",
+    "status": "collected",
+    "article_id": "prose:student-services:1486",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/psychology/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:30",
+    "status": "collected",
+    "article_id": "prose:student-services:1487",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/social-work/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:30",
+    "status": "collected",
+    "article_id": "prose:student-services:1488",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/sociology/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:29",
+    "status": "collected",
+    "article_id": "prose:student-services:1489",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/speech-sciences/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:29",
+    "status": "collected",
+    "article_id": "prose:student-services:1490",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/study-of-religion/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:28",
+    "status": "collected",
+    "article_id": "prose:student-services:5462",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/theatre-design-production/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:27",
+    "status": "collected",
+    "article_id": "prose:student-services:1491",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/theatre-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:27",
+    "status": "collected",
+    "article_id": "prose:student-services:1492",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/united-states-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:27",
+    "status": "collected",
+    "article_id": "prose:student-services:1493",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/arts/visual-art/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:25",
+    "status": "collected",
+    "article_id": "prose:student-services:1494",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/engineering/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:14",
+    "status": "collected",
+    "article_id": "prose:student-services:1453",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/engineering/biomedical-engineering/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:05",
+    "status": "collected",
+    "article_id": "prose:student-services:1495",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/engineering/chemical-biological-engineering/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:02",
+    "status": "collected",
+    "article_id": "prose:student-services:1496",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/engineering/chemical-engineering/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:01",
+    "status": "collected",
+    "article_id": "prose:student-services:1497",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/engineering/civil-engineering/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:59",
+    "status": "collected",
+    "article_id": "prose:student-services:1498",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/engineering/computer-engineering/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:58",
+    "status": "collected",
+    "article_id": "prose:student-services:1499",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/engineering/electrical-engineering/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:54",
+    "status": "collected",
+    "article_id": "prose:student-services:1500",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/engineering/engineering-physics/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:53",
+    "status": "collected",
+    "article_id": "prose:student-services:1501",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/engineering/environmental-engineering/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:52",
+    "status": "collected",
+    "article_id": "prose:student-services:1502",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/engineering/geological-engineering/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:44",
+    "status": "collected",
+    "article_id": "prose:student-services:1503",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/engineering/integrated-engineering/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:42",
+    "status": "collected",
+    "article_id": "prose:student-services:1504",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/engineering/manufacturing-engineering/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:38",
+    "status": "collected",
+    "article_id": "prose:student-services:1505",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/engineering/materials-engineering/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:38",
+    "status": "collected",
+    "article_id": "prose:student-services:1506",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/engineering/mechanical-engineering/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:36",
+    "status": "collected",
+    "article_id": "prose:student-services:1507",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/engineering/mining-engineering/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:34",
+    "status": "collected",
+    "article_id": "prose:student-services:1508",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/forestry/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:13",
+    "status": "collected",
+    "article_id": "prose:student-services:1454",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/forestry/bioeconomy-sciences-technology/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:43:56",
+    "status": "collected",
+    "article_id": "prose:student-services:1509",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/forestry/conservation/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:43:56",
+    "status": "collected",
+    "article_id": "prose:student-services:1512",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/forestry/forest-management-or-operations/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:47",
+    "status": "collected",
+    "article_id": "prose:student-services:1510",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/forestry/forest-sciences/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:43:57",
+    "status": "collected",
+    "article_id": "prose:student-services:1511",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/forestry/urban-forestry/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:26",
+    "status": "collected",
+    "article_id": "prose:student-services:1513",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/forestry/wood-products/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:25",
+    "status": "collected",
+    "article_id": "prose:student-services:1514",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/land-food-systems/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:13",
+    "status": "collected",
+    "article_id": "prose:student-services:1455",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/land-food-systems/applied-animal-biology/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:44:06",
+    "status": "collected",
+    "article_id": "prose:student-services:1515",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/land-food-systems/dietetics/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:55",
+    "status": "collected",
+    "article_id": "prose:student-services:1516",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/land-food-systems/food-nutrition-health/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:44:25",
+    "status": "collected",
+    "article_id": "prose:student-services:1517",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/land-food-systems/food-resource-economics/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:44:26",
+    "status": "collected",
+    "article_id": "prose:student-services:1518",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/land-food-systems/food-science/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:48",
+    "status": "collected",
+    "article_id": "prose:student-services:1519",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/land-food-systems/global-resource-systems/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:42",
+    "status": "collected",
+    "article_id": "prose:student-services:1520",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/land-food-systems/nutritional-sciences/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:33",
+    "status": "collected",
+    "article_id": "prose:student-services:1521",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/land-food-systems/sustainable-agriculture-and-environment/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:28",
+    "status": "collected",
+    "article_id": "prose:student-services:1522",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:12",
+    "status": "collected",
+    "article_id": "prose:student-services:1456",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/astronomy/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:08",
+    "status": "collected",
+    "article_id": "prose:student-services:1523",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/atmospheric-science/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:08",
+    "status": "collected",
+    "article_id": "prose:student-services:1524",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/biochemistry/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:07",
+    "status": "collected",
+    "article_id": "prose:student-services:1526",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/biology/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:06",
+    "status": "collected",
+    "article_id": "prose:student-services:1527",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/biophysics/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:05",
+    "status": "collected",
+    "article_id": "prose:student-services:1528",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/biotechnology/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:04",
+    "status": "collected",
+    "article_id": "prose:student-services:1529",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/caps/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:03",
+    "status": "collected",
+    "article_id": "prose:student-services:1530",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/chemistry/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:27:00",
+    "status": "collected",
+    "article_id": "prose:student-services:1531",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/cognitive-systems/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:59",
+    "status": "collected",
+    "article_id": "prose:student-services:1532",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/combined-major-in-science/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:58",
+    "status": "collected",
+    "article_id": "prose:student-services:1533",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/degree-computer-science/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:57",
+    "status": "collected",
+    "article_id": "prose:student-services:1534",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/earth-and-ocean-sciences/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:55",
+    "status": "collected",
+    "article_id": "prose:student-services:1535",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/environmental-sciences/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:51",
+    "status": "collected",
+    "article_id": "prose:student-services:1536",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/forensic-science/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:48",
+    "status": "collected",
+    "article_id": "prose:student-services:1537",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/geographical-sciences/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:45",
+    "status": "collected",
+    "article_id": "prose:student-services:1538",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/geological-sciences/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:43",
+    "status": "collected",
+    "article_id": "prose:student-services:1539",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/geophysics/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:43",
+    "status": "collected",
+    "article_id": "prose:student-services:1540",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/integrated-sciences/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:41",
+    "status": "collected",
+    "article_id": "prose:student-services:1541",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/math/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:37",
+    "status": "collected",
+    "article_id": "prose:student-services:1542",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/microbiology-and-immunology/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:35",
+    "status": "collected",
+    "article_id": "prose:student-services:1543",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/oceanography/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:33",
+    "status": "collected",
+    "article_id": "prose:student-services:1544",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/pharmacology/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:32",
+    "status": "collected",
+    "article_id": "prose:student-services:1545",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/physics/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:31",
+    "status": "collected",
+    "article_id": "prose:student-services:1546",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/statistics/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:29",
+    "status": "collected",
+    "article_id": "prose:student-services:1547",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/science/your-degree-in-neuroscience/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:26:33",
+    "status": "collected",
+    "article_id": "prose:student-services:5486",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/career/your-degree/what-can-i-do-with-my-kinesiology-degree/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-01T22:25:36",
+    "status": "collected",
+    "article_id": "prose:student-services:7450",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-31T12:29:32",
+    "status": "collected",
+    "article_id": "prose:student-services:1089",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/academic-learning-resources/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:36:13",
+    "status": "collected",
+    "article_id": "prose:student-services:1121",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/academic-learning-resources/academic-accommodations-disabilities/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-06T19:00:41",
+    "status": "collected",
+    "article_id": "prose:student-services:1358",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/academic-learning-resources/academic-accommodations-disabilities/documentation-guidelines/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:38:16",
+    "status": "collected",
+    "article_id": "prose:student-services:1359",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/academic-learning-resources/academic-accommodations-disabilities/exam-accommodation-guidelines-expectations/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-06T19:00:43",
+    "status": "collected",
+    "article_id": "prose:student-services:1360",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/academic-learning-resources/academic-accommodations-disabilities/learning-disabilities-documentation-standards/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-06T19:00:42",
+    "status": "collected",
+    "article_id": "prose:student-services:1361",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/academic-learning-resources/academic-accommodations-disabilities/request-accommodation/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:37:57",
+    "status": "collected",
+    "article_id": "prose:student-services:1362",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/academic-learning-resources/academic-accommodations-disabilities/types-academic-accommodations/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:38:03",
+    "status": "collected",
+    "article_id": "prose:student-services:1363",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/academic-learning-resources/academic-advising/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-27T20:44:53",
+    "status": "collected",
+    "article_id": "prose:student-services:1364",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/academic-learning-resources/academic-concessions/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-02-17T17:48:58",
+    "status": "collected",
+    "article_id": "prose:student-services:1365",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/courses/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:35:37",
+    "status": "collected",
+    "article_id": "prose:student-services:1122",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/courses/auditing-courses/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-07T22:07:10",
+    "status": "collected",
+    "article_id": "prose:student-services:1366",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/courses/course-modes-delivery/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-03T23:05:32",
+    "status": "collected",
+    "article_id": "prose:student-services:1368",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/courses/creditdfail-grading/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-07T22:08:19",
+    "status": "collected",
+    "article_id": "prose:student-services:1369",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/courses/grades/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-07T21:52:02",
+    "status": "collected",
+    "article_id": "prose:student-services:1370",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/courses/non-degree-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:33:27",
+    "status": "collected",
+    "article_id": "prose:student-services:1371",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/courses/non-degree-studies/academic-concessions-non-degree-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:33:30",
+    "status": "collected",
+    "article_id": "prose:student-services:1376",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/courses/non-degree-studies/non-degree-studies-access-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:33:29",
+    "status": "collected",
+    "article_id": "prose:student-services:1377",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/courses/non-degree-studies/non-degree-studies-tuition-fees/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:33:28",
+    "status": "collected",
+    "article_id": "prose:student-services:1378",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/courses/non-degree-studies/non-degree-studies-unclassified/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:33:30",
+    "status": "collected",
+    "article_id": "prose:student-services:1379",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/courses/non-degree-studies/non-degree-studies-visiting/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:33:29",
+    "status": "collected",
+    "article_id": "prose:student-services:1380",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/courses/non-degree-studies/registration-non-degree/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T21:33:28",
+    "status": "collected",
+    "article_id": "prose:student-services:1381",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/courses/student-directed-seminars/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-11-14T17:42:11",
+    "status": "collected",
+    "article_id": "prose:student-services:1372",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/courses/student-directed-seminars/creating-student-directed-seminar/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-19T16:48:31",
+    "status": "collected",
+    "article_id": "prose:student-services:1373",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/courses/student-directed-seminars/student-directed-seminar-courses/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-01-15T22:15:42",
+    "status": "collected",
+    "article_id": "prose:student-services:1374",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/courses/taking-break-courses/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-12T18:44:34",
+    "status": "collected",
+    "article_id": "prose:student-services:1375",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/dates-deadlines/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T17:18:18",
+    "status": "collected",
+    "article_id": "prose:student-services:1355",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/exams/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:35:28",
+    "status": "collected",
+    "article_id": "prose:student-services:1120",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/exams/exam-clashes-hardships-cancellations/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-19T18:59:13",
+    "status": "collected",
+    "article_id": "prose:student-services:1382",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/exams/off-campus-exams/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-19T20:28:07",
+    "status": "collected",
+    "article_id": "prose:student-services:1383",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/exams/standing-deferred-supplemental-exams/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-19T20:16:34",
+    "status": "collected",
+    "article_id": "prose:student-services:1384",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/graduation/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-03T18:38:31",
+    "status": "collected",
+    "article_id": "prose:student-services:1127",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/graduation/applying-graduate/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-28T23:30:10",
+    "status": "collected",
+    "article_id": "prose:student-services:1356",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/graduation/graduation-faq/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-20T18:33:28",
+    "status": "collected",
+    "article_id": "prose:student-services:1357",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/readmission/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-29T22:50:12",
+    "status": "collected",
+    "article_id": "prose:student-services:5388",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/readmission/return-checklist/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-29T22:48:46",
+    "status": "collected",
+    "article_id": "prose:student-services:5393",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/readmission/return-scenarios/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-29T22:37:17",
+    "status": "collected",
+    "article_id": "prose:student-services:5390",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/records/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:34:40",
+    "status": "collected",
+    "article_id": "prose:student-services:1128",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/records/changing-contact-information/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-11T18:00:35",
+    "status": "collected",
+    "article_id": "prose:student-services:1442",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/records/changing-name-parchment-diploma/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-12T18:35:50",
+    "status": "collected",
+    "article_id": "prose:student-services:1440",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/records/changing-name-student-record/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-29T23:17:29",
+    "status": "collected",
+    "article_id": "prose:student-services:1441",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/records/ordering-parchment-diploma/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-06T22:35:54",
+    "status": "collected",
+    "article_id": "prose:student-services:1175",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/records/ordering-transcript/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-28T21:23:24",
+    "status": "collected",
+    "article_id": "prose:student-services:1176",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/records/third-party-authorization/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-14T22:58:43",
+    "status": "collected",
+    "article_id": "prose:student-services:1438",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/registration/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:33:14",
+    "status": "collected",
+    "article_id": "prose:student-services:1130",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/registration/changing-degree-program-or-campus/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-21T16:37:03",
+    "status": "collected",
+    "article_id": "prose:student-services:1448",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/registration/course-change-dates/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-21T16:48:39",
+    "status": "collected",
+    "article_id": "prose:student-services:1449",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/registration/cross-campus-registration/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-27T17:52:56",
+    "status": "collected",
+    "article_id": "prose:student-services:1450",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/registration/letter-permission/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-27T21:18:25",
+    "status": "collected",
+    "article_id": "prose:student-services:1444",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/registration/register-courses/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-27T23:44:34",
+    "status": "collected",
+    "article_id": "prose:student-services:1451",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/registration/registration-dates/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-28T00:04:58",
+    "status": "collected",
+    "article_id": "prose:student-services:1443",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/registration/transfer-credits/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-13T22:44:54",
+    "status": "collected",
+    "article_id": "prose:student-services:1131",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/registration/transfer-credits/requesting-transfer-credit/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-26T22:56:36",
+    "status": "collected",
+    "article_id": "prose:student-services:1445",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/enrolment/registration/transfer-credits/transfer-credit-terms/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-11T13:26:20",
+    "status": "collected",
+    "article_id": "prose:student-services:1447",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-31T12:29:33",
+    "status": "collected",
+    "article_id": "prose:student-services:1124",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-20T18:27:26",
+    "status": "collected",
+    "article_id": "prose:student-services:1140",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/3m-national-student-fellowship/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-01-27T22:52:45",
+    "status": "collected",
+    "article_id": "prose:student-services:1141",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/affiliation-bursaries/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-14T22:59:06",
+    "status": "collected",
+    "article_id": "prose:student-services:1142",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/affiliation-bursaries/descriptions-affiliation-bursaries/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T21:37:29",
+    "status": "collected",
+    "article_id": "prose:student-services:1387",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/affiliation-scholarships/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-14T22:58:08",
+    "status": "collected",
+    "article_id": "prose:student-services:1143",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/affiliation-scholarships/descriptions-affiliation-scholarships/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T22:25:44",
+    "status": "collected",
+    "article_id": "prose:student-services:1388",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/awards-disabilities/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-16T18:48:36",
+    "status": "collected",
+    "article_id": "prose:student-services:1144",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/awards-disabilities/descriptions-awards-disabilities/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-10T20:58:25",
+    "status": "collected",
+    "article_id": "prose:student-services:1389",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/awards-indigenous/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-28T01:46:41",
+    "status": "collected",
+    "article_id": "prose:student-services:1145",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/awards-indigenous/descriptions-awards-indigenous/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T22:03:40",
+    "status": "collected",
+    "article_id": "prose:student-services:1390",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/awards-international/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-14T22:56:17",
+    "status": "collected",
+    "article_id": "prose:student-services:1146",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/awards-women-part-time-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-20T23:05:05",
+    "status": "collected",
+    "article_id": "prose:student-services:1147",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/awards-women-part-time-studies/description-awards-women-part-time-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T22:03:47",
+    "status": "collected",
+    "article_id": "prose:student-services:1391",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/external-awards/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-25T21:21:55",
+    "status": "collected",
+    "article_id": "prose:student-services:1393",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/faculty-recommended-awards/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-25T20:46:38",
+    "status": "collected",
+    "article_id": "prose:student-services:1394",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/funding-former-youth-care/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-25T19:54:49",
+    "status": "collected",
+    "article_id": "prose:student-services:1395",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/john-r-scarfo-wellness-bursary/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-17T18:18:08",
+    "status": "collected",
+    "article_id": "prose:student-services:1148",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/maintaining-awards-loan-eligibility/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-17T23:12:33",
+    "status": "collected",
+    "article_id": "prose:student-services:1396",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/mccall-macbain-scholarship/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-25T20:40:45",
+    "status": "collected",
+    "article_id": "prose:student-services:1149",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/musqueam-first-nation-scholarship/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-24T15:49:28",
+    "status": "collected",
+    "article_id": "prose:student-services:1150",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/premier-undergraduate-wesbrook-scholarships/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-22T21:57:50",
+    "status": "collected",
+    "article_id": "prose:student-services:1397",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/rhodes-scholarship/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-14T22:52:43",
+    "status": "collected",
+    "article_id": "prose:student-services:1398",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/special-circumstances-receiving-awards/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-25T20:33:37",
+    "status": "collected",
+    "article_id": "prose:student-services:1399",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/student-housing-supplement-grant/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-16T18:48:25",
+    "status": "collected",
+    "article_id": "prose:student-services:1402",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/trek-excellence-scholarship/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-16T16:39:00",
+    "status": "collected",
+    "article_id": "prose:student-services:1400",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/ubc-bursary-program/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-02T16:00:25",
+    "status": "collected",
+    "article_id": "prose:student-services:1401",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/awards-scholarships-bursaries/ubc-vancouver-technology-bursary/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T22:10:47",
+    "status": "collected",
+    "article_id": "prose:student-services:1403",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/financial-support-options/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-01T17:06:57",
+    "status": "collected",
+    "article_id": "prose:student-services:1411",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/financial-support-options/emergency-funding/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:40:44",
+    "status": "collected",
+    "article_id": "prose:student-services:1406",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/financial-support-options/financial-aid-policy-domestic/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:40:44",
+    "status": "collected",
+    "article_id": "prose:student-services:1412",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/financial-support-options/financial-emergencies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:40:37",
+    "status": "collected",
+    "article_id": "prose:student-services:1405",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/financial-support-options/financial-support-indigenous/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:40:45",
+    "status": "collected",
+    "article_id": "prose:student-services:1413",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/financial-support-options/financial-support-indigenous/international-tuition-exemption/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-29T22:33:20",
+    "status": "collected",
+    "article_id": "prose:student-services:3998",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/financial-wellness-training-education/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-05T22:27:16",
+    "status": "collected",
+    "article_id": "prose:student-services:1404",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/funding-studies/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-24T22:50:35",
+    "status": "collected",
+    "article_id": "prose:student-services:1125",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/funding-studies/financial-planning/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-11T16:11:46",
+    "status": "collected",
+    "article_id": "prose:student-services:1407",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/funding-studies/financial-planning/budget/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-07T18:48:03",
+    "status": "collected",
+    "article_id": "prose:student-services:1408",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/funding-studies/financial-planning/financial-planning-post-baccalaureate/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-27T16:50:52",
+    "status": "collected",
+    "article_id": "prose:student-services:1409",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/funding-studies/financial-planning/financial-planning-post-baccalaureate/funding-bachelor-education/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-24T22:53:24",
+    "status": "collected",
+    "article_id": "prose:student-services:1410",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/student-loans/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-02-14T22:18:20",
+    "status": "collected",
+    "article_id": "prose:student-services:1419",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/student-loans/funding-us/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-16T18:43:05",
+    "status": "collected",
+    "article_id": "prose:student-services:1420",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/student-loans/funding-us/alternative-sources-funding-us/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-09T23:27:05",
+    "status": "collected",
+    "article_id": "prose:student-services:1421",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/student-loans/funding-us/cost-of-attendance-for-us-students/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-30T22:52:26",
+    "status": "collected",
+    "article_id": "prose:student-services:7550",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/student-loans/funding-us/information-for-us-tax-returns/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-09T23:22:38",
+    "status": "collected",
+    "article_id": "prose:student-services:7556",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/student-loans/funding-us/us-direct-loans/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-09T23:21:38",
+    "status": "collected",
+    "article_id": "prose:student-services:7553",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/student-loans/funding-us/us-loans-faq/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-09T23:22:55",
+    "status": "collected",
+    "article_id": "prose:student-services:1425",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/student-loans/funding-us/us-private-student-loans/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-09T23:24:43",
+    "status": "collected",
+    "article_id": "prose:student-services:6541",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/student-loans/loans-full-time-british-columbia/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-25T16:20:58",
+    "status": "collected",
+    "article_id": "prose:student-services:1426",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/student-loans/loans-full-time-other-provinces/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-14T21:50:41",
+    "status": "collected",
+    "article_id": "prose:student-services:1427",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/student-loans/loans-summer-sessions/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-03T18:19:53",
+    "status": "collected",
+    "article_id": "prose:student-services:1428",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/student-loans/part-time-funding-british-columbia/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-28T17:33:46",
+    "status": "collected",
+    "article_id": "prose:student-services:1429",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/student-loans/part-time-funding-out-province/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-14T17:46:06",
+    "status": "collected",
+    "article_id": "prose:student-services:1430",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/student-loans/repaying-my-student-loans/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-02-14T22:07:20",
+    "status": "collected",
+    "article_id": "prose:student-services:1431",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/student-loans/student-loan-interest/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-27T16:47:36",
+    "status": "collected",
+    "article_id": "prose:student-services:1432",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/taxes/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-02-17T17:43:06",
+    "status": "collected",
+    "article_id": "prose:student-services:1433",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/taxes/filing-taxes-canada/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-02-03T17:51:49",
+    "status": "collected",
+    "article_id": "prose:student-services:1434",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/taxes/individual-tax-number-itn-apply-individual-tax-number-itn/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-02-03T17:53:10",
+    "status": "collected",
+    "article_id": "prose:student-services:1436",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/taxes/individual-tax-number-itn/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-10-06T17:07:00",
+    "status": "collected",
+    "article_id": "prose:student-services:1435",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/taxes/social-insurance-number-sin/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-02-03T17:59:43",
+    "status": "collected",
+    "article_id": "prose:student-services:1437",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/tuition-fees/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-21T22:54:06",
+    "status": "collected",
+    "article_id": "prose:student-services:1126",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/tuition-fees/late-payment-fees/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-23T22:28:29",
+    "status": "collected",
+    "article_id": "prose:student-services:1415",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/tuition-fees/paying-tuition/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-09T16:15:19",
+    "status": "collected",
+    "article_id": "prose:student-services:1414",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/tuition-fees/sponsorship-billing/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-14T23:01:50",
+    "status": "collected",
+    "article_id": "prose:student-services:1416",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/tuition-fees/sponsorship-billing/information-sponsored-students/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-14T21:25:40",
+    "status": "collected",
+    "article_id": "prose:student-services:1417",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/tuition-fees/sponsorship-billing/information-sponsors/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-14T23:13:26",
+    "status": "collected",
+    "article_id": "prose:student-services:1418",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/tuition-fees/tuition-refunds/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-07T22:50:18",
+    "status": "collected",
+    "article_id": "prose:student-services:1385",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/finances/tuition-fees/undergraduate-tuition-fees/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-04-23T22:24:56",
+    "status": "collected",
+    "article_id": "prose:student-services:1386",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/graduate-student-resources/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-31T12:29:32",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Graduate-only topic outside the undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://students.ubc.ca/health/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-31T12:29:34",
+    "status": "collected",
+    "article_id": "prose:student-services:1092",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/crisis-support-services/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T20:47:39",
+    "status": "collected",
+    "article_id": "prose:student-services:1264",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/crisis-support-services/helping-friend/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T18:52:07",
+    "status": "collected",
+    "article_id": "prose:student-services:1265",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/health-insurance/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T18:15:31",
+    "status": "collected",
+    "article_id": "prose:student-services:1105",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/health-insurance/health-insurance-domestic/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-27T21:23:13",
+    "status": "collected",
+    "article_id": "prose:student-services:1283",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/health-insurance/health-insurance-indigenous/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-22T21:26:32",
+    "status": "collected",
+    "article_id": "prose:student-services:1106",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/health-insurance/health-insurance-indigenous/health-insurance-non-status-first-nations-metis-inuit/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2024-11-22T22:10:57",
+    "status": "collected",
+    "article_id": "prose:student-services:1284",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/health-insurance/health-insurance-indigenous/health-insurance-status-first-nations/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2024-11-22T22:12:29",
+    "status": "collected",
+    "article_id": "prose:student-services:1285",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/health-insurance/health-insurance-international/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T17:41:08",
+    "status": "collected",
+    "article_id": "prose:student-services:1286",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/health-insurance/health-insurance-international/imed-temporary-health-insurance-international/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T17:47:10",
+    "status": "collected",
+    "article_id": "prose:student-services:1287",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/health-insurance/health-insurance-international/medical-services-plan-msp-international/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T19:35:54",
+    "status": "collected",
+    "article_id": "prose:student-services:1288",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/health-insurance/health-insurance-international/medical-services-plan-msp-international/apply-bc-medical-services-plan-msp/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T19:36:00",
+    "status": "collected",
+    "article_id": "prose:student-services:1289",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/health-insurance/health-insurance-international/medical-services-plan-msp-international/extend-bc-medical-services-plan-msp/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T19:36:06",
+    "status": "collected",
+    "article_id": "prose:student-services:1290",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/medical-care-on-campus/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-15T18:49:30",
+    "status": "collected",
+    "article_id": "prose:student-services:7653",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/medical-care-on-campus/allergy-shots/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T20:37:28",
+    "status": "collected",
+    "article_id": "prose:student-services:1300",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/medical-care-on-campus/flu-colds/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T18:36:11",
+    "status": "collected",
+    "article_id": "prose:student-services:1292",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/medical-care-on-campus/student-health-wellbeing-clinic-fees/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-30T22:00:12",
+    "status": "collected",
+    "article_id": "prose:student-services:1302",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T18:55:34",
+    "status": "collected",
+    "article_id": "prose:student-services:1281",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/counselling-practicum-residency-program/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-16T22:39:28",
+    "status": "collected",
+    "article_id": "prose:student-services:1266",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/finding-private-counsellor/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T18:30:36",
+    "status": "collected",
+    "article_id": "prose:student-services:1268",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/group-counselling-programs/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T19:58:12",
+    "status": "collected",
+    "article_id": "prose:student-services:1269",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/group-counselling-programs/2stgd-and-gender-questioning-support-group/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T19:39:29",
+    "status": "collected",
+    "article_id": "prose:student-services:1270",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/group-counselling-programs/acceptance-commitment-therapy-anxiety-group/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T19:55:00",
+    "status": "collected",
+    "article_id": "prose:student-services:8648",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/group-counselling-programs/adhd-skills-support-group/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T19:38:36",
+    "status": "collected",
+    "article_id": "prose:student-services:1271",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/group-counselling-programs/art-therapy-for-anxiety-group/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T19:39:08",
+    "status": "collected",
+    "article_id": "prose:student-services:5432",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/group-counselling-programs/asian-canadian-support-group/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T19:38:16",
+    "status": "collected",
+    "article_id": "prose:student-services:1273",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/group-counselling-programs/dialectical-behavior-therapy-skills-group/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T19:41:14",
+    "status": "collected",
+    "article_id": "prose:student-services:1274",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/group-counselling-programs/grad-student-support-group/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T19:42:19",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Graduate-only topic outside the undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/group-counselling-programs/i-am-stronger-than-my-depression-cbt-skills-group/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T19:42:49",
+    "status": "collected",
+    "article_id": "prose:student-services:4476",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/group-counselling-programs/international-support-group/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:07:51",
+    "status": "collected",
+    "article_id": "prose:student-services:1276",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/group-counselling-programs/rooted-resilient-group-counselling/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T19:55:55",
+    "status": "collected",
+    "article_id": "prose:student-services:8646",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/group-counselling-programs/social-skills-group-counselling/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T19:53:58",
+    "status": "collected",
+    "article_id": "prose:student-services:8643",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/group-counselling-programs/strengthening-connections-group/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:10:12",
+    "status": "collected",
+    "article_id": "prose:student-services:1277",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/group-counselling-programs/understanding-your-emotions-aedp-group/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T19:44:41",
+    "status": "collected",
+    "article_id": "prose:student-services:5426",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/indigenous-mental-health-wellbeing-program/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T18:56:50",
+    "status": "collected",
+    "article_id": "prose:student-services:1139",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/mental-health-care-ubc/meet-the-counsellors/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T19:10:42",
+    "status": "collected",
+    "article_id": "prose:student-services:1280",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/sexual-health/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T20:44:50",
+    "status": "collected",
+    "article_id": "prose:student-services:1295",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/sexual-health/wellness-centre-sexual-health-shop/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T19:59:03",
+    "status": "collected",
+    "article_id": "prose:student-services:1187",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/substance-use-health-harm-reduction/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-23T22:26:43",
+    "status": "collected",
+    "article_id": "prose:student-services:1297",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/substance-use-health-harm-reduction/ubc-student-recovery-community/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T18:09:12",
+    "status": "collected",
+    "article_id": "prose:student-services:1263",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/wellness-resources/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T18:37:09",
+    "status": "collected",
+    "article_id": "prose:student-services:8173",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/wellness-resources/food-nutrition/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T18:38:32",
+    "status": "collected",
+    "article_id": "prose:student-services:1293",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/wellness-resources/nurse-campus/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-05T16:39:39",
+    "status": "collected",
+    "article_id": "prose:student-services:1301",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/wellness-resources/sleep-success/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T20:43:21",
+    "status": "collected",
+    "article_id": "prose:student-services:1296",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/wellness-resources/understanding-stress/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T19:53:02",
+    "status": "collected",
+    "article_id": "prose:student-services:1299",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/wellness-resources/wellbeing-training-education/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T19:53:59",
+    "status": "collected",
+    "article_id": "prose:student-services:1262",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/health/wellness-resources/wellness-centre/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T19:57:38",
+    "status": "collected",
+    "article_id": "prose:student-services:1186",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T19:36:31",
+    "status": "collected",
+    "article_id": "prose:student-services:1102",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:53",
+    "status": "collected",
+    "article_id": "prose:student-services:1304",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/documentation-family/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:02",
+    "status": "collected",
+    "article_id": "prose:student-services:1306",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/find-regulated-immigration-consultant-or-lawyer/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:00",
+    "status": "collected",
+    "article_id": "prose:student-services:1307",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/immigration-documents-reminder-system/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:18",
+    "status": "collected",
+    "article_id": "prose:student-services:1308",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/immigration-impacts-part-time-studies-withdrawing-courses/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:10",
+    "status": "collected",
+    "article_id": "prose:student-services:1309",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/information-international-family/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:38",
+    "status": "collected",
+    "article_id": "prose:student-services:1193",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/inviting-friends-family-visit/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:59",
+    "status": "collected",
+    "article_id": "prose:student-services:1310",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/maintained-status/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:56",
+    "status": "collected",
+    "article_id": "prose:student-services:1311",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/passports/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:53",
+    "status": "collected",
+    "article_id": "prose:student-services:1312",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/prepare-leave-ubc/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:23",
+    "status": "collected",
+    "article_id": "prose:student-services:1313",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/restoration-status/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:57",
+    "status": "collected",
+    "article_id": "prose:student-services:1314",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/taking-time-away-school-international/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:03",
+    "status": "collected",
+    "article_id": "prose:student-services:1343",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/temporary-resident-visa-trv/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:54",
+    "status": "collected",
+    "article_id": "prose:student-services:1344",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/temporary-resident-visa-trv/apply-temporary-resident-visa-trv-within-canada-tutorial/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:54",
+    "status": "collected",
+    "article_id": "prose:student-services:1349",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/temporary-resident-visa-trv/apply-temporary-resident-visa-trv-within-canada-tutorial/apply-temporary-resident-visa-trv-within-canada-tutorial-application-form/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:55",
+    "status": "collected",
+    "article_id": "prose:student-services:1345",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/temporary-resident-visa-trv/apply-temporary-resident-visa-trv-within-canada-tutorial/apply-temporary-resident-visa-trv-within-canada-tutorial-required-documents/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:54",
+    "status": "collected",
+    "article_id": "prose:student-services:1351",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/tips-communicating-immigration-refugees-citizenship-canada-ircc/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:01",
+    "status": "collected",
+    "article_id": "prose:student-services:1352",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/travelling-outside-canada/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:58",
+    "status": "collected",
+    "article_id": "prose:student-services:1353",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/immigration/ubc-definitions-immigration-purposes/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:23",
+    "status": "collected",
+    "article_id": "prose:student-services:1354",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/international-immigration-faq/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:50:11",
+    "status": "collected",
+    "article_id": "prose:student-services:1303",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/international-student-advising/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:37:10",
+    "status": "collected",
+    "article_id": "prose:student-services:1183",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/study-permits/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:40",
+    "status": "collected",
+    "article_id": "prose:student-services:1315",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/study-permits/amend-study-permit-conditions-work-canada/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:49",
+    "status": "collected",
+    "article_id": "prose:student-services:1327",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/study-permits/amend-study-permit-conditions-work-canada/tutorial-amend-study-permit-conditions-work-canada-apply/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:50",
+    "status": "collected",
+    "article_id": "prose:student-services:1336",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/study-permits/amend-study-permit-conditions-work-canada/tutorial-amend-study-permit-conditions-work-canada-gather-documents/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:49",
+    "status": "collected",
+    "article_id": "prose:student-services:1337",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/study-permits/apply-initial-study-permit/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:42",
+    "status": "collected",
+    "article_id": "prose:student-services:1316",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/study-permits/apply-initial-study-permit/get-study-permit-enter-canada/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:48",
+    "status": "collected",
+    "article_id": "prose:student-services:1318",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/study-permits/apply-initial-study-permit/tutorial-apply-initial-study-permit-document-checklist/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:47",
+    "status": "collected",
+    "article_id": "prose:student-services:1319",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/study-permits/apply-initial-study-permit/tutorial-apply-initial-study-permit-fill-application/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:48",
+    "status": "collected",
+    "article_id": "prose:student-services:1320",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/study-permits/apply-initial-study-permit/tutorial-apply-initial-study-permit-required-documents/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:48",
+    "status": "collected",
+    "article_id": "prose:student-services:1324",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/study-permits/extend-study-permit-within-canada/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:51",
+    "status": "collected",
+    "article_id": "prose:student-services:1333",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/study-permits/extend-study-permit-within-canada/complete-study-permit-extension-application-form/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:52",
+    "status": "collected",
+    "article_id": "prose:student-services:1329",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/study-permits/extend-study-permit-within-canada/gather-required-documents-study-permit-extension/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:52",
+    "status": "collected",
+    "article_id": "prose:student-services:1334",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/study-permits/extend-study-permit/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:50",
+    "status": "collected",
+    "article_id": "prose:student-services:1326",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/study-permits/ubc-documents-required-study-permit/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:40",
+    "status": "collected",
+    "article_id": "prose:student-services:1342",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/study-permits/ubc-provincial-attestation-letter/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:47:41",
+    "status": "collected",
+    "article_id": "prose:student-services:4158",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/travelling-to-canada/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:02",
+    "status": "collected",
+    "article_id": "prose:student-services:1195",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/travelling-to-canada/after-arriving/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:51:24",
+    "status": "collected",
+    "article_id": "prose:student-services:1197",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/travelling-to-canada/before-you-travel/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:03",
+    "status": "collected",
+    "article_id": "prose:student-services:1198",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/travelling-to-canada/check-eligible/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:02",
+    "status": "collected",
+    "article_id": "prose:student-services:1199",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/travelling-to-canada/what-bring-canada/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:53:03",
+    "status": "collected",
+    "article_id": "prose:student-services:1200",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/travelling-to-canada/while-you-travel/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:04",
+    "status": "collected",
+    "article_id": "prose:student-services:1201",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/tutorials/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:01",
+    "status": "collected",
+    "article_id": "prose:student-services:1207",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/working-canada/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:04",
+    "status": "collected",
+    "article_id": "prose:student-services:1559",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/working-canada/apply-post-graduation-work-permit-within-canada/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:07",
+    "status": "collected",
+    "article_id": "prose:student-services:1565",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/working-canada/apply-post-graduation-work-permit-within-canada/complete-pgwp-application-form/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:07",
+    "status": "collected",
+    "article_id": "prose:student-services:1561",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/working-canada/apply-post-graduation-work-permit-within-canada/gather-required-documents-pgwp-application/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:07",
+    "status": "collected",
+    "article_id": "prose:student-services:1567",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/working-canada/campus-work/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:05",
+    "status": "collected",
+    "article_id": "prose:student-services:1549",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/working-canada/co-op-or-student-work-placements/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:05",
+    "status": "collected",
+    "article_id": "prose:student-services:7675",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/working-canada/off-campus-work/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:05",
+    "status": "collected",
+    "article_id": "prose:student-services:1560",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/working-canada/post-graduation-work-permit/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:06",
+    "status": "collected",
+    "article_id": "prose:student-services:1552",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/international-student-guide/working-canada/work-permit-spouse-or-partner-apply-spousepartner-work-permit-within-canada/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:48:05",
+    "status": "collected",
+    "article_id": "prose:student-services:1568",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/new-to-ubc/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-31T12:29:32",
+    "status": "collected",
+    "article_id": "prose:student-services:1093",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/new-to-ubc/introduction-ubc-classes/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2025-04-17T18:54:03",
+    "status": "collected",
+    "article_id": "prose:student-services:1196",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/new-to-ubc/orientations/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-05-26T06:21:23",
+    "status": "collected",
+    "article_id": "prose:student-services:1101",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/new-to-ubc/orientations/imagine-ubc/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-06-26T16:23:03",
+    "status": "collected",
+    "article_id": "prose:student-services:1136",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/new-to-ubc/ubc-collegia/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-21T17:45:31",
+    "status": "collected",
+    "article_id": "prose:student-services:1137",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/news/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-17T18:08:14",
+    "status": "collected",
+    "article_id": "prose:student-services:4466",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/news/category-announcements/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:49:29",
+    "status": "collected",
+    "article_id": "prose:student-services:4491",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/news/category-ircc-policy-updates/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:49:30",
+    "status": "collected",
+    "article_id": "prose:student-services:4472",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/news/category-service-changes/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:49:29",
+    "status": "collected",
+    "article_id": "prose:student-services:4488",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/news/category-workday/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-08-10T20:49:30",
+    "status": "collected",
+    "article_id": "prose:student-services:4490",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/sitemap/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-31T12:29:36",
+    "status": "collected",
+    "article_id": "prose:student-services:1800",
+    "reason": null
+  },
+  {
+    "url": "https://students.ubc.ca/support-unanticipated-circumstances/",
+    "discovered_by": [
+      "campus-services/student_services_pages.json"
+    ],
+    "source_modified_at": "2026-07-31T12:29:36",
+    "status": "collected",
+    "article_id": "prose:student-services:1192",
+    "reason": null
+  }
+]

@@ -1,3 +1,12 @@
-# The collectors always write LF. Keep it that way in the working tree too, so
-# checkouts on Windows don't rewrite every CSV/GeoJSON with CRLF.
+# Keep ordinary text checkouts consistent across platforms.
 * text=auto eol=lf
+
+# Preserve collector-written CSV bytes for manifest sizes and JSON/CSV checks.
+# Whitespace inside quoted source HTML is data, not a formatting error.
+data/housing/*.csv -text -whitespace
+data/libraries/*.csv -text -whitespace
+data/policies/*.csv -text -whitespace
+data/student-support/*.csv -text -whitespace
+
+# Preserve prose export bytes for content hashes and manifest sizes.
+data/prose/** -text -whitespace
