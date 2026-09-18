@@ -130,6 +130,16 @@
     "document_count": 60
   },
   {
+    "hostname": "isc.ubc.ca",
+    "title": "isc.ubc.ca",
+    "homepage_url": "https://isc.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:15:40.204Z",
+    "homepage_sha256": "7e4a48a2969b294ceaefc0f427de5687e6a490ddbe342f99d167296f35062c5e",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/isc.ubc.ca",
+    "document_count": 38
+  },
+  {
     "hostname": "istand.ok.ubc.ca",
     "title": "istand.ok.ubc.ca",
     "homepage_url": "https://istand.ok.ubc.ca/",
