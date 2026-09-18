@@ -138,5 +138,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/mpg.sciencecoop.ubc.ca",
     "document_count": 97
+  },
+  {
+    "hostname": "naisa2017.arts.ubc.ca",
+    "title": "naisa2017.arts.ubc.ca",
+    "homepage_url": "https://naisa2017.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:02:03.930Z",
+    "homepage_sha256": "de492e42e227c681bd480e0a884787d23db71bf157cf404cb1a3123f5e2474ed",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/naisa2017.arts.ubc.ca",
+    "document_count": 18
   }
 ]
