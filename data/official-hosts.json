@@ -48,5 +48,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/enso.arts.ubc.ca",
     "document_count": 12
+  },
+  {
+    "hostname": "io.ubc.ca",
+    "title": "io.ubc.ca",
+    "homepage_url": "https://io.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:13:20.704Z",
+    "homepage_sha256": "5b46be44091c0449e1de23d0a5435183d12eca679d219e1d6e3f3c5de2a25c4b",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/io.ubc.ca",
+    "document_count": 7
   }
 ]
