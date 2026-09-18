@@ -188,5 +188,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/park.forestry.ubc.ca",
     "document_count": 17
+  },
+  {
+    "hostname": "parking.ubc.ca",
+    "title": "parking.ubc.ca",
+    "homepage_url": "https://parking.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:26:01.189Z",
+    "homepage_sha256": "6f45dbd6e1736301aa79b86a43f2e8d80561ccd445530db0d95082a6de56ffbc",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/parking.ubc.ca",
+    "document_count": 31
   }
 ]
