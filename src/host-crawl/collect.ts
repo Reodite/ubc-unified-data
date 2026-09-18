@@ -11,7 +11,7 @@ import {
   verifyHtmlDiscovery,
 } from "./adapters/html-discovery.ts";
 import { wordpressRecordInput } from "./adapters/wordpress-content.ts";
-import { discoverWordpress } from "./adapters/wordpress-discovery.ts";
+import { advertisedWordpressRoots, discoverWordpress } from "./adapters/wordpress-discovery.ts";
 import {
   DocumentPolicyError,
   NonTextMediaError,
@@ -108,6 +108,18 @@ export async function collectRecordedHost(
   const verdict = scraper.vetHomepage(archive.homepage.snapshot);
   if (!verdict.accepted) throw new Error(`Homepage is not vetted: ${verdict.reason}`);
   const hostname = scraper.hostname;
+  if (scraper.adapter.kind === "auto") {
+    const advertised = advertisedWordpressRoots(archive.homepage).some((url) => {
+      try {
+        hostUrl(url, hostname);
+        return true;
+      } catch {
+        return false;
+      }
+    });
+    // Same-host advertised CMS failures remain fatal; they cannot establish an HTML-only inventory.
+    scraper = { ...scraper, adapter: { ...scraper.adapter, kind: advertised ? "wordpress" : "html" } };
+  }
   const robotsUrl = `https://${hostname}/robots.txt`;
   const robotsObservation = await archive.read(robotsUrl);
   if (![200, 404, 410].includes(robotsObservation.snapshot.status))

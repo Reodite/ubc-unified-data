@@ -1,3 +1,5 @@
+import { publicUbcUrl } from "../prose/client.ts";
+
 export function normalizeHost(value: string): string {
   if (typeof value !== "string" || !value || /[\s/@:#?\\]/.test(value)) throw new Error("Invalid hostname");
   const host = new URL(`https://${value}`).hostname.toLowerCase().replace(/\.$/, "");
@@ -26,6 +28,23 @@ export function hostUrl(value: string, hostname: string, base = `https://${hostn
 }
 
 export const UNSUPPORTED_DOCUMENT = "Document format requires a reviewed text-extraction adapter";
+
+/** Allow declared PDF documents without widening authentication, query, or other resource boundaries. */
+export function documentPageExclusion(value: string, hostname: string, formats: readonly "pdf"[]): string | null {
+  const exclusion = pageExclusion(value, hostname);
+  let url: URL;
+  try {
+    url = new URL(publicUbcUrl(hostUrl(value, hostname)));
+  } catch {
+    return "Different or unsafe public destination";
+  }
+  if (exclusion !== UNSUPPORTED_DOCUMENT) return exclusion;
+  const path = decodeURIComponent(url.pathname);
+  if (!formats.includes("pdf") || !/\.pdf$/i.test(path) || url.search) return exclusion;
+  url.pathname = path.slice(0, -4);
+  if (url.pathname.startsWith("/wp-content/uploads/")) url.pathname = url.pathname.slice("/wp-content/uploads".length);
+  return pageExclusion(url.href, hostname);
+}
 
 export function pageExclusion(value: string, hostname: string): string | null {
   let url: URL;

@@ -1,20 +1,22 @@
-import { existsSync, readdirSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { bmlscScraper } from "../host-scrapers/bmlscpathology.med.ubc.ca/index.ts";
 import { bullyingAndHarassmentScraper } from "../host-scrapers/bullyingandharassment.ubc.ca/index.ts";
 import { coopScraper } from "../host-scrapers/coop.ubc.ca/index.ts";
-import { createRegistry, getHostScraper, registeredHostnames } from "./registry.ts";
+import { createRegistry, getHostScraper, parseGenericHostnames, registeredHostnames } from "./registry.ts";
 import { hostUrl, normalizeHost } from "./urls.ts";
 
 const hostname = "bmlscpathology.med.ubc.ca";
 describe("explicit hostname dispatch", () => {
-  it("has one organized implementation and focused test per registered hostname", () => {
+  it("dispatches specialized modules and explicitly declared generic hostnames", () => {
     const root = new URL("../host-scrapers/", import.meta.url);
     const directories = readdirSync(root, { withFileTypes: true })
       .filter((entry) => entry.isDirectory())
       .map((entry) => entry.name)
       .sort();
-    expect(directories).toEqual(registeredHostnames());
+    const generic = parseGenericHostnames(readFileSync(new URL("generic-hosts.json", root)));
+    expect([...directories, ...generic].sort()).toEqual(registeredHostnames());
+    for (const host of generic) expect(getHostScraper(host).adapter.kind).toBe("auto");
     for (const host of directories) {
       expect(existsSync(new URL(`${host}/index.ts`, root))).toBe(true);
       expect(existsSync(new URL(`${host}/index.test.ts`, root))).toBe(true);

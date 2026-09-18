@@ -38,8 +38,9 @@ export interface HostScraper {
   title: string;
   scope: string;
   adapter: {
-    kind: "wordpress" | "html";
+    kind: "wordpress" | "html" | "auto";
     allowedTypes: readonly string[];
+    allPublicTypes?: boolean;
     apiContentFallback?: boolean;
     views?: readonly PublicGetView[];
     optionalAbsent?: readonly string[];

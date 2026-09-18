@@ -3,6 +3,7 @@ import { normalizeHost } from "./urls.ts";
 export interface ChangedFile {
   path: string;
   bytes: Uint8Array | null;
+  previousBytes?: Uint8Array | null;
 }
 
 /** Check a new hostname's atomic publication unit; byte-bearing crawl intermediates are never publishable data. */
@@ -36,10 +37,35 @@ export function assertSingleHostChange(files: readonly ChangedFile[]): string {
   }
   if (hosts.size !== 1) throw new Error("A hostname commit must contain exactly one accepted hostname");
   const host = [...hosts][0]!;
+  const generic = files.find((file) => file.path === "src/host-scrapers/generic-hosts.json");
+  if (generic) {
+    if (!generic.bytes || generic.previousBytes === undefined) throw new Error("Generic registry baseline is required");
+    const decode = (bytes: Uint8Array | null): string[] => {
+      const value: unknown = bytes ? JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(bytes)) : [];
+      if (
+        !Array.isArray(value) ||
+        value.some(
+          (item, index) =>
+            typeof item !== "string" || normalizeHost(item) !== item || (index > 0 && value[index - 1] >= item),
+        )
+      )
+        throw new Error("Invalid sorted generic host registry");
+      return value as string[];
+    };
+    const before = decode(generic.previousBytes);
+    const after = decode(generic.bytes);
+    const added = after.filter((name) => !before.includes(name));
+    if (added.length !== 1 || added[0] !== host || before.some((name) => !after.includes(name)))
+      throw new Error("Generic registry must add only the published hostname");
+  }
   for (const required of [
-    `src/host-scrapers/${host}/index.ts`,
-    `src/host-scrapers/${host}/index.test.ts`,
-    "src/host-crawl/registry.ts",
+    ...(generic
+      ? ["src/host-scrapers/generic-hosts.json"]
+      : [
+          `src/host-scrapers/${host}/index.ts`,
+          `src/host-scrapers/${host}/index.test.ts`,
+          "src/host-crawl/registry.ts",
+        ]),
     "data/official-hosts.json",
   ])
     if (!paths.has(required) || files.find((file) => file.path === required)?.bytes === null)

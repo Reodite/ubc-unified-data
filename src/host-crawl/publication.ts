@@ -67,6 +67,11 @@ export interface PublishCompletedHostOptions {
   externalRoot: string;
   registeredHosts: RegisteredHosts;
   verifyInputs: () => Promise<void>;
+  /**
+   * Read and receipt only target-host document bytes, retaining the full index and file census.
+   * Requires an outer repository/Git publication lock and a guard against other-host file changes.
+   */
+  incremental?: boolean;
   /** Failure injection only; no extraction or content override is accepted. */
   testHook?: (boundary: PublicationBoundary) => void | Promise<void>;
 }
@@ -402,7 +407,12 @@ async function cleanup(workspace: string, journal: Journal, committed: boolean):
   }
 }
 
-async function recover(workspace: string, repositoryRoot: string, registeredHosts: RegisteredHosts): Promise<void> {
+async function recover(
+  workspace: string,
+  repositoryRoot: string,
+  registeredHosts: RegisteredHosts,
+  incremental = false,
+): Promise<void> {
   await knownEntries(workspace, EXTERNAL_NAMES);
   const journalPath = join(workspace, "journal.json");
   const commitPath = join(workspace, "committed.json");
@@ -461,7 +471,12 @@ async function recover(workspace: string, repositoryRoot: string, registeredHost
       }
     }
   }
-  await validatePublishedHosts({ repositoryRoot, registeredHosts, allowAbsent: !committed });
+  await validatePublishedHosts({
+    repositoryRoot,
+    registeredHosts,
+    allowAbsent: !committed,
+    documentHostnames: incremental ? [journal.hostname] : undefined,
+  });
   await cleanup(workspace, journal, committed);
 }
 
@@ -500,10 +515,12 @@ export async function publishCompletedHost(options: PublishCompletedHostOptions)
       "registeredHosts",
       "verifyInputs",
       ...(Object.hasOwn(options, "testHook") ? ["testHook"] : []),
+      ...(Object.hasOwn(options, "incremental") ? ["incremental"] : []),
     ],
     "publication options",
   );
-  const { completed, repositoryRoot, externalRoot, verifyInputs, testHook } = options;
+  const { completed, repositoryRoot, externalRoot, verifyInputs, testHook, incremental = false } = options;
+  if (typeof incremental !== "boolean") throw new Error("Incremental publication must be a boolean");
   const registeredHosts = registeredHostSet(options.registeredHosts);
   exactObject(completed, ["complete", "host", "documents"], "completed host");
   if (
@@ -537,13 +554,20 @@ export async function publishCompletedHost(options: PublishCompletedHostOptions)
       urls.add(url);
     }
   }
+  const validation = {
+    repositoryRoot,
+    registeredHosts,
+    documentHostnames: incremental ? [host.hostname] : undefined,
+  };
+  const readPublicReceipt = (hosts: readonly VettedHost[]) =>
+    publicReceipt(repositoryRoot, incremental ? hosts.filter((entry) => entry.hostname === host.hostname) : hosts);
   const workspace = await prepareExternalRoot(repositoryRoot, externalRoot);
   const database = await lockWorkspace(workspace, repositoryRoot);
   try {
     await testHook?.("locked");
-    await recover(workspace, repositoryRoot, registeredHosts);
-    const existing = await validatePublishedHosts({ repositoryRoot, registeredHosts, allowAbsent: true });
-    const baseline = await publicReceipt(repositoryRoot, existing);
+    await recover(workspace, repositoryRoot, registeredHosts, incremental);
+    const existing = await validatePublishedHosts({ ...validation, allowAbsent: true });
+    const baseline = await readPublicReceipt(existing);
     const hosts = [...existing.filter((entry) => entry.hostname !== host.hostname), host].sort((a, b) =>
       a.hostname < b.hostname ? -1 : a.hostname > b.hostname ? 1 : 0,
     );
@@ -571,12 +595,8 @@ export async function publishCompletedHost(options: PublishCompletedHostOptions)
     };
     if (same(journal.old_host, journal.new_host) && same(oldList, journal.new_list)) {
       await verifyInputs();
-      await validatePublishedHosts({ repositoryRoot, registeredHosts });
-      assertReceipt(
-        await publicReceipt(repositoryRoot, existing),
-        baseline,
-        "public output changed during input verification",
-      );
+      await validatePublishedHosts(validation);
+      assertReceipt(await readPublicReceipt(existing), baseline, "public output changed during input verification");
       return { changed: false, hosts };
     }
     if (oldHost && (oldHost.mode & 0o222) === 0) throw new Error("Host directory mode forbids writable publication");
@@ -614,12 +634,8 @@ export async function publishCompletedHost(options: PublishCompletedHostOptions)
       await testHook?.("prepared");
       await verifyInputs();
       await testHook?.("inputs-verified");
-      await validatePublishedHosts({ repositoryRoot, registeredHosts, allowAbsent: true });
-      assertReceipt(
-        await publicReceipt(repositoryRoot, existing),
-        baseline,
-        "public output changed before installation",
-      );
+      await validatePublishedHosts({ ...validation, allowAbsent: true });
+      assertReceipt(await readPublicReceipt(existing), baseline, "public output changed before installation");
       assertReceipt(
         await directoryReceipt(paths.newHost),
         journal.new_host,
@@ -641,10 +657,10 @@ export async function publishCompletedHost(options: PublishCompletedHostOptions)
       await testHook?.("old-list-moved");
       await atomicRename(paths.newList, paths.list);
       await testHook?.("new-list-installed");
-      await validatePublishedHosts({ repositoryRoot, registeredHosts });
+      await validatePublishedHosts(validation);
       assertReceipt(await directoryReceipt(paths.host), journal.new_host, "installed host");
       assertReceipt(await fileReceipt(paths.list), journal.new_list, "installed list");
-      const installed = await publicReceipt(repositoryRoot, hosts);
+      const installed = await readPublicReceipt(hosts);
       assertReceipt(installed.dataMode, baseline.dataMode ?? 0o40755, "data directory mode changed");
       assertReceipt(installed.documentsMode, baseline.documentsMode ?? 0o40755, "documents directory mode changed");
       for (const previous of baseline.hosts) {
@@ -656,19 +672,11 @@ export async function publishCompletedHost(options: PublishCompletedHostOptions)
           );
       }
       await testHook?.("before-commit");
-      await validatePublishedHosts({ repositoryRoot, registeredHosts });
-      assertReceipt(
-        await publicReceipt(repositoryRoot, hosts),
-        installed,
-        "public output changed before commit marker",
-      );
+      await validatePublishedHosts(validation);
+      assertReceipt(await readPublicReceipt(hosts), installed, "public output changed before commit marker");
       await writeExclusive(join(workspace, "commit-ready.json"), journalBytes(journal), 0o600);
       await testHook?.("commit-prepared");
-      assertReceipt(
-        await publicReceipt(repositoryRoot, hosts),
-        installed,
-        "public output changed before atomic commit",
-      );
+      assertReceipt(await readPublicReceipt(hosts), installed, "public output changed before atomic commit");
       if (
         !(await readRegularFile(join(workspace, "commit-ready.json"), MAX_JOURNAL_BYTES)).equals(journalBytes(journal))
       )
@@ -676,11 +684,11 @@ export async function publishCompletedHost(options: PublishCompletedHostOptions)
       await atomicRename(join(workspace, "commit-ready.json"), join(workspace, "committed.json"));
       await testHook?.("committed");
       await testHook?.("before-cleanup");
-      await recover(workspace, repositoryRoot, registeredHosts);
+      await recover(workspace, repositoryRoot, registeredHosts, incremental);
       return { changed: true, hosts };
     } catch (error) {
       try {
-        await recover(workspace, repositoryRoot, registeredHosts);
+        await recover(workspace, repositoryRoot, registeredHosts, incremental);
       } catch (recoveryError) {
         throw new AggregateError([error, recoveryError], "Publication failed; recovery refused unverified artifacts");
       }

@@ -147,6 +147,54 @@ afterEach(() => {
 });
 
 describe("recorded complete-host collection", () => {
+  it("resolves auto discovery and enumerates declared public types without hiding CMS errors", async () => {
+    const f = setup();
+    const scraper = {
+      ...fixtureScraper,
+      adapter: {
+        kind: "auto" as const,
+        allowedTypes: [],
+        allPublicTypes: true,
+      },
+    };
+    const catalog = f.values.get(api)!;
+    const routes = JSON.parse(catalog.snapshot.body).routes;
+    const collectionUrl = `${api}wp/v2/bulletins`;
+    routes["/wp/v2/bulletins"] = {
+      methods: ["GET"],
+      _links: { self: [{ href: collectionUrl }] },
+    };
+    catalog.snapshot.body = JSON.stringify({ routes });
+    const types = f.values.get(`${api}wp/v2/types`)!;
+    types.snapshot.body = JSON.stringify({
+      ...JSON.parse(types.snapshot.body),
+      attachment: {},
+      bulletin: {
+        rest_namespace: "wp/v2",
+        rest_base: "bulletins",
+        _links: { "wp:items": [{ href: collectionUrl }] },
+      },
+    });
+    const collection = observation(wordpressCollectionUrl(collectionUrl, 1), [
+      {
+        id: 1,
+        type: "bulletin",
+        status: "publish",
+        link: post,
+        modified_gmt: "2024-12-01T00:00:00",
+      },
+    ]);
+    collection.snapshot.headers["x-wp-total"] = "1";
+    collection.snapshot.headers["x-wp-totalpages"] = "1";
+    f.values.set(collection.snapshot.url, collection);
+    await expect(collectRecordedHost(scraper, f.archive, producer)).resolves.toMatchObject({ complete: true });
+    expect(f.archive.read).toHaveBeenCalledWith(collection.snapshot.url);
+    collection.snapshot.body = collection.snapshot.body.replace('"publish"', '"private"');
+    await expect(collectRecordedHost(scraper, f.archive, producer)).rejects.toThrow(/publication status/);
+    catalog.snapshot.status = 403;
+    await expect(collectRecordedHost(scraper, f.archive, producer)).rejects.toThrow(/complete public JSON/);
+  });
+
   it("does not use independent API text to bypass a document policy refusal", async () => {
     const f = setup(),
       catalog = f.values.get(api)!;

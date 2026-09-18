@@ -20,6 +20,16 @@
     "document_count": 6
   },
   {
+    "hostname": "celebrateresearch.ubc.ca",
+    "title": "celebrateresearch.ubc.ca",
+    "homepage_url": "https://celebrateresearch.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:09:42.416Z",
+    "homepage_sha256": "949d3c6b2f0385dfceccd8cdd6176df149b374ad8afbfd540b59e44a230de01b",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/celebrateresearch.ubc.ca",
+    "document_count": 4
+  },
+  {
     "hostname": "coop.ubc.ca",
     "title": "UBC Co-op Programs",
     "homepage_url": "https://coop.ubc.ca/",

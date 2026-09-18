@@ -146,6 +146,8 @@ export interface ValidatePublishedHostsOptions {
   registeredHosts: RegisteredHosts;
   /** Allow both outputs to be absent, or an absent list with an empty documents directory. */
   allowAbsent?: boolean;
+  /** Read document bytes only for these registered hostnames; omit to audit all hosts. Retain the full census. */
+  documentHostnames?: readonly string[];
 }
 
 /** Validate only the owned host index and document tree, leaving upstream data outside that tree alone. */
@@ -153,8 +155,14 @@ export async function validatePublishedHosts({
   repositoryRoot,
   registeredHosts,
   allowAbsent = false,
+  documentHostnames,
 }: ValidatePublishedHostsOptions): Promise<VettedHost[]> {
   const registered = registeredHostSet(registeredHosts);
+  if (documentHostnames !== undefined && !Array.isArray(documentHostnames))
+    throw new Error("Document validation hostnames must be an array");
+  const documentHosts = documentHostnames === undefined ? undefined : registeredHostSet(documentHostnames);
+  for (const hostname of documentHosts ?? [])
+    if (!registered.has(hostname)) throw new Error("Unregistered document validation hostname");
   await requireDirectory(repositoryRoot);
   const listPath = join(repositoryRoot, HOST_LIST_PATH);
   const documentsRoot = join(repositoryRoot, "data/documents");
@@ -189,6 +197,13 @@ export async function validatePublishedHosts({
       if (!/^[a-f0-9]{64}\.md$/.test(name) || filenames.has(name))
         throw new Error("Invalid or duplicate document filename");
       filenames.add(name);
+      if (documentHosts !== undefined && !documentHosts.has(host.hostname)) {
+        const path = join(directory, name);
+        const info = await maybeLstat(path);
+        if (!info?.isFile() || info.nlink !== 1 || info.size > MAX_DOCUMENT_BYTES)
+          throw new Error(`Not a bounded regular unaliased file: ${path}`);
+        continue;
+      }
       const doc = parseDocument(await readRegularFile(join(directory, name)), {
         hostname: host.hostname,
         filename: name,

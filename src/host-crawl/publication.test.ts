@@ -5,6 +5,7 @@ import {
   lstat,
   mkdir,
   mkdtemp,
+  open,
   readdir,
   readFile,
   readlink,
@@ -23,7 +24,7 @@ import { publishCompletedHost, type PublicationBoundary, type PublishCompletedHo
 
 vi.mock("node:fs/promises", async (importOriginal) => {
   const actual = await importOriginal<typeof import("node:fs/promises")>();
-  return { ...actual, rename: vi.fn(actual.rename) };
+  return { ...actual, open: vi.fn(actual.open), rename: vi.fn(actual.rename) };
 });
 
 const TEMP = "/home/admin2/Projects/ubc-tmp";
@@ -53,6 +54,7 @@ afterEach(async (context) => {
   }
   children.clear();
   vi.mocked(rename).mockReset();
+  vi.mocked(open).mockReset();
   for (const root of roots.splice(0)) {
     if (context.task.result?.state === "fail") console.error(`Preserved publication fixture: ${root}`);
     else await rm(root, { recursive: true, force: true });
@@ -158,7 +160,7 @@ async function preparedChild(options: PublishCompletedHostOptions) {
     await publishCompletedHost({...${JSON.stringify(data)}, verifyInputs: async()=>{}, testHook: async(boundary)=>{
       if(boundary===stop) { process.stdout.write('READY\\n'); await new Promise(()=>setInterval(()=>{},1000)); }
     }});`;
-  const child = spawn(process.execPath, ["--input-type=module", "--eval", script], {
+  const child = spawn(process.execPath, ["--import", "tsx", "--input-type=module", "--eval", script], {
     cwd: fileURLToPath(new URL("../..", import.meta.url)),
     env: { ...process.env, TMPDIR: TEMP },
     stdio: ["ignore", "pipe", "pipe", "ipc"],
@@ -208,6 +210,253 @@ async function pausedChild(options: PublishCompletedHostOptions, boundary: Publi
   await prepared.start(boundary);
   return prepared.child;
 }
+
+describe("incremental completed host publication", () => {
+  async function forbidReads(path: string) {
+    const actual = await vi.importActual<typeof import("node:fs/promises")>("node:fs/promises");
+    vi.mocked(open).mockClear();
+    vi.mocked(open).mockImplementation(async (...args) => {
+      if (String(args[0]) === path) throw new Error("Unrelated document opened");
+      return actual.open(...args);
+    });
+  }
+
+  describe.each(["new host", "replacement", "no-op"])("prior-body isolation: %s", (operation) => {
+    let fixture: Awaited<ReturnType<typeof setup>>;
+    const old = complete("other.ubc.ca");
+    beforeEach(async () => {
+      fixture = await setup();
+      await publishCompletedHost({ ...fixture.options, completed: old });
+      if (operation !== "new host") await publishCompletedHost(fixture.options);
+    });
+    it("never opens prior document bodies through publication and cleanup", async () => {
+      const oldDirectory = join(fixture.options.repositoryRoot, old.host.document_root);
+      const oldFile = join(oldDirectory, documentFilename(old.documents[0]!.id));
+      const before = await tree(oldDirectory, true);
+      const wholeBefore = await tree(fixture.options.repositoryRoot, true);
+      await forbidReads(oldFile);
+      const completed =
+        operation === "replacement" ? complete("example.ubc.ca", "Replacement prose.\n") : fixture.options.completed;
+      const options = { ...fixture.options, completed, incremental: true };
+      const verifyInputs = vi.fn(async () => {});
+      expect(await publishCompletedHost({ ...options, verifyInputs })).toEqual({
+        changed: operation !== "no-op",
+        hosts: [completed.host, old.host],
+      });
+      expect(parseDocument(await readFile(fixture.file))).toEqual(completed.documents[0]);
+      if (operation === "no-op") expect(await tree(options.repositoryRoot, true)).toEqual(wholeBefore);
+      expect(await tree(oldDirectory, true)).toEqual(before);
+      expect(JSON.parse(await readFile(join(options.repositoryRoot, "data/official-hosts.json"), "utf8"))).toEqual([
+        completed.host,
+        old.host,
+      ]);
+      expect(verifyInputs).toHaveBeenCalledTimes(1);
+      expect(vi.mocked(open).mock.calls.some(([path]) => String(path) === oldFile)).toBe(false);
+      expect(vi.mocked(open).mock.calls.some(([path]) => String(path) === fixture.file)).toBe(true);
+      await cleanWorkspace(fixture.workspace);
+    });
+  });
+
+  describe("validator hostname subsets", () => {
+    let fixture: Awaited<ReturnType<typeof setup>>;
+    const other = complete("other.ubc.ca");
+    beforeEach(async () => {
+      fixture = await setup();
+      await publishCompletedHost(fixture.options);
+      await publishCompletedHost({ ...fixture.options, completed: other });
+    });
+    it.each([{ hostnames: [] }, { hostnames: ["example.ubc.ca"] }, { hostnames: ["example.ubc.ca", "other.ubc.ca"] }])(
+      "returns the complete index while reading only $hostnames",
+      async ({ hostnames }) => {
+        vi.mocked(open).mockClear();
+        expect(
+          await validatePublishedHosts({ ...fixture.options, documentHostnames: Object.freeze(hostnames) }),
+        ).toEqual([fixture.options.completed.host, other.host]);
+        for (const completed of [fixture.options.completed, other]) {
+          const file = join(
+            fixture.options.repositoryRoot,
+            completed.host.document_root,
+            documentFilename(completed.documents[0]!.id),
+          );
+          expect(vi.mocked(open).mock.calls.some(([path]) => String(path) === file)).toBe(
+            hostnames.includes(completed.host.hostname),
+          );
+        }
+      },
+    );
+    it.each(
+      [["unknown.ubc.ca"], ["EXAMPLE.ubc.ca"], ["example.ubc.ca", "example.ubc.ca"]].map((hostnames) => ({
+        hostnames,
+      })),
+    )("rejects invalid document hostnames $hostnames", async ({ hostnames }) => {
+      await expect(validatePublishedHosts({ ...fixture.options, documentHostnames: hostnames })).rejects.toThrow();
+    });
+  });
+
+  describe("strict auditing", () => {
+    let fixture: Awaited<ReturnType<typeof setup>>;
+    beforeEach(async () => {
+      fixture = await setup();
+      await publishCompletedHost(fixture.options);
+      await appendFile(fixture.file, "tampered body");
+    });
+    it.each([undefined, false, true])(
+      "keeps unrelated body auditing explicit with incremental=%s",
+      async (incremental) => {
+        const before = await tree(fixture.options.repositoryRoot, true);
+        const options = {
+          ...fixture.options,
+          completed: complete("other.ubc.ca"),
+          ...(incremental === undefined ? {} : { incremental }),
+        };
+        if (incremental) expect((await publishCompletedHost(options)).changed).toBe(true);
+        else {
+          await expect(publishCompletedHost(options)).rejects.toThrow(/digest mismatch/);
+          expect(await tree(options.repositoryRoot, true)).toEqual(before);
+        }
+        await expect(validatePublishedHosts(fixture.options)).rejects.toThrow(/digest mismatch/);
+      },
+    );
+  });
+
+  it.each(["index encoding", "other metadata", "other count", "directory census", "target bytes", "target artifact"])(
+    "rejects corrupt %s without mutation",
+    async (kind) => {
+      const fixture = await setup();
+      await publishCompletedHost(fixture.options);
+      await publishCompletedHost({ ...fixture.options, completed: complete("other.ubc.ca") });
+      const root = fixture.options.repositoryRoot;
+      const list = join(root, "data/official-hosts.json");
+      if (kind === "index encoding") await appendFile(list, " ");
+      if (kind === "other metadata" || kind === "other count") {
+        const hosts = JSON.parse(await readFile(list, "utf8"));
+        if (kind === "other metadata") hosts[1].document_root = "data/documents/example.ubc.ca";
+        else hosts[1].document_count = 2;
+        await writeFile(list, `${JSON.stringify(hosts, null, 2)}\n`);
+      }
+      if (kind === "directory census") await mkdir(join(root, "data/documents/unknown.ubc.ca"));
+      if (kind === "target bytes") await appendFile(fixture.file, "tampered");
+      if (kind === "target artifact")
+        await writeFile(join(root, fixture.options.completed.host.document_root, "unknown.txt"), "keep");
+      const before = await tree(root, true);
+      await expect(publishCompletedHost({ ...fixture.options, incremental: true })).rejects.toThrow();
+      expect(await tree(root, true)).toEqual(before);
+      await cleanWorkspace(fixture.workspace);
+    },
+  );
+
+  it.each(["empty", "digest", "off-host", "duplicate"])("validates new %s documents", async (kind) => {
+    const fixture = await setup();
+    const completed = fixture.options.completed;
+    if (kind === "empty") completed.documents = [];
+    if (kind === "digest") completed.documents[0]!.body_sha256 = sha256("wrong");
+    if (kind === "off-host") completed.documents[0]!.hostname = "other.ubc.ca";
+    if (kind === "duplicate") {
+      completed.documents = [...completed.documents, ...completed.documents];
+      completed.host.document_count = 2;
+    }
+    await expect(publishCompletedHost({ ...fixture.options, incremental: true })).rejects.toThrow();
+    expect(await readdir(fixture.options.repositoryRoot)).toEqual([]);
+  });
+
+  it.each(["target", "index"])("receipts reject valid but unowned %s bytes before atomic commit", async (kind) => {
+    const fixture = await setup();
+    await publishCompletedHost({ ...fixture.options, completed: complete("other.ubc.ca") });
+    const path = kind === "target" ? fixture.file : join(fixture.options.repositoryRoot, "data/official-hosts.json");
+    let unowned: Buffer;
+    await expect(
+      publishCompletedHost({
+        ...fixture.options,
+        incremental: true,
+        testHook: async (boundary) => {
+          if (boundary !== "commit-prepared") return;
+          if (kind === "target")
+            unowned = formatDocument(complete("example.ubc.ca", "Unexpected valid prose").documents[0]!);
+          else {
+            const hosts = JSON.parse(await readFile(path, "utf8"));
+            hosts[1].title = "Unexpected other-host metadata";
+            unowned = Buffer.from(`${JSON.stringify(hosts, null, 2)}\n`);
+          }
+          await writeFile(path, unowned);
+        },
+      }),
+    ).rejects.toThrow(/recovery refused/);
+    expect(await readFile(path)).toEqual(unowned!);
+    expect(await readdir(fixture.workspace)).not.toContain("committed.json");
+    expect(await readdir(fixture.workspace)).toContain("journal.json");
+  });
+
+  it("awaits the input guard and preserves unknown external artifacts", async () => {
+    const fixture = await setup();
+    await publishCompletedHost(fixture.options);
+    const before = await tree(fixture.options.repositoryRoot, true);
+    const options = { ...fixture.options, incremental: true, completed: complete("example.ubc.ca", "Changed") };
+    await expect(
+      publishCompletedHost({
+        ...options,
+        verifyInputs: async () => {
+          throw new Error("Input guard");
+        },
+      }),
+    ).rejects.toThrow("Input guard");
+    expect(await tree(options.repositoryRoot, true)).toEqual(before);
+    await cleanWorkspace(fixture.workspace);
+    const unknown = join(fixture.workspace, "transaction/unknown.txt");
+    await expect(
+      publishCompletedHost({
+        ...options,
+        testHook: async (boundary) => {
+          if (boundary === "prepared") await writeFile(unknown, "unowned bytes");
+        },
+      }),
+    ).rejects.toThrow(/recovery refused/);
+    expect(await readFile(unknown, "utf8")).toBe("unowned bytes");
+    expect(await tree(options.repositoryRoot, true)).toEqual(before);
+  });
+
+  describe("interrupted target recovery", () => {
+    let fixture: Awaited<ReturnType<typeof setup>>;
+    let prepared: Awaited<ReturnType<typeof preparedChild>>;
+    const old = complete("other.ubc.ca");
+    const changed = complete("example.ubc.ca", "Recovered replacement");
+    beforeEach(async () => {
+      fixture = await setup();
+      await publishCompletedHost(fixture.options);
+      await publishCompletedHost({ ...fixture.options, completed: old });
+    });
+    describe.each(["new-list-installed", "committed"] as const)("killed at %s", (boundary) => {
+      beforeEach(async () => {
+        prepared = await preparedChild({ ...fixture.options, completed: changed, incremental: true });
+      });
+      it("recovers the target without old-body reads", async () => {
+        const oldDirectory = join(fixture.options.repositoryRoot, old.host.document_root);
+        const before = await tree(fixture.options.repositoryRoot, true);
+        const otherBefore = await tree(oldDirectory, true);
+        await prepared.start(boundary);
+        const child = prepared.child;
+        child.kill("SIGKILL");
+        await exited(child);
+        children.delete(child);
+        await forbidReads(join(oldDirectory, documentFilename(old.documents[0]!.id)));
+        await expect(
+          publishCompletedHost({
+            ...fixture.options,
+            completed: changed,
+            incremental: true,
+            verifyInputs: async () => {
+              throw new Error("Stop after recovery");
+            },
+          }),
+        ).rejects.toThrow("Stop after recovery");
+        if (boundary === "committed")
+          expect(await readFile(fixture.file)).toEqual(formatDocument(changed.documents[0]!));
+        else expect(await tree(fixture.options.repositoryRoot, true)).toEqual(before);
+        expect(await tree(oldDirectory, true)).toEqual(otherBefore);
+        await cleanWorkspace(fixture.workspace);
+      });
+    });
+  });
+});
 
 describe("completed host publication", () => {
   it.each([false, true])(

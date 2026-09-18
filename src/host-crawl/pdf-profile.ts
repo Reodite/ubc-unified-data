@@ -358,7 +358,9 @@ async function hashFile(path: string, resolvedPath: string): Promise<PdfResource
   }
 }
 
-async function inventory(paths: readonly string[]): Promise<PdfResource[]> {
+type ObservePdfResource = (path: string) => Promise<() => Promise<void>>;
+
+async function inventory(paths: readonly string[], observe?: ObservePdfResource): Promise<PdfResource[]> {
   const entries = new Map<string, PdfResource>();
   const active = new Set<string>();
   async function visit(path: string): Promise<void> {
@@ -366,6 +368,7 @@ async function inventory(paths: readonly string[]): Promise<PdfResource[]> {
     if (entries.has(path)) return;
     active.add(path);
     try {
+      const checkIdentity = await observe?.(path);
       const before = await lstat(path).catch((error: NodeJS.ErrnoException) => {
         if (error.code === "ENOENT") return null;
         throw error;
@@ -392,6 +395,7 @@ async function inventory(paths: readonly string[]): Promise<PdfResource[]> {
         entries.set(path, await hashFile(path, await realpath(path)));
         if (!sameFile(before, await lstat(path))) throw new Error(`PDF resource changed: ${path}`);
       } else throw new Error(`Unsupported PDF resource file type: ${path}`);
+      await checkIdentity?.();
     } finally {
       active.delete(path);
     }
@@ -421,6 +425,10 @@ function linkedPaths(output: Buffer): string[] {
  * Retain failed capture context and throw PdfEvidenceError; remove only successful capture context.
  */
 export async function capturePdfProfile(workspace = join(DEFAULT_EXTERNAL_ROOT, "pdf-profile")): Promise<PdfProfile> {
+  return captureProfile(workspace);
+}
+
+async function captureProfile(workspace: string, observe?: ObservePdfResource): Promise<PdfProfile> {
   if (process.platform !== "linux" || process.arch !== "x64") throw new Error("PDF profile requires Linux x64");
   const context = await createPdfWorkspace(workspace);
   let stage = "profile-capture";
@@ -462,11 +470,10 @@ export async function capturePdfProfile(workspace = join(DEFAULT_EXTERNAL_ROOT, 
       throw new Error("pdftotext does not advertise the required hyphen preservation mode");
     const removeHyphens = hyphenOption ? "explicit-none" : "legacy-layout";
     const textArguments = hyphenOption ? [...PDF_TEXT_ARGUMENTS, "-remove-hyphens", "none"] : [...PDF_TEXT_ARGUMENTS];
-    const resources = await inventory([
-      ...RESOURCE_ROOTS,
-      ...Object.values(PDF_EXECUTABLES),
-      ...Object.values(linkedLibraries).flat(),
-    ]);
+    const resources = await inventory(
+      [...RESOURCE_ROOTS, ...Object.values(PDF_EXECUTABLES), ...Object.values(linkedLibraries).flat()],
+      observe,
+    );
     const manifest: PdfProfileManifest = {
       schema: "host-pdf-profile-v1",
       platform: process.platform,
@@ -505,6 +512,21 @@ export async function capturePdfProfile(workspace = join(DEFAULT_EXTERNAL_ROOT, 
   } catch (error) {
     throw await retainPdfFailure(context.directory, error, stage, stage !== "profile-cleanup");
   }
+}
+
+/**
+ * Load a frozen batch profile using cache hashes and dependency metadata, not dependency rehashing.
+ * Call lazily on the first PDF and pin sha256 in the caller's output; share the directory only within one batch.
+ * Metadata guards do not provide OS hermeticity or atomic protection against concurrent dependency mutation.
+ */
+export async function loadCachedPdfProfile(cacheDirectory: string): Promise<PdfProfile> {
+  const { readOrCapturePdfProfileCache } = await import("./pdf-profile-cache.ts");
+  const profile = await readOrCapturePdfProfileCache(cacheDirectory, captureProfile);
+  if (!profile || !/^[a-f\d]{64}$/.test(profile.sha256) || profileDigest(profile.manifest) !== profile.sha256)
+    throw new Error("Cached PDF profile digest is invalid");
+  freezeDeep(profile);
+  checkedProfiles.add(profile);
+  return profile;
 }
 
 /** Rehash current native dependencies at a run/publication boundary and authorize this immutable profile. */

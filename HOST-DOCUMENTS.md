@@ -7,21 +7,28 @@ canonical JSON frontmatter. These outputs are separate from the existing
 
 ## Admission and scope
 
-A homepage must demonstrate both official UBC ownership and substantive public
-content useful to search before implementation or site collection begins.
-Branding, contact details, promising links, news teasers and technical success do
-not establish usefulness. Thin marketing/about pages, portals, directories,
-duplicates and ambiguous candidates do not enter the published list.
+Screen only the homepage for official UBC identity and promising public,
+search-useful content before site collection begins. This is a quick triage
+judgment, not an exhaustive source audit. Skip obvious login portals, duplicate
+sites and thin promotion without a useful public-content purpose. Branding or
+technical success alone is not an acceptance decision.
 
-Homepage-only reviewers can work independently on disjoint private queues.
-Admission evidence and rejected/deferred candidates remain external. A rejection
-does not stop screening other candidates.
+The throughput queue uses exactly five worker identities, `w1` through `w5`.
+SQLite atomically assigns each normalized hostname once. A worker fetches or
+reuses its homepage, with necessary robots checks, before deciding whether the
+site is promising. Rejections remain private and the worker immediately claims
+the next hostname. Accepted sites proceed through cached collection, cheap
+output guards, one quick content sample, and publication. Claims and failures
+survive restarts; an uncertain claim is not automatically reassigned.
 
-Each implemented hostname has its own directory under `src/host-scrapers/`, a
-focused test and synthetic fixtures. `src/host-crawl/registry.ts` explicitly
-registers accepted modules. Shared adapters handle CMS discovery and extraction;
-host modules supply their institutional/content predicates and actual article
-boundaries. Empty recognized containers do not fall back to surrounding pages.
+New sites use `src/host-crawl/generic.ts`, declared in the sorted
+`src/host-scrapers/generic-hosts.json` list. They do not require bespoke code or
+fixtures. The generalized policy selects standard content boundaries, retains
+collapsed prose, and can use a cleaned-body fallback. Exact-host advertised
+WordPress APIs use public collection discovery; other sites use HTML-link and
+sitemap discovery. Existing specialized modules retain their narrower policies
+and previously published bytes. Their recognized empty containers do not fall
+back to surrounding pages.
 BMLSc's declared CSS grids become semantic curriculum lists, campus-comparison
 tables, GPA tables and term schedules before Markdown conversion. Course fields,
 column labels, footnotes and source links stay associated. Exact looping-widget
@@ -133,6 +140,9 @@ and available publisher dates, snapshot/input/body/content hashes, warnings and
 producer context. An ID is `documents:official-web:` plus the first 24 hex digits
 of SHA-256 of the normalized physical HTTPS URL. The filename is SHA-256 of the
 full ID plus `.md`. Canonical tags alone do not collapse physical identities.
+The generic output guard coalesces exact title/body duplicates only when publisher
+modification dates and extraction metadata also match, retaining observed URL
+aliases. Different dated versions remain separate.
 
 The body is safe Markdown, without executable HTML or image embeds. Ordered
 procedures preserve nested non-default starting numbers as separate list blocks. Media remain
@@ -156,6 +166,11 @@ profile binds executable versions/bytes, loader/libraries, font/configuration
 and Poppler resource inventories, arguments and limits. It is captured or
 rechecked once per run, not per document, and rechecked before publication.
 Dependency hashing can be substantial on systems with large font collections.
+Throughput batches load this profile lazily on the first PDF and share a private
+cache. The cache performs one full capture, then verifies its payload hash and
+resource identities, directory entries, symlink targets, and missing paths.
+These metadata checks are not repeated full dependency-byte hashing. A changed
+or incomplete cache fails closed instead of silently refreshing its profile.
 This is a declared runtime profile, not OS hermeticity or a native security or
 network sandbox. No OCR, image transcription or complete glyph-mapping guarantee
 is implied. Native test prerequisites are `poppler-utils`, `util-linux` and Python
@@ -172,14 +187,32 @@ a filesystem. Readers can observe a transition between host-directory and index
 renames; the two paths are not one atomic reader-visible operation. Unknown or
 corrupt recovery artifacts fail closed and remain available for diagnosis.
 
-Run focused and full tests, TypeScript, lint, formatting and existing dataset
-validators with their ordinary timeouts. Test replay and the real
-collector/serializer/publication handoff. Stage only reviewed files, then run
-`npm run validate:host-change` to check staged/working identity, required host
-components, final-only data paths and byte limits.
+The throughput path does not run exhaustive manual review or broad test suites
+per hostname. Shared-code changes receive focused tests and static checks once.
+Each host receives automated empty, duplicate, off-host, serialization and byte
+limit checks, plus one quick content sample. No manual visual or exhaustive
+source-fidelity review is implied. Full validators remain available for explicit
+audits outside this fast path.
 
-One substantive commit contains one complete hostname: module, tests/fixtures,
-registry wiring, final host-list entry, final documents and necessary shared
-changes. Partial or rejected hosts get no publication commit. Push each verified
-hostname commit immediately to the feature ref only, without rewriting unrelated
-history or pushing private backup refs.
+Collection runs concurrently from a frozen source copy. Producer fingerprints
+identify that private batch copy, not later changes to the public dispatch list.
+An outer repository/Git lock serializes installation, staging, the commit and
+its ordinary feature-only push. Incremental publication checks the new host and
+index without re-reading every older document body; the Git boundary refuses
+other-host data changes. External receipts retain commit/push uncertainty so a
+restart does not create a duplicate hostname commit.
+
+One substantive commit contains one complete hostname: its generic declaration
+(or an existing specialized module), final host-list entry, final documents and
+any necessary shared changes. `npm run validate:host-change` checks the atomic
+unit, staged bytes, final-only data paths and byte limits. Partial or rejected
+hosts get no publication commit. Push each hostname commit immediately to
+`refs/heads/feat/prose-documents`, never main, private backup refs or a forced
+history rewrite.
+
+`src/host-queue.ts` exposes `seed`, `claim`, `homepage`, `decide`, `collect`,
+`publish`, `get`, `block` and `stats` actions. Its `--state` directory contains the
+private batch configuration, queue, worker receipts and publication receipts.
+Collection is allowed only from the configuration's frozen producer root.
+Workers do not edit source, clear acquisition histories, run extra crawls or
+submit forms.

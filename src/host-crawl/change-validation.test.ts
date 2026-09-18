@@ -46,6 +46,30 @@ describe("one-host staged publication boundary", () => {
   ])("rejects unsafe or oversized bytes", (bytes) =>
     expect(() => assertSingleHostChange([...fixture(), { path: "extra.md", bytes }])).toThrow(),
   );
+  it("accepts one generic declaration without bespoke files", () => {
+    const files: ChangedFile[] = [
+      {
+        path: "src/host-scrapers/generic-hosts.json",
+        previousBytes: Buffer.from("[]\n"),
+        bytes: Buffer.from(JSON.stringify([host])),
+      },
+      { path: "data/official-hosts.json", bytes: Buffer.from("[]\n") },
+      { path: `data/documents/${host}/${"a".repeat(64)}.md`, bytes: Buffer.from("text\n") },
+    ];
+    expect(assertSingleHostChange(files)).toBe(host);
+    expect(() => assertSingleHostChange([{ ...files[0]!, previousBytes: undefined }, ...files.slice(1)])).toThrow(
+      /baseline/,
+    );
+    expect(() =>
+      assertSingleHostChange([
+        { ...files[0]!, bytes: Buffer.from(JSON.stringify([host, "other.ubc.ca"])) },
+        ...files.slice(1),
+      ]),
+    ).toThrow(/only the published/);
+    expect(() =>
+      assertSingleHostChange([{ ...files[0]!, previousBytes: Buffer.from('["old.ubc.ca"]') }, ...files.slice(1)]),
+    ).toThrow(/only the published/);
+  });
   it("rejects LFS attributes and deleted required source", () => {
     expect(() =>
       assertSingleHostChange([...fixture(), { path: ".gitattributes", bytes: Buffer.from("*.json filter=lfs\n") }]),

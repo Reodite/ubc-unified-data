@@ -23,10 +23,20 @@ try {
     const bytes = status === "D" ? null : git(["show", `:${path}`]);
     if (bytes && !bytes.equals(await readRegularFile(join(ROOT, path))))
       throw new Error(`Staged/working bytes differ: ${path}`);
-    files.push({ path, bytes });
+    let previousBytes: Buffer | null | undefined;
+    if (path === "src/host-scrapers/generic-hosts.json") {
+      previousBytes = status === "A" ? null : git(["show", `HEAD:${path}`]);
+    }
+    files.push({ path, bytes, previousBytes });
   }
   const hostname = assertSingleHostChange(files);
-  const hosts = await validatePublishedHosts({ repositoryRoot: ROOT, registeredHosts: registeredHostnames() });
+  const hosts = await validatePublishedHosts({
+    repositoryRoot: ROOT,
+    registeredHosts: registeredHostnames(),
+    ...(files.some((file) => file.path === "src/host-scrapers/generic-hosts.json")
+      ? { documentHostnames: [hostname] }
+      : {}),
+  });
   if (!hosts.some((host) => host.hostname === hostname))
     throw new Error("Changed hostname is not in the final vetted index");
   console.log(JSON.stringify({ hostname, staged_files: files.length, publishable: true }, null, 2));

@@ -76,19 +76,24 @@ export function wordpressCollectionUrl(base: string, page: number): string {
   return url.href;
 }
 
-/** Exhaust advertised public post collections; unknown content types and inconsistent totals block publication. */
-export async function discoverWordpress(
-  scraper: HostScraper,
-  homepage: Observation,
-  read: (url: string) => Promise<Observation>,
-): Promise<DiscoveredPage[]> {
+/** Read advertised API roots without probing unadvertised endpoints. */
+export function advertisedWordpressRoots(homepage: Observation): string[] {
   const $ = load(homepage.snapshot.body);
   const advertised = $("link[rel='https://api.w.org/'][href]")
     .map((_, node) => $(node).attr("href")!)
     .get();
   for (const match of (homepage.snapshot.headers.link ?? "").matchAll(/<([^>]+)>;\s*rel="https:\/\/api\.w\.org\/"/g))
     advertised.push(match[1]!);
-  const roots = [...new Set(advertised.map((url) => hostUrl(url, scraper.hostname)))];
+  return advertised;
+}
+
+/** Exhaust declared public collections; inconsistent inventories block publication. */
+export async function discoverWordpress(
+  scraper: HostScraper,
+  homepage: Observation,
+  read: (url: string) => Promise<Observation>,
+): Promise<DiscoveredPage[]> {
+  const roots = [...new Set(advertisedWordpressRoots(homepage).map((url) => hostUrl(url, scraper.hostname)))];
   if (roots.length !== 1) throw new Error("One advertised WordPress API root is required");
   const apiRoot = new URL(roots[0]!);
   if (apiRoot.search || !apiRoot.pathname.endsWith("/")) throw new Error("Unsupported WordPress API root");
@@ -103,8 +108,12 @@ export async function discoverWordpress(
     return href;
   };
   const types = object(json(await read(routeUrl("/wp/v2/types"))));
-  const allowed = new Set(scraper.adapter.allowedTypes);
-  if (!allowed.size || allowed.size !== scraper.adapter.allowedTypes.length)
+  const allowed = new Set(
+    scraper.adapter.allPublicTypes
+      ? Object.keys(types).filter((key) => !NON_DOCUMENT_TYPES.has(key))
+      : scraper.adapter.allowedTypes,
+  );
+  if (!allowed.size || (!scraper.adapter.allPublicTypes && allowed.size !== scraper.adapter.allowedTypes.length))
     throw new Error("Invalid declared CMS types");
   for (const key of Object.keys(types))
     if (!allowed.has(key) && !NON_DOCUMENT_TYPES.has(key)) throw new Error(`Unreviewed public CMS type: ${key}`);
