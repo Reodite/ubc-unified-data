@@ -408,5 +408,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/suewatts.forestry.ubc.ca",
     "document_count": 4
+  },
+  {
+    "hostname": "systopia.cs.ubc.ca",
+    "title": "systopia.cs.ubc.ca",
+    "homepage_url": "https://systopia.cs.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:27:04.379Z",
+    "homepage_sha256": "400df9ae59bc24350a08ae7a8b7baaafe18b5c5760c42828e9d66a0a8c993cfe",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/systopia.cs.ubc.ca",
+    "document_count": 36
   }
 ]
