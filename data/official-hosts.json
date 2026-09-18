@@ -70,6 +70,16 @@
     "document_count": 121
   },
   {
+    "hostname": "humanities101.arts.ubc.ca",
+    "title": "humanities101.arts.ubc.ca",
+    "homepage_url": "https://humanities101.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:07:33.746Z",
+    "homepage_sha256": "c196f54633f4bcd4549841383e4453b224fada0914209dec566cd62aac36ec79",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/humanities101.arts.ubc.ca",
+    "document_count": 61
+  },
+  {
     "hostname": "ics.nursing.ubc.ca",
     "title": "ics.nursing.ubc.ca",
     "homepage_url": "https://ics.nursing.ubc.ca/",
