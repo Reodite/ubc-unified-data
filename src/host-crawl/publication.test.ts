@@ -149,59 +149,111 @@ function exited(child: ChildProcess): Promise<void> {
   return new Promise((resolve) => child.once("exit", () => resolve()));
 }
 
-async function pausedChild(options: PublishCompletedHostOptions, boundary: PublicationBoundary): Promise<ChildProcess> {
+async function preparedChild(options: PublishCompletedHostOptions) {
   const module = fileURLToPath(new URL("./publication.ts", import.meta.url));
   const { verifyInputs: _, ...data } = options;
   const script = `import {publishCompletedHost} from ${JSON.stringify(module)};
+    process.stdout.write('BOOTED\\n');
+    const stop = await new Promise(resolve=>process.once('message',resolve));
     await publishCompletedHost({...${JSON.stringify(data)}, verifyInputs: async()=>{}, testHook: async(boundary)=>{
-      if(boundary===${JSON.stringify(boundary)}) { process.stdout.write('READY\\n'); await new Promise(()=>setInterval(()=>{},1000)); }
+      if(boundary===stop) { process.stdout.write('READY\\n'); await new Promise(()=>setInterval(()=>{},1000)); }
     }});`;
   const child = spawn(process.execPath, ["--input-type=module", "--eval", script], {
     cwd: fileURLToPath(new URL("../..", import.meta.url)),
     env: { ...process.env, TMPDIR: TEMP },
-    stdio: ["ignore", "pipe", "pipe"],
+    stdio: ["ignore", "pipe", "pipe", "ipc"],
   });
   children.add(child);
   let output = "";
   let errors = "";
+  child.stdout!.on("data", (chunk) => {
+    output += String(chunk);
+  });
   child.stderr!.on("data", (chunk) => {
     errors += String(chunk);
   });
-  await new Promise<void>((resolve, reject) => {
-    child.stdout!.on("data", (chunk) => {
-      output += String(chunk);
-      if (output.includes("READY\n")) resolve();
+  const waitFor = (token: string) =>
+    new Promise<void>((resolve, reject) => {
+      if (output.includes(token)) {
+        resolve();
+        return;
+      }
+      if (child.exitCode !== null || child.signalCode !== null) {
+        reject(new Error(`Child exited before ${token}: ${errors}`));
+        return;
+      }
+      const inspect = () => {
+        if (output.includes(token)) {
+          child.stdout!.off("data", inspect);
+          resolve();
+        }
+      };
+      child.stdout!.on("data", inspect);
+      child.once("error", reject);
+      child.once("exit", (code) => reject(new Error(`Child exited before ${token}: ${code}\n${errors}`)));
     });
-    child.once("error", reject);
-    child.once("exit", (code) => reject(new Error(`Child exited before boundary ${boundary}: ${code}\n${errors}`)));
-  });
-  await appendFile(`${TEMP}/text-publication-child-tests.log`, `${boundary}: ${errors}`);
-  return child;
+  await waitFor("BOOTED\n");
+  return {
+    child,
+    start: async (boundary: PublicationBoundary) => {
+      child.send(boundary);
+      await waitFor("READY\n");
+      await appendFile(`${TEMP}/text-publication-child-tests.log`, `${boundary}: ${errors}`);
+    },
+  };
+}
+
+async function pausedChild(options: PublishCompletedHostOptions, boundary: PublicationBoundary): Promise<ChildProcess> {
+  const prepared = await preparedChild(options);
+  await prepared.start(boundary);
+  return prepared.child;
 }
 
 describe("completed host publication", () => {
-  it("publishes only one exact Markdown file and the minimal index, then repeats without mutation", async () => {
-    const fixture = await setup();
-    const before = structuredClone(fixture.options.completed);
-    const verifyInputs = vi.fn(async () => {});
-    const result = await publishCompletedHost({ ...fixture.options, verifyInputs });
-    expect(result).toEqual({ changed: true, hosts: [fixture.options.completed.host] });
-    expect(await readFile(fixture.file)).toEqual(formatDocument(before.documents[0]!));
-    expect(parseDocument(await readFile(fixture.file)).content_markdown).toBe(before.documents[0]!.content_markdown);
-    expect((await readdir(join(fixture.options.repositoryRoot, "data"))).sort()).toEqual([
-      "documents",
-      "official-hosts.json",
-    ]);
-    expect(await readdir(join(fixture.options.repositoryRoot, before.host.document_root))).toEqual([
-      documentFilename(before.documents[0]!.id),
-    ]);
-    expect(fixture.options.completed).toEqual(before);
-    const published = await tree(fixture.options.repositoryRoot, true);
-    expect((await publishCompletedHost({ ...fixture.options, verifyInputs })).changed).toBe(false);
-    expect(await tree(fixture.options.repositoryRoot, true)).toEqual(published);
-    expect(verifyInputs).toHaveBeenCalledTimes(2);
-    await cleanWorkspace(fixture.workspace);
-  });
+  it.each([false, true])(
+    "publishes one exact Markdown file and minimal index without repeat mutation (PDF: %s)",
+    async (pdf) => {
+      const fixture = await setup();
+      if (pdf) {
+        fixture.options.completed = complete(
+          "example.ubc.ca",
+          "## Page 1\n\n```text\nSource paper text.\n```\n",
+          "/guide.pdf",
+        );
+        fixture.options.completed.documents[0]!.extraction = {
+          format: "pdf",
+          source_bytes_sha256: sha256("private PDF bytes"),
+          source_bytes: 1234,
+          pages: 1,
+          profile_sha256: sha256("native profile"),
+        };
+        fixture.file = join(
+          fixture.options.repositoryRoot,
+          fixture.options.completed.host.document_root,
+          documentFilename(fixture.options.completed.documents[0]!.id),
+        );
+      }
+      const before = structuredClone(fixture.options.completed);
+      const verifyInputs = vi.fn(async () => {});
+      const result = await publishCompletedHost({ ...fixture.options, verifyInputs });
+      expect(result).toEqual({ changed: true, hosts: [fixture.options.completed.host] });
+      expect(await readFile(fixture.file)).toEqual(formatDocument(before.documents[0]!));
+      expect(parseDocument(await readFile(fixture.file)).content_markdown).toBe(before.documents[0]!.content_markdown);
+      expect((await readdir(join(fixture.options.repositoryRoot, "data"))).sort()).toEqual([
+        "documents",
+        "official-hosts.json",
+      ]);
+      expect(await readdir(join(fixture.options.repositoryRoot, before.host.document_root))).toEqual([
+        documentFilename(before.documents[0]!.id),
+      ]);
+      expect(fixture.options.completed).toEqual(before);
+      const published = await tree(fixture.options.repositoryRoot, true);
+      expect((await publishCompletedHost({ ...fixture.options, verifyInputs })).changed).toBe(false);
+      expect(await tree(fixture.options.repositoryRoot, true)).toEqual(published);
+      expect(verifyInputs).toHaveBeenCalledTimes(2);
+      await cleanWorkspace(fixture.workspace);
+    },
+  );
 
   it("preserves upstream data, other hosts and existing modes while replacing the complete host directory", async () => {
     const fixture = await setup();
@@ -337,27 +389,37 @@ describe("completed host publication", () => {
     },
   );
 
-  it.each(BOUNDARIES)("recovers SIGKILL at %s using process-released locks", async (boundary) => {
-    const fixture = await setup();
-    await publishCompletedHost(fixture.options);
-    const before = await tree(fixture.options.repositoryRoot, true);
+  describe("process interruption recovery", () => {
+    let fixture: Awaited<ReturnType<typeof setup>>;
+    let before: unknown[];
+    let prepared: Awaited<ReturnType<typeof preparedChild>>;
     const changed = complete("example.ubc.ca", "Replacement from crashed worker.\n");
-    const child = await pausedChild({ ...fixture.options, completed: changed }, boundary);
-    child.kill("SIGKILL");
-    await exited(child);
-    children.delete(child);
-    await expect(
-      publishCompletedHost({
-        ...fixture.options,
-        completed: changed,
-        verifyInputs: async () => {
-          throw new Error("Stop after recovery");
-        },
-      }),
-    ).rejects.toThrow(/Stop after recovery/);
-    if (AFTER_COMMIT.has(boundary)) expect(await readFile(fixture.file)).toEqual(formatDocument(changed.documents[0]!));
-    else expect(await tree(fixture.options.repositoryRoot, true)).toEqual(before);
-    await cleanWorkspace(fixture.workspace);
+    beforeEach(async () => {
+      fixture = await setup();
+      await publishCompletedHost(fixture.options);
+      before = await tree(fixture.options.repositoryRoot, true);
+      prepared = await preparedChild({ ...fixture.options, completed: changed });
+    });
+    it.each(BOUNDARIES)("recovers SIGKILL at %s using process-released locks", async (boundary) => {
+      await prepared.start(boundary);
+      const child = prepared.child;
+      child.kill("SIGKILL");
+      await exited(child);
+      children.delete(child);
+      await expect(
+        publishCompletedHost({
+          ...fixture.options,
+          completed: changed,
+          verifyInputs: async () => {
+            throw new Error("Stop after recovery");
+          },
+        }),
+      ).rejects.toThrow(/Stop after recovery/);
+      if (AFTER_COMMIT.has(boundary))
+        expect(await readFile(fixture.file)).toEqual(formatDocument(changed.documents[0]!));
+      else expect(await tree(fixture.options.repositoryRoot, true)).toEqual(before);
+      await cleanWorkspace(fixture.workspace);
+    });
   });
 
   it("fails fast on a live SQLite writer and permits publication after that process dies", async () => {

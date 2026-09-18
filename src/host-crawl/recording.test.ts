@@ -58,6 +58,89 @@ function html(body = "<p>Original public text.</p>") {
 }
 
 describe("external immutable request recording", () => {
+  it("rejects document-policy redirects before dispatching the excluded destination", async () => {
+    const f = await fixture(
+      () => new Response(null, { status: 302, headers: { location: "/sites/default/private/guide.pdf" } }),
+      {
+        documentUrlAllowed: (url) => !new URL(url).pathname.startsWith("/sites/default/private/"),
+      },
+    );
+    await expect(f.recording.readDocument(`${origin}/guide.pdf`)).rejects.toThrow(/Document URL policy/);
+    expect(f.fetcher).toHaveBeenCalledTimes(2);
+    expect(vi.mocked(f.fetcher).mock.calls.some(([url]) => String(url).includes("/sites/default/private/"))).toBe(
+      false,
+    );
+  });
+  it("rechecks cached observations against the current document policy without new requests", async () => {
+    const f = await fixture(
+      (url) =>
+        url === `${origin}/guide`
+          ? new Response(null, { status: 302, headers: { location: "/sites/default/private/guide" } })
+          : html(),
+      {
+        documentUrlAllowed: (url) => !new URL(url).pathname.startsWith("/sites/default/private/"),
+      },
+    );
+    await f.recording.read(`${origin}/guide`);
+    const calls = vi.mocked(f.fetcher).mock.calls.length;
+    await expect(f.recording.readDocument(`${origin}/guide`)).rejects.toThrow(/Document URL policy/);
+    expect(f.fetcher).toHaveBeenCalledTimes(calls);
+  });
+  it("requires an explicit policy for a document request", async () => {
+    const f = await fixture(() => html());
+    await expect(f.recording.readDocument(`${origin}/page`)).rejects.toThrow(/Document URL policy/);
+    expect(f.fetcher).not.toHaveBeenCalled();
+  });
+  it("records declared PDF bodies externally and replays their exact bytes", async () => {
+    const raw = Buffer.concat([Buffer.from("%PDF-1.7\n"), Buffer.from([0, 255, 128]), Buffer.from("\n%%EOF\n")]);
+    const f = await fixture(() => new Response(raw, { headers: { "content-type": "application/pdf" } }), {
+      documentFormats: ["pdf"],
+    });
+    const observation = await f.recording.read(`${origin}/guide.pdf`);
+    expect(observation.snapshot.body).toBe("");
+    expect(observation.snapshot.binary?.media_type).toBe("application/pdf");
+    expect(await f.recording.readBytes(observation.sha256)).toEqual(raw);
+    const seal = await f.recording.seal();
+    f.recording.close();
+    const noNetwork = vi.fn(async () => {
+      throw new Error("No network");
+    });
+    const replay = await HostRecording.open({ ...f.options, acquire: false, fetcher: noNetwork });
+    opened.push(replay);
+    expect(await replay.verifySeal()).toBe(seal);
+    expect(await replay.readBytes(observation.sha256)).toEqual(raw);
+    expect(noNetwork).not.toHaveBeenCalled();
+    await writeFile(
+      join(f.directory, "objects", `${observation.snapshot.binary!.sha256}.body`),
+      Buffer.alloc(raw.length),
+    );
+    await expect(replay.verifySeal()).rejects.toThrow(/binary body changed/);
+  });
+  it("retains empty binary-typed redirects without inventing a binary text body", async () => {
+    const raw = Buffer.from("%PDF-1.7\nfixture bytes\n%%EOF");
+    const f = await fixture(
+      (url) =>
+        url.endsWith("/alias")
+          ? new Response(null, {
+              status: 302,
+              headers: { location: "/guide.pdf", "content-type": "application/pdf; charset=binary" },
+            })
+          : new Response(raw, { headers: { "content-type": "application/pdf" } }),
+      { documentFormats: ["pdf"] },
+    );
+    const result = await f.recording.read(`${origin}/alias`);
+    expect(result.snapshot.url).toBe(`${origin}/guide.pdf`);
+    expect(result.snapshot.redirects).toHaveLength(1);
+    expect(await f.recording.readBytes(result.sha256)).toEqual(raw);
+    await f.recording.seal();
+  });
+
+  it("does not acquire PDF as supported text without an explicit format declaration", async () => {
+    const f = await fixture(() => new Response("%PDF-1.7", { headers: { "content-type": "application/pdf" } }));
+    await expect(f.recording.read(`${origin}/guide.pdf`)).rejects.toThrow(/Unsupported recorded document format/);
+    await expect(f.recording.read(`${origin}/guide.pdf`)).rejects.toThrow(/Saved request failure/);
+    expect(f.fetcher).toHaveBeenCalledTimes(2);
+  });
   it("records once, seals and replays exact observations without network or state mutation", async () => {
     const f = await fixture((url) => {
       if (url !== `${origin}/page`) throw new Error(`Unexpected fixture request ${url}`);

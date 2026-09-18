@@ -5,7 +5,13 @@ import { join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { USER_AGENT } from "../base.ts";
 import { publicUbcUrl } from "../prose/client.ts";
-import { NonTextMediaError, type Observation, type ProducerContext, type Snapshot } from "./contracts.ts";
+import {
+  DocumentPolicyError,
+  NonTextMediaError,
+  type Observation,
+  type ProducerContext,
+  type Snapshot,
+} from "./contracts.ts";
 import { assertExternalPath } from "./paths.ts";
 import { readRegularFile } from "./public-validation.ts";
 import { hostUrl, normalizeHost } from "./urls.ts";
@@ -49,6 +55,8 @@ export interface RecordingOptions {
   timeoutMs?: number;
   fetcher?: typeof fetch;
   resumeInterrupted?: boolean;
+  documentFormats?: readonly "pdf"[];
+  documentUrlAllowed?: (url: string) => boolean;
 }
 
 /** Persist request intents and immutable outcomes externally; replay never falls through to a network request. */
@@ -119,7 +127,13 @@ export class HostRecording {
         maxDurationMs: options.maxDurationMs ?? 20 * 60 * 1000,
         minimumMs: options.minimumMs ?? 750,
         timeoutMs: options.timeoutMs ?? 30000,
+        ...(options.documentFormats?.length ? { documentFormats: [...options.documentFormats] } : {}),
       };
+      if (
+        options.documentFormats?.some((format) => format !== "pdf") ||
+        new Set(options.documentFormats).size !== (options.documentFormats?.length ?? 0)
+      )
+        throw new Error("Invalid declared recording document formats");
       for (const [key, value] of Object.entries(requested))
         if (typeof value === "number" && (!Number.isSafeInteger(value) || value < 1))
           throw new Error(`Invalid acquisition bound: ${key}`);
@@ -192,8 +206,32 @@ export class HostRecording {
       !Number.isInteger(snapshot.status)
     )
       throw new Error("Invalid recorded observation");
+    if (snapshot.binary) await this.binaryBytes(snapshot);
     this.seen.set(sha256, path);
     return { sha256, snapshot };
+  }
+
+  private async binaryBytes(snapshot: Snapshot): Promise<Buffer> {
+    const binary = snapshot.binary;
+    if (
+      binary?.media_type !== "application/pdf" ||
+      !/^[a-f0-9]{64}$/.test(binary.sha256) ||
+      snapshot.body !== "" ||
+      !Number.isSafeInteger(snapshot.bytes) ||
+      snapshot.bytes < 1 ||
+      !Array.isArray(this.config.documentFormats) ||
+      !this.config.documentFormats.includes("pdf")
+    )
+      throw new Error("Invalid or undeclared binary observation");
+    const path = assertExternalPath(join(this.options.directory, "objects", `${binary.sha256}.body`));
+    const bytes = await readRegularFile(path, Number(this.config.maxResponseBytes));
+    if (bytes.length !== snapshot.bytes || hash(bytes) !== binary.sha256)
+      throw new Error("Recorded binary body changed");
+    return bytes;
+  }
+
+  async readBytes(snapshotSha256: string): Promise<Buffer> {
+    return this.binaryBytes((await this.readSnapshot(snapshotSha256)).snapshot);
   }
 
   private async policy() {
@@ -299,7 +337,13 @@ export class HostRecording {
       }
       this.db.prepare("UPDATE attempts SET body_sha=? WHERE id=?").run(hash(raw), id);
       const contentType = response.headers.get("content-type") ?? "";
-      if (!/text|json|xml|javascript|^$/i.test(contentType))
+      const pdf =
+        raw.length > 0 &&
+        Array.isArray(this.config.documentFormats) &&
+        this.config.documentFormats.includes("pdf") &&
+        (mediaType === "application/pdf" ||
+          (mediaType === "application/octet-stream" && raw.subarray(0, 5).toString("ascii") === "%PDF-"));
+      if (raw.length > 0 && !pdf && !/text|json|xml|javascript|^$/i.test(contentType))
         throw new Error(`Unsupported recorded document format: ${contentType}`);
       const charset = /charset\s*=\s*["']?([^;\s"']+)/i.exec(contentType)?.[1] ?? "utf-8";
       const snapshot: Snapshot = {
@@ -307,9 +351,10 @@ export class HostRecording {
         url,
         status: response.status,
         headers: Object.fromEntries(response.headers),
-        body: new TextDecoder(charset, { fatal: true }).decode(raw),
+        body: pdf || raw.length === 0 ? "" : new TextDecoder(charset, { fatal: true }).decode(raw),
         retrieved_at: new Date().toISOString(),
         bytes: raw.length,
+        ...(pdf ? { binary: { media_type: "application/pdf" as const, sha256: hash(raw) } } : {}),
       };
       const observation = await this.store(snapshot);
       this.db.prepare("UPDATE attempts SET state='observed',snapshot=? WHERE id=?").run(observation.sha256, id);
@@ -337,19 +382,50 @@ export class HostRecording {
     return result;
   }
 
-  private async readLogical(value: string, enforceRobots = true): Promise<Observation> {
+  readDocument(value: string): Promise<Observation> {
+    const result = this.readTail.then(() => this.readLogical(value, true, true));
+    this.readTail = result.then(
+      () => {},
+      () => {},
+    );
+    return result;
+  }
+
+  private assertDocumentUrl(url: string): void {
+    if (!this.options.documentUrlAllowed?.(url)) throw new DocumentPolicyError(`Document URL policy excludes ${url}`);
+  }
+
+  private assertDocumentObservation(snapshot: Snapshot): void {
+    for (const value of [
+      snapshot.requested_url,
+      snapshot.url,
+      ...(snapshot.redirects ?? []).flatMap((hop) => [hop.url, hostUrl(hop.location, this.options.hostname, hop.url)]),
+    ])
+      this.assertDocumentUrl(this.scoped(value));
+  }
+
+  private async readLogical(value: string, enforceRobots = true, document = false): Promise<Observation> {
     this.assertOpen();
     const initial = this.scoped(value);
+    if (document) this.assertDocumentUrl(initial);
     if (initial === `https://${this.options.hostname}/robots.txt`) enforceRobots = false;
     const cached = this.db.prepare("SELECT snapshot,error FROM outcomes WHERE url=?").get(initial);
     if (cached?.error) {
+      if (String(cached.error).startsWith("DocumentPolicyError: "))
+        throw new DocumentPolicyError(
+          `Saved document policy refusal: ${String(cached.error).slice("DocumentPolicyError: ".length)}`,
+        );
       const media = /^NonTextMediaError: Observed non-text media: ((?:image|audio|video)\/[a-z0-9.+-]+)$/.exec(
         String(cached.error),
       );
       if (media) throw new NonTextMediaError(media[1]!);
       throw new Error(`Saved request failure: ${cached.error}`);
     }
-    if (cached?.snapshot) return this.readSnapshot(String(cached.snapshot));
+    if (cached?.snapshot) {
+      const observation = await this.readSnapshot(String(cached.snapshot));
+      if (document) this.assertDocumentObservation(observation.snapshot);
+      return observation;
+    }
     if (!this.options.acquire || this.sealed) throw new Error(`Missing recorded request: ${initial}`);
     if (this.active.has(initial)) throw new Error("Recursive request dependency");
     this.active.add(initial);
@@ -360,6 +436,7 @@ export class HostRecording {
       for (;;) {
         if (visited.has(url) || visited.size >= 8) throw new Error("Redirect loop or bound exceeded");
         visited.add(url);
+        if (document) this.assertDocumentUrl(url);
         const policy = enforceRobots ? await this.policy() : undefined;
         if (policy?.isDisallowed(url, "ubc-data")) throw new Error(`Robots disallows ${url}`);
         const minimum = Math.max(Number(this.config.minimumMs), (policy?.getCrawlDelay("ubc-data") ?? 0) * 1000);

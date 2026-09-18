@@ -4,9 +4,16 @@ import { load } from "cheerio";
 import { toSafeMarkdown } from "../prose/markdown.ts";
 import type { ArticleInput } from "../prose/model.ts";
 import { plainText } from "../source-documents.ts";
+import {
+  assertPublicViewIdentity,
+  discoverPublicViews,
+  publicViewUrl,
+  verifyHtmlDiscovery,
+} from "./adapters/html-discovery.ts";
 import { wordpressRecordInput } from "./adapters/wordpress-content.ts";
 import { discoverWordpress } from "./adapters/wordpress-discovery.ts";
 import {
+  DocumentPolicyError,
   NonTextMediaError,
   type CompletedHost,
   type HostArchive,
@@ -19,6 +26,7 @@ import { parseSitemap } from "./sitemap.ts";
 import { hostUrl, pageExclusion, UNSUPPORTED_DOCUMENT } from "./urls.ts";
 
 const sha256 = (value: string) => createHash("sha256").update(value).digest("hex");
+const isPdfUrl = (value: string) => /\.pdf$/i.test(decodeURIComponent(new URL(value).pathname));
 const robotsParser = createRequire(import.meta.url)("robots-parser") as (
   url: string,
   body: string,
@@ -53,6 +61,7 @@ async function sitemapPages(
   starts: readonly string[],
   hostname: string,
   read: (url: string) => Promise<Observation>,
+  policies: NonNullable<HostScraper["adapter"]["sitemaps"]> = [],
 ): Promise<string[]> {
   const queue = [...starts];
   const seen = new Set<string>();
@@ -65,6 +74,10 @@ async function sitemapPages(
     if (observation.snapshot.status !== 200 || !/xml/i.test(observation.snapshot.headers["content-type"] ?? ""))
       throw new Error("An advertised sitemap lacks a complete XML observation");
     const parsed = parseSitemap(observation.snapshot.body);
+    const policy = policies.find((entry) => hostUrl(entry.path, hostname) === url);
+    // A declared deployment-root placeholder supplies no page inventory; additional entries still require validation.
+    if (parsed.kind === "pages" && parsed.locations.length === 1 && parsed.locations[0] === policy?.rootOnlyLocation)
+      continue;
     for (const location of parsed.locations) {
       const target = hostUrl(location, hostname, observation.snapshot.url);
       if (parsed.kind === "index") queue.push(target);
@@ -74,11 +87,22 @@ async function sitemapPages(
   return [...pages].sort();
 }
 
+export interface CollectionFormats {
+  pdf?: {
+    profile_sha256: string;
+    extract(
+      bytes: Uint8Array,
+      sourceUrl: string,
+    ): Promise<{ title: string; markdown: string; warnings: string[]; pageCount: number }>;
+  };
+}
+
 /** Build complete host documents from observations supplied by an acquisition or offline archive, never retained Markdown. */
 export async function collectRecordedHost(
   scraper: HostScraper,
   archive: HostArchive,
   producer: ProducerContext,
+  formats: CollectionFormats = {},
 ): Promise<CompletedHost> {
   if (scraper.hostname !== archive.hostname) throw new Error("Scraper/archive hostname mismatch");
   const verdict = scraper.vetHomepage(archive.homepage.snapshot);
@@ -92,7 +116,7 @@ export async function collectRecordedHost(
     robotsUrl,
     robotsObservation.snapshot.status === 200 ? robotsObservation.snapshot.body : "",
   );
-  const assertObservedAccess = (observation: Observation) => {
+  const assertObservedAccess = (observation: Observation, document = false) => {
     const destinations = [
       observation.snapshot.requested_url,
       observation.snapshot.url,
@@ -101,29 +125,55 @@ export async function collectRecordedHost(
     for (const value of destinations) {
       const target = hostUrl(value, hostname);
       if (robots.isDisallowed(target, "ubc-data")) throw new Error("Recorded redirect violates robots policy");
+      if (document) {
+        const excluded = scraper.excludeUrl ? scraper.excludeUrl(target) : pageExclusion(target, hostname);
+        if (excluded !== null) throw new DocumentPolicyError(`Document URL policy excludes ${target}: ${excluded}`);
+      }
     }
   };
-  const read = async (value: string): Promise<Observation> => {
+  const read = async (value: string, document = false): Promise<Observation> => {
     const url = hostUrl(value, hostname);
     if (robots.isDisallowed(url, "ubc-data")) throw new Error("Recorded robots policy disallows a required request");
-    const observation = await archive.read(url);
-    assertObservedAccess(observation);
+    const observation = document && archive.readDocument ? await archive.readDocument(url) : await archive.read(url);
+    assertObservedAccess(observation, document);
     return observation;
   };
-  if (scraper.adapter.kind !== "wordpress") throw new Error("Unsupported registered discovery adapter");
-  const discovered = await discoverWordpress(scraper, archive.homepage, read);
-  const sitemaps = robots.getSitemaps().map((url) => hostUrl(url, hostname));
-  const seedPages = await sitemapPages(sitemaps, hostname, read);
+  if (scraper.adapter.kind === "html") await verifyHtmlDiscovery(scraper, read);
+  else if (scraper.adapter.kind !== "wordpress") throw new Error("Unsupported registered discovery adapter");
+  const discovered =
+    scraper.adapter.kind === "wordpress" ? await discoverWordpress(scraper, archive.homepage, read) : [];
+  const sitemaps = [...robots.getSitemaps(), ...(scraper.adapter.sitemaps ?? []).map((entry) => entry.path)].map(
+    (url) => hostUrl(url, hostname),
+  );
+  const seedPages = await sitemapPages(sitemaps, hostname, read, scraper.adapter.sitemaps);
   const cmsPages = new Set(discovered.map((entry) => entry.url));
-  const advertisedPages = new Set([...cmsPages, ...seedPages]);
+  const requiredViews = new Set(
+    (scraper.adapter.views ?? []).flatMap((view) => view.values.map((value) => publicViewUrl(hostname, view, value))),
+  );
+  const advertisedPages = new Set([...cmsPages, ...seedPages, ...requiredViews]);
   const queue: string[] = [];
   const queued = new Set<string>();
-  const add = (value: string) => {
+  const add = (value: string, linked = false) => {
     const url = hostUrl(value, hostname);
-    const exclusion = pageExclusion(url, hostname);
+    const exclusion = scraper.excludeUrl ? scraper.excludeUrl(url) : pageExclusion(url, hostname);
     if (advertisedPages.has(url) && exclusion === "Ambiguous repeated path separator")
       throw new Error("Publisher inventory advertises an ambiguous path");
     if (exclusion === UNSUPPORTED_DOCUMENT) throw new Error(`${exclusion}: ${url}`);
+    const parsed = new URL(url);
+    if (
+      scraper.adapter.kind === "html" &&
+      linked &&
+      exclusion === "Unsupported query or form selection" &&
+      [...parsed.searchParams.keys()].some((key) => ["page", "paged"].includes(key))
+    )
+      throw new Error(`Linked pagination requires a declared complete query policy: ${url}`);
+    if (
+      exclusion !== null &&
+      scraper.adapter.views?.some(
+        (view) => parsed.pathname === view.path && view.values.includes(parsed.searchParams.get(view.parameter) ?? ""),
+      )
+    )
+      throw new Error(`A linked public view requires an explicit complete query policy: ${url}`);
     if (
       exclusion !== null &&
       (cmsPages.has(url) || (advertisedPages.has(url) && exclusion === "Unsupported query or form selection"))
@@ -134,6 +184,7 @@ export async function collectRecordedHost(
     queue.push(url);
   };
   add(`https://${hostname}/`);
+  for (const view of scraper.adapter.views ?? []) add(hostUrl(view.path, hostname));
   for (const url of [
     ...discovered.map((entry) => entry.url),
     ...seedPages,
@@ -154,16 +205,39 @@ export async function collectRecordedHost(
   const documents = new Map<string, SearchDocument>();
   const representatives = new Map<string, string>();
   const aliases = new Map<string, Set<string>>();
+  const keep = (document: SearchDocument, observation: Observation, requested: string, physicalAlias = true) => {
+    const sourceUrl = document.source_url;
+    const observedAliases = aliases.get(sourceUrl) ?? new Set<string>();
+    if (physicalAlias) observedAliases.add(requested);
+    observedAliases.add(hostUrl(observation.snapshot.requested_url, hostname));
+    aliases.set(sourceUrl, observedAliases);
+    const existing = documents.get(sourceUrl);
+    if (existing && existing.content_sha256 !== document.content_sha256)
+      throw new Error("Conflicting document representations require a recorded selection policy");
+    const rank = `${observation.snapshot.requested_url === sourceUrl ? "0" : "1"}:${new Date(document.retrieved_at).toISOString()}:${document.snapshot_sha256}`;
+    if (!existing || rank < representatives.get(sourceUrl)!) {
+      documents.set(sourceUrl, document);
+      representatives.set(sourceUrl, rank);
+    }
+  };
   while (queue.length) {
     const requested = queue.shift()!;
     let observation: Observation;
     let apiInput: ArticleInput | undefined;
     let contentBase: string | undefined;
     try {
-      observation = await read(requested);
+      observation = await read(requested, true);
     } catch (error) {
-      if (error instanceof NonTextMediaError) continue;
-      if (/budget|duration exhausted|changed|corrupt|ENOENT|EIO|ENOSPC/i.test(String(error))) throw error;
+      if (error instanceof NonTextMediaError) {
+        if (isPdfUrl(requested) || requiredViews.has(requested))
+          throw new Error(`Required document returned non-text media: ${requested}`, { cause: error });
+        continue;
+      }
+      if (
+        error instanceof DocumentPolicyError ||
+        /budget|duration exhausted|changed|corrupt|ENOENT|EIO|ENOSPC/i.test(String(error))
+      )
+        throw error;
       const record = records.get(archive.observedDestination?.(requested) ?? requested);
       if (!scraper.adapter.apiContentFallback || !record || archive.apiFallbackEligible?.(requested) !== true) {
         unavailable.push(`${requested}: ${error instanceof Error ? error.message : String(error)}`);
@@ -181,16 +255,70 @@ export async function collectRecordedHost(
         );
       }
     }
+    assertPublicViewIdentity(scraper, requested, observation.snapshot);
+    if (observation.snapshot.binary) {
+      if (
+        observation.snapshot.status !== 200 ||
+        !scraper.documentFormats?.includes("pdf") ||
+        !formats.pdf ||
+        !archive.readBytes
+      )
+        throw new Error(`Required PDF extraction is unavailable: ${requested}`);
+      const sourceUrl = hostUrl(observation.snapshot.url, hostname);
+      if (retained.has(sourceUrl)) throw new Error("Retained PDF needs an explicit extraction comparison policy");
+      const bytes = await archive.readBytes(observation.sha256);
+      if (
+        createHash("sha256").update(bytes).digest("hex") !== observation.snapshot.binary.sha256 ||
+        bytes.length !== observation.snapshot.bytes
+      )
+        throw new Error("PDF bytes differ from their recorded observation");
+      const converted = await formats.pdf.extract(bytes, sourceUrl);
+      const title = plainText(converted.title);
+      if (!title || !converted.markdown.trim()) throw new Error("Required PDF has no searchable text");
+      keep(
+        {
+          id: `documents:official-web:${sha256(sourceUrl).slice(0, 24)}`,
+          hostname,
+          title,
+          source_url: sourceUrl,
+          retrieved_at: observation.snapshot.retrieved_at,
+          source_modified_at: null,
+          snapshot_sha256: observation.sha256,
+          input_sha256: archive.input_sha256,
+          body_sha256: sha256(converted.markdown),
+          content_sha256: sha256(`${title}\n${converted.markdown}`),
+          content_markdown: converted.markdown,
+          warnings: [...new Set(converted.warnings)].sort(),
+          alternate_urls: [],
+          producer,
+          extraction: {
+            format: "pdf",
+            source_bytes_sha256: observation.snapshot.binary.sha256,
+            source_bytes: bytes.length,
+            pages: converted.pageCount,
+            profile_sha256: formats.pdf.profile_sha256,
+          },
+        },
+        observation,
+        requested,
+      );
+      continue;
+    }
     if (apiInput) {
-      for (const url of htmlLinks(apiInput.html, hostname, contentBase!)) add(url);
+      for (const url of htmlLinks(apiInput.html, hostname, contentBase!)) add(url, true);
     } else {
       if ([404, 410].includes(observation.snapshot.status)) {
-        if (advertisedPages.has(requested)) throw new Error(`Advertised document is unavailable: ${requested}`);
+        if (advertisedPages.has(requested) || isPdfUrl(requested))
+          throw new Error(`Advertised document is unavailable: ${requested}`);
         continue;
       }
       if (observation.snapshot.status !== 200 || !/html/i.test(observation.snapshot.headers["content-type"] ?? ""))
         throw new Error(`Missing complete HTML for ${requested}`);
-      for (const url of pageLinks(observation, hostname)) add(url);
+      for (const url of discoverPublicViews(scraper, observation.snapshot)) {
+        advertisedPages.add(url);
+        add(url);
+      }
+      for (const url of pageLinks(observation, hostname)) add(url, true);
     }
     const sourceUrl = hostUrl(observation.snapshot.url, hostname);
     const observed = observation;
@@ -200,8 +328,8 @@ export async function collectRecordedHost(
       observation = await archive.readSnapshot(previous.snapshot);
       if (hostUrl(observation.snapshot.url, hostname) !== sourceUrl)
         throw new Error("Retained representative has a different physical URL");
-      assertObservedAccess(observation);
-      for (const url of pageLinks(observation, hostname)) add(url);
+      assertObservedAccess(observation, true);
+      for (const url of pageLinks(observation, hostname)) add(url, true);
     }
     const decision = apiInput ? { kind: "document" as const, input: apiInput } : scraper.extract(observation.snapshot);
     if (observed.sha256 !== observation.sha256) {
@@ -216,19 +344,21 @@ export async function collectRecordedHost(
       )
         throw new Error("Retained representative would hide changed observed text or classification");
     }
-    if (decision.kind === "excluded") continue;
+    if (decision.kind === "excluded") {
+      if (requiredViews.has(requested) || isPdfUrl(requested))
+        throw new Error(`Required linked document has no searchable representation: ${requested}`);
+      continue;
+    }
     const input = decision.input;
+    if (scraper.adapter.kind === "html") for (const url of htmlLinks(input.html, hostname, sourceUrl)) add(url, true);
     const title = plainText(input.title);
     if (!title) throw new Error("Extracted document lacks a title");
     const converted = toSafeMarkdown(input.html, contentBase ?? sourceUrl);
     if (!converted.markdown.trim()) {
-      if (apiInput) throw new Error(`Required API text becomes empty after sanitization: ${sourceUrl}`);
+      if (apiInput || requiredViews.has(requested) || isPdfUrl(requested))
+        throw new Error(`Required API text or document becomes empty after sanitization: ${sourceUrl}`);
       continue;
     }
-    const observedAliases = aliases.get(sourceUrl) ?? new Set<string>();
-    if (!apiInput) observedAliases.add(requested);
-    observedAliases.add(hostUrl(observation.snapshot.requested_url, hostname));
-    aliases.set(sourceUrl, observedAliases);
     const document: SearchDocument = {
       id: `documents:official-web:${sha256(sourceUrl).slice(0, 24)}`,
       hostname,
@@ -254,14 +384,7 @@ export async function collectRecordedHost(
       )
     )
       throw new Error(`Retained text or provenance changes for ${sourceUrl}; review code before publication`);
-    const existing = documents.get(sourceUrl);
-    if (existing && existing.content_sha256 !== document.content_sha256)
-      throw new Error("Conflicting document representations require a recorded selection policy");
-    const rank = `${observation.snapshot.requested_url === sourceUrl ? "0" : "1"}:${new Date(document.retrieved_at).toISOString()}:${document.snapshot_sha256}`;
-    if (!existing || rank < representatives.get(sourceUrl)!) {
-      documents.set(sourceUrl, document);
-      representatives.set(sourceUrl, rank);
-    }
+    keep(document, observation, requested, !apiInput);
   }
   if (unavailable.length)
     throw new Error(`Required page observations are unavailable (${unavailable.length}):\n${unavailable.join("\n")}`);
@@ -273,6 +396,9 @@ export async function collectRecordedHost(
     document.alternate_urls = [...(aliases.get(document.source_url) ?? [])]
       .filter((url) => url !== document.source_url)
       .sort();
+  for (const url of requiredViews)
+    if (!result.some((document) => document.source_url === url || document.alternate_urls.includes(url)))
+      throw new Error(`Required public view is missing from complete output: ${url}`);
   await archive.assertUnchanged();
   return {
     complete: true,

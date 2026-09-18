@@ -3,7 +3,15 @@ import type { ArticleInput } from "../prose/model.ts";
 
 export interface Snapshot extends ProseResponse {
   bytes: number;
+  binary?: { media_type: "application/pdf"; sha256: string };
   redirects?: Array<{ url: string; location: string; status: number; snapshot: string }>;
+}
+
+export class DocumentPolicyError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "DocumentPolicyError";
+  }
 }
 
 export class NonTextMediaError extends Error {
@@ -18,11 +26,27 @@ export interface Observation {
   snapshot: Snapshot;
 }
 
+export interface PublicGetView {
+  path: string;
+  parameter: string;
+  values: readonly string[];
+  placeholder: string;
+}
+
 export interface HostScraper {
   hostname: string;
   title: string;
   scope: string;
-  adapter: { kind: "wordpress"; allowedTypes: readonly string[]; apiContentFallback?: boolean };
+  adapter: {
+    kind: "wordpress" | "html";
+    allowedTypes: readonly string[];
+    apiContentFallback?: boolean;
+    views?: readonly PublicGetView[];
+    optionalAbsent?: readonly string[];
+    sitemaps?: readonly { path: string; rootOnlyLocation?: string }[];
+  };
+  documentFormats?: readonly "pdf"[];
+  excludeUrl?(url: string): string | null;
   normalizeArticle?(input: ArticleInput): ArticleInput;
   vetHomepage(snapshot: Snapshot): { accepted: boolean; reason: string };
   extract(snapshot: Snapshot): { kind: "document"; input: ArticleInput } | { kind: "excluded"; reason: string };
@@ -31,6 +55,14 @@ export interface HostScraper {
 export interface ProducerContext {
   inputs_sha256: string;
   runtime: { node: string; icu: string; unicode: string; platform: string; arch: string };
+}
+
+export interface DocumentExtraction {
+  format: "pdf";
+  source_bytes_sha256: string;
+  source_bytes: number;
+  pages: number;
+  profile_sha256: string;
 }
 
 export interface SearchDocument {
@@ -48,6 +80,7 @@ export interface SearchDocument {
   warnings: string[];
   alternate_urls: string[];
   producer: ProducerContext;
+  extraction?: DocumentExtraction;
 }
 
 export interface RetainedDocument {
@@ -80,7 +113,9 @@ export interface HostArchive {
   urls: readonly SavedUrl[];
   retained: readonly RetainedDocument[];
   read(url: string): Promise<Observation>;
+  readDocument?(url: string): Promise<Observation>;
   readSnapshot(sha256: string): Promise<Observation>;
+  readBytes?(snapshotSha256: string): Promise<Uint8Array>;
   observedDestination?(url: string): string;
   apiFallbackEligible?(url: string): boolean;
   assertUnchanged(): Promise<void>;

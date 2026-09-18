@@ -18,5 +18,15 @@
     "scope": "Public UBC workplace bullying and harassment definitions, reporting, supervisor procedures, training and resources for faculty, staff and student employees.",
     "document_root": "data/documents/bullyingandharassment.ubc.ca",
     "document_count": 6
+  },
+  {
+    "hostname": "coop.ubc.ca",
+    "title": "UBC Co-op Programs",
+    "homepage_url": "https://coop.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T06:26:26.105Z",
+    "homepage_sha256": "777c001e5a5ec1915d92f44161c0c6b3a6b4d5a84677f6e3c23bce4daf25bca5",
+    "scope": "Public Co-op program information, employer and student guidance, FAQs, announcements, testimonials and posting instructions.",
+    "document_root": "data/documents/coop.ubc.ca",
+    "document_count": 32
   }
 ]

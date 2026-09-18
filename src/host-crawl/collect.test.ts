@@ -4,6 +4,7 @@ import { wordpressCollectionUrl } from "./adapters/wordpress-discovery.ts";
 import { defineWordpressHost } from "./adapters/wordpress-page.ts";
 import { collectRecordedHost } from "./collect.ts";
 import {
+  DocumentPolicyError,
   NonTextMediaError,
   type HostArchive,
   type Observation,
@@ -146,6 +147,21 @@ afterEach(() => {
 });
 
 describe("recorded complete-host collection", () => {
+  it("does not use independent API text to bypass a document policy refusal", async () => {
+    const f = setup(),
+      catalog = f.values.get(api)!;
+    const body = JSON.parse(catalog.snapshot.body);
+    for (const base of ["pages", "posts"]) body.routes[`/wp/v2/${base}/(?P<id>[\\d]+)`] = { methods: ["GET"] };
+    catalog.snapshot.body = JSON.stringify(body);
+    f.archive.readDocument = async (url) => {
+      if (url === post) throw new DocumentPolicyError("Document URL policy excludes the observed destination");
+      return f.archive.read(url);
+    };
+    f.archive.apiFallbackEligible = () => true;
+    const scraper = { ...fixtureScraper, adapter: { ...fixtureScraper.adapter, apiContentFallback: true } };
+    await expect(collectRecordedHost(scraper, f.archive, producer)).rejects.toThrow(/Document URL policy/);
+    expect(f.archive.read).not.toHaveBeenCalledWith(`${api}wp/v2/posts/1`);
+  });
   it("exhausts CMS records and aliases, excludes placeholders, and replays identical text", async () => {
     const f = setup();
     const result = await collectRecordedHost(fixtureScraper, f.archive, producer);

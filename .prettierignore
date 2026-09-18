@@ -3,3 +3,5 @@ dist
 data
 .kiro
 .git
+# Preserve deliberately malformed and adjacency-sensitive HTML fixtures.
+test/fixtures/host-scrapers/**

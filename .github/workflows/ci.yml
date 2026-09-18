@@ -25,11 +25,14 @@ jobs:
 
       - run: npm ci
 
+      - name: Install native document test tools
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils python3 util-linux
+
       - name: Typecheck
         run: npx tsc --noEmit
 
       - name: Tests
-        run: npm test
+        run: npm test -- --no-file-parallelism --maxWorkers=1
 
       - name: Validate host documents
         run: npm run validate:hosts

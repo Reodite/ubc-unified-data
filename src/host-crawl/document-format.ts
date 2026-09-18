@@ -5,6 +5,7 @@ import type { SearchDocument } from "./contracts.ts";
 import { hostUrl, normalizeHost } from "./urls.ts";
 
 export const DOCUMENT_FORMAT_VERSION = 1;
+export const PDF_DOCUMENT_FORMAT_VERSION = 2;
 export const MAX_DOCUMENT_BYTES = 1024 * 1024;
 const DOCUMENT_KEYS = [
   "id",
@@ -23,6 +24,13 @@ const DOCUMENT_KEYS = [
   "producer",
 ] as const;
 const RUNTIME_KEYS = ["node", "icu", "unicode", "platform", "arch"] as const;
+const EXTRACTION_KEYS = ["format", "source_bytes_sha256", "source_bytes", "pages", "profile_sha256"] as const;
+
+function documentKeys(value: unknown): readonly (keyof SearchDocument)[] {
+  return value !== null && typeof value === "object" && Object.hasOwn(value, "extraction")
+    ? [...DOCUMENT_KEYS, "extraction"]
+    : DOCUMENT_KEYS;
+}
 
 export function sha256(value: string | Uint8Array): string {
   return createHash("sha256").update(value).digest("hex");
@@ -90,7 +98,7 @@ function sortedStrings(value: unknown, label: string): asserts value is string[]
 }
 
 export function validateSearchDocument(value: unknown): asserts value is SearchDocument {
-  exactObject(value, DOCUMENT_KEYS, "document");
+  exactObject(value, documentKeys(value), "document");
   const doc = value as unknown as SearchDocument;
   safeText(doc.hostname, "hostname");
   if (normalizeHost(doc.hostname) !== doc.hostname) throw new Error("Noncanonical hostname");
@@ -116,6 +124,20 @@ export function validateSearchDocument(value: unknown): asserts value is SearchD
   for (const url of doc.alternate_urls) {
     exactHostUrl(url, doc.hostname);
     if (url === doc.source_url) throw new Error("Source URL cannot also be an alternate URL");
+  }
+  if (Object.hasOwn(doc, "extraction")) {
+    exactObject(doc.extraction, EXTRACTION_KEYS, "extraction");
+    if (doc.extraction.format !== "pdf") throw new Error("Unknown document extraction format");
+    digest(doc.extraction.source_bytes_sha256, "source bytes");
+    digest(doc.extraction.profile_sha256, "extraction profile");
+    if (
+      !Number.isSafeInteger(doc.extraction.source_bytes) ||
+      doc.extraction.source_bytes < 1 ||
+      !Number.isSafeInteger(doc.extraction.pages) ||
+      doc.extraction.pages < 1 ||
+      doc.extraction.pages > 500
+    )
+      throw new Error("Invalid PDF extraction bounds");
   }
   exactObject(doc.producer, ["inputs_sha256", "runtime"], "producer");
   digest(doc.producer.inputs_sha256, "producer inputs");
@@ -159,8 +181,10 @@ export function documentFilename(id: string): string {
 /** Encode canonical JSON metadata and preserve the body without adding even a final newline. */
 export function formatDocument(document: SearchDocument): Buffer {
   validateSearchDocument(document);
-  const metadata: Record<string, unknown> = { format_version: DOCUMENT_FORMAT_VERSION };
-  for (const key of DOCUMENT_KEYS) {
+  const metadata: Record<string, unknown> = {
+    format_version: document.extraction ? PDF_DOCUMENT_FORMAT_VERSION : DOCUMENT_FORMAT_VERSION,
+  };
+  for (const key of documentKeys(document)) {
     if (key === "content_markdown") continue;
     metadata[key] =
       key === "producer"
@@ -168,7 +192,9 @@ export function formatDocument(document: SearchDocument): Buffer {
             inputs_sha256: document.producer.inputs_sha256,
             runtime: Object.fromEntries(RUNTIME_KEYS.map((name) => [name, document.producer.runtime[name]])),
           }
-        : document[key];
+        : key === "extraction"
+          ? Object.fromEntries(EXTRACTION_KEYS.map((name) => [name, document.extraction![name]]))
+          : document[key];
   }
   const bytes = Buffer.from(`---\n${JSON.stringify(metadata, null, 2)}\n---\n${document.content_markdown}`, "utf8");
   if (bytes.length > MAX_DOCUMENT_BYTES) throw new Error("Whole document exceeds 1 MiB");
@@ -188,8 +214,16 @@ export function parseDocument(
   const end = text.indexOf("\n---\n", 4);
   if (end < 0) throw new Error("Missing document frontmatter delimiter");
   const metadata: unknown = JSON.parse(text.slice(4, end));
-  exactObject(metadata, ["format_version", ...DOCUMENT_KEYS.filter((key) => key !== "content_markdown")], "metadata");
-  if (metadata.format_version !== DOCUMENT_FORMAT_VERSION) throw new Error("Unknown document format version");
+  exactObject(
+    metadata,
+    ["format_version", ...documentKeys(metadata).filter((key) => key !== "content_markdown")],
+    "metadata",
+  );
+  if (
+    metadata.format_version !==
+    (Object.hasOwn(metadata, "extraction") ? PDF_DOCUMENT_FORMAT_VERSION : DOCUMENT_FORMAT_VERSION)
+  )
+    throw new Error("Unknown or inconsistent document format version");
   const { format_version: _, ...fields } = metadata;
   const document = { ...fields, content_markdown: text.slice(end + 5) };
   validateSearchDocument(document);

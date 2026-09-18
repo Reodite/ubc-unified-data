@@ -2,6 +2,7 @@ import { existsSync, readdirSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { bmlscScraper } from "../host-scrapers/bmlscpathology.med.ubc.ca/index.ts";
 import { bullyingAndHarassmentScraper } from "../host-scrapers/bullyingandharassment.ubc.ca/index.ts";
+import { coopScraper } from "../host-scrapers/coop.ubc.ca/index.ts";
 import { createRegistry, getHostScraper, registeredHostnames } from "./registry.ts";
 import { hostUrl, normalizeHost } from "./urls.ts";
 
@@ -20,6 +21,7 @@ describe("explicit hostname dispatch", () => {
     }
     expect(getHostScraper(hostname.toUpperCase())).toBe(bmlscScraper);
     expect(getHostScraper("BULLYINGANDHARASSMENT.UBC.CA")).toBe(bullyingAndHarassmentScraper);
+    expect(getHostScraper("COOP.UBC.CA")).toBe(coopScraper);
   });
   it("rejects unregistered, duplicate and unnormalized definitions", () => {
     expect(() => getHostScraper("unknown.ubc.ca")).toThrow(/registered/);

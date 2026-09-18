@@ -5,15 +5,18 @@ import { DatabaseSync } from "node:sqlite";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 import { ROOT } from "./base.ts";
+import { extractPdf } from "./host-crawl/adapters/pdf.ts";
 import { collectRecordedHost } from "./host-crawl/collect.ts";
 import type { HostArchive, SavedUrl } from "./host-crawl/contracts.ts";
 import { assertCollectedInput, decodeFrozenSeed } from "./host-crawl/inputs.ts";
 import { assertExternalPath, DEFAULT_EXTERNAL_ROOT, DEFAULT_LEGACY_STATE_FILE } from "./host-crawl/paths.ts";
+import { assertPdfProfile, capturePdfProfile, type PdfProfile } from "./host-crawl/pdf-profile.ts";
 import { assertSameProducer, captureProducer } from "./host-crawl/provenance.ts";
 import { readRegularFile } from "./host-crawl/public-validation.ts";
 import { publishCompletedHost } from "./host-crawl/publication.ts";
 import { HostRecording } from "./host-crawl/recording.ts";
 import { getHostScraper, registeredHostnames } from "./host-crawl/registry.ts";
+import { pageExclusion } from "./host-crawl/urls.ts";
 
 const digest = (value: Uint8Array) => createHash("sha256").update(value).digest("hex");
 
@@ -39,6 +42,24 @@ export async function runCollectHost(args: string[]) {
   const source = await captureProducer();
   const acquisitionSource = source;
   await mkdir(directory, { recursive: true, mode: 0o700 });
+  const pdfWorkspace = assertExternalPath(join(directory, "pdf-runtime"));
+  const pdfProfilePath = join(directory, "pdf-profile.json");
+  let pdfProfile: PdfProfile | undefined;
+  let pdfProfileBytes: Buffer | undefined;
+  if (scraper.documentFormats?.includes("pdf")) {
+    try {
+      pdfProfileBytes = await readRegularFile(pdfProfilePath, 16 * 1024 * 1024);
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code !== "ENOENT" || !values.acquire) throw error;
+      pdfProfile = await capturePdfProfile(pdfWorkspace);
+      pdfProfileBytes = Buffer.from(`${JSON.stringify(pdfProfile, null, 2)}\n`);
+      await writeFile(pdfProfilePath, pdfProfileBytes, { flag: "wx", mode: 0o600 });
+    }
+    if (!pdfProfile) {
+      pdfProfile = JSON.parse(pdfProfileBytes!.toString("utf8")) as PdfProfile;
+      await assertPdfProfile(pdfProfile, pdfWorkspace);
+    }
+  }
   const seedPath = join(directory, "seed.json");
   let seedBytes: Buffer;
   try {
@@ -70,6 +91,10 @@ export async function runCollectHost(args: string[]) {
     seedSha256: digest(seed.bytes),
     acquire: values.acquire,
     resumeInterrupted: values["resume-interrupted"],
+    documentFormats: scraper.documentFormats,
+    documentUrlAllowed: (url) =>
+      (scraper.excludeUrl ? scraper.excludeUrl(url) : pageExclusion(url, scraper.hostname)) === null,
+    maxResponseBytes: scraper.documentFormats?.includes("pdf") ? 32 * 1024 * 1024 : undefined,
   });
   try {
     let replayInput: string | undefined;
@@ -97,18 +122,46 @@ export async function runCollectHost(args: string[]) {
       urls: seed.urls,
       retained: [],
       read: (url) => recording.read(url),
+      readDocument: (url) => recording.readDocument(url),
       readSnapshot: (sha) => recording.readSnapshot(sha),
+      readBytes: (sha) => recording.readBytes(sha),
       observedDestination: (url) => recording.observedDestination(url),
       apiFallbackEligible: (url) => recording.apiFallbackEligible(url),
       assertUnchanged: () => recording.assertUnchanged(),
       close() {},
     };
-    const result = await collectRecordedHost(scraper, archive, source);
+    const result = await collectRecordedHost(
+      scraper,
+      archive,
+      source,
+      pdfProfile
+        ? {
+            pdf: {
+              profile_sha256: pdfProfile.sha256,
+              extract: (bytes, sourceUrl) =>
+                extractPdf({ bytes, sourceUrl, workspace: pdfWorkspace, profile: pdfProfile! }),
+            },
+          }
+        : {},
+    );
     const sealed = values.acquire ? await recording.seal() : await recording.verifySeal();
     if (replayInput) assertCollectedInput(replayInput, sealed);
-    const input = digest(Buffer.from(JSON.stringify({ recording: sealed, seed: digest(seed.bytes) })));
+    const input = digest(
+      Buffer.from(
+        JSON.stringify({
+          recording: sealed,
+          seed: digest(seed.bytes),
+          ...(pdfProfile ? { pdf_profile: pdfProfile.sha256 } : {}),
+        }),
+      ),
+    );
     for (const doc of result.documents) doc.input_sha256 = input;
     const verifyInputs = async () => {
+      if (pdfProfile) {
+        await assertPdfProfile(pdfProfile, pdfWorkspace);
+        if (!(await readRegularFile(pdfProfilePath, 16 * 1024 * 1024)).equals(pdfProfileBytes!))
+          throw new Error("Recorded PDF profile changed");
+      }
       if (!(await readRegularFile(seedPath, 16 * 1024 * 1024)).equals(seed.bytes))
         throw new Error("Saved frontier changed");
       assertCollectedInput(sealed, await recording.verifySeal());

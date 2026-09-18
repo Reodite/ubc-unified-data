@@ -46,6 +46,44 @@ function replaceMetadata(bytes: Buffer, change: (metadata: Record<string, unknow
 }
 
 describe("document Markdown wire format", () => {
+  it("round-trips PDF provenance as v2 without changing ordinary v1 serialization", () => {
+    const original = fixtureDocument();
+    const oldBytes = formatDocument(original);
+    const pdf = {
+      ...fixtureDocument("example.ubc.ca", "/guide.pdf"),
+      extraction: {
+        format: "pdf" as const,
+        source_bytes_sha256: sha256("raw PDF"),
+        source_bytes: 1234,
+        pages: 2,
+        profile_sha256: sha256("native profile"),
+      },
+    };
+    const bytes = formatDocument(pdf);
+    expect(bytes.toString()).toContain('"format_version": 2');
+    expect(parseDocument(bytes)).toEqual(pdf);
+    expect(formatDocument(parseDocument(bytes))).toEqual(bytes);
+    expect(formatDocument(original)).toEqual(oldBytes);
+    expect(() =>
+      parseDocument(
+        replaceMetadata(bytes, (meta) => {
+          meta.format_version = 1;
+        }),
+      ),
+    ).toThrow();
+    for (const change of [
+      { pages: 0 },
+      { pages: 501 },
+      { source_bytes: -1 },
+      { source_bytes_sha256: "bad" },
+      { profile_sha256: "bad" },
+      { format: "docx" },
+      { extra: true },
+    ])
+      expect(() =>
+        formatDocument({ ...pdf, extraction: { ...pdf.extraction, ...change } } as SearchDocument),
+      ).toThrow();
+  });
   it.each([
     "Exact body without final newline",
     "\n\nOriginal café 🍁.\r\n\n---\n\n",
