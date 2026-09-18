@@ -78,5 +78,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/jps.arts.ubc.ca",
     "document_count": 7
+  },
+  {
+    "hostname": "knowledgesynthesis.library.ubc.ca",
+    "title": "knowledgesynthesis.library.ubc.ca",
+    "homepage_url": "https://knowledgesynthesis.library.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:23:20.697Z",
+    "homepage_sha256": "b2f1558d8bfa01a10f92f27e119a819addf4e487c6a4451fca3b6ae154c141f3",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/knowledgesynthesis.library.ubc.ca",
+    "document_count": 3
   }
 ]
