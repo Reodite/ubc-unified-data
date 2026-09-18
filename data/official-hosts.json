@@ -170,6 +170,16 @@
     "document_count": 60
   },
   {
+    "hostname": "irsslab.forestry.ubc.ca",
+    "title": "irsslab.forestry.ubc.ca",
+    "homepage_url": "https://irsslab.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:15:29.062Z",
+    "homepage_sha256": "32e51ab7f36a6ad1ce9cd64b9a68706b930ac720dd640f993607df7b53f3a96a",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/irsslab.forestry.ubc.ca",
+    "document_count": 45
+  },
+  {
     "hostname": "isc.ubc.ca",
     "title": "isc.ubc.ca",
     "homepage_url": "https://isc.ubc.ca/",
