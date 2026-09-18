@@ -520,6 +520,16 @@
     "document_count": 82
   },
   {
+    "hostname": "pearl.psych.ubc.ca",
+    "title": "pearl.psych.ubc.ca",
+    "homepage_url": "https://pearl.psych.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:28:32.661Z",
+    "homepage_sha256": "c3823fb065d40d34154c10b610b06b2dd2d884fbef26e6c038b9f73e2b9ff663",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/pearl.psych.ubc.ca",
+    "document_count": 16
+  },
+  {
     "hostname": "physoly.phas.ubc.ca",
     "title": "physoly.phas.ubc.ca",
     "homepage_url": "https://physoly.phas.ubc.ca/",
