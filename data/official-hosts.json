@@ -240,6 +240,16 @@
     "document_count": 12
   },
   {
+    "hostname": "langelab.med.ubc.ca",
+    "title": "langelab.med.ubc.ca",
+    "homepage_url": "https://langelab.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:25:16.506Z",
+    "homepage_sha256": "a4f12165d787f53b674534fac75f3edc13eaacd6380ec23333572927d840924c",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/langelab.med.ubc.ca",
+    "document_count": 11
+  },
+  {
     "hostname": "learningspaces.ok.ubc.ca",
     "title": "learningspaces.ok.ubc.ca",
     "homepage_url": "https://learningspaces.ok.ubc.ca/",
