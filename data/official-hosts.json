@@ -8,5 +8,15 @@
     "scope": "Public BMLSc program, curriculum, admissions, prerequisite, laboratory training and student guidance prose.",
     "document_root": "data/documents/bmlscpathology.med.ubc.ca",
     "document_count": 30
+  },
+  {
+    "hostname": "bullyingandharassment.ubc.ca",
+    "title": "Bullying and Harassment Prevention at UBC",
+    "homepage_url": "https://bullyingandharassment.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T05:32:05.544Z",
+    "homepage_sha256": "a3268b08fd354ff674344538f1647f68746b1dca9f9367eca0e7c5fa5dd35568",
+    "scope": "Public UBC workplace bullying and harassment definitions, reporting, supervisor procedures, training and resources for faculty, staff and student employees.",
+    "document_root": "data/documents/bullyingandharassment.ubc.ca",
+    "document_count": 6
   }
 ]

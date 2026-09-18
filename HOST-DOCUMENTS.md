@@ -36,8 +36,8 @@ not disposable historical links.
 Missing required text, unexplained representation conflicts, unsupported linked
 document formats or changed inputs block publication.
 
-BMLSc explicitly allows an independently public WordPress item record when its
-HTML page has a recorded transport failure. The advertised item GET route,
+The BMLSc and bullying-prevention modules explicitly allow an independently
+public WordPress item record when its HTML page has a recorded transport failure. The advertised item GET route,
 record identity/type/publication status, publisher permalink, modification time
 and unprotected rendered content must agree with the inventory. Empty or
 unexpanded content fails. HTTP 401/403/404 responses do not enable this path.
@@ -115,7 +115,8 @@ producer context. An ID is `documents:official-web:` plus the first 24 hex digit
 of SHA-256 of the normalized physical HTTPS URL. The filename is SHA-256 of the
 full ID plus `.md`. Canonical tags alone do not collapse physical identities.
 
-The body is safe Markdown, without executable HTML or image embeds. Media remain
+The body is safe Markdown, without executable HTML or image embeds. Ordered
+procedures preserve nested non-default starting numbers as separate list blocks. Media remain
 source/text references with explicit extraction limitations. No OCR or video
 transcription is implied. Whole files have a 1 MiB limit; oversized documents
 fail rather than being truncated, sharded or put in LFS. Git preserves exact

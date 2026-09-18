@@ -349,6 +349,14 @@ function converterFor(warnings: Set<string>): TurndownService {
     },
   });
   converter.escape = escapeText;
+  converter.addRule("nonDefaultNestedOrderedLists", {
+    filter(node) {
+      const start = node.getAttribute("start");
+      return node.nodeName === "OL" && node.parentNode?.nodeName === "LI" && start !== null && start !== "1";
+    },
+    // Non-default ordered markers cannot interrupt an inline paragraph in CommonMark.
+    replacement: (content) => `\n\n${content}\n\n`,
+  });
   converter.addRule("safeLinks", {
     filter: "a",
     replacement(content, node) {

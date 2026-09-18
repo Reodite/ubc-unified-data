@@ -98,6 +98,24 @@ describe("toSafeMarkdown prose structures", () => {
     expect($("blockquote > blockquote").text()).toContain("Allow extra time.");
   });
 
+  it.each([0, 4, 12])("preserves nested ordered start %s after an inline introduction", (start) => {
+    const result = toSafeMarkdown(
+      `<ol start="3"><li>Ask the following questions:<ol start="${start}"><li>What happened?</li><li>Who observed it?</li></ol></li><li>Follow up.</li></ol>`,
+      SOURCE,
+    );
+    const $ = rendered(result);
+    expect($("ol")).toHaveLength(2);
+    expect($("ol").first().attr("start")).toBe("3");
+    expect($("ol > li > ol").attr("start")).toBe(String(start));
+    expect(
+      $("ol > li > ol > li")
+        .map((_, node) => $(node).text())
+        .get(),
+    ).toEqual(["What happened?", "Who observed it?"]);
+    expect($("ol").first().children("li")).toHaveLength(2);
+    expect($("ol").first().children("li").first().text()).toContain("Ask the following questions:");
+  });
+
   it("retains advisory and collapsed FAQ bodies rather than treating them as invisible", () => {
     const result = toSafeMarkdown(
       `

@@ -1,4 +1,5 @@
 import { bmlscScraper } from "../host-scrapers/bmlscpathology.med.ubc.ca/index.ts";
+import { bullyingAndHarassmentScraper } from "../host-scrapers/bullyingandharassment.ubc.ca/index.ts";
 import type { HostScraper } from "./contracts.ts";
 import { normalizeHost } from "./urls.ts";
 
@@ -12,7 +13,7 @@ export function createRegistry(scrapers: readonly HostScraper[]): ReadonlyMap<st
   }
   return result;
 }
-const registry = createRegistry([bmlscScraper]);
+const registry = createRegistry([bmlscScraper, bullyingAndHarassmentScraper]);
 export function registeredHostnames(): string[] {
   return [...registry.keys()].sort();
 }
