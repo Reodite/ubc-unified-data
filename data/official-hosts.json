@@ -488,5 +488,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/urban.forestry.ubc.ca",
     "document_count": 44
+  },
+  {
+    "hostname": "usstudies.arts.ubc.ca",
+    "title": "usstudies.arts.ubc.ca",
+    "homepage_url": "https://usstudies.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:48:06.833Z",
+    "homepage_sha256": "9c41a2538b7c355523a530f4aeb231a059c10c7cb0e345c716723bdbae0d261a",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/usstudies.arts.ubc.ca",
+    "document_count": 24
   }
 ]
