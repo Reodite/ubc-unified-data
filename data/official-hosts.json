@@ -288,5 +288,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/renew.forestry.ubc.ca",
     "document_count": 5
+  },
+  {
+    "hostname": "reuseit.ubc.ca",
+    "title": "reuseit.ubc.ca",
+    "homepage_url": "https://reuseit.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:58:34.996Z",
+    "homepage_sha256": "b0f1303f349a0f037254303a2376de860ad51a62c96be2890590fa30e7d447b0",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/reuseit.ubc.ca",
+    "document_count": 11
   }
 ]
