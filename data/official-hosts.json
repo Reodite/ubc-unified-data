@@ -108,5 +108,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/lindinitiative.ubc.ca",
     "document_count": 273
+  },
+  {
+    "hostname": "med-fom-childspeech.sites.olt.ubc.ca",
+    "title": "med-fom-childspeech.sites.olt.ubc.ca",
+    "homepage_url": "https://med-fom-childspeech.sites.olt.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:47:32.753Z",
+    "homepage_sha256": "9ec4eb83ebe8987bf56596325aaf51b92c1f04c478d046585c07114fa1e74a5f",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/med-fom-childspeech.sites.olt.ubc.ca",
+    "document_count": 3
   }
 ]
