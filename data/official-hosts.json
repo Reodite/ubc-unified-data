@@ -280,6 +280,16 @@
     "document_count": 6
   },
   {
+    "hostname": "library.ubc.ca",
+    "title": "library.ubc.ca",
+    "homepage_url": "https://library.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:34:32.458Z",
+    "homepage_sha256": "4e2a0217b51d8f4e8d81bfe4e7425997dc580852fc38a5c023fb356bd487e8a8",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/library.ubc.ca",
+    "document_count": 1
+  },
+  {
     "hostname": "lindinitiative.ubc.ca",
     "title": "lindinitiative.ubc.ca",
     "homepage_url": "https://lindinitiative.ubc.ca/",
