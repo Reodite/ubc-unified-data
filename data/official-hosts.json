@@ -510,6 +510,16 @@
     "document_count": 31
   },
   {
+    "hostname": "pathwaysmagazine.med.ubc.ca",
+    "title": "pathwaysmagazine.med.ubc.ca",
+    "homepage_url": "https://pathwaysmagazine.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:27:25.916Z",
+    "homepage_sha256": "81950c0cfb95083d7d902bc39a2fc662ba2fd00fe3947b249214c1537d0dba6c",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/pathwaysmagazine.med.ubc.ca",
+    "document_count": 82
+  },
+  {
     "hostname": "physoly.phas.ubc.ca",
     "title": "physoly.phas.ubc.ca",
     "homepage_url": "https://physoly.phas.ubc.ca/",
