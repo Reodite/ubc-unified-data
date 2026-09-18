@@ -240,6 +240,16 @@
     "document_count": 11
   },
   {
+    "hostname": "proftalk.ubc.ca",
+    "title": "proftalk.ubc.ca",
+    "homepage_url": "https://proftalk.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:41:26.726Z",
+    "homepage_sha256": "7eab5c31672ed31afbfab6c1589d4a6572bbb08b382bc7bb38bfdde7d5f95956",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/proftalk.ubc.ca",
+    "document_count": 46
+  },
+  {
     "hostname": "projectlab.engphys.ubc.ca",
     "title": "projectlab.engphys.ubc.ca",
     "homepage_url": "https://projectlab.engphys.ubc.ca/",
