@@ -100,6 +100,16 @@
     "document_count": 60
   },
   {
+    "hostname": "intheclass.arts.ubc.ca",
+    "title": "intheclass.arts.ubc.ca",
+    "homepage_url": "https://intheclass.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T18:28:51.025Z",
+    "homepage_sha256": "a5c866a604ca9f5b252e206d5f3ae9c43e0a37955fa6d032a9bc2f4e380fd42a",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/intheclass.arts.ubc.ca",
+    "document_count": 53
+  },
+  {
     "hostname": "io.ubc.ca",
     "title": "io.ubc.ca",
     "homepage_url": "https://io.ubc.ca/",
