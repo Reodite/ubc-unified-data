@@ -578,5 +578,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/www.igen.ubc.ca",
     "document_count": 12
+  },
+  {
+    "hostname": "www.inspire.chem.ubc.ca",
+    "title": "www.inspire.chem.ubc.ca",
+    "homepage_url": "https://www.inspire.chem.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:11:30.228Z",
+    "homepage_sha256": "0dcac662b50648495a6bb2775f43153983c348b844cc8998ef41514770f28106",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/www.inspire.chem.ubc.ca",
+    "document_count": 22
   }
 ]
