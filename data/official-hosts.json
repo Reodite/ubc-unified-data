@@ -340,6 +340,16 @@
     "document_count": 44
   },
   {
+    "hostname": "midterm.teacheval.ubc.ca",
+    "title": "midterm.teacheval.ubc.ca",
+    "homepage_url": "https://midterm.teacheval.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:55:12.476Z",
+    "homepage_sha256": "73476d15bf363ba08ea15fce9738ec9d301ca835ba743612e35ea2457c11874c",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/midterm.teacheval.ubc.ca",
+    "document_count": 17
+  },
+  {
     "hostname": "mpg.sciencecoop.ubc.ca",
     "title": "mpg.sciencecoop.ubc.ca",
     "homepage_url": "https://mpg.sciencecoop.ubc.ca/",
