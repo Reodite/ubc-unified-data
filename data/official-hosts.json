@@ -88,5 +88,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/knowledgesynthesis.library.ubc.ca",
     "document_count": 3
+  },
+  {
+    "hostname": "learningspaces.ok.ubc.ca",
+    "title": "learningspaces.ok.ubc.ca",
+    "homepage_url": "https://learningspaces.ok.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:30:33.232Z",
+    "homepage_sha256": "360a620cf6c20f6c832e9b620e49c5d3534ba56397de8b6f698653184aace8f3",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/learningspaces.ok.ubc.ca",
+    "document_count": 6
   }
 ]
