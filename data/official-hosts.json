@@ -518,5 +518,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/vems.ok.ubc.ca",
     "document_count": 9
+  },
+  {
+    "hostname": "vibrantforestlandscapes.forestry.ubc.ca",
+    "title": "vibrantforestlandscapes.forestry.ubc.ca",
+    "homepage_url": "https://vibrantforestlandscapes.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:50:45.474Z",
+    "homepage_sha256": "2dab7a411a4c90fa0268d07c84ff2c673e45861214160f520167892803e61561",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/vibrantforestlandscapes.forestry.ubc.ca",
+    "document_count": 23
   }
 ]
