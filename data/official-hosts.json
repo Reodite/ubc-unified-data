@@ -890,6 +890,16 @@
     "document_count": 36
   },
   {
+    "hostname": "team.forestry.ubc.ca",
+    "title": "team.forestry.ubc.ca",
+    "homepage_url": "https://team.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:29:41.116Z",
+    "homepage_sha256": "a41c6b0d2e67344b25584eb46fac2a7c59e6e931a9031d096afc9d26c2284ed9",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/team.forestry.ubc.ca",
+    "document_count": 26
+  },
+  {
     "hostname": "tek.forestry.ubc.ca",
     "title": "tek.forestry.ubc.ca",
     "homepage_url": "https://tek.forestry.ubc.ca/",
