@@ -338,5 +338,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/scienceone.ubc.ca",
     "document_count": 15
+  },
+  {
+    "hostname": "sds.ubc.ca",
+    "title": "sds.ubc.ca",
+    "homepage_url": "https://sds.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:07:47.248Z",
+    "homepage_sha256": "c309304efb433124f4eb6c919d328cd3f12983cb30662d21129199b44e1d8091",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/sds.ubc.ca",
+    "document_count": 41
   }
 ]
