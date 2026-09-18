@@ -770,6 +770,16 @@
     "document_count": 41
   },
   {
+    "hostname": "socialwork.ok.ubc.ca",
+    "title": "socialwork.ok.ubc.ca",
+    "homepage_url": "https://socialwork.ok.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:12:44.384Z",
+    "homepage_sha256": "cea7d3feb725ab33041e764b0894e3d6926dc9716e5ad79ff0bde037ca8dd312",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/socialwork.ok.ubc.ca",
+    "document_count": 79
+  },
+  {
     "hostname": "sogi.educ.ubc.ca",
     "title": "sogi.educ.ubc.ca",
     "homepage_url": "https://sogi.educ.ubc.ca/",
