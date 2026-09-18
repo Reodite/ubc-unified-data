@@ -558,5 +558,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/www.afrf.forestry.ubc.ca",
     "document_count": 26
+  },
+  {
+    "hostname": "www.chinalinks.ubc.ca",
+    "title": "www.chinalinks.ubc.ca",
+    "homepage_url": "https://www.chinalinks.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:04:55.663Z",
+    "homepage_sha256": "9fd8402381c7c612fd2e007b87ef8655b418c74b689aeeeee7e8885020d5c0f7",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/www.chinalinks.ubc.ca",
+    "document_count": 27
   }
 ]
