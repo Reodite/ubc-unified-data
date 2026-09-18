@@ -410,6 +410,16 @@
     "document_count": 4
   },
   {
+    "hostname": "svpro.ubc.ca",
+    "title": "svpro.ubc.ca",
+    "homepage_url": "https://svpro.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:26:34.646Z",
+    "homepage_sha256": "298f8b7869b4ec1fc2d74a0430a967fe6cab3332e48b055d3f2c2a9a5ff29046",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/svpro.ubc.ca",
+    "document_count": 34
+  },
+  {
     "hostname": "systopia.cs.ubc.ca",
     "title": "systopia.cs.ubc.ca",
     "homepage_url": "https://systopia.cs.ubc.ca/",
