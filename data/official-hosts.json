@@ -430,6 +430,16 @@
     "document_count": 132
   },
   {
+    "hostname": "neuroscience.ubc.ca",
+    "title": "neuroscience.ubc.ca",
+    "homepage_url": "https://neuroscience.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:06:16.974Z",
+    "homepage_sha256": "f695c3b26ca97a262a588b5f5490651a3b125e28435be8d5a42b031807846a07",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/neuroscience.ubc.ca",
+    "document_count": 224
+  },
+  {
     "hostname": "oceanleaders.ubc.ca",
     "title": "oceanleaders.ubc.ca",
     "homepage_url": "https://oceanleaders.ubc.ca/",
