@@ -190,6 +190,16 @@
     "document_count": 7
   },
   {
+    "hostname": "jwam.ubc.ca",
+    "title": "jwam.ubc.ca",
+    "homepage_url": "https://jwam.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:21:43.539Z",
+    "homepage_sha256": "7c4b089c3ad791a11aaa2f04b349d766e9b4b12fdf6f61122edb4b812188f5a2",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/jwam.ubc.ca",
+    "document_count": 786
+  },
+  {
     "hostname": "keeplearning.ubc.ca",
     "title": "keeplearning.ubc.ca",
     "homepage_url": "https://keeplearning.ubc.ca/",
