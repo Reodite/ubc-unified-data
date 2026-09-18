@@ -1050,6 +1050,16 @@
     "document_count": 49
   },
   {
+    "hostname": "visionlab.psych.ubc.ca",
+    "title": "visionlab.psych.ubc.ca",
+    "homepage_url": "https://visionlab.psych.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T21:33:05.466Z",
+    "homepage_sha256": "1b999bebdcb00b2a2f9390c01cff848ac3ad319bd2d56f47c1698baef2e250f8",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/visionlab.psych.ubc.ca",
+    "document_count": 60
+  },
+  {
     "hostname": "vpdevelopmentalumni.ubc.ca",
     "title": "vpdevelopmentalumni.ubc.ca",
     "homepage_url": "https://vpdevelopmentalumni.ubc.ca/",
