@@ -198,5 +198,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/parking.ubc.ca",
     "document_count": 31
+  },
+  {
+    "hostname": "physoly.phas.ubc.ca",
+    "title": "physoly.phas.ubc.ca",
+    "homepage_url": "https://physoly.phas.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:31:55.285Z",
+    "homepage_sha256": "f88dfe19cd8851343f19cc86dd5df9444a7429abd1200e5238a55cc807672d0a",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/physoly.phas.ubc.ca",
+    "document_count": 35
   }
 ]
