@@ -530,6 +530,16 @@
     "document_count": 16
   },
   {
+    "hostname": "pharm-sci-fosteringscience-2021.sites.olt.ubc.ca",
+    "title": "pharm-sci-fosteringscience-2021.sites.olt.ubc.ca",
+    "homepage_url": "https://pharm-sci-fosteringscience-2021.sites.olt.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T20:17:46.316Z",
+    "homepage_sha256": "a1fb42b5a0a5f21bd157a9edee1bbafe04ff35829fcd51e5a010341cda187a44",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/pharm-sci-fosteringscience-2021.sites.olt.ubc.ca",
+    "document_count": 7
+  },
+  {
     "hostname": "physoly.phas.ubc.ca",
     "title": "physoly.phas.ubc.ca",
     "homepage_url": "https://physoly.phas.ubc.ca/",
