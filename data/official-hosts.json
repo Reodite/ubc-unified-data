@@ -1070,6 +1070,16 @@
     "document_count": 4
   },
   {
+    "hostname": "vsp.arts.ubc.ca",
+    "title": "vsp.arts.ubc.ca",
+    "homepage_url": "https://vsp.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:53:58.529Z",
+    "homepage_sha256": "da38ff91c160e6fc8a4a2ddd7e8262fd0a52658fcb340d9ab7073cceff1c1842",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/vsp.arts.ubc.ca",
+    "document_count": 34
+  },
+  {
     "hostname": "www.afrf.forestry.ubc.ca",
     "title": "www.afrf.forestry.ubc.ca",
     "homepage_url": "https://www.afrf.forestry.ubc.ca/",
