@@ -60,6 +60,16 @@
     "document_count": 12
   },
   {
+    "hostname": "grad.lsi.ubc.ca",
+    "title": "grad.lsi.ubc.ca",
+    "homepage_url": "https://grad.lsi.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:11:09.125Z",
+    "homepage_sha256": "7f5c5ac297dbc7ff3c6340d1ce7b09a7e37f3a77960bfb9b1b48e2310dcf43d5",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/grad.lsi.ubc.ca",
+    "document_count": 121
+  },
+  {
     "hostname": "io.ubc.ca",
     "title": "io.ubc.ca",
     "homepage_url": "https://io.ubc.ca/",
