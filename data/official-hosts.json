@@ -170,6 +170,16 @@
     "document_count": 3
   },
   {
+    "hostname": "joshilab.forestry.ubc.ca",
+    "title": "joshilab.forestry.ubc.ca",
+    "homepage_url": "https://joshilab.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:21:24.544Z",
+    "homepage_sha256": "0729839dae8a2f905a6d2c76f69ff060f597be30d90624fc54b1e1e9e6b4783b",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/joshilab.forestry.ubc.ca",
+    "document_count": 7
+  },
+  {
     "hostname": "jps.arts.ubc.ca",
     "title": "jps.arts.ubc.ca",
     "homepage_url": "https://jps.arts.ubc.ca/",
