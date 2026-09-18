@@ -208,5 +208,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/physoly.phas.ubc.ca",
     "document_count": 35
+  },
+  {
+    "hostname": "piee-lab.landfood.ubc.ca",
+    "title": "piee-lab.landfood.ubc.ca",
+    "homepage_url": "https://piee-lab.landfood.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:32:19.314Z",
+    "homepage_sha256": "e8a4ad6f6f49a97d8e3dbde28a7f1b917ba0270df45196afc51b7b1d7d528d66",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/piee-lab.landfood.ubc.ca",
+    "document_count": 28
   }
 ]
