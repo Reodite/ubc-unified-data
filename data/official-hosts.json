@@ -258,5 +258,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/projectlab.engphys.ubc.ca",
     "document_count": 24
+  },
+  {
+    "hostname": "really.ubc.ca",
+    "title": "really.ubc.ca",
+    "homepage_url": "https://really.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:52:10.992Z",
+    "homepage_sha256": "2d916f20d7eafedb668c099aec911dc4c641660ce59690e0b1a6614cb545e470",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/really.ubc.ca",
+    "document_count": 5
   }
 ]
