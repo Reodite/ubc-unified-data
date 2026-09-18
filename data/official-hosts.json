@@ -930,6 +930,16 @@
     "document_count": 15
   },
   {
+    "hostname": "treebiotech.forestry.ubc.ca",
+    "title": "treebiotech.forestry.ubc.ca",
+    "homepage_url": "https://treebiotech.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:37:27.388Z",
+    "homepage_sha256": "3b157e0fb0d6e45aeaa4f324f70e032b3f863ceeb4145a2c6e3e8252da0fcf26",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/treebiotech.forestry.ubc.ca",
+    "document_count": 44
+  },
+  {
     "hostname": "ubccard.ubc.ca",
     "title": "ubccard.ubc.ca",
     "homepage_url": "https://ubccard.ubc.ca/",
