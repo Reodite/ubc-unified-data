@@ -598,5 +598,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/www.pda.ubc.ca",
     "document_count": 4
+  },
+  {
+    "hostname": "zero-waste-market.ubc.ca",
+    "title": "zero-waste-market.ubc.ca",
+    "homepage_url": "https://zero-waste-market.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:29:01.704Z",
+    "homepage_sha256": "b9633fbea215bcbdbac3aa9cc502854ec81321f54b7fcfa3fb2d3b1be5ac847e",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/zero-waste-market.ubc.ca",
+    "document_count": 6
   }
 ]
