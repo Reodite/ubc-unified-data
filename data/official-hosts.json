@@ -30,6 +30,16 @@
     "document_count": 4
   },
   {
+    "hostname": "cirtl.ubc.ca",
+    "title": "cirtl.ubc.ca",
+    "homepage_url": "https://cirtl.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:08:43.666Z",
+    "homepage_sha256": "a0c07b3ff79c8efb43eab844ef6bc8380672a5e5637a04be4e1a4621b1072f80",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/cirtl.ubc.ca",
+    "document_count": 37
+  },
+  {
     "hostname": "coop.ubc.ca",
     "title": "UBC Co-op Programs",
     "homepage_url": "https://coop.ubc.ca/",
