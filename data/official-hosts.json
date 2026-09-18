@@ -448,5 +448,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/thesismodules.edst.educ.ubc.ca",
     "document_count": 13
+  },
+  {
+    "hostname": "ubccard.ubc.ca",
+    "title": "ubccard.ubc.ca",
+    "homepage_url": "https://ubccard.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:39:13.591Z",
+    "homepage_sha256": "a079dac042e86a0296d4ae4808ef512e49eab070cec4d3abb89f56e361cfc533",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/ubccard.ubc.ca",
+    "document_count": 34
   }
 ]
