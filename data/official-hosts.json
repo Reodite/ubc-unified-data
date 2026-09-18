@@ -1090,6 +1090,16 @@
     "document_count": 20
   },
   {
+    "hostname": "wildlife.forestry.ubc.ca",
+    "title": "wildlife.forestry.ubc.ca",
+    "homepage_url": "https://wildlife.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:57:09.925Z",
+    "homepage_sha256": "ff4d4d7f38fd64168751eba8b3705d10ef315a5ebe4c75e098a7b362ec3dff28",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/wildlife.forestry.ubc.ca",
+    "document_count": 64
+  },
+  {
     "hostname": "www.afrf.forestry.ubc.ca",
     "title": "www.afrf.forestry.ubc.ca",
     "homepage_url": "https://www.afrf.forestry.ubc.ca/",
