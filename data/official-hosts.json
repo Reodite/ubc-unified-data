@@ -610,6 +610,16 @@
     "document_count": 11
   },
   {
+    "hostname": "principal.ok.ubc.ca",
+    "title": "principal.ok.ubc.ca",
+    "homepage_url": "https://principal.ok.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:39:45.378Z",
+    "homepage_sha256": "cba7adefc592a71a86d926603fd269dfbedc65f9721f5cdf7bfe8aaaa6406f96",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/principal.ok.ubc.ca",
+    "document_count": 244
+  },
+  {
     "hostname": "proftalk.ubc.ca",
     "title": "proftalk.ubc.ca",
     "homepage_url": "https://proftalk.ubc.ca/",
