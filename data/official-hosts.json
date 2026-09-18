@@ -148,5 +148,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/naisa2017.arts.ubc.ca",
     "document_count": 18
+  },
+  {
+    "hostname": "nationalparks.forestry.ubc.ca",
+    "title": "nationalparks.forestry.ubc.ca",
+    "homepage_url": "https://nationalparks.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:04:35.627Z",
+    "homepage_sha256": "2f132391f5f604a4b28a27d16d656c8bba7e766e9e348b645545bd315809a37d",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/nationalparks.forestry.ubc.ca",
+    "document_count": 39
   }
 ]
