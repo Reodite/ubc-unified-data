@@ -260,6 +260,16 @@
     "document_count": 24
   },
   {
+    "hostname": "rcl.ece.ubc.ca",
+    "title": "rcl.ece.ubc.ca",
+    "homepage_url": "https://rcl.ece.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:51:11.934Z",
+    "homepage_sha256": "92d2b4efa39b1de1d38697bad9e6f9ec3f3defbeab414f853248fe93677a82c0",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/rcl.ece.ubc.ca",
+    "document_count": 44
+  },
+  {
     "hostname": "really.ubc.ca",
     "title": "really.ubc.ca",
     "homepage_url": "https://really.ubc.ca/",
