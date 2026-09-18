@@ -230,6 +230,16 @@
     "document_count": 10
   },
   {
+    "hostname": "landone.ubc.ca",
+    "title": "landone.ubc.ca",
+    "homepage_url": "https://landone.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:25:09.847Z",
+    "homepage_sha256": "439e5d238a229c25f5ca112c08ac0133ed62bcd07dd4e9908baa0e9d431f85a1",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/landone.ubc.ca",
+    "document_count": 12
+  },
+  {
     "hostname": "learningspaces.ok.ubc.ca",
     "title": "learningspaces.ok.ubc.ca",
     "homepage_url": "https://learningspaces.ok.ubc.ca/",
