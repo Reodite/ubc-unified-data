@@ -390,6 +390,16 @@
     "document_count": 18
   },
   {
+    "hostname": "nanomat.chem.ubc.ca",
+    "title": "nanomat.chem.ubc.ca",
+    "homepage_url": "https://nanomat.chem.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:03:27.003Z",
+    "homepage_sha256": "fcd69e9abd5d92e25379f5e731eecbb83c319afe71c88a5a6f070f45191a79ec",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/nanomat.chem.ubc.ca",
+    "document_count": 15
+  },
+  {
     "hostname": "nationalparks.forestry.ubc.ca",
     "title": "nationalparks.forestry.ubc.ca",
     "homepage_url": "https://nationalparks.forestry.ubc.ca/",
