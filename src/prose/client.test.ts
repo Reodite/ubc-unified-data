@@ -2,6 +2,7 @@ import { mkdtemp, readdir, rm, stat } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
+import { ROOT } from "../base.ts";
 import { ProseClient, publicUbcUrl } from "./client.ts";
 
 const temporary: string[] = [];
@@ -24,6 +25,20 @@ function fetcher(handler: (url: string) => Response | Promise<Response>): typeof
 }
 
 describe("public UBC prose requests", () => {
+  it("rejects repository-local response caches before acquisition", () => {
+    let requested = false;
+    expect(
+      () =>
+        new ProseClient({
+          cacheDir: path.join(ROOT, ".cache/prose"),
+          fetcher: fetcher(() => {
+            requested = true;
+            return new Response("unexpected");
+          }),
+        }),
+    ).toThrow(/external/);
+    expect(requested).toBe(false);
+  });
   it.each([
     "http://science.ubc.ca/students",
     "https://evil.example/students",

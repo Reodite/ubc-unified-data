@@ -4,4 +4,7 @@ coverage/
 .env
 .DS_Storenotes.md
 
-.cache/prose/
+.cache/
+data/document-crawl/
+data/documents-crawl/
+data/documentation-crawl/

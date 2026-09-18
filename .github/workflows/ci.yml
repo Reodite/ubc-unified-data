@@ -8,7 +8,14 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
+    env:
+      TMPDIR: /home/admin2/Projects/ubc-tmp
+      TSX_DISABLE_CACHE: "1"
+      NODE_DISABLE_COMPILE_CACHE: "1"
     steps:
+      - name: Prepare external test workspace
+        run: sudo install -d -m 700 -o "$(id -u)" -g "$(id -g)" "$TMPDIR"
+
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
@@ -23,6 +30,9 @@ jobs:
 
       - name: Tests
         run: npm test
+
+      - name: Validate host documents
+        run: npm run validate:hosts
 
       - name: Lint
         run: npm run lint

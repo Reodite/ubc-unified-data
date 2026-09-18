@@ -59,7 +59,14 @@ arrays, CSV exports and standalone sanitized Markdown. Its own `_catalog.json`,
 `_manifest.json` and per-source coverage ledgers distinguish complete inventories,
 exclusions and failures. The repository includes these generated exports.
 Run `npm run collect:prose` to refresh them and `npm run validate:prose` before
-committing. Raw response caches remain under the ignored `.cache/prose/` directory.
+committing. Raw response caches remain outside the repository under
+`/home/admin2/Projects/ubc-tmp/ubc-unified-data/state/source-prose/cache/`.
+
+Separately, `data/official-hosts.json` indexes complete, homepage-vetted hostname
+collections in `data/documents/<hostname>/`. [HOST-DOCUMENTS.md](HOST-DOCUMENTS.md)
+describes their deterministic text format, admission checks and separate
+acquisition/replay/publication commands. No crawl queues, raw snapshots or
+partial host outputs are published.
 
 See [PROSE.md](PROSE.md) for collection, schemas and limitations, and the
 [source guide](UNDERGRADUATE-SOURCES.md) for structured-data qualifications and

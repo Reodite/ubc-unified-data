@@ -3,6 +3,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import path from "node:path";
 import { USER_AGENT } from "../base.ts";
+import { assertExternalPath } from "../host-crawl/paths.ts";
 
 interface RobotsRules {
   isDisallowed(url: string, agent: string): boolean | undefined;
@@ -101,7 +102,9 @@ export class ProseClient {
       now?: () => number;
       sleep?: (milliseconds: number) => Promise<void>;
     } = {},
-  ) {}
+  ) {
+    if (options.cacheDir) assertExternalPath(options.cacheDir);
+  }
 
   private now(): number {
     return this.options.now?.() ?? Date.now();
@@ -194,7 +197,10 @@ export class ProseClient {
   }
 
   private cachePath(url: string): string {
-    return path.join(this.options.cacheDir!, `${createHash("sha256").update(url).digest("hex")}.json`);
+    return path.join(
+      assertExternalPath(this.options.cacheDir!),
+      `${createHash("sha256").update(url).digest("hex")}.json`,
+    );
   }
 
   private async request(initial: string, enforceRobots: boolean): Promise<ProseResponse> {
@@ -321,7 +327,7 @@ export class ProseClient {
         retrieved_at: new Date(this.now()).toISOString(),
       };
       if (this.options.cacheDir) {
-        await mkdir(this.options.cacheDir, { recursive: true, mode: 0o700 });
+        await mkdir(assertExternalPath(this.options.cacheDir), { recursive: true, mode: 0o700 });
         await writeFile(this.cachePath(initial), JSON.stringify(result), { mode: 0o600 });
         if (url !== initial) {
           await writeFile(this.cachePath(url), JSON.stringify({ ...result, requested_url: url }), { mode: 0o600 });

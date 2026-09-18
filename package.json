@@ -10,9 +10,12 @@
   "scripts": {
     "update": "tsx src/update.ts",
     "collect:prose": "tsx src/collect-prose.ts",
+    "collect:host": "tsx src/collect-host.ts",
+    "validate:hosts": "tsx src/validate-hosts.ts",
+    "validate:host-change": "tsx src/validate-host-change.ts",
     "validate:prose": "tsx src/validate-prose.ts",
     "validate:undergrad": "tsx src/validate-undergrad.ts",
-    "test": "vitest run",
+    "test": "vitest run --no-cache --configLoader native",
     "lint": "biome check src test",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
@@ -35,6 +38,7 @@
     "markdown-it": "15.0.2",
     "robots-parser": "3.0.1",
     "sanitize-html": "2.17.7",
+    "saxes": "6.0.0",
     "turndown": "7.2.4"
   }
 }

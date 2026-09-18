@@ -104,6 +104,10 @@ function sanitizeProse(html: string, sourceUrl: string, warnings: Set<string>): 
       return { tagName, attribs: href ? { href, title: attribs.title ?? "" } : {} };
     }
     if (tagName === "img") {
+      if (!attribs.alt?.trim() && !attribs.title?.trim())
+        warnings.add(
+          "An image has no text alternative; any instructions or data within it are not transcribed or OCR-extracted.",
+        );
       const href = attribs.src === undefined ? undefined : safeUrl(attribs.src, sourceUrl, HTTP_SCHEMES);
       if (attribs.src && !href) warnings.add("Removed an unsafe or unsupported image URL.");
       return { tagName: "a", attribs: href ? { href } : {}, text: attribs.alt || attribs.title || "Image" };

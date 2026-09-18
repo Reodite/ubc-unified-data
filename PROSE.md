@@ -30,7 +30,8 @@ as JSON. Standalone `.md` files match `content_markdown` exactly; the JSON recor
 supplies the title and provenance. The repository tracks the generated JSON, CSV
 and Markdown exports. Refresh them with the collector and validate the complete
 corpus before committing. Git preserves their bytes without line-ending
-conversion; raw response caches under `.cache/prose/` stay ignored.
+conversion; raw response caches stay outside the repository under
+`/home/admin2/Projects/ubc-tmp/ubc-unified-data/state/source-prose/cache/`.
 `_manifest.json` and each `_coverage.json` declare `format: "markdown"`.
 
 ## Sources
@@ -142,7 +143,7 @@ The default uses three source workers and a 500 ms minimum interval per origin,
 raised to the site's crawl delay. myBCom requires ten seconds between requests.
 Separate crawlers must not contact the same host concurrently.
 
-Responses cache under `.cache/prose/` for up to 24 hours. Cache reuse preserves
+Responses cache in that external directory for up to 24 hours. Cache reuse preserves
 retrieval timestamps; `--refresh` requests new snapshots. See the
 [housing TLS instructions](UNDERGRADUATE-SOURCES.md#housing-tls-chain) for the
 verified intermediate-certificate setup.
