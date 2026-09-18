@@ -970,6 +970,16 @@
     "document_count": 3
   },
   {
+    "hostname": "undergrad.familypractice.ubc.ca",
+    "title": "undergrad.familypractice.ubc.ca",
+    "homepage_url": "https://undergrad.familypractice.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:43:58.707Z",
+    "homepage_sha256": "ec1444b3f64c5e3e50a095cdd41c02e6195a3756558436ae3d31db65dda372eb",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/undergrad.familypractice.ubc.ca",
+    "document_count": 12
+  },
+  {
     "hostname": "unpredictable-conf-2021.sites.olt.ubc.ca",
     "title": "unpredictable-conf-2021.sites.olt.ubc.ca",
     "homepage_url": "https://unpredictable-conf-2021.sites.olt.ubc.ca/",
