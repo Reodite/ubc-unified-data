@@ -1,5 +1,15 @@
 [
   {
+    "hostname": "audiospeech.ubc.ca",
+    "title": "audiospeech.ubc.ca",
+    "homepage_url": "https://audiospeech.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:08:43.642Z",
+    "homepage_sha256": "a23198efc5f6b7e48d7464acdb5063e07f3ac5d7b2e40fa80acc137057c5bc93",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/audiospeech.ubc.ca",
+    "document_count": 610
+  },
+  {
     "hostname": "bmlscpathology.med.ubc.ca",
     "title": "UBC Bachelor of Medical Laboratory Science (BMLSc) Program",
     "homepage_url": "https://bmlscpathology.med.ubc.ca/",
