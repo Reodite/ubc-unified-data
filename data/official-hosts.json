@@ -500,6 +500,16 @@
     "document_count": 24
   },
   {
+    "hostname": "vascularsurgery.med.ubc.ca",
+    "title": "vascularsurgery.med.ubc.ca",
+    "homepage_url": "https://vascularsurgery.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:49:43.665Z",
+    "homepage_sha256": "b05da6792b9adaeb4957d2374ee621602abead3bd1c87c8a87617674f165d5ef",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/vascularsurgery.med.ubc.ca",
+    "document_count": 54
+  },
+  {
     "hostname": "vems.ok.ubc.ca",
     "title": "vems.ok.ubc.ca",
     "homepage_url": "https://vems.ok.ubc.ca/",
