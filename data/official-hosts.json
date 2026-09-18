@@ -540,6 +540,16 @@
     "document_count": 7
   },
   {
+    "hostname": "physiorefresh.med.ubc.ca",
+    "title": "physiorefresh.med.ubc.ca",
+    "homepage_url": "https://physiorefresh.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:31:14.878Z",
+    "homepage_sha256": "5bd77db73b4ae7a5cad444aea709c626293a07d5b08122735b7dd4676a0fae57",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/physiorefresh.med.ubc.ca",
+    "document_count": 16
+  },
+  {
     "hostname": "physoly.phas.ubc.ca",
     "title": "physoly.phas.ubc.ca",
     "homepage_url": "https://physoly.phas.ubc.ca/",
