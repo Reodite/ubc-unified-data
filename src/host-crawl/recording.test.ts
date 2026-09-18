@@ -442,6 +442,48 @@ describe("external immutable request recording", () => {
     expect((await f.recording.read(`${origin}/page`)).snapshot.status).toBe(200);
     expect(n).toBe(3);
   });
+  it("repairs newly encountered transport failures only in explicit recovery mode", async () => {
+    let broken = 0;
+    const f = await fixture(
+      (url) => {
+        if (url.endsWith("/broken") && ++broken <= 3)
+          throw new TypeError("fetch failed", { cause: new Error("ECONNRESET") });
+        return html();
+      },
+      { recoverTransientFailures: true },
+    );
+    expect((await f.recording.read(`${origin}/broken`)).snapshot.status).toBe(200);
+    expect(broken).toBe(4);
+    const state = recordingState(f.directory);
+    expect(state.repairs).toHaveLength(1);
+    expect(state.failures).toHaveLength(1);
+    expect(state.attempts.filter((a) => a.url === `${origin}/broken`)).toHaveLength(4);
+    await f.recording.read(`${origin}/broken`);
+    expect(broken).toBe(4);
+  });
+
+  it("does not loop or renew repair when a newly encountered failure exhausts its allowance", async () => {
+    const f = await fixture(
+      () => {
+        throw new TypeError("fetch failed", { cause: new Error("ECONNRESET") });
+      },
+      { recoverTransientFailures: true },
+    );
+    await expect(f.recording.read(`${origin}/broken`)).rejects.toThrow("fetch failed");
+    const before = recordingState(f.directory);
+    expect(before.attempts.filter((a) => a.url === `${origin}/broken`)).toHaveLength(6);
+    await expect(f.recording.read(`${origin}/broken`)).rejects.toThrow("Saved request failure");
+    expect(recordingState(f.directory)).toEqual(before);
+  });
+
+  it("never repairs an observed access denial in automatic recovery mode", async () => {
+    const f = await fixture(() => new Response("Forbidden", { status: 403 }), { recoverTransientFailures: true });
+    expect((await f.recording.read(`${origin}/denied`)).snapshot.status).toBe(403);
+    expect(recordingState(f.directory).repairs).toHaveLength(0);
+    await expect(f.recording.read(`${origin}/private`)).rejects.toThrow("Robots");
+    expect(recordingState(f.directory).repairs).toHaveLength(0);
+  });
+
   it("authorizes repair once with current provenance while preserving history, cache and seals", async () => {
     let failing = true;
     const f = await fixture((url) => {

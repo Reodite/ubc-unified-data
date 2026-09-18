@@ -40,6 +40,23 @@ export function inventoryUrl(value: string, hostname: string, base = `https://${
 
 export const UNSUPPORTED_DOCUMENT = "Document format requires a reviewed text-extraction adapter";
 
+/** Recognize explicit resources and authentication routes, not ambiguous semantic page names. */
+export function nonDocumentInventoryUrl(value: string, hostname: string): boolean {
+  const url = new URL(hostUrl(value, hostname));
+  const exclusion = pageExclusion(url.href, hostname);
+  if (
+    [
+      "Static asset or machine-readable resource",
+      "Theme, script or feed resource",
+      "Administration, form action or machine endpoint",
+    ].includes(exclusion ?? "")
+  )
+    return true;
+  return /^\/(?:admin|user|login|login_required|signin|logout|saml|idp|auth|Shibboleth\.sso)(?:\/|$)/i.test(
+    decodeURIComponent(url.pathname),
+  );
+}
+
 /** Allow declared PDF documents without widening authentication, query, or other resource boundaries. */
 export function documentPageExclusion(value: string, hostname: string, formats: readonly "pdf"[]): string | null {
   const exclusion = pageExclusion(value, hostname);
@@ -52,7 +69,7 @@ export function documentPageExclusion(value: string, hostname: string, formats: 
   if (exclusion !== UNSUPPORTED_DOCUMENT) return exclusion;
   const path = decodeURIComponent(url.pathname);
   if (!formats.includes("pdf") || !/\.pdf$/i.test(path) || url.search) return exclusion;
-  url.pathname = path.slice(0, -4);
+  url.pathname = path.replace(/(?:\.pdf)+$/i, "");
   if (url.pathname.startsWith("/wp-content/uploads/")) url.pathname = url.pathname.slice("/wp-content/uploads".length);
   return pageExclusion(url.href, hostname);
 }

@@ -5,7 +5,7 @@ import type { HostArchive, Observation, ProducerContext } from "./contracts.ts";
 import { sha256 } from "./document-format.ts";
 import { createGenericScraper } from "./generic.ts";
 import { htmlBaseUrl } from "./html-base.ts";
-import { hostUrl, inventoryUrl } from "./urls.ts";
+import { hostUrl, inventoryUrl, nonDocumentInventoryUrl } from "./urls.ts";
 
 const host = "fixture.ubc.ca";
 const home = `https://${host}/`;
@@ -90,6 +90,45 @@ describe("generic exact-host discovery", () => {
     expect(archive.read).not.toHaveBeenCalledWith("https://other.ubc.ca/sitemap.xml");
     expect(archive.read).not.toHaveBeenCalledWith("https://example.org/outbound");
     expect(archive.read).toHaveBeenCalledWith(`${home}guide`);
+  });
+
+  it("accepts absent HTML sitemap companions only beside a complete XML inventory", async () => {
+    const robots = `User-agent: *\nSitemap: ${home}sitemap.html\nSitemap: ${home}sitemap.xml`;
+    const archive = fixture(page, robots, {
+      "/sitemap.html": "<title>Not found</title>",
+      "/sitemap.xml": `<sitemapindex><sitemap><loc>${home}pages.xml</loc></sitemap></sitemapindex>`,
+      "/pages.xml": `<urlset><url><loc>${home}guide</loc></url></urlset>`,
+      "/guide": page,
+    });
+    const companion = (await archive.read(`${home}sitemap.html`)).snapshot;
+    companion.status = 404;
+    expect((await collectRecordedHost(createGenericScraper(host), archive, producer)).documents).toHaveLength(2);
+    expect(archive.read).toHaveBeenCalledWith(`${home}pages.xml`);
+    companion.status = 403;
+    await expect(collectRecordedHost(createGenericScraper(host), archive, producer)).rejects.toThrow("sitemap");
+    companion.status = 200;
+    await expect(collectRecordedHost(createGenericScraper(host), archive, producer)).rejects.toThrow("sitemap");
+    companion.status = 404;
+    (await archive.read(`${home}pages.xml`)).snapshot.status = 404;
+    await expect(collectRecordedHost(createGenericScraper(host), archive, producer)).rejects.toThrow("sitemap");
+    const sole = fixture(page, `User-agent: *\nSitemap: ${home}sitemap.html`, { "/sitemap.html": "Not found" });
+    (await sole.read(`${home}sitemap.html`)).snapshot.status = 404;
+    await expect(collectRecordedHost(createGenericScraper(host), sole, producer)).rejects.toThrow("sitemap");
+  });
+
+  it("distinguishes intrinsic resources from semantic CMS page paths", () => {
+    for (const path of ["files/image.jpg", "wp-content/theme/style.css", "login/", "wp-admin/"])
+      expect(nonDocumentInventoryUrl(home + path, host)).toBe(true);
+    const generic = createGenericScraper(host);
+    for (const path of ["themes/", "learning/themes/", "staff/admin/"]) {
+      expect(nonDocumentInventoryUrl(home + path, host)).toBe(false);
+      expect(generic.excludeUrl!(home + path)).toBeNull();
+    }
+    for (const path of ["guide.pdf", "booking/search/", "?login", "?filter=all"])
+      expect(nonDocumentInventoryUrl(home + path, host)).toBe(false);
+    expect(generic.excludeUrl!(`${home}wp-content/uploads/guide.pdf.pdf`)).toBeNull();
+    expect(generic.excludeUrl!(`${home}private/guide.pdf.pdf`)).not.toBeNull();
+    expect(generic.excludeUrl!(`${home}guide.pdf.pdf?secret=1`)).not.toBeNull();
   });
 
   it("excludes only recorded outbound referrals, never unavailable public pages", async () => {

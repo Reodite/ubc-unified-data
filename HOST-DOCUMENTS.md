@@ -37,6 +37,13 @@ and records a warning rather than selecting one CMS item. Specialized policies
 and API-content fallback remain strict about ambiguous inventories. Generic CMS
 routes accept literal underscore names and advertised `rest_route=/` API roots;
 query support does not admit arbitrary document queries or guessed API endpoints.
+Explicit image, static-resource and authentication destinations in generic CMS
+inventories are excluded without fetching them; record identities and pagination
+are still checked. Semantic page names such as `themes` and `staff/admin` are not
+asset or authentication evidence by themselves. A 404/410 HTML sitemap companion
+can be absent only when its co-advertised same-path XML counterpart was parsed;
+the XML inventory and all its children remain required. Missing sole XML maps,
+denied maps and unexpected successful HTML maps still block completion.
 Existing specialized modules retain their narrower policies
 and previously published bytes. Their recognized empty containers do not fall
 back to surrounding pages.
@@ -137,7 +144,9 @@ and six lifetime attempts per physical URL. Authorizations and old failures rema
 in the input lineage; successful observations and cumulative request/byte limits
 are not reset. Access denials, TLS/DNS failures and robots restrictions are not
 transport repairs. Repaired requests close their connection instead of reusing a
-possibly stale pooled socket. Recorded invocation-duration pauses may be archived
+possibly stale pooled socket. Recovery mode also applies that same one-time
+allowance to newly encountered transient failures; it does not renew an exhausted
+allowance. Recorded invocation-duration pauses may be archived
 and resumed only while cumulative budgets and physical attempt limits still permit
 work. Neither recovery path clears access failures or raises cumulative limits.
 Sealed recordings remain offline and immutable.

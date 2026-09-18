@@ -172,6 +172,7 @@ export class HostBatch {
       producer: this.config.producer,
       seedSha256: sha256(seed.bytes),
       acquire: acquire && !sealed,
+      recoverTransientFailures: this.config.recoverTransientFailures === true,
       documentFormats: scraper.documentFormats,
       documentUrlAllowed: (url) => scraper.excludeUrl!(url) === null,
       maxResponseBytes: 32 * 1024 * 1024,

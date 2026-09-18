@@ -13,6 +13,7 @@ import {
   type Snapshot,
 } from "./contracts.ts";
 import { formatDocument, parseDocument } from "./document-format.ts";
+import { createGenericScraper } from "./generic.ts";
 import { formatHostList } from "./public-validation.ts";
 
 const host = "fixture.ubc.ca";
@@ -170,6 +171,21 @@ describe("recorded complete-host collection", () => {
         producer,
       ),
     ).rejects.toThrow();
+  });
+
+  it("does not fetch explicit non-document CMS destinations in generic scope", async () => {
+    const f = setup();
+    const collection = f.values.get(wordpressCollectionUrl(`${api}wp/v2/posts`, 1))!;
+    const rows = JSON.parse(collection.snapshot.body);
+    rows[0].link = `${root}image.jpg`;
+    rows[1].link = `${root}login/`;
+    collection.snapshot.body = JSON.stringify(rows);
+    const generic = createGenericScraper(host);
+    const result = await collectRecordedHost(generic, f.archive, producer);
+    expect(result.documents.length).toBeGreaterThan(0);
+    expect(f.archive.read).not.toHaveBeenCalledWith(`${root}image.jpg`);
+    expect(f.archive.read).not.toHaveBeenCalledWith(`${root}login/`);
+    await expect(collectRecordedHost(fixtureScraper, f.archive, producer)).rejects.toThrow("Required publisher URL");
   });
 
   it("counts but never fetches outbound generic CMS references", async () => {

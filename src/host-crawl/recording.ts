@@ -64,6 +64,7 @@ export interface RecordingOptions {
   timeoutMs?: number;
   fetcher?: typeof fetch;
   resumeInterrupted?: boolean;
+  recoverTransientFailures?: boolean;
   documentFormats?: readonly "pdf"[];
   documentUrlAllowed?: (url: string) => boolean;
 }
@@ -397,8 +398,23 @@ export class HostRecording {
     }
   }
 
+  private async readWithRepair(value: string, document = false): Promise<Observation> {
+    try {
+      return await this.readLogical(value, true, document);
+    } catch (error) {
+      if (
+        this.options.recoverTransientFailures &&
+        this.options.acquire &&
+        !this.sealed &&
+        this.recoverTransientFailures([value, `https://${this.options.hostname}/robots.txt`]) > 0
+      )
+        return this.readLogical(value, true, document);
+      throw error;
+    }
+  }
+
   read(value: string): Promise<Observation> {
-    const result = this.readTail.then(() => this.readLogical(value));
+    const result = this.readTail.then(() => this.readWithRepair(value));
     this.readTail = result.then(
       () => {},
       () => {},
@@ -407,7 +423,7 @@ export class HostRecording {
   }
 
   readDocument(value: string): Promise<Observation> {
-    const result = this.readTail.then(() => this.readLogical(value, true, true));
+    const result = this.readTail.then(() => this.readWithRepair(value, true));
     this.readTail = result.then(
       () => {},
       () => {},

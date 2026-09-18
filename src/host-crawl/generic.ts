@@ -34,7 +34,7 @@ function excludeUrl(value: string, hostname: string): string | null {
   if (excluded !== null) return excluded;
   const path = decodeURIComponent(new URL(hostUrl(value, hostname)).pathname).replace(/\.pdf$/i, "");
   if (
-    /\/(?:admin|user|login|login_required|signin|logout|auth|private|antibot|core|modules|themes|libraries|jsonapi|system|batch|search)(?:\/|$)/i.test(
+    /\/(?:user|login|login_required|signin|logout|auth|private|antibot|core|modules|libraries|jsonapi|system|batch|search)(?:\/|$)/i.test(
       path,
     ) ||
     /\/(?:media\/oembed|views\/ajax|node\/\d+\/(?:edit|delete|revisions))(?:\/|$)/i.test(path) ||

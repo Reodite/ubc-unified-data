@@ -24,7 +24,7 @@ import {
 } from "./contracts.ts";
 import { htmlBaseUrl } from "./html-base.ts";
 import { parseSitemap } from "./sitemap.ts";
-import { hostUrl, inventoryUrl, pageExclusion, UNSUPPORTED_DOCUMENT } from "./urls.ts";
+import { hostUrl, inventoryUrl, nonDocumentInventoryUrl, pageExclusion, UNSUPPORTED_DOCUMENT } from "./urls.ts";
 
 const sha256 = (value: string) => createHash("sha256").update(value).digest("hex");
 const isPdfUrl = (value: string) => /\.pdf$/i.test(decodeURIComponent(new URL(value).pathname));
@@ -67,17 +67,28 @@ async function sitemapPages(
   policies: NonNullable<HostScraper["adapter"]["sitemaps"]> = [],
   exactHost = false,
 ): Promise<string[]> {
+  const htmlSitemap = (url: string) => /\.html?$/i.test(new URL(url).pathname);
   const queue = [...starts];
+  if (exactHost) queue.sort((a, b) => Number(htmlSitemap(a)) - Number(htmlSitemap(b)));
+  const initial = new Set(starts);
   const seen = new Set<string>();
+  const xmlObserved = new Set<string>();
   const pages = new Set<string>();
   while (queue.length) {
     const url = hostUrl(queue.shift()!, hostname);
     if (seen.has(url)) continue;
     seen.add(url);
     const observation = await read(url);
+    if (exactHost && initial.has(url) && htmlSitemap(url) && [404, 410].includes(observation.snapshot.status)) {
+      const counterpart = new URL(url);
+      counterpart.pathname = counterpart.pathname.replace(/\.html?$/i, ".xml");
+      // An absent human-facing companion supplies no inventory; its observed XML counterpart still must close.
+      if (initial.has(counterpart.href) && xmlObserved.has(counterpart.href)) continue;
+    }
     if (observation.snapshot.status !== 200 || !/xml/i.test(observation.snapshot.headers["content-type"] ?? ""))
       throw new Error("An advertised sitemap lacks a complete XML observation");
     const parsed = parseSitemap(observation.snapshot.body);
+    xmlObserved.add(url);
     const policy = policies.find((entry) => hostUrl(entry.path, hostname) === url);
     // A declared deployment-root placeholder supplies no page inventory; additional entries still require validation.
     if (parsed.kind === "pages" && parsed.locations.length === 1 && parsed.locations[0] === policy?.rootOnlyLocation)
@@ -198,7 +209,8 @@ export async function collectRecordedHost(
       throw new Error(`A linked public view requires an explicit complete query policy: ${url}`);
     if (
       exclusion !== null &&
-      (cmsPages.has(url) || (advertisedPages.has(url) && exclusion === "Unsupported query or form selection"))
+      ((cmsPages.has(url) && !(exactHost && nonDocumentInventoryUrl(url, hostname))) ||
+        (advertisedPages.has(url) && exclusion === "Unsupported query or form selection"))
     )
       throw new Error(`Required publisher URL lacks a supported discovery policy: ${url} (${exclusion})`);
     if (exclusion !== null || queued.has(url)) return;
