@@ -128,5 +128,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/med-fom-childspeech.sites.olt.ubc.ca",
     "document_count": 3
+  },
+  {
+    "hostname": "mpg.sciencecoop.ubc.ca",
+    "title": "mpg.sciencecoop.ubc.ca",
+    "homepage_url": "https://mpg.sciencecoop.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:59:31.729Z",
+    "homepage_sha256": "50319cf091b6dc7f22229785fcdb2b0dea759255f70fb6b6912b1b4c37c86662",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/mpg.sciencecoop.ubc.ca",
+    "document_count": 97
   }
 ]
