@@ -147,6 +147,46 @@ afterEach(() => {
 });
 
 describe("recorded complete-host collection", () => {
+  it("omits ambiguous generic CMS dates without selecting an API record", async () => {
+    const f = setup();
+    const collection = f.values.get(wordpressCollectionUrl(`${api}wp/v2/posts`, 1))!;
+    const rows = JSON.parse(collection.snapshot.body);
+    for (const row of rows) row.link = post;
+    rows[1].modified_gmt = "2025-01-02T00:00:00";
+    collection.snapshot.body = JSON.stringify(rows);
+    const generic = { ...fixtureScraper, adapter: { ...fixtureScraper.adapter, exactHostInventory: true } };
+    const result = await collectRecordedHost(generic, f.archive, producer);
+    const document = result.documents.find((d) => d.source_url === post)!;
+    expect(document.source_modified_at).toBeNull();
+    expect(document.warnings.join(" ")).toContain("conflicting modification dates");
+    expect(result.documents.filter((d) => d.source_url === post)).toHaveLength(1);
+    await expect(collectRecordedHost(fixtureScraper, f.archive, producer)).rejects.toThrow(
+      "Conflicting source modification",
+    );
+    await expect(
+      collectRecordedHost(
+        { ...generic, adapter: { ...generic.adapter, apiContentFallback: true } },
+        f.archive,
+        producer,
+      ),
+    ).rejects.toThrow();
+  });
+
+  it("counts but never fetches outbound generic CMS references", async () => {
+    const f = setup();
+    const collection = f.values.get(wordpressCollectionUrl(`${api}wp/v2/posts`, 1))!;
+    const rows = JSON.parse(collection.snapshot.body);
+    rows[0].link = "https://example.org/outbound";
+    rows[1].link = "https://other.ubc.ca/outbound";
+    collection.snapshot.body = JSON.stringify(rows);
+    const generic = { ...fixtureScraper, adapter: { ...fixtureScraper.adapter, exactHostInventory: true } };
+    const result = await collectRecordedHost(generic, f.archive, producer);
+    expect(result.documents.length).toBeGreaterThan(0);
+    expect(f.archive.read).not.toHaveBeenCalledWith("https://example.org/outbound");
+    expect(f.archive.read).not.toHaveBeenCalledWith("https://other.ubc.ca/outbound");
+    await expect(collectRecordedHost(fixtureScraper, f.archive, producer)).rejects.toThrow("official UBC hostname");
+  });
+
   it("resolves auto discovery and enumerates declared public types without hiding CMS errors", async () => {
     const f = setup();
     const scraper = {

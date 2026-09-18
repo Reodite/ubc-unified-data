@@ -33,6 +33,7 @@ export interface HostBatchConfig {
   baseline: string;
   main: string;
   bootstrapFiles: Record<string, string>;
+  recoverTransientFailures?: boolean;
 }
 interface ReadyHost {
   version: 1;
@@ -130,7 +131,7 @@ export class HostBatch {
     return row;
   }
 
-  private async recording(hostname: string, acquire: boolean) {
+  private async recording(hostname: string, acquire: boolean, homepageOnly = false) {
     if (acquire && resolve(ROOT) !== this.config.producerRoot)
       throw new Error("Acquisition must run from the frozen batch producer");
     assertSameProducer(this.config.producer, await captureProducer(this.config.producerRoot));
@@ -158,23 +159,40 @@ export class HostBatch {
       await immutable(seedPath, bytes);
     }
     const seed = decodeFrozenSeed(bytes, hostname);
+    let sealed = false;
+    try {
+      await readRegularFile(join(directory, "seal.json"));
+      sealed = true;
+    } catch (error) {
+      if (!absent(error)) throw error;
+    }
     const recording = await HostRecording.open({
       hostname,
       directory,
       producer: this.config.producer,
       seedSha256: sha256(seed.bytes),
-      acquire,
+      acquire: acquire && !sealed,
       documentFormats: scraper.documentFormats,
       documentUrlAllowed: (url) => scraper.excludeUrl!(url) === null,
       maxResponseBytes: 32 * 1024 * 1024,
     });
-    return { recording, directory, scraper, seed, seedPath };
+    try {
+      if (acquire && !sealed && this.config.recoverTransientFailures) {
+        const selected = homepageOnly ? [`https://${hostname}/robots.txt`, `https://${hostname}/`] : undefined;
+        recording.recoverTransientFailures(selected);
+        recording.resumeDurationFailures(selected);
+      }
+      return { recording, directory, scraper, seed, seedPath };
+    } catch (error) {
+      recording.close();
+      throw error;
+    }
   }
 
   async homepage(hostname: string, token: string) {
     const row = this.owned(hostname, token);
     if (row.state !== "claimed") throw new Error("Homepage triage requires a claimed hostname");
-    const { recording, scraper } = await this.recording(hostname, true);
+    const { recording, scraper } = await this.recording(hostname, true, true);
     try {
       const homepage = await recording.readDocument(`https://${hostname}/`);
       let decision: ReturnType<typeof scraper.extract>;
@@ -244,6 +262,7 @@ export class HostBatch {
         readSnapshot: (hash) => recording.readSnapshot(hash),
         readBytes: (hash) => recording.readBytes(hash),
         observedDestination: (url) => recording.observedDestination(url),
+        observedScopeExclusion: (url) => recording.observedScopeExclusion(url),
         apiFallbackEligible: (url) => recording.apiFallbackEligible(url),
         assertUnchanged: () => recording.assertUnchanged(),
         close() {},
@@ -491,7 +510,7 @@ export class HostBatch {
             throw new Error("A final document is missing from the stage");
         receipt.tree = this.git(["write-tree"]).toString().trim();
         await save(receiptPath, receipt);
-        this.git(["commit", "-m", `feat(${hostname}): publish public documents`]);
+        this.git(["commit", "-m", `feat: publish ${hostname} documents`]);
         receipt.commit = this.git(["rev-parse", "HEAD"]).toString().trim();
         await save(receiptPath, receipt);
       }

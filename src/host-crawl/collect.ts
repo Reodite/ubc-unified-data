@@ -22,8 +22,9 @@ import {
   type ProducerContext,
   type SearchDocument,
 } from "./contracts.ts";
+import { htmlBaseUrl } from "./html-base.ts";
 import { parseSitemap } from "./sitemap.ts";
-import { hostUrl, pageExclusion, UNSUPPORTED_DOCUMENT } from "./urls.ts";
+import { hostUrl, inventoryUrl, pageExclusion, UNSUPPORTED_DOCUMENT } from "./urls.ts";
 
 const sha256 = (value: string) => createHash("sha256").update(value).digest("hex");
 const isPdfUrl = (value: string) => /\.pdf$/i.test(decodeURIComponent(new URL(value).pathname));
@@ -35,20 +36,22 @@ const robotsParser = createRequire(import.meta.url)("robots-parser") as (
   getSitemaps(): string[];
 };
 
-function pageLinks(observation: Observation, hostname: string): string[] {
-  return htmlLinks(observation.snapshot.body, hostname, observation.snapshot.url);
+function pageLinks(observation: Observation, hostname: string, exactHost = false): string[] {
+  return htmlLinks(observation.snapshot.body, hostname, observation.snapshot.url, exactHost);
 }
 
-function htmlLinks(html: string, hostname: string, base: string): string[] {
+function htmlLinks(html: string, hostname: string, base: string, exactHost = false): string[] {
   const $ = load(html);
-  if ($("base[href]").length) throw new Error("HTML base URL requires an explicit extraction policy");
+  base = htmlBaseUrl(html, hostname, base, exactHost);
   const links = new Set<string>();
   $("a[href]").each((_, node) => {
     const value = $(node).attr("href")?.trim();
     if (!value || value.startsWith("#")) return;
     let url: string;
     try {
-      url = hostUrl(value, hostname, base);
+      const target = exactHost ? inventoryUrl(value, hostname, base) : hostUrl(value, hostname, base);
+      if (!target) return;
+      url = target;
     } catch {
       return;
     }
@@ -62,6 +65,7 @@ async function sitemapPages(
   hostname: string,
   read: (url: string) => Promise<Observation>,
   policies: NonNullable<HostScraper["adapter"]["sitemaps"]> = [],
+  exactHost = false,
 ): Promise<string[]> {
   const queue = [...starts];
   const seen = new Set<string>();
@@ -79,7 +83,10 @@ async function sitemapPages(
     if (parsed.kind === "pages" && parsed.locations.length === 1 && parsed.locations[0] === policy?.rootOnlyLocation)
       continue;
     for (const location of parsed.locations) {
-      const target = hostUrl(location, hostname, observation.snapshot.url);
+      const target = exactHost
+        ? inventoryUrl(location, hostname, observation.snapshot.url)
+        : hostUrl(location, hostname, observation.snapshot.url);
+      if (!target) continue;
       if (parsed.kind === "index") queue.push(target);
       else pages.add(target);
     }
@@ -108,8 +115,10 @@ export async function collectRecordedHost(
   const verdict = scraper.vetHomepage(archive.homepage.snapshot);
   if (!verdict.accepted) throw new Error(`Homepage is not vetted: ${verdict.reason}`);
   const hostname = scraper.hostname;
+  const exactHost = scraper.adapter.exactHostInventory === true;
   if (scraper.adapter.kind === "auto") {
     const advertised = advertisedWordpressRoots(archive.homepage).some((url) => {
+      if (exactHost) return inventoryUrl(url, hostname) !== null;
       try {
         hostUrl(url, hostname);
         return true;
@@ -154,10 +163,10 @@ export async function collectRecordedHost(
   else if (scraper.adapter.kind !== "wordpress") throw new Error("Unsupported registered discovery adapter");
   const discovered =
     scraper.adapter.kind === "wordpress" ? await discoverWordpress(scraper, archive.homepage, read) : [];
-  const sitemaps = [...robots.getSitemaps(), ...(scraper.adapter.sitemaps ?? []).map((entry) => entry.path)].map(
-    (url) => hostUrl(url, hostname),
-  );
-  const seedPages = await sitemapPages(sitemaps, hostname, read, scraper.adapter.sitemaps);
+  const sitemaps = [...robots.getSitemaps(), ...(scraper.adapter.sitemaps ?? []).map((entry) => entry.path)]
+    .map((url) => (exactHost ? inventoryUrl(url, hostname) : hostUrl(url, hostname)))
+    .filter((url): url is string => url !== null);
+  const seedPages = await sitemapPages(sitemaps, hostname, read, scraper.adapter.sitemaps, exactHost);
   const cmsPages = new Set(discovered.map((entry) => entry.url));
   const requiredViews = new Set(
     (scraper.adapter.views ?? []).flatMap((view) => view.values.map((value) => publicViewUrl(hostname, view, value))),
@@ -166,7 +175,8 @@ export async function collectRecordedHost(
   const queue: string[] = [];
   const queued = new Set<string>();
   const add = (value: string, linked = false) => {
-    const url = hostUrl(value, hostname);
+    const url = exactHost ? inventoryUrl(value, hostname) : hostUrl(value, hostname);
+    if (!url) return;
     const exclusion = scraper.excludeUrl ? scraper.excludeUrl(url) : pageExclusion(url, hostname);
     if (advertisedPages.has(url) && exclusion === "Ambiguous repeated path separator")
       throw new Error("Publisher inventory advertises an ambiguous path");
@@ -205,10 +215,16 @@ export async function collectRecordedHost(
     add(url);
   const retained = new Map(archive.retained.map((document) => [document.source_url, document]));
   const declaredModified = new Map<string, string | null>();
+  const ambiguousModified = new Set<string>();
   for (const entry of discovered) {
-    if (declaredModified.has(entry.url) && declaredModified.get(entry.url) !== entry.modified)
-      throw new Error("Conflicting source modification observations for one URL");
-    declaredModified.set(entry.url, entry.modified);
+    if (ambiguousModified.has(entry.url)) continue;
+    if (declaredModified.has(entry.url) && declaredModified.get(entry.url) !== entry.modified) {
+      if (!exactHost || scraper.adapter.apiContentFallback)
+        throw new Error("Conflicting source modification observations for one URL");
+      // Distinct CMS records can refer to one HTML page without owning its publisher timestamp.
+      ambiguousModified.add(entry.url);
+      declaredModified.set(entry.url, null);
+    } else declaredModified.set(entry.url, entry.modified);
   }
   const records = new Map(discovered.map((entry) => [entry.url, entry]));
   if (scraper.adapter.apiContentFallback && records.size !== discovered.length)
@@ -240,6 +256,7 @@ export async function collectRecordedHost(
     try {
       observation = await read(requested, true);
     } catch (error) {
+      if (exactHost && archive.observedScopeExclusion?.(requested)) continue;
       if (error instanceof NonTextMediaError) {
         if (isPdfUrl(requested) || requiredViews.has(requested))
           throw new Error(`Required document returned non-text media: ${requested}`, { cause: error });
@@ -317,7 +334,7 @@ export async function collectRecordedHost(
       continue;
     }
     if (apiInput) {
-      for (const url of htmlLinks(apiInput.html, hostname, contentBase!)) add(url, true);
+      for (const url of htmlLinks(apiInput.html, hostname, contentBase!, exactHost)) add(url, true);
     } else {
       if ([404, 410].includes(observation.snapshot.status)) {
         if (advertisedPages.has(requested) || isPdfUrl(requested))
@@ -330,7 +347,7 @@ export async function collectRecordedHost(
         advertisedPages.add(url);
         add(url);
       }
-      for (const url of pageLinks(observation, hostname)) add(url, true);
+      for (const url of pageLinks(observation, hostname, exactHost)) add(url, true);
     }
     const sourceUrl = hostUrl(observation.snapshot.url, hostname);
     const observed = observation;
@@ -341,7 +358,7 @@ export async function collectRecordedHost(
       if (hostUrl(observation.snapshot.url, hostname) !== sourceUrl)
         throw new Error("Retained representative has a different physical URL");
       assertObservedAccess(observation, true);
-      for (const url of pageLinks(observation, hostname)) add(url, true);
+      for (const url of pageLinks(observation, hostname, exactHost)) add(url, true);
     }
     const decision = apiInput ? { kind: "document" as const, input: apiInput } : scraper.extract(observation.snapshot);
     if (observed.sha256 !== observation.sha256) {
@@ -362,7 +379,8 @@ export async function collectRecordedHost(
       continue;
     }
     const input = decision.input;
-    if (scraper.adapter.kind === "html") for (const url of htmlLinks(input.html, hostname, sourceUrl)) add(url, true);
+    if (scraper.adapter.kind === "html")
+      for (const url of htmlLinks(input.html, hostname, sourceUrl, exactHost)) add(url, true);
     const title = plainText(input.title);
     if (!title) throw new Error("Extracted document lacks a title");
     const converted = toSafeMarkdown(input.html, contentBase ?? sourceUrl);
@@ -371,6 +389,7 @@ export async function collectRecordedHost(
         throw new Error(`Required API text or document becomes empty after sanitization: ${sourceUrl}`);
       continue;
     }
+    const ambiguousDate = ambiguousModified.has(sourceUrl) || ambiguousModified.has(requested);
     const document: SearchDocument = {
       id: `documents:official-web:${sha256(sourceUrl).slice(0, 24)}`,
       hostname,
@@ -379,13 +398,25 @@ export async function collectRecordedHost(
       retrieved_at: observation.snapshot.retrieved_at,
       source_modified_at: previous
         ? previous.source_modified_at
-        : (declaredModified.get(sourceUrl) ?? input.sourceModifiedAt ?? null),
+        : ambiguousDate
+          ? null
+          : (declaredModified.get(sourceUrl) ?? input.sourceModifiedAt ?? null),
       snapshot_sha256: observation.sha256,
       input_sha256: archive.input_sha256,
       body_sha256: sha256(converted.markdown),
       content_sha256: sha256(`${title}\n${converted.markdown}`),
       content_markdown: converted.markdown,
-      warnings: [...new Set([...(input.warnings ?? []), ...converted.warnings])].sort(),
+      warnings: [
+        ...new Set([
+          ...(input.warnings ?? []),
+          ...converted.warnings,
+          ...(ambiguousDate
+            ? [
+                "Multiple CMS records advertise conflicting modification dates; the HTML document has no assigned publisher modification time.",
+              ]
+            : []),
+        ]),
+      ].sort(),
       alternate_urls: [],
       producer,
     };

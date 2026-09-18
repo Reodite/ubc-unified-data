@@ -90,6 +90,20 @@ describe("generic host throughput adapter", () => {
     }
   });
 
+  it("uses the first textual heading rather than an empty decorative heading", () => {
+    const result = scraper.extract(
+      observation(
+        "/",
+        '<title>Site title</title><main><h1>&nbsp;</h1><h1><img src="/photo.png"></h1><h1>Programme requirements</h1><p>Complete the required courses.</p></main>',
+      ).snapshot,
+    );
+    expect(result.kind === "document" && result.input.title).toBe("Programme requirements");
+    const fallback = scraper.extract(
+      observation("/", "<title>Source title</title><main><h1>&nbsp;</h1><p>Public guidance.</p></main>").snapshot,
+    );
+    expect(fallback.kind === "document" && fallback.input.title).toBe("Source title");
+  });
+
   it("vets only public nonempty homepage HTML and preserves private, query and PDF boundaries", () => {
     const valid = observation("/", "<p>Public homepage.</p>").snapshot;
     expect(scraper.vetHomepage(valid).accepted).toBe(true);

@@ -40,6 +40,16 @@
     "document_count": 32
   },
   {
+    "hostname": "cwc.ubc.ca",
+    "title": "cwc.ubc.ca",
+    "homepage_url": "https://cwc.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T18:21:47.527Z",
+    "homepage_sha256": "e013e0ee03422779cbcf16f73a200b2be20eed9220bfd0c19ce03b74c09ce228",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/cwc.ubc.ca",
+    "document_count": 9
+  },
+  {
     "hostname": "enso.arts.ubc.ca",
     "title": "enso.arts.ubc.ca",
     "homepage_url": "https://enso.arts.ubc.ca/",

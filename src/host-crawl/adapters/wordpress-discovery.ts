@@ -1,6 +1,6 @@
 import { load } from "cheerio";
 import type { HostScraper, Observation } from "../contracts.ts";
-import { hostUrl } from "../urls.ts";
+import { hostUrl, inventoryUrl } from "../urls.ts";
 
 const NON_DOCUMENT_TYPES = new Set([
   "attachment",
@@ -64,10 +64,31 @@ function modified(value: unknown): string | null {
   return `${text}Z`;
 }
 
+function cmsUrl(value: string, base?: string): URL {
+  const path = value.split(/[?#]/, 1)[0]!;
+  if (/[\s\\#]/.test(value) || /(?:^|\/)(?:\.|%2e){1,2}(?:\/|$)|%(?:2f|5c|25)/i.test(path))
+    throw new Error("Invalid CMS route URL");
+  const url = new URL(value, base);
+  if (/\/{2,}/.test(url.pathname)) throw new Error("Invalid CMS route URL");
+  return url;
+}
+
+function restRoute(url: URL): string | null {
+  if (!url.search) return null;
+  const query = url.search.slice(1).replace(/%2f/gi, "/");
+  if (!/^rest_route=\/(?:[a-z0-9_-]+(?:\/[a-z0-9_-]+)*)?$/.test(query)) throw new Error("Invalid CMS rest_route query");
+  return query.slice("rest_route=".length);
+}
+
+function routeIdentity(url: URL): string {
+  const route = restRoute(url);
+  return route === null ? url.href : `${url.origin}${url.pathname}?rest_route=${route}`;
+}
+
 export function wordpressCollectionUrl(base: string, page: number): string {
-  const url = new URL(base);
-  if (url.search || url.hash || !Number.isSafeInteger(page) || page < 1)
-    throw new Error("Invalid CMS collection request");
+  const url = cmsUrl(base);
+  restRoute(url);
+  if (!Number.isSafeInteger(page) || page < 1) throw new Error("Invalid CMS collection request");
   url.searchParams.set("per_page", "100");
   url.searchParams.set("page", String(page));
   url.searchParams.set("order", "asc");
@@ -93,17 +114,33 @@ export async function discoverWordpress(
   homepage: Observation,
   read: (url: string) => Promise<Observation>,
 ): Promise<DiscoveredPage[]> {
-  const roots = [...new Set(advertisedWordpressRoots(homepage).map((url) => hostUrl(url, scraper.hostname)))];
+  const roots = [
+    ...new Set(
+      advertisedWordpressRoots(homepage)
+        .map((url) => {
+          const candidate = scraper.adapter.exactHostInventory
+            ? inventoryUrl(url, scraper.hostname)
+            : hostUrl(url, scraper.hostname);
+          if (candidate !== null) cmsUrl(url, `https://${scraper.hostname}/`);
+          return candidate;
+        })
+        .filter((url): url is string => url !== null),
+    ),
+  ];
   if (roots.length !== 1) throw new Error("One advertised WordPress API root is required");
   const apiRoot = new URL(roots[0]!);
-  if (apiRoot.search || !apiRoot.pathname.endsWith("/")) throw new Error("Unsupported WordPress API root");
+  const queryRoot = restRoute(apiRoot);
+  if (queryRoot !== null ? !scraper.adapter.exactHostInventory || queryRoot !== "/" : !apiRoot.pathname.endsWith("/"))
+    throw new Error("Unsupported WordPress API root");
   const catalog = object(json(await read(apiRoot.href)));
   const routes = object(catalog.routes);
   const routeUrl = (key: string): string => {
     const route = object(routes[key]);
     if (!Array.isArray(route.methods) || !route.methods.includes("GET")) throw new Error("CMS route lacks public GET");
-    const href = hostUrl(link(route, "self"), scraper.hostname);
-    if (href !== new URL(key.replace(/^\//, ""), apiRoot).href)
+    const href = hostUrl(cmsUrl(link(route, "self"), apiRoot.origin).href, scraper.hostname);
+    const expected = new URL(queryRoot === null ? key.replace(/^\//, "") : apiRoot.href, apiRoot);
+    if (queryRoot !== null) expected.searchParams.set("rest_route", key);
+    if (routeIdentity(new URL(href)) !== routeIdentity(expected))
       throw new Error("CMS route escapes its advertised namespace");
     return href;
   };
@@ -122,7 +159,8 @@ export async function discoverWordpress(
     const definition = object(types[type]);
     const namespace = string(definition.rest_namespace);
     const restBase = string(definition.rest_base);
-    if (namespace !== "wp/v2" || !/^[a-z0-9-]+$/.test(restBase))
+    const validRestBase = scraper.adapter.exactHostInventory ? /^[a-z0-9_-]+$/ : /^[a-z0-9-]+$/;
+    if (namespace !== "wp/v2" || !validRestBase.test(restBase))
       throw new Error("Unsupported content collection namespace");
     const collection = routeUrl(`/${namespace}/${restBase}`);
     if (scraper.adapter.apiContentFallback) {
@@ -130,7 +168,8 @@ export async function discoverWordpress(
       if (!Array.isArray(item.methods) || !item.methods.includes("GET"))
         throw new Error("CMS item route lacks public GET");
     }
-    if (hostUrl(link(definition, "wp:items"), scraper.hostname) !== collection)
+    const items = hostUrl(cmsUrl(link(definition, "wp:items"), apiRoot.origin).href, scraper.hostname);
+    if (routeIdentity(new URL(items)) !== routeIdentity(new URL(collection)))
       throw new Error("CMS type/route link mismatch");
     let expectedTotal: number | undefined;
     let expectedPages: number | undefined;
@@ -153,12 +192,20 @@ export async function discoverWordpress(
           throw new Error("Invalid or duplicate CMS identity");
         if (row.status !== "publish" || row.type !== type) throw new Error("Unexpected CMS publication status/type");
         ids.add(id);
+        const sourceModified = modified(row.modified_gmt);
+        const url = scraper.adapter.exactHostInventory
+          ? inventoryUrl(string(row.link), scraper.hostname)
+          : hostUrl(string(row.link), scraper.hostname);
+        if (!url) continue;
+        const itemUrl = new URL(collection);
+        if (queryRoot !== null) itemUrl.searchParams.set("rest_route", `${restRoute(itemUrl)}/${id}`);
+        else itemUrl.pathname += `/${id}`;
         pages.push({
-          url: hostUrl(string(row.link), scraper.hostname),
-          modified: modified(row.modified_gmt),
+          url,
+          modified: sourceModified,
           id,
           type,
-          api_url: `${collection}/${id}`,
+          api_url: itemUrl.href,
         });
       }
       if (page >= Math.max(1, pageCount)) break;

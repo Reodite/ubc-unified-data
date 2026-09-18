@@ -41,6 +41,8 @@ export interface HostScraper {
     kind: "wordpress" | "html" | "auto";
     allowedTypes: readonly string[];
     allPublicTypes?: boolean;
+    /** Outbound inventory references are outside this exact-host corpus, not failed local documents. */
+    exactHostInventory?: boolean;
     apiContentFallback?: boolean;
     views?: readonly PublicGetView[];
     optionalAbsent?: readonly string[];
@@ -118,6 +120,7 @@ export interface HostArchive {
   readSnapshot(sha256: string): Promise<Observation>;
   readBytes?(snapshotSha256: string): Promise<Uint8Array>;
   observedDestination?(url: string): string;
+  observedScopeExclusion?(url: string): string | null;
   apiFallbackEligible?(url: string): boolean;
   assertUnchanged(): Promise<void>;
   close(): void;

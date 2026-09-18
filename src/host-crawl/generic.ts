@@ -3,6 +3,7 @@ import { publicUbcUrl } from "../prose/client.ts";
 import { plainText } from "../source-documents.ts";
 import type { CompletedHost, HostScraper, SearchDocument, Snapshot } from "./contracts.ts";
 import { digest, formatDocument, safeText, timestamp } from "./document-format.ts";
+import { htmlBaseUrl } from "./html-base.ts";
 import { documentPageExclusion, hostUrl, normalizeHost } from "./urls.ts";
 
 const HTML = /^(?:text\/html|application\/xhtml\+xml)(?:;|$)/i;
@@ -115,7 +116,7 @@ export function createGenericScraper(value: string): HostScraper {
     hostname,
     title: hostname,
     scope: "Public HTML prose and native PDF text on this exact hostname.",
-    adapter: { kind: "auto", allowedTypes: [], allPublicTypes: true },
+    adapter: { kind: "auto", allowedTypes: [], allPublicTypes: true, exactHostInventory: true },
     documentFormats: ["pdf"],
     excludeUrl: (url) => excludeUrl(url, hostname),
     vetHomepage(snapshot) {
@@ -138,10 +139,19 @@ export function createGenericScraper(value: string): HostScraper {
     extract(snapshot) {
       assertPublicSnapshot(snapshot, hostname);
       const $ = load(snapshot.body);
-      if ($("base[href]").length) throw new Error("HTML base URL requires an explicit extraction policy");
+      const base = htmlBaseUrl(snapshot.body, hostname, snapshot.url, true);
+      if (base !== snapshot.url)
+        $("a[href],img[src]").each((_, node) => {
+          const attribute = $(node).is("a") ? "href" : "src";
+          $(node).attr(attribute, new URL($(node).attr(attribute)!, base).href);
+        });
       const pageTitle = text($("title").text());
       cleanStructure($);
-      const title = plainText($("h1").first().html() || pageTitle);
+      const title =
+        $("h1")
+          .toArray()
+          .map((node) => plainText($(node).html() ?? ""))
+          .find(Boolean) || plainText(pageTitle);
       if (/just a moment|access denied|captcha|sign in.*cwl|cwl.*login|page not found|404 not found/i.test(pageTitle))
         throw new Error("Access interstitial instead of public prose");
       for (const selector of BOUNDARIES) {

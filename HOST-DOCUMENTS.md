@@ -26,7 +26,18 @@ New sites use `src/host-crawl/generic.ts`, declared in the sorted
 fixtures. The generalized policy selects standard content boundaries, retains
 collapsed prose, and can use a cleaned-body fallback. Exact-host advertised
 WordPress APIs use public collection discovery; other sites use HTML-link and
-sitemap discovery. Existing specialized modules retain their narrower policies
+sitemap discovery. Generic inventories exclude outbound references before fetch;
+an external CMS permalink or sitemap entry is not a missing exact-host document.
+Legacy same-host HTTP links supply HTTPS discovery candidates, never invented
+physical aliases. Recorded redirects to excluded destinations are not followed.
+A single exact-host HTTPS HTML base resolves relative links without changing the
+physical citation URL. Distinct CMS identities may point to one HTML page; when
+their modification dates disagree, generic HTML output omits the ambiguous date
+and records a warning rather than selecting one CMS item. Specialized policies
+and API-content fallback remain strict about ambiguous inventories. Generic CMS
+routes accept literal underscore names and advertised `rest_route=/` API roots;
+query support does not admit arbitrary document queries or guessed API endpoints.
+Existing specialized modules retain their narrower policies
 and previously published bytes. Their recognized empty containers do not fall
 back to surrounding pages.
 BMLSc's declared CSS grids become semantic curriculum lists, campus-comparison
@@ -119,7 +130,18 @@ Successful responses are reused. Transient fetch failures and retryable HTTP
 responses have a three-attempt physical-URL bound. Failures are retained, not
 silently resampled on command restart. `--retry-network <exact-url>` permits only
 a recorded transient network failure still within that bound and archives its
-previous logical failure before another attempt. `--resume-interrupted` requires
+previous logical failure before another attempt. An explicitly configured recovery
+batch can authorize one transport-repair allowance for a recorded status-less
+connection reset, closed connection or timeout: at most three additional attempts
+and six lifetime attempts per physical URL. Authorizations and old failures remain
+in the input lineage; successful observations and cumulative request/byte limits
+are not reset. Access denials, TLS/DNS failures and robots restrictions are not
+transport repairs. Repaired requests close their connection instead of reusing a
+possibly stale pooled socket. Recorded invocation-duration pauses may be archived
+and resumed only while cumulative budgets and physical attempt limits still permit
+work. Neither recovery path clears access failures or raises cumulative limits.
+Sealed recordings remain offline and immutable.
+`--resume-interrupted` requires
 explicit acquisition and preserves uncertainty; neither option approves a host
 or overrides access restrictions.
 

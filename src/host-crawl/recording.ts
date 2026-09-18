@@ -26,6 +26,15 @@ const parser = createRequire(import.meta.url)("robots-parser") as (
 };
 const hash = (bytes: string | Uint8Array) => createHash("sha256").update(bytes).digest("hex");
 const retryable = new Set([408, 429, 500, 502, 503, 504]);
+const transientTransportFailure = (error: string): boolean =>
+  /\b(?:ECONNRESET|AbortError|TimeoutError)\b|other side closed/i.test(error) &&
+  !/\b(?:ENOTFOUND|EAI_[A-Z_]+|CERT_[A-Z_]+|ERR_TLS_[A-Z_]+|ERR_SSL_[A-Z_]+|DEPTH_ZERO_SELF_SIGNED_CERT|SELF_SIGNED_CERT_IN_CHAIN|UNABLE_TO_[A-Z_]+)\b|certificate|hostname mismatch|\bDNS\b/i.test(
+    error,
+  );
+const matchesTransportFailure = (logical: string, physical: string): boolean => {
+  const reason = logical.replace(/^(?:Error: Saved request failure: )+/, "");
+  return reason === physical || reason === physical.split("; cause: ", 1)[0];
+};
 async function durableObject(path: string, bytes: Uint8Array): Promise<void> {
   const file = await open(path, "wx", 0o600);
   try {
@@ -147,7 +156,7 @@ export class HostRecording {
         throw new Error("Acquisition options changed; replay saved input or create a new explicit recording");
       if (options.acquire) {
         db.exec(
-          "CREATE TABLE IF NOT EXISTS attempt_producers (attempt_id INTEGER PRIMARY KEY, producer TEXT NOT NULL); CREATE TABLE IF NOT EXISTS outcome_failures (id INTEGER PRIMARY KEY, url TEXT NOT NULL, error TEXT NOT NULL, recorded_at TEXT NOT NULL);",
+          "CREATE TABLE IF NOT EXISTS attempt_producers (attempt_id INTEGER PRIMARY KEY, producer TEXT NOT NULL); CREATE TABLE IF NOT EXISTS outcome_failures (id INTEGER PRIMARY KEY, url TEXT NOT NULL, error TEXT NOT NULL, recorded_at TEXT NOT NULL); CREATE TABLE IF NOT EXISTS repair_authorizations (url TEXT PRIMARY KEY, reason TEXT NOT NULL, authorized_at TEXT NOT NULL, producer TEXT NOT NULL, attempt_count INTEGER NOT NULL, attempt_ceiling INTEGER NOT NULL CHECK(attempt_ceiling <= 6 AND attempt_ceiling > attempt_count AND attempt_ceiling <= attempt_count + 3));",
         );
         db.prepare("INSERT OR IGNORE INTO attempt_producers SELECT id,? FROM attempts").run(
           JSON.stringify(config.producer),
@@ -246,9 +255,17 @@ export class HostRecording {
     return (await this.policy()).getSitemaps();
   }
 
+  private attemptCeiling(url: string): number {
+    return Number(
+      this.db.prepare("SELECT attempt_ceiling FROM repair_authorizations WHERE url=?").get(url)?.attempt_ceiling ?? 3,
+    );
+  }
+
   private async dispatch(url: string, minimum: number): Promise<Observation> {
+    const repair = this.db.prepare("SELECT * FROM repair_authorizations WHERE url=?").get(url);
+    const ceiling = Number(repair?.attempt_ceiling ?? 3);
     const saved = this.db
-      .prepare("SELECT state,status,headers,snapshot FROM attempts WHERE url=? ORDER BY id DESC LIMIT 1")
+      .prepare("SELECT state,status,headers,snapshot,error FROM attempts WHERE url=? ORDER BY id DESC LIMIT 1")
       .get(url);
     const count = Number(this.db.prepare("SELECT count(*) n FROM attempts WHERE url=?").get(url)!.n);
     if (saved?.state === "excluded-media") {
@@ -258,9 +275,9 @@ export class HostRecording {
         throw new Error("Invalid saved media classification");
       throw new NonTextMediaError(mediaType);
     }
-    if (saved?.state === "observed" && saved.snapshot && (!retryable.has(Number(saved.status)) || count >= 3))
+    if (saved?.state === "observed" && saved.snapshot && (!retryable.has(Number(saved.status)) || count >= ceiling))
       return this.readSnapshot(String(saved.snapshot));
-    if (count >= 3) throw new Error("Physical URL attempt bound exhausted");
+    if (count >= ceiling) throw new Error("Physical URL attempt bound exhausted");
     const stats = this.db.prepare("SELECT count(*) requests, coalesce(sum(bytes),0) bytes FROM attempts").get()!;
     if (
       Number(stats.requests) >= Number(this.config.maxRequests) ||
@@ -269,7 +286,11 @@ export class HostRecording {
       throw new Error("Acquisition request/byte budget exhausted");
     if (Date.now() - this.started >= Number(this.config.maxDurationMs))
       throw new Error("Acquisition duration exhausted");
-    const wait = Math.max(0, this.lastStart + minimum - Date.now());
+    const backoff =
+      repair && saved?.state === "failed" && saved.status === null && transientTransportFailure(String(saved.error))
+        ? minimum * 2 ** Math.max(0, count - Number(repair.attempt_count))
+        : minimum;
+    const wait = Math.max(0, this.lastStart + backoff - Date.now());
     if (Date.now() - this.started + wait >= Number(this.config.maxDurationMs))
       throw new Error("Acquisition wait exceeds remaining duration");
     if (wait) await new Promise((resolve) => setTimeout(resolve, wait));
@@ -294,7 +315,10 @@ export class HostRecording {
     try {
       const response = await (this.options.fetcher ?? fetch)(url, {
         method: "GET",
-        headers: { "User-Agent": USER_AGENT },
+        headers: {
+          "User-Agent": USER_AGENT,
+          ...(repair && (!this.options.fetcher || this.options.fetcher === fetch) ? { Connection: "close" } : {}),
+        },
         redirect: "manual",
         credentials: "omit",
         signal: controller.signal,
@@ -443,21 +467,27 @@ export class HostRecording {
         let observation: Observation;
         for (;;) {
           const prior = Number(this.db.prepare("SELECT count(*) n FROM attempts WHERE url=?").get(url)!.n);
+          const ceiling = this.attemptCeiling(url);
           try {
             observation = await this.dispatch(url, minimum);
           } catch (error) {
-            const status = this.db
-              .prepare("SELECT status FROM attempts WHERE url=? ORDER BY id DESC LIMIT 1")
-              .get(url)?.status;
+            const failed = this.db
+              .prepare("SELECT status,error FROM attempts WHERE url=? ORDER BY id DESC LIMIT 1")
+              .get(url);
+            const status = failed?.status;
             if (
-              prior < 2 &&
+              prior < ceiling - 1 &&
               (status === null || status === 200 || retryable.has(Number(status))) &&
-              /fetch failed|TimeoutError|AbortError|terminated/.test(String(error))
+              (/fetch failed|TimeoutError|AbortError|terminated/.test(String(error)) ||
+                (ceiling > 3 &&
+                  status === null &&
+                  transientTransportFailure(String(failed?.error)) &&
+                  matchesTransportFailure(String(error), String(failed?.error))))
             )
               continue;
             throw error;
           }
-          if (!retryable.has(observation.snapshot.status) || prior >= 2) break;
+          if (!retryable.has(observation.snapshot.status) || prior >= ceiling - 1) break;
           const header = observation.snapshot.headers["retry-after"];
           const number = header === undefined ? NaN : Number(header);
           const delay = Number.isFinite(number)
@@ -513,6 +543,33 @@ export class HostRecording {
     return this.observedRedirectTrace(value).at(-1)!;
   }
 
+  /** Classify only recorded redirects to a well-formed destination excluded by host or document policy. */
+  observedScopeExclusion(value: string): string | null {
+    this.assertOpen();
+    let url = this.scoped(value);
+    const seen = new Set<string>();
+    while (!seen.has(url) && seen.size < 8) {
+      seen.add(url);
+      const row = this.db
+        .prepare("SELECT state,status,headers FROM attempts WHERE url=? ORDER BY id DESC LIMIT 1")
+        .get(url);
+      if (row?.state !== "observed" || ![301, 302, 303, 307, 308].includes(Number(row.status))) return null;
+      const headers = JSON.parse(String(row.headers)) as Record<string, string>;
+      if (!headers.location) throw new Error("Observed redirect lacks its recorded location");
+      const next = new URL(headers.location, url);
+      if (next.username || next.password || !["http:", "https:"].includes(next.protocol))
+        throw new Error("Observed redirect has an unsafe destination");
+      if (next.protocol !== "https:" || next.hostname.toLowerCase().replace(/\.$/, "") !== this.options.hostname)
+        return "Observed redirect leaves the exact HTTPS host scope";
+      const scopedNext = hostUrl(next.href, this.options.hostname);
+      if (seen.has(scopedNext)) throw new Error("Observed redirect cycle or bound exceeded");
+      if (this.options.documentUrlAllowed?.(scopedNext) === false)
+        return "Observed redirect leaves the declared document URL policy";
+      url = this.scoped(scopedNext);
+    }
+    throw new Error("Observed redirect cycle or bound exceeded");
+  }
+
   apiFallbackEligible(value: string): boolean {
     const trace = this.observedRedirectTrace(value);
     for (const url of trace)
@@ -556,12 +613,163 @@ export class HostRecording {
     }
   }
 
+  /** Filter logical failures, authorize one bounded repair per physical URL, and return the archived failure count. */
+  recoverTransientFailures(urls?: readonly string[]): number {
+    this.assertOpen();
+    if (!this.options.acquire || this.sealed) throw new Error("Recovery requires unsealed explicit acquisition");
+    if (this.active.size) throw new Error("Recovery requires an idle recording");
+    const selected = urls ? new Set(urls.map((url) => this.scoped(url))) : undefined;
+    const failures = this.db
+      .prepare("SELECT url,error FROM outcomes WHERE error IS NOT NULL AND snapshot IS NULL ORDER BY url")
+      .all()
+      .filter((row) => !selected || selected.has(String(row.url)));
+    const now = new Date().toISOString();
+    let recovered = 0;
+    const archive = (url: string, error: string) => {
+      this.db.prepare("INSERT INTO outcome_failures(url,error,recorded_at) VALUES (?,?,?)").run(url, error, now);
+      this.db.prepare("DELETE FROM outcomes WHERE url=? AND error=? AND snapshot IS NULL").run(url, error);
+      recovered++;
+    };
+    const transportAttempts = (url: string) => {
+      const attempts = this.db.prepare("SELECT state,status,error FROM attempts WHERE url=? ORDER BY id").all(url);
+      return attempts.length &&
+        attempts.every(
+          (row) => row.state === "failed" && row.status === null && transientTransportFailure(String(row.error)),
+        )
+        ? attempts
+        : undefined;
+    };
+    this.db.exec("BEGIN IMMEDIATE");
+    try {
+      for (const failure of failures) {
+        const logical = String(failure.url);
+        let physical: string;
+        try {
+          physical = this.observedRedirectTrace(logical).at(-1)!;
+        } catch {
+          continue;
+        }
+        const attempts = transportAttempts(physical);
+        if (!attempts) continue;
+        const reason = String(attempts.at(-1)!.error);
+        if (
+          !matchesTransportFailure(String(failure.error), reason) &&
+          !(failure.error === "Error: Physical URL attempt bound exhausted" && attempts.length >= 3)
+        )
+          continue;
+        const authorization = this.db
+          .prepare("SELECT attempt_ceiling FROM repair_authorizations WHERE url=?")
+          .get(physical);
+        if (attempts.length >= Number(authorization?.attempt_ceiling ?? 6)) continue;
+        if (!authorization)
+          this.db
+            .prepare("INSERT INTO repair_authorizations VALUES (?,?,?,?,?,?)")
+            .run(
+              physical,
+              reason,
+              now,
+              JSON.stringify(this.options.producer),
+              attempts.length,
+              Math.min(6, attempts.length + 3),
+            );
+        archive(logical, String(failure.error));
+      }
+      const homepage = `https://${this.options.hostname}/`;
+      const homeFailure = failures.find((row) => row.url === homepage);
+      if (homeFailure && !this.db.prepare("SELECT 1 FROM attempts WHERE url=? LIMIT 1").get(homepage)) {
+        const robots = `https://${this.options.hostname}/robots.txt`;
+        let physical: string | undefined;
+        try {
+          physical = this.observedRedirectTrace(robots).at(-1);
+        } catch {
+          physical = undefined;
+        }
+        if (physical) {
+          const authorization = this.db
+            .prepare("SELECT reason,attempt_ceiling FROM repair_authorizations WHERE url=?")
+            .get(physical);
+          const attempts = this.db.prepare("SELECT state,status FROM attempts WHERE url=? ORDER BY id").all(physical);
+          const last = attempts.at(-1);
+          const robotsObserved = this.db.prepare("SELECT snapshot FROM outcomes WHERE url=?").get(robots)?.snapshot;
+          const available =
+            transportAttempts(physical) ||
+            (robotsObserved && last?.state === "observed" && [200, 404, 410].includes(Number(last.status)));
+          if (
+            authorization &&
+            available &&
+            attempts.length < Number(authorization.attempt_ceiling) &&
+            matchesTransportFailure(String(homeFailure.error), String(authorization.reason))
+          )
+            archive(homepage, String(homeFailure.error));
+        }
+      }
+      this.db.exec("COMMIT");
+      return recovered;
+    } catch (error) {
+      this.db.exec("ROLLBACK");
+      throw error;
+    }
+  }
+
+  /** Archive selected per-invocation duration failures without renewing acquisition budgets or attempt limits. */
+  resumeDurationFailures(urls?: readonly string[]): number {
+    this.assertOpen();
+    if (!this.options.acquire || this.sealed) throw new Error("Duration resume requires unsealed explicit acquisition");
+    if (this.active.size) throw new Error("Duration resume requires an idle recording");
+    const selected = urls ? new Set(urls.map((url) => this.scoped(url))) : undefined;
+    this.db.exec("BEGIN IMMEDIATE");
+    try {
+      if (this.db.prepare("SELECT 1 FROM attempts WHERE state='dispatching' LIMIT 1").get())
+        throw new Error("Duration resume requires no dispatching attempts");
+      const stats = this.db.prepare("SELECT count(*) requests, coalesce(sum(bytes),0) bytes FROM attempts").get()!;
+      const failures =
+        Number(stats.requests) < Number(this.config.maxRequests) && Number(stats.bytes) < Number(this.config.maxBytes)
+          ? this.db
+              .prepare("SELECT url,error FROM outcomes WHERE snapshot IS NULL AND error IN (?,?,?) ORDER BY url")
+              .all(
+                "Error: Acquisition duration exhausted",
+                "Error: Acquisition wait exceeds remaining duration",
+                "Error: Retry wait exceeds duration budget",
+              )
+              .filter((row) => !selected || selected.has(String(row.url)))
+          : [];
+      const now = new Date().toISOString();
+      for (const failure of failures) {
+        this.db
+          .prepare("INSERT INTO outcome_failures(url,error,recorded_at) VALUES (?,?,?)")
+          .run(String(failure.url), String(failure.error), now);
+        this.db
+          .prepare("DELETE FROM outcomes WHERE url=? AND error=? AND snapshot IS NULL")
+          .run(String(failure.url), String(failure.error));
+      }
+      this.db.exec("COMMIT");
+      return failures.length;
+    } catch (error) {
+      this.db.exec("ROLLBACK");
+      throw error;
+    }
+  }
+
   inputDigest(): string {
     const outcomes = this.db.prepare("SELECT * FROM outcomes ORDER BY url").all();
     const attempts = this.db.prepare("SELECT * FROM attempts ORDER BY id").all();
     const producers = this.db.prepare("SELECT * FROM attempt_producers ORDER BY attempt_id").all();
     const failures = this.db.prepare("SELECT * FROM outcome_failures ORDER BY id").all();
-    return hash(JSON.stringify({ config: this.config, outcomes, attempts, producers, failures }));
+    const repairs = this.db
+      .prepare("SELECT 1 FROM sqlite_master WHERE type='table' AND name='repair_authorizations'")
+      .get()
+      ? this.db.prepare("SELECT * FROM repair_authorizations ORDER BY url").all()
+      : [];
+    return hash(
+      JSON.stringify({
+        config: this.config,
+        outcomes,
+        attempts,
+        producers,
+        failures,
+        ...(repairs.length ? { repairs } : {}),
+      }),
+    );
   }
   async seal(): Promise<string> {
     this.assertOpen();

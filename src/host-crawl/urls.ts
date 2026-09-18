@@ -27,6 +27,17 @@ export function hostUrl(value: string, hostname: string, base = `https://${hostn
   return url.href;
 }
 
+/** Resolve discovery candidates without fetching outbound references or inventing observed aliases. */
+export function inventoryUrl(value: string, hostname: string, base = `https://${hostname}/`): string | null {
+  const url = new URL(value, base);
+  if (url.username || url.password || url.port) throw new Error("Unsafe publisher inventory URL");
+  if (!["https:", "http:"].includes(url.protocol)) return null;
+  if (url.hostname.toLowerCase().replace(/\.$/, "") !== normalizeHost(hostname)) return null;
+  // Legacy HTTP links are HTTPS candidates; only an actual HTTPS response can become a citation or alias.
+  url.protocol = "https:";
+  return hostUrl(url.href, hostname);
+}
+
 export const UNSUPPORTED_DOCUMENT = "Document format requires a reviewed text-extraction adapter";
 
 /** Allow declared PDF documents without widening authentication, query, or other resource boundaries. */
