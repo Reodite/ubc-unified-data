@@ -398,5 +398,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/students.canvas.ubc.ca",
     "document_count": 31
+  },
+  {
+    "hostname": "suewatts.forestry.ubc.ca",
+    "title": "suewatts.forestry.ubc.ca",
+    "homepage_url": "https://suewatts.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:24:25.638Z",
+    "homepage_sha256": "7588646161ab2f390db7d98c6104e83cb6eead09c83135f57349587bdeec5881",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/suewatts.forestry.ubc.ca",
+    "document_count": 4
   }
 ]
