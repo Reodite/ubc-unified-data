@@ -720,6 +720,16 @@
     "document_count": 16
   },
   {
+    "hostname": "rits.ubc.ca",
+    "title": "rits.ubc.ca",
+    "homepage_url": "https://rits.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:00:33.930Z",
+    "homepage_sha256": "3b9ba8f314a1bdb882ef42a29f776a61ccf81b52a493ba7e2d0d46addda454f8",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/rits.ubc.ca",
+    "document_count": 7
+  },
+  {
     "hostname": "scienceone.ubc.ca",
     "title": "scienceone.ubc.ca",
     "homepage_url": "https://scienceone.ubc.ca/",
