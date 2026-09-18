@@ -630,6 +630,16 @@
     "document_count": 24
   },
   {
+    "hostname": "psctc.educ.ubc.ca",
+    "title": "psctc.educ.ubc.ca",
+    "homepage_url": "https://psctc.educ.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:47:09.619Z",
+    "homepage_sha256": "24b5f979ed8106eae06975bd7f409d0feb8a7fe70254cf499f7f893425aa908b",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/psctc.educ.ubc.ca",
+    "document_count": 34
+  },
+  {
     "hostname": "rcl.ece.ubc.ca",
     "title": "rcl.ece.ubc.ca",
     "homepage_url": "https://rcl.ece.ubc.ca/",
