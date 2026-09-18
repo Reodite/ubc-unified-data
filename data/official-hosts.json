@@ -168,5 +168,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/neuro.ubc.ca",
     "document_count": 36
+  },
+  {
+    "hostname": "oceanleaders.ubc.ca",
+    "title": "oceanleaders.ubc.ca",
+    "homepage_url": "https://oceanleaders.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:12:31.173Z",
+    "homepage_sha256": "822db85b7b2881fb150a0969fad85fe643d3036ed5c79d6677843b019e3861f7",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/oceanleaders.ubc.ca",
+    "document_count": 28
   }
 ]
