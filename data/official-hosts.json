@@ -1110,6 +1110,16 @@
     "document_count": 26
   },
   {
+    "hostname": "www.bioimaging.ubc.ca",
+    "title": "www.bioimaging.ubc.ca",
+    "homepage_url": "https://www.bioimaging.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:01:01.139Z",
+    "homepage_sha256": "4a3a8b7dc5c2cca2ad9d117e348714b725ed58882a1e335796081c524d884b46",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/www.bioimaging.ubc.ca",
+    "document_count": 449
+  },
+  {
     "hostname": "www.biology.ubc.ca",
     "title": "www.biology.ubc.ca",
     "homepage_url": "https://www.biology.ubc.ca/",
