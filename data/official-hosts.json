@@ -710,6 +710,16 @@
     "document_count": 11
   },
   {
+    "hostname": "rgst.arts.ubc.ca",
+    "title": "rgst.arts.ubc.ca",
+    "homepage_url": "https://rgst.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:59:17.025Z",
+    "homepage_sha256": "3c9446a64fb1414e7f27e0531fbd22b3c3f9533c38efecbe645ff6dfa52eb9db",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/rgst.arts.ubc.ca",
+    "document_count": 52
+  },
+  {
     "hostname": "riselab.forestry.ubc.ca",
     "title": "riselab.forestry.ubc.ca",
     "homepage_url": "https://riselab.forestry.ubc.ca/",
