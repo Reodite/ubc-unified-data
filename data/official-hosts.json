@@ -368,5 +368,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/speaking.arts.ubc.ca",
     "document_count": 127
+  },
+  {
+    "hostname": "star.ubc.ca",
+    "title": "star.ubc.ca",
+    "homepage_url": "https://star.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:17:48.652Z",
+    "homepage_sha256": "3bd0741925413438a872c0a6d59e65097e66ed482d02d94e0ae34ff7221d3006",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/star.ubc.ca",
+    "document_count": 36
   }
 ]
