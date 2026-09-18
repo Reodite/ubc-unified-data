@@ -1170,6 +1170,16 @@
     "document_count": 4
   },
   {
+    "hostname": "www.saravyc.ubc.ca",
+    "title": "www.saravyc.ubc.ca",
+    "homepage_url": "https://www.saravyc.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:22:13.240Z",
+    "homepage_sha256": "4febe78d3a7312eef6a08a64485c05ee5546025388134ff52fbda0fa1ad6fecb",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/www.saravyc.ubc.ca",
+    "document_count": 584
+  },
+  {
     "hostname": "zero-waste-market.ubc.ca",
     "title": "zero-waste-market.ubc.ca",
     "homepage_url": "https://zero-waste-market.ubc.ca/",
