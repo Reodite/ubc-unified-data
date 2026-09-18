@@ -58,5 +58,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/io.ubc.ca",
     "document_count": 7
+  },
+  {
+    "hostname": "istand.ok.ubc.ca",
+    "title": "istand.ok.ubc.ca",
+    "homepage_url": "https://istand.ok.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:17:18.287Z",
+    "homepage_sha256": "8f9104f4d1fdd9c90ef67e12a6449685ff9dd2e6665fdeccc654614244757281",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/istand.ok.ubc.ca",
+    "document_count": 3
   }
 ]
