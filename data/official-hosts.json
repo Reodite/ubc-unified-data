@@ -80,6 +80,16 @@
     "document_count": 60
   },
   {
+    "hostname": "imaging.lsi.ubc.ca",
+    "title": "imaging.lsi.ubc.ca",
+    "homepage_url": "https://imaging.lsi.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:12:17.283Z",
+    "homepage_sha256": "3bdcf2f87a137c9aded2d665aa1bf752656d98b45693add7e7380f65ce0da0ab",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/imaging.lsi.ubc.ca",
+    "document_count": 63
+  },
+  {
     "hostname": "io.ubc.ca",
     "title": "io.ubc.ca",
     "homepage_url": "https://io.ubc.ca/",
