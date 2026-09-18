@@ -430,6 +430,16 @@
     "document_count": 36
   },
   {
+    "hostname": "tek.forestry.ubc.ca",
+    "title": "tek.forestry.ubc.ca",
+    "homepage_url": "https://tek.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:31:00.620Z",
+    "homepage_sha256": "39882b2e17f39a9d617f82b4cec9ff38555b62f7a6cc199305efe1ec078da529",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/tek.forestry.ubc.ca",
+    "document_count": 159
+  },
+  {
     "hostname": "thesismodules.edst.educ.ubc.ca",
     "title": "thesismodules.edst.educ.ubc.ca",
     "homepage_url": "https://thesismodules.edst.educ.ubc.ca/",
