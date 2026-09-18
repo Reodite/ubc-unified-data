@@ -1080,6 +1080,16 @@
     "document_count": 34
   },
   {
+    "hostname": "walllegacyawards.ubc.ca",
+    "title": "walllegacyawards.ubc.ca",
+    "homepage_url": "https://walllegacyawards.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:54:42.175Z",
+    "homepage_sha256": "f6a78599c0f414ab06bcf8f3b757fd1fe5fbd708a23b961eb2c6fd75ff708d2b",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/walllegacyawards.ubc.ca",
+    "document_count": 20
+  },
+  {
     "hostname": "www.afrf.forestry.ubc.ca",
     "title": "www.afrf.forestry.ubc.ca",
     "homepage_url": "https://www.afrf.forestry.ubc.ca/",
