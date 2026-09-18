@@ -528,5 +528,15 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_root": "data/documents/vibrantforestlandscapes.forestry.ubc.ca",
     "document_count": 23
+  },
+  {
+    "hostname": "vigolab.med.ubc.ca",
+    "title": "vigolab.med.ubc.ca",
+    "homepage_url": "https://vigolab.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:50:47.766Z",
+    "homepage_sha256": "cdb8679a7dad22dc1d423d8fd990922328e512fbc50073eac48ced4a6ebd06c0",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/vigolab.med.ubc.ca",
+    "document_count": 49
   }
 ]
