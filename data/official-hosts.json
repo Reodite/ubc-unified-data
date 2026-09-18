@@ -470,6 +470,16 @@
     "document_count": 187
   },
   {
+    "hostname": "palliativecare.med.ubc.ca",
+    "title": "palliativecare.med.ubc.ca",
+    "homepage_url": "https://palliativecare.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:25:05.243Z",
+    "homepage_sha256": "7d63426fa6980337d5bf6e35062565b00ce32c219616602a9640969f5d623183",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_root": "data/documents/palliativecare.med.ubc.ca",
+    "document_count": 130
+  },
+  {
     "hostname": "park.forestry.ubc.ca",
     "title": "park.forestry.ubc.ca",
     "homepage_url": "https://park.forestry.ubc.ca/",
