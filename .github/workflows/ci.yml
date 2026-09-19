@@ -9,12 +9,14 @@ jobs:
   check:
     runs-on: ubuntu-latest
     env:
-      TMPDIR: /home/admin2/Projects/ubc-tmp
       TSX_DISABLE_CACHE: "1"
       NODE_DISABLE_COMPILE_CACHE: "1"
     steps:
       - name: Prepare external test workspace
-        run: sudo install -d -m 700 -o "$(id -u)" -g "$(id -g)" "$TMPDIR"
+        run: |
+          workspace="$RUNNER_TEMP/ubc-tmp"
+          install -d -m 700 "$workspace"
+          printf 'UBC_TMP_ROOT=%s\nTMPDIR=%s\n' "$workspace" "$workspace" >> "$GITHUB_ENV"
 
       - uses: actions/checkout@v4
 

@@ -31,7 +31,8 @@ supplies the title and provenance. The repository tracks the generated JSON, CSV
 and Markdown exports. Refresh them with the collector and validate the complete
 corpus before committing. Git preserves their bytes without line-ending
 conversion; raw response caches stay outside the repository under
-`/home/admin2/Projects/ubc-tmp/ubc-unified-data/state/source-prose/cache/`.
+`~/Projects/ubc-tmp/ubc-unified-data/state/source-prose/cache/` by default
+(or `$UBC_TMP_ROOT/ubc-unified-data/state/source-prose/cache/` when configured).
 `_manifest.json` and each `_coverage.json` declare `format: "markdown"`.
 
 ## Sources

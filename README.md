@@ -60,7 +60,8 @@ arrays, CSV exports and standalone sanitized Markdown. Its own `_catalog.json`,
 exclusions and failures. The repository includes these generated exports.
 Run `npm run collect:prose` to refresh them and `npm run validate:prose` before
 committing. Raw response caches remain outside the repository under
-`/home/admin2/Projects/ubc-tmp/ubc-unified-data/state/source-prose/cache/`.
+`~/Projects/ubc-tmp/ubc-unified-data/state/source-prose/cache/` by default
+(or `$UBC_TMP_ROOT/ubc-unified-data/state/source-prose/cache/` when configured).
 
 Separately, `data/official-hosts.json` indexes complete, homepage-vetted hostname
 collections in `data/documents/<hostname>/`. [HOST-DOCUMENTS.md](HOST-DOCUMENTS.md)

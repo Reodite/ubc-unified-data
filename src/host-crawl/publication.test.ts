@@ -19,6 +19,7 @@ import { fileURLToPath } from "node:url";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { CompletedHost, SearchDocument } from "./contracts.ts";
 import { documentFilename, formatDocument, parseDocument, sha256 } from "./document-format.ts";
+import { assertExternalPath, EXTERNAL_BOUNDARY } from "./paths.ts";
 import { validatePublishedHosts } from "./public-validation.ts";
 import { publishCompletedHost, type PublicationBoundary, type PublishCompletedHostOptions } from "./publication.ts";
 
@@ -27,7 +28,7 @@ vi.mock("node:fs/promises", async (importOriginal) => {
   return { ...actual, open: vi.fn(actual.open), rename: vi.fn(actual.rename) };
 });
 
-const TEMP = "/home/admin2/Projects/ubc-tmp";
+const TEMP = EXTERNAL_BOUNDARY;
 const roots: string[] = [];
 const children = new Set<ChildProcess>();
 const BOUNDARIES: PublicationBoundary[] = [
@@ -100,7 +101,8 @@ function complete(hostname = "example.ubc.ca", body = "Original **source** prose
 }
 
 async function setup() {
-  const root = await mkdtemp(`${TEMP}/text-publication-test-`);
+  await mkdir(assertExternalPath(TEMP), { recursive: true });
+  const root = await mkdtemp(join(TEMP, "text-publication-test-"));
   roots.push(root);
   const repositoryRoot = join(root, "repo");
   const externalRoot = join(root, "external");
@@ -830,6 +832,7 @@ describe("completed host publication", () => {
 
   describe("interrupted committed cleanup", () => {
     let fixture: Awaited<ReturnType<typeof setup>>;
+    let changed: CompletedHost;
     beforeEach(async () => {
       fixture = await setup();
       const old = complete();
@@ -838,13 +841,13 @@ describe("completed host publication", () => {
         ...fixture.options,
         completed: { ...old, host: { ...old.host, document_count: 2 }, documents: [...old.documents, extra] },
       });
-    });
-    it.each(["partial backup cleanup", "commit marker alone"])("recovers interrupted %s", async (phase) => {
-      const changed = complete("example.ubc.ca", "Committed replacement");
+      changed = complete("example.ubc.ca", "Committed replacement");
       const child = await pausedChild({ ...fixture.options, completed: changed }, "before-cleanup");
       child.kill("SIGKILL");
       await exited(child);
       children.delete(child);
+    });
+    it.each(["partial backup cleanup", "commit marker alone"])("recovers interrupted %s", async (phase) => {
       if (phase === "partial backup cleanup") {
         const backup = join(fixture.workspace, "transaction/old-host");
         const names = (await readdir(backup)).sort();

@@ -4,6 +4,7 @@ import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import type { CompletedHost, VettedHost } from "./contracts.ts";
 import { digest, documentFilename, exactObject, formatDocument, parseDocument, sha256 } from "./document-format.ts";
+import { EXTERNAL_BOUNDARY } from "./paths.ts";
 import {
   assertNoSymlinkPath,
   formatHostList,
@@ -18,7 +19,6 @@ import {
 } from "./public-validation.ts";
 import { normalizeHost } from "./urls.ts";
 
-const TEMP_ROOT = "/home/admin2/Projects/ubc-tmp";
 const LOCK_SCHEMA = "CREATE TABLE owner(repository_root TEXT NOT NULL, format_version INTEGER NOT NULL)";
 const EXTERNAL_NAMES = new Set(["lock.sqlite", "journal.json", "commit-ready.json", "committed.json", "transaction"]);
 const TRANSACTION_NAMES = new Set(["new-host", "old-host", "new-list", "old-list"]);
@@ -90,10 +90,10 @@ async function prepareExternalRoot(repositoryRoot: string, externalRoot: string)
   if (
     !isAbsolute(externalRoot) ||
     resolve(externalRoot) !== externalRoot ||
-    externalRoot === TEMP_ROOT ||
-    !contained(TEMP_ROOT, externalRoot)
+    externalRoot === EXTERNAL_BOUNDARY ||
+    !contained(EXTERNAL_BOUNDARY, externalRoot)
   )
-    throw new Error(`External root must be a normalized descendant of ${TEMP_ROOT}`);
+    throw new Error(`External root must be a normalized descendant of ${EXTERNAL_BOUNDARY}`);
   if (contained(repositoryRoot, externalRoot) || contained(externalRoot, repositoryRoot))
     throw new Error("External root and repository must not overlap");
   await requireDirectory(repositoryRoot);

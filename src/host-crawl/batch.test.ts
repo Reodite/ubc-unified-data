@@ -6,7 +6,7 @@ import { describe, expect, it, vi } from "vitest";
 import { HostBatch } from "./batch.ts";
 import type { CompletedHost, ProducerContext } from "./contracts.ts";
 import { sha256 } from "./document-format.ts";
-import { DEFAULT_EXTERNAL_ROOT } from "./paths.ts";
+import { DEFAULT_EXTERNAL_ROOT, EXTERNAL_BOUNDARY } from "./paths.ts";
 
 const mocks = vi.hoisted(() => ({ git: vi.fn(), producer: vi.fn(), seal: vi.fn() }));
 vi.mock("node:child_process", async (original) => ({
@@ -22,7 +22,7 @@ vi.mock("./recording.ts", () => ({ HostRecording: { open: async () => ({ verifyS
 async function fixture() {
   const id = randomUUID();
   const directory = join(DEFAULT_EXTERNAL_ROOT, "test-host-batch", id);
-  const repositoryRoot = join("/home/admin2/Projects/ubc-tmp", `batch-test-${id}`);
+  const repositoryRoot = join(EXTERNAL_BOUNDARY, `batch-test-${id}`);
   const producerRoot = join(directory, "producer");
   const producer: ProducerContext = {
     inputs_sha256: "c".repeat(64),

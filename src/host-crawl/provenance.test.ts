@@ -1,9 +1,8 @@
 import { execFileSync } from "node:child_process";
 import { mkdir, mkdtemp, open, readdir, readFile, rm, symlink, utimes, writeFile } from "node:fs/promises";
-import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { assertExternalPath } from "./paths.ts";
+import { assertExternalPath, EXTERNAL_BOUNDARY } from "./paths.ts";
 import { assertSameProducer, captureProducer } from "./provenance.ts";
 
 vi.mock("node:fs/promises", async (original) => {
@@ -23,7 +22,8 @@ async function fixture(name: string): Promise<string> {
   return root;
 }
 beforeEach(async () => {
-  directory = await mkdtemp(join(assertExternalPath(tmpdir()), "host-producer-"));
+  await mkdir(assertExternalPath(EXTERNAL_BOUNDARY), { recursive: true });
+  directory = await mkdtemp(join(EXTERNAL_BOUNDARY, "host-producer-"));
 });
 afterEach(async (context) => {
   vi.restoreAllMocks();

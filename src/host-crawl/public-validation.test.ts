@@ -5,6 +5,7 @@ import { join } from "node:path";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import type { SearchDocument, VettedHost } from "./contracts.ts";
 import { documentFilename, formatDocument, sha256 } from "./document-format.ts";
+import { assertExternalPath, EXTERNAL_BOUNDARY } from "./paths.ts";
 import { formatHostList, validatePublishedHosts } from "./public-validation.ts";
 
 const roots: string[] = [];
@@ -16,7 +17,8 @@ afterEach(async (context) => {
 });
 
 async function setup() {
-  const root = await mkdtemp("/home/admin2/Projects/ubc-tmp/text-validation-test-");
+  await mkdir(assertExternalPath(EXTERNAL_BOUNDARY), { recursive: true });
+  const root = await mkdtemp(join(EXTERNAL_BOUNDARY, "text-validation-test-"));
   roots.push(root);
   const hostname = "example.ubc.ca";
   const source_url = `https://${hostname}/page`;

@@ -1,11 +1,26 @@
 import { lstatSync, realpathSync } from "node:fs";
-import { isAbsolute, join, relative, resolve, sep } from "node:path";
+import { homedir } from "node:os";
+import { isAbsolute, join, parse, relative, resolve, sep } from "node:path";
 import { ROOT } from "../base.ts";
 
-export const DEFAULT_EXTERNAL_ROOT = "/home/admin2/Projects/ubc-tmp/ubc-unified-data";
+/** Resolve a dedicated workspace root; overrides must already be absolute and normalized. */
+export function resolveExternalBoundary(home: string, override?: string): string {
+  const boundary = override ?? join(home, "Projects", "ubc-tmp");
+  if (
+    !boundary.trim() ||
+    boundary.includes("\0") ||
+    !isAbsolute(boundary) ||
+    resolve(boundary) !== boundary ||
+    boundary === parse(boundary).root
+  )
+    throw new Error("UBC_TMP_ROOT must be a normalized absolute directory, not a filesystem root");
+  return boundary;
+}
+
+export const EXTERNAL_BOUNDARY = resolveExternalBoundary(homedir(), process.env.UBC_TMP_ROOT);
+export const DEFAULT_EXTERNAL_ROOT = join(EXTERNAL_BOUNDARY, "ubc-unified-data");
 export const DEFAULT_LEGACY_STATE_FILE = join(DEFAULT_EXTERNAL_ROOT, "state/legacy/state.sqlite");
 export const DEFAULT_LEGACY_SNAPSHOTS_DIR = join(DEFAULT_EXTERNAL_ROOT, "state/legacy/snapshots");
-const EXTERNAL_BOUNDARY = "/home/admin2/Projects/ubc-tmp";
 
 function within(value: string, parent: string): boolean {
   const part = relative(parent, value);

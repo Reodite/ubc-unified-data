@@ -94,7 +94,7 @@ this declared scope, not unknowable unlinked content or the future live website.
 ## Private acquisition and replay
 
 All operational material belongs under
-`/home/admin2/Projects/ubc-tmp/ubc-unified-data/`: raw responses, snapshots, request
+`~/Projects/ubc-tmp/ubc-unified-data/` by default: raw responses, snapshots, request
 intents/outcomes, failure history, source copies, queues, seals, locks, journals,
 stages and backups. No such material belongs in Git, including any
 `data/document-crawl`, `data/documents-crawl` or `data/documentation-crawl` tree.
@@ -102,10 +102,17 @@ stages and backups. No such material belongs in Git, including any
 The collector uses the read-only preserved frontier at
 `state/legacy/state.sqlite` to create a frozen per-host seed. It never changes
 that legacy database. A public checkout can validate final files without private
-inputs; acquisition and replay require the private workspace.
+inputs; acquisition and replay require the private workspace. `UBC_TMP_ROOT` may
+select a dedicated absolute, normalized external directory instead of
+`~/Projects/ubc-tmp`; the project workspace is its `ubc-unified-data` child.
+Repository overlap, symlink, boundary-escape and same-filesystem publication
+checks still apply. Set `TMPDIR` to that root for test/runtime temporary files;
+CI uses its runner-owned temporary directory.
 
 ```sh
-export TMPDIR=/home/admin2/Projects/ubc-tmp
+export UBC_TMP_ROOT="${UBC_TMP_ROOT:-$HOME/Projects/ubc-tmp}"
+export TMPDIR="$UBC_TMP_ROOT"
+install -d -m 700 "$UBC_TMP_ROOT"
 export TSX_DISABLE_CACHE=1 NODE_DISABLE_COMPILE_CACHE=1
 
 # Explicit acquisition; no publication.

@@ -19,7 +19,7 @@ import { dirname, join } from "node:path";
 import { PassThrough } from "node:stream";
 import { fileURLToPath } from "node:url";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { DEFAULT_EXTERNAL_ROOT } from "./paths.ts";
+import { DEFAULT_EXTERNAL_ROOT, EXTERNAL_BOUNDARY } from "./paths.ts";
 import { loadCachedPdfProfile } from "./pdf-profile-cache.ts";
 import { PDF_EXECUTABLES, requirePdfProfile } from "./pdf-profile.ts";
 
@@ -192,7 +192,13 @@ function worker(script: string, directory: string, template: string, counter: st
     {
       cwd: root,
       stdio: ["ignore", "pipe", "pipe", "ipc"],
-      env: { PATH: process.env.PATH, HOME: root, TMPDIR: root, TSX_DISABLE_CACHE: "1" },
+      env: {
+        PATH: process.env.PATH,
+        HOME: root,
+        TMPDIR: root,
+        UBC_TMP_ROOT: EXTERNAL_BOUNDARY,
+        TSX_DISABLE_CACHE: "1",
+      },
     },
   );
   let stdout = "";
