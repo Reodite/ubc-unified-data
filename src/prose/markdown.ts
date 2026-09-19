@@ -256,28 +256,56 @@ function tableMarkdown(html: string, converter: TurndownService, warnings: Set<s
       cells: $(row)
         .children("th, td")
         .toArray()
-        .map((cell) => ({
-          markdown: converter.turndown($(cell).html() ?? ""),
-          header: $(cell).is("th") || $(row).parent().is("thead"),
-          colspan: $(cell).attr("colspan"),
-          rowspan: $(cell).attr("rowspan"),
-          block: $(cell).find("blockquote, ul, ol, dl, pre, table, h1, h2, h3, h4, h5, h6, details").length > 0,
-          codePipe: $(cell)
-            .find("code")
-            .toArray()
-            .some((code) => $(code).text().includes("|")),
-        })),
+        .map((cell) => {
+          const inlineCell = $(cell).clone();
+          // Normalize source-level inline breaks, not Markdown block boundaries or code whitespace.
+          inlineCell
+            .find("br")
+            .filter((_, node) => !$(node).parents("code, pre").length)
+            .replaceWith(" ");
+          inlineCell
+            .find("*")
+            .addBack()
+            .contents()
+            .each((_, node) => {
+              if (node.type === "text" && !$(node).parents("code, pre").length) {
+                node.data = node.data.replace(/[\t\n\v\f\r\u0085\u2028\u2029]+/g, " ");
+              }
+            });
+          const markdown = converter.turndown(inlineCell.html() ?? "");
+          return {
+            html: $(cell).html() ?? "",
+            // GFM removes one backslash before a pipe, including inside a link title.
+            markdown: markdown.replace(/\\*\|/g, (pipe) => (pipe.length % 2 ? `\\${pipe}` : pipe)),
+            header: $(cell).is("th") || $(row).parent().is("thead"),
+            colspan: $(cell).attr("colspan"),
+            rowspan: $(cell).attr("rowspan"),
+            block:
+              $(cell).find(
+                "address, article, blockquote, dd, details, dl, dt, figcaption, figure, footer, h1, h2, h3, h4, h5, h6, header, hr, li, main, ol, pre, section, summary, table, ul",
+              ).length > 0,
+            codePipe: $(cell)
+              .find("code")
+              .toArray()
+              .some((code) => $(code).text().includes("|")),
+          };
+        }),
     }));
   if (!rows.length) return `\n\n${introduction}\n\n`;
-  const complex = rows.some((row) =>
-    row.cells.some(
-      (cell) =>
-        cell.block ||
-        cell.codePipe ||
-        cell.markdown.includes("\n") ||
-        (cell.colspan !== undefined && Number(cell.colspan) !== 1) ||
-        (cell.rowspan !== undefined && Number(cell.rowspan) !== 1),
-    ),
+  const width = rows[0]!.cells.length;
+  const hasHeader = width > 0 && rows[0]!.cells.every((cell) => cell.header);
+  const complex = rows.some(
+    (row, rowIndex) =>
+      row.cells.length !== width ||
+      row.cells.some(
+        (cell) =>
+          cell.block ||
+          cell.codePipe ||
+          cell.markdown.includes("\n") ||
+          (cell.header && !(hasHeader && rowIndex === 0)) ||
+          (cell.colspan !== undefined && Number(cell.colspan) !== 1) ||
+          (cell.rowspan !== undefined && Number(cell.rowspan) !== 1),
+      ),
   );
   if (complex) {
     warnings.add("A complex table is represented as row/cell lists; merged-cell spans are labelled.");
@@ -290,7 +318,7 @@ function tableMarkdown(html: string, converter: TurndownService, warnings: Set<s
               cell.rowspan === undefined ? "" : `rowspan ${escapeText(cell.rowspan)}`,
             ].filter(Boolean);
             const label = `${cell.header ? "Header cell" : "Cell"} ${cellIndex + 1}${spans.length ? ` (${spans.join("; ")})` : ""}`;
-            return `- **${label}:**\n\n${indent(cell.markdown || "(empty)", 2)}`;
+            return `- **${label}:**\n\n${indent(converter.turndown(cell.html) || "(empty)", 2)}`;
           })
           .join("\n\n");
         return `- **${row.footer ? "Footer row" : "Row"} ${rowIndex + 1}**\n\n${indent(cells || "(empty)", 2)}`;
@@ -298,19 +326,13 @@ function tableMarkdown(html: string, converter: TurndownService, warnings: Set<s
       .join("\n\n");
     return `\n\n${[introduction, body].filter(Boolean).join("\n\n")}\n\n`;
   }
-  const width = rows.reduce((maximum, row) => Math.max(maximum, row.cells.length), 0);
   if (!width) return `\n\n${introduction}\n\n`;
-  const hasHeader = rows[0]!.cells.length > 0 && rows[0]!.cells.every((cell) => cell.header);
   const line = (cells: string[]) =>
     `| ${Array.from({ length: width }, (_, index) => cells[index] ?? "").join(" | ")} |`;
   const header = hasHeader ? rows[0]!.cells.map((cell) => cell.markdown) : [];
   if (!hasHeader)
     warnings.add("A headerless table receives an empty Markdown header; all source rows remain data rows.");
-  const body = rows
-    .slice(hasHeader ? 1 : 0)
-    .map((row) =>
-      line(row.cells.map((cell) => (cell.header && cell.markdown ? `**${cell.markdown}**` : cell.markdown))),
-    );
+  const body = rows.slice(hasHeader ? 1 : 0).map((row) => line(row.cells.map((cell) => cell.markdown)));
   return `\n\n${[introduction, [line(header), line(Array<string>(width).fill("---")), ...body].join("\n")].filter(Boolean).join("\n\n")}\n\n`;
 }
 

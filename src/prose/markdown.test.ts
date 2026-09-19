@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { load } from "cheerio";
 import fc from "fast-check";
 import MarkdownIt from "markdown-it";
@@ -226,6 +227,161 @@ describe("toSafeMarkdown code boundaries", () => {
 });
 
 describe("toSafeMarkdown tables", () => {
+  it("renders the observed CWC wildfire table as five columns with inline header breaks", () => {
+    const html = readFileSync(new URL("../../test/fixtures/cwc-wildfire-table.html", import.meta.url), "utf8");
+    const result = toSafeMarkdown(html, "https://cwc.ubc.ca/");
+    const $ = rendered(result);
+    expect($("table")).toHaveLength(1);
+    expect($("thead tr")).toHaveLength(1);
+    expect(
+      $("thead th")
+        .toArray()
+        .map((node) => $(node).text()),
+    ).toEqual([
+      "Year",
+      "Total Fires",
+      "Total Hectares Burned",
+      "Total Cost (millions)",
+      "State of Emergency (number of days)",
+    ]);
+    expect(
+      $("tbody tr")
+        .toArray()
+        .map((row) =>
+          $(row)
+            .children("td")
+            .toArray()
+            .map((cell) => $(cell).text()),
+        ),
+    ).toEqual([
+      ["2025*", "1,370", "886,300ha", "$510M", "0"],
+      ["2024", "1,688", "1,081,159ha", "$621M", "0"],
+      ["2023", "2,251", "2,840,571", ">$1billion", "38"],
+      ["2021", "1,642", "869,279", "$719", "56"],
+      ["2018", "2,117", "1,354,284", "$615", "23"],
+      ["2017", "1,353", "1,216,053", "$649", "70"],
+    ]);
+    expect(result.warnings).toEqual([]);
+    expect(result.markdown).not.toContain("**Row");
+    expect(toSafeMarkdown(html, "https://cwc.ubc.ca/")).toEqual(result);
+  });
+
+  it.each(["<br>", "<br><br>", "\r\n\t", "\n", "\t", "\f\v", "\u0085\u2028\u2029"])(
+    "normalizes harmless inline cell breaks %j without damaging escapes or formatting",
+    (breaks) => {
+      const result = toSafeMarkdown(
+        `<table><tr><th><strong>Total${breaks}cost</strong></th><th>Details</th></tr><tr>
+        <td><p>one \\|${breaks}two &lt;img&gt; <em>read${breaks}carefully</em></p></td>
+        <td><a href="/guide?q=a|b" title="a \\| b&#10;title">A |${breaks}B</a> <code>x\\y</code></td>
+        </tr></table>`,
+        SOURCE,
+      );
+      const $ = rendered(result);
+      expect($("table")).toHaveLength(1);
+      expect($("thead th")).toHaveLength(2);
+      expect($("thead strong").text()).toBe("Total cost");
+      expect($("tbody td")).toHaveLength(2);
+      expect($("tbody td").first().text()).toBe("one \\| two <img> read carefully");
+      expect($("td em").text()).toBe("read carefully");
+      expect($("td a").text()).toBe("A | B");
+      expect($("td a").attr("title")).toBe("a \\| b title");
+      expect($("td code").text()).toBe("x\\y");
+      expect($("br, img")).toHaveLength(0);
+      expect(result.links).toEqual([{ text: "A | B", url: "https://students.example.edu/guide?q=a%7Cb" }]);
+      expect(result.warnings).toEqual([]);
+    },
+  );
+
+  it.each([0, 1, 2, 3, 4])("preserves a pipe after %s backslashes in multiline cells and link titles", (slashes) => {
+    const value = `${"\\".repeat(slashes)}| [literal](javascript:bad) <img>`;
+    const result = toSafeMarkdown(
+      `<table><tr><th>Text<br>value</th><th>Linked<br>value</th></tr><tr>
+      <td>${textHtml(value)}<br>tail</td><td><a href="/guide" title="${textHtml(value)}">Read<br>guide</a></td>
+      </tr></table>`,
+      SOURCE,
+    );
+    const $ = rendered(result);
+    expect($("tbody td")).toHaveLength(2);
+    expect($("tbody td").first().text()).toBe(`${value} tail`);
+    expect($("td a").attr("title")).toBe(value);
+    expect($("td a").text()).toBe("Read guide");
+    expect(result.links).toEqual([{ text: "Read guide", url: "https://students.example.edu/guide" }]);
+    expect(result.warnings).toEqual([]);
+  });
+
+  it.each(["rowspan", "colspan"])("keeps a real %s in the fallback even with otherwise simple cells", (span) => {
+    const result = toSafeMarkdown(
+      `<table><tr><th>Heading<br>label</th><th>Second</th></tr><tr><td ${span}="2">Merged<br>value</td><td>Last</td></tr></table>`,
+      SOURCE,
+    );
+    const $ = rendered(result);
+    expect($("table")).toHaveLength(0);
+    expect($("br")).toHaveLength(2);
+    expect(result.markdown).toContain(`${span} 2`);
+    expect($.text()).toContain("Merged\nvalue");
+    expect($.text()).toContain("Last");
+    expect(result.warnings.join(" ")).toMatch(/complex table/);
+  });
+
+  it("accepts unit spans without labelling an inline table complex", () => {
+    const result = toSafeMarkdown(
+      '<table><tr><th colspan="1">Heading<br>label</th></tr><tr><td rowspan="1">Value<br>text</td></tr></table>',
+      SOURCE,
+    );
+    const $ = rendered(result);
+    expect($("thead th").text()).toBe("Heading label");
+    expect($("tbody td").text()).toBe("Value text");
+    expect(result.warnings).toEqual([]);
+  });
+
+  it.each([
+    ["paragraphs", "<p>First.</p><p>Second.</p>", "p"],
+    ["divisions", "<div>First.</div><div>Second.</div>", "p"],
+    ["blockquote", "<blockquote>First.<br>Second.</blockquote>", "blockquote"],
+    ["list", "<ul><li>First.</li><li>Second.</li></ul>", "li"],
+    ["heading", "<h3>First.</h3>", "h3"],
+    ["code block", "<pre>First.\nSecond.</pre>", "pre"],
+    ["rule", "First.<hr>Second.", "hr"],
+    ["figure caption", "<figure><figcaption>First.</figcaption></figure>", "p"],
+    ["details", "<details><summary>First.</summary>Second.</details>", "strong"],
+  ])("keeps meaningful %s structure in the row/cell fallback", (_name, cell, selector) => {
+    const result = toSafeMarkdown(`<table><tr><th>Heading<br>label</th></tr><tr><td>${cell}</td></tr></table>`, SOURCE);
+    const $ = rendered(result);
+    expect($("table")).toHaveLength(0);
+    expect($(selector).length).toBeGreaterThan(0);
+    expect($.text()).toContain("First.");
+    expect($("br").length).toBeGreaterThan(0);
+    expect(result.warnings.join(" ")).toMatch(/complex table/);
+    if (_name === "paragraphs" || _name === "divisions") {
+      expect(
+        $("p")
+          .toArray()
+          .map((node) => $(node).text()),
+      ).toEqual(expect.arrayContaining(["First.", "Second."]));
+    }
+  });
+
+  it.each([
+    ["short row", "<tr><th>A</th><th>B</th></tr><tr><td>Only</td></tr>"],
+    ["long row", "<tr><th>A</th></tr><tr><td>One</td><td>Two</td></tr>"],
+    ["empty row", "<tr><th>A</th></tr><tr></tr>"],
+    ["two thead rows", "<thead><tr><td>A</td></tr><tr><td>B</td></tr></thead><tbody><tr><td>C</td></tr></tbody>"],
+    ["repeated headers", "<tr><th>A</th></tr><tr><th>B</th></tr><tr><td>C</td></tr>"],
+    ["mixed first row", "<tr><th>A</th><td>B</td></tr><tr><td>C</td><td>D</td></tr>"],
+    ["body row headers", "<tr><th>A</th><th>B</th></tr><tr><th>C</th><td>D</td></tr>"],
+  ])("uses a conservative fallback for %s without inventing cells or headers", (_name, rows) => {
+    const source = load(`<table>${rows}</table>`, {}, false);
+    const result = toSafeMarkdown(source.html(), SOURCE);
+    const $ = rendered(result);
+    expect($("table")).toHaveLength(0);
+    expect($("strong").filter((_, node) => /^(?:Header cell|Cell) \d+:$/.test($(node).text()))).toHaveLength(
+      source("th, td").length,
+    );
+    for (const cell of source("th, td").toArray()) expect($.text()).toContain(source(cell).text());
+    expect(result.warnings.join(" ")).toMatch(/complex table/);
+    expect(result.warnings.join(" ")).not.toMatch(/headerless/);
+  });
+
   it("keeps captions, inline formatting, links, and a footnote after a normal table", () => {
     const result = toSafeMarkdown(
       `<table summary="Applies to the example intake."><caption>Aid &amp; deadlines</caption>
@@ -297,6 +453,7 @@ describe("toSafeMarkdown tables", () => {
     ]) {
       expect($.text()).toContain(text);
     }
+    expect($("table")).toHaveLength(0);
     expect(result.markdown).toContain("rowspan 2");
     expect(result.markdown).toContain("colspan 2");
     expect(result.markdown).toContain("colspan 3");
@@ -346,10 +503,12 @@ describe("toSafeMarkdown tables", () => {
 
   it("does not corrupt pipes in inline code when a table needs a fallback", () => {
     const result = toSafeMarkdown(
-      `<table><tr><td><code>a | b \\| c</code></td><td>Explanation remains.</td></tr></table>`,
+      `<table><tr><th>Code<br>example</th><th>Meaning</th></tr><tr><td><code>a | b \\| c</code></td><td>Explanation remains.</td></tr></table>`,
       SOURCE,
     );
     const $ = rendered(result);
+    expect($("table")).toHaveLength(0);
+    expect($("br")).toHaveLength(1);
     expect($("code").text()).toBe("a | b \\| c");
     expect($.text()).toContain("Explanation remains.");
     expect(result.warnings.join(" ")).toMatch(/complex table/);
@@ -374,6 +533,8 @@ describe("toSafeMarkdown tables", () => {
       expect($.text().split(text)).toHaveLength(2);
     }
     expect($("table")).toHaveLength(1);
+    expect($("li table")).toHaveLength(1);
+    expect(result.warnings.join(" ")).toMatch(/complex table/);
   });
 
   it("labels large and open-ended spans without expanding or dropping source cells", () => {
