@@ -2474,6 +2474,22 @@
     "document_count": 182
   },
   {
+    "hostname": "span221.arts.ubc.ca",
+    "title": "span221.arts.ubc.ca",
+    "homepage_url": "https://span221.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:14:26.463Z",
+    "homepage_sha256": "260eb65b4cd5dc258f49f97baa3d8eddaf6810442d7ff07b5eadce73182a27ad",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/span221.arts.ubc.ca",
+        "document_count": 717
+      }
+    ],
+    "document_count": 717
+  },
+  {
     "hostname": "speaking.arts.ubc.ca",
     "title": "speaking.arts.ubc.ca",
     "homepage_url": "https://speaking.arts.ubc.ca/",

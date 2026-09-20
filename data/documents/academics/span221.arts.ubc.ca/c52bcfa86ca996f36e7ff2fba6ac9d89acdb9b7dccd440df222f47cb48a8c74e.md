@@ -1,0 +1,103 @@
+---
+{
+  "format_version": 3,
+  "id": "documents:official-web:01a837679e1d920a6bcef6ea",
+  "hostname": "span221.arts.ubc.ca",
+  "title": "Blogs",
+  "source_url": "https://span221.arts.ubc.ca/category/blogs/page/37/",
+  "retrieved_at": "2026-09-20T15:50:25.882Z",
+  "source_modified_at": null,
+  "snapshot_sha256": "5b4b28da3c374f57ed64db2d808703c01fd3a623fc32d039095dcb638d6af5c0",
+  "input_sha256": "50f8cbf73d46d3f33978c2c62921dcdcde82a3ead65ead7481570c963999d09f",
+  "body_sha256": "2b813a7b2657cd798a88104e6cb1c040c0325078816971bee77fbed91a3ae687",
+  "content_sha256": "ebafd4121c71cc4f144d0ffb80012b6f8456df6c349d8ab2cee3386b0617aec8",
+  "warnings": [],
+  "alternate_urls": [],
+  "producer": {
+    "inputs_sha256": "899aa4c0e1c6bff3bb9635099479d0010884625a63939ccc02bf18a34acc320d",
+    "runtime": {
+      "node": "26.8.1",
+      "icu": "78.3",
+      "unicode": "17.0",
+      "platform": "linux",
+      "arch": "x64"
+    }
+  },
+  "category": "academics",
+  "routing": {
+    "rule_id": "host-purpose",
+    "policy_sha256": "786e608430d17e3e1d023a435f0f581cb4131bf7bce665d03b1e1045fbec532c"
+  }
+}
+---
+## [Analisis de “Las medias rojas”](https://blogs.ubc.ca/abbymanrellspan221/2021/03/02/analisis-de-las-medias-rojas/)
+
+Para ser honesto, tuve que leer esta historia varias veces antes de entenderla de verdad\. Sin embargo, una vez que entendí de qué estaba hablando exactamente la historia y su significado, la encontré a la vez fascinante, terrible y triste\. Esta historia explora la diferencia entre los sueños y la realidad, cómo no se alinean \[…\]
+
+Posted in [Blogs](https://span221.arts.ubc.ca/category/blogs/), [Pardo Bazán](https://span221.arts.ubc.ca/category/autores/pardo-bazan/) \| Tagged with
+
+## [Análisis de “Las Medias Rojas”](https://blogs.ubc.ca/jimenadelvalle/2021/03/02/analisis-de-las-medias-rojas/)
+
+El texto es bastante largo y complicado de entender, pero a la vez lleva una narrativa muy simple y sencilla\. El final de la historia no me la esperaba y me pareció muy interesante como cambia la narrativa sobre el protagonista ya que de mi perspectiva, la protagonista sueña con escaparse de la sociedad machista \[…\]
+
+Posted in [Blogs](https://span221.arts.ubc.ca/category/blogs/), [Pardo Bazán](https://span221.arts.ubc.ca/category/autores/pardo-bazan/) \| Tagged with [Emilia Pardo Bazán](https://span221.arts.ubc.ca/tag/emilia-pardo-bazan/)
+
+## [“Las medias rojas” por Emilia Pardo Bazán](https://blogs.ubc.ca/larayacoubspan221/2021/03/02/las-medias-rojas-por-emilia-pardo-bazan/)
+
+Esta historia de Bazán fue un poco difícil de entender la primera vez que la leí, pero me pareció muy interesante\. Las medias rojas son una parte importante de la historia, primero se introducen en el título, y luego en la historia nos damos cuenta de que representan la esperanza de un futuro mejor y \[…\]
+
+Posted in [Blogs](https://span221.arts.ubc.ca/category/blogs/) \| Tagged with
+
+## [Las medias rojas](https://blogs.ubc.ca/span221isfun/2021/03/02/las-medias-rojas/)
+
+En mi opinion, la historia es una tragedia\. La historia es sobre un padre que trata a la hija, Ildara, violentamente para un par de calcetines\. Estaba muy confundido por qué el padre la trataría tan mal por un par de calcetines\. Más adelante en la historia, me doy cuenta de que las medias rojas \[…\]
+
+Posted in [Blogs](https://span221.arts.ubc.ca/category/blogs/), [Pardo Bazán](https://span221.arts.ubc.ca/category/autores/pardo-bazan/) \| Tagged with [indefenso](https://span221.arts.ubc.ca/tag/indefenso/), [la brutalidad](https://span221.arts.ubc.ca/tag/la-brutalidad/), [la esperanza](https://span221.arts.ubc.ca/tag/la-esperanza/)
+
+## [“Las medias rojas” de Emilia Pardo Bazán](https://miguel577094172.wordpress.com/2021/03/03/las-medias-rojas-de-emilia-pardo-bazan/)
+
+“Las medias rojas” de Emilia Pardo Bazán Este relato me pareció muy interesante al momento de leerlo ya que, aunque la autora utilice un vocabulario complicado, el mensaje final es muy real y triste a la vez\. En el inicio del texto se puede ver el contexto en el que vive la protagonista de esta[Sigue leyendo ““Las medias rojas” de Emilia Pardo Bazán”](https://miguel577094172.wordpress.com/2021/03/03/las-medias-rojas-de-emilia-pardo-bazan/)
+
+Posted in [Blogs](https://span221.arts.ubc.ca/category/blogs/) \| Tagged with
+
+## [“Las medias rojas” por Emilia Pardo Bazán](http://blogs.ubc.ca/larayacoubspan221/2021/03/02/las-medias-rojas-por-emilia-pardo-bazan/)
+
+Esta historia de Bazán fue un poco difícil de entender la primera vez que la leí, pero me pareció muy interesante\. Las medias rojas son una parte importante de la historia, primero se introducen en el título, y luego en la historia nos damos cuenta de que representan la esperanza de un futuro mejor y \[…\]
+
+Posted in [Blogs](https://span221.arts.ubc.ca/category/blogs/), [Pardo Bazán](https://span221.arts.ubc.ca/category/autores/pardo-bazan/) \| Tagged with [Bazan](https://span221.arts.ubc.ca/tag/bazan/), [LasMediasRojas](https://span221.arts.ubc.ca/tag/lasmediasrojas/)
+
+## [Emilia Pardo Bazán “Las medias rojas”](https://blogs.ubc.ca/dannasblog/2021/03/02/emilia-pardo-bazan-las-medias-rojas/)
+
+Esta historia me pareció muy interesante cuando la leí\. Al principio, se sentía un poco por todas partes, pero, a medida que la historia continúa, vemos la vida de Ildara y la importancia de su carácter\. Leyendo el título y luego leyendo la historia, es bastante obvio que el símbolo principal de la historia son \[…\]
+
+Posted in [Blogs](https://span221.arts.ubc.ca/category/blogs/) \| Tagged with
+
+## [“Las Medias Rojas”](https://blogs.ubc.ca/maxspan221/2021/03/02/las-medias-rojas/)
+
+“Las Medias Rojas” tiene muchas temas incluyendo feminismo y inmigración\. De una ángulo feminismo cuenta una historia de las dificultades y  la opresión mujeres enfrentan\. De una ángulo de inmigración cuenta las promesas y las barreras de inmigración al nuevo mundo\. En este historia una chica se llama Ildara es golpeado por su padre después \[…\]
+
+Posted in [Blogs](https://span221.arts.ubc.ca/category/blogs/), [Pardo Bazán](https://span221.arts.ubc.ca/category/autores/pardo-bazan/) \| Tagged with [Las Medias Rojas](https://span221.arts.ubc.ca/tag/las-medias-rojas/)
+
+## [Emilia Pardo Bazán “Las medias rojas”](http://blogs.ubc.ca/dannasblog/2021/03/02/emilia-pardo-bazan-las-medias-rojas/)
+
+Esta historia me pareció muy interesante cuando la leí\. Al principio, se sentía un poco por todas partes, pero, a medida que la historia continúa, vemos la vida de Ildara y la importancia de su carácter\. Leyendo el título y luego leyendo la historia, es bastante obvio que el símbolo principal de la historia son \[…\]
+
+Posted in [Blogs](https://span221.arts.ubc.ca/category/blogs/), [Pardo Bazán](https://span221.arts.ubc.ca/category/autores/pardo-bazan/) \| Tagged with [Emilia Pardo Bazán](https://span221.arts.ubc.ca/tag/emilia-pardo-bazan/), [injusticia social](https://span221.arts.ubc.ca/tag/injusticia-social/), [mujeres](https://span221.arts.ubc.ca/tag/mujeres/), [naturalismo](https://span221.arts.ubc.ca/tag/naturalismo/), [realismo](https://span221.arts.ubc.ca/tag/realismo/)
+
+## [“Continuidad de los parques” de Julio Cortázar](https://blogs.ubc.ca/magaleeb221/2021/03/02/continuidad-de-los-parques-de-julio-cortazar/)
+
+Para mi blog de esta semana voy a escribir sobre el cuento que tengo que analisar para mi proyecto\! La primera cosa me gusta de este cuento es como puede presentar dos narrativas, que interesantemente se unen despues, a la misma ves en un tan poco texto\. En menos que una pagina de texto estamos …
+
+[Continue reading ““Continuidad de los parques” de Julio Cortázar”](https://blogs.ubc.ca/magaleeb221/2021/03/02/continuidad-de-los-parques-de-julio-cortazar/)
+
+Posted in [Blogs](https://span221.arts.ubc.ca/category/blogs/) \| Tagged with
+
+-   [Previous](https://span221.arts.ubc.ca/category/blogs/page/36/)
+-   [1](https://span221.arts.ubc.ca/category/blogs/)
+-   …
+-   [36](https://span221.arts.ubc.ca/category/blogs/page/36/)
+-   37
+-   [38](https://span221.arts.ubc.ca/category/blogs/page/38/)
+-   …
+-   [103](https://span221.arts.ubc.ca/category/blogs/page/103/)
+-   [Next](https://span221.arts.ubc.ca/category/blogs/page/38/)
