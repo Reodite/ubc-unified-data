@@ -1,6 +1,6 @@
 ---
 {
-  "format_version": 1,
+  "format_version": 3,
   "id": "documents:official-web:7cbcf6f6dcbbcf37a4dca33d",
   "hostname": "piee-lab.landfood.ubc.ca",
   "title": "Anthonomus rubi and associated parasitoids",
@@ -24,6 +24,11 @@
       "platform": "linux",
       "arch": "x64"
     }
+  },
+  "category": "research",
+  "routing": {
+    "rule_id": "research-output-sections",
+    "policy_sha256": "7b1b3f006a793abb3aba3bc93f7068c881f1720ab25491ec624cd54b910fe4e9"
   }
 }
 ---
