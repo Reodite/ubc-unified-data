@@ -972,6 +972,37 @@
     "document_count": 17
   },
   {
+    "hostname": "midwifery.ubc.ca",
+    "title": "midwifery.ubc.ca",
+    "homepage_url": "https://midwifery.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T19:42:30.371Z",
+    "homepage_sha256": "a915136881d970144c48015900fed04c632be581496dbc911987be5d7200ff0b",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/midwifery.ubc.ca",
+        "document_count": 471
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/midwifery.ubc.ca",
+        "document_count": 13
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/midwifery.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/midwifery.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 490
+  },
+  {
     "hostname": "mint.forestry.ubc.ca",
     "title": "mint.forestry.ubc.ca",
     "homepage_url": "https://mint.forestry.ubc.ca/",

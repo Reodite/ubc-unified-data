@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "hostname": "midwifery.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w4 first homepage review",
+    "rationale": "Official UBC Midwifery academic program with Lower Mainland training, admissions, clinical teaching and student guidance. Academic content is the primary purpose, with explicit news, personal spotlights and student-resource sections receiving separate categories.",
+    "evidence": [
+      "https://midwifery.ubc.ca/ | a915136881d970144c48015900fed04c632be581496dbc911987be5d7200ff0b | Training Sites in the Lower Mainland; Applying to the Program; RN Advanced Placement; Available to RNs and NPs.",
+      "https://midwifery.ubc.ca/ | a915136881d970144c48015900fed04c632be581496dbc911987be5d7200ff0b | News & Events; UBC Midwifery Leadership Transition; UBC Midwifery at ICM 2026: A Global Gathering.",
+      "https://midwifery.ubc.ca/ | a915136881d970144c48015900fed04c632be581496dbc911987be5d7200ff0b | Spotlight on Student Excellence: Violet Ignace Recipient of the Amy E. Sauder and Jean Craig Smith Scholarships.",
+      "https://midwifery.ubc.ca/ | a915136881d970144c48015900fed04c632be581496dbc911987be5d7200ff0b | Student Resources; Policies and Procedures; Clinical Placement Information; Clinical Skills Teaching."
+    ]
+  },
+  "rules": [
+    {
+      "id": "personal-spotlights",
+      "category": "stories",
+      "rationale": "The homepage features a named student's personal achievement story under Spotlight on Student Excellence; these are narratives rather than available scholarship offers.",
+      "title_pattern": "^(Spotlight\\b|Student (Story|Stories|Spotlight)\\b|Alumni (Story|Stories|Spotlight)\\b)"
+    },
+    {
+      "id": "news-section",
+      "category": "news",
+      "rationale": "The homepage explicitly groups institutional updates under News and Events.",
+      "path_pattern": "^/(news|news-events|news-and-events)(/|$)"
+    },
+    {
+      "id": "named-news-updates",
+      "category": "news",
+      "rationale": "Homepage news titles announce program leadership changes, report congress participation and mark community observances.",
+      "title_pattern": "^(News\\b|UBC Midwifery Leadership Transition\\b|UBC Midwifery at ICM\\b|Celebrating\\b)"
+    },
+    {
+      "id": "student-guidance",
+      "category": "support",
+      "rationale": "Explicit student resources and policies provide operational guidance for existing students and the program community.",
+      "title_pattern": "^(Student Resources\\b|Policies and Procedures\\b|Acknowledgments? (and|&) Statements?\\b)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "UBC Midwifery describes an academic degree program, admissions and advanced placement, clinical education and preceptor training."
+  }
+}
