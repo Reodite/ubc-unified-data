@@ -1715,6 +1715,22 @@
     "document_count": 80
   },
   {
+    "hostname": "pop-culture.arts.ubc.ca",
+    "title": "pop-culture.arts.ubc.ca",
+    "homepage_url": "https://pop-culture.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:37:56.151Z",
+    "homepage_sha256": "703959b691afd8df052ae7d87d191f9c4c64d50ea3d1787ba282e1e47eee3699",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/pop-culture.arts.ubc.ca",
+        "document_count": 358
+      }
+    ],
+    "document_count": 358
+  },
+  {
     "hostname": "postgrad.familypractice.ubc.ca",
     "title": "postgrad.familypractice.ubc.ca",
     "homepage_url": "https://postgrad.familypractice.ubc.ca/",

@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "hostname": "pop-culture.arts.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w4 first homepage review",
+    "rationale": "The official UBC Pop Culture Cluster explicitly supports academic and public-facing scholarship and identifies its location as UBC Vancouver. The homepage supplies useful research-project descriptions, public events and a fellowship call, rather than personal, duplicate or authentication-only content.",
+    "evidence": [
+      "https://pop-culture.arts.ubc.ca/ | 703959b691afd8df052ae7d87d191f9c4c64d50ea3d1787ba282e1e47eee3699 | The Pop Culture Cluster supports academic and public-facing scholarship on popular media and popular culture at UBC.",
+      "https://pop-culture.arts.ubc.ca/ | 703959b691afd8df052ae7d87d191f9c4c64d50ea3d1787ba282e1e47eee3699 | The UBC Pop Culture Cluster is located at UBC Vancouver",
+      "https://pop-culture.arts.ubc.ca/ | 703959b691afd8df052ae7d87d191f9c4c64d50ea3d1787ba282e1e47eee3699 | Call for Critical Play Fellows"
+    ]
+  },
+  "rules": [
+    {
+      "id": "critical-play-fellowship-call",
+      "category": "opportunities",
+      "rationale": "The homepage advertises a fellowship application call for graduate students, faculty, game designers, educators and community members.",
+      "title_pattern": "^Call for Critical Play Fellows\\b"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "research",
+    "rationale": "The cluster's stated purpose is academic and public-facing scholarship on popular media and culture, illustrated by ongoing collaborative research projects."
+  }
+}
