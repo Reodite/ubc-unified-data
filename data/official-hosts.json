@@ -1264,7 +1264,23 @@
     "homepage_retrieved_at": "2026-09-18T12:31:55.285Z",
     "homepage_sha256": "f88dfe19cd8851343f19cc86dd5df9444a7429abd1200e5238a55cc807672d0a",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/physoly.phas.ubc.ca",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/physoly.phas.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/physoly.phas.ubc.ca",
+        "document_count": 33
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/physoly.phas.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 35
   },
   {
