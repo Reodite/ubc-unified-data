@@ -1837,7 +1837,13 @@
     "homepage_retrieved_at": "2026-09-18T13:21:48.174Z",
     "homepage_sha256": "a1edbff0d24e658a2c2526d86422354ad60f36bc866a21bdb366f054fae65970",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/stratplan-in-action.med.ubc.ca",
+    "document_roots": [
+      {
+        "category": "stories",
+        "path": "data/documents/stories/stratplan-in-action.med.ubc.ca",
+        "document_count": 41
+      }
+    ],
     "document_count": 41
   },
   {
