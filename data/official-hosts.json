@@ -772,7 +772,13 @@
     "homepage_retrieved_at": "2026-09-18T11:52:14.350Z",
     "homepage_sha256": "82d0bdd914ef82d5b3e62d248c1a28b23773892ce394198ea60f2594351c6cfb",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/meg.lsi.ubc.ca",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/meg.lsi.ubc.ca",
+        "document_count": 44
+      }
+    ],
     "document_count": 44
   },
   {
