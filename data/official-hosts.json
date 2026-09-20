@@ -1737,7 +1737,13 @@
     "homepage_retrieved_at": "2026-09-18T13:14:14.307Z",
     "homepage_sha256": "975188d6f974cfd3d555b4febe09c4871e38933731b8bbb7c7e54cfc423cd4dd",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/sogi.educ.ubc.ca",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/sogi.educ.ubc.ca",
+        "document_count": 18
+      }
+    ],
     "document_count": 18
   },
   {
