@@ -2401,6 +2401,22 @@
     "document_count": 141
   },
   {
+    "hostname": "strategicplan.apsc.ubc.ca",
+    "title": "strategicplan.apsc.ubc.ca",
+    "homepage_url": "https://strategicplan.apsc.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:20:17.828Z",
+    "homepage_sha256": "b702e39fde28c7277022bdf50e13ecb94996bed8cd8c0cba8cf80e553e4f8b08",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/strategicplan.apsc.ubc.ca",
+        "document_count": 52
+      }
+    ],
+    "document_count": 52
+  },
+  {
     "hostname": "strategicplan.library.ubc.ca",
     "title": "strategicplan.library.ubc.ca",
     "homepage_url": "https://strategicplan.library.ubc.ca/",
