@@ -1165,7 +1165,13 @@
     "homepage_retrieved_at": "2026-09-18T12:27:25.916Z",
     "homepage_sha256": "81950c0cfb95083d7d902bc39a2fc662ba2fd00fe3947b249214c1537d0dba6c",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/pathwaysmagazine.med.ubc.ca",
+    "document_roots": [
+      {
+        "category": "stories",
+        "path": "data/documents/stories/pathwaysmagazine.med.ubc.ca",
+        "document_count": 82
+      }
+    ],
     "document_count": 82
   },
   {
