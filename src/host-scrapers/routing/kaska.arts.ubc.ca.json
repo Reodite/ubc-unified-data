@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "hostname": "kaska.arts.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w2 first homepage review",
+    "rationale": "This official UBC Arts language-learning site describes courses jointly sponsored by UBC and the Kaska First Nations and makes materials available to students, community members and other learners. The homepage identifies Vancouver campus and a broad public learning purpose, not an exclusively Okanagan service. Map instructional sections to academics, narrative and community sections to stories, and contact to support.",
+    "evidence": [
+      "https://kaska.arts.ubc.ca/ | 012c3a1220dd788d997ac2589b8e965cecf02bc1d14047cdd9bbbe83c94bdba8 | The University of British Columbia; Vancouver campus; Kaska language courses jointly sponsored by the First Nations Endangered Languages Program at the University of British Columbia and the Kaska First Nations",
+      "https://kaska.arts.ubc.ca/ | 012c3a1220dd788d997ac2589b8e965cecf02bc1d14047cdd9bbbe83c94bdba8 | Lessons at /kaska-lessons/; Kaska Sounds at /kaska-sounds/; Learn Sounds; Short Booklets with Sound; Student Assessment Videos",
+      "https://kaska.arts.ubc.ca/ | 012c3a1220dd788d997ac2589b8e965cecf02bc1d14047cdd9bbbe83c94bdba8 | Videos: Short Commentaries by Elders at /videos-home/short-commentaries-by-elders/; Narratives at /videos-home/videos/; Stories in the Dene Gudeji Book; Conversations between Fluent Speakers; Robert Munsch Books",
+      "https://kaska.arts.ubc.ca/ | 012c3a1220dd788d997ac2589b8e965cecf02bc1d14047cdd9bbbe83c94bdba8 | Photos at /photos/ includes Kaska Language Course Scrapbook and Recording Kaska Conversations; Contributors at /site-contributors/; Contact at /contact/"
+    ]
+  },
+  "rules": [
+    {
+      "id": "contact-support",
+      "category": "support",
+      "rationale": "The homepage Contact section provides assistance accessing the language-learning project.",
+      "path_pattern": "^/contact(?:/|$)"
+    },
+    {
+      "id": "narratives-and-community",
+      "category": "stories",
+      "rationale": "Homepage navigation explicitly identifies elders' commentaries, narratives, stories, conversations, books and a community hockey event as distinct sections.",
+      "path_pattern": "^/videos-home/(?:short-commentaries-by-elders|videos|stories-in-the-dene-gudeji-book|conversations-between-fluent-speakers|robert-munsch-books|nht-2025-hockey)(?:/|$)"
+    },
+    {
+      "id": "project-people-and-scrapbooks",
+      "category": "stories",
+      "rationale": "Homepage photo scrapbooks and contributor profiles document people and community participation in the project.",
+      "path_pattern": "^/(?:photos|site-contributors)(?:/|$)"
+    },
+    {
+      "id": "language-instruction",
+      "category": "academics",
+      "rationale": "The homepage lessons, sounds, instructional booklets and student assessment videos are course and language-learning materials.",
+      "path_pattern": "^/(?:kaska-lessons|kaska-sounds|videos-home)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "The stated purpose is to house Kaska language course materials for UBC students, Kaska community members and other learners."
+  }
+}
