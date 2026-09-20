@@ -2379,7 +2379,18 @@
     "homepage_retrieved_at": "2026-09-18T14:00:37.874Z",
     "homepage_sha256": "a4e8d2e6ab2ed16af696550f7e0fb37f2cacf72b174a1b7033b8e724dff41816",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/www.afrf.forestry.ubc.ca",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/www.afrf.forestry.ubc.ca",
+        "document_count": 25
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/www.afrf.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 26
   },
   {
