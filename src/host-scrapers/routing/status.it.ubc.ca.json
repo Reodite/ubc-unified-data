@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "hostname": "status.it.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e / independent d1fdd672; first category assignment from retained homepage and inventory, before bounded successor admission",
+    "rationale": "The official IT enterprise status site explains service impacts, software requirements, planned maintenance and support contacts. These are operational support resources across Vancouver and Okanagan, not a general newsroom.",
+    "evidence": [
+      "https://status.it.ubc.ca/ | 7a8a44d3d0f898a36fa8aef351c365599631a01c1d631306df9e7929e2426529 | Enterprise Services Status Page: FGST synchronization issue, supported Office versions, UBC Student Email and Vancouver maintenance.",
+      "Frozen seed includes /history and incident-identifier routes under /incidents/ with operational explanations."
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "it-service-guidance",
+    "category": "support",
+    "rationale": "Service-status explanations and maintenance notices provide practical IT support."
+  }
+}

@@ -82,6 +82,17 @@ denied maps and unexpected successful HTML maps still block completion.
 A trackback link is a non-document action only when observed comment metadata
 identifies that page's own endpoint. Such actions are not requested; ordinary
 pages discussing trackbacks and unproved robots-denied URLs remain strict.
+
+Feed and CAPTCHA-refresh exclusions also require observed HTML evidence. Atom/RSS
+feeds need matching alternate-feed metadata in the HTML head and a matching file
+suffix. An image-CAPTCHA refresh link needs the exact form identifier and challenge
+controls inside its own POST form. Recognized controls are not requested; forms
+are not submitted and challenges are not solved. Public prose and ordinary
+privacy/help links remain eligible. Names alone, query variants and normalized or historical markup
+do not establish these roles. These additional exclusions cannot override
+homepage identities, CMS/XML-advertised documents, required views or their base
+pages, PDFs, retained sources or already emitted text and aliases.
+
 Existing specialized modules retain their narrower policies
 and previously published bytes. Their recognized empty containers do not fall
 back to surrounding pages.

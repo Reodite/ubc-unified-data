@@ -23,6 +23,7 @@ import {
   type SearchDocument,
 } from "./contracts.ts";
 import { htmlBaseUrl } from "./html-base.ts";
+import { discoverMachineLinks } from "./machine-links.ts";
 import { parseSitemap } from "./sitemap.ts";
 import { hostUrl, inventoryUrl, nonDocumentInventoryUrl, pageExclusion, UNSUPPORTED_DOCUMENT } from "./urls.ts";
 
@@ -238,8 +239,6 @@ export async function collectRecordedHost(
     scraper.adapter.sitemaps,
     exactHost,
   );
-  // Register homepage actions before CMS records or the frozen frontier can dispatch them.
-  if (exactHost) pageLinks(archive.homepage, hostname, exactHost, nonDocuments);
   const homepageIdentities = new Set([
     `https://${hostname}/`,
     hostUrl(archive.homepage.snapshot.requested_url, hostname),
@@ -254,12 +253,39 @@ export async function collectRecordedHost(
     (scraper.adapter.views ?? []).flatMap((view) => view.values.map((value) => publicViewUrl(hostname, view, value))),
   );
   const advertisedPages = new Set([...cmsPages, ...seedPages, ...requiredViews]);
+  const viewBases = new Set((scraper.adapter.views ?? []).map((view) => hostUrl(view.path, hostname)));
+  const retainedSources = new Set(archive.retained.map((document) => document.source_url));
+  const emittedIdentities = new Set<string>();
+  const machineLinks = new Set<string>();
   const excludedDiscovery = (url: string) => {
-    if (!nonDocuments.has(url)) return false;
-    if (homepageIdentities.has(url) || requiredViews.has(url))
+    const machineLink = machineLinks.has(url);
+    if (!nonDocuments.has(url) && !machineLink) return false;
+    if (
+      homepageIdentities.has(url) ||
+      requiredViews.has(url) ||
+      (machineLink &&
+        (advertisedPages.has(url) ||
+          viewBases.has(url) ||
+          retainedSources.has(url) ||
+          emittedIdentities.has(url) ||
+          isPdfUrl(url)))
+    )
       throw new Error(`Non-document discovery conflicts with a required page: ${url}`);
     return true;
   };
+  const observedPageLinks = (observation: Observation) => {
+    if (exactHost) {
+      for (const url of discoverMachineLinks(observation.snapshot.body, hostname, observation.snapshot.url)) {
+        const exclusion = scraper.excludeUrl ? scraper.excludeUrl(url) : pageExclusion(url, hostname);
+        if (exclusion !== null) continue;
+        machineLinks.add(url);
+        excludedDiscovery(url);
+      }
+    }
+    return pageLinks(observation, hostname, exactHost, nonDocuments);
+  };
+  // Register homepage roles before CMS records or the frozen frontier can dispatch them.
+  if (exactHost) observedPageLinks(archive.homepage);
   const queue: string[] = [];
   const queued = new Set<string>();
   const add = (value: string, linked = false) => {
@@ -324,6 +350,14 @@ export async function collectRecordedHost(
   const aliases = new Map<string, Set<string>>();
   const keep = (document: SearchDocument, observation: Observation, requested: string, physicalAlias = true) => {
     const sourceUrl = document.source_url;
+    for (const identity of [
+      sourceUrl,
+      hostUrl(observation.snapshot.requested_url, hostname),
+      ...(physicalAlias ? [requested] : []),
+    ]) {
+      if (machineLinks.has(identity)) throw new Error(`Machine-link evidence conflicts with emitted text: ${identity}`);
+      emittedIdentities.add(identity);
+    }
     const observedAliases = aliases.get(sourceUrl) ?? new Set<string>();
     if (physicalAlias) observedAliases.add(requested);
     observedAliases.add(hostUrl(observation.snapshot.requested_url, hostname));
@@ -433,7 +467,7 @@ export async function collectRecordedHost(
       }
       if (observation.snapshot.status !== 200 || !/html/i.test(observation.snapshot.headers["content-type"] ?? ""))
         throw new Error(`Missing complete HTML for ${requested}`);
-      const links = pageLinks(observation, hostname, exactHost, nonDocuments);
+      const links = observedPageLinks(observation);
       for (const url of discoverPublicViews(scraper, observation.snapshot)) {
         advertisedPages.add(url);
         add(url);

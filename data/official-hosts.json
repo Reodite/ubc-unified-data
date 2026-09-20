@@ -2553,6 +2553,22 @@
     "document_count": 36
   },
   {
+    "hostname": "status.it.ubc.ca",
+    "title": "status.it.ubc.ca",
+    "homepage_url": "https://status.it.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:18:56.806Z",
+    "homepage_sha256": "7a8a44d3d0f898a36fa8aef351c365599631a01c1d631306df9e7929e2426529",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/status.it.ubc.ca",
+        "document_count": 51
+      }
+    ],
+    "document_count": 51
+  },
+  {
     "hostname": "stonecentre.economics.ubc.ca",
     "title": "stonecentre.economics.ubc.ca",
     "homepage_url": "https://stonecentre.economics.ubc.ca/",
