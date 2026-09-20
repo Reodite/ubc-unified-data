@@ -600,7 +600,23 @@
     "homepage_retrieved_at": "2026-09-18T11:25:16.506Z",
     "homepage_sha256": "a4f12165d787f53b674534fac75f3edc13eaacd6380ec23333572927d840924c",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/langelab.med.ubc.ca",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/langelab.med.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/langelab.med.ubc.ca",
+        "document_count": 9
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/langelab.med.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 11
   },
   {
