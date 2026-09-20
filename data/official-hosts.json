@@ -1774,7 +1774,18 @@
     "homepage_retrieved_at": "2026-09-18T13:15:56.677Z",
     "homepage_sha256": "f640c8daae0f428ec710244022bf814a6a24da35861e71b71d547d23607434fd",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/sportmedicine.med.ubc.ca",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/sportmedicine.med.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/sportmedicine.med.ubc.ca",
+        "document_count": 66
+      }
+    ],
     "document_count": 67
   },
   {
