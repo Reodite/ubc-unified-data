@@ -573,6 +573,27 @@
     "document_count": 10
   },
   {
+    "hostname": "lam.library.ubc.ca",
+    "title": "lam.library.ubc.ca",
+    "homepage_url": "https://lam.library.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:24:46.398Z",
+    "homepage_sha256": "d200fbb4e8eeda89861d842d4ebcff8c6b068b4c789ab1fe2e735aaaf06929b6",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/lam.library.ubc.ca",
+        "document_count": 642
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/lam.library.ubc.ca",
+        "document_count": 157
+      }
+    ],
+    "document_count": 799
+  },
+  {
     "hostname": "landone.ubc.ca",
     "title": "landone.ubc.ca",
     "homepage_url": "https://landone.ubc.ca/",
