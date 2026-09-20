@@ -106,7 +106,23 @@
     "homepage_retrieved_at": "2026-09-18T06:26:26.105Z",
     "homepage_sha256": "777c001e5a5ec1915d92f44161c0c6b3a6b4d5a84677f6e3c23bce4daf25bca5",
     "scope": "Public Co-op program information, employer and student guidance, FAQs, announcements, testimonials and posting instructions.",
-    "document_root": "data/documents/coop.ubc.ca",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/coop.ubc.ca",
+        "document_count": 30
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/coop.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/coop.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 32
   },
   {
