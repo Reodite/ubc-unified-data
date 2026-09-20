@@ -998,7 +998,13 @@
     "homepage_retrieved_at": "2026-09-18T12:11:19.084Z",
     "homepage_sha256": "a87dde86cac30f12d612adac001f57921004e6412021da2f38587b54a03fa657",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/nvd.ubc.ca",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/nvd.ubc.ca",
+        "document_count": 6
+      }
+    ],
     "document_count": 6
   },
   {
