@@ -1238,6 +1238,22 @@
     "document_count": 224
   },
   {
+    "hostname": "nitep.educ.ubc.ca",
+    "title": "nitep.educ.ubc.ca",
+    "homepage_url": "https://nitep.educ.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:09:31.105Z",
+    "homepage_sha256": "e2946f899e330c4948cfb2ea6ff8c0a14d3a070cbe270c720a82321214359d2b",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/nitep.educ.ubc.ca",
+        "document_count": 273
+      }
+    ],
+    "document_count": 273
+  },
+  {
     "hostname": "nvd.ubc.ca",
     "title": "nvd.ubc.ca",
     "homepage_url": "https://nvd.ubc.ca/",
