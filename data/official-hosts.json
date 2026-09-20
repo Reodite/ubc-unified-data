@@ -248,7 +248,18 @@
     "homepage_retrieved_at": "2026-09-18T11:12:17.283Z",
     "homepage_sha256": "3bdcf2f87a137c9aded2d665aa1bf752656d98b45693add7e7380f65ce0da0ab",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/imaging.lsi.ubc.ca",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/imaging.lsi.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/imaging.lsi.ubc.ca",
+        "document_count": 62
+      }
+    ],
     "document_count": 63
   },
   {
