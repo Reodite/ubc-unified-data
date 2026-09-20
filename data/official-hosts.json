@@ -1228,7 +1228,33 @@
     "homepage_retrieved_at": "2026-09-18T12:31:14.878Z",
     "homepage_sha256": "5bd77db73b4ae7a5cad444aea709c626293a07d5b08122735b7dd4676a0fae57",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/physiorefresh.med.ubc.ca",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/physiorefresh.med.ubc.ca",
+        "document_count": 12
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/physiorefresh.med.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/physiorefresh.med.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/physiorefresh.med.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/physiorefresh.med.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 16
   },
   {
