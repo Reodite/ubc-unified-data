@@ -788,7 +788,13 @@
     "homepage_retrieved_at": "2026-09-18T11:55:12.476Z",
     "homepage_sha256": "73476d15bf363ba08ea15fce9738ec9d301ca835ba743612e35ea2457c11874c",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/midterm.teacheval.ubc.ca",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/midterm.teacheval.ubc.ca",
+        "document_count": 17
+      }
+    ],
     "document_count": 17
   },
   {
