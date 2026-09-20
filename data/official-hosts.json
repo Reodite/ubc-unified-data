@@ -663,7 +663,23 @@
     "homepage_retrieved_at": "2026-09-18T11:35:42.014Z",
     "homepage_sha256": "8c2df84be426cf92b609385d3e08d56eb282973134f24ce3a7985041997ebb90",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/lindinitiative.ubc.ca",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/lindinitiative.ubc.ca",
+        "document_count": 13
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/lindinitiative.ubc.ca",
+        "document_count": 259
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/lindinitiative.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 273
   },
   {
