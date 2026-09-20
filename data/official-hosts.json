@@ -825,7 +825,13 @@
     "homepage_retrieved_at": "2026-09-18T11:58:17.467Z",
     "homepage_sha256": "733c1689169004bf476154d71ecd9480537270f27d485ada0a6ec90975c91f59",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/mistreatmenthelp.med.ubc.ca",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/mistreatmenthelp.med.ubc.ca",
+        "document_count": 12
+      }
+    ],
     "document_count": 12
   },
   {
