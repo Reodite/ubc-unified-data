@@ -6,7 +6,28 @@
     "homepage_retrieved_at": "2026-09-18T11:08:43.642Z",
     "homepage_sha256": "a23198efc5f6b7e48d7464acdb5063e07f3ac5d7b2e40fa80acc137057c5bc93",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/audiospeech.ubc.ca",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/audiospeech.ubc.ca",
+        "document_count": 487
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/audiospeech.ubc.ca",
+        "document_count": 99
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/audiospeech.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/audiospeech.ubc.ca",
+        "document_count": 23
+      }
+    ],
     "document_count": 610
   },
   {
