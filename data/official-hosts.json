@@ -2784,6 +2784,37 @@
     "document_count": 15
   },
   {
+    "hostname": "timeandplace.ubc.ca",
+    "title": "timeandplace.ubc.ca",
+    "homepage_url": "https://timeandplace.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T14:59:56.393Z",
+    "homepage_sha256": "e3671d730cce085d64890390ed405d2b794fd4515ffb6a03e2a3da087b55c63c",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/timeandplace.ubc.ca",
+        "document_count": 36
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/timeandplace.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/timeandplace.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/timeandplace.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 45
+  },
+  {
     "hostname": "treebiotech.forestry.ubc.ca",
     "title": "treebiotech.forestry.ubc.ca",
     "homepage_url": "https://treebiotech.forestry.ubc.ca/",

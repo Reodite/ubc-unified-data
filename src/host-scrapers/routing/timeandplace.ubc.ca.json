@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "hostname": "timeandplace.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w4 first homepage review",
+    "rationale": "The UBC-branded Time and Place project is a public teaching and learning resource on UBC histories and relations, with educator guidance, a timeline, project announcements and developer narratives. Its homepage discusses UBC on Musqueam territory, not an exclusively Okanagan service. A student assistant and developer stories are parts of the institutional TLEF-funded project rather than evidence of a personal/student-run site. Academic resources are the default, with observed stories, dated project news and contact support routed separately. No matching published host or observed historical alias was found.",
+    "evidence": [
+      "https://timeandplace.ubc.ca/ | e3671d730cce085d64890390ed405d2b794fd4515ffb6a03e2a3da087b55c63c | The primary purpose of the website remains to offer a starting point for learning and discussions about multi-layered histories at UBC.",
+      "https://timeandplace.ubc.ca/ | e3671d730cce085d64890390ed405d2b794fd4515ffb6a03e2a3da087b55c63c | The specific history of the land where UBC stands – the traditional, ancestral, and unceded Musqueam territory – is lacking in the timeline. The timeline currently includes some recent Musqueam-related events.",
+      "https://timeandplace.ubc.ca/ | e3671d730cce085d64890390ed405d2b794fd4515ffb6a03e2a3da087b55c63c | A timeline user guide for educators: The user guide helps educators in different teaching settings design, facilitate, and support a learning process using the timeline. Navigation links /faculty-resources/, /user-guide/, and /timeline/.",
+      "https://timeandplace.ubc.ca/ | e3671d730cce085d64890390ed405d2b794fd4515ffb6a03e2a3da087b55c63c | Developer’s Stories links /developers-stories/ and three named story pages; Contact Us links /about/contact-us/.",
+      "https://timeandplace.ubc.ca/ | e3671d730cce085d64890390ed405d2b794fd4515ffb6a03e2a3da087b55c63c | Time and Place at UBC receives TLEF project grant! links /2016/05/27/time-and-place-at-ubc-receives-tlef-project-grant/; TLEF update, and introducing Mathew Andreatta links /2016/10/26/tlef-update-and-introducing-mathew-andreatta-one-of-our-time-and-place-student-assistants/."
+    ]
+  },
+  "rules": [
+    {
+      "id": "developer-stories",
+      "category": "stories",
+      "rationale": "The homepage explicitly presents Developer’s Stories as narrative reflections distinct from the educational timeline.",
+      "path_pattern": "^/developers-stories(?:/|$)"
+    },
+    {
+      "id": "project-announcements",
+      "category": "news",
+      "rationale": "The homepage presents project-grant and team-update announcements under dated post paths.",
+      "path_pattern": "^/[0-9]{4}/[0-9]{2}/[0-9]{2}/"
+    },
+    {
+      "id": "contact-support",
+      "category": "support",
+      "rationale": "The observed Contact Us section provides a way to ask questions and suggest project improvements.",
+      "path_pattern": "^/about/contact-us(?:/|$)"
+    },
+    {
+      "id": "timeline-and-educator-resources",
+      "category": "academics",
+      "rationale": "The timeline, educator guide, and faculty resources are explicitly offered for teaching and learning.",
+      "path_pattern": "^/(?:timeline|faculty-resources|user-guide|how-to-use/user-guide)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "The institutional project provides a starting point for learning and discussions about multilayered histories at UBC."
+  }
+}
