@@ -715,7 +715,33 @@
     "homepage_retrieved_at": "2026-09-18T11:45:58.112Z",
     "homepage_sha256": "25209a87442a529ed45a355b01ebd0ed3763040317d3f0216348a312fd162843",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/mbim.ubc.ca",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/mbim.ubc.ca",
+        "document_count": 119
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/mbim.ubc.ca",
+        "document_count": 60
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/mbim.ubc.ca",
+        "document_count": 88
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/mbim.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/mbim.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 273
   },
   {
