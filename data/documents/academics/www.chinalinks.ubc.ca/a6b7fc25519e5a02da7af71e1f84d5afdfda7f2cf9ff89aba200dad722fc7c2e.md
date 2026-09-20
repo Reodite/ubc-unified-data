@@ -1,6 +1,6 @@
 ---
 {
-  "format_version": 1,
+  "format_version": 3,
   "id": "documents:official-web:47cf30d0e30bb31da1501c9f",
   "hostname": "www.chinalinks.ubc.ca",
   "title": "INSIGHTS",
@@ -24,6 +24,11 @@
       "platform": "linux",
       "arch": "x64"
     }
+  },
+  "category": "academics",
+  "routing": {
+    "rule_id": "host-purpose",
+    "policy_sha256": "1ff8449bd0f2f4f524288eb04f5a396cda43dc93dfd0a2e62c64d8d30ed36378"
   }
 }
 ---
