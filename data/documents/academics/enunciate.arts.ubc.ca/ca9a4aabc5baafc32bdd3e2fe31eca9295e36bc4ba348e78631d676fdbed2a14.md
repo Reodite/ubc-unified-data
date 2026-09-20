@@ -1,0 +1,65 @@
+---
+{
+  "format_version": 3,
+  "id": "documents:official-web:0278715d9ebf4b762a37103d",
+  "hostname": "enunciate.arts.ubc.ca",
+  "title": "p",
+  "source_url": "https://enunciate.arts.ubc.ca/p/",
+  "retrieved_at": "2026-09-20T14:55:57.037Z",
+  "source_modified_at": "2015-07-21T03:12:47Z",
+  "snapshot_sha256": "2921bdad9daf259c10e9bd88f12160c9bd183a3965308d58b84308dca9f87c90",
+  "input_sha256": "5b772c71de16e3dfce7478880bf16d07f81ba9fdffa549f397af4614ee417850",
+  "body_sha256": "0ff1bc413c78259c4ea10c410f366b4a442b7e4aa37ce31e32224b3c6c57ba6f",
+  "content_sha256": "0e516b1bbdbcb7410f038fbe5727c6c792dfb0409cea11299056421ec140f1e5",
+  "warnings": [
+    "A complex table is represented as row/cell lists; merged-cell spans are labelled.",
+    "A headerless table receives an empty Markdown header; all source rows remain data rows.",
+    "Embedded content is linked rather than embedded; consult the source for its full content."
+  ],
+  "alternate_urls": [],
+  "producer": {
+    "inputs_sha256": "1ca7c4b20ea10880076eb98a24bc3a591f8cddf3274a5f509a8f01562dd16a0c",
+    "runtime": {
+      "node": "26.8.1",
+      "icu": "78.3",
+      "unicode": "17.0",
+      "platform": "linux",
+      "arch": "x64"
+    }
+  },
+  "category": "academics",
+  "routing": {
+    "rule_id": "host-purpose",
+    "policy_sha256": "381a0c9fec5a0860aca60d76078141e44f3cc809c196d3096af23abaa875ebee"
+  }
+}
+---
+- **Row 1**
+
+  - **Cell 1:**
+  
+    # /p/
+  
+  - **Cell 2:**
+  
+    Voiceless Bilabial Plosive \(Lower\-case P\)
+
+[Go Back to Chart](https://enunciate.arts.ubc.ca/linguistics/consonants-pulmonic/ "&lt;i class=\"icon-arrow-left\"&gt;&lt;/i&gt; Go Back to Chart ")
+
+|  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- |
+| [Embedded audio \(view source\)](https://enunciate.arts.ubc.ca/p/)[Media source](https://vispro.sites.olt.ubc.ca/files/2014/12/Evan_IPA_pill.mp3?_=1)[https://vispro\.sites\.olt\.ubc\.ca/files/2014/12/Evan\_IPA\_pill\.mp3](https://vispro.sites.olt.ubc.ca/files/2014/12/Evan_IPA_pill.mp3) | **p**ill | [Embedded audio \(view source\)](https://enunciate.arts.ubc.ca/p/)[Media source](https://vispro.sites.olt.ubc.ca/files/2014/12/Evan_IPA_caper.mp3?_=2)[https://vispro\.sites\.olt\.ubc\.ca/files/2014/12/Evan\_IPA\_caper\.mp3](https://vispro.sites.olt.ubc.ca/files/2014/12/Evan_IPA_caper.mp3) | ca**p**er | [Embedded audio \(view source\)](https://enunciate.arts.ubc.ca/p/)[Media source](https://vispro.sites.olt.ubc.ca/files/2015/01/Evan_IPA_tap.mp3?_=3)[https://vispro\.sites\.olt\.ubc\.ca/files/2015/01/Evan\_IPA\_tap\.mp3](https://vispro.sites.olt.ubc.ca/files/2015/01/Evan_IPA_tap.mp3) | ta**p** |
+
+### Instructions:
+
+Articulator: Lower lip
+
+Point of Articulation: Upper lip
+
+Manner of Articulation: \(Oral\) Stop – A complete closure is made between the articulator and the point of articulation\. Since the oral passage is blocked off, air pressure builds up in the mouth\. When the closure is stopped, an abrupt release occurs\.
+
+Voice: voiceless – vocal folds are apart and not vibrating\.
+
+[Embedded iframe \(view source\)](https://www.youtube.com/embed/FmZuiFgNxN0?rel=0)
+
+[Embedded iframe \(view source\)](https://www.youtube.com/embed/LsAjJwC4JTQ?rel=0)

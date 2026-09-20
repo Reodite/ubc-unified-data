@@ -220,6 +220,37 @@
     "document_count": 12
   },
   {
+    "hostname": "enunciate.arts.ubc.ca",
+    "title": "enunciate.arts.ubc.ca",
+    "homepage_url": "https://enunciate.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T14:47:36.493Z",
+    "homepage_sha256": "f1667066e99532d47fa5ff0ee1208c34fbf1475fdd392c0357c47be3808239be",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/enunciate.arts.ubc.ca",
+        "document_count": 308
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/enunciate.arts.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/enunciate.arts.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/enunciate.arts.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 314
+  },
+  {
     "hostname": "grad.lsi.ubc.ca",
     "title": "grad.lsi.ubc.ca",
     "homepage_url": "https://grad.lsi.ubc.ca/",
