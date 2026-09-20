@@ -2085,7 +2085,13 @@
     "homepage_retrieved_at": "2026-09-18T13:43:33.868Z",
     "homepage_sha256": "a9766fe195b7d4c4219c803c551c546b48a6f9583591ed44981c9c1787672a8d",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/unclaimedtuitioncredit.ubc.ca",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/unclaimedtuitioncredit.ubc.ca",
+        "document_count": 3
+      }
+    ],
     "document_count": 3
   },
   {
