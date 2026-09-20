@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "hostname": "woh.arts.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w4 first homepage review",
+    "rationale": "The official We're Only Human TLEF project develops and evaluates generative-AI and writing materials for Faculty of Arts courses, explicitly supported by UBC Vancouver students. Its homepage identifies practical Guidance and Learning Resources, team introductions, an Evaluation Plan, scholarly reading, and News. These provide evidence for support, stories, research and news overrides within an academic teaching-and-learning host; no application-call section is shown.",
+    "evidence": [
+      "https://woh.arts.ubc.ca/ | f98273b264c65677ab84e0bde552dc701ec6f84622127a8df1920970fd6c9edb | The We’re Only Human (WOH) project is exploring new challenges and opportunities presented by generative AI in courses where writing plays a key role in students’ understanding of foundational, discipline-specific knowledge and practice.",
+      "https://woh.arts.ubc.ca/ | f98273b264c65677ab84e0bde552dc701ec6f84622127a8df1920970fd6c9edb | We gratefully acknowledge the financial support for this project provided by UBC Vancouver students via the Teaching and Learning Enhancement Fund.",
+      "https://woh.arts.ubc.ca/ | f98273b264c65677ab84e0bde552dc701ec6f84622127a8df1920970fd6c9edb | Our Team: Meet the dedicated researchers and staff behind our project.",
+      "https://woh.arts.ubc.ca/ | f98273b264c65677ab84e0bde552dc701ec6f84622127a8df1920970fd6c9edb | Guidance: Find principles and frameworks to guide your work. Learning Resources: Access toolkits, publications, and materials our team has created.",
+      "https://woh.arts.ubc.ca/ | f98273b264c65677ab84e0bde552dc701ec6f84622127a8df1920970fd6c9edb | Evaluation Plan: Understand how we measure our impact and progress. What We’re Reading: Explore articles and books the team is currently reading.",
+      "https://woh.arts.ubc.ca/ | f98273b264c65677ab84e0bde552dc701ec6f84622127a8df1920970fd6c9edb | News: Stay up-to-date with the latest announcements and project news."
+    ]
+  },
+  "rules": [
+    {
+      "id": "project-news",
+      "category": "news",
+      "rationale": "The homepage explicitly identifies News as announcements and project updates.",
+      "title_pattern": "^News\\b"
+    },
+    {
+      "id": "team-profiles",
+      "category": "stories",
+      "rationale": "Our Team introduces the researchers and staff behind the project.",
+      "title_pattern": "^Our Team\\b"
+    },
+    {
+      "id": "practical-teaching-help",
+      "category": "support",
+      "rationale": "Guidance and Learning Resources offer principles, frameworks and usable toolkits, while Contact Us provides practical access to the project.",
+      "title_pattern": "^(?:Guidance|Learning Resources|Contact Us)\\b"
+    },
+    {
+      "id": "evaluation-and-scholarship",
+      "category": "research",
+      "rationale": "The Evaluation Plan describes measuring project impact; What We're Reading identifies scholarly articles and books informing its work.",
+      "title_pattern": "^(?:Evaluation Plan|What We[’']re Reading)\\b"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "The project primarily develops teaching and learning around generative AI, writing and academic integrity in Faculty of Arts courses."
+  }
+}

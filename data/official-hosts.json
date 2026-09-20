@@ -3048,6 +3048,42 @@
     "document_count": 30
   },
   {
+    "hostname": "woh.arts.ubc.ca",
+    "title": "woh.arts.ubc.ca",
+    "homepage_url": "https://woh.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:58:12.604Z",
+    "homepage_sha256": "f98273b264c65677ab84e0bde552dc701ec6f84622127a8df1920970fd6c9edb",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/woh.arts.ubc.ca",
+        "document_count": 68
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/woh.arts.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/woh.arts.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/woh.arts.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/woh.arts.ubc.ca",
+        "document_count": 2
+      }
+    ],
+    "document_count": 74
+  },
+  {
     "hostname": "www.afrf.forestry.ubc.ca",
     "title": "www.afrf.forestry.ubc.ca",
     "homepage_url": "https://www.afrf.forestry.ubc.ca/",
