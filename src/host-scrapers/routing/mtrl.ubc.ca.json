@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "hostname": "mtrl.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w1 first homepage review",
+    "rationale": "The official UBC Materials Engineering department provides undergraduate and graduate programs, research areas, safety resources and departmental news. The retained homepage exposes distinct sections that can be routed deterministically while academic department information remains the default.",
+    "evidence": [
+      "https://mtrl.ubc.ca/ | 745e6a19f4d141ecde5f05a59a7ce89443e436824c36b1bb13adcf9aa6f86855 | Our Programs; BASc in Materials Engineering; MAsc/MSc in Materials Engineering; PhD in Materials Engineering",
+      "https://mtrl.ubc.ca/ | 745e6a19f4d141ecde5f05a59a7ce89443e436824c36b1bb13adcf9aa6f86855 | Research links /research/; Awards and Funding links /graduate/awards-and-funding/; Teaching Assistantships links /graduate/teaching-assistantships-2/",
+      "https://mtrl.ubc.ca/ | 745e6a19f4d141ecde5f05a59a7ce89443e436824c36b1bb13adcf9aa6f86855 | Safety & Stores links /safety-stores/; SAFETY & RESOURCES links /safety/; Graduate Resources links /graduate/graduate-resources/",
+      "https://mtrl.ubc.ca/ | 745e6a19f4d141ecde5f05a59a7ce89443e436824c36b1bb13adcf9aa6f86855 | News & Events links /department/news-events/news/; Transforming Undergraduate Research Through NSERC USRA links /2026/09/transforming-undergraduate-research-through-nserc-usra/ and is tagged MTRL Spotlight and Stories"
+    ]
+  },
+  "rules": [
+    {
+      "id": "funding-and-assistantships",
+      "category": "opportunities",
+      "rationale": "The homepage identifies graduate funding and teaching assistantships as opportunities distinct from program requirements.",
+      "path_pattern": "^/graduate/(awards-and-funding|teaching-assistantships-2)(/|$)"
+    },
+    {
+      "id": "safety-and-resources",
+      "category": "support",
+      "rationale": "Safety procedures, stores and graduate resources provide practical support.",
+      "path_pattern": "^/(safety-stores|safety|graduate/graduate-resources)(/|$)"
+    },
+    {
+      "id": "research-areas",
+      "category": "research",
+      "rationale": "The research section describes the department's materials research areas.",
+      "path_pattern": "^/research(/|$)"
+    },
+    {
+      "id": "spotlight-and-stories",
+      "category": "stories",
+      "rationale": "The homepage explicitly labels its undergraduate research feature as a spotlight/story and links the corresponding story category.",
+      "path_pattern": "^/(category/spotlight-and-stories|2026/09/transforming-undergraduate-research-through-nserc-usra)(/|$)"
+    },
+    {
+      "id": "department-news",
+      "category": "news",
+      "rationale": "News and events sections and dated departmental posts report announcements and updates, except the explicitly identified story above.",
+      "path_pattern": "^/((department/)?news-events|category/(news-and-announcements|research|awards-and-recognition)|[0-9]{4}/[0-9]{2})(/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "The department's primary public purpose is materials engineering education, including undergraduate and graduate programs, courses and academic community information."
+  }
+}

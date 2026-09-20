@@ -1040,6 +1040,47 @@
     "document_count": 97
   },
   {
+    "hostname": "mtrl.ubc.ca",
+    "title": "mtrl.ubc.ca",
+    "homepage_url": "https://mtrl.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:00:44.644Z",
+    "homepage_sha256": "745e6a19f4d141ecde5f05a59a7ce89443e436824c36b1bb13adcf9aa6f86855",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/mtrl.ubc.ca",
+        "document_count": 113
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/mtrl.ubc.ca",
+        "document_count": 81
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/mtrl.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/mtrl.ubc.ca",
+        "document_count": 6
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/mtrl.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/mtrl.ubc.ca",
+        "document_count": 5
+      }
+    ],
+    "document_count": 212
+  },
+  {
     "hostname": "naisa2017.arts.ubc.ca",
     "title": "naisa2017.arts.ubc.ca",
     "homepage_url": "https://naisa2017.arts.ubc.ca/",
