@@ -2353,7 +2353,23 @@
     "homepage_retrieved_at": "2026-09-18T13:57:09.925Z",
     "homepage_sha256": "ff4d4d7f38fd64168751eba8b3705d10ef315a5ebe4c75e098a7b362ec3dff28",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/wildlife.forestry.ubc.ca",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/wildlife.forestry.ubc.ca",
+        "document_count": 27
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/wildlife.forestry.ubc.ca",
+        "document_count": 36
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/wildlife.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 64
   },
   {
