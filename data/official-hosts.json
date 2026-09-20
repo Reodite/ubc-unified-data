@@ -174,7 +174,13 @@
     "homepage_retrieved_at": "2026-09-18T11:11:09.125Z",
     "homepage_sha256": "7f5c5ac297dbc7ff3c6340d1ce7b09a7e37f3a77960bfb9b1b48e2310dcf43d5",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/grad.lsi.ubc.ca",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/grad.lsi.ubc.ca",
+        "document_count": 121
+      }
+    ],
     "document_count": 121
   },
   {
