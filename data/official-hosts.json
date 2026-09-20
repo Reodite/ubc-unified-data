@@ -2996,6 +2996,42 @@
     "document_count": 20
   },
   {
+    "hostname": "wildandimmersive.ubc.ca",
+    "title": "wildandimmersive.ubc.ca",
+    "homepage_url": "https://wildandimmersive.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:56:33.583Z",
+    "homepage_sha256": "e820a0bba3886bde1386bb02fc92dd1be049204affa7bee6d4063aaae901ed32",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/wildandimmersive.ubc.ca",
+        "document_count": 186
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/wildandimmersive.ubc.ca",
+        "document_count": 43
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/wildandimmersive.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/wildandimmersive.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/wildandimmersive.ubc.ca",
+        "document_count": 4
+      }
+    ],
+    "document_count": 239
+  },
+  {
     "hostname": "wildlife.forestry.ubc.ca",
     "title": "wildlife.forestry.ubc.ca",
     "homepage_url": "https://wildlife.forestry.ubc.ca/",
