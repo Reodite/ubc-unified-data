@@ -855,6 +855,22 @@
     "document_count": 273
   },
   {
+    "hostname": "mdprogram.med.ubc.ca",
+    "title": "mdprogram.med.ubc.ca",
+    "homepage_url": "https://mdprogram.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:46:07.440Z",
+    "homepage_sha256": "d2637c679840dff7e5c114a16408747dd4656ebfc56209a4beaa1638b023fc2a",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/mdprogram.med.ubc.ca",
+        "document_count": 644
+      }
+    ],
+    "document_count": 644
+  },
+  {
     "hostname": "med-fom-childspeech.sites.olt.ubc.ca",
     "title": "med-fom-childspeech.sites.olt.ubc.ca",
     "homepage_url": "https://med-fom-childspeech.sites.olt.ubc.ca/",
