@@ -1563,7 +1563,13 @@
     "homepage_retrieved_at": "2026-09-18T12:58:16.386Z",
     "homepage_sha256": "47a2f96523f5e16c44d7945aaf956cb6f5fd4e4a8b14b52b781c727659b2f994",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/restech.med.ubc.ca",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/restech.med.ubc.ca",
+        "document_count": 61
+      }
+    ],
     "document_count": 61
   },
   {
