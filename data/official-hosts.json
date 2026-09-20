@@ -641,6 +641,37 @@
     "document_count": 11
   },
   {
+    "hostname": "laso.arts.ubc.ca",
+    "title": "laso.arts.ubc.ca",
+    "homepage_url": "https://laso.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:27:05.203Z",
+    "homepage_sha256": "53c596a7a40ad3ad6903fb6ea0ee5f2ef4048350fa6b959eb355e22bca235d37",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/laso.arts.ubc.ca",
+        "document_count": 33
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/laso.arts.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/laso.arts.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/laso.arts.ubc.ca",
+        "document_count": 2
+      }
+    ],
+    "document_count": 38
+  },
+  {
     "hostname": "learning.chem.ubc.ca",
     "title": "learning.chem.ubc.ca",
     "homepage_url": "https://learning.chem.ubc.ca/",
