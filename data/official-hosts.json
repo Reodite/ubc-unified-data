@@ -2505,7 +2505,13 @@
     "homepage_retrieved_at": "2026-09-18T14:18:48.612Z",
     "homepage_sha256": "eaecaee8efdd40499cf5a3e1a37c028d74166c02d83b6f130d05d5bb6290be8a",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/www.pda.ubc.ca",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/www.pda.ubc.ca",
+        "document_count": 4
+      }
+    ],
     "document_count": 4
   },
   {
