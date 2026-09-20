@@ -2011,7 +2011,13 @@
     "homepage_retrieved_at": "2026-09-18T13:34:20.835Z",
     "homepage_sha256": "b66a4ce3ed56595969c2ebd87047e0944b8a7552ddd5153225f35a87071bf14c",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/thunderbirds.ubc.ca",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/thunderbirds.ubc.ca",
+        "document_count": 15
+      }
+    ],
     "document_count": 15
   },
   {
