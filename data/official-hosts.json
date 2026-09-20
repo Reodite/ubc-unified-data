@@ -510,7 +510,13 @@
     "homepage_retrieved_at": "2026-09-18T11:22:53.176Z",
     "homepage_sha256": "467fedb38274eb1e31bf9b8f1f1e09f6f7da7b238573834df6ffdb9a902a9e8c",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/keeplearning.ubc.ca",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/keeplearning.ubc.ca",
+        "document_count": 7
+      }
+    ],
     "document_count": 7
   },
   {
