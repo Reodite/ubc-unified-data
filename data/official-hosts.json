@@ -89,6 +89,32 @@
     "document_count": 6
   },
   {
+    "hostname": "cases.open.ubc.ca",
+    "title": "cases.open.ubc.ca",
+    "homepage_url": "https://cases.open.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T14:43:49.281Z",
+    "homepage_sha256": "ad439c530b0e9300080073be5c2238d2edfc0880251d0c3a890b093b23c4bb6f",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/cases.open.ubc.ca",
+        "document_count": 287
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/cases.open.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/cases.open.ubc.ca",
+        "document_count": 3
+      }
+    ],
+    "document_count": 291
+  },
+  {
     "hostname": "celebrateresearch.ubc.ca",
     "title": "celebrateresearch.ubc.ca",
     "homepage_url": "https://celebrateresearch.ubc.ca/",

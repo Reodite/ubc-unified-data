@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "hostname": "cases.open.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w4 first homepage review",
+    "rationale": "The official UBC Open Case Studies project publishes interdisciplinary open educational resources for anyone at UBC or elsewhere. Its faculty-and-student collaboration is an institutional teaching resource, not a personal or student-run site, and its stated scope is not Okanagan-exclusive. Academic content is the host purpose, with observed participation and practical website-help sections overriding the fallback. Neither this hostname nor its observed cases.sites.olt.ubc.ca alias appears in the published host index.",
+    "evidence": [
+      "https://cases.open.ubc.ca/ | ad439c530b0e9300080073be5c2238d2edfc0880251d0c3a890b093b23c4bb6f | This project brings together faculty and students from across departments and Faculties to co-create an interdisciplinary, open educational resource with case studies that can be used by anyone, at UBC or elsewhere.",
+      "https://cases.open.ubc.ca/ | ad439c530b0e9300080073be5c2238d2edfc0880251d0c3a890b093b23c4bb6f | The cases on this site are open educational resources: they have an open license to allow for revision and reuse of the cases in other courses and contexts (the cases are licensed CC BY 4.0).",
+      "https://cases.open.ubc.ca/ | ad439c530b0e9300080073be5c2238d2edfc0880251d0c3a890b093b23c4bb6f | Get Involved: There are several ways to contribute to the Open Case Studies project: use a case study in your course, comment on the case studies, create a new open case study or spread the word! Navigation links /get-involved/.",
+      "https://cases.open.ubc.ca/ | ad439c530b0e9300080073be5c2238d2edfc0880251d0c3a890b093b23c4bb6f | Navigation includes Teaching Guide (/teaching-guide/), Case Implementation (/teaching-with-the-cases/), Using the Open Case Studies Website (/using-the-open-case-studies-website/), Using the UBC Wiki (/wiki-guide/), and Contact Us (/contact-us/)."
+    ]
+  },
+  "rules": [
+    {
+      "id": "participation-opportunities",
+      "category": "opportunities",
+      "rationale": "The homepage invites faculty and students to contribute, reuse, revise, or create case studies through Get Involved.",
+      "path_pattern": "^/get-involved(?:/|$)"
+    },
+    {
+      "id": "website-and-wiki-support",
+      "category": "support",
+      "rationale": "Observed website-use, wiki-use, and contact links provide practical help using or contributing to the resource.",
+      "path_pattern": "^/(?:using-the-open-case-studies-website|wiki-guide|contact-us)(?:/|$)"
+    },
+    {
+      "id": "teaching-resources",
+      "category": "academics",
+      "rationale": "The observed case studies, teaching guide, implementation guide, and open-educational-resource guide directly support teaching and learning.",
+      "path_pattern": "^/(?:case-studies|teaching-guide|teaching-with-the-cases|oer-guide|open-case-studies(?:-[23])?)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "The institutional purpose is interdisciplinary open educational case studies and teaching resources for UBC and broader reuse."
+  }
+}
