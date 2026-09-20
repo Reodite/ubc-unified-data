@@ -269,7 +269,23 @@
     "homepage_retrieved_at": "2026-09-18T11:12:22.344Z",
     "homepage_sha256": "d85f790c7ee4978db717b9136849a4f33daa99688c312441ba0c20ad6084355e",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/interdisciplinary.arts.ubc.ca",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/interdisciplinary.arts.ubc.ca",
+        "document_count": 32
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/interdisciplinary.arts.ubc.ca",
+        "document_count": 14
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/interdisciplinary.arts.ubc.ca",
+        "document_count": 14
+      }
+    ],
     "document_count": 60
   },
   {
