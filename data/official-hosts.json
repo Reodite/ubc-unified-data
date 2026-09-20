@@ -1690,7 +1690,18 @@
     "homepage_retrieved_at": "2026-09-18T13:07:47.248Z",
     "homepage_sha256": "c309304efb433124f4eb6c919d328cd3f12983cb30662d21129199b44e1d8091",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/sds.ubc.ca",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/sds.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/sds.ubc.ca",
+        "document_count": 38
+      }
+    ],
     "document_count": 41
   },
   {
