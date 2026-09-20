@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "hostname": "maa.library.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w1 first homepage review",
+    "rationale": "The official UBC Music, Art and Architecture Library homepage offers public research help, borrower services, collections and study facilities at the Irving K. Barber Learning Centre. Its primary purpose is library support for Vancouver and broader UBC users, not reporting research findings.",
+    "evidence": [
+      "https://maa.library.ubc.ca/ | c310b0de84332b6c8a3bb9724917e54ea94757802c0ce045b5e093c2395779ca | Music, Art & Architecture (MAA) Library on Level 3 of the Irving K. Barber Learning Centre (IKBLC)",
+      "https://maa.library.ubc.ca/ | c310b0de84332b6c8a3bb9724917e54ea94757802c0ce045b5e093c2395779ca | Guides & Services; Borrower Services; Need Research Help?; Digital Media Rooms; Silent & Group Study Space"
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "support",
+    "rationale": "Library collections, research assistance, borrowing, facilities and resource access support UBC learning and research."
+  }
+}

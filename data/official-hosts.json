@@ -777,6 +777,22 @@
     "document_count": 77
   },
   {
+    "hostname": "maa.library.ubc.ca",
+    "title": "maa.library.ubc.ca",
+    "homepage_url": "https://maa.library.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:40:00.939Z",
+    "homepage_sha256": "c310b0de84332b6c8a3bb9724917e54ea94757802c0ce045b5e093c2395779ca",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/maa.library.ubc.ca",
+        "document_count": 115
+      }
+    ],
+    "document_count": 115
+  },
+  {
     "hostname": "macl.arts.ubc.ca",
     "title": "macl.arts.ubc.ca",
     "homepage_url": "https://macl.arts.ubc.ca/",
