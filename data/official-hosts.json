@@ -2327,7 +2327,23 @@
     "homepage_retrieved_at": "2026-09-18T13:54:42.175Z",
     "homepage_sha256": "f6a78599c0f414ab06bcf8f3b757fd1fe5fbd708a23b961eb2c6fd75ff708d2b",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/walllegacyawards.ubc.ca",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/walllegacyawards.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/walllegacyawards.ubc.ca",
+        "document_count": 17
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/walllegacyawards.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 20
   },
   {
