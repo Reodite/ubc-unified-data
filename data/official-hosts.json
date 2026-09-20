@@ -689,7 +689,23 @@
     "homepage_retrieved_at": "2026-09-18T11:37:58.554Z",
     "homepage_sha256": "6d238951681c993bf16f450bea86e958cc9fb6d206e9e88baf25cf51f1620dec",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/loonlake.ubc.ca",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/loonlake.ubc.ca",
+        "document_count": 27
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/loonlake.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/loonlake.ubc.ca",
+        "document_count": 49
+      }
+    ],
     "document_count": 77
   },
   {
