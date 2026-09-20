@@ -2760,6 +2760,32 @@
     "document_count": 23
   },
   {
+    "hostname": "uplift.psych.ubc.ca",
+    "title": "uplift.psych.ubc.ca",
+    "homepage_url": "https://uplift.psych.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T21:26:53.042Z",
+    "homepage_sha256": "872f2f6563ae6094809558caf06dfd64229e64cfce90e289d96591fb6879146c",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/uplift.psych.ubc.ca",
+        "document_count": 145
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/uplift.psych.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/uplift.psych.ubc.ca",
+        "document_count": 74
+      }
+    ],
+    "document_count": 222
+  },
+  {
     "hostname": "urban.forestry.ubc.ca",
     "title": "urban.forestry.ubc.ca",
     "homepage_url": "https://urban.forestry.ubc.ca/",

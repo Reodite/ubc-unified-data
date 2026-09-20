@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "hostname": "uplift.psych.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w1 first homepage review",
+    "rationale": "Official UBC Vancouver UPLIFT Health Lab presents research on daily experiences, psychosocial well-being, healthy aging and cardiovascular health. Research is the host default; prospective-student participation and clearly labeled news and press sections receive explicit rules.",
+    "evidence": [
+      "https://uplift.psych.ubc.ca/ | 872f2f6563ae6094809558caf06dfd64229e64cfce90e289d96591fb6879146c | The University of British Columbia; Vancouver campus; UPLIFT Health Lab; Our research is focused on understanding psychosocial well-being and biobehavioural mechanisms underlying healthy aging.",
+      "https://uplift.psych.ubc.ca/ | 872f2f6563ae6094809558caf06dfd64229e64cfce90e289d96591fb6879146c | Our areas of interest include: Biological and behavioural mechanisms linking daily experiences to long-term health and aging; The roles of positive experiences in stress and coping processes; Day-to-day dynamics of psychosocial well-being, sleep, and health behaviours; Biopsychosocial determinants of risk and outcomes for cardiovascular disease",
+      "https://uplift.psych.ubc.ca/ | 872f2f6563ae6094809558caf06dfd64229e64cfce90e289d96591fb6879146c | Homepage navigation labels /news/ as Lab News, /news-2/ as Press, /prospective-students/ as Prospective Students, with Undergraduate Students and Prospective Graduate Students subsections",
+      "https://uplift.psych.ubc.ca/ | 872f2f6563ae6094809558caf06dfd64229e64cfce90e289d96591fb6879146c | Homepage research sliders Daily positive events promote health and Positive experiences and stress processes link to /2013/03/04/hello-world-slider-2/ and /2013/03/04/hello-world-slider/; dated current news links include /2026/03/19/celebrating-dr-nancy-sin-2026-sbsm-fellow/ and /2026/03/19/incoming-graduate-students/"
+    ]
+  },
+  "rules": [
+    {
+      "id": "research-homepage-sliders",
+      "category": "research",
+      "rationale": "Homepage-linked older slider pages describe research findings rather than current news.",
+      "path_pattern": "^/2013/03/04/hello-world-slider(?:-2)?(?:/|$)"
+    },
+    {
+      "id": "prospective-lab-students",
+      "category": "opportunities",
+      "rationale": "Explicit prospective-student routes for joining the lab at undergraduate and graduate levels.",
+      "path_pattern": "^/prospective-students(?:/|$)"
+    },
+    {
+      "id": "lab-news-and-press",
+      "category": "news",
+      "rationale": "Clearly labeled lab news and press sections and dated lab announcements.",
+      "path_pattern": "^/(?:news(?:-2)?(?:/|$)|[0-9]{4}/[0-9]{2}/[0-9]{2}/)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "research",
+    "rationale": "Health psychology lab research, publications, team and institutional context."
+  }
+}
