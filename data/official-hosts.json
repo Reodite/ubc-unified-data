@@ -432,7 +432,18 @@
     "homepage_retrieved_at": "2026-09-18T11:21:24.544Z",
     "homepage_sha256": "0729839dae8a2f905a6d2c76f69ff060f597be30d90624fc54b1e1e9e6b4783b",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/joshilab.forestry.ubc.ca",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/joshilab.forestry.ubc.ca",
+        "document_count": 6
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/joshilab.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 7
   },
   {
