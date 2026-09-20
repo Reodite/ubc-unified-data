@@ -158,7 +158,13 @@
     "homepage_retrieved_at": "2026-09-18T11:10:32.413Z",
     "homepage_sha256": "ae1f57baeb56f2ca7935375209b746162a5c5b6a264c571780b97b1f99f53295",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/enso.arts.ubc.ca",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/enso.arts.ubc.ca",
+        "document_count": 12
+      }
+    ],
     "document_count": 12
   },
   {
