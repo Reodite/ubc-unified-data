@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "hostname": "sciencespo.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w1 first homepage review",
+    "rationale": "Official UBC Faculty of Arts and Sciences Po dual BA program site provides academic program and admissions information, practical student support, funding and student stories. Academic program information is the default, with explicit homepage sections providing specific overrides.",
+    "evidence": [
+      "https://sciencespo.ubc.ca/ | 1da24f1558c2edecbfd1b2a4a6b8e9344d90fcb1765ee860a61f654ce7aebd44 | Home | UBC–Sciences Po Dual Degree Program; Applications for 2026 have now closed; explore the program today; Science Po’s dual degree with UBC is its only dual degree program in Canada.",
+      "https://sciencespo.ubc.ca/ | 1da24f1558c2edecbfd1b2a4a6b8e9344d90fcb1765ee860a61f654ce7aebd44 | UBC’s Faculty of Arts is a research-intensive faculty, encompassing disciplines in the social sciences, humanities, the creative and performing arts, and professional schools.",
+      "https://sciencespo.ubc.ca/ | 1da24f1558c2edecbfd1b2a4a6b8e9344d90fcb1765ee860a61f654ce7aebd44 | Homepage links /program-overview/ubc-years-3-and-4/, /admissions/requirements-and-eligibility/, /current-students/program-requirements/ and /current-students/academic-calendars/",
+      "https://sciencespo.ubc.ca/ | 1da24f1558c2edecbfd1b2a4a6b8e9344d90fcb1765ee860a61f654ce7aebd44 | Homepage links /tuition-financial-aid/scholarships-financial-aid/, /tuition-financial-aid/financial-planning-resources/, /student-life/housing/, /student-life/applying-for-visas/, /student-life/health-insurance/ and /current-students/academic-advising/",
+      "https://sciencespo.ubc.ca/ | 1da24f1558c2edecbfd1b2a4a6b8e9344d90fcb1765ee860a61f654ce7aebd44 | Homepage links /student-life/student-stories/, /gautier-parthon-de-von/, /sara-owen-flood/, /iyolquetzal-martinez/, /sara-sanabria/ and /2023-ubc-sciences-po-dual-degree-graduation-reception-recap/"
+    ]
+  },
+  "rules": [
+    {
+      "id": "student-stories",
+      "category": "stories",
+      "rationale": "Explicit student stories section and individual people pages linked from the homepage.",
+      "path_pattern": "^/(?:student-life/student-stories|gautier-parthon-de-von|sara-owen-flood|iyolquetzal-martinez|sara-sanabria)(?:/|$)"
+    },
+    {
+      "id": "scholarships-and-aid",
+      "category": "opportunities",
+      "rationale": "Explicit scholarship and financial aid opportunities section.",
+      "path_pattern": "^/tuition-financial-aid/scholarships-financial-aid(?:/|$)"
+    },
+    {
+      "id": "current-academic-requirements",
+      "category": "academics",
+      "rationale": "Program requirements and academic calendars remain academic information within current-student resources.",
+      "path_pattern": "^/current-students/(?:program-requirements|academic-calendars)(?:/|$)"
+    },
+    {
+      "id": "student-support",
+      "category": "support",
+      "rationale": "Practical student services, financial planning, advising and relocation guidance.",
+      "path_pattern": "^/(?:tuition-financial-aid|student-life|current-students|admissions/(?:once-admitted|moving-to-france))(?:/|$)"
+    },
+    {
+      "id": "graduation-news",
+      "category": "news",
+      "rationale": "Homepage-linked graduation reception recap reports a program event.",
+      "path_pattern": "^/2023-ubc-sciences-po-dual-degree-graduation-reception-recap(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "Official dual BA program curriculum, admissions and academic community information."
+  }
+}

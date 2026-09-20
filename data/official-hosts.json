@@ -2172,6 +2172,42 @@
     "document_count": 15
   },
   {
+    "hostname": "sciencespo.ubc.ca",
+    "title": "sciencespo.ubc.ca",
+    "homepage_url": "https://sciencespo.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:06:52.210Z",
+    "homepage_sha256": "1da24f1558c2edecbfd1b2a4a6b8e9344d90fcb1765ee860a61f654ce7aebd44",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/sciencespo.ubc.ca",
+        "document_count": 46
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/sciencespo.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/sciencespo.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/sciencespo.ubc.ca",
+        "document_count": 6
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/sciencespo.ubc.ca",
+        "document_count": 13
+      }
+    ],
+    "document_count": 67
+  },
+  {
     "hostname": "sds.ubc.ca",
     "title": "sds.ubc.ca",
     "homepage_url": "https://sds.ubc.ca/",
