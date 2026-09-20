@@ -2143,7 +2143,18 @@
     "homepage_retrieved_at": "2026-09-18T13:47:01.064Z",
     "homepage_sha256": "470b38ca5fc0392522af20c03b2faacc0456444a2f34a4717a9522b2fcab702b",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/urban.forestry.ubc.ca",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/urban.forestry.ubc.ca",
+        "document_count": 43
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/urban.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 44
   },
   {
