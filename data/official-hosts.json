@@ -3267,6 +3267,37 @@
     "document_count": 22
   },
   {
+    "hostname": "www.mkrf.forestry.ubc.ca",
+    "title": "www.mkrf.forestry.ubc.ca",
+    "homepage_url": "https://www.mkrf.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:16:15.201Z",
+    "homepage_sha256": "9f6445827707363e96489ec15c643ded138737e373b33f6d1970f981fd69c293",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/www.mkrf.forestry.ubc.ca",
+        "document_count": 8
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/www.mkrf.forestry.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/www.mkrf.forestry.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/www.mkrf.forestry.ubc.ca",
+        "document_count": 163
+      }
+    ],
+    "document_count": 175
+  },
+  {
     "hostname": "www.pda.ubc.ca",
     "title": "www.pda.ubc.ca",
     "homepage_url": "https://www.pda.ubc.ca/",
