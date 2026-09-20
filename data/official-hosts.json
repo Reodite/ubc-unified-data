@@ -1862,6 +1862,42 @@
     "document_count": 34
   },
   {
+    "hostname": "radiology.med.ubc.ca",
+    "title": "radiology.med.ubc.ca",
+    "homepage_url": "https://radiology.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:49:44.151Z",
+    "homepage_sha256": "7c0bfeb22403346d35697633cffb1284c466b509ab4f2361a5334df8a6084c7b",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/radiology.med.ubc.ca",
+        "document_count": 64
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/radiology.med.ubc.ca",
+        "document_count": 11
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/radiology.med.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/radiology.med.ubc.ca",
+        "document_count": 8
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/radiology.med.ubc.ca",
+        "document_count": 2
+      }
+    ],
+    "document_count": 88
+  },
+  {
     "hostname": "rcl.ece.ubc.ca",
     "title": "rcl.ece.ubc.ca",
     "homepage_url": "https://rcl.ece.ubc.ca/",
