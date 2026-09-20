@@ -3189,6 +3189,42 @@
     "document_count": 414
   },
   {
+    "hostname": "www.enve.ubc.ca",
+    "title": "www.enve.ubc.ca",
+    "homepage_url": "https://www.enve.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:07:34.428Z",
+    "homepage_sha256": "f3e618db3de7eee89431df8bed82bd7f9de28e38a1a01813538e1e750bc06494",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/www.enve.ubc.ca",
+        "document_count": 24
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/www.enve.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/www.enve.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/www.enve.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/www.enve.ubc.ca",
+        "document_count": 3
+      }
+    ],
+    "document_count": 35
+  },
+  {
     "hostname": "www.igen.ubc.ca",
     "title": "www.igen.ubc.ca",
     "homepage_url": "https://www.igen.ubc.ca/",

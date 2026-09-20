@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "hostname": "www.enve.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w5 first homepage review",
+    "rationale": "Official Faculty of Applied Science joint UNBC/UBC Environmental Engineering program, explicitly serving UBC Vancouver. The public homepage provides program information and observed sections for academic requirements, student support, experiential opportunities, news and alumni stories. No distinct research section is evidenced.",
+    "evidence": [
+      "https://www.enve.ubc.ca/ | f3e618db3de7eee89431df8bed82bd7f9de28e38a1a01813538e1e750bc06494 | This distinct Environmental Engineering Program is offered jointly by the University of Northern British Columbia in Prince George, and the University of British Columbia in Vancouver.",
+      "https://www.enve.ubc.ca/ | f3e618db3de7eee89431df8bed82bd7f9de28e38a1a01813538e1e750bc06494 | Faculty of Applied Science Environmental Engineering; Program Guide; Requirements; Course Registration; Technical Electives; Future Students; Admissions; Transfers.",
+      "https://www.enve.ubc.ca/ | f3e618db3de7eee89431df8bed82bd7f9de28e38a1a01813538e1e750bc06494 | Transit; Student Resources; Contact Us; Student Associations; Coordinated International Experience; Co-operative Education; Graduation; News.",
+      "https://www.enve.ubc.ca/ | f3e618db3de7eee89431df8bed82bd7f9de28e38a1a01813538e1e750bc06494 | Alumni Spotlights: Community involvement and staying driven (Kylie Kerik); Behind the career: Environmental Engineering (Sidney); Finding her passion in water resources engineering (Shayna Scott)."
+    ]
+  },
+  "rules": [
+    {
+      "id": "alumni-stories",
+      "category": "stories",
+      "rationale": "Homepage Alumni Spotlights links identify graduate experience narratives.",
+      "path_pattern": "^/(?:future-students/alumni-spotlights|kylie-kerik|sidney|shayna-scott)(?:/|$)"
+    },
+    {
+      "id": "program-news",
+      "category": "news",
+      "rationale": "Homepage navigation identifies a dedicated News section under Student Experience.",
+      "path_pattern": "^/student-experience/news(?:/|$)"
+    },
+    {
+      "id": "experiential-opportunities",
+      "category": "opportunities",
+      "rationale": "Student Associations, Coordinated International Experience and Co-operative Education describe participation and experiential opportunities.",
+      "path_pattern": "^/student-experience/(?:student-associations|coordinated-international-experience|co-operative-education)(?:/|$)"
+    },
+    {
+      "id": "student-support",
+      "category": "support",
+      "rationale": "Student Resources, Transit and Contact Us provide practical student help rather than curriculum descriptions.",
+      "path_pattern": "^/(?:student-resources|contact-us|program-guide/transit)(?:/|$)"
+    },
+    {
+      "id": "academic-program",
+      "category": "academics",
+      "rationale": "Program Guide, Course Registration, Future Students and Graduation concern degree requirements, admissions and academic progression.",
+      "path_pattern": "^/(?:program-guide|course-registration|future-students|student-experience/graduation)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "The host explains the joint UNBC/UBC accredited Bachelor of Applied Science in Environmental Engineering program."
+  }
+}
