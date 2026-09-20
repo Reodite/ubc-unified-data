@@ -1390,7 +1390,23 @@
     "homepage_retrieved_at": "2026-09-18T12:39:45.378Z",
     "homepage_sha256": "cba7adefc592a71a86d926603fd269dfbedc65f9721f5cdf7bfe8aaaa6406f96",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/principal.ok.ubc.ca",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/principal.ok.ubc.ca",
+        "document_count": 87
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/principal.ok.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/principal.ok.ubc.ca",
+        "document_count": 156
+      }
+    ],
     "document_count": 244
   },
   {
