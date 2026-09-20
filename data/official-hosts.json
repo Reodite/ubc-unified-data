@@ -2119,6 +2119,22 @@
     "document_count": 7
   },
   {
+    "hostname": "rojas.chbe.ubc.ca",
+    "title": "rojas.chbe.ubc.ca",
+    "homepage_url": "https://rojas.chbe.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:00:35.418Z",
+    "homepage_sha256": "42fae56ddd622d3af71914788cf3a7e21fd8cc82e1d8cc41351305672692ca92",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/rojas.chbe.ubc.ca",
+        "document_count": 89
+      }
+    ],
+    "document_count": 89
+  },
+  {
     "hostname": "sbelab.forestry.ubc.ca",
     "title": "sbelab.forestry.ubc.ca",
     "homepage_url": "https://sbelab.forestry.ubc.ca/",

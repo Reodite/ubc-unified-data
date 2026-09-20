@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "hostname": "rojas.chbe.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w4 first homepage review",
+    "rationale": "The homepage represents the institutional Biobased Colloids and Materials research group, not a personal biography: it names UBC departments and the BioProducts Institute, describes collective research, and lists specific published outputs. The visible thematic sections and publications support research routing; no distinct announcement, profile, application, academic-program or practical-help section is evidenced in this homepage preview.",
+    "evidence": [
+      "https://rojas.chbe.ubc.ca/ | 42fae56ddd622d3af71914788cf3a7e21fd8cc82e1d8cc41351305672692ca92 | The BiCMat group, led by Orlando Rojas, currently spans activities in Canada (University of British Columbia, Departments of Chemical and Biological Engineering, Chemistry and Wood Science) and Finland (Aalto University, Department of Bioproducts and Biosystems).",
+      "https://rojas.chbe.ubc.ca/ | 42fae56ddd622d3af71914788cf3a7e21fd8cc82e1d8cc41351305672692ca92 | BiCMat is part of the BioProducts Institute in Canada and the FinnCERES flagship in Finland.",
+      "https://rojas.chbe.ubc.ca/ | 42fae56ddd622d3af71914788cf3a7e21fd8cc82e1d8cc41351305672692ca92 | Renewable Nano- and Microparticles; Self-Assembly & Functional Materials; Bio-Based Material Development; Green Chemistry & Sustainable Processing; Biomimetics & Bioinspired Materials",
+      "https://rojas.chbe.ubc.ca/ | 42fae56ddd622d3af71914788cf3a7e21fd8cc82e1d8cc41351305672692ca92 | Developing fibrillated cellulose as a sustainable technological material, Nature, 590, 47–56 (2021)."
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "research",
+    "rationale": "The institutional group develops bio-based materials and presents research themes and scholarly outputs; all clearly identified homepage content sections share that research purpose."
+  }
+}
