@@ -2301,7 +2301,23 @@
     "homepage_retrieved_at": "2026-09-18T13:53:58.529Z",
     "homepage_sha256": "da38ff91c160e6fc8a4a2ddd7e8262fd0a52658fcb340d9ab7073cceff1c1842",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/vsp.arts.ubc.ca",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/vsp.arts.ubc.ca",
+        "document_count": 20
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/vsp.arts.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/vsp.arts.ubc.ca",
+        "document_count": 9
+      }
+    ],
     "document_count": 34
   },
   {
