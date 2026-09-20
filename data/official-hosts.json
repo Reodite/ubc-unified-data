@@ -400,7 +400,13 @@
     "homepage_retrieved_at": "2026-09-18T11:17:07.393Z",
     "homepage_sha256": "2679a7e5bf9bf3aeef3449bdd2d945517d0f0a56dd5ecce079d14e99777c3d18",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/isp.ubc.ca",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/isp.ubc.ca",
+        "document_count": 87
+      }
+    ],
     "document_count": 87
   },
   {
