@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "hostname": "wine.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w5 first homepage review",
+    "rationale": "The official UBC Wine Research Centre describes a Canadian grape and wine industry research and education mandate, with public research, facilities and education sections. Its Kelowna address does not limit the stated Canada-wide mission to Okanagan campus services. Education routes separately from research, and contact guidance supplies support; no additional category is strongly evidenced by this homepage.",
+    "evidence": [
+      "https://wine.ubc.ca/ | e895dc218528b6fe9ff9c88342f557c029263e8ee6ac243146fc1ff809f0c6f4 | The Wine Research Centre (WRC) is the focal point for grape and wine industry research and education at The University of British Columbia (UBC).",
+      "https://wine.ubc.ca/ | e895dc218528b6fe9ff9c88342f557c029263e8ee6ac243146fc1ff809f0c6f4 | Our core mission is to support the development of a sustainable and effective Canadian grape and wine industry through world-class research, excellence in wine education, practical solutions and knowledge mobilization.",
+      "https://wine.ubc.ca/ | e895dc218528b6fe9ff9c88342f557c029263e8ee6ac243146fc1ff809f0c6f4 | Navigation: Research /research/; Facilities /research/facilities/; Education /education/; Undergraduate /education/undergraduate-programs/; Graduate /education/graduate-programs/; Extended Education /education/extended-education/; Contact /contact/"
+    ]
+  },
+  "rules": [
+    {
+      "id": "wine-education",
+      "category": "academics",
+      "rationale": "The education section explicitly covers undergraduate, graduate and extended education programs.",
+      "path_pattern": "^/education(?:/|$)"
+    },
+    {
+      "id": "research-facilities",
+      "category": "research",
+      "rationale": "The research section and its facilities subsection describe the centre's research activity and infrastructure.",
+      "path_pattern": "^/research(?:/|$)"
+    },
+    {
+      "id": "contact-guidance",
+      "category": "support",
+      "rationale": "The contact section helps readers reach the centre.",
+      "path_pattern": "^/contact(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "research",
+    "rationale": "The Wine Research Centre primarily presents UBC research and knowledge mobilization for the Canadian grape and wine industry."
+  }
+}

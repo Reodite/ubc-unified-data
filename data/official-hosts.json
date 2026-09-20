@@ -3022,6 +3022,32 @@
     "document_count": 64
   },
   {
+    "hostname": "wine.ubc.ca",
+    "title": "wine.ubc.ca",
+    "homepage_url": "https://wine.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:58:03.772Z",
+    "homepage_sha256": "e895dc218528b6fe9ff9c88342f557c029263e8ee6ac243146fc1ff809f0c6f4",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/wine.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/wine.ubc.ca",
+        "document_count": 25
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/wine.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 30
+  },
+  {
     "hostname": "www.afrf.forestry.ubc.ca",
     "title": "www.afrf.forestry.ubc.ca",
     "homepage_url": "https://www.afrf.forestry.ubc.ca/",
