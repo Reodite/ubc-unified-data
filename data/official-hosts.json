@@ -374,7 +374,23 @@
     "homepage_retrieved_at": "2026-09-18T11:16:15.997Z",
     "homepage_sha256": "e6776628439896584ce428b2d5438d0e7b330c6087630514672406b469e2776f",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/isgp.ubc.ca",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/isgp.ubc.ca",
+        "document_count": 136
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/isgp.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/isgp.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 138
   },
   {
