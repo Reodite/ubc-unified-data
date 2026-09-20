@@ -311,7 +311,13 @@
     "homepage_retrieved_at": "2026-09-18T11:13:20.704Z",
     "homepage_sha256": "5b46be44091c0449e1de23d0a5435183d12eca679d219e1d6e3f3c5de2a25c4b",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/io.ubc.ca",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/io.ubc.ca",
+        "document_count": 7
+      }
+    ],
     "document_count": 7
   },
   {
