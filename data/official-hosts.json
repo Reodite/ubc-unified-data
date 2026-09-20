@@ -693,6 +693,22 @@
     "document_count": 82
   },
   {
+    "hostname": "learningspaces.ubc.ca",
+    "title": "learningspaces.ubc.ca",
+    "homepage_url": "https://learningspaces.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:31:32.176Z",
+    "homepage_sha256": "633986e33d83bb1b6da7e75121e438df88dd7d1b878d63e4e1f3b0e12034b93f",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/learningspaces.ubc.ca",
+        "document_count": 327
+      }
+    ],
+    "document_count": 327
+  },
+  {
     "hostname": "library.ubc.ca",
     "title": "library.ubc.ca",
     "homepage_url": "https://library.ubc.ca/",
