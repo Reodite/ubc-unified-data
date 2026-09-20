@@ -1653,7 +1653,13 @@
     "homepage_retrieved_at": "2026-09-18T13:03:37.934Z",
     "homepage_sha256": "4416957d0a62b98205b32eb5b5288990ebe977cf2af4daa06366dea7852977eb",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/sbelab.forestry.ubc.ca",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/sbelab.forestry.ubc.ca",
+        "document_count": 10
+      }
+    ],
     "document_count": 10
   },
   {
