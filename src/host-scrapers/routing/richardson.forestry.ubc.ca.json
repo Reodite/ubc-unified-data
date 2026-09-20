@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "hostname": "richardson.forestry.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w5 first homepage review",
+    "rationale": "The homepage identifies the Stream and Riparian Research Laboratory at UBC Forestry and describes a collective research program and current projects. Although the named professor's education and CV appear, substantive laboratory research content establishes an institutional research site rather than a personal-only page. No Okanagan-exclusive mandate is stated.",
+    "evidence": [
+      "https://richardson.forestry.ubc.ca/ | a4a60d86b731ad7015bcc6f37c3deecc51952a24188818aeed1b1eafd6f56f44 | Stream and Riparian Research Laboratory | UBC Forestry",
+      "https://richardson.forestry.ubc.ca/ | a4a60d86b731ad7015bcc6f37c3deecc51952a24188818aeed1b1eafd6f56f44 | Professor, Department of Forest and Conservation Sciences",
+      "https://richardson.forestry.ubc.ca/ | a4a60d86b731ad7015bcc6f37c3deecc51952a24188818aeed1b1eafd6f56f44 | Our research program addresses questions related to the mechanisms that structure stream and riparian area communities, and how various land-use practices affect those systems.",
+      "https://richardson.forestry.ubc.ca/ | a4a60d86b731ad7015bcc6f37c3deecc51952a24188818aeed1b1eafd6f56f44 | Current Research Projects: Source Stream Protection (SOSTPRO); The Forest-Stream Linkages Project – Organic matter dynamics; Ecology of headwater streams; Stream restoration"
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "research",
+    "rationale": "The laboratory presents stream and riparian ecology research, projects, methods and research-group context."
+  }
+}

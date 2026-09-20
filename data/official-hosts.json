@@ -2035,6 +2035,22 @@
     "document_count": 52
   },
   {
+    "hostname": "richardson.forestry.ubc.ca",
+    "title": "richardson.forestry.ubc.ca",
+    "homepage_url": "https://richardson.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T20:37:59.579Z",
+    "homepage_sha256": "a4a60d86b731ad7015bcc6f37c3deecc51952a24188818aeed1b1eafd6f56f44",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/richardson.forestry.ubc.ca",
+        "document_count": 77
+      }
+    ],
+    "document_count": 77
+  },
+  {
     "hostname": "riselab.forestry.ubc.ca",
     "title": "riselab.forestry.ubc.ca",
     "homepage_url": "https://riselab.forestry.ubc.ca/",
