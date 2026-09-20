@@ -2027,7 +2027,23 @@
     "homepage_retrieved_at": "2026-09-18T13:37:27.388Z",
     "homepage_sha256": "3b157e0fb0d6e45aeaa4f324f70e032b3f863ceeb4145a2c6e3e8252da0fcf26",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/treebiotech.forestry.ubc.ca",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/treebiotech.forestry.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/treebiotech.forestry.ubc.ca",
+        "document_count": 42
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/treebiotech.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 44
   },
   {
