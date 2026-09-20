@@ -777,6 +777,32 @@
     "document_count": 77
   },
   {
+    "hostname": "macl.arts.ubc.ca",
+    "title": "macl.arts.ubc.ca",
+    "homepage_url": "https://macl.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:40:47.937Z",
+    "homepage_sha256": "57f4cd2b7ae2b717d91ade7e8f232455385a4e35c22bdc1edd4e89d57aecf558",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/macl.arts.ubc.ca",
+        "document_count": 50
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/macl.arts.ubc.ca",
+        "document_count": 11
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/macl.arts.ubc.ca",
+        "document_count": 2
+      }
+    ],
+    "document_count": 63
+  },
+  {
     "hostname": "mbim.ubc.ca",
     "title": "mbim.ubc.ca",
     "homepage_url": "https://mbim.ubc.ca/",
