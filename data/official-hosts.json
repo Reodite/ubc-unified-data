@@ -2101,7 +2101,18 @@
     "homepage_retrieved_at": "2026-09-18T13:43:58.707Z",
     "homepage_sha256": "ec1444b3f64c5e3e50a095cdd41c02e6195a3756558436ae3d31db65dda372eb",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/undergrad.familypractice.ubc.ca",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/undergrad.familypractice.ubc.ca",
+        "document_count": 11
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/undergrad.familypractice.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 12
   },
   {
