@@ -2201,7 +2201,13 @@
     "homepage_retrieved_at": "2026-09-18T13:49:56.556Z",
     "homepage_sha256": "b4c8efc348ccfd46b4f96d7aae9162c880d5bae9cd8b0bf861080cc20ae3ada5",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/vems.ok.ubc.ca",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/vems.ok.ubc.ca",
+        "document_count": 9
+      }
+    ],
     "document_count": 9
   },
   {

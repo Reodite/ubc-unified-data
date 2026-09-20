@@ -1,6 +1,6 @@
 ---
 {
-  "format_version": 1,
+  "format_version": 3,
   "id": "documents:official-web:4412d9b4a0a8061ebc8c8e3f",
   "hostname": "vems.ok.ubc.ca",
   "title": "Booking Request",
@@ -24,6 +24,11 @@
       "platform": "linux",
       "arch": "x64"
     }
+  },
+  "category": "support",
+  "routing": {
+    "rule_id": "practical-support-sections",
+    "policy_sha256": "76e7a7d4d7ae73fffe3ee5adab4fb4721d966c6995a2b1132a60deca7f00a910"
   }
 }
 ---
