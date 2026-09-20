@@ -1548,6 +1548,37 @@
     "document_count": 7
   },
   {
+    "hostname": "physioclinic.med.ubc.ca",
+    "title": "physioclinic.med.ubc.ca",
+    "homepage_url": "https://physioclinic.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:30:47.226Z",
+    "homepage_sha256": "fca5941602ca432b757e08243e220a2ca8af79b69f66d2fe9780d2899f446032",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/physioclinic.med.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/physioclinic.med.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/physioclinic.med.ubc.ca",
+        "document_count": 21
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/physioclinic.med.ubc.ca",
+        "document_count": 48
+      }
+    ],
+    "document_count": 71
+  },
+  {
     "hostname": "physiorefresh.med.ubc.ca",
     "title": "physiorefresh.med.ubc.ca",
     "homepage_url": "https://physiorefresh.med.ubc.ca/",
