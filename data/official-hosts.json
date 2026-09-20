@@ -803,6 +803,22 @@
     "document_count": 1
   },
   {
+    "hostname": "licenses.library.ubc.ca",
+    "title": "licenses.library.ubc.ca",
+    "homepage_url": "https://licenses.library.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T14:53:02.814Z",
+    "homepage_sha256": "5e6bf49186687f56076e0f3372dbaa0784950f28c0612cfa626938f201c67eef",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/licenses.library.ubc.ca",
+        "document_count": 165
+      }
+    ],
+    "document_count": 165
+  },
+  {
     "hostname": "lindinitiative.ubc.ca",
     "title": "lindinitiative.ubc.ca",
     "homepage_url": "https://lindinitiative.ubc.ca/",

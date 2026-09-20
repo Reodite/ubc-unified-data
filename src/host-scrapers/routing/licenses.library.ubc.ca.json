@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hostname": "licenses.library.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w1 first homepage review",
+    "rationale": "Official UBC Library public license-information homepage explains access eligibility, permitted-use lookup and restrictions for staff, faculty and current students. This is substantive library-use guidance, not a login-only resource or an exclusively Okanagan service. Its own content concerns one support function; the broader news, research and service navigation links lead to other hosts, so no distinct same-host category override is supported.",
+    "evidence": [
+      "https://licenses.library.ubc.ca/ | 5e6bf49186687f56076e0f3372dbaa0784950f28c0612cfa626938f201c67eef | License Information; The University of British Columbia licenses many electronic resources for its staff, faculty, and current students including indexes, databases, e-journals, and e-books.",
+      "https://licenses.library.ubc.ca/ | 5e6bf49186687f56076e0f3372dbaa0784950f28c0612cfa626938f201c67eef | What can I do with electronic resources? What am I NOT allowed to do with electronic resources? GENERAL RESTRICTIONS.",
+      "https://licenses.library.ubc.ca/ | 5e6bf49186687f56076e0f3372dbaa0784950f28c0612cfa626938f201c67eef | License permissions can also be searched by the name of an entire collection or package of electronic journals or e-books."
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "support",
+    "rationale": "Public license and permitted-use guidance helps the UBC community use Library electronic resources appropriately."
+  }
+}
