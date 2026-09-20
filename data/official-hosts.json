@@ -1616,7 +1616,18 @@
     "homepage_retrieved_at": "2026-09-18T13:00:05.342Z",
     "homepage_sha256": "d7636a7e494da9fb8477a36d232d71d27a865a9ef3f7524e2adaf20049ae375a",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/riselab.forestry.ubc.ca",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/riselab.forestry.ubc.ca",
+        "document_count": 15
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/riselab.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 16
   },
   {
