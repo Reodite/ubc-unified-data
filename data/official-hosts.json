@@ -1123,7 +1123,23 @@
     "homepage_retrieved_at": "2026-09-18T12:25:23.723Z",
     "homepage_sha256": "403b6944e0c1ddea69babed0c6053f9525d5e340695b17d1d5276949032c2220",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/park.forestry.ubc.ca",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/park.forestry.ubc.ca",
+        "document_count": 10
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/park.forestry.ubc.ca",
+        "document_count": 6
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/park.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 17
   },
   {
