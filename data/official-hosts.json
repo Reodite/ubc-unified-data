@@ -3168,6 +3168,27 @@
     "document_count": 27
   },
   {
+    "hostname": "www.engphys.ubc.ca",
+    "title": "www.engphys.ubc.ca",
+    "homepage_url": "https://www.engphys.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T21:50:41.769Z",
+    "homepage_sha256": "46b1dc44ad8fbafd31df503a1220e84c520048f1e783d99a115b443b9ce41879",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/www.engphys.ubc.ca",
+        "document_count": 152
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/www.engphys.ubc.ca",
+        "document_count": 262
+      }
+    ],
+    "document_count": 414
+  },
+  {
     "hostname": "www.igen.ubc.ca",
     "title": "www.igen.ubc.ca",
     "homepage_url": "https://www.igen.ubc.ca/",
