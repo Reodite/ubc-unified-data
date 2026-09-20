@@ -526,7 +526,13 @@
     "homepage_retrieved_at": "2026-09-18T11:23:02.962Z",
     "homepage_sha256": "962ba097d11ca235bf05c3f78fa78899dfbdd3ea5419ba1a7d4ce2e3d1a0797f",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/keepteaching.ubc.ca",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/keepteaching.ubc.ca",
+        "document_count": 9
+      }
+    ],
     "document_count": 9
   },
   {
