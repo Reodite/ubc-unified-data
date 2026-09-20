@@ -1699,6 +1699,22 @@
     "document_count": 70
   },
   {
+    "hostname": "polqm.med.ubc.ca",
+    "title": "polqm.med.ubc.ca",
+    "homepage_url": "https://polqm.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:37:47.616Z",
+    "homepage_sha256": "0de6b9c9684f2d59203e451087680198fad85e0f49ac60800fa273a4f40d9b6c",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/polqm.med.ubc.ca",
+        "document_count": 80
+      }
+    ],
+    "document_count": 80
+  },
+  {
     "hostname": "postgrad.familypractice.ubc.ca",
     "title": "postgrad.familypractice.ubc.ca",
     "homepage_url": "https://postgrad.familypractice.ubc.ca/",
