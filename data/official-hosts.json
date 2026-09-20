@@ -1753,7 +1753,18 @@
     "homepage_retrieved_at": "2026-09-18T13:14:27.627Z",
     "homepage_sha256": "d530ac0d9edc0b7bf41578813401cd4490251a43a646e6ef45e05f349cb62925",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/speaking.arts.ubc.ca",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/speaking.arts.ubc.ca",
+        "document_count": 125
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/speaking.arts.ubc.ca",
+        "document_count": 2
+      }
+    ],
     "document_count": 127
   },
   {
