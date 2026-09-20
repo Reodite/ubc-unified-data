@@ -2259,7 +2259,23 @@
     "homepage_retrieved_at": "2026-09-18T21:33:05.466Z",
     "homepage_sha256": "1b999bebdcb00b2a2f9390c01cff848ac3ad319bd2d56f47c1698baef2e250f8",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/visionlab.psych.ubc.ca",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/visionlab.psych.ubc.ca",
+        "document_count": 7
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/visionlab.psych.ubc.ca",
+        "document_count": 49
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/visionlab.psych.ubc.ca",
+        "document_count": 4
+      }
+    ],
     "document_count": 60
   },
   {
