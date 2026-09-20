@@ -1669,7 +1669,18 @@
     "homepage_retrieved_at": "2026-09-18T13:06:50.045Z",
     "homepage_sha256": "42f8ed47307500787c0e8ccbbf7095d797a294af76bac10bd70600f34ca2525e",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/scienceone.ubc.ca",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/scienceone.ubc.ca",
+        "document_count": 13
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/scienceone.ubc.ca",
+        "document_count": 2
+      }
+    ],
     "document_count": 15
   },
   {
