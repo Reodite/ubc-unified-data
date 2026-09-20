@@ -1995,7 +1995,13 @@
     "homepage_retrieved_at": "2026-09-18T13:31:51.158Z",
     "homepage_sha256": "4bdb5d8cad64600da0f074da1f3b7dafd828a48a7f3b9c73157065fc8b4c31aa",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/thesismodules.edst.educ.ubc.ca",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/thesismodules.edst.educ.ubc.ca",
+        "document_count": 13
+      }
+    ],
     "document_count": 13
   },
   {
