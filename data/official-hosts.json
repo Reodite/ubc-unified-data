@@ -1516,7 +1516,18 @@
     "homepage_retrieved_at": "2026-09-18T12:54:53.851Z",
     "homepage_sha256": "9786528c0a751595e433af55cdd4e7254c6bd7a3b76caa00669551b22315caa2",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/renew.forestry.ubc.ca",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/renew.forestry.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/renew.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 5
   },
   {
