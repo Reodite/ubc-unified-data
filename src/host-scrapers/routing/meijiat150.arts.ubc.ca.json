@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "hostname": "meijiat150.arts.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w4 first homepage review",
+    "rationale": "Official UBC public humanities project presenting historical scholarship, archival collections and lectures about modern Japan and Japanese Canadian history. Research is the host purpose; explicitly named teaching resources serve academics.",
+    "evidence": [
+      "https://meijiat150.arts.ubc.ca/ | 19e52472d32f13c6824d3cb84d871dfd78094dedd374e4c5eda8fba8e68e9ebd | 1907 Vancouver Anti-Asian Riot Photographs; Image courtesy UBC Rare Books & Special Collections.",
+      "https://meijiat150.arts.ubc.ca/ | 19e52472d32f13c6824d3cb84d871dfd78094dedd374e4c5eda8fba8e68e9ebd | See more by visiting the Meiji at 150 Digital Teaching Resource.",
+      "https://meijiat150.arts.ubc.ca/ | 19e52472d32f13c6824d3cb84d871dfd78094dedd374e4c5eda8fba8e68e9ebd | Gendering War & Peace in Modern Japan Workshop; Dr. Sharalyn Orbaugh (UBC); present their recent research and discuss the transwar positionality of women and children."
+    ]
+  },
+  "rules": [
+    {
+      "id": "teaching-resources",
+      "category": "academics",
+      "rationale": "The homepage explicitly offers a Digital Teaching Resource; pages named for teaching or curriculum are academic learning resources.",
+      "title_pattern": "^.*\\b(teaching|curriculum|syllabus|syllabi)\\b"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "research",
+    "rationale": "The Meiji at 150 project shares historical scholarship, scholarly lectures and digitized archival evidence, including UBC collections and Vancouver Japanese Canadian history."
+  }
+}

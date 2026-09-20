@@ -908,6 +908,22 @@
     "document_count": 44
   },
   {
+    "hostname": "meijiat150.arts.ubc.ca",
+    "title": "meijiat150.arts.ubc.ca",
+    "homepage_url": "https://meijiat150.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:52:20.436Z",
+    "homepage_sha256": "19e52472d32f13c6824d3cb84d871dfd78094dedd374e4c5eda8fba8e68e9ebd",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/meijiat150.arts.ubc.ca",
+        "document_count": 111
+      }
+    ],
+    "document_count": 111
+  },
+  {
     "hostname": "mes.arts.ubc.ca",
     "title": "mes.arts.ubc.ca",
     "homepage_url": "https://mes.arts.ubc.ca/",
