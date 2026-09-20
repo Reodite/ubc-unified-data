@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hostname": "orientation.grad.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w2 first homepage review",
+    "rationale": "Official UBC graduate orientation provides public arrival guidance and welcome-event information for students joining UBC and Vancouver, with named Graduate and Postdoctoral Studies, Graduate Student Society and International Student Development organizers.",
+    "evidence": [
+      "https://orientation.grad.ubc.ca/ | 7127ee3687a26fb382abb7429afba1db01de156cad08c69fb62af39cc3385a1d | Welcome to UBC. We are excited to welcome new graduate students to our campus and are enthusiastic about you becoming part of our community.",
+      "https://orientation.grad.ubc.ca/ | 7127ee3687a26fb382abb7429afba1db01de156cad08c69fb62af39cc3385a1d | Pre-arrival webinars begin in March and include Living in Vancouver with Q&A with current grad students, sessions for international students, and more.",
+      "https://orientation.grad.ubc.ca/ | 7127ee3687a26fb382abb7429afba1db01de156cad08c69fb62af39cc3385a1d | These events are brought to you by Graduate and Postdoctoral Studies, the Graduate Student Society and International Student Development."
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "support",
+    "rationale": "The host helps incoming graduate students prepare for arrival, navigate orientation and connect with the UBC Vancouver community."
+  }
+}

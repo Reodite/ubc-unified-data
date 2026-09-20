@@ -1396,6 +1396,22 @@
     "document_count": 37
   },
   {
+    "hostname": "orientation.grad.ubc.ca",
+    "title": "orientation.grad.ubc.ca",
+    "homepage_url": "https://orientation.grad.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:21:53.172Z",
+    "homepage_sha256": "7127ee3687a26fb382abb7429afba1db01de156cad08c69fb62af39cc3385a1d",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/orientation.grad.ubc.ca",
+        "document_count": 24
+      }
+    ],
+    "document_count": 24
+  },
+  {
     "hostname": "palliativecare.med.ubc.ca",
     "title": "palliativecare.med.ubc.ca",
     "homepage_url": "https://palliativecare.med.ubc.ca/",
