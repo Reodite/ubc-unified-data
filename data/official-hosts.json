@@ -1885,7 +1885,23 @@
     "homepage_retrieved_at": "2026-09-18T13:24:42.253Z",
     "homepage_sha256": "fb66d5a10d9f137423b327f33505e99f69500a88e4b32febf3fbd7f44ec3ab6d",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/sunderlandlab.forestry.ubc.ca",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/sunderlandlab.forestry.ubc.ca",
+        "document_count": 137
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/sunderlandlab.forestry.ubc.ca",
+        "document_count": 6
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/sunderlandlab.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 144
   },
   {
