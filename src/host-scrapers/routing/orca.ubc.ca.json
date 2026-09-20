@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hostname": "orca.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w5 first homepage review",
+    "rationale": "ORCA is an official UBC centralized assessment service provided by the Office of the Provost and Vice-President, Academic under the Learning Technology Innovation Centre. The public homepage explains assessment facilities and directs instructors and students to practical support. It is not personal, login-only or explicitly Okanagan-exclusive.",
+    "evidence": [
+      "https://orca.ubc.ca/ | 93f75ba04c69de61ff9466ea4570eb27c49203302b6803183293c5d390d86721 | The Open Resource Centre for Assessments (ORCA) aims to solve a key problem in teaching and learning: helping instructors run digital assessments at scale securely and equitably.",
+      "https://orca.ubc.ca/ | 93f75ba04c69de61ff9466ea4570eb27c49203302b6803183293c5d390d86721 | The ORCA is a centralized service provided by the Office of the Provost and Vice-President, Academic and sits under LTIC (Learning Technology Innovation Centre).",
+      "https://orca.ubc.ca/ | 93f75ba04c69de61ff9466ea4570eb27c49203302b6803183293c5d390d86721 | If you’re interested in learning more about the ORCA, visit our support page for next steps, including weekly drop-in tours, and virtual office hours."
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "support",
+    "rationale": "ORCA provides practical guidance and services for instructors and students using UBC digital assessment facilities."
+  }
+}
