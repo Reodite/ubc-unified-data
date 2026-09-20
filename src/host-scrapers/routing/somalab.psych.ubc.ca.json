@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "hostname": "somalab.psych.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w2 first homepage review",
+    "rationale": "The official UBC Soma Laboratory homepage provides a substantive description of steroid hormone research, named funding agencies and an invitation to collaborate using its mass spectrometry capability. Observed navigation distinguishes research and publications, lab-member profiles, news and work/collaboration opportunities.",
+    "evidence": [
+      "https://somalab.psych.ubc.ca/ | e898e5a7624eeb1161159f10a2894e0ae9def284f403879ba811db228060f732 | The Soma Lab explores how steroid hormones regulate the nervous system and immune system, using a multidisciplinary approach and some of the most advanced analytical tools available.",
+      "https://somalab.psych.ubc.ca/ | e898e5a7624eeb1161159f10a2894e0ae9def284f403879ba811db228060f732 | We welcome collaborations, especially for steroid analyses by our state-of-the-art mass spectrometry (LC-MS/MS) system. Our work is supported by CIHR, NSERC and CFI.",
+      "https://somalab.psych.ubc.ca/ | e898e5a7624eeb1161159f10a2894e0ae9def284f403879ba811db228060f732 | Research /research/; Neurosteroids; Immunosteroids; Publications /publications/; News /news/; Work With Us! /work-with-us/; Collaborate with us /work-with-us/collaborate/",
+      "https://somalab.psych.ubc.ca/ | e898e5a7624eeb1161159f10a2894e0ae9def284f403879ba811db228060f732 | Lab Members /lab-members/; Lab Director; Lab Manager; Post-doctoral Fellows; Graduate Students; Research Assistants; Alumni"
+    ]
+  },
+  "rules": [
+    {
+      "id": "lab-member-profiles",
+      "category": "stories",
+      "rationale": "The observed Lab Members section presents the people in the laboratory, including its director, staff, trainees and alumni, rather than research outputs.",
+      "path_pattern": "^/lab-members(?:/|$)"
+    },
+    {
+      "id": "work-and-collaboration-calls",
+      "category": "opportunities",
+      "rationale": "Work With Us and Collaborate with us invite participation and collaboration with the laboratory.",
+      "path_pattern": "^/work-with-us(?:/|$)"
+    },
+    {
+      "id": "lab-announcements",
+      "category": "news",
+      "rationale": "The homepage explicitly distinguishes laboratory News from research and publications.",
+      "path_pattern": "^/news(?:/|$)"
+    },
+    {
+      "id": "research-and-publications",
+      "category": "research",
+      "rationale": "The observed Research and Publications sections describe scientific work and its outputs.",
+      "path_pattern": "^/(?:research|publications)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "research",
+    "rationale": "The laboratory studies steroid hormones in nervous and immune systems; explicit people, announcement and opportunity sections override the scientific research fallback."
+  }
+}

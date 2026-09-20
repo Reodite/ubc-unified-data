@@ -2271,6 +2271,37 @@
     "document_count": 18
   },
   {
+    "hostname": "somalab.psych.ubc.ca",
+    "title": "somalab.psych.ubc.ca",
+    "homepage_url": "https://somalab.psych.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:14:20.014Z",
+    "homepage_sha256": "e898e5a7624eeb1161159f10a2894e0ae9def284f403879ba811db228060f732",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/somalab.psych.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/somalab.psych.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/somalab.psych.ubc.ca",
+        "document_count": 173
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/somalab.psych.ubc.ca",
+        "document_count": 6
+      }
+    ],
+    "document_count": 182
+  },
+  {
     "hostname": "speaking.arts.ubc.ca",
     "title": "speaking.arts.ubc.ca",
     "homepage_url": "https://speaking.arts.ubc.ca/",
