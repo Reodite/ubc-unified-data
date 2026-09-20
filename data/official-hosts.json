@@ -1853,7 +1853,13 @@
     "homepage_retrieved_at": "2026-09-18T13:23:07.908Z",
     "homepage_sha256": "0df16fd3213d759c60cf09fa8fa920d5fdae8743d836dfb2e8686d5d11915432",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/students.canvas.ubc.ca",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/students.canvas.ubc.ca",
+        "document_count": 31
+      }
+    ],
     "document_count": 31
   },
   {
