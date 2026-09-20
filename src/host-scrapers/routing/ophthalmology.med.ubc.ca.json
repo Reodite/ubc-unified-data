@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "hostname": "ophthalmology.med.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w4 first homepage review",
+    "rationale": "The public UBC Department of Ophthalmology homepage identifies academic training, care and research as its institutional mission, with concrete eye-health research and a Vancouver Downtown Eastside initiative. It is useful official academic content and not Okanagan-exclusive, personal, duplicate or authentication-only.",
+    "evidence": [
+      "https://ophthalmology.med.ubc.ca/ | a3d851c9a25b379c2ada023139667d9458208853a510d547b326701708a89a69 | We are dedicated to shaping the next generation of leaders in ophthalmology, delivering exceptional care, and advancing the frontiers of knowledge and innovation through transformative research",
+      "https://ophthalmology.med.ubc.ca/ | a3d851c9a25b379c2ada023139667d9458208853a510d547b326701708a89a69 | A unique initiative in Vancouver’s Downtown Eastside is bringing Indigenous patient partners and UBC experts together to address barriers to eye care."
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "The institutional department supports ophthalmology education and academic work, expressly training the next generation of leaders alongside care and research."
+  }
+}

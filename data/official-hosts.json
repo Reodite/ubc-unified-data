@@ -1364,6 +1364,22 @@
     "document_count": 132
   },
   {
+    "hostname": "ophthalmology.med.ubc.ca",
+    "title": "ophthalmology.med.ubc.ca",
+    "homepage_url": "https://ophthalmology.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:20:34.872Z",
+    "homepage_sha256": "a3d851c9a25b379c2ada023139667d9458208853a510d547b326701708a89a69",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/ophthalmology.med.ubc.ca",
+        "document_count": 100
+      }
+    ],
+    "document_count": 100
+  },
+  {
     "hostname": "palliativecare.med.ubc.ca",
     "title": "palliativecare.med.ubc.ca",
     "homepage_url": "https://palliativecare.med.ubc.ca/",
