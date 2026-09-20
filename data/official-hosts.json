@@ -579,7 +579,18 @@
     "homepage_retrieved_at": "2026-09-18T11:25:09.847Z",
     "homepage_sha256": "439e5d238a229c25f5ca112c08ac0133ed62bcd07dd4e9908baa0e9d431f85a1",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/landone.ubc.ca",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/landone.ubc.ca",
+        "document_count": 11
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/landone.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 12
   },
   {
