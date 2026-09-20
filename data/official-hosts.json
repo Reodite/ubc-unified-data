@@ -2023,6 +2023,37 @@
     "document_count": 88
   },
   {
+    "hostname": "rbtlab.ubc.ca",
+    "title": "rbtlab.ubc.ca",
+    "homepage_url": "https://rbtlab.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T14:58:25.043Z",
+    "homepage_sha256": "29594eda86607d6d57e4413b1acf34df37da9d1b6353ed8b90cdc809bd85da80",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/rbtlab.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/rbtlab.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/rbtlab.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/rbtlab.ubc.ca",
+        "document_count": 19
+      }
+    ],
+    "document_count": 23
+  },
+  {
     "hostname": "rcl.ece.ubc.ca",
     "title": "rcl.ece.ubc.ca",
     "homepage_url": "https://rcl.ece.ubc.ca/",
