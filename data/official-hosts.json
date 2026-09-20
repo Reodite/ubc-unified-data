@@ -626,7 +626,18 @@
     "homepage_retrieved_at": "2026-09-18T11:29:00.580Z",
     "homepage_sha256": "a8288ae8b3a156bfe2c406a2a0ab31b0cc8927dd83b1e34ebde89dfda29123d2",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/learning.chem.ubc.ca",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/learning.chem.ubc.ca",
+        "document_count": 79
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/learning.chem.ubc.ca",
+        "document_count": 3
+      }
+    ],
     "document_count": 82
   },
   {
