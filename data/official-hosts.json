@@ -2180,7 +2180,18 @@
     "homepage_retrieved_at": "2026-09-18T13:49:43.665Z",
     "homepage_sha256": "b05da6792b9adaeb4957d2374ee621602abead3bd1c87c8a87617674f165d5ef",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/vascularsurgery.med.ubc.ca",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/vascularsurgery.med.ubc.ca",
+        "document_count": 51
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/vascularsurgery.med.ubc.ca",
+        "document_count": 3
+      }
+    ],
     "document_count": 54
   },
   {
