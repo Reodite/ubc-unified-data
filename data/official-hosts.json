@@ -2365,6 +2365,42 @@
     "document_count": 36
   },
   {
+    "hostname": "stonecentre.economics.ubc.ca",
+    "title": "stonecentre.economics.ubc.ca",
+    "homepage_url": "https://stonecentre.economics.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:20:08.744Z",
+    "homepage_sha256": "b8bfb3bb28b9a8c5158ac7fcb0f62cb8440427439881f326e8d7a076211da0e9",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/stonecentre.economics.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/stonecentre.economics.ubc.ca",
+        "document_count": 22
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/stonecentre.economics.ubc.ca",
+        "document_count": 111
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/stonecentre.economics.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/stonecentre.economics.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 141
+  },
+  {
     "hostname": "strategicplan.library.ubc.ca",
     "title": "strategicplan.library.ubc.ca",
     "homepage_url": "https://strategicplan.library.ubc.ca/",

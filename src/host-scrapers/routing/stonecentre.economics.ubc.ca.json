@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "hostname": "stonecentre.economics.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w5 first homepage review",
+    "rationale": "The Stone Centre is an official Vancouver School of Economics research centre on wealth and income inequality. The homepage evidences research projects and papers, fellowship and grant opportunities, seminars and events, personal research interviews, institutional news and contact support. These distinct sections receive ordered overrides without inventing an academic-course category where none is evidenced.",
+    "evidence": [
+      "https://stonecentre.economics.ubc.ca/ | b8bfb3bb28b9a8c5158ac7fcb0f62cb8440427439881f326e8d7a076211da0e9 | The James M. and Cathleen D. Stone Centre on Wealth and Income Inequality at UBC is a research centre at the Vancouver School of Economics funded by a generous gift of the James M. and Cathleen D. Stone Foundation.",
+      "https://stonecentre.economics.ubc.ca/ | b8bfb3bb28b9a8c5158ac7fcb0f62cb8440427439881f326e8d7a076211da0e9 | Navigation: Research Grants /research/stone-research-grants/; Research Projects /research/research-projects/; Publications /research/publications/; Working Paper Series /working-paper-series/; MA Research Paper Series /research/ma-research-paper-series/",
+      "https://stonecentre.economics.ubc.ca/ | b8bfb3bb28b9a8c5158ac7fcb0f62cb8440427439881f326e8d7a076211da0e9 | Navigation: Fellowships /fellowships/; MA Thesis Fellowships /ma-thesis-fellowships/; Latest News /news-and-events/latest-news/; Stone Inequality Seminar Series /news-and-events/stone-inequality-seminar-series/; Distinguished Lectures on Inequality /news-and-events/distinguished-lecture-on-inequality/; Events /news-and-events/events/; Contact /contact/",
+      "https://stonecentre.economics.ubc.ca/ | b8bfb3bb28b9a8c5158ac7fcb0f62cb8440427439881f326e8d7a076211da0e9 | Stone Centre Research Grants for 2026/2027 Now Open; Uncovering Economic History: A Q&A with MA Thesis Fellow Danny Xiefung Lu; Bridging Medicine and Economics: A Q&A with MA Thesis Fellow Brian Wall; Reflections on Inequality and Research: A Q&A with Postdoctoral Fellow Linda Wu",
+      "https://stonecentre.economics.ubc.ca/ | b8bfb3bb28b9a8c5158ac7fcb0f62cb8440427439881f326e8d7a076211da0e9 | LSE Joins Growing Stone Foundation Research Network; Wealth, Inequality, and Why It Matters: A Conversation with Stone Centre Director Thomas Lemieux"
+    ]
+  },
+  "rules": [
+    {
+      "id": "research-interviews",
+      "category": "stories",
+      "rationale": "Homepage interviews recount the experiences and reflections of fellows and the centre director.",
+      "title_pattern": "^.*(?:Q&A with|Q&amp;A with|Conversation with)"
+    },
+    {
+      "id": "grants-fellowships",
+      "category": "opportunities",
+      "rationale": "Named grant and fellowship sections describe funding and participation opportunities, including grants nested under Research.",
+      "path_pattern": "^/(?:research/stone-research-grants|fellowships|ma-thesis-fellowships)(?:/|$)"
+    },
+    {
+      "id": "grant-call-titles",
+      "category": "opportunities",
+      "rationale": "The homepage advertises an open research-grant application call outside the grant section path.",
+      "title_pattern": "^Stone Centre Research Grants.*(?:Now Open|Applications)"
+    },
+    {
+      "id": "seminars-lectures-events",
+      "category": "opportunities",
+      "rationale": "These explicitly linked sections offer seminars, lectures and event participation and override their News & Events parent.",
+      "path_pattern": "^/news-and-events/(?:stone-inequality-seminar-series|distinguished-lecture-on-inequality|events)(?:/|$)"
+    },
+    {
+      "id": "news-section",
+      "category": "news",
+      "rationale": "The remaining News & Events section and Latest News report institutional developments.",
+      "path_pattern": "^/news-and-events(?:/|$)"
+    },
+    {
+      "id": "network-news",
+      "category": "news",
+      "rationale": "The homepage's LSE network announcement is institutional news on a root-level article path.",
+      "path_pattern": "^/lse-joins-growing-stone-foundation-research-network(?:/|$)"
+    },
+    {
+      "id": "contact-support",
+      "category": "support",
+      "rationale": "Contact guidance helps readers reach the centre rather than describing research findings.",
+      "path_pattern": "^/contact(?:/|$)"
+    },
+    {
+      "id": "research-papers-projects",
+      "category": "research",
+      "rationale": "Research projects, publications and working papers describe the centre's research output; the earlier grant rule handles funding separately.",
+      "path_pattern": "^/(?:research|working-paper-series)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "research",
+    "rationale": "The centre's primary purpose is research on the causes, consequences and remedies of wealth and income inequality."
+  }
+}
