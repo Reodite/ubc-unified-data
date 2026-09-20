@@ -206,7 +206,23 @@
     "homepage_retrieved_at": "2026-09-18T11:07:33.339Z",
     "homepage_sha256": "fe4df88bb320df2ec1440ae57885dfe29caae524062844a23cd5efcf21268895",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/ics.nursing.ubc.ca",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/ics.nursing.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/ics.nursing.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/ics.nursing.ubc.ca",
+        "document_count": 22
+      }
+    ],
     "document_count": 24
   },
   {
