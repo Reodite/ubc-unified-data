@@ -1254,6 +1254,22 @@
     "document_count": 273
   },
   {
+    "hostname": "nunavutsocialhistory.arts.ubc.ca",
+    "title": "nunavutsocialhistory.arts.ubc.ca",
+    "homepage_url": "https://nunavutsocialhistory.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:10:10.148Z",
+    "homepage_sha256": "b12f74de67346443a99baaaa9465dcb87b173b7b526d2b794edee5ed05a9d191",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/nunavutsocialhistory.arts.ubc.ca",
+        "document_count": 6
+      }
+    ],
+    "document_count": 6
+  },
+  {
     "hostname": "nvd.ubc.ca",
     "title": "nvd.ubc.ca",
     "homepage_url": "https://nvd.ubc.ca/",
