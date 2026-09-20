@@ -1935,6 +1935,37 @@
     "document_count": 5
   },
   {
+    "hostname": "redi.med.ubc.ca",
+    "title": "redi.med.ubc.ca",
+    "homepage_url": "https://redi.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:53:39.765Z",
+    "homepage_sha256": "d7399db44df5a429af21a8f78d534d29b2404015bdcc9804869829d5a8062fda",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/redi.med.ubc.ca",
+        "document_count": 7
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/redi.med.ubc.ca",
+        "document_count": 16
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/redi.med.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/redi.med.ubc.ca",
+        "document_count": 379
+      }
+    ],
+    "document_count": 403
+  },
+  {
     "hostname": "renew.forestry.ubc.ca",
     "title": "renew.forestry.ubc.ca",
     "homepage_url": "https://renew.forestry.ubc.ca/",

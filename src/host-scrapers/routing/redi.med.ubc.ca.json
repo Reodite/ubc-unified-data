@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "hostname": "redi.med.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w3 first homepage review",
+    "rationale": "The official Faculty of Medicine REDI service offers substantive public equity and inclusion guidance, consultation, facilitation guides, educational recordings, and events. Explicit Vancouver campus events and the distributed Faculty of Medicine mandate establish broad UBC rather than exclusively Okanagan scope.",
+    "evidence": [
+      "https://redi.med.ubc.ca/ | d7399db44df5a429af21a8f78d534d29b2404015bdcc9804869829d5a8062fda | REDI offers education, consultation, and tailored learning and resources designed to meet you where you are, whether you’re leading a team, teaching a class, or just looking to do your part.",
+      "https://redi.med.ubc.ca/ | d7399db44df5a429af21a8f78d534d29b2404015bdcc9804869829d5a8062fda | The session will take place as a full-day, in-person event on the UBC Vancouver campus and will also be live-streamed online.",
+      "https://redi.med.ubc.ca/ | d7399db44df5a429af21a8f78d534d29b2404015bdcc9804869829d5a8062fda | REDI Best Practices; REDI Facilitation Guides; Research Voices from the Field; A Sacred Commitment to Truth and Reconciliation: From Generation to Generation; Frybread Power; Recruiting and Supporting Indigenous Students into UBC’s Health Career Programs; Building Networks for Lasting Impact"
+    ]
+  },
+  "rules": [
+    {
+      "id": "research-voices",
+      "category": "research",
+      "rationale": "The homepage identifies Research Voices from the Field as reflections on methods for responsible community-engaged research.",
+      "title_pattern": "^Research Voices from the Field"
+    },
+    {
+      "id": "sacred-commitment-story",
+      "category": "stories",
+      "rationale": "The homepage describes this contribution as Derek Thompson's personal reflection on the birth of his grandson.",
+      "title_pattern": "^A Sacred Commitment to Truth and Reconciliation"
+    },
+    {
+      "id": "featured-participation",
+      "category": "opportunities",
+      "rationale": "The homepage invites participation in these named speaker sessions and affinity networking events.",
+      "title_pattern": "^(?:Frybread Power|Recruiting and Supporting Indigenous Students|Building Networks for Lasting Impact)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "support",
+    "rationale": "Faculty of Medicine equity, diversity, inclusion, and respectful-environment support resources and education."
+  }
+}
