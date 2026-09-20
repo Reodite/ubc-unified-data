@@ -1911,7 +1911,13 @@
     "homepage_retrieved_at": "2026-09-18T13:26:34.646Z",
     "homepage_sha256": "298f8b7869b4ec1fc2d74a0430a967fe6cab3332e48b055d3f2c2a9a5ff29046",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/svpro.ubc.ca",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/svpro.ubc.ca",
+        "document_count": 34
+      }
+    ],
     "document_count": 34
   },
   {
