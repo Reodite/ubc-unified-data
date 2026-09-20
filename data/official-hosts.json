@@ -469,7 +469,38 @@
     "homepage_retrieved_at": "2026-09-18T11:21:43.539Z",
     "homepage_sha256": "7c4b089c3ad791a11aaa2f04b349d766e9b4b12fdf6f61122edb4b812188f5a2",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/jwam.ubc.ca",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/jwam.ubc.ca",
+        "document_count": 156
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/jwam.ubc.ca",
+        "document_count": 561
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/jwam.ubc.ca",
+        "document_count": 47
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/jwam.ubc.ca",
+        "document_count": 16
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/jwam.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/jwam.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 786
   },
   {
