@@ -2463,7 +2463,23 @@
     "homepage_retrieved_at": "2026-09-18T14:10:45.517Z",
     "homepage_sha256": "3dc9b630cf3a21cd9b071199877c464722bce707b3c67b56085a9de5a0985f3e",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/www.igen.ubc.ca",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/www.igen.ubc.ca",
+        "document_count": 10
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/www.igen.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/www.igen.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 12
   },
   {
