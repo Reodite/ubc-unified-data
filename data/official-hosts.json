@@ -1463,7 +1463,13 @@
     "homepage_retrieved_at": "2026-09-18T12:47:09.619Z",
     "homepage_sha256": "24b5f979ed8106eae06975bd7f409d0feb8a7fe70254cf499f7f893425aa908b",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/psctc.educ.ubc.ca",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/psctc.educ.ubc.ca",
+        "document_count": 34
+      }
+    ],
     "document_count": 34
   },
   {
