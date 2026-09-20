@@ -64,7 +64,10 @@ committing. Raw response caches remain outside the repository under
 (or `$UBC_TMP_ROOT/ubc-unified-data/state/source-prose/cache/` when configured).
 
 Separately, `data/official-hosts.json` indexes complete, homepage-vetted hostname
-collections in `data/documents/<hostname>/`. [HOST-DOCUMENTS.md](HOST-DOCUMENTS.md)
+collections in `data/documents/<category>/<hostname>/`, across support, academics,
+opportunities, research, news and stories. Each host's `document_roots` lists
+its directories and counts. Saved first-classification policies drive later
+rescrapes without an LLM classifier. [HOST-DOCUMENTS.md](HOST-DOCUMENTS.md)
 describes their deterministic text format, admission checks and separate
 acquisition/replay/publication commands. No crawl queues, raw snapshots or
 partial host outputs are published.

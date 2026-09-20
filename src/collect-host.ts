@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 import { ROOT } from "./base.ts";
 import { extractPdf } from "./host-crawl/adapters/pdf.ts";
+import { loadRoutingPolicy, loadSavedClassifications, routeCompletedHost } from "./host-crawl/category-routing.ts";
 import { collectRecordedHost } from "./host-crawl/collect.ts";
 import type { HostArchive, SavedUrl } from "./host-crawl/contracts.ts";
 import { assertCollectedInput, decodeFrozenSeed } from "./host-crawl/inputs.ts";
@@ -168,7 +169,17 @@ export async function runCollectHost(args: string[]) {
       assertSameProducer(source, await captureProducer());
     };
     await verifyInputs();
-    const bytes = Buffer.from(`${JSON.stringify(result, null, 2)}\n`);
+    const policy = await loadRoutingPolicy(scraper.hostname);
+    const categorized = routeCompletedHost(result, policy, await loadSavedClassifications(ROOT, scraper.hostname));
+    const verifyCategorizedInputs = async () => {
+      await verifyInputs();
+      routeCompletedHost(
+        categorized,
+        await loadRoutingPolicy(scraper.hostname),
+        await loadSavedClassifications(ROOT, scraper.hostname),
+      );
+    };
+    const bytes = Buffer.from(`${JSON.stringify(categorized, null, 2)}\n`);
     const verifiedPath = assertExternalPath(join(directory, `verified-${digest(bytes)}.json`));
     try {
       await writeFile(verifiedPath, bytes, { flag: "wx", mode: 0o600 });
@@ -181,11 +192,11 @@ export async function runCollectHost(args: string[]) {
     }
     const publication = values.publish
       ? await publishCompletedHost({
-          completed: result,
+          completed: categorized,
           repositoryRoot: ROOT,
           externalRoot: DEFAULT_EXTERNAL_ROOT,
           registeredHosts: registeredHostnames(),
-          verifyInputs,
+          verifyInputs: verifyCategorizedInputs,
         })
       : null;
     return {

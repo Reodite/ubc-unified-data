@@ -4,6 +4,7 @@ import { plainText } from "../source-documents.ts";
 import type { CompletedHost, HostScraper, SearchDocument, Snapshot } from "./contracts.ts";
 import { digest, formatDocument, safeText, timestamp } from "./document-format.ts";
 import { htmlBaseUrl } from "./html-base.ts";
+import { validateVettedHost } from "./public-validation.ts";
 import { documentPageExclusion, hostUrl, normalizeHost } from "./urls.ts";
 
 const HTML = /^(?:text\/html|application\/xhtml\+xml)(?:;|$)/i;
@@ -205,11 +206,11 @@ export function createGenericScraper(value: string): HostScraper {
 export function cheapGuardCompletedHost(completed: CompletedHost): CompletedHost {
   const { host } = completed;
   const hostname = normalizeHost(host.hostname);
+  validateVettedHost(host, [hostname]);
   if (
     completed.complete !== true ||
     hostname !== host.hostname ||
     host.homepage_url !== `https://${hostname}/` ||
-    host.document_root !== `data/documents/${hostname}` ||
     !completed.documents.length ||
     host.document_count !== completed.documents.length
   )
@@ -260,7 +261,20 @@ export function cheapGuardCompletedHost(completed: CompletedHost): CompletedHost
   for (const document of documents) formatDocument(document);
   return {
     ...completed,
-    host: { ...host, document_count: documents.length },
+    host: {
+      ...host,
+      document_count: documents.length,
+      ...(host.document_roots
+        ? {
+            document_roots: host.document_roots
+              .map((root) => ({
+                ...root,
+                document_count: documents.filter((document) => document.category === root.category).length,
+              }))
+              .filter((root) => root.document_count > 0),
+          }
+        : {}),
+    },
     documents,
   };
 }

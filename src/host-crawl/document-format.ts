@@ -1,11 +1,13 @@
 import { createHash } from "node:crypto";
 import { basename } from "node:path";
 import { assertSafeMarkdown } from "../prose/markdown.ts";
+import { assertDocumentCategory, type DocumentCategory } from "./categories.ts";
 import type { SearchDocument } from "./contracts.ts";
 import { hostUrl, normalizeHost } from "./urls.ts";
 
 export const DOCUMENT_FORMAT_VERSION = 1;
 export const PDF_DOCUMENT_FORMAT_VERSION = 2;
+export const CATEGORIZED_DOCUMENT_FORMAT_VERSION = 3;
 export const MAX_DOCUMENT_BYTES = 1024 * 1024;
 const DOCUMENT_KEYS = [
   "id",
@@ -27,9 +29,12 @@ const RUNTIME_KEYS = ["node", "icu", "unicode", "platform", "arch"] as const;
 const EXTRACTION_KEYS = ["format", "source_bytes_sha256", "source_bytes", "pages", "profile_sha256"] as const;
 
 function documentKeys(value: unknown): readonly (keyof SearchDocument)[] {
-  return value !== null && typeof value === "object" && Object.hasOwn(value, "extraction")
-    ? [...DOCUMENT_KEYS, "extraction"]
-    : DOCUMENT_KEYS;
+  const keys: (keyof SearchDocument)[] = [...DOCUMENT_KEYS];
+  if (value !== null && typeof value === "object") {
+    if (Object.hasOwn(value, "extraction")) keys.push("extraction");
+    if (Object.hasOwn(value, "category")) keys.push("category", "routing");
+  }
+  return keys;
 }
 
 export function sha256(value: string | Uint8Array): string {
@@ -139,6 +144,13 @@ export function validateSearchDocument(value: unknown): asserts value is SearchD
     )
       throw new Error("Invalid PDF extraction bounds");
   }
+  if (Object.hasOwn(doc, "category")) {
+    assertDocumentCategory(doc.category);
+    exactObject(doc.routing, ["rule_id", "policy_sha256"], "routing");
+    safeText(doc.routing.rule_id, "routing rule");
+    if (!/^[a-z0-9][a-z0-9-]*$/.test(doc.routing.rule_id)) throw new Error("Invalid routing rule ID");
+    digest(doc.routing.policy_sha256, "routing policy");
+  }
   exactObject(doc.producer, ["inputs_sha256", "runtime"], "producer");
   digest(doc.producer.inputs_sha256, "producer inputs");
   exactObject(doc.producer.runtime, RUNTIME_KEYS, "producer runtime");
@@ -182,7 +194,11 @@ export function documentFilename(id: string): string {
 export function formatDocument(document: SearchDocument): Buffer {
   validateSearchDocument(document);
   const metadata: Record<string, unknown> = {
-    format_version: document.extraction ? PDF_DOCUMENT_FORMAT_VERSION : DOCUMENT_FORMAT_VERSION,
+    format_version: document.category
+      ? CATEGORIZED_DOCUMENT_FORMAT_VERSION
+      : document.extraction
+        ? PDF_DOCUMENT_FORMAT_VERSION
+        : DOCUMENT_FORMAT_VERSION,
   };
   for (const key of documentKeys(document)) {
     if (key === "content_markdown") continue;
@@ -194,7 +210,9 @@ export function formatDocument(document: SearchDocument): Buffer {
           }
         : key === "extraction"
           ? Object.fromEntries(EXTRACTION_KEYS.map((name) => [name, document.extraction![name]]))
-          : document[key];
+          : key === "routing"
+            ? { rule_id: document.routing!.rule_id, policy_sha256: document.routing!.policy_sha256 }
+            : document[key];
   }
   const bytes = Buffer.from(`---\n${JSON.stringify(metadata, null, 2)}\n---\n${document.content_markdown}`, "utf8");
   if (bytes.length > MAX_DOCUMENT_BYTES) throw new Error("Whole document exceeds 1 MiB");
@@ -204,7 +222,7 @@ export function formatDocument(document: SearchDocument): Buffer {
 /** Parse only the canonical UTF-8 wire format; filename, when supplied, is a bare filename. */
 export function parseDocument(
   bytes: Uint8Array | string,
-  expected: { hostname?: string; filename?: string } = {},
+  expected: { hostname?: string; filename?: string; category?: DocumentCategory } = {},
 ): SearchDocument {
   if (typeof bytes === "string" && !bytes.isWellFormed()) throw new Error("Invalid UTF-8 document");
   const buffer = typeof bytes === "string" ? Buffer.from(bytes, "utf8") : Buffer.from(bytes);
@@ -221,7 +239,11 @@ export function parseDocument(
   );
   if (
     metadata.format_version !==
-    (Object.hasOwn(metadata, "extraction") ? PDF_DOCUMENT_FORMAT_VERSION : DOCUMENT_FORMAT_VERSION)
+    (Object.hasOwn(metadata, "category")
+      ? CATEGORIZED_DOCUMENT_FORMAT_VERSION
+      : Object.hasOwn(metadata, "extraction")
+        ? PDF_DOCUMENT_FORMAT_VERSION
+        : DOCUMENT_FORMAT_VERSION)
   )
     throw new Error("Unknown or inconsistent document format version");
   const { format_version: _, ...fields } = metadata;
@@ -229,6 +251,8 @@ export function parseDocument(
   validateSearchDocument(document);
   if (expected.hostname !== undefined && document.hostname !== expected.hostname)
     throw new Error("Document hostname mismatch");
+  if (expected.category !== undefined && document.category !== expected.category)
+    throw new Error("Document category mismatch");
   if (
     expected.filename !== undefined &&
     (basename(expected.filename) !== expected.filename || expected.filename !== documentFilename(document.id))

@@ -5,17 +5,29 @@ import { DatabaseSync } from "node:sqlite";
 import { load } from "cheerio";
 import { ROOT } from "../base.ts";
 import { extractPdf } from "./adapters/pdf.ts";
+import { DOCUMENT_CATEGORIES } from "./categories.ts";
+import {
+  assertAdmittedHostname,
+  formatRoutingPolicy,
+  loadRoutingPolicy,
+  loadSavedClassifications,
+  parseRoutingPolicy,
+  routeCompletedHost,
+  saveFirstRoutingPolicy,
+  type HostRoutingPolicy,
+} from "./category-routing.ts";
 import { assertSingleHostChange, type ChangedFile } from "./change-validation.ts";
 import { collectRecordedHost, type CollectionFormats } from "./collect.ts";
 import type { CompletedHost, HostArchive, ProducerContext } from "./contracts.ts";
 import { documentFilename, sha256 } from "./document-format.ts";
 import { cheapGuardCompletedHost, createGenericScraper } from "./generic.ts";
+import { verifyHistoricalReady } from "./historical-output.ts";
 import { assertCollectedInput, decodeFrozenSeed } from "./inputs.ts";
 import { assertExternalPath, DEFAULT_EXTERNAL_ROOT, DEFAULT_LEGACY_STATE_FILE } from "./paths.ts";
 import { loadCachedPdfProfile } from "./pdf-profile-cache.ts";
 import type { PdfProfile } from "./pdf-profile.ts";
 import { assertSameProducer, captureProducer } from "./provenance.ts";
-import { readRegularFile } from "./public-validation.ts";
+import { hostDocumentRoots, readRegularFile } from "./public-validation.ts";
 import { publishCompletedHost } from "./publication.ts";
 import { HostRecording } from "./recording.ts";
 import { parseGenericHostnames } from "./registry.ts";
@@ -34,6 +46,11 @@ export interface HostBatchConfig {
   main: string;
   bootstrapFiles: Record<string, string>;
   recoverTransientFailures?: boolean;
+  requireSavedRouting?: boolean;
+  historicalReady?: Record<
+    string,
+    { readySha256: string; producerRoot: string; producer: ProducerContext; pdfCacheDirectory?: string }
+  >;
 }
 interface ReadyHost {
   version: 1;
@@ -132,6 +149,7 @@ export class HostBatch {
   }
 
   private async recording(hostname: string, acquire: boolean, homepageOnly = false) {
+    assertAdmittedHostname(hostname);
     if (acquire && resolve(ROOT) !== this.config.producerRoot)
       throw new Error("Acquisition must run from the frozen batch producer");
     assertSameProducer(this.config.producer, await captureProducer(this.config.producerRoot));
@@ -235,13 +253,25 @@ export class HostBatch {
     }
   }
 
-  decide(hostname: string, token: string, accept: boolean, reason: string): void {
+  decide(hostname: string, token: string, accept: boolean, reason: string, policy?: HostRoutingPolicy): void {
     const row = this.owned(hostname, token);
     if (row.state !== "claimed" || !row.details.recorded_homepage_sha256 || !reason.trim())
       throw new Error("A recorded homepage and short decision reason are required");
     if (accept && row.details.homepage_acceptable !== true)
       throw new Error("Recorded homepage is not usable public prose");
-    this.queue.update(hostname, token, accept ? "admitted" : "rejected", { homepage_decision: reason });
+    if (accept) {
+      assertAdmittedHostname(hostname);
+      if (this.config.requireSavedRouting && !policy)
+        throw new Error("Admission requires a saved first classification");
+      if (policy && parseRoutingPolicy(formatRoutingPolicy(policy)).hostname !== hostname)
+        throw new Error("Classification hostname mismatch");
+    }
+    this.queue.update(hostname, token, accept ? "admitted" : "rejected", {
+      homepage_decision: reason,
+      ...(accept && policy
+        ? { routing_policy: policy, routing_policy_sha256: sha256(formatRoutingPolicy(policy)) }
+        : {}),
+    });
   }
 
   async collect(hostname: string, token: string) {
@@ -358,13 +388,64 @@ export class HostBatch {
       files.push({
         path,
         bytes,
-        ...(path === GENERIC_LIST ? { previousBytes: status === "A" ? null : this.git(["show", `HEAD:${path}`]) } : {}),
+        previousBytes: status === "A" ? null : this.git(["show", `HEAD:${path}`]),
       });
     }
     return files;
   }
 
+  private async verifyReady(row: HostWorkRecord): Promise<ReadyHost> {
+    const path = assertExternalPath(String(row.details.ready_path));
+    const bytes = await readRegularFile(path, LARGE_PRIVATE_FILE);
+    if (sha256(bytes) !== row.details.ready_sha256) throw new Error("Ready result bytes changed");
+    const ready = JSON.parse(bytes.toString("utf8")) as ReadyHost;
+    if (ready.version !== 1 || ready.hostname !== row.hostname) throw new Error("Invalid ready result owner");
+    const historical = this.config.historicalReady?.[row.hostname];
+    if (historical) {
+      if (historical.readySha256 !== row.details.ready_sha256)
+        throw new Error("Historical ready authorization differs");
+      ready.completed = await verifyHistoricalReady({
+        hostname: row.hostname,
+        readyPath: path,
+        readySha256: historical.readySha256,
+        recordingDirectory: join(DEFAULT_EXTERNAL_ROOT, "hosts", row.hostname, "recording"),
+        producerRoot: historical.producerRoot,
+        producer: historical.producer,
+        archivedPdfCacheDirectory: historical.pdfCacheDirectory,
+      });
+    } else {
+      const { recording, seed } = await this.recording(row.hostname, false);
+      try {
+        if (sha256(seed.bytes) !== ready.seed_sha256) throw new Error("Ready frontier differs");
+        assertCollectedInput(ready.recording_seal, await recording.verifySeal());
+        assertSameProducer(this.config.producer, await captureProducer(this.config.producerRoot));
+        const input = sha256(
+          JSON.stringify({
+            recording: ready.recording_seal,
+            seed: ready.seed_sha256,
+            ...(ready.pdf_profile_sha256 ? { pdf_profile: ready.pdf_profile_sha256 } : {}),
+          }),
+        );
+        for (const document of ready.completed.documents) {
+          assertSameProducer(this.config.producer, document.producer);
+          assertCollectedInput(input, document.input_sha256);
+        }
+        if (
+          ready.pdf_profile_sha256 &&
+          (await loadCachedPdfProfile(join(this.directory, "pdf-profile-cache"))).sha256 !== ready.pdf_profile_sha256
+        )
+          throw new Error("Ready PDF profile differs");
+      } finally {
+        recording.close();
+      }
+    }
+    if (JSON.stringify(cheapGuardCompletedHost(ready.completed)) !== JSON.stringify(ready.completed))
+      throw new Error("Ready output differs from guarded collection");
+    return ready;
+  }
+
   async publish(hostname: string, token: string, sampleReview: string) {
+    assertAdmittedHostname(hostname);
     const row = this.owned(hostname, token);
     if (!["ready", "publishing"].includes(row.state) || !sampleReview.trim())
       throw new Error("Publication requires ready output and one quick content sample review");
@@ -421,8 +502,14 @@ export class HostBatch {
       if (!receipt.commit) {
         if (head !== receipt.parent) throw new Error("Publication parent changed");
         const initial = head === this.config.baseline;
+        const routingPath = `src/host-scrapers/routing/${hostname}.json`;
+        const ownsDocument = (path: string) =>
+          [hostname, ...DOCUMENT_CATEGORIES.map((category) => `${category}/${hostname}`)].some((owner) =>
+            path.startsWith(`data/documents/${owner}/`),
+          );
         const allowed = new Set([
           GENERIC_LIST,
+          routingPath,
           "data/official-hosts.json",
           ...(initial ? Object.keys(this.config.bootstrapFiles) : []),
         ]);
@@ -433,7 +520,7 @@ export class HostBatch {
             .filter(Boolean),
         );
         for (const file of dirty)
-          if (!allowed.has(file) && !file.startsWith(`data/documents/${hostname}/`))
+          if (!allowed.has(file) && !ownsDocument(file))
             throw new Error(`Unrelated working change blocks publication: ${file}`);
         if (initial)
           for (const [file, hash] of Object.entries(this.config.bootstrapFiles)) {
@@ -443,15 +530,23 @@ export class HostBatch {
             )
               throw new Error(`Bootstrap input changed: ${file}`);
           }
-        const path = String(row.details.ready_path);
-        assertExternalPath(path);
-        const bytes = await readRegularFile(path, LARGE_PRIVATE_FILE);
-        if (sha256(bytes) !== row.details.ready_sha256) throw new Error("Ready result bytes changed");
-        const ready = JSON.parse(bytes.toString("utf8")) as ReadyHost;
-        if (ready.version !== 1 || ready.hostname !== hostname) throw new Error("Invalid ready result owner");
-        cheapGuardCompletedHost(ready.completed);
-        const { recording, seed } = await this.recording(hostname, false);
-        try {
+        const ready = await this.verifyReady(row);
+        let policy: HostRoutingPolicy | undefined;
+        if (row.details.routing_policy) {
+          policy = parseRoutingPolicy(formatRoutingPolicy(row.details.routing_policy as HostRoutingPolicy));
+          if (sha256(formatRoutingPolicy(policy)) !== row.details.routing_policy_sha256)
+            throw new Error("Saved classification receipt differs");
+          await saveFirstRoutingPolicy(policy, this.config.repositoryRoot);
+        } else if (this.config.requireSavedRouting)
+          policy = await loadRoutingPolicy(hostname, this.config.repositoryRoot);
+        const completed = policy
+          ? routeCompletedHost(
+              ready.completed,
+              policy,
+              await loadSavedClassifications(this.config.repositoryRoot, hostname),
+            )
+          : ready.completed;
+        {
           const namesPath = join(this.config.repositoryRoot, GENERIC_LIST);
           const names = parseGenericHostnames(await readRegularFile(namesPath));
           if (!names.includes(hostname)) {
@@ -460,54 +555,47 @@ export class HostBatch {
             await writeFile(namesPath, `${JSON.stringify(names, null, 2)}\n`);
           }
           const verifyInputs = async () => {
-            if (sha256(seed.bytes) !== ready.seed_sha256) throw new Error("Ready frontier differs");
-            assertCollectedInput(ready.recording_seal, await recording.verifySeal());
-            assertSameProducer(this.config.producer, await captureProducer(this.config.producerRoot));
-            const expectedInput = sha256(
-              Buffer.from(
-                JSON.stringify({
-                  recording: ready.recording_seal,
-                  seed: ready.seed_sha256,
-                  ...(ready.pdf_profile_sha256 ? { pdf_profile: ready.pdf_profile_sha256 } : {}),
-                }),
-              ),
-            );
-            for (const document of ready.completed.documents) {
-              assertSameProducer(this.config.producer, document.producer);
-              assertCollectedInput(expectedInput, document.input_sha256);
-            }
-            if (
-              ready.pdf_profile_sha256 &&
-              (await loadCachedPdfProfile(join(this.directory, "pdf-profile-cache"))).sha256 !==
-                ready.pdf_profile_sha256
-            )
-              throw new Error("Ready PDF profile differs");
+            const verified = await this.verifyReady(row);
+            const expected = policy
+              ? routeCompletedHost(
+                  verified.completed,
+                  await loadRoutingPolicy(hostname, this.config.repositoryRoot),
+                  await loadSavedClassifications(this.config.repositoryRoot, hostname),
+                )
+              : verified.completed;
+            if (JSON.stringify(expected) !== JSON.stringify(completed))
+              throw new Error("Categorized ready result changed");
           };
           await publishCompletedHost({
-            completed: ready.completed,
+            completed,
             repositoryRoot: this.config.repositoryRoot,
             externalRoot: DEFAULT_EXTERNAL_ROOT,
             registeredHosts: [...SPECIALIZED, ...names],
             verifyInputs,
             incremental: true,
           });
-        } finally {
-          recording.close();
         }
         const paths = [
           GENERIC_LIST,
+          ...(policy ? [routingPath] : []),
           "data/official-hosts.json",
-          `data/documents/${hostname}`,
+          ...hostDocumentRoots(completed.host).map((root) => root.path),
           ...(initial ? Object.keys(this.config.bootstrapFiles) : []),
         ];
         this.git(["add", "--", ...new Set(paths)]);
         const files = await this.staged();
         if (assertSingleHostChange(files) !== hostname) throw new Error("Staged commit belongs to another hostname");
         for (const file of files)
-          if (!allowed.has(file.path) && !file.path.startsWith(`data/documents/${hostname}/`))
+          if (!allowed.has(file.path) && !ownsDocument(file.path))
             throw new Error(`Unrelated staged change: ${file.path}`);
-        for (const document of ready.completed.documents)
-          if (!files.some((file) => file.path === `data/documents/${hostname}/${documentFilename(document.id)}`))
+        for (const document of completed.documents)
+          if (
+            !files.some(
+              (file) =>
+                file.path ===
+                `data/documents/${document.category ? `${document.category}/` : ""}${hostname}/${documentFilename(document.id)}`,
+            )
+          )
             throw new Error("A final document is missing from the stage");
         receipt.tree = this.git(["write-tree"]).toString().trim();
         await save(receiptPath, receipt);

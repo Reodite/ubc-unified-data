@@ -2,11 +2,13 @@ import { constants } from "node:fs";
 import { chmod, mkdir, open, readdir, rename, rmdir, unlink } from "node:fs/promises";
 import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 import { DatabaseSync } from "node:sqlite";
+import { DOCUMENT_CATEGORIES as CATEGORIES } from "./categories.ts";
 import type { CompletedHost, VettedHost } from "./contracts.ts";
 import { digest, documentFilename, exactObject, formatDocument, parseDocument, sha256 } from "./document-format.ts";
 import { EXTERNAL_BOUNDARY } from "./paths.ts";
 import {
   assertNoSymlinkPath,
+  hostDocumentRoots as documentRoots,
   formatHostList,
   HOST_LIST_PATH,
   maybeLstat,
@@ -21,7 +23,6 @@ import { normalizeHost } from "./urls.ts";
 
 const LOCK_SCHEMA = "CREATE TABLE owner(repository_root TEXT NOT NULL, format_version INTEGER NOT NULL)";
 const EXTERNAL_NAMES = new Set(["lock.sqlite", "journal.json", "commit-ready.json", "committed.json", "transaction"]);
-const TRANSACTION_NAMES = new Set(["new-host", "old-host", "new-list", "old-list"]);
 const MAX_JOURNAL_BYTES = 16 * 1024 * 1024;
 
 interface FileReceipt {
@@ -33,7 +34,7 @@ interface DirectoryReceipt {
   mode: number;
   files: Array<FileReceipt & { name: string }>;
 }
-interface Journal {
+interface LegacyJournal {
   format_version: 1;
   repository_root: string;
   hostname: string;
@@ -44,6 +45,23 @@ interface Journal {
   old_list: FileReceipt | null;
   new_list: FileReceipt;
 }
+
+interface OwnedDirectory {
+  path: string;
+  old: DirectoryReceipt | null;
+  new: DirectoryReceipt | null;
+}
+interface MultiDirectoryJournal {
+  format_version: 2;
+  repository_root: string;
+  hostname: string;
+  parents: Array<{ path: string; mode: number | null }>;
+  directories: OwnedDirectory[];
+  old_list: FileReceipt | null;
+  new_list: FileReceipt;
+}
+type Journal = LegacyJournal | MultiDirectoryJournal;
+type DocumentRoot = ReturnType<typeof documentRoots>[number];
 
 export type PublicationBoundary =
   | "locked"
@@ -73,6 +91,17 @@ export interface PublishCompletedHostOptions {
    */
   incremental?: boolean;
   /** Failure injection only; no extraction or content override is accepted. */
+  testHook?: (boundary: PublicationBoundary) => void | Promise<void>;
+}
+
+export interface WithdrawPublishedHostOptions {
+  hostname: string;
+  repositoryRoot: string;
+  externalRoot: string;
+  registeredHosts: RegisteredHosts;
+  verifyInputs: () => Promise<void>;
+  /** Requires the same outer repository/Git lock and other-host guard as incremental publication. */
+  incremental?: boolean;
   testHook?: (boundary: PublicationBoundary) => void | Promise<void>;
 }
 
@@ -270,7 +299,7 @@ function journalBytes(journal: Journal): Buffer {
   return Buffer.from(`${JSON.stringify(journal, null, 2)}\n`);
 }
 
-function parseJournal(bytes: Buffer, repositoryRoot: string, registeredHosts: RegisteredHosts): Journal {
+function parseLegacyJournal(bytes: Buffer, repositoryRoot: string, registeredHosts: RegisteredHosts): LegacyJournal {
   const value: unknown = JSON.parse(new TextDecoder("utf-8", { fatal: true, ignoreBOM: true }).decode(bytes));
   exactObject(
     value,
@@ -301,23 +330,132 @@ function parseJournal(bytes: Buffer, repositoryRoot: string, registeredHosts: Re
   validateDirectoryReceipt(value.new_host);
   if (value.old_list !== null) validateFileReceipt(value.old_list);
   validateFileReceipt(value.new_list);
-  const journal = value as unknown as Journal;
+  const journal = value as unknown as LegacyJournal;
   if (!journalBytes(journal).equals(bytes)) throw new Error("Noncanonical publication journal");
   return journal;
 }
 
+function parentPaths(directories: readonly { path: string }[]): string[] {
+  return ["data", "data/documents", ...new Set(directories.map((item) => dirname(item.path)))]
+    .filter((path, index, all) => all.indexOf(path) === index)
+    .sort();
+}
+
+function parseJournal(bytes: Buffer, repositoryRoot: string, registeredHosts: RegisteredHosts): Journal {
+  const value: unknown = JSON.parse(new TextDecoder("utf-8", { fatal: true, ignoreBOM: true }).decode(bytes));
+  if (value !== null && typeof value === "object" && "format_version" in value && value.format_version === 1)
+    return parseLegacyJournal(bytes, repositoryRoot, registeredHosts);
+  exactObject(
+    value,
+    ["format_version", "repository_root", "hostname", "parents", "directories", "old_list", "new_list"],
+    "publication journal",
+  );
+  if (
+    value.format_version !== 2 ||
+    value.repository_root !== repositoryRoot ||
+    typeof value.hostname !== "string" ||
+    normalizeHost(value.hostname) !== value.hostname ||
+    !registeredHostSet(registeredHosts).has(value.hostname)
+  )
+    throw new Error("Publication journal owner mismatch");
+  if (
+    !Array.isArray(value.directories) ||
+    !value.directories.length ||
+    value.directories.length > CATEGORIES.length + 1
+  )
+    throw new Error("Invalid owned directory census");
+  const flat = `data/documents/${value.hostname}`;
+  const allowed = new Set([flat, ...CATEGORIES.map((category) => `data/documents/${category}/${value.hostname}`)]);
+  let previous = "";
+  for (const item of value.directories) {
+    exactObject(item, ["path", "old", "new"], "owned directory");
+    if (
+      typeof item.path !== "string" ||
+      !allowed.has(item.path) ||
+      item.path <= previous ||
+      (item.old === null && item.new === null)
+    )
+      throw new Error("Invalid owned directory path or receipts");
+    previous = item.path;
+    if (item.old !== null) validateDirectoryReceipt(item.old);
+    if (item.new !== null) validateDirectoryReceipt(item.new);
+  }
+  const directories = value.directories as OwnedDirectory[];
+  for (const side of ["old", "new"] as const) {
+    const populated = directories.filter((item) => item[side] !== null);
+    if (populated.length > 1 && populated.some((item) => item.path === flat))
+      throw new Error("Mixed legacy and category ownership");
+  }
+  if (!Array.isArray(value.parents)) throw new Error("Invalid publication parents");
+  for (const parent of value.parents) {
+    exactObject(parent, ["path", "mode"], "publication parent");
+    if (parent.mode !== null) validateMode(parent.mode);
+  }
+  const parents = value.parents as MultiDirectoryJournal["parents"];
+  if (
+    !same(
+      parents.map((item) => item.path),
+      parentPaths(directories),
+    )
+  )
+    throw new Error("Invalid publication parent paths");
+  for (const parent of parents) {
+    const ancestor = parents.find((item) => item.path === dirname(parent.path));
+    if (parent.mode !== null && ancestor?.mode === null) throw new Error("Impossible journal parent state");
+  }
+  for (const item of directories)
+    if (item.old !== null && parents.find((parent) => parent.path === dirname(item.path))!.mode === null)
+      throw new Error("Missing owned directory parent");
+  if (value.old_list !== null) validateFileReceipt(value.old_list);
+  validateFileReceipt(value.new_list);
+  const journal = value as unknown as MultiDirectoryJournal;
+  if (!journalBytes(journal).equals(bytes)) throw new Error("Noncanonical publication journal");
+  return journal;
+}
+
+function ownedDirectories(journal: Journal): OwnedDirectory[] {
+  return journal.format_version === 2
+    ? journal.directories
+    : [
+        {
+          path: `data/documents/${journal.hostname}`,
+          old: journal.old_host,
+          new: journal.new_host,
+        },
+      ];
+}
+
+function ownedParents(journal: Journal): MultiDirectoryJournal["parents"] {
+  return journal.format_version === 2
+    ? journal.parents
+    : [
+        { path: "data", mode: journal.data_mode },
+        { path: "data/documents", mode: journal.documents_mode },
+      ];
+}
+
 function locations(workspace: string, journal: Journal) {
   const transaction = join(workspace, "transaction");
+  const directories = ownedDirectories(journal).map((item, index) => ({
+    ...item,
+    current: join(journal.repository_root, item.path),
+    backup: join(transaction, journal.format_version === 1 ? "old-host" : `old-host-${index}`),
+    stage: join(transaction, journal.format_version === 1 ? "new-host" : `new-host-${index}`),
+  }));
   return {
     transaction,
-    host: join(journal.repository_root, "data/documents", journal.hostname),
+    directories,
+    parents: ownedParents(journal).map((item) => ({ ...item, current: join(journal.repository_root, item.path) })),
     list: join(journal.repository_root, HOST_LIST_PATH),
-    data: join(journal.repository_root, "data"),
-    documents: join(journal.repository_root, "data/documents"),
-    oldHost: join(transaction, "old-host"),
-    newHost: join(transaction, "new-host"),
     oldList: join(transaction, "old-list"),
     newList: join(transaction, "new-list"),
+    names: new Set([
+      "old-list",
+      "new-list",
+      ...directories.flatMap((_, index) =>
+        journal.format_version === 1 ? ["old-host", "new-host"] : [`old-host-${index}`, `new-host-${index}`],
+      ),
+    ]),
   };
 }
 
@@ -342,14 +480,16 @@ async function verifyArtifacts(
 ): Promise<void> {
   await knownEntries(workspace, EXTERNAL_NAMES);
   const paths = locations(workspace, journal);
-  await knownEntries(paths.transaction, TRANSACTION_NAMES);
+  await knownEntries(paths.transaction, paths.names);
   const ready = join(workspace, "commit-ready.json");
   if (cleanupPhase && (await maybeLstat(ready))) {
     if (!(await readRegularFile(ready, MAX_JOURNAL_BYTES)).equals(journalBytes(journal)))
       throw new Error("Unverified prepared commit marker");
   }
-  await verifySubset(paths.newHost, journal.new_host, true);
-  await verifySubset(paths.oldHost, journal.old_host, committed);
+  for (const directory of paths.directories) {
+    await verifySubset(directory.stage, directory.new, true);
+    await verifySubset(directory.backup, directory.old, committed);
+  }
   for (const [path, expected] of [
     [paths.newList, journal.new_list],
     [paths.oldList, journal.old_list],
@@ -383,8 +523,10 @@ async function removeOwnedDirectory(path: string, receipt: DirectoryReceipt | nu
 async function cleanup(workspace: string, journal: Journal, committed: boolean): Promise<void> {
   await verifyArtifacts(workspace, journal, committed, true);
   const paths = locations(workspace, journal);
-  await removeOwnedDirectory(paths.oldHost, journal.old_host);
-  await removeOwnedDirectory(paths.newHost, journal.new_host);
+  for (const directory of paths.directories) {
+    await removeOwnedDirectory(directory.backup, directory.old);
+    await removeOwnedDirectory(directory.stage, directory.new);
+  }
   for (const [path, receipt] of [
     [paths.oldList, journal.old_list],
     [paths.newList, journal.new_list],
@@ -429,15 +571,28 @@ async function recover(
     throw new Error("Journal and commit marker disagree");
   const paths = locations(workspace, journal);
   await verifyArtifacts(workspace, journal, committed);
+  await verifyParents(workspace, journal, committed);
   if (committed) {
-    assertReceipt(await directoryReceipt(paths.host), journal.new_host, paths.host);
+    for (const directory of paths.directories)
+      assertReceipt(await directoryReceipt(directory.current), directory.new, directory.current);
     assertReceipt(await fileReceipt(paths.list), journal.new_list, paths.list);
   } else {
     const actions: Array<() => Promise<void>> = [];
-    for (const [current, backup, stage, oldReceipt, newReceipt, readReceipt] of [
-      [paths.host, paths.oldHost, paths.newHost, journal.old_host, journal.new_host, directoryReceipt],
-      [paths.list, paths.oldList, paths.newList, journal.old_list, journal.new_list, fileReceipt],
-    ] as const) {
+    const resources = [
+      ...paths.directories.map(
+        (directory) =>
+          [
+            directory.current,
+            directory.backup,
+            directory.stage,
+            directory.old,
+            directory.new,
+            directoryReceipt,
+          ] as const,
+      ),
+      [paths.list, paths.oldList, paths.newList, journal.old_list, journal.new_list, fileReceipt] as const,
+    ];
+    for (const [current, backup, stage, oldReceipt, newReceipt, readReceipt] of resources) {
       const saved = await readReceipt(backup);
       const installed = await readReceipt(current);
       if (saved) {
@@ -456,18 +611,15 @@ async function recover(
         actions.push(() => atomicRename(current, stage));
       }
     }
-    // Validate both resources before changing either; unrecognized bytes are never discarded.
+    // Validate every directory, parent and index receipt before changing any public resource.
     for (const action of actions) await action();
-    for (const [path, oldMode] of [
-      [paths.documents, journal.documents_mode],
-      [paths.data, journal.data_mode],
-    ] as const) {
-      if (oldMode === null && (await maybeLstat(path))) {
-        await requireDirectory(path);
-        if (((await maybeLstat(path))!.mode & 0o7777) !== 0o755 || (await readdir(path)).length)
+    for (const parent of [...paths.parents].reverse()) {
+      if (parent.mode === null && (await maybeLstat(parent.current))) {
+        await requireDirectory(parent.current);
+        if (((await maybeLstat(parent.current))!.mode & 0o7777) !== 0o755 || (await readdir(parent.current)).length)
           throw new Error("Unrecognized created publication parent");
-        await rmdir(path);
-        await syncDirectory(dirname(path));
+        await rmdir(parent.current);
+        await syncDirectory(dirname(parent.current));
       }
     }
   }
@@ -480,15 +632,67 @@ async function recover(
   await cleanup(workspace, journal, committed);
 }
 
-async function publicReceipt(repositoryRoot: string, hosts: readonly VettedHost[]) {
+async function verifyParents(workspace: string, journal: Journal, committed: boolean): Promise<void> {
+  const paths = locations(workspace, journal);
+  const device = (await maybeLstat(workspace))!.dev;
+  for (const parent of paths.parents) {
+    await assertNoSymlinkPath(parent.current);
+    const info = await maybeLstat(parent.current);
+    if (!info) {
+      if (
+        parent.mode !== null ||
+        (committed && paths.directories.some((item) => item.new && contained(parent.current, item.current)))
+      )
+        throw new Error(`Missing publication parent: ${parent.current}`);
+      continue;
+    }
+    await requireDirectory(parent.current);
+    if (info.dev !== device) throw new Error("Cross-device publication is forbidden");
+    assertReceipt(info.mode & 0o7777, parent.mode ?? 0o755, parent.current);
+    if (parent.mode === null && !committed) {
+      const allowed = new Set([
+        ...paths.parents
+          .filter((item) => dirname(item.current) === parent.current)
+          .map((item) => relative(parent.current, item.current)),
+        ...paths.directories
+          .filter((item) => dirname(item.current) === parent.current)
+          .map((item) => relative(parent.current, item.current)),
+        ...(dirname(paths.list) === parent.current ? [relative(parent.current, paths.list)] : []),
+      ]);
+      await knownEntries(parent.current, allowed);
+    }
+  }
+}
+
+async function publicReceipt(
+  repositoryRoot: string,
+  hosts: readonly VettedHost[],
+  parentRoots: readonly DocumentRoot[],
+  targetRoots: readonly DocumentRoot[],
+) {
   return {
+    target: await Promise.all(
+      [...new Set(targetRoots.map((root) => root.path))].sort().map(async (path) => ({
+        path,
+        receipt: await directoryReceipt(join(repositoryRoot, path)),
+      })),
+    ),
     list: await fileReceipt(join(repositoryRoot, HOST_LIST_PATH)),
-    dataMode: (await maybeLstat(join(repositoryRoot, "data")))?.mode ?? null,
-    documentsMode: (await maybeLstat(join(repositoryRoot, "data/documents")))?.mode ?? null,
+    parents: await Promise.all(
+      parentPaths(parentRoots).map(async (path) => ({
+        path,
+        mode: (await maybeLstat(join(repositoryRoot, path)))?.mode ?? null,
+      })),
+    ),
     hosts: await Promise.all(
       hosts.map(async (host) => ({
         hostname: host.hostname,
-        receipt: await directoryReceipt(join(repositoryRoot, host.document_root)),
+        directories: await Promise.all(
+          documentRoots(host).map(async (root) => ({
+            path: root.path,
+            receipt: await directoryReceipt(join(repositoryRoot, root.path)),
+          })),
+        ),
       })),
     ),
   };
@@ -534,13 +738,21 @@ export async function publishCompletedHost(options: PublishCompletedHostOptions)
   if (completed.host.document_count !== completed.documents.length)
     throw new Error("Completed host document count mismatch");
   const host = structuredClone(completed.host);
+  const roots = documentRoots(host);
   const output = completed.documents
     .map((doc) => {
       const bytes = formatDocument(doc);
-      const parsed = parseDocument(bytes, { hostname: host.hostname, filename: documentFilename(doc.id) });
-      return { name: documentFilename(parsed.id), bytes, document: parsed };
+      const category = doc.category;
+      const root = roots.find((item) => item.category === category);
+      if (!root) throw new Error("Document category does not match a host root");
+      const expected = { hostname: host.hostname, filename: documentFilename(doc.id), category: root.category };
+      const parsed = parseDocument(bytes, expected);
+      return { path: root.path, name: documentFilename(parsed.id), bytes, document: parsed };
     })
     .sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
+  for (const root of roots)
+    if (output.filter((item) => item.path === root.path).length !== root.document_count)
+      throw new Error("Completed category document count mismatch");
   const urls = new Set<string>();
   const ids = new Set<string>();
   for (const item of output) {
@@ -554,81 +766,187 @@ export async function publishCompletedHost(options: PublishCompletedHostOptions)
       urls.add(url);
     }
   }
-  const validation = {
-    repositoryRoot,
-    registeredHosts,
-    documentHostnames: incremental ? [host.hostname] : undefined,
-  };
-  const readPublicReceipt = (hosts: readonly VettedHost[]) =>
-    publicReceipt(repositoryRoot, incremental ? hosts.filter((entry) => entry.hostname === host.hostname) : hosts);
+  return publishTransaction(
+    { repositoryRoot, externalRoot, registeredHosts, verifyInputs, testHook, incremental },
+    host.hostname,
+    host,
+    output,
+  );
+}
+
+/** Remove one explicitly rejected host using the same receipt-verified publication transaction. */
+export async function withdrawPublishedHost(options: WithdrawPublishedHostOptions): Promise<PublicationResult> {
+  exactObject(
+    options,
+    [
+      "hostname",
+      "repositoryRoot",
+      "externalRoot",
+      "registeredHosts",
+      "verifyInputs",
+      ...(Object.hasOwn(options, "testHook") ? ["testHook"] : []),
+      ...(Object.hasOwn(options, "incremental") ? ["incremental"] : []),
+    ],
+    "withdrawal options",
+  );
+  const registeredHosts = registeredHostSet(options.registeredHosts);
+  if (
+    typeof options.hostname !== "string" ||
+    normalizeHost(options.hostname) !== options.hostname ||
+    !registeredHosts.has(options.hostname)
+  )
+    throw new Error("Unregistered withdrawal hostname");
+  if (typeof options.verifyInputs !== "function") throw new Error("Withdrawal requires an input guard");
+  if (options.incremental !== undefined && typeof options.incremental !== "boolean")
+    throw new Error("Incremental publication must be a boolean");
+  return publishTransaction(options, options.hostname, null, []);
+}
+
+type PreparedOutput = Array<{ path: string; name: string; bytes: Buffer }>;
+
+async function publishTransaction(
+  options: Omit<PublishCompletedHostOptions, "completed">,
+  hostname: string,
+  host: VettedHost | null,
+  output: PreparedOutput,
+): Promise<PublicationResult> {
+  const { repositoryRoot, externalRoot, registeredHosts, verifyInputs, testHook, incremental = false } = options;
+  const validation = { repositoryRoot, registeredHosts, documentHostnames: incremental ? [hostname] : undefined };
   const workspace = await prepareExternalRoot(repositoryRoot, externalRoot);
   const database = await lockWorkspace(workspace, repositoryRoot);
   try {
     await testHook?.("locked");
     await recover(workspace, repositoryRoot, registeredHosts, incremental);
     const existing = await validatePublishedHosts({ ...validation, allowAbsent: true });
+    const previousHost = existing.find((entry) => entry.hostname === hostname);
+    const oldRoots = previousHost ? documentRoots(previousHost) : [];
+    const newRoots = host ? documentRoots(host) : [];
+    const parentRoots = [...existing.flatMap(documentRoots), ...newRoots];
+    const readPublicReceipt = (entries: readonly VettedHost[]) =>
+      publicReceipt(
+        repositoryRoot,
+        incremental ? entries.filter((entry) => entry.hostname === hostname) : entries,
+        parentRoots,
+        [...oldRoots, ...newRoots],
+      );
     const baseline = await readPublicReceipt(existing);
-    const hosts = [...existing.filter((entry) => entry.hostname !== host.hostname), host].sort((a, b) =>
+    const hosts = [...existing.filter((entry) => entry.hostname !== hostname), ...(host ? [host] : [])].sort((a, b) =>
       a.hostname < b.hostname ? -1 : a.hostname > b.hostname ? 1 : 0,
     );
+    if (!host && !previousHost) {
+      await verifyInputs();
+      await validatePublishedHosts({ ...validation, allowAbsent: true });
+      assertReceipt(await readPublicReceipt(existing), baseline, "public output changed during input verification");
+      return { changed: false, hosts };
+    }
     const list = formatHostList(hosts, registeredHosts);
-    const oldHost = await directoryReceipt(join(repositoryRoot, host.document_root));
-    const oldList = await fileReceipt(join(repositoryRoot, HOST_LIST_PATH));
-    const journal: Journal = {
-      format_version: 1,
+    const oldDirectories = await Promise.all(
+      oldRoots.map(async (root) => ({
+        path: root.path,
+        receipt: await directoryReceipt(join(repositoryRoot, root.path)),
+      })),
+    );
+    const directories: OwnedDirectory[] = [];
+    for (const path of [...new Set([...oldRoots, ...newRoots].map((root) => root.path))].sort()) {
+      const old = oldDirectories.find((item) => item.path === path)?.receipt ?? null;
+      const current = await directoryReceipt(join(repositoryRoot, path));
+      assertReceipt(current, old, "unindexed host destination");
+      const next = newRoots.find((root) => root.path === path);
+      const inherited = old ?? (oldRoots.length === 1 && !oldRoots[0]!.category ? oldDirectories[0]!.receipt : null);
+      directories.push({
+        path,
+        old,
+        new: next
+          ? {
+              mode: inherited?.mode ?? 0o755,
+              files: output
+                .filter((item) => item.path === path)
+                .map((item) => ({
+                  name: item.name,
+                  sha256: sha256(item.bytes),
+                  size: item.bytes.length,
+                  mode:
+                    oldDirectories
+                      .flatMap((directory) => directory.receipt?.files ?? [])
+                      .find((file) => file.name === item.name)?.mode ?? 0o644,
+                })),
+            }
+          : null,
+      });
+    }
+    const parents = await Promise.all(
+      parentPaths(directories).map(async (path) => {
+        await assertNoSymlinkPath(join(repositoryRoot, path));
+        const info = await maybeLstat(join(repositoryRoot, path));
+        if (info) await requireDirectory(join(repositoryRoot, path));
+        return { path, mode: info ? info.mode & 0o7777 : null };
+      }),
+    );
+    const oldList = baseline.list;
+    const common = {
       repository_root: repositoryRoot,
-      hostname: host.hostname,
-      data_mode: baseline.dataMode === null ? null : baseline.dataMode & 0o7777,
-      documents_mode: baseline.documentsMode === null ? null : baseline.documentsMode & 0o7777,
-      old_host: oldHost,
-      new_host: {
-        mode: oldHost?.mode ?? 0o755,
-        files: output.map((item) => ({
-          name: item.name,
-          sha256: sha256(item.bytes),
-          size: item.bytes.length,
-          mode: oldHost?.files.find((file) => file.name === item.name)?.mode ?? 0o644,
-        })),
-      },
+      hostname,
       old_list: oldList,
       new_list: { sha256: sha256(list), size: list.length, mode: oldList?.mode ?? 0o644 },
     };
-    if (same(journal.old_host, journal.new_host) && same(oldList, journal.new_list)) {
+    const only = directories[0]!;
+    const journal: Journal =
+      directories.length === 1 && only.path === `data/documents/${hostname}` && only.new
+        ? {
+            format_version: 1,
+            repository_root: repositoryRoot,
+            hostname,
+            data_mode: parents[0]!.mode,
+            documents_mode: parents[1]!.mode,
+            old_host: only.old,
+            new_host: only.new,
+            old_list: oldList,
+            new_list: common.new_list,
+          }
+        : {
+            format_version: 2,
+            repository_root: repositoryRoot,
+            hostname,
+            parents,
+            directories,
+            old_list: oldList,
+            new_list: common.new_list,
+          };
+    parseJournal(journalBytes(journal), repositoryRoot, registeredHosts);
+    if (directories.every((item) => same(item.old, item.new)) && same(oldList, journal.new_list)) {
       await verifyInputs();
       await validatePublishedHosts(validation);
       assertReceipt(await readPublicReceipt(existing), baseline, "public output changed during input verification");
       return { changed: false, hosts };
     }
-    if (oldHost && (oldHost.mode & 0o222) === 0) throw new Error("Host directory mode forbids writable publication");
+    if (directories.some((item) => item.old && (item.old.mode & 0o222) === 0))
+      throw new Error("Host directory mode forbids writable publication");
     const paths = locations(workspace, journal);
-    for (const parent of [join(repositoryRoot, "data"), join(repositoryRoot, "data/documents")]) {
-      await assertNoSymlinkPath(parent);
-      const info = await maybeLstat(parent);
-      if (info && info.dev !== (await maybeLstat(workspace))!.dev)
-        throw new Error("Cross-device publication is forbidden");
-    }
+    await verifyParents(workspace, journal, false);
     await writeExclusive(join(workspace, "journal.json"), journalBytes(journal), 0o600);
     try {
       await testHook?.("journal-written");
       await mkdir(paths.transaction, { mode: 0o700 });
       await syncDirectory(workspace);
-      await mkdir(paths.newHost, { mode: journal.new_host.mode | 0o700 });
-      await chmod(paths.newHost, journal.new_host.mode | 0o700);
-      for (const item of output)
-        await writeExclusive(
-          join(paths.newHost, item.name),
-          item.bytes,
-          journal.new_host.files.find((file) => file.name === item.name)!.mode,
-        );
-      await chmod(paths.newHost, journal.new_host.mode);
-      await syncDirectory(paths.newHost);
-      await writeExclusive(paths.newList, list, journal.new_list.mode);
-      assertReceipt(await directoryReceipt(paths.newHost), journal.new_host, "prepared host");
-      assertReceipt(await fileReceipt(paths.newList), journal.new_list, "prepared host list");
-      for (const item of output) {
-        if (!(await readRegularFile(join(paths.newHost, item.name))).equals(item.bytes))
-          throw new Error("Prepared document bytes differ");
+      for (const directory of paths.directories) {
+        if (!directory.new) continue;
+        await mkdir(directory.stage, { mode: directory.new.mode | 0o700 });
+        await chmod(directory.stage, directory.new.mode | 0o700);
+        for (const item of output.filter((item) => item.path === directory.path))
+          await writeExclusive(
+            join(directory.stage, item.name),
+            item.bytes,
+            directory.new.files.find((file) => file.name === item.name)!.mode,
+          );
+        await chmod(directory.stage, directory.new.mode);
+        await syncDirectory(directory.stage);
+        assertReceipt(await directoryReceipt(directory.stage), directory.new, "prepared host");
+        for (const item of output.filter((item) => item.path === directory.path))
+          if (!(await readRegularFile(join(directory.stage, item.name))).equals(item.bytes))
+            throw new Error("Prepared document bytes differ");
       }
+      await writeExclusive(paths.newList, list, journal.new_list.mode);
+      assertReceipt(await fileReceipt(paths.newList), journal.new_list, "prepared host list");
       if (!(await readRegularFile(paths.newList, MAX_JOURNAL_BYTES)).equals(list))
         throw new Error("Prepared host list bytes differ");
       await testHook?.("prepared");
@@ -636,35 +954,48 @@ export async function publishCompletedHost(options: PublishCompletedHostOptions)
       await testHook?.("inputs-verified");
       await validatePublishedHosts({ ...validation, allowAbsent: true });
       assertReceipt(await readPublicReceipt(existing), baseline, "public output changed before installation");
-      assertReceipt(
-        await directoryReceipt(paths.newHost),
-        journal.new_host,
-        "prepared host changed before installation",
-      );
+      for (const directory of paths.directories)
+        assertReceipt(
+          await directoryReceipt(directory.stage),
+          directory.new,
+          "prepared host changed before installation",
+        );
       assertReceipt(await fileReceipt(paths.newList), journal.new_list, "prepared list changed before installation");
       await knownEntries(workspace, EXTERNAL_NAMES);
-      await knownEntries(paths.transaction, TRANSACTION_NAMES);
+      await knownEntries(paths.transaction, paths.names);
       if (!(await readRegularFile(join(workspace, "journal.json"), MAX_JOURNAL_BYTES)).equals(journalBytes(journal)))
         throw new Error("Journal changed before installation");
-      await ensureParent(paths.data);
-      await ensureParent(paths.documents);
+      for (const parent of paths.parents) await ensureParent(parent.current);
       await testHook?.("parents-created");
-      if (oldHost) await atomicRename(paths.host, paths.oldHost);
-      await testHook?.("old-host-moved");
-      await atomicRename(paths.newHost, paths.host);
-      await testHook?.("new-host-installed");
+      for (const directory of paths.directories) {
+        if (!directory.old) continue;
+        await atomicRename(directory.current, directory.backup);
+        await testHook?.("old-host-moved");
+      }
+      if (!paths.directories.some((item) => item.old)) await testHook?.("old-host-moved");
+      for (const directory of paths.directories) {
+        if (!directory.new) continue;
+        await atomicRename(directory.stage, directory.current);
+        await testHook?.("new-host-installed");
+      }
+      if (!paths.directories.some((item) => item.new)) await testHook?.("new-host-installed");
       if (oldList) await atomicRename(paths.list, paths.oldList);
       await testHook?.("old-list-moved");
       await atomicRename(paths.newList, paths.list);
       await testHook?.("new-list-installed");
       await validatePublishedHosts(validation);
-      assertReceipt(await directoryReceipt(paths.host), journal.new_host, "installed host");
+      for (const directory of paths.directories)
+        assertReceipt(await directoryReceipt(directory.current), directory.new, "installed host");
       assertReceipt(await fileReceipt(paths.list), journal.new_list, "installed list");
       const installed = await readPublicReceipt(hosts);
-      assertReceipt(installed.dataMode, baseline.dataMode ?? 0o40755, "data directory mode changed");
-      assertReceipt(installed.documentsMode, baseline.documentsMode ?? 0o40755, "documents directory mode changed");
+      for (const parent of baseline.parents)
+        assertReceipt(
+          installed.parents.find((item) => item.path === parent.path)?.mode,
+          parent.mode ?? 0o40755,
+          "publication parent mode changed",
+        );
       for (const previous of baseline.hosts) {
-        if (previous.hostname !== host.hostname)
+        if (previous.hostname !== hostname)
           assertReceipt(
             installed.hosts.find((item) => item.hostname === previous.hostname),
             previous,

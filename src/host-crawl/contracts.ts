@@ -1,5 +1,6 @@
 import type { ProseResponse } from "../prose/client.ts";
 import type { ArticleInput } from "../prose/model.ts";
+import type { DocumentCategory } from "./categories.ts";
 
 export interface Snapshot extends ProseResponse {
   bytes: number;
@@ -84,6 +85,9 @@ export interface SearchDocument {
   alternate_urls: string[];
   producer: ProducerContext;
   extraction?: DocumentExtraction;
+  category?: DocumentCategory;
+  /** Saved first-classification rule; independent of the original extraction producer. */
+  routing?: { rule_id: string; policy_sha256: string };
 }
 
 export interface RetainedDocument {
@@ -133,8 +137,10 @@ export interface VettedHost {
   homepage_retrieved_at: string;
   homepage_sha256: string;
   scope: string;
-  /** Repository-relative path: data/documents/<hostname>. */
-  document_root: string;
+  /** Legacy input location, mutually exclusive with document_roots. */
+  document_root?: string;
+  /** Nonempty category-first directories, sorted by category. */
+  document_roots?: Array<{ category: DocumentCategory; path: string; document_count: number }>;
   document_count: number;
 }
 

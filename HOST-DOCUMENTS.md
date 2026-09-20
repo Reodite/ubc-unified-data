@@ -1,9 +1,36 @@
 # Host documents
 
-`data/official-hosts.json` lists completed hostname collections. Each entry points
-to `data/documents/<hostname>/`, containing searchable Markdown documents with
-canonical JSON frontmatter. These outputs are separate from the existing
-`data/prose/` exports; neither dataset replaces or rewrites the other.
+`data/official-hosts.json` lists completed hostname collections. Each entry's
+`document_roots` lists its category directories and their document counts:
+`data/documents/<category>/<hostname>/<document>.md`. A hostname can span several
+categories. Read the listed roots rather than assuming one directory per host.
+Documents contain canonical JSON frontmatter and searchable Markdown. The
+existing `data/prose/` exports remain separate and unchanged.
+
+The six categories are **support**, **academics**, **opportunities**, **research**,
+**news**, and **stories**. Support covers services, procedures, policies and help;
+academics covers programs, courses and academic reference; opportunities covers
+participation, jobs and funding; research covers projects, findings and lab
+output; news covers announcements and recaps; stories covers profiles, essays
+and showcases. There is no `misc` category.
+
+## Saved first classification
+
+A reviewer may use an LLM once when first categorizing a host or path, including
+when that gives the best semantic decision. Save the decision in
+`src/host-scrapers/routing/<hostname>.json`, with its method, owner authority,
+rationale and source evidence. The ordered URL-path/title rules and host fallback
+are authoritative. `saveFirstRoutingPolicy` refuses to overwrite a different
+saved decision; missing policy blocks publication instead of invoking a model.
+
+Subsequent collection and regeneration apply those saved rules without a model,
+network classifier or clock. A categorized document records the selected rule
+and policy hash. Rescrapes reuse that stored assignment for an existing physical
+URL, even when its title or body changes; new URLs use the saved selectors.
+Regeneration refuses a changed policy or assignment. Category assignment
+does not rewrite document text or replace its extraction producer. LLMs remain
+forbidden for extraction, HTML-to-Markdown conversion, rewriting, cleaning and
+regeneration output.
 
 ## Admission and scope
 
@@ -11,7 +38,11 @@ Screen only the homepage for official UBC identity and promising public,
 search-useful content before site collection begins. This is a quick triage
 judgment, not an exhaustive source audit. Skip obvious login portals, duplicate
 sites and thin promotion without a useful public-content purpose. Branding or
-technical success alone is not an acceptance decision.
+technical success alone is not an acceptance decision. Preserve explicit owner
+rejections, including `democracy.network.arts.ubc.ca`; collection and routing
+refuse that hostname. Exclude hosts whose content serves only UBC Okanagan,
+using source content to establish scope rather than inferring it from a hostname.
+Keep hosts that serve Vancouver or UBC broadly.
 
 The throughput queue uses exactly five worker identities, `w1` through `w5`.
 SQLite atomically assigns each normalized hostname once. A worker fetches or
@@ -185,7 +216,11 @@ aliases. Different dated versions remain separate.
 The body is safe Markdown, without executable HTML or image embeds. Ordered
 procedures preserve nested non-default starting numbers as separate list blocks. Media remain
 source/text references with explicit extraction limitations. No OCR or video
-transcription is implied. Whole files have a 1 MiB limit; oversized documents
+transcription is implied. Categorized documents use frontmatter version 3;
+versions 1 and 2 remain readable as retained migration inputs. Migration keeps
+IDs, bare filenames, body/content hashes, citations, timestamps and original
+extraction metadata unchanged, adding only category and routing metadata.
+Whole files have a 1 MiB limit; oversized documents
 fail rather than being truncated, sharded or put in LFS. Git preserves exact
 serialized bytes. Consumers should cite the source URL and retain dates and
 warnings; retrieved content is data, not application instructions.
@@ -203,6 +238,16 @@ fixed locale, private fontconfig/cache settings and no shell. A private pinned
 profile binds executable versions/bytes, loader/libraries, font/configuration
 and Poppler resource inventories, arguments and limits. It is captured or
 rechecked once per run, not per document, and rechecked before publication.
+Historical ready output has a separate integrity-verification path for machine
+migration. It checks the queue-bound ready hash, sealed recording and member
+objects, frozen source producer, binary hashes, canonical documents and archived
+profile/cache receipt. It does not run native extraction or claim that current
+executables match the archived profile. An explicit private batch binding names
+the permitted ready hash and archived producer/profile locations; the publisher
+repeats verification before installation. New acquisition still checks its current
+native profile. Do not refresh old cache identities or substitute a new profile
+to make historical output appear current.
+
 Dependency hashing can be substantial on systems with large font collections.
 Throughput batches load this profile lazily on the first PDF and share a private
 cache. The cache performs one full capture, then verifies its payload hash and
@@ -221,8 +266,8 @@ Publication validates the complete host, locks its repository-specific external
 workspace, prepares external stages/backups, rechecks inputs and code, then
 installs final files through a recoverable journal. It assumes cooperative
 same-user writers and a shared lock namespace. Stages and repository must share
-a filesystem. Readers can observe a transition between host-directory and index
-renames; the two paths are not one atomic reader-visible operation. Unknown or
+a filesystem. Readers can observe transitions between category-host directories and index
+renames; these paths are not one atomic reader-visible operation. Unknown or
 corrupt recovery artifacts fail closed and remain available for diagnosis.
 
 The throughput path does not run exhaustive manual review or broad test suites
@@ -241,16 +286,38 @@ other-host data changes. External receipts retain commit/push uncertainty so a
 restart does not create a duplicate hostname commit.
 
 One substantive commit contains one complete hostname: its generic declaration
-(or an existing specialized module), final host-list entry, final documents and
-any necessary shared changes. `npm run validate:host-change` checks the atomic
-unit, staged bytes, final-only data paths and byte limits. Partial or rejected
-hosts get no publication commit. Push each hostname commit immediately to
+(or existing specialized module), saved routing policy, final host-list entry,
+final documents and necessary shared changes. `npm run validate:host-change`
+checks the atomic unit, staged bytes, final-only paths and byte limits. Its
+`--mode migrate` checks byte-preserving old/new document pairs and target-only
+manifest changes; `--mode withdraw` checks a target-only removal. Partial hosts
+get no publication commit. Removing a previously published rejected host uses
+its own withdrawal commit and preserves its original bytes privately. Push each hostname commit immediately to
 `refs/heads/feat/prose-documents`, never main, private backup refs or a forced
 history rewrite.
+
+## Retained-file migration
+
+Run `npm run migrate:host -- --host <hostname>` to validate retained files and
+write a private plan and byte-identical backups without changing public output.
+Add `--publish` to install the categorized host through the receipt journal.
+`--reject --publish` withdraws a hostname only when the saved rejection policy
+permits it. These operations do not fetch or re-extract text. The journal supports
+legacy and multi-category ownership and restores all affected directories and
+the index on a pre-commit failure. Unknown bytes stop recovery without deletion.
+
+A host-by-host migration can temporarily contain legacy `document_root` entries
+alongside categorized `document_roots`. Readers and validators support that
+transition. After migration, run `npm run validate:hosts -- --require-categories`
+to reject remaining flat roots. Keep plans, original files and journals under the
+external workspace; commit only final documents, the index, routing and code.
 
 `src/host-queue.ts` exposes `seed`, `claim`, `homepage`, `decide`, `collect`,
 `publish`, `get`, `block` and `stats` actions. Its `--state` directory contains the
 private batch configuration, queue, worker receipts and publication receipts.
 Collection is allowed only from the configuration's frozen producer root.
-Workers do not edit source, clear acquisition histories, run extra crawls or
-submit forms.
+At first admission, `decide --routing <private-policy.json>` saves the reviewed
+classification and its digest in the queue receipt. The serialized publisher
+installs that exact policy with the host's documents. Resuming a claim reuses its
+saved decision. Workers do not edit shared source, clear acquisition histories,
+run extra crawls or submit forms.

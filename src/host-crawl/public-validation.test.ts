@@ -54,7 +54,7 @@ async function setup() {
   };
   const registeredHosts = [hostname];
   const list = join(root, "data/official-hosts.json");
-  const directory = join(root, host.document_root);
+  const directory = join(root, host.document_root!);
   const file = join(directory, documentFilename(doc.id));
   await mkdir(directory, { recursive: true });
   await writeFile(file, formatDocument(doc));

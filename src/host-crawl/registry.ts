@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { bmlscScraper } from "../host-scrapers/bmlscpathology.med.ubc.ca/index.ts";
 import { bullyingAndHarassmentScraper } from "../host-scrapers/bullyingandharassment.ubc.ca/index.ts";
 import { coopScraper } from "../host-scrapers/coop.ubc.ca/index.ts";
+import { assertAdmittedHostname } from "./category-routing.ts";
 import type { HostScraper } from "./contracts.ts";
 import { createGenericScraper } from "./generic.ts";
 import { normalizeHost } from "./urls.ts";
@@ -41,6 +42,7 @@ export function registeredHostnames(): string[] {
   return [...registry.keys()].sort();
 }
 export function getHostScraper(hostname: string): HostScraper {
+  assertAdmittedHostname(normalizeHost(hostname));
   const result = registry.get(normalizeHost(hostname));
   if (!result) throw new Error("Hostname has no explicitly registered accepted scraper");
   return result;

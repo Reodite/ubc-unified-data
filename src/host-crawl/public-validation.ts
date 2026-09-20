@@ -1,6 +1,12 @@
 import { constants } from "node:fs";
 import { lstat, open, readdir } from "node:fs/promises";
 import { isAbsolute, join, parse, resolve } from "node:path";
+import {
+  assertDocumentCategory,
+  categoryDocumentRoot,
+  DOCUMENT_CATEGORIES,
+  type DocumentCategory,
+} from "./categories.ts";
 import type { VettedHost } from "./contracts.ts";
 import {
   digest,
@@ -22,7 +28,6 @@ const HOST_KEYS = [
   "homepage_retrieved_at",
   "homepage_sha256",
   "scope",
-  "document_root",
   "document_count",
 ] as const;
 
@@ -37,8 +42,22 @@ export function registeredHostSet(hosts: RegisteredHosts): Set<string> {
   return result;
 }
 
+function hostKeys(value: unknown): readonly string[] {
+  return [
+    ...HOST_KEYS.slice(0, -1),
+    value && typeof value === "object" && Object.hasOwn(value, "document_roots") ? "document_roots" : "document_root",
+    "document_count",
+  ];
+}
+
+export function hostDocumentRoots(
+  host: VettedHost,
+): Array<{ category?: DocumentCategory; path: string; document_count: number }> {
+  return host.document_roots ?? [{ path: host.document_root!, document_count: host.document_count }];
+}
+
 export function validateVettedHost(value: unknown, registeredHosts: RegisteredHosts): asserts value is VettedHost {
-  exactObject(value, HOST_KEYS, "vetted host");
+  exactObject(value, hostKeys(value), "vetted host");
   safeText(value.hostname, "hostname");
   if (normalizeHost(value.hostname) !== value.hostname || !registeredHostSet(registeredHosts).has(value.hostname))
     throw new Error("Unregistered or noncanonical vetted hostname");
@@ -48,9 +67,24 @@ export function validateVettedHost(value: unknown, registeredHosts: RegisteredHo
   if (value.homepage_url !== `https://${value.hostname}/`) throw new Error("Homepage must be the exact host root");
   timestamp(value.homepage_retrieved_at, "homepage retrieved_at");
   digest(value.homepage_sha256, "homepage");
-  if (value.document_root !== `data/documents/${value.hostname}`) throw new Error("Invalid host document root");
   if (!Number.isSafeInteger(value.document_count) || (value.document_count as number) < 1)
     throw new Error("Vetted host requires a positive document count");
+  if (Object.hasOwn(value, "document_roots")) {
+    if (!Array.isArray(value.document_roots) || !value.document_roots.length) throw new Error("Missing category roots");
+    let previous = "";
+    let count = 0;
+    for (const root of value.document_roots) {
+      exactObject(root, ["category", "path", "document_count"], "category root");
+      assertDocumentCategory(root.category);
+      if (root.category <= previous || root.path !== categoryDocumentRoot(root.category, value.hostname))
+        throw new Error("Invalid or unsorted category roots");
+      if (!Number.isSafeInteger(root.document_count) || (root.document_count as number) < 1)
+        throw new Error("Invalid category document count");
+      previous = root.category;
+      count += root.document_count as number;
+    }
+    if (count !== value.document_count) throw new Error("Category and host document counts differ");
+  } else if (value.document_root !== `data/documents/${value.hostname}`) throw new Error("Invalid host document root");
 }
 
 export function formatHostList(hosts: readonly VettedHost[], registeredHosts: RegisteredHosts): Buffer {
@@ -64,7 +98,20 @@ export function formatHostList(hosts: readonly VettedHost[], registeredHosts: Re
   }
   return Buffer.from(
     `${JSON.stringify(
-      entries.map((host) => Object.fromEntries(HOST_KEYS.map((key) => [key, host[key]]))),
+      entries.map((host) =>
+        Object.fromEntries(
+          hostKeys(host).map((key) => [
+            key,
+            key === "document_roots"
+              ? host.document_roots!.map((root) => ({
+                  category: root.category,
+                  path: root.path,
+                  document_count: root.document_count,
+                }))
+              : host[key as keyof VettedHost],
+          ]),
+        ),
+      ),
       null,
       2,
     )}\n`,
@@ -148,6 +195,8 @@ export interface ValidatePublishedHostsOptions {
   allowAbsent?: boolean;
   /** Read document bytes only for these registered hostnames; omit to audit all hosts. Retain the full census. */
   documentHostnames?: readonly string[];
+  /** Reject legacy flat roots after a host-by-host migration finishes. */
+  requireCategories?: boolean;
 }
 
 /** Validate only the owned host index and document tree, leaving upstream data outside that tree alone. */
@@ -156,6 +205,7 @@ export async function validatePublishedHosts({
   registeredHosts,
   allowAbsent = false,
   documentHostnames,
+  requireCategories = false,
 }: ValidatePublishedHostsOptions): Promise<VettedHost[]> {
   const registered = registeredHostSet(registeredHosts);
   if (documentHostnames !== undefined && !Array.isArray(documentHostnames))
@@ -183,36 +233,60 @@ export async function validatePublishedHosts({
   for (const item of raw) validateVettedHost(item, registered);
   const hosts = raw as VettedHost[];
   if (!formatHostList(hosts, registered).equals(bytes)) throw new Error("Host list must be canonical and sorted");
-  if (JSON.stringify(directories) !== JSON.stringify(hosts.map((host) => host.hostname)))
+  if (requireCategories && hosts.some((host) => !host.document_roots)) throw new Error("Legacy host layout remains");
+  const expectedRoots = hosts
+    .flatMap(hostDocumentRoots)
+    .map((root) => root.path)
+    .sort();
+  const actualRoots: string[] = [];
+  for (const name of directories) {
+    const path = join(documentsRoot, name);
+    await requireDirectory(path);
+    if (DOCUMENT_CATEGORIES.includes(name as DocumentCategory)) {
+      for (const hostname of (await readdir(path)).sort()) {
+        if (normalizeHost(hostname) !== hostname) throw new Error("Invalid category hostname directory");
+        await requireDirectory(join(path, hostname));
+        actualRoots.push(`data/documents/${name}/${hostname}`);
+      }
+    } else {
+      if (normalizeHost(name) !== name) throw new Error("Unknown document category or hostname");
+      actualRoots.push(`data/documents/${name}`);
+    }
+  }
+  if (JSON.stringify(actualRoots.sort()) !== JSON.stringify(expectedRoots))
     throw new Error("Host directories and index do not match");
   const ids = new Set<string>();
   const urls = new Set<string>();
   const filenames = new Set<string>();
   for (const host of hosts) {
-    const directory = join(documentsRoot, host.hostname);
-    await requireDirectory(directory);
-    const names = (await readdir(directory)).sort();
-    if (names.length !== host.document_count) throw new Error("Host document count mismatch");
-    for (const name of names) {
-      if (!/^[a-f0-9]{64}\.md$/.test(name) || filenames.has(name))
-        throw new Error("Invalid or duplicate document filename");
-      filenames.add(name);
-      if (documentHosts !== undefined && !documentHosts.has(host.hostname)) {
-        const path = join(directory, name);
-        const info = await maybeLstat(path);
-        if (!info?.isFile() || info.nlink !== 1 || info.size > MAX_DOCUMENT_BYTES)
-          throw new Error(`Not a bounded regular unaliased file: ${path}`);
-        continue;
-      }
-      const doc = parseDocument(await readRegularFile(join(directory, name)), {
-        hostname: host.hostname,
-        filename: name,
-      });
-      if (ids.has(doc.id)) throw new Error("Duplicate document ID");
-      ids.add(doc.id);
-      for (const url of [doc.source_url, ...doc.alternate_urls]) {
-        if (urls.has(url)) throw new Error("Duplicate document URL");
-        urls.add(url);
+    for (const root of hostDocumentRoots(host)) {
+      const directory = join(repositoryRoot, root.path);
+      await requireDirectory(directory);
+      const names = (await readdir(directory)).sort();
+      if (names.length !== root.document_count) throw new Error("Host document count mismatch");
+      for (const name of names) {
+        if (!/^[a-f0-9]{64}\.md$/.test(name) || filenames.has(name))
+          throw new Error("Invalid or duplicate document filename");
+        filenames.add(name);
+        if (documentHosts !== undefined && !documentHosts.has(host.hostname)) {
+          const path = join(directory, name);
+          const info = await maybeLstat(path);
+          if (!info?.isFile() || info.nlink !== 1 || info.size > MAX_DOCUMENT_BYTES)
+            throw new Error(`Not a bounded regular unaliased file: ${path}`);
+          continue;
+        }
+        const doc = parseDocument(await readRegularFile(join(directory, name)), {
+          hostname: host.hostname,
+          filename: name,
+          category: root.category,
+        });
+        if (!root.category && doc.category) throw new Error("Categorized document is stored in a legacy directory");
+        if (ids.has(doc.id)) throw new Error("Duplicate document ID");
+        ids.add(doc.id);
+        for (const url of [doc.source_url, ...doc.alternate_urls]) {
+          if (urls.has(url)) throw new Error("Duplicate document URL");
+          urls.add(url);
+        }
       }
     }
   }

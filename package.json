@@ -11,6 +11,7 @@
     "update": "tsx src/update.ts",
     "collect:prose": "tsx src/collect-prose.ts",
     "collect:host": "tsx src/collect-host.ts",
+    "migrate:host": "tsx src/migrate-host.ts",
     "validate:hosts": "tsx src/validate-hosts.ts",
     "validate:host-change": "tsx src/validate-host-change.ts",
     "validate:prose": "tsx src/validate-prose.ts",

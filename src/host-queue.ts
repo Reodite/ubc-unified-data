@@ -3,6 +3,9 @@ import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 import { HostBatch } from "./host-crawl/batch.ts";
+import { parseRoutingPolicy } from "./host-crawl/category-routing.ts";
+import { assertExternalPath } from "./host-crawl/paths.ts";
+import { readRegularFile } from "./host-crawl/public-validation.ts";
 import type { HostWorkSeed } from "./host-crawl/work-queue.ts";
 
 export async function runHostQueue(args: string[]): Promise<unknown> {
@@ -19,6 +22,7 @@ export async function runHostQueue(args: string[]): Promise<unknown> {
       decision: { type: "string" },
       reason: { type: "string" },
       seed: { type: "string" },
+      routing: { type: "string" },
     },
   });
   if (!values.state || !values.action) throw new Error("--state and --action are required");
@@ -39,7 +43,10 @@ export async function runHostQueue(args: string[]): Promise<unknown> {
     if (values.action === "homepage") return await batch.homepage(values.host, values.token);
     if (values.action === "decide") {
       if (!["accept", "reject"].includes(values.decision ?? "")) throw new Error("--decision must be accept or reject");
-      batch.decide(values.host, values.token, values.decision === "accept", values.reason ?? "");
+      const policy = values.routing
+        ? parseRoutingPolicy(await readRegularFile(assertExternalPath(values.routing)))
+        : undefined;
+      batch.decide(values.host, values.token, values.decision === "accept", values.reason ?? "", policy);
       return { hostname: values.host, state: batch.owned(values.host, values.token).state };
     }
     if (values.action === "collect") return await batch.collect(values.host, values.token);
