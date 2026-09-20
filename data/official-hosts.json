@@ -940,6 +940,22 @@
     "document_count": 45
   },
   {
+    "hostname": "mfre.landfood.ubc.ca",
+    "title": "mfre.landfood.ubc.ca",
+    "homepage_url": "https://mfre.landfood.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T19:41:37.740Z",
+    "homepage_sha256": "2d57a8eb5ad30c75156c95b6b13297722f3e089315a7654daed92bdce688ae53",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/mfre.landfood.ubc.ca",
+        "document_count": 33
+      }
+    ],
+    "document_count": 33
+  },
+  {
     "hostname": "midterm.teacheval.ubc.ca",
     "title": "midterm.teacheval.ubc.ca",
     "homepage_url": "https://midterm.teacheval.ubc.ca/",
