@@ -1332,7 +1332,13 @@
     "homepage_retrieved_at": "2026-09-18T12:32:25.186Z",
     "homepage_sha256": "b69f1de26035122d3dd133855eade4ae7f2a676f60e1c16e91e41fce09fd86a5",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/pif.forestry.ubc.ca",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/pif.forestry.ubc.ca",
+        "document_count": 70
+      }
+    ],
     "document_count": 70
   },
   {
