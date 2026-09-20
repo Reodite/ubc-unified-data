@@ -2217,7 +2217,23 @@
     "homepage_retrieved_at": "2026-09-18T13:50:45.474Z",
     "homepage_sha256": "2dab7a411a4c90fa0268d07c84ff2c673e45861214160f520167892803e61561",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/vibrantforestlandscapes.forestry.ubc.ca",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/vibrantforestlandscapes.forestry.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/vibrantforestlandscapes.forestry.ubc.ca",
+        "document_count": 20
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/vibrantforestlandscapes.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
     "document_count": 23
   },
   {

@@ -1,6 +1,6 @@
 ---
 {
-  "format_version": 1,
+  "format_version": 3,
   "id": "documents:official-web:b7d08eada67d6eedd79610d7",
   "hostname": "vibrantforestlandscapes.forestry.ubc.ca",
   "title": "Our Work",
@@ -26,6 +26,11 @@
       "platform": "linux",
       "arch": "x64"
     }
+  },
+  "category": "research",
+  "routing": {
+    "rule_id": "host-purpose",
+    "policy_sha256": "6b57b4803c3a6ea1950d0841f0054bb73feda6068665a8306a3e3368bcb73249"
   }
 }
 ---
