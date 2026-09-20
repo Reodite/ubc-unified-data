@@ -2670,6 +2670,22 @@
     "document_count": 34
   },
   {
+    "hostname": "ubcstudios.ubc.ca",
+    "title": "ubcstudios.ubc.ca",
+    "homepage_url": "https://ubcstudios.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:41:39.003Z",
+    "homepage_sha256": "07796dc139aaba1ce8e6833f39bb047a7caeaf376b1b45124dafcade459a44e8",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/ubcstudios.ubc.ca",
+        "document_count": 64
+      }
+    ],
+    "document_count": 64
+  },
+  {
     "hostname": "ubcujp.psych.ubc.ca",
     "title": "ubcujp.psych.ubc.ca",
     "homepage_url": "https://ubcujp.psych.ubc.ca/",
