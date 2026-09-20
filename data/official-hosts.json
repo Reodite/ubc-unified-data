@@ -2542,7 +2542,18 @@
     "homepage_retrieved_at": "2026-09-18T14:27:39.951Z",
     "homepage_sha256": "83551a06662803e2124bd3abece9b4fc1c9ff76d553915b4b95e88d375599296",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/xwi7xwa.library.ubc.ca",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/xwi7xwa.library.ubc.ca",
+        "document_count": 343
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/xwi7xwa.library.ubc.ca",
+        "document_count": 93
+      }
+    ],
     "document_count": 436
   },
   {
