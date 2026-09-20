@@ -908,6 +908,22 @@
     "document_count": 44
   },
   {
+    "hostname": "mes.arts.ubc.ca",
+    "title": "mes.arts.ubc.ca",
+    "homepage_url": "https://mes.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:54:05.493Z",
+    "homepage_sha256": "4ec5d0e3e5658cd4d5bf4b223c958e195466131e37aa59ff04cff6d5929c8bb8",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/mes.arts.ubc.ca",
+        "document_count": 45
+      }
+    ],
+    "document_count": 45
+  },
+  {
     "hostname": "midterm.teacheval.ubc.ca",
     "title": "midterm.teacheval.ubc.ca",
     "homepage_url": "https://midterm.teacheval.ubc.ca/",

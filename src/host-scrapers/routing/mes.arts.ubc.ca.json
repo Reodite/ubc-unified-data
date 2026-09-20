@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hostname": "mes.arts.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w1 first homepage review",
+    "rationale": "The official UBC Middle East Studies homepage describes an academic program, its course MES 300, and student learning aims and outcomes. Public program information is useful to UBC students and is not exclusively Okanagan-serving.",
+    "evidence": [
+      "https://mes.arts.ubc.ca/ | 4ec5d0e3e5658cd4d5bf4b223c958e195466131e37aa59ff04cff6d5929c8bb8 | MES 300 The Middle East: Critical Questions and Debates",
+      "https://mes.arts.ubc.ca/ | 4ec5d0e3e5658cd4d5bf4b223c958e195466131e37aa59ff04cff6d5929c8bb8 | The MES program seeks to foster faculty, student and public engagement with the history, politics, religions, economies, and cultures of the Middle East.",
+      "https://mes.arts.ubc.ca/ | 4ec5d0e3e5658cd4d5bf4b223c958e195466131e37aa59ff04cff6d5929c8bb8 | Aims and Outcomes; MES students learn to"
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "Middle East Studies provides program, course and learning-outcome information for an interdisciplinary UBC academic offering."
+  }
+}
