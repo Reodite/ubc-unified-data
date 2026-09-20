@@ -1537,7 +1537,23 @@
     "homepage_retrieved_at": "2026-09-18T12:54:56.125Z",
     "homepage_sha256": "a79bb8c4ebdcdba92e4d279426abbf5f344234710e471dc08ef51e5f8c0332fb",
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_root": "data/documents/rerow.ubc.ca",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/rerow.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/rerow.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/rerow.ubc.ca",
+        "document_count": 28
+      }
+    ],
     "document_count": 30
   },
   {
