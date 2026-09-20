@@ -1,6 +1,6 @@
 ---
 {
-  "format_version": 1,
+  "format_version": 3,
   "id": "documents:official-web:a64e2431ab8598500df15c19",
   "hostname": "projectlab.engphys.ubc.ca",
   "title": "Intuition",
@@ -25,6 +25,11 @@
       "platform": "linux",
       "arch": "x64"
     }
+  },
+  "category": "opportunities",
+  "routing": {
+    "rule_id": "participation-sections",
+    "policy_sha256": "daf82384e14b68771b704a05c7fa7fb103d636beb0f43db98699e493f003394e"
   }
 }
 ---

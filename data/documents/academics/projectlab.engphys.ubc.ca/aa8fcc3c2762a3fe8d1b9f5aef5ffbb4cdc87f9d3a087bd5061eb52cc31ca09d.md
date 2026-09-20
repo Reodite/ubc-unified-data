@@ -1,6 +1,6 @@
 ---
 {
-  "format_version": 1,
+  "format_version": 3,
   "id": "documents:official-web:83fe1855d35d6fb7fffb5982",
   "hostname": "projectlab.engphys.ubc.ca",
   "title": "Contact us",
@@ -25,6 +25,11 @@
       "platform": "linux",
       "arch": "x64"
     }
+  },
+  "category": "academics",
+  "routing": {
+    "rule_id": "host-purpose",
+    "policy_sha256": "daf82384e14b68771b704a05c7fa7fb103d636beb0f43db98699e493f003394e"
   }
 }
 ---
