@@ -70,11 +70,18 @@ routes accept literal underscore names and advertised `rest_route=/` API roots;
 query support does not admit arbitrary document queries or guessed API endpoints.
 Explicit image, static-resource and authentication destinations in generic CMS
 inventories are excluded without fetching them; record identities and pagination
-are still checked. Semantic page names such as `themes` and `staff/admin` are not
+are still checked. A decoded `.scr` file suffix identifies a Windows screensaver
+resource and is excluded before fetching; installation guidance and actual PDF
+files remain subject to their normal text rules. Semantic page names such as `themes` and `staff/admin` are not
 asset or authentication evidence by themselves. A 404/410 HTML sitemap companion
 can be absent only when its co-advertised same-path XML counterpart was parsed;
-the XML inventory and all its children remain required. Missing sole XML maps,
+the XML inventory and all its children remain required. The proven absent
+companion and its same-path redirect identities stay excluded if XML entries,
+the saved frontier or later links mention them again. Missing sole XML maps,
 denied maps and unexpected successful HTML maps still block completion.
+A trackback link is a non-document action only when observed comment metadata
+identifies that page's own endpoint. Such actions are not requested; ordinary
+pages discussing trackbacks and unproved robots-denied URLs remain strict.
 Existing specialized modules retain their narrower policies
 and previously published bytes. Their recognized empty containers do not fall
 back to surrounding pages.

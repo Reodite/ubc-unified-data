@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "hostname": "scwrl.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w3 first homepage review",
+    "rationale": "Official UBC STEM Writing Resources for Learning offers substantive freely available teaching and learning materials for students and educators. Public student and instructor resources are useful despite additional instructor-only material requiring access; the homepage is not authentication-only and states no exclusively Okanagan mandate.",
+    "evidence": [
+      "https://scwrl.ubc.ca/ | 1e4ccda5597ebf0cf8c303d9f7f2c2e9327d116260b8806c801e4480ee774696 | The STEM Writing Resources for Learning (ScWRL) provides freely available materials for teaching and learning in STEM communication.",
+      "https://scwrl.ubc.ca/ | 1e4ccda5597ebf0cf8c303d9f7f2c2e9327d116260b8806c801e4480ee774696 | Our team aims to provide students with the resources needed to communicate effectively, and to provide educators with the tools needed to support students as they develop their writing skills.",
+      "https://scwrl.ubc.ca/ | 1e4ccda5597ebf0cf8c303d9f7f2c2e9327d116260b8806c801e4480ee774696 | Communicating in STEM Disciplines; Features of Academic STEM Writing; STEM Writing Tips; Academic Integrity in STEM; Strategies for Writing; Instructor Resources"
+    ]
+  },
+  "rules": [
+    {
+      "id": "writing-instruction",
+      "category": "academics",
+      "rationale": "The homepage explicitly lists these teaching and learning sections for STEM communication and academic writing.",
+      "title_pattern": "^(?:Communicating in STEM Disciplines|Features of Academic STEM Writing|STEM Writing Tips|Academic Integrity in STEM|Strategies for Writing|Instructor Resources)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "STEM communication teaching and learning materials for UBC students and educators."
+  }
+}

@@ -71,10 +71,15 @@ export function documentPageExclusion(value: string, hostname: string, formats: 
   if (!formats.includes("pdf") || !/\.pdf$/i.test(path) || url.search) return exclusion;
   url.pathname = path.replace(/(?:\.pdf)+$/i, "");
   if (url.pathname.startsWith("/wp-content/uploads/")) url.pathname = url.pathname.slice("/wp-content/uploads".length);
-  return pageExclusion(url.href, hostname);
+  // The stripped PDF name is a route check, not an actual screensaver-file suffix.
+  return routeExclusion(url.href, hostname, false);
 }
 
 export function pageExclusion(value: string, hostname: string): string | null {
+  return routeExclusion(value, hostname, true);
+}
+
+function routeExclusion(value: string, hostname: string, checkScreensaverFile: boolean): string | null {
   let url: URL;
   try {
     url = new URL(hostUrl(value, hostname));
@@ -98,6 +103,7 @@ export function pageExclusion(value: string, hostname: string): string | null {
     return "Administration, form action or machine endpoint";
   if (/\/(?:wp-content|wp-includes|feed)(?:\/|$)/i.test(pathname)) return "Theme, script or feed resource";
   if (
+    (checkScreensaverFile && pathname.toLowerCase().endsWith(".scr")) ||
     /\.(?:css|[cm]?js|map|wasm|zip|gz|png|jpe?g|gif|webp|avif|tiff?|bmp|svg|ico|mp[34]|mov|avi|webm|wav|ogg|aac|flac|ics|xml|json|txt|woff2?|ttf|otf|eot)(?:$|\/)/i.test(
       pathname,
     )

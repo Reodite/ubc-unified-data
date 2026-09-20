@@ -36,12 +36,24 @@ const robotsParser = createRequire(import.meta.url)("robots-parser") as (
   getSitemaps(): string[];
 };
 
-function pageLinks(observation: Observation, hostname: string, exactHost = false): string[] {
-  return htmlLinks(observation.snapshot.body, hostname, observation.snapshot.url, exactHost);
+function pageLinks(
+  observation: Observation,
+  hostname: string,
+  exactHost = false,
+  nonDocuments?: Set<string>,
+): string[] {
+  return htmlLinks(observation.snapshot.body, hostname, observation.snapshot.url, exactHost, nonDocuments);
 }
 
-function htmlLinks(html: string, hostname: string, base: string, exactHost = false): string[] {
+function htmlLinks(
+  html: string,
+  hostname: string,
+  base: string,
+  exactHost = false,
+  nonDocuments?: Set<string>,
+): string[] {
   const $ = load(html);
+  const source = new URL(base);
   base = htmlBaseUrl(html, hostname, base, exactHost);
   const links = new Set<string>();
   $("a[href]").each((_, node) => {
@@ -55,6 +67,18 @@ function htmlLinks(html: string, hostname: string, base: string, exactHost = fal
     } catch {
       return;
     }
+    if (exactHost && nonDocuments && !source.search) {
+      const link = $(node);
+      const rel = (link.attr("rel") ?? "").toLowerCase().split(/\s+/);
+      const commentMetadata =
+        link.closest("#comments-template,#comments,.comments-area").length > 0 &&
+        (rel.includes("trackback") ||
+          (link.attr("title") === "Trackback URL for this post" &&
+            link.closest("p.comments-closed.pings-open").length > 0));
+      const endpoint = new URL(`${source.pathname.replace(/\/$/, "")}/trackback/`, source).href;
+      // Comment metadata identifies this page's machine action, not pages discussing trackbacks.
+      if (commentMetadata && url === endpoint) nonDocuments.add(url);
+    }
     links.add(url);
   });
   return [...links].sort();
@@ -66,13 +90,15 @@ async function sitemapPages(
   read: (url: string) => Promise<Observation>,
   policies: NonNullable<HostScraper["adapter"]["sitemaps"]> = [],
   exactHost = false,
-): Promise<string[]> {
+): Promise<{ pages: string[]; nonDocuments: Set<string> }> {
   const htmlSitemap = (url: string) => /\.html?$/i.test(new URL(url).pathname);
   const queue = [...starts];
   if (exactHost) queue.sort((a, b) => Number(htmlSitemap(a)) - Number(htmlSitemap(b)));
   const initial = new Set(starts);
   const seen = new Set<string>();
   const xmlObserved = new Set<string>();
+  const requiredChildren = new Set<string>();
+  const nonDocuments = new Set<string>();
   const pages = new Set<string>();
   while (queue.length) {
     const url = hostUrl(queue.shift()!, hostname);
@@ -82,8 +108,32 @@ async function sitemapPages(
     if (exactHost && initial.has(url) && htmlSitemap(url) && [404, 410].includes(observation.snapshot.status)) {
       const counterpart = new URL(url);
       counterpart.pathname = counterpart.pathname.replace(/\.html?$/i, ".xml");
-      // An absent human-facing companion supplies no inventory; its observed XML counterpart still must close.
-      if (initial.has(counterpart.href) && xmlObserved.has(counterpart.href)) continue;
+      const companion = new URL(url);
+      const stem = companion.pathname.replace(/\.html?$/i, "");
+      const identities = [
+        url,
+        observation.snapshot.requested_url,
+        observation.snapshot.url,
+        ...(observation.snapshot.redirects ?? []).flatMap((hop) => [hop.url, hostUrl(hop.location, hostname, hop.url)]),
+      ].map((value) => hostUrl(value, hostname));
+      // Only the advertised companion and its same-path extensionless redirects are non-documents.
+      // The XML index and all children still have to close before these identities leave discovery.
+      if (
+        initial.has(counterpart.href) &&
+        xmlObserved.has(counterpart.href) &&
+        !companion.search &&
+        identities.every((identity) => {
+          const target = new URL(identity);
+          return (
+            !target.search &&
+            [companion.pathname, stem, `${stem}/`].includes(target.pathname) &&
+            target.pathname !== "/"
+          );
+        })
+      ) {
+        for (const identity of identities) nonDocuments.add(identity);
+        continue;
+      }
     }
     if (observation.snapshot.status !== 200 || !/xml/i.test(observation.snapshot.headers["content-type"] ?? ""))
       throw new Error("An advertised sitemap lacks a complete XML observation");
@@ -98,11 +148,15 @@ async function sitemapPages(
         ? inventoryUrl(location, hostname, observation.snapshot.url)
         : hostUrl(location, hostname, observation.snapshot.url);
       if (!target) continue;
-      if (parsed.kind === "index") queue.push(target);
-      else pages.add(target);
+      if (parsed.kind === "index") {
+        requiredChildren.add(target);
+        queue.push(target);
+      } else pages.add(target);
     }
   }
-  return [...pages].sort();
+  if ([...requiredChildren].some((url) => nonDocuments.has(url)))
+    throw new Error("An advertised sitemap child lacks a complete XML observation");
+  return { pages: [...pages].filter((url) => !nonDocuments.has(url)).sort(), nonDocuments };
 }
 
 export interface CollectionFormats {
@@ -177,17 +231,40 @@ export async function collectRecordedHost(
   const sitemaps = [...robots.getSitemaps(), ...(scraper.adapter.sitemaps ?? []).map((entry) => entry.path)]
     .map((url) => (exactHost ? inventoryUrl(url, hostname) : hostUrl(url, hostname)))
     .filter((url): url is string => url !== null);
-  const seedPages = await sitemapPages(sitemaps, hostname, read, scraper.adapter.sitemaps, exactHost);
+  const { pages: seedPages, nonDocuments } = await sitemapPages(
+    sitemaps,
+    hostname,
+    read,
+    scraper.adapter.sitemaps,
+    exactHost,
+  );
+  // Register homepage actions before CMS records or the frozen frontier can dispatch them.
+  if (exactHost) pageLinks(archive.homepage, hostname, exactHost, nonDocuments);
+  const homepageIdentities = new Set([
+    `https://${hostname}/`,
+    hostUrl(archive.homepage.snapshot.requested_url, hostname),
+    hostUrl(archive.homepage.snapshot.url, hostname),
+    ...(archive.homepage.snapshot.redirects ?? []).flatMap((hop) => [
+      hostUrl(hop.url, hostname),
+      hostUrl(hop.location, hostname, hop.url),
+    ]),
+  ]);
   const cmsPages = new Set(discovered.map((entry) => entry.url));
   const requiredViews = new Set(
     (scraper.adapter.views ?? []).flatMap((view) => view.values.map((value) => publicViewUrl(hostname, view, value))),
   );
   const advertisedPages = new Set([...cmsPages, ...seedPages, ...requiredViews]);
+  const excludedDiscovery = (url: string) => {
+    if (!nonDocuments.has(url)) return false;
+    if (homepageIdentities.has(url) || requiredViews.has(url))
+      throw new Error(`Non-document discovery conflicts with a required page: ${url}`);
+    return true;
+  };
   const queue: string[] = [];
   const queued = new Set<string>();
   const add = (value: string, linked = false) => {
     const url = exactHost ? inventoryUrl(value, hostname) : hostUrl(value, hostname);
-    if (!url) return;
+    if (!url || excludedDiscovery(url)) return;
     const exclusion = scraper.excludeUrl ? scraper.excludeUrl(url) : pageExclusion(url, hostname);
     if (advertisedPages.has(url) && exclusion === "Ambiguous repeated path separator")
       throw new Error("Publisher inventory advertises an ambiguous path");
@@ -262,6 +339,7 @@ export async function collectRecordedHost(
   };
   while (queue.length) {
     const requested = queue.shift()!;
+    if (excludedDiscovery(requested)) continue;
     let observation: Observation;
     let apiInput: ArticleInput | undefined;
     let contentBase: string | undefined;
@@ -355,11 +433,12 @@ export async function collectRecordedHost(
       }
       if (observation.snapshot.status !== 200 || !/html/i.test(observation.snapshot.headers["content-type"] ?? ""))
         throw new Error(`Missing complete HTML for ${requested}`);
+      const links = pageLinks(observation, hostname, exactHost, nonDocuments);
       for (const url of discoverPublicViews(scraper, observation.snapshot)) {
         advertisedPages.add(url);
         add(url);
       }
-      for (const url of pageLinks(observation, hostname, exactHost)) add(url, true);
+      for (const url of links) add(url, true);
     }
     const sourceUrl = hostUrl(observation.snapshot.url, hostname);
     const observed = observation;
@@ -370,7 +449,7 @@ export async function collectRecordedHost(
       if (hostUrl(observation.snapshot.url, hostname) !== sourceUrl)
         throw new Error("Retained representative has a different physical URL");
       assertObservedAccess(observation, true);
-      for (const url of pageLinks(observation, hostname, exactHost)) add(url, true);
+      for (const url of pageLinks(observation, hostname, exactHost, nonDocuments)) add(url, true);
     }
     const decision = apiInput ? { kind: "document" as const, input: apiInput } : scraper.extract(observation.snapshot);
     if (observed.sha256 !== observation.sha256) {

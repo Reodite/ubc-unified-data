@@ -2364,6 +2364,22 @@
     "document_count": 67
   },
   {
+    "hostname": "scwrl.ubc.ca",
+    "title": "scwrl.ubc.ca",
+    "homepage_url": "https://scwrl.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:07:42.613Z",
+    "homepage_sha256": "1e4ccda5597ebf0cf8c303d9f7f2c2e9327d116260b8806c801e4480ee774696",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/scwrl.ubc.ca",
+        "document_count": 151
+      }
+    ],
+    "document_count": 151
+  },
+  {
     "hostname": "sds.ubc.ca",
     "title": "sds.ubc.ca",
     "homepage_url": "https://sds.ubc.ca/",

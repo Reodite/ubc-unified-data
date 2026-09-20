@@ -1,5 +1,6 @@
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { toSafeMarkdown } from "../prose/markdown.ts";
+import { wordpressCollectionUrl } from "./adapters/wordpress-discovery.ts";
 import { collectRecordedHost } from "./collect.ts";
 import type { HostArchive, Observation, ProducerContext } from "./contracts.ts";
 import { sha256 } from "./document-format.ts";
@@ -18,13 +19,13 @@ const producer: ProducerContext = {
     arch: "x64",
   },
 };
-function observation(path: string, body: string): Observation {
+function observation(path: string, body: string, media = "text/html"): Observation {
   const url = new URL(path, home).href;
   const snapshot = {
     url,
     requested_url: url,
     status: 200,
-    headers: { "content-type": "text/html" },
+    headers: { "content-type": media },
     body,
     bytes: Buffer.byteLength(body),
     retrieved_at: "2025-01-01T00:00:00.000Z",
@@ -41,6 +42,114 @@ const sample = `<title>Public guide</title><header class="site-header">Global ch
 <p><span>Read</span><a href="/guide/">instructions</a></p>
 <button>Print</button><form>Private controls</form><script>unsafe()</script><nav>Menu labels</nav>
 </div></article></main><footer class="site-footer">Footer chrome</footer>`;
+
+describe("generic screensaver inventory", () => {
+  beforeEach(() => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(() => {
+        throw new Error("No network in screensaver inventory fixtures");
+      }),
+    );
+  });
+  afterEach(() => {
+    expect(fetch).not.toHaveBeenCalled();
+    vi.unstubAllGlobals();
+  });
+
+  function inventory(paths: string[]) {
+    const api = `${home}wp-json/`;
+    const values = new Map<string, Observation>();
+    const put = (path: string, body: string, media = "text/html") => {
+      const value = observation(path, body, media);
+      values.set(value.snapshot.url, value);
+      return value;
+    };
+    const homepage = put(
+      "/",
+      `<title>Home</title><link rel="https://api.w.org/" href="${api}"><main><p>Public instructions.</p></main>`,
+    );
+    put("/robots.txt", "User-agent: *\nDisallow:\n", "text/plain");
+    put(
+      api,
+      JSON.stringify({
+        routes: Object.fromEntries(
+          ["types", "pages"].map((name) => [
+            `/wp/v2/${name}`,
+            { methods: ["GET"], _links: { self: [{ href: `${api}wp/v2/${name}` }] } },
+          ]),
+        ),
+      }),
+      "application/json",
+    );
+    put(
+      `${api}wp/v2/types`,
+      JSON.stringify({
+        page: { rest_namespace: "wp/v2", rest_base: "pages", _links: { "wp:items": [{ href: `${api}wp/v2/pages` }] } },
+      }),
+      "application/json",
+    );
+    const collection = put(
+      wordpressCollectionUrl(`${api}wp/v2/pages`, 1),
+      JSON.stringify(
+        paths.map((path, i) => ({ id: i + 1, link: new URL(path, home).href, status: "publish", type: "page" })),
+      ),
+      "application/json",
+    );
+    collection.snapshot.headers["x-wp-total"] = String(paths.length);
+    collection.snapshot.headers["x-wp-totalpages"] = "1";
+    const archive: HostArchive = {
+      hostname: host,
+      input_sha256: sha256("screensaver inventory"),
+      homepage,
+      urls: [],
+      retained: [],
+      read: vi.fn(async (url) => {
+        const value = values.get(url);
+        if (!value) throw new Error(`Unrecorded ${url}`);
+        return value;
+      }),
+      readSnapshot: async () => {
+        throw new Error("No retained observations");
+      },
+      assertUnchanged: async () => {},
+      close() {},
+    };
+    return { archive, put };
+  }
+
+  it("skips advertised and linked screensavers before reading while retaining installation prose", async () => {
+    const file = "/files/2021/08/UBCFOM.sCr";
+    const encoded = "/files/UBCFOM%2e%53c%52?download=1";
+    const instructions = "/page/how-to-install-the-screensaver-on-windows-machines/";
+    const f = inventory([file, encoded, instructions]);
+    f.put(
+      instructions,
+      `<title>Install the screensaver</title><main><p>Windows installation instructions.</p><a href="${file}">Screensaver file</a></main>`,
+    );
+    const result = await collectRecordedHost(scraper, f.archive, producer);
+    expect(result.complete).toBe(true);
+    expect(result.documents).toHaveLength(2);
+    expect(
+      result.documents.find((document) => document.source_url === new URL(instructions, home).href)?.content_markdown,
+    ).toContain("Windows installation instructions");
+    expect(f.archive.read).toHaveBeenCalledWith(new URL(instructions, home).href);
+    expect(f.archive.read).not.toHaveBeenCalledWith(new URL(file, home).href);
+    expect(f.archive.read).not.toHaveBeenCalledWith(new URL(encoded, home).href);
+  });
+
+  it.each([
+    "/screensaver/",
+    "/files/UBCFOM.src",
+    "/files/UBCFOM.scr-name/",
+    "/files/UBCFOM.scr.pdf",
+    "/files/guide.pdf",
+  ])("still requires an available text or PDF observation: %s", async (path) => {
+    const f = inventory([path]);
+    await expect(collectRecordedHost(scraper, f.archive, producer)).rejects.toThrow("Required page observations");
+    expect(f.archive.read).toHaveBeenCalledWith(new URL(path, home).href);
+  });
+});
 
 describe("generic host throughput adapter", () => {
   it("keeps one prose boundary, hidden answers, headings and adjacent inline labels", () => {

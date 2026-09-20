@@ -188,6 +188,25 @@ describe("recorded complete-host collection", () => {
     await expect(collectRecordedHost(fixtureScraper, f.archive, producer)).rejects.toThrow("Required publisher URL");
   });
 
+  it("registers homepage comment actions before CMS and frozen frontier dispatch", async () => {
+    const f = setup();
+    const action = `${root}trackback/`;
+    f.archive.homepage.snapshot.body += `<div id="comments-template"><p class="comments-closed pings-open">Comments are closed, but <a href="${action}" title="Trackback URL for this post">trackbacks</a> and pingbacks are open.</p></div>`;
+    f.values.get(`${origin}/robots.txt`)!.snapshot.body += "Disallow: /trackback/\n";
+    const collection = f.values.get(wordpressCollectionUrl(`${api}wp/v2/posts`, 1))!;
+    const rows = JSON.parse(collection.snapshot.body);
+    rows[0].link = action;
+    collection.snapshot.body = JSON.stringify(rows);
+    f.archive.urls = [...f.archive.urls, { ...f.archive.urls[0]!, url: action, snapshot: null }];
+    f.archive.readDocument = vi.fn(async (url) => f.archive.read(url));
+    const result = await collectRecordedHost(createGenericScraper(host), f.archive, producer);
+    expect(result.complete).toBe(true);
+    expect(result.documents.some((document) => document.source_url === action)).toBe(false);
+    expect(f.archive.read).not.toHaveBeenCalledWith(action);
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(action);
+    await expect(collectRecordedHost(fixtureScraper, f.archive, producer)).rejects.toThrow("robots policy");
+  });
+
   it("counts but never fetches outbound generic CMS references", async () => {
     const f = setup();
     const collection = f.values.get(wordpressCollectionUrl(`${api}wp/v2/posts`, 1))!;
