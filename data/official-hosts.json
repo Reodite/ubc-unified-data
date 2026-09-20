@@ -1,5 +1,31 @@
 [
   {
+    "hostname": "alli.arts.ubc.ca",
+    "title": "alli.arts.ubc.ca",
+    "homepage_url": "https://alli.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T14:41:19.772Z",
+    "homepage_sha256": "c3e5903a736dd789dfd6b4309179d74afa4ef4b5a6735b78c51fb8f29f2eb345",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/alli.arts.ubc.ca",
+        "document_count": 8
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/alli.arts.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/alli.arts.ubc.ca",
+        "document_count": 7
+      }
+    ],
+    "document_count": 16
+  },
+  {
     "hostname": "audiospeech.ubc.ca",
     "title": "audiospeech.ubc.ca",
     "homepage_url": "https://audiospeech.ubc.ca/",
