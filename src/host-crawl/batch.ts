@@ -191,7 +191,7 @@ export class HostBatch {
       seedSha256: sha256(seed.bytes),
       acquire: acquire && !sealed,
       recoverTransientFailures: this.config.recoverTransientFailures === true,
-      documentFormats: scraper.documentFormats,
+      documentFormats: scraper.documentFormats?.includes("pdf") ? ["pdf"] : undefined,
       documentUrlAllowed: (url) => scraper.excludeUrl!(url) === null,
       maxResponseBytes: 32 * 1024 * 1024,
     });

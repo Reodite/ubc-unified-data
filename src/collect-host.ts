@@ -92,7 +92,7 @@ export async function runCollectHost(args: string[]) {
     seedSha256: digest(seed.bytes),
     acquire: values.acquire,
     resumeInterrupted: values["resume-interrupted"],
-    documentFormats: scraper.documentFormats,
+    documentFormats: scraper.documentFormats?.includes("pdf") ? ["pdf"] : undefined,
     documentUrlAllowed: (url) =>
       (scraper.excludeUrl ? scraper.excludeUrl(url) : pageExclusion(url, scraper.hostname)) === null,
     maxResponseBytes: scraper.documentFormats?.includes("pdf") ? 32 * 1024 * 1024 : undefined,

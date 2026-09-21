@@ -152,6 +152,7 @@ describe("document Markdown wire format", () => {
     const bodyTitle = structuredClone(markdown);
     const bodyExtraction = markdownExtraction(bodyTitle);
     bodyExtraction.title_origin = { kind: "markdown-body" };
+    expect(parseDocument(formatDocument(bodyTitle))).toEqual(bodyTitle);
     bodyExtraction.witnesses = [
       { ...bodyExtraction.witnesses[0]!, title: null },
       { ...bodyExtraction.witnesses[0]!, title: "" },
@@ -207,9 +208,6 @@ describe("document Markdown wire format", () => {
       },
       (document) => {
         markdownExtraction(document).title_origin = { kind: "advertisement", witness_index: 1 };
-      },
-      (document) => {
-        markdownExtraction(document).title_origin = { kind: "markdown-body" };
       },
       (document) => {
         markdownExtraction(document).witnesses = [];

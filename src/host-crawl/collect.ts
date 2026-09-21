@@ -22,13 +22,21 @@ import {
   type ProducerContext,
   type SearchDocument,
 } from "./contracts.ts";
+import { validateSearchDocument } from "./document-format.ts";
 import { assertRequiredQueryIdentity, validateRequiredDocumentQueries } from "./document-query-policy.ts";
 import { htmlBaseUrl } from "./html-base.ts";
 import { discoverMachineLinks } from "./machine-links.ts";
+import type { MarkdownInspection } from "./markdown-contract.mjs";
+import {
+  assertMarkdownIdentity,
+  discoverMarkdownAlternates,
+  markdownSources,
+  type MarkdownSourceDeclaration,
+} from "./markdown-source-policy.ts";
 import { parseSitemap } from "./sitemap.ts";
 import { hostUrl, inventoryUrl, nonDocumentInventoryUrl, pageExclusion, UNSUPPORTED_DOCUMENT } from "./urls.ts";
 
-const sha256 = (value: string) => createHash("sha256").update(value).digest("hex");
+const sha256 = (value: string | Uint8Array) => createHash("sha256").update(value).digest("hex");
 const isPdfUrl = (value: string) => /\.pdf$/i.test(decodeURIComponent(new URL(value).pathname));
 const robotsParser = createRequire(import.meta.url)("robots-parser") as (
   url: string,
@@ -170,6 +178,25 @@ async function sitemapPages(
   return { pages: [...pages].filter((url) => !nonDocuments.has(url)).sort(), nonDocuments, advertisingSitemaps };
 }
 
+function markdownHeader(observation: Observation, name: string): string | undefined {
+  const fields = Object.entries(observation.snapshot.headers).filter(([key]) => key.toLowerCase() === name);
+  if (fields.length > 1) throw new Error(`Markdown response has duplicate ${name} fields`);
+  return fields[0]?.[1];
+}
+
+function assertMarkdownResponse(declaration: MarkdownSourceDeclaration, observation: Observation): void {
+  assertMarkdownIdentity(declaration, observation);
+  if (
+    observation.snapshot.status !== 200 ||
+    observation.snapshot.binary !== undefined ||
+    markdownHeader(observation, "content-range") !== undefined
+  )
+    throw new Error("Required Markdown target is not a complete status-200 text response");
+  const mediaType = markdownHeader(observation, "content-type");
+  if (!mediaType || !/^text\/markdown(?:[\t ]*;[\t ]*charset[\t ]*=[\t ]*(?:utf-8|"utf-8"))?[\t ]*$/i.test(mediaType))
+    throw new Error("Required Markdown target needs unambiguous UTF-8 text/markdown");
+}
+
 export interface CollectionFormats {
   pdf?: {
     profile_sha256: string;
@@ -177,6 +204,17 @@ export interface CollectionFormats {
       bytes: Uint8Array,
       sourceUrl: string,
     ): Promise<{ title: string; markdown: string; warnings: string[]; pageCount: number }>;
+  };
+  markdown?: {
+    profile_sha256: string;
+    inspect(
+      bytes: Uint8Array,
+      advertisedTitles: readonly (string | null)[],
+    ): Promise<{
+      inspection: MarkdownInspection;
+      profile_sha256: string;
+      termination: "observed-pid-absence" | "identity-matched-unreaped-zombie";
+    }>;
   };
 }
 
@@ -191,6 +229,18 @@ export async function collectRecordedHost(
   const verdict = scraper.vetHomepage(archive.homepage.snapshot);
   if (!verdict.accepted) throw new Error(`Homepage is not vetted: ${verdict.reason}`);
   const hostname = scraper.hostname;
+  const declaredMarkdown = scraper.documentFormats?.includes("markdown") ? markdownSources(hostname) : [];
+  if (scraper.documentFormats?.includes("markdown") && !declaredMarkdown.length)
+    throw new Error("Markdown format lacks an exact reviewed source declaration");
+  const markdownDeclarations = declaredMarkdown.map((declaration) => ({
+    declaration,
+    witnesses: discoverMarkdownAlternates(archive.homepage, [declaration]),
+  }));
+  const markdownTargets = new Set(markdownDeclarations.map(({ declaration }) => declaration.target_url));
+  if (markdownTargets.size !== markdownDeclarations.length)
+    throw new Error("Markdown declarations contain a duplicate required target");
+  if (markdownDeclarations.length && (!formats.markdown || !archive.readTextBytes))
+    throw new Error("Required Markdown extraction is unavailable");
   const queryDeclarations = validateRequiredDocumentQueries(hostname, scraper.adapter.requiredQueries);
   const requiredQueries = new Set(queryDeclarations.map((entry) => entry.url));
   const assertQueryObservation = (requested: string, observation: Observation) => {
@@ -247,6 +297,13 @@ export async function collectRecordedHost(
     assertObservedAccess(observation, document);
     return observation;
   };
+  const readMarkdown = async (declaration: MarkdownSourceDeclaration): Promise<Observation> => {
+    if (robots.isDisallowed(declaration.target_url, "ubc-data"))
+      throw new Error("Recorded robots policy disallows a required Markdown target");
+    const observation = await archive.read(declaration.target_url);
+    assertMarkdownResponse(declaration, observation);
+    return observation;
+  };
   if (scraper.adapter.kind === "html") await verifyHtmlDiscovery(scraper, read);
   else if (scraper.adapter.kind !== "wordpress") throw new Error("Unsupported registered discovery adapter");
   const discovered =
@@ -275,7 +332,13 @@ export async function collectRecordedHost(
   const requiredViews = new Set(
     (scraper.adapter.views ?? []).flatMap((view) => view.values.map((value) => publicViewUrl(hostname, view, value))),
   );
-  const advertisedPages = new Set([...cmsPages, ...seedPages, ...requiredViews, ...requiredQueries]);
+  const advertisedPages = new Set([
+    ...cmsPages,
+    ...seedPages,
+    ...requiredViews,
+    ...requiredQueries,
+    ...markdownTargets,
+  ]);
   const viewBases = new Set((scraper.adapter.views ?? []).map((view) => hostUrl(view.path, hostname)));
   const retainedSources = new Set(archive.retained.map((document) => document.source_url));
   const emittedIdentities = new Set<string>();
@@ -287,6 +350,7 @@ export async function collectRecordedHost(
       homepageIdentities.has(url) ||
       requiredViews.has(url) ||
       requiredQueries.has(url) ||
+      markdownTargets.has(url) ||
       (machineLink &&
         (advertisedPages.has(url) ||
           viewBases.has(url) ||
@@ -315,6 +379,7 @@ export async function collectRecordedHost(
   const add = (value: string, linked = false) => {
     const url = exactHost ? inventoryUrl(value, hostname) : hostUrl(value, hostname);
     if (!url || excludedDiscovery(url)) return;
+    if (markdownTargets.has(url)) return;
     const exclusion = scraper.excludeUrl ? scraper.excludeUrl(url) : pageExclusion(url, hostname);
     if (advertisedPages.has(url) && exclusion === "Ambiguous repeated path separator")
       throw new Error("Publisher inventory advertises an ambiguous path");
@@ -396,6 +461,58 @@ export async function collectRecordedHost(
       representatives.set(sourceUrl, rank);
     }
   };
+  for (const { declaration, witnesses } of markdownDeclarations) {
+    const observation = await readMarkdown(declaration);
+    const receipt = await archive.readTextBytes!(observation.sha256);
+    const bytes = Buffer.from(receipt.bytes);
+    const bytesSha256 = sha256(bytes);
+    if (receipt.sha256 !== bytesSha256 || observation.snapshot.bytes !== bytes.length)
+      throw new Error("Markdown bytes differ from their recorded receipt");
+    const content = new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+    if (!Buffer.from(content, "utf8").equals(bytes) || content !== observation.snapshot.body)
+      throw new Error("Markdown target is not exact BOM-free UTF-8 source text");
+    const profileSha256 = formats.markdown!.profile_sha256;
+    if (!/^[a-f0-9]{64}$/.test(profileSha256)) throw new Error("Invalid Markdown runtime profile digest");
+    const inspected = await formats.markdown!.inspect(
+      bytes,
+      witnesses.map((witness) => witness.title),
+    );
+    if (
+      inspected.profile_sha256 !== profileSha256 ||
+      inspected.inspection.source_bytes !== bytes.length ||
+      inspected.inspection.source_bytes_sha256 !== bytesSha256
+    )
+      throw new Error("Markdown runtime evidence differs from the recorded source bytes or profile");
+    const sourceUrl = declaration.target_url;
+    if (retained.has(sourceUrl)) throw new Error("Retained Markdown needs an explicit extraction comparison policy");
+    const document: SearchDocument = {
+      id: `documents:official-web:${sha256(sourceUrl).slice(0, 24)}`,
+      hostname,
+      title: inspected.inspection.title,
+      source_url: sourceUrl,
+      retrieved_at: observation.snapshot.retrieved_at,
+      source_modified_at: null,
+      snapshot_sha256: observation.sha256,
+      input_sha256: archive.input_sha256,
+      body_sha256: bytesSha256,
+      content_sha256: sha256(`${inspected.inspection.title}\n${content}`),
+      content_markdown: content,
+      warnings: [],
+      alternate_urls: [],
+      producer,
+      extraction: {
+        format: "markdown",
+        source_bytes_sha256: bytesSha256,
+        source_bytes: bytes.length,
+        profile_sha256: profileSha256,
+        termination: inspected.termination,
+        title_origin: { ...inspected.inspection.title_origin },
+        witnesses: witnesses.map((witness) => ({ ...witness })),
+      },
+    };
+    validateSearchDocument(document);
+    keep(document, observation, sourceUrl, false);
+  }
   while (queue.length) {
     const requested = queue.shift()!;
     if (excludedDiscovery(requested)) continue;
@@ -598,6 +715,14 @@ export async function collectRecordedHost(
   for (const url of requiredQueries)
     if (!result.some((document) => document.source_url === url || document.alternate_urls.includes(url)))
       throw new Error(`Required query is missing from complete output: ${url}`);
+  for (const { declaration, witnesses } of markdownDeclarations) {
+    const document = result.find((candidate) => candidate.source_url === declaration.target_url);
+    if (
+      document?.extraction?.format !== "markdown" ||
+      JSON.stringify(document.extraction.witnesses) !== JSON.stringify(witnesses)
+    )
+      throw new Error(`Required Markdown target lacks its exact extracted witness context: ${declaration.target_url}`);
+  }
   await archive.assertUnchanged();
   return {
     complete: true,

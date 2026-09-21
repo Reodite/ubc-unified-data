@@ -57,7 +57,7 @@ export interface HostScraper {
     optionalAbsent?: readonly string[];
     sitemaps?: readonly { path: string; rootOnlyLocation?: string }[];
   };
-  documentFormats?: readonly "pdf"[];
+  documentFormats?: readonly ("pdf" | "markdown")[];
   excludeUrl?(url: string): string | null;
   normalizeArticle?(input: ArticleInput): ArticleInput;
   vetHomepage(snapshot: Snapshot): { accepted: boolean; reason: string };
@@ -151,6 +151,7 @@ export interface HostArchive {
   readDocument?(url: string): Promise<Observation>;
   readSnapshot(sha256: string): Promise<Observation>;
   readBytes?(snapshotSha256: string): Promise<Uint8Array>;
+  readTextBytes?(snapshotSha256: string): Promise<{ bytes: Uint8Array; sha256: string }>;
   observedDestination?(url: string): string;
   observedScopeExclusion?(url: string): string | null;
   apiFallbackEligible?(url: string): boolean;

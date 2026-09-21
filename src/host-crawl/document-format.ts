@@ -233,7 +233,6 @@ export function validateSearchDocument(value: unknown): asserts value is SearchD
       if (!titleKind || !("value" in titleKind)) throw new Error("Invalid Markdown title origin");
       if (titleKind.value === "markdown-body") {
         exactObject(titleOrigin as unknown, ["kind"], "Markdown title origin");
-        if (firstAdvertisement !== -1) throw new Error("Markdown body title conflicts with an advertised title");
       } else if (titleKind.value === "advertisement") {
         exactObject(titleOrigin as unknown, ["kind", "witness_index"], "Markdown title origin");
         const advertisement = titleOrigin as { kind: "advertisement"; witness_index: number };
