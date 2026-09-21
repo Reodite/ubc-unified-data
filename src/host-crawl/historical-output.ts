@@ -241,6 +241,7 @@ async function archivedProfile(directory: string, expectedHash: string): Promise
 
 function verifyPdfPages(document: SearchDocument, profile: PdfProfile): void {
   const extraction = document.extraction!;
+  if (extraction.format !== "pdf") throw new Error("Historical ready v1 supports only PDF extraction");
   if (
     extraction.pages > profile.manifest.extraction.limits.pages ||
     extraction.source_bytes > profile.manifest.extraction.limits.inputBytes
@@ -405,6 +406,7 @@ export async function verifyHistoricalReady(options: VerifyHistoricalReadyOption
       if (source.url !== document.source_url || source.retrieved_at !== document.retrieved_at || source.status !== 200)
         throw new Error("Ready document citation or retrieval differs from its snapshot");
       if (document.extraction) {
+        if (document.extraction.format !== "pdf") throw new Error("Historical ready v1 supports only PDF extraction");
         pdfs++;
         if (
           !source.binary ||

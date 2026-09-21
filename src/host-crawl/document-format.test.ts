@@ -1,9 +1,11 @@
 import { describe, expect, it } from "vitest";
-import type { SearchDocument } from "./contracts.ts";
+import type { MarkdownDocumentExtraction, SearchDocument } from "./contracts.ts";
 import {
+  CATEGORIZED_DOCUMENT_FORMAT_VERSION,
   DOCUMENT_FORMAT_VERSION,
   documentFilename,
   formatDocument,
+  MARKDOWN_DOCUMENT_FORMAT_VERSION,
   MAX_DOCUMENT_BYTES,
   parseDocument,
   sha256,
@@ -35,6 +37,11 @@ function fixtureDocument(
       runtime: { node: "v26.8.1", icu: "78.2", unicode: "17.0", platform: "linux", arch: "x64" },
     },
   };
+}
+
+function markdownExtraction(document: SearchDocument): MarkdownDocumentExtraction {
+  if (document.extraction?.format !== "markdown") throw new Error("Expected Markdown extraction fixture");
+  return document.extraction;
 }
 
 function replaceMetadata(bytes: Buffer, change: (metadata: Record<string, unknown>) => void): Buffer {
@@ -84,6 +91,206 @@ describe("document Markdown wire format", () => {
         formatDocument({ ...pdf, extraction: { ...pdf.extraction, ...change } } as SearchDocument),
       ).toThrow();
   });
+  it("round-trips verbatim Markdown provenance as v4, including categorized output", () => {
+    const markdown = fixtureDocument(
+      "example.ubc.ca",
+      "/node/1.md",
+      "# Source title\r\n\r\nExact body without final newline",
+    );
+    markdown.extraction = {
+      format: "markdown",
+      source_bytes_sha256: markdown.body_sha256,
+      source_bytes: Buffer.byteLength(markdown.content_markdown),
+      profile_sha256: sha256("closed runtime profile"),
+      termination: "observed-pid-absence",
+      title_origin: { kind: "advertisement", witness_index: 0 },
+      witnesses: [
+        {
+          source_url: "https://example.ubc.ca/",
+          snapshot_sha256: sha256("HTML witness"),
+          target_url: markdown.source_url,
+          channel: "html-head",
+          title: markdown.title,
+        },
+        {
+          source_url: "https://example.ubc.ca/",
+          snapshot_sha256: sha256("HTML witness"),
+          target_url: markdown.source_url,
+          channel: "http-link",
+          title: markdown.title,
+        },
+      ],
+    };
+    const bytes = formatDocument(markdown);
+    const end = bytes.indexOf(Buffer.from("\n---\n"), 4);
+    const metadata = JSON.parse(bytes.subarray(4, end).toString()) as Record<string, unknown>;
+    expect(metadata.format_version).toBe(MARKDOWN_DOCUMENT_FORMAT_VERSION);
+    expect(Object.keys(metadata.extraction as object)).toEqual([
+      "format",
+      "source_bytes_sha256",
+      "source_bytes",
+      "profile_sha256",
+      "termination",
+      "title_origin",
+      "witnesses",
+    ]);
+    expect(bytes.subarray(end + 5)).toEqual(Buffer.from(markdown.content_markdown));
+    expect(parseDocument(bytes)).toEqual(markdown);
+    expect(formatDocument(parseDocument(bytes))).toEqual(bytes);
+
+    const categorized: SearchDocument = {
+      ...structuredClone(markdown),
+      category: "academics",
+      routing: { rule_id: "fixture", policy_sha256: sha256("routing") },
+    };
+    const categorizedBytes = formatDocument(categorized);
+    expect(
+      JSON.parse(categorizedBytes.subarray(4, categorizedBytes.indexOf(Buffer.from("\n---\n"), 4)).toString()),
+    ).toMatchObject({ format_version: MARKDOWN_DOCUMENT_FORMAT_VERSION, category: "academics" });
+    expect(parseDocument(categorizedBytes)).toEqual(categorized);
+
+    const bodyTitle = structuredClone(markdown);
+    const bodyExtraction = markdownExtraction(bodyTitle);
+    bodyExtraction.title_origin = { kind: "markdown-body" };
+    bodyExtraction.witnesses = [
+      { ...bodyExtraction.witnesses[0]!, title: null },
+      { ...bodyExtraction.witnesses[0]!, title: "" },
+    ];
+    expect(parseDocument(formatDocument(bodyTitle))).toEqual(bodyTitle);
+
+    const maximumWitnesses = structuredClone(markdown);
+    const maximumExtraction = markdownExtraction(maximumWitnesses);
+    maximumExtraction.title_origin = { kind: "advertisement", witness_index: 2 };
+    maximumExtraction.witnesses = (["html-head", "http-link"] as const).flatMap((channel) =>
+      [null, "", maximumWitnesses.title].map((title) => ({
+        ...maximumExtraction.witnesses[0]!,
+        channel,
+        title,
+      })),
+    );
+    expect(parseDocument(formatDocument(maximumWitnesses))).toEqual(maximumWitnesses);
+    maximumExtraction.witnesses.push({ ...maximumExtraction.witnesses.at(-1)! });
+    expect(() => formatDocument(maximumWitnesses)).toThrow(/witness array/);
+  });
+
+  it("rejects malformed or contradictory Markdown provenance", () => {
+    const base = fixtureDocument("example.ubc.ca", "/node/1.md", "# Source title\n\nBody");
+    base.extraction = {
+      format: "markdown",
+      source_bytes_sha256: base.body_sha256,
+      source_bytes: Buffer.byteLength(base.content_markdown),
+      profile_sha256: sha256("closed runtime profile"),
+      termination: "observed-pid-absence",
+      title_origin: { kind: "advertisement", witness_index: 0 },
+      witnesses: [
+        {
+          source_url: "https://example.ubc.ca/",
+          snapshot_sha256: sha256("HTML witness"),
+          target_url: base.source_url,
+          channel: "html-head",
+          title: base.title,
+        },
+      ],
+    };
+    const corruptions: Array<(document: SearchDocument) => void> = [
+      (document) => {
+        markdownExtraction(document).source_bytes += 1;
+      },
+      (document) => {
+        markdownExtraction(document).source_bytes_sha256 = sha256("different bytes");
+      },
+      (document) => {
+        markdownExtraction(document).profile_sha256 = "bad";
+      },
+      (document) => {
+        markdownExtraction(document).termination = "unknown" as never;
+      },
+      (document) => {
+        markdownExtraction(document).title_origin = { kind: "advertisement", witness_index: 1 };
+      },
+      (document) => {
+        markdownExtraction(document).title_origin = { kind: "markdown-body" };
+      },
+      (document) => {
+        markdownExtraction(document).witnesses = [];
+      },
+      (document) => {
+        markdownExtraction(document).witnesses[0]!.source_url = document.source_url;
+      },
+      (document) => {
+        markdownExtraction(document).witnesses[0]!.target_url = "https://example.ubc.ca/node/2.md";
+      },
+      (document) => {
+        markdownExtraction(document).witnesses[0]!.snapshot_sha256 = "bad";
+      },
+      (document) => {
+        markdownExtraction(document).witnesses[0]!.channel = "body" as never;
+      },
+      (document) => {
+        markdownExtraction(document).witnesses[0]!.title = "Different title";
+      },
+      (document) => {
+        const extraction = markdownExtraction(document);
+        extraction.witnesses = [
+          { ...extraction.witnesses[0]!, channel: "http-link" },
+          { ...extraction.witnesses[0]!, channel: "html-head" },
+        ];
+      },
+      (document) => {
+        const extraction = markdownExtraction(document);
+        extraction.witnesses = [extraction.witnesses[0]!, { ...extraction.witnesses[0]! }];
+      },
+      (document) => {
+        (markdownExtraction(document) as unknown as Record<string, unknown>).extra = true;
+      },
+      (document) => {
+        (markdownExtraction(document).witnesses[0] as unknown as Record<string, unknown>).extra = true;
+      },
+      (document) => {
+        (markdownExtraction(document).title_origin as unknown as Record<string, unknown>).extra = true;
+      },
+    ];
+    for (const corrupt of corruptions) {
+      const document = structuredClone(base);
+      corrupt(document);
+      expect(() => formatDocument(document)).toThrow();
+    }
+    const oversizedTitle = structuredClone(base);
+    oversizedTitle.title = "🍁".repeat(1025);
+    markdownExtraction(oversizedTitle).witnesses[0]!.title = oversizedTitle.title;
+    oversizedTitle.content_sha256 = sha256(`${oversizedTitle.title}\n${oversizedTitle.content_markdown}`);
+    expect(() => formatDocument(oversizedTitle)).toThrow(/title exceeds/);
+    expect(() =>
+      parseDocument(
+        replaceMetadata(formatDocument(base), (metadata) => {
+          metadata.format_version = CATEGORIZED_DOCUMENT_FORMAT_VERSION;
+        }),
+      ),
+    ).toThrow(/version/);
+    for (const reorder of [
+      (extraction: Record<string, unknown>) => {
+        extraction.title_origin = { witness_index: 0, kind: "advertisement" };
+      },
+      (extraction: Record<string, unknown>) => {
+        const witness = (extraction.witnesses as Record<string, unknown>[])[0]!;
+        (extraction.witnesses as Record<string, unknown>[])[0] = {
+          title: witness.title,
+          channel: witness.channel,
+          target_url: witness.target_url,
+          snapshot_sha256: witness.snapshot_sha256,
+          source_url: witness.source_url,
+        };
+      },
+    ])
+      expect(() =>
+        parseDocument(
+          replaceMetadata(formatDocument(base), (metadata) => {
+            reorder(metadata.extraction as Record<string, unknown>);
+          }),
+        ),
+      ).toThrow(/Noncanonical/);
+  });
+
   it.each([
     "Exact body without final newline",
     "\n\nOriginal café 🍁.\r\n\n---\n\n",

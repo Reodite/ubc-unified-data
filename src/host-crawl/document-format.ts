@@ -2,12 +2,14 @@ import { createHash } from "node:crypto";
 import { basename } from "node:path";
 import { assertSafeMarkdown } from "../prose/markdown.ts";
 import { assertDocumentCategory, type DocumentCategory } from "./categories.ts";
-import type { SearchDocument } from "./contracts.ts";
+import type { MarkdownDocumentExtraction, PdfDocumentExtraction, SearchDocument } from "./contracts.ts";
+import { MARKDOWN_INSPECTION_LIMITS } from "./markdown-contract.mjs";
 import { hostUrl, normalizeHost } from "./urls.ts";
 
 export const DOCUMENT_FORMAT_VERSION = 1;
 export const PDF_DOCUMENT_FORMAT_VERSION = 2;
 export const CATEGORIZED_DOCUMENT_FORMAT_VERSION = 3;
+export const MARKDOWN_DOCUMENT_FORMAT_VERSION = 4;
 export const MAX_DOCUMENT_BYTES = 1024 * 1024;
 const DOCUMENT_KEYS = [
   "id",
@@ -26,7 +28,17 @@ const DOCUMENT_KEYS = [
   "producer",
 ] as const;
 const RUNTIME_KEYS = ["node", "icu", "unicode", "platform", "arch"] as const;
-const EXTRACTION_KEYS = ["format", "source_bytes_sha256", "source_bytes", "pages", "profile_sha256"] as const;
+const PDF_EXTRACTION_KEYS = ["format", "source_bytes_sha256", "source_bytes", "pages", "profile_sha256"] as const;
+const MARKDOWN_EXTRACTION_KEYS = [
+  "format",
+  "source_bytes_sha256",
+  "source_bytes",
+  "profile_sha256",
+  "termination",
+  "title_origin",
+  "witnesses",
+] as const;
+const MARKDOWN_WITNESS_KEYS = ["source_url", "snapshot_sha256", "target_url", "channel", "title"] as const;
 
 function documentKeys(value: unknown): readonly (keyof SearchDocument)[] {
   const keys: (keyof SearchDocument)[] = [...DOCUMENT_KEYS];
@@ -131,18 +143,115 @@ export function validateSearchDocument(value: unknown): asserts value is SearchD
     if (url === doc.source_url) throw new Error("Source URL cannot also be an alternate URL");
   }
   if (Object.hasOwn(doc, "extraction")) {
-    exactObject(doc.extraction, EXTRACTION_KEYS, "extraction");
-    if (doc.extraction.format !== "pdf") throw new Error("Unknown document extraction format");
-    digest(doc.extraction.source_bytes_sha256, "source bytes");
-    digest(doc.extraction.profile_sha256, "extraction profile");
-    if (
-      !Number.isSafeInteger(doc.extraction.source_bytes) ||
-      doc.extraction.source_bytes < 1 ||
-      !Number.isSafeInteger(doc.extraction.pages) ||
-      doc.extraction.pages < 1 ||
-      doc.extraction.pages > 500
-    )
-      throw new Error("Invalid PDF extraction bounds");
+    const extraction = doc.extraction;
+    if (!extraction) throw new Error("Missing document extraction");
+    const formatProperty = Object.getOwnPropertyDescriptor(extraction, "format");
+    if (!formatProperty || !("value" in formatProperty)) throw new Error("Invalid document extraction format");
+    if (formatProperty.value === "pdf") {
+      exactObject(extraction as unknown, PDF_EXTRACTION_KEYS, "PDF extraction");
+      const pdf = extraction as PdfDocumentExtraction;
+      digest(pdf.source_bytes_sha256, "source bytes");
+      digest(pdf.profile_sha256, "extraction profile");
+      if (
+        !Number.isSafeInteger(pdf.source_bytes) ||
+        pdf.source_bytes < 1 ||
+        !Number.isSafeInteger(pdf.pages) ||
+        pdf.pages < 1 ||
+        pdf.pages > 500
+      )
+        throw new Error("Invalid PDF extraction bounds");
+    } else if (formatProperty.value === "markdown") {
+      exactObject(extraction as unknown, MARKDOWN_EXTRACTION_KEYS, "Markdown extraction");
+      const markdown = extraction as MarkdownDocumentExtraction;
+      digest(markdown.source_bytes_sha256, "source bytes");
+      digest(markdown.profile_sha256, "extraction profile");
+      if (
+        !Number.isSafeInteger(markdown.source_bytes) ||
+        markdown.source_bytes < 1 ||
+        markdown.source_bytes !== Buffer.byteLength(doc.content_markdown) ||
+        markdown.source_bytes_sha256 !== doc.body_sha256
+      )
+        throw new Error("Markdown extraction bytes differ from the verbatim body");
+      if (Buffer.byteLength(doc.title) > MARKDOWN_INSPECTION_LIMITS.titleBytes)
+        throw new Error("Markdown title exceeds its inspected byte limit");
+      if (!["observed-pid-absence", "identity-matched-unreaped-zombie"].includes(markdown.termination))
+        throw new Error("Invalid Markdown termination evidence");
+      if (
+        !Array.isArray(markdown.witnesses) ||
+        Object.getPrototypeOf(markdown.witnesses) !== Array.prototype ||
+        markdown.witnesses.length < 1 ||
+        markdown.witnesses.length > MARKDOWN_INSPECTION_LIMITS.advertisedTitles ||
+        Reflect.ownKeys(markdown.witnesses).length !== markdown.witnesses.length + 1
+      )
+        throw new Error("Invalid Markdown witness array");
+      let firstAdvertisement = -1;
+      const witnessDescriptors = Object.getOwnPropertyDescriptors(markdown.witnesses);
+      for (let index = 0; index < markdown.witnesses.length; index++)
+        if (!Object.hasOwn(witnessDescriptors, index) || !("value" in witnessDescriptors[index]!))
+          throw new Error("Invalid Markdown witness array item");
+      for (const [index, witness] of markdown.witnesses.entries()) {
+        exactObject(witness as unknown, MARKDOWN_WITNESS_KEYS, "Markdown witness");
+        exactHostUrl(witness.source_url, doc.hostname);
+        exactHostUrl(witness.target_url, doc.hostname);
+        digest(witness.snapshot_sha256, "Markdown witness snapshot");
+        if (witness.source_url === witness.target_url || witness.target_url !== doc.source_url)
+          throw new Error("Markdown witness source or target differs");
+        if (!(["html-head", "http-link"] as const).includes(witness.channel))
+          throw new Error("Invalid Markdown witness channel");
+        if (witness.title !== null) {
+          if (
+            typeof witness.title !== "string" ||
+            witness.title.length > MARKDOWN_INSPECTION_LIMITS.advertisedTitleCodeUnits ||
+            !witness.title.isWellFormed() ||
+            /[\p{Cc}\p{Cf}\uFFFD]/u.test(witness.title)
+          )
+            throw new Error("Invalid Markdown witness title");
+          if (witness.title !== "" && firstAdvertisement === -1) firstAdvertisement = index;
+        }
+        if (index > 0) {
+          const previous = markdown.witnesses[index - 1]!;
+          const order =
+            witness.channel === previous.channel
+              ? compareNullable(previous.title, witness.title)
+              : previous.channel < witness.channel
+                ? -1
+                : 1;
+          if (order >= 0) throw new Error("Markdown witnesses must be unique and canonically ordered");
+          if (
+            witness.source_url !== previous.source_url ||
+            witness.snapshot_sha256 !== previous.snapshot_sha256 ||
+            witness.target_url !== previous.target_url
+          )
+            throw new Error("Markdown witnesses do not share one exact source context");
+        }
+      }
+      const titleOrigin = markdown.title_origin;
+      const titleKind =
+        titleOrigin && typeof titleOrigin === "object"
+          ? Object.getOwnPropertyDescriptor(titleOrigin, "kind")
+          : undefined;
+      if (!titleKind || !("value" in titleKind)) throw new Error("Invalid Markdown title origin");
+      if (titleKind.value === "markdown-body") {
+        exactObject(titleOrigin as unknown, ["kind"], "Markdown title origin");
+        if (firstAdvertisement !== -1) throw new Error("Markdown body title conflicts with an advertised title");
+      } else if (titleKind.value === "advertisement") {
+        exactObject(titleOrigin as unknown, ["kind", "witness_index"], "Markdown title origin");
+        const advertisement = titleOrigin as { kind: "advertisement"; witness_index: number };
+        if (
+          !Number.isSafeInteger(advertisement.witness_index) ||
+          advertisement.witness_index !== firstAdvertisement ||
+          markdown.witnesses[firstAdvertisement]?.title !== doc.title
+        )
+          throw new Error("Markdown advertisement title provenance differs");
+        for (const witness of markdown.witnesses)
+          if (witness.title !== null && witness.title !== "" && witness.title !== doc.title)
+            throw new Error("Conflicting Markdown advertisement titles");
+      } else {
+        throw new Error("Invalid Markdown title origin");
+      }
+    } else {
+      throw new Error("Unknown document extraction format");
+    }
   }
   if (Object.hasOwn(doc, "category")) {
     assertDocumentCategory(doc.category);
@@ -185,6 +294,42 @@ export function validateSearchDocument(value: unknown): asserts value is SearchD
     throw new Error("Invalid runtime platform or architecture");
 }
 
+function compareNullable(left: string | null, right: string | null): number {
+  if (left === right) return 0;
+  if (left === null) return -1;
+  if (right === null) return 1;
+  return left < right ? -1 : 1;
+}
+
+function documentFormatVersion(document: SearchDocument): number {
+  if (document.extraction?.format === "markdown") return MARKDOWN_DOCUMENT_FORMAT_VERSION;
+  if (document.category) return CATEGORIZED_DOCUMENT_FORMAT_VERSION;
+  if (document.extraction) return PDF_DOCUMENT_FORMAT_VERSION;
+  return DOCUMENT_FORMAT_VERSION;
+}
+
+function canonicalExtraction(extraction: SearchDocument["extraction"]): Record<string, unknown> {
+  if (!extraction) throw new Error("Missing document extraction");
+  if (extraction.format === "pdf")
+    return Object.fromEntries(PDF_EXTRACTION_KEYS.map((name) => [name, extraction[name]]));
+  const titleOrigin =
+    extraction.title_origin.kind === "markdown-body"
+      ? { kind: "markdown-body" }
+      : { kind: "advertisement", witness_index: extraction.title_origin.witness_index };
+  const witnesses = extraction.witnesses.map((witness) =>
+    Object.fromEntries(MARKDOWN_WITNESS_KEYS.map((name) => [name, witness[name]])),
+  );
+  return {
+    format: extraction.format,
+    source_bytes_sha256: extraction.source_bytes_sha256,
+    source_bytes: extraction.source_bytes,
+    profile_sha256: extraction.profile_sha256,
+    termination: extraction.termination,
+    title_origin: titleOrigin,
+    witnesses,
+  };
+}
+
 export function documentFilename(id: string): string {
   safeText(id, "document ID");
   return `${sha256(id)}.md`;
@@ -193,13 +338,7 @@ export function documentFilename(id: string): string {
 /** Encode canonical JSON metadata and preserve the body without adding even a final newline. */
 export function formatDocument(document: SearchDocument): Buffer {
   validateSearchDocument(document);
-  const metadata: Record<string, unknown> = {
-    format_version: document.category
-      ? CATEGORIZED_DOCUMENT_FORMAT_VERSION
-      : document.extraction
-        ? PDF_DOCUMENT_FORMAT_VERSION
-        : DOCUMENT_FORMAT_VERSION,
-  };
+  const metadata: Record<string, unknown> = { format_version: documentFormatVersion(document) };
   for (const key of documentKeys(document)) {
     if (key === "content_markdown") continue;
     metadata[key] =
@@ -209,7 +348,7 @@ export function formatDocument(document: SearchDocument): Buffer {
             runtime: Object.fromEntries(RUNTIME_KEYS.map((name) => [name, document.producer.runtime[name]])),
           }
         : key === "extraction"
-          ? Object.fromEntries(EXTRACTION_KEYS.map((name) => [name, document.extraction![name]]))
+          ? canonicalExtraction(document.extraction)
           : key === "routing"
             ? { rule_id: document.routing!.rule_id, policy_sha256: document.routing!.policy_sha256 }
             : document[key];
@@ -237,18 +376,11 @@ export function parseDocument(
     ["format_version", ...documentKeys(metadata).filter((key) => key !== "content_markdown")],
     "metadata",
   );
-  if (
-    metadata.format_version !==
-    (Object.hasOwn(metadata, "category")
-      ? CATEGORIZED_DOCUMENT_FORMAT_VERSION
-      : Object.hasOwn(metadata, "extraction")
-        ? PDF_DOCUMENT_FORMAT_VERSION
-        : DOCUMENT_FORMAT_VERSION)
-  )
-    throw new Error("Unknown or inconsistent document format version");
   const { format_version: _, ...fields } = metadata;
   const document = { ...fields, content_markdown: text.slice(end + 5) };
   validateSearchDocument(document);
+  if (metadata.format_version !== documentFormatVersion(document))
+    throw new Error("Unknown or inconsistent document format version");
   if (expected.hostname !== undefined && document.hostname !== expected.hostname)
     throw new Error("Document hostname mismatch");
   if (expected.category !== undefined && document.category !== expected.category)

@@ -69,13 +69,33 @@ export interface ProducerContext {
   runtime: { node: string; icu: string; unicode: string; platform: string; arch: string };
 }
 
-export interface DocumentExtraction {
+export interface PdfDocumentExtraction {
   format: "pdf";
   source_bytes_sha256: string;
   source_bytes: number;
   pages: number;
   profile_sha256: string;
 }
+
+export interface MarkdownExtractionWitness {
+  source_url: string;
+  snapshot_sha256: string;
+  target_url: string;
+  channel: "html-head" | "http-link";
+  title: string | null;
+}
+
+export interface MarkdownDocumentExtraction {
+  format: "markdown";
+  source_bytes_sha256: string;
+  source_bytes: number;
+  profile_sha256: string;
+  termination: "observed-pid-absence" | "identity-matched-unreaped-zombie";
+  title_origin: { kind: "markdown-body" } | { kind: "advertisement"; witness_index: number };
+  witnesses: MarkdownExtractionWitness[];
+}
+
+export type DocumentExtraction = PdfDocumentExtraction | MarkdownDocumentExtraction;
 
 export interface SearchDocument {
   id: string;

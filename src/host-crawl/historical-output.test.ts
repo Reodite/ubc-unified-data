@@ -594,6 +594,31 @@ describe("historical ready output integrity", () => {
     await expect(verifyHistoricalReady(f.options)).rejects.toThrow("Duplicate ready document");
   });
 
+  it("rejects v4 Markdown extraction in historical ready v1", async () => {
+    const f = await fixture(true);
+    const document = f.pdf!;
+    document.extraction = {
+      format: "markdown",
+      source_bytes_sha256: document.body_sha256,
+      source_bytes: Buffer.byteLength(document.content_markdown),
+      profile_sha256: sha256("closed runtime profile"),
+      termination: "observed-pid-absence",
+      title_origin: { kind: "advertisement", witness_index: 0 },
+      witnesses: [
+        {
+          source_url: `https://${f.completed.host.hostname}/`,
+          snapshot_sha256: f.completed.host.homepage_sha256,
+          target_url: document.source_url,
+          channel: "html-head",
+          title: document.title,
+        },
+      ],
+    };
+    await f.save();
+    await expect(verifyHistoricalReady(f.options)).rejects.toThrow("Historical ready v1 supports only PDF extraction");
+    await expectLockReleased(f.directory);
+  });
+
   it.each([
     "missing cache",
     "missing receipt",
@@ -659,7 +684,11 @@ describe("historical ready output integrity", () => {
     if (what === "profile binding") f.pdf!.extraction!.profile_sha256 = "e".repeat(64);
     if (what === "source bytes") f.pdf!.extraction!.source_bytes_sha256 = "e".repeat(64);
     if (what === "byte count") f.pdf!.extraction!.source_bytes++;
-    if (what === "pages") f.pdf!.extraction!.pages++;
+    if (what === "pages") {
+      const extraction = f.pdf!.extraction!;
+      if (extraction.format !== "pdf") throw new Error("Expected PDF extraction fixture");
+      extraction.pages++;
+    }
     if (what === "page text") setBody(f.pdf!, f.pdf!.content_markdown.replace("## Page 2", "## Page 3"));
     if (what === "no extraction") delete f.pdf!.extraction;
     if (what === "no ready profile") f.ready.pdf_profile_sha256 = null;
