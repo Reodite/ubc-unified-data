@@ -285,6 +285,19 @@ function sameStamp(left: Stamp, right: Stamp): boolean {
   );
 }
 
+function sameDirectoryBinding(left: Stamp, right: Stamp): boolean {
+  return (
+    left.dev === right.dev &&
+    left.ino === right.ino &&
+    left.mode === right.mode &&
+    left.uid === right.uid &&
+    left.gid === right.gid &&
+    left.rdev === right.rdev &&
+    isDirectory(left) &&
+    isDirectory(right)
+  );
+}
+
 function identity(stampValue: Stamp): string {
   return `${stampValue.dev}:${stampValue.ino}`;
 }
@@ -375,7 +388,8 @@ async function openAbsoluteDirectory(path: string): Promise<RetainedDirectory> {
   try {
     const rootFact = await pathFact("/");
     const rootStamp = stamp(await handle.stat({ bigint: true }));
-    if (rootFact.kind !== "directory" || !sameStamp(rootFact.stamp, rootStamp)) fail("root identity mismatch");
+    if (rootFact.kind !== "directory" || !sameDirectoryBinding(rootFact.stamp, rootStamp))
+      fail("root identity mismatch");
     assertReadOnlySource(rootStamp);
     ancestors.push(rootFact);
     let lexical = "";
@@ -387,7 +401,11 @@ async function openAbsoluteDirectory(path: string): Promise<RetainedDirectory> {
       const fact = await pathFact(lexical);
       const opened = stamp(await next.stat({ bigint: true }));
       const after = stamp(await handle.stat({ bigint: true }));
-      if (fact.kind !== "directory" || !sameStamp(fact.stamp, opened) || !sameStamp(before, after)) {
+      if (
+        fact.kind !== "directory" ||
+        !sameDirectoryBinding(fact.stamp, opened) ||
+        !sameDirectoryBinding(before, after)
+      ) {
         await next.close();
         fail("directory traversal changed");
       }
@@ -2099,13 +2117,14 @@ export async function verifyMarkdownArtifactCandidate(candidate: MarkdownArtifac
 }
 
 function sameIdentity(left: Stamp, right: Stamp): boolean {
+  const type = fileType(left);
   return (
     left.dev === right.dev &&
     left.ino === right.ino &&
     left.uid === right.uid &&
     left.gid === right.gid &&
-    left.nlink === right.nlink &&
-    fileType(left) === fileType(right)
+    (isDirectory(left) || left.nlink === right.nlink) &&
+    type === fileType(right)
   );
 }
 

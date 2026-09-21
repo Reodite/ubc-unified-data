@@ -151,6 +151,20 @@ async function checkLockFile(path: string): Promise<void> {
     throw new Error("PDF cache lock must be a private regular unaliased file");
 }
 
+async function executeWhenUnlocked(operation: () => void): Promise<void> {
+  const deadline = Date.now() + LOCK_WAIT_MS;
+  for (;;) {
+    try {
+      operation();
+      return;
+    } catch (error) {
+      const code = (error as { errcode?: number }).errcode;
+      if ((code !== 5 && code !== 6) || Date.now() >= deadline) throw error;
+      await delay(25);
+    }
+  }
+}
+
 async function acquireLock(directory: string): Promise<DatabaseSync> {
   const path = join(directory, LOCK_FILE);
   for (const name of LOCK_FILES) await checkLockFile(join(directory, name));
@@ -165,20 +179,9 @@ async function acquireLock(directory: string): Promise<DatabaseSync> {
   await file?.close();
   await checkLockFile(path);
   const database = new DatabaseSync(path);
-  const deadline = Date.now() + LOCK_WAIT_MS;
   try {
     database.exec("PRAGMA busy_timeout=0");
-    for (;;) {
-      try {
-        database.exec("BEGIN IMMEDIATE");
-        break;
-      } catch (error) {
-        const code = (error as { errcode?: number }).errcode;
-        if ((code !== 5 && code !== 6) || Date.now() >= deadline) throw error;
-        // Do not block the event loop: another caller in this process may own the SQLite transaction.
-        await delay(25);
-      }
-    }
+    await executeWhenUnlocked(() => database.exec("BEGIN IMMEDIATE"));
     database.exec(
       "CREATE TABLE IF NOT EXISTS profile_cache (id INTEGER PRIMARY KEY CHECK (id = 1), sha256 TEXT NOT NULL, bytes INTEGER NOT NULL)",
     );
@@ -303,7 +306,7 @@ export async function readOrCapturePdfProfileCache(directory: string, capture: C
     )
       throw new Error("Incompatible PDF batch cache");
     await verifyIdentities(cached);
-    database.exec("COMMIT");
+    await executeWhenUnlocked(() => database.exec("COMMIT"));
     return cached.profile;
   } finally {
     // Closing releases the transaction even on errors or process death; no stale PID lock can block the batch.

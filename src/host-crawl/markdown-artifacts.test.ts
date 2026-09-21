@@ -23,6 +23,19 @@ const ARTIFACT_PARENT = join(DEFAULT_EXTERNAL_ROOT, "markdown-artifacts");
 const IMPLEMENTATION_PATH = fileURLToPath(new URL("./markdown-artifacts.ts", import.meta.url));
 const SOURCE_DIRECTORY = dirname(IMPLEMENTATION_PATH);
 
+interface InternalStamp {
+  readonly dev: bigint;
+  readonly ino: bigint;
+  readonly mode: bigint;
+  readonly nlink: bigint;
+  readonly uid: bigint;
+  readonly gid: bigint;
+  readonly rdev: bigint;
+  readonly size: bigint;
+  readonly mtimeNs: bigint;
+  readonly ctimeNs: bigint;
+}
+
 interface InternalDirectory {
   readonly path: string;
   readonly handle: FileHandle;
@@ -42,6 +55,7 @@ interface InternalScan {
 }
 
 interface Internals {
+  sameDirectoryBinding(left: InternalStamp, right: InternalStamp): boolean;
   openAbsoluteDirectory(path: string): Promise<InternalDirectory>;
   verifyRetainedDirectory(directory: InternalDirectory): Promise<void>;
   initialState(path: string, directory: InternalDirectory): InternalState;
@@ -91,7 +105,7 @@ async function loadInternals(): Promise<Internals> {
     (_match, prefix: string, specifier: string, suffix: string) =>
       `${prefix}${pathToFileURL(resolve(SOURCE_DIRECTORY, specifier)).href}${suffix}`,
   );
-  const instrumented = `${source}\nexport const __artifactTestInternals = Object.freeze({ openAbsoluteDirectory, verifyRetainedDirectory, initialState, validateManifest, validateLauncherSelectionOutput, scanPackageTree, captureStageTopology, cleanupState });\n`;
+  const instrumented = `${source}\nexport const __artifactTestInternals = Object.freeze({ sameDirectoryBinding, openAbsoluteDirectory, verifyRetainedDirectory, initialState, validateManifest, validateLauncherSelectionOutput, scanPackageTree, captureStageTopology, cleanupState });\n`;
   const transformed = stripTypeScriptTypes(instrumented, {
     mode: "strip",
     sourceUrl: pathToFileURL(IMPLEMENTATION_PATH).href,
@@ -178,6 +192,38 @@ afterAll(async () => {
 }, 120_000);
 
 describe("descriptor-anchored synthetic capture", () => {
+  it("treats directory membership metadata as separate from security identity", () => {
+    const original: InternalStamp = {
+      dev: 1n,
+      ino: 2n,
+      mode: 0o040755n,
+      nlink: 3n,
+      uid: 4n,
+      gid: 5n,
+      rdev: 0n,
+      size: 4096n,
+      mtimeNs: 6n,
+      ctimeNs: 7n,
+    };
+    expect(
+      internals.sameDirectoryBinding(original, {
+        ...original,
+        nlink: 9n,
+        size: 8192n,
+        mtimeNs: 10n,
+        ctimeNs: 11n,
+      }),
+    ).toBe(true);
+    for (const changed of [
+      { ...original, ino: 20n },
+      { ...original, mode: 0o040700n },
+      { ...original, uid: 21n },
+      { ...original, gid: 22n },
+      { ...original, mode: 0o100755n },
+    ])
+      expect(internals.sameDirectoryBinding(original, changed)).toBe(false);
+  });
+
   it("copies complete bytes, preserves empty directories, and seals the owned tree", async () => {
     const fixture = await syntheticFixture();
     try {
