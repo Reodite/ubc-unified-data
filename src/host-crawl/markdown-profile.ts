@@ -31,6 +31,9 @@ export const MARKDOWN_RUNTIME_LIMITS = Object.freeze({
   v8Pool: 1,
   stderrBytes: 16384,
   statusBytes: 8192,
+  processStatBytes: 4096,
+  processObservationAttempts: 10,
+  processObservationDelayMilliseconds: 25,
 } as const);
 
 export interface MarkdownArtifact {
