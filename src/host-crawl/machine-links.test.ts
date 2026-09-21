@@ -94,3 +94,112 @@ describe("raw machine-link identity evidence", () => {
     expect(discover(mutate(form()))).toEqual(new Set());
   });
 });
+
+const prefixedForm = (prefix: string, dataAction: string | null) =>
+  form()
+    .replace('method="post"', `method="post"${dataAction === null ? "" : ` data-action="${dataAction}"`}`)
+    .replace(`href="${endpoint}"`, `href="${prefix}${endpoint}"`);
+
+describe("observed front-controller refresh identities", () => {
+  it.each(
+    ["/index%2ephp", "/index%2Ephp"].flatMap((prefix) => ["/contact", "/events"].map((path) => ({ prefix, path }))),
+  )("recognizes the exact owned prefix at $prefix$path", ({ prefix, path }) => {
+    const source = new URL(`${prefix}${path}`, home).href;
+    expect(discoverMachineLinks(document(prefixedForm(prefix, `${prefix}${path}`)), host, source)).toEqual(
+      new Set([new URL(`${prefix}${endpoint}`, home).href]),
+    );
+  });
+
+  it.each([
+    { label: "missing data action", source: "/index%2ephp/contact", prefix: "/index%2ephp", data: null },
+    { label: "other page", source: "/index%2ephp/contact", prefix: "/index%2ephp", data: "/index%2ephp/events" },
+    {
+      label: "other data-action spelling",
+      source: "/index%2ephp/contact",
+      prefix: "/index%2ephp",
+      data: "/index%2Ephp/contact",
+    },
+    {
+      label: "other endpoint spelling",
+      source: "/index%2ephp/contact",
+      prefix: "/index%2Ephp",
+      data: "/index%2ephp/contact",
+    },
+    { label: "clean source", source: "/contact", prefix: "/index%2ephp", data: "/contact" },
+    {
+      label: "literal front controller",
+      source: "/index.php/contact",
+      prefix: "/index.php",
+      data: "/index.php/contact",
+    },
+    {
+      label: "nested prefix",
+      source: "/index%2ephp/index%2ephp/contact",
+      prefix: "/index%2ephp/index%2ephp",
+      data: "/index%2ephp/index%2ephp/contact",
+    },
+    {
+      label: "double encoding",
+      source: "/index%252ephp/contact",
+      prefix: "/index%252ephp",
+      data: "/index%252ephp/contact",
+    },
+    {
+      label: "nested source with single endpoint",
+      source: "/index%2ephp/index%2Ephp/contact",
+      prefix: "/index%2ephp",
+      data: "/index%2ephp/index%2Ephp/contact",
+    },
+    {
+      label: "nested literal controller",
+      source: "/index%2ephp/index.php/contact",
+      prefix: "/index%2ephp",
+      data: "/index%2ephp/index.php/contact",
+    },
+    {
+      label: "source query",
+      source: "/index%2ephp/contact?page_id=7",
+      prefix: "/index%2ephp",
+      data: "/index%2ephp/contact",
+    },
+    {
+      label: "source fragment",
+      source: "/index%2ephp/contact#form",
+      prefix: "/index%2ephp",
+      data: "/index%2ephp/contact",
+    },
+    {
+      label: "empty data-action query",
+      source: "/index%2ephp/contact",
+      prefix: "/index%2ephp",
+      data: "/index%2ephp/contact?",
+    },
+    {
+      label: "data-action dot segment",
+      source: "/index%2ephp/contact",
+      prefix: "/index%2ephp",
+      data: "/index%2ephp/nested/../contact",
+    },
+    {
+      label: "foreign data action",
+      source: "/index%2ephp/contact",
+      prefix: "/index%2ephp",
+      data: "https://other.ubc.ca/index%2ephp/contact",
+    },
+  ])("does not infer prefix ownership from $label", ({ source, prefix, data }) => {
+    expect(discoverMachineLinks(document(prefixedForm(prefix, data)), host, new URL(source, home).href)).toEqual(
+      new Set(),
+    );
+  });
+
+  it.each(["form_id", "captcha_sid", "captcha_token", "captcha_response"])(
+    "still requires the prefixed form's %s control",
+    (name) => {
+      const body = prefixedForm("/index%2ephp", "/index%2ephp/contact").replace(
+        new RegExp(`<input[^>]*name="${name}"[^>]*>`),
+        "",
+      );
+      expect(discoverMachineLinks(document(body), host, `${home}index%2ephp/contact`)).toEqual(new Set());
+    },
+  );
+});

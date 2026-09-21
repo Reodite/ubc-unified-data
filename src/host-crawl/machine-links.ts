@@ -65,7 +65,19 @@ export function discoverMachineLinks(html: string, hostname: string, sourceUrl: 
         return;
     }
     const url = candidate(link.attr("href"));
-    if (url && new URL(url).pathname === `/image-captcha-refresh/${id}`) result.add(url);
+    if (!url) return;
+    const endpoint = `/image-captcha-refresh/${id}`;
+    const pathname = new URL(url).pathname;
+    if (pathname === endpoint) {
+      result.add(url);
+      return;
+    }
+    const source = new URL(sourceUrl);
+    const prefix = source.pathname.match(/^\/index%2[eE]php(?=\/)/)?.[0];
+    if (!prefix || source.search || source.hash) return;
+    if (/(?:^|\/)index(?:\.|%2e)php(?:\/|$)/i.test(source.pathname.slice(prefix.length))) return;
+    // The observed form and source must agree on one prefix spelling; this does not establish URL aliases.
+    if (pathname === `${prefix}${endpoint}` && candidate(form.attr("data-action")) === source.href) result.add(url);
   });
   return result;
 }

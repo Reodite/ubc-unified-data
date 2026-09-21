@@ -621,3 +621,60 @@ describe("machine-link protected document boundaries", () => {
     }
   });
 });
+
+describe("observed prefixed challenge collection", () => {
+  it.each(
+    ["/index%2ephp", "/index%2Ephp"].flatMap((prefix) => ["seed", "link"].map((placement) => ({ prefix, placement }))),
+  )(
+    "excludes the exact $prefix action from $placement without dropping ordinary variants",
+    async ({ prefix, placement }) => {
+      const source = `${prefix}/contact`;
+      const target = `${prefix}${action}`;
+      const proof = captcha(formId, target).replace('method="post"', `method="post" data-action="${source}"`);
+      const f = fixture(html(anchor(source)), `User-agent: *\nDisallow: ${target}\n`);
+      f.put(source, html(proof + anchor(`${prefix}/zz-guide`)));
+      f.put(`${prefix}/zz-guide`, html(anchor(target)));
+      f.put(target, '{"challenge":"synthetic"}', "application/json");
+      f.seed(source);
+      if (placement === "seed") f.seed(target);
+      const result = await f.collect();
+      expect(result.documents).toHaveLength(5);
+      for (const path of [source, `${prefix}/zz-guide`, "/privacy", "/help"]) requireDocument(result, path);
+      expect(f.archive.read).not.toHaveBeenCalledWith(new URL(target, home).href);
+      for (const doc of result.documents) expect(doc.alternate_urls).toEqual([]);
+    },
+  );
+
+  it.each(["/index%2ephp", "/index%2Ephp"])(
+    "keeps publisher-required %s controls in conflict rather than hiding them",
+    async (prefix) => {
+      const source = `${prefix}/contact`;
+      const target = `${prefix}${action}`;
+      const proof = captcha(formId, target).replace('method="post"', `method="post" data-action="${source}"`);
+      const f = fixture(html(anchor(source)), `User-agent: *\nSitemap: ${home}sitemap.xml\n`);
+      f.put("/sitemap.xml", urlset(target), "application/xml");
+      f.put(source, html(proof));
+      f.put(target, "Unavailable advertised document", "text/html", 404);
+      f.seed(source);
+      await expect(f.collect()).rejects.toThrow(/conflict|Advertised document/i);
+      expect(f.archive.assertUnchanged).not.toHaveBeenCalled();
+    },
+  );
+
+  it.each([null, "/index%2Ephp/contact"])(
+    "keeps unproved prefixed prose collectable with data-action %s",
+    async (dataAction) => {
+      const source = "/index%2ephp/contact";
+      const target = `/index%2ephp${action}`;
+      const proof = captcha(formId, target).replace(
+        'method="post"',
+        `method="post"${dataAction === null ? "" : ` data-action="${dataAction}"`}`,
+      );
+      const f = fixture(html(anchor(source)));
+      f.put(source, html(proof));
+      f.put(target);
+      requireDocument(await f.collect(), target);
+      expect(f.archive.readDocument).toHaveBeenCalledWith(new URL(target, home).href);
+    },
+  );
+});
