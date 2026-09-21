@@ -5,8 +5,9 @@ import { join } from "node:path";
 import { describe, expect, it, vi } from "vitest";
 import { HostBatch } from "./batch.ts";
 import { formatRoutingPolicy, type HostRoutingPolicy } from "./category-routing.ts";
-import type { CompletedHost, ProducerContext } from "./contracts.ts";
+import type { CompletedHost, ProducerContext, SearchDocument } from "./contracts.ts";
 import { sha256 } from "./document-format.ts";
+import { deriveCollectionInputDigest } from "./inputs.ts";
 import { DEFAULT_EXTERNAL_ROOT, EXTERNAL_BOUNDARY } from "./paths.ts";
 
 const mocks = vi.hoisted(() => ({ git: vi.fn(), producer: vi.fn(), seal: vi.fn(), historical: vi.fn() }));
@@ -59,7 +60,122 @@ describe("five-worker batch handoff", () => {
     }
   });
 
-  it.each(["legacy", "categorized", "historical"])(
+  it.each([
+    ["unknown envelope field", /ready result fields/],
+    ["unknown completed field", /ready completed host fields/],
+    ["PDF without profile", /PDF profile and document formats disagree/],
+    ["profile without PDF", /PDF profile and document formats disagree/],
+    ["mismatched PDF profile", /PDF document profile differs/],
+    ["mismatched Markdown profile", /Markdown document profile differs/],
+  ] as const)("rejects ready v2 %s before resource verification", async (kind, error) => {
+    const { batch, directory, hostname, producer } = await fixture();
+    try {
+      const home = `https://${hostname}/`;
+      const seal = "d".repeat(64);
+      const seedBytes = Buffer.from(JSON.stringify({ hostname, urls: [] }));
+      const seedSha256 = sha256(seedBytes);
+      const title = "Public guidance";
+      const body = "Public programme requirements and eligibility.\n";
+      const document: SearchDocument = {
+        id: `documents:official-web:${sha256(home).slice(0, 24)}`,
+        hostname,
+        title,
+        source_url: home,
+        retrieved_at: "2026-09-18T00:00:00.000Z",
+        source_modified_at: null,
+        snapshot_sha256: "e".repeat(64),
+        input_sha256: "0".repeat(64),
+        body_sha256: sha256(body),
+        content_sha256: sha256(`${title}\n${body}`),
+        content_markdown: body,
+        warnings: [],
+        alternate_urls: [],
+        producer,
+      };
+      const completed: CompletedHost = {
+        complete: true,
+        host: {
+          hostname,
+          title,
+          homepage_url: home,
+          homepage_retrieved_at: "2026-09-18T00:00:00.000Z",
+          homepage_sha256: "e".repeat(64),
+          scope: "Public text",
+          document_root: `data/documents/${hostname}`,
+          document_count: 1,
+        },
+        documents: [document],
+      };
+      const ready = {
+        version: 2 as const,
+        hostname,
+        recording_seal: seal,
+        seed_sha256: seedSha256,
+        pdf_profile_sha256: null as string | null,
+        markdown_profile_sha256: null as string | null,
+        completed,
+      };
+      const profile = "a".repeat(64);
+      if (kind === "unknown envelope field") Object.assign(ready, { unknown: true });
+      if (kind === "unknown completed field") Object.assign(completed, { unknown: true });
+      if (kind === "PDF without profile" || kind === "mismatched PDF profile") {
+        document.extraction = {
+          format: "pdf",
+          source_bytes_sha256: "b".repeat(64),
+          source_bytes: 100,
+          pages: 1,
+          profile_sha256: kind === "mismatched PDF profile" ? "c".repeat(64) : profile,
+        };
+        if (kind === "mismatched PDF profile") ready.pdf_profile_sha256 = profile;
+      }
+      if (kind === "profile without PDF") ready.pdf_profile_sha256 = profile;
+      if (kind === "mismatched Markdown profile") {
+        const target = home;
+        document.extraction = {
+          format: "markdown",
+          source_bytes_sha256: document.body_sha256,
+          source_bytes: Buffer.byteLength(body),
+          profile_sha256: "c".repeat(64),
+          termination: "observed-pid-absence",
+          title_origin: { kind: "markdown-body" },
+          witnesses: [
+            {
+              source_url: `https://${hostname}/witness`,
+              snapshot_sha256: completed.host.homepage_sha256,
+              target_url: target,
+              channel: "html-head",
+              title: null,
+            },
+          ],
+        };
+        ready.markdown_profile_sha256 = profile;
+      }
+      document.input_sha256 = deriveCollectionInputDigest({
+        recording: seal,
+        seed: seedSha256,
+        ...(ready.pdf_profile_sha256 ? { pdf_profile: ready.pdf_profile_sha256 } : {}),
+        ...(ready.markdown_profile_sha256 ? { markdown_profile: ready.markdown_profile_sha256 } : {}),
+      });
+      const recording = join(DEFAULT_EXTERNAL_ROOT, "hosts", hostname, "recording");
+      await mkdir(recording, { recursive: true });
+      await writeFile(join(recording, "seed.json"), seedBytes);
+      const readyPath = join(directory, `ready-${kind.replaceAll(" ", "-")}.json`);
+      const bytes = Buffer.from(JSON.stringify(ready));
+      await writeFile(readyPath, bytes);
+      const verifyReady = (
+        batch as unknown as {
+          verifyReady(row: { hostname: string; details: Record<string, unknown> }): Promise<unknown>;
+        }
+      ).verifyReady.bind(batch);
+      await expect(
+        verifyReady({ hostname, details: { ready_path: readyPath, ready_sha256: sha256(bytes) } }),
+      ).rejects.toThrow(error);
+    } finally {
+      batch.close();
+    }
+  });
+
+  it.each(["legacy", "categorized", "ready-v2", "historical"])(
     "publishes one %s hostname and retries an uncertain push without another commit",
     async (mode) => {
       const { batch, directory, repositoryRoot, hostname, producer, baseline, main } = await fixture();
@@ -107,11 +223,12 @@ describe("five-worker batch handoff", () => {
       await writeFile(join(recording, "seed.json"), seedBytes);
       const ready = Buffer.from(
         JSON.stringify({
-          version: 1,
+          version: mode === "ready-v2" ? 2 : 1,
           hostname,
           recording_seal: seal,
           seed_sha256: sha256(seedBytes),
           pdf_profile_sha256: null,
+          ...(mode === "ready-v2" ? { markdown_profile_sha256: null } : {}),
           completed: complete,
         }),
       );

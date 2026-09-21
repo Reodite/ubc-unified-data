@@ -213,6 +213,9 @@ describe("document Markdown wire format", () => {
         markdownExtraction(document).witnesses = [];
       },
       (document) => {
+        document.alternate_urls = ["https://example.ubc.ca/alias"];
+      },
+      (document) => {
         markdownExtraction(document).witnesses[0]!.source_url = document.source_url;
       },
       (document) => {

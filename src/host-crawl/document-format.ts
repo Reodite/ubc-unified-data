@@ -162,6 +162,7 @@ export function validateSearchDocument(value: unknown): asserts value is SearchD
         throw new Error("Invalid PDF extraction bounds");
     } else if (formatProperty.value === "markdown") {
       exactObject(extraction as unknown, MARKDOWN_EXTRACTION_KEYS, "Markdown extraction");
+      if (doc.alternate_urls.length) throw new Error("Markdown targets cannot claim HTML or URL aliases");
       const markdown = extraction as MarkdownDocumentExtraction;
       digest(markdown.source_bytes_sha256, "source bytes");
       digest(markdown.profile_sha256, "extraction profile");

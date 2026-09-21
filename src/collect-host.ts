@@ -10,6 +10,7 @@ import { loadRoutingPolicy, loadSavedClassifications, routeCompletedHost } from 
 import { collectRecordedHost } from "./host-crawl/collect.ts";
 import type { HostArchive, SavedUrl } from "./host-crawl/contracts.ts";
 import { assertCollectedInput, decodeFrozenSeed, deriveCollectionInputDigest } from "./host-crawl/inputs.ts";
+import { withMarkdownCollectionRuntime } from "./host-crawl/markdown-collection-runtime.ts";
 import { assertExternalPath, DEFAULT_EXTERNAL_ROOT, DEFAULT_LEGACY_STATE_FILE } from "./host-crawl/paths.ts";
 import { assertPdfProfile, capturePdfProfile, type PdfProfile } from "./host-crawl/pdf-profile.ts";
 import { assertSameProducer, captureProducer } from "./host-crawl/provenance.ts";
@@ -126,31 +127,37 @@ export async function runCollectHost(args: string[]) {
       readDocument: (url) => recording.readDocument(url),
       readSnapshot: (sha) => recording.readSnapshot(sha),
       readBytes: (sha) => recording.readBytes(sha),
+      readTextBytes: (sha) => recording.readTextBytes(sha),
       observedDestination: (url) => recording.observedDestination(url),
       apiFallbackEligible: (url) => recording.apiFallbackEligible(url),
       assertUnchanged: () => recording.assertUnchanged(),
       close() {},
     };
-    const result = await collectRecordedHost(
-      scraper,
-      archive,
-      source,
-      pdfProfile
-        ? {
-            pdf: {
-              profile_sha256: pdfProfile.sha256,
-              extract: (bytes, sourceUrl) =>
-                extractPdf({ bytes, sourceUrl, workspace: pdfWorkspace, profile: pdfProfile! }),
-            },
-          }
-        : {},
+    const collected = await withMarkdownCollectionRuntime(
+      scraper.documentFormats?.includes("markdown") === true,
+      (markdown) =>
+        collectRecordedHost(scraper, archive, source, {
+          ...(pdfProfile
+            ? {
+                pdf: {
+                  profile_sha256: pdfProfile.sha256,
+                  extract: (bytes: Uint8Array, sourceUrl: string) =>
+                    extractPdf({ bytes, sourceUrl, workspace: pdfWorkspace, profile: pdfProfile! }),
+                },
+              }
+            : {}),
+          ...(markdown ? { markdown } : {}),
+        }),
     );
+    const result = collected.value;
+    const markdownProfileSha256 = collected.profile_sha256;
     const sealed = values.acquire ? await recording.seal() : await recording.verifySeal();
     if (replayInput) assertCollectedInput(replayInput, sealed);
     const input = deriveCollectionInputDigest({
       recording: sealed,
       seed: digest(seed.bytes),
       ...(pdfProfile ? { pdf_profile: pdfProfile.sha256 } : {}),
+      ...(markdownProfileSha256 ? { markdown_profile: markdownProfileSha256 } : {}),
     });
     for (const doc of result.documents) doc.input_sha256 = input;
     const verifyInputs = async () => {
@@ -158,6 +165,10 @@ export async function runCollectHost(args: string[]) {
         await assertPdfProfile(pdfProfile, pdfWorkspace);
         if (!(await readRegularFile(pdfProfilePath, 16 * 1024 * 1024)).equals(pdfProfileBytes!))
           throw new Error("Recorded PDF profile changed");
+      }
+      if (markdownProfileSha256) {
+        const verified = await withMarkdownCollectionRuntime(true, async () => undefined);
+        if (verified.profile_sha256 !== markdownProfileSha256) throw new Error("Recorded Markdown profile changed");
       }
       if (!(await readRegularFile(seedPath, 16 * 1024 * 1024)).equals(seed.bytes))
         throw new Error("Saved frontier changed");

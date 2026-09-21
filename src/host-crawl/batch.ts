@@ -19,10 +19,11 @@ import {
 import { assertSingleHostChange, type ChangedFile } from "./change-validation.ts";
 import { collectRecordedHost, type CollectionFormats } from "./collect.ts";
 import type { CompletedHost, HostArchive, ProducerContext } from "./contracts.ts";
-import { documentFilename, sha256 } from "./document-format.ts";
+import { digest, documentFilename, exactObject, sha256 } from "./document-format.ts";
 import { cheapGuardCompletedHost, createGenericScraper } from "./generic.ts";
 import { verifyHistoricalReady } from "./historical-output.ts";
 import { assertCollectedInput, decodeFrozenSeed, deriveCollectionInputDigest } from "./inputs.ts";
+import { withMarkdownCollectionRuntime } from "./markdown-collection-runtime.ts";
 import { assertExternalPath, DEFAULT_EXTERNAL_ROOT, DEFAULT_LEGACY_STATE_FILE } from "./paths.ts";
 import { loadCachedPdfProfile } from "./pdf-profile-cache.ts";
 import type { PdfProfile } from "./pdf-profile.ts";
@@ -52,14 +53,21 @@ export interface HostBatchConfig {
     { readySha256: string; producerRoot: string; producer: ProducerContext; pdfCacheDirectory?: string }
   >;
 }
-interface ReadyHost {
-  version: 1;
+interface ReadyHostBase {
   hostname: string;
   recording_seal: string;
   seed_sha256: string;
   pdf_profile_sha256: string | null;
   completed: CompletedHost;
 }
+interface ReadyHostV1 extends ReadyHostBase {
+  version: 1;
+}
+interface ReadyHostV2 extends ReadyHostBase {
+  version: 2;
+  markdown_profile_sha256: string | null;
+}
+type ReadyHost = ReadyHostV1 | ReadyHostV2;
 interface GitReceipt {
   hostname: string;
   parent: string;
@@ -292,6 +300,7 @@ export class HostBatch {
         readDocument: (url) => recording.readDocument(url),
         readSnapshot: (hash) => recording.readSnapshot(hash),
         readBytes: (hash) => recording.readBytes(hash),
+        readTextBytes: (hash) => recording.readTextBytes(hash),
         observedDestination: (url) => recording.observedDestination(url),
         observedScopeExclusion: (url) => recording.observedScopeExclusion(url),
         apiFallbackEligible: (url) => recording.apiFallbackEligible(url),
@@ -311,7 +320,12 @@ export class HostBatch {
           },
         },
       };
-      const completed = await collectRecordedHost(scraper, archive, this.config.producer, formats);
+      const collected = await withMarkdownCollectionRuntime(
+        scraper.documentFormats?.includes("markdown") === true,
+        (markdown) => collectRecordedHost(scraper, archive, this.config.producer, { ...formats, markdown }),
+      );
+      const completed = collected.value;
+      const markdownProfileSha256 = collected.profile_sha256;
       const seal = await recording.seal();
       if (!(await readRegularFile(seedPath, 16 * 1024 * 1024)).equals(seed.bytes))
         throw new Error("Saved frontier changed");
@@ -319,15 +333,17 @@ export class HostBatch {
         recording: seal,
         seed: sha256(seed.bytes),
         ...(profile ? { pdf_profile: profile.sha256 } : {}),
+        ...(markdownProfileSha256 ? { markdown_profile: markdownProfileSha256 } : {}),
       });
       for (const document of completed.documents) document.input_sha256 = input;
       const guarded = cheapGuardCompletedHost(completed);
-      const ready: ReadyHost = {
-        version: 1,
+      const ready: ReadyHostV2 = {
+        version: 2,
         hostname,
         recording_seal: seal,
         seed_sha256: sha256(seed.bytes),
         pdf_profile_sha256: profile?.sha256 ?? null,
+        markdown_profile_sha256: markdownProfileSha256,
         completed: guarded,
       };
       const bytes = Buffer.from(`${JSON.stringify(ready, null, 2)}\n`);
@@ -394,8 +410,36 @@ export class HostBatch {
     const path = assertExternalPath(String(row.details.ready_path));
     const bytes = await readRegularFile(path, LARGE_PRIVATE_FILE);
     if (sha256(bytes) !== row.details.ready_sha256) throw new Error("Ready result bytes changed");
-    const ready = JSON.parse(bytes.toString("utf8")) as ReadyHost;
-    if (ready.version !== 1 || ready.hostname !== row.hostname) throw new Error("Invalid ready result owner");
+    const value: unknown = JSON.parse(bytes.toString("utf8"));
+    if (!value || typeof value !== "object") throw new Error("Invalid ready result");
+    const version = Object.getOwnPropertyDescriptor(value, "version");
+    if (!version || !("value" in version) || ![1, 2].includes(version.value))
+      throw new Error("Invalid ready result version");
+    exactObject(
+      value,
+      version.value === 1
+        ? ["version", "hostname", "recording_seal", "seed_sha256", "pdf_profile_sha256", "completed"]
+        : [
+            "version",
+            "hostname",
+            "recording_seal",
+            "seed_sha256",
+            "pdf_profile_sha256",
+            "markdown_profile_sha256",
+            "completed",
+          ],
+      "ready result",
+    );
+    const ready = value as unknown as ReadyHost;
+    if (ready.hostname !== row.hostname) throw new Error("Invalid ready result owner");
+    digest(ready.recording_seal, "ready recording seal");
+    digest(ready.seed_sha256, "ready seed");
+    if (ready.pdf_profile_sha256 !== null) digest(ready.pdf_profile_sha256, "ready PDF profile");
+    const markdownProfileSha256 = ready.version === 2 ? ready.markdown_profile_sha256 : null;
+    if (markdownProfileSha256 !== null) digest(markdownProfileSha256, "ready Markdown profile");
+    exactObject(ready.completed, ["complete", "host", "documents"], "ready completed host");
+    if (JSON.stringify(cheapGuardCompletedHost(ready.completed)) !== JSON.stringify(ready.completed))
+      throw new Error("Ready output differs from guarded collection");
     const historical = this.config.historicalReady?.[row.hostname];
     if (historical) {
       if (historical.readySha256 !== row.details.ready_sha256)
@@ -419,22 +463,43 @@ export class HostBatch {
           recording: ready.recording_seal,
           seed: ready.seed_sha256,
           ...(ready.pdf_profile_sha256 ? { pdf_profile: ready.pdf_profile_sha256 } : {}),
+          ...(markdownProfileSha256 ? { markdown_profile: markdownProfileSha256 } : {}),
         });
         for (const document of ready.completed.documents) {
           assertSameProducer(this.config.producer, document.producer);
           assertCollectedInput(input, document.input_sha256);
         }
+        const pdfDocuments = ready.completed.documents.filter((document) => document.extraction?.format === "pdf");
+        if (Boolean(pdfDocuments.length) !== Boolean(ready.pdf_profile_sha256))
+          throw new Error("Ready PDF profile and document formats disagree");
+        if (
+          ready.pdf_profile_sha256 &&
+          pdfDocuments.some((document) => document.extraction!.profile_sha256 !== ready.pdf_profile_sha256)
+        )
+          throw new Error("Ready PDF document profile differs");
         if (
           ready.pdf_profile_sha256 &&
           (await loadCachedPdfProfile(join(this.directory, "pdf-profile-cache"))).sha256 !== ready.pdf_profile_sha256
         )
           throw new Error("Ready PDF profile differs");
+        const markdownDocuments = ready.completed.documents.filter(
+          (document) => document.extraction?.format === "markdown",
+        );
+        if (Boolean(markdownDocuments.length) !== Boolean(markdownProfileSha256))
+          throw new Error("Ready Markdown profile and document formats disagree");
+        if (
+          markdownProfileSha256 &&
+          markdownDocuments.some((document) => document.extraction!.profile_sha256 !== markdownProfileSha256)
+        )
+          throw new Error("Ready Markdown document profile differs");
+        if (markdownProfileSha256) {
+          const verified = await withMarkdownCollectionRuntime(true, async () => undefined);
+          if (verified.profile_sha256 !== markdownProfileSha256) throw new Error("Ready Markdown profile differs");
+        }
       } finally {
         recording.close();
       }
     }
-    if (JSON.stringify(cheapGuardCompletedHost(ready.completed)) !== JSON.stringify(ready.completed))
-      throw new Error("Ready output differs from guarded collection");
     return ready;
   }
 

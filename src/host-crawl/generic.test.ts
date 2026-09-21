@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { toSafeMarkdown } from "../prose/markdown.ts";
 import { wordpressCollectionUrl } from "./adapters/wordpress-discovery.ts";
 import { collectRecordedHost } from "./collect.ts";
-import type { HostArchive, Observation, ProducerContext } from "./contracts.ts";
+import type { CompletedHost, HostArchive, Observation, ProducerContext, SearchDocument } from "./contracts.ts";
 import { sha256 } from "./document-format.ts";
 import { cheapGuardCompletedHost, createGenericScraper } from "./generic.ts";
 
@@ -235,6 +235,85 @@ describe("generic host throughput adapter", () => {
       "?filter=all",
     ])
       expect(scraper.excludeUrl!(new URL(path, home).href)).not.toBeNull();
+  });
+
+  it.each([
+    ["manufacturing.engineering.ubc.ca", "/node/1.md"],
+    ["macisaacnursing.ubc.ca", "/node/2421.md"],
+    ["mining.ubc.ca", "/node/1.md"],
+    ["scarp.ubc.ca", "/node/1.md"],
+  ])("enables Markdown separately from ordinary URL admission for %s", (hostname, target) => {
+    const reviewed = createGenericScraper(hostname);
+    expect(reviewed.documentFormats).toEqual(["pdf", "markdown"]);
+    expect(reviewed.excludeUrl!(`https://${hostname}${target}`)).not.toBeNull();
+    expect(createGenericScraper(`other.${hostname}`).documentFormats).toEqual(["pdf"]);
+  });
+
+  it("guards one exact declared Markdown target without admitting nearby paths", () => {
+    const markdownHost = "manufacturing.engineering.ubc.ca";
+    const sourceUrl = `https://${markdownHost}/node/1.md`;
+    const body = "# Manufacturing guide\n\nExact source body.";
+    const title = "Manufacturing guide";
+    const document: SearchDocument = {
+      id: `documents:official-web:${sha256(sourceUrl).slice(0, 24)}`,
+      hostname: markdownHost,
+      title,
+      source_url: sourceUrl,
+      retrieved_at: "2026-01-01T00:00:00.000Z",
+      source_modified_at: null,
+      snapshot_sha256: sha256("markdown snapshot"),
+      input_sha256: sha256("input"),
+      body_sha256: sha256(body),
+      content_sha256: sha256(`${title}\n${body}`),
+      content_markdown: body,
+      warnings: [],
+      alternate_urls: [],
+      producer,
+      extraction: {
+        format: "markdown",
+        source_bytes_sha256: sha256(body),
+        source_bytes: Buffer.byteLength(body),
+        profile_sha256: sha256("runtime profile"),
+        termination: "observed-pid-absence",
+        title_origin: { kind: "markdown-body" },
+        witnesses: [
+          {
+            source_url: `https://${markdownHost}/`,
+            snapshot_sha256: sha256("homepage snapshot"),
+            target_url: sourceUrl,
+            channel: "html-head",
+            title: null,
+          },
+        ],
+      },
+    };
+    const completed: CompletedHost = {
+      complete: true,
+      host: {
+        hostname: markdownHost,
+        title: markdownHost,
+        homepage_url: `https://${markdownHost}/`,
+        homepage_retrieved_at: "2026-01-01T00:00:00.000Z",
+        homepage_sha256: sha256("homepage snapshot"),
+        scope: "Public guidance",
+        document_root: `data/documents/${markdownHost}`,
+        document_count: 1,
+      },
+      documents: [document],
+    };
+    expect(cheapGuardCompletedHost(completed)).toEqual(completed);
+    const nearby = structuredClone(completed);
+    const nearbyDocument = nearby.documents[0]!;
+    nearbyDocument.source_url = `https://${markdownHost}/node/2.md`;
+    nearbyDocument.id = `documents:official-web:${sha256(nearbyDocument.source_url).slice(0, 24)}`;
+    if (nearbyDocument.extraction?.format !== "markdown") throw new Error("Expected Markdown fixture");
+    nearbyDocument.extraction.witnesses[0]!.target_url = nearbyDocument.source_url;
+    expect(() => cheapGuardCompletedHost(nearby)).toThrow(/Unsafe completed document URL/);
+    const forgedWitness = structuredClone(completed);
+    const forgedDocument = forgedWitness.documents[0]!;
+    if (forgedDocument.extraction?.format !== "markdown") throw new Error("Expected Markdown fixture");
+    forgedDocument.extraction.witnesses[0]!.snapshot_sha256 = sha256("other homepage snapshot");
+    expect(() => cheapGuardCompletedHost(forgedWitness)).toThrow(/Unsafe completed document URL/);
   });
 
   it("closes cached HTML links and deterministically deduplicates only exact title/body with observed aliases", async () => {

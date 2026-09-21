@@ -5,6 +5,7 @@ import type { CompletedHost, HostScraper, SearchDocument, Snapshot } from "./con
 import { digest, formatDocument, safeText, timestamp } from "./document-format.ts";
 import { assertRequiredQueryIdentity, requiredDocumentQueries } from "./document-query-policy.ts";
 import { htmlBaseUrl } from "./html-base.ts";
+import { markdownSources } from "./markdown-source-policy.ts";
 import { validateVettedHost } from "./public-validation.ts";
 import { documentPageExclusion, hostUrl, normalizeHost } from "./urls.ts";
 
@@ -133,7 +134,7 @@ export function createGenericScraper(value: string): HostScraper {
       exactHostInventory: true,
       requiredQueries: requiredDocumentQueries(hostname),
     },
-    documentFormats: ["pdf"],
+    documentFormats: markdownSources(hostname).length ? ["pdf", "markdown"] : ["pdf"],
     excludeUrl: (url) => excludeUrl(url, hostname),
     vetHomepage(snapshot) {
       try {
@@ -239,8 +240,22 @@ export function cheapGuardCompletedHost(completed: CompletedHost): CompletedHost
     .map((document) => {
       const bytes = formatDocument(document);
       if (document.hostname !== hostname) throw new Error("Off-host completed document");
+      const markdownExtraction = document.extraction?.format === "markdown" ? document.extraction : undefined;
+      const markdownDeclaration = markdownExtraction
+        ? markdownSources(hostname).find(
+            (declaration) =>
+              declaration.target_url === document.source_url &&
+              markdownExtraction.witnesses.every(
+                (witness) =>
+                  witness.source_url === declaration.source_url &&
+                  witness.snapshot_sha256 === host.homepage_sha256 &&
+                  witness.target_url === declaration.target_url,
+              ),
+          )
+        : undefined;
       for (const url of [document.source_url, ...document.alternate_urls])
-        if (excludeUrl(url, hostname) !== null) throw new Error(`Unsafe completed document URL: ${url}`);
+        if (excludeUrl(url, hostname) !== null && (url !== document.source_url || !markdownDeclaration))
+          throw new Error(`Unsafe completed document URL: ${url}`);
       return { document, bytes };
     })
     .sort((a, b) => compare(a.document.source_url, b.document.source_url) || Buffer.compare(a.bytes, b.bytes));
