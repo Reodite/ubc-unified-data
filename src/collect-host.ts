@@ -9,7 +9,7 @@ import { extractPdf } from "./host-crawl/adapters/pdf.ts";
 import { loadRoutingPolicy, loadSavedClassifications, routeCompletedHost } from "./host-crawl/category-routing.ts";
 import { collectRecordedHost } from "./host-crawl/collect.ts";
 import type { HostArchive, SavedUrl } from "./host-crawl/contracts.ts";
-import { assertCollectedInput, decodeFrozenSeed } from "./host-crawl/inputs.ts";
+import { assertCollectedInput, decodeFrozenSeed, deriveCollectionInputDigest } from "./host-crawl/inputs.ts";
 import { assertExternalPath, DEFAULT_EXTERNAL_ROOT, DEFAULT_LEGACY_STATE_FILE } from "./host-crawl/paths.ts";
 import { assertPdfProfile, capturePdfProfile, type PdfProfile } from "./host-crawl/pdf-profile.ts";
 import { assertSameProducer, captureProducer } from "./host-crawl/provenance.ts";
@@ -147,15 +147,11 @@ export async function runCollectHost(args: string[]) {
     );
     const sealed = values.acquire ? await recording.seal() : await recording.verifySeal();
     if (replayInput) assertCollectedInput(replayInput, sealed);
-    const input = digest(
-      Buffer.from(
-        JSON.stringify({
-          recording: sealed,
-          seed: digest(seed.bytes),
-          ...(pdfProfile ? { pdf_profile: pdfProfile.sha256 } : {}),
-        }),
-      ),
-    );
+    const input = deriveCollectionInputDigest({
+      recording: sealed,
+      seed: digest(seed.bytes),
+      ...(pdfProfile ? { pdf_profile: pdfProfile.sha256 } : {}),
+    });
     for (const doc of result.documents) doc.input_sha256 = input;
     const verifyInputs = async () => {
       if (pdfProfile) {

@@ -22,7 +22,7 @@ import type { CompletedHost, HostArchive, ProducerContext } from "./contracts.ts
 import { documentFilename, sha256 } from "./document-format.ts";
 import { cheapGuardCompletedHost, createGenericScraper } from "./generic.ts";
 import { verifyHistoricalReady } from "./historical-output.ts";
-import { assertCollectedInput, decodeFrozenSeed } from "./inputs.ts";
+import { assertCollectedInput, decodeFrozenSeed, deriveCollectionInputDigest } from "./inputs.ts";
 import { assertExternalPath, DEFAULT_EXTERNAL_ROOT, DEFAULT_LEGACY_STATE_FILE } from "./paths.ts";
 import { loadCachedPdfProfile } from "./pdf-profile-cache.ts";
 import type { PdfProfile } from "./pdf-profile.ts";
@@ -315,15 +315,11 @@ export class HostBatch {
       const seal = await recording.seal();
       if (!(await readRegularFile(seedPath, 16 * 1024 * 1024)).equals(seed.bytes))
         throw new Error("Saved frontier changed");
-      const input = sha256(
-        Buffer.from(
-          JSON.stringify({
-            recording: seal,
-            seed: sha256(seed.bytes),
-            ...(profile ? { pdf_profile: profile.sha256 } : {}),
-          }),
-        ),
-      );
+      const input = deriveCollectionInputDigest({
+        recording: seal,
+        seed: sha256(seed.bytes),
+        ...(profile ? { pdf_profile: profile.sha256 } : {}),
+      });
       for (const document of completed.documents) document.input_sha256 = input;
       const guarded = cheapGuardCompletedHost(completed);
       const ready: ReadyHost = {
@@ -419,13 +415,11 @@ export class HostBatch {
         if (sha256(seed.bytes) !== ready.seed_sha256) throw new Error("Ready frontier differs");
         assertCollectedInput(ready.recording_seal, await recording.verifySeal());
         assertSameProducer(this.config.producer, await captureProducer(this.config.producerRoot));
-        const input = sha256(
-          JSON.stringify({
-            recording: ready.recording_seal,
-            seed: ready.seed_sha256,
-            ...(ready.pdf_profile_sha256 ? { pdf_profile: ready.pdf_profile_sha256 } : {}),
-          }),
-        );
+        const input = deriveCollectionInputDigest({
+          recording: ready.recording_seal,
+          seed: ready.seed_sha256,
+          ...(ready.pdf_profile_sha256 ? { pdf_profile: ready.pdf_profile_sha256 } : {}),
+        });
         for (const document of ready.completed.documents) {
           assertSameProducer(this.config.producer, document.producer);
           assertCollectedInput(input, document.input_sha256);

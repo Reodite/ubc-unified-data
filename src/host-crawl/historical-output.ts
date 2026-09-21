@@ -3,7 +3,7 @@ import { isAbsolute, join, resolve } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import type { CompletedHost, Observation, ProducerContext, SearchDocument } from "./contracts.ts";
 import { digest, exactHostUrl, exactObject, formatDocument, parseDocument, sha256 } from "./document-format.ts";
-import { decodeFrozenSeed } from "./inputs.ts";
+import { decodeFrozenSeed, deriveCollectionInputDigest } from "./inputs.ts";
 import { assertExternalPath } from "./paths.ts";
 import type { PdfProfile } from "./pdf-profile.ts";
 import { assertSameProducer, captureProducer } from "./provenance.ts";
@@ -388,13 +388,11 @@ export async function verifyHistoricalReady(options: VerifyHistoricalReadyOption
       if (!options.archivedPdfCacheDirectory) throw new Error("Ready PDFs require an archived profile cache");
       profile = await archivedProfile(options.archivedPdfCacheDirectory, ready.pdf_profile_sha256);
     }
-    const expectedInput = sha256(
-      JSON.stringify({
-        recording: ready.recording_seal,
-        seed: ready.seed_sha256,
-        ...(ready.pdf_profile_sha256 ? { pdf_profile: ready.pdf_profile_sha256 } : {}),
-      }),
-    );
+    const expectedInput = deriveCollectionInputDigest({
+      recording: ready.recording_seal,
+      seed: ready.seed_sha256,
+      ...(ready.pdf_profile_sha256 ? { pdf_profile: ready.pdf_profile_sha256 } : {}),
+    });
     const ids = new Set<string>();
     const urls = new Set<string>();
     const content = new Set<string>();
