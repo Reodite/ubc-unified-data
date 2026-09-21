@@ -512,6 +512,7 @@ export async function collectRecordedHost(
     };
     validateSearchDocument(document);
     keep(document, observation, sourceUrl, false);
+    for (const link of inspected.inspection.links) add(new URL(link.url, observation.snapshot.url).href, true);
   }
   while (queue.length) {
     const requested = queue.shift()!;

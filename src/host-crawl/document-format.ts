@@ -133,7 +133,6 @@ export function validateSearchDocument(value: unknown): asserts value is SearchD
     throw new Error("Invalid UTF-8 Markdown body");
   if (body.startsWith("version https://git-lfs.github.com/spec/v1")) throw new Error("LFS pointer is not a document");
   if (Buffer.byteLength(body) > MAX_DOCUMENT_BYTES) throw new Error("Document exceeds 1 MiB");
-  assertSafeMarkdown(body);
   if (sha256(body) !== doc.body_sha256 || sha256(`${doc.title}\n${body}`) !== doc.content_sha256)
     throw new Error("Document body/content digest mismatch");
   sortedStrings(doc.warnings, "warnings");
@@ -142,6 +141,7 @@ export function validateSearchDocument(value: unknown): asserts value is SearchD
     exactHostUrl(url, doc.hostname);
     if (url === doc.source_url) throw new Error("Source URL cannot also be an alternate URL");
   }
+  let sourceRelativeMarkdown = false;
   if (Object.hasOwn(doc, "extraction")) {
     const extraction = doc.extraction;
     if (!extraction) throw new Error("Missing document extraction");
@@ -162,6 +162,7 @@ export function validateSearchDocument(value: unknown): asserts value is SearchD
         throw new Error("Invalid PDF extraction bounds");
     } else if (formatProperty.value === "markdown") {
       exactObject(extraction as unknown, MARKDOWN_EXTRACTION_KEYS, "Markdown extraction");
+      sourceRelativeMarkdown = true;
       if (doc.alternate_urls.length) throw new Error("Markdown targets cannot claim HTML or URL aliases");
       const markdown = extraction as MarkdownDocumentExtraction;
       digest(markdown.source_bytes_sha256, "source bytes");
@@ -253,6 +254,7 @@ export function validateSearchDocument(value: unknown): asserts value is SearchD
       throw new Error("Unknown document extraction format");
     }
   }
+  assertSafeMarkdown(body, sourceRelativeMarkdown ? doc.source_url : undefined);
   if (Object.hasOwn(doc, "category")) {
     assertDocumentCategory(doc.category);
     exactObject(doc.routing, ["rule_id", "policy_sha256"], "routing");

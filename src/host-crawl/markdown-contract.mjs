@@ -10,7 +10,7 @@ export const MARKDOWN_INSPECTION_LIMITS = Object.freeze({
   advertisedTitles: 6,
   advertisedTitleCodeUnits: 4096,
 });
-export const MARKDOWN_INSPECTION_DIALECT = "ubc-markdown-verbatim-v1/markdown-it-15.0.2";
+export const MARKDOWN_INSPECTION_DIALECT = "ubc-markdown-verbatim-v2/markdown-it-15.0.2";
 
 const LIMITS = MARKDOWN_INSPECTION_LIMITS;
 const UNSAFE_CHARACTER = /[\p{Cc}\p{Cf}\p{Cs}\uFFFD]/u;
@@ -65,24 +65,30 @@ export function validateDestination(value, lexical = false) {
   let decoded = value;
   for (let depth = 0; depth < 8; depth++) {
     if (UNSAFE_CHARACTER.test(decoded) || decoded.includes("\\")) fail("unsafe link destination");
-    if (!/^(?:https?:\/\/[^/\s]|mailto:|tel:)/i.test(decoded)) {
+    const absolute = /^(?:https?:\/\/[^/\s]|mailto:|tel:)/i.test(decoded);
+    let url;
+    try {
+      if (absolute) {
+        url = new URL(decoded);
+      } else {
+        if (/\s/.test(decoded) || !/^(?:\/(?!\/)|\.\.?\/|\?|#)/.test(decoded)) fail("unsafe link destination");
+        url = new URL(decoded, "https://markdown.invalid/source");
+        if (url.origin !== "https://markdown.invalid") fail("unsafe link destination");
+      }
+    } catch {
       fail("unsafe link destination");
     }
     if (/^[^/?]*&(?:#(?:x[\da-f]+|\d+);?|(?:colon|tab|newline|amp);)/i.test(decoded)) {
       fail("unsafe link destination");
     }
-    let url;
-    try {
-      url = new URL(decoded);
-    } catch {
+    if (absolute && (url.username || url.password || /^https?:\/\/[^/?#]*@/i.test(decoded)))
       fail("unsafe link destination");
-    }
-    if (url.username || url.password || /^https?:\/\/[^/?#]*@/i.test(decoded)) fail("unsafe link destination");
     const next = percentDecode(decoded);
     if (next !== decoded) {
       decoded = next;
       continue;
     }
+    if (!absolute) return;
     if (!lexical && url.protocol === "mailto:") {
       if (!safeMailboxes(url.pathname) || url.hash) fail("unsafe link destination");
       for (const [key, content] of url.searchParams) {

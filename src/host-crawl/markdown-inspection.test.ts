@@ -38,7 +38,7 @@ describe("restricted Markdown metadata", () => {
       advertisedTitleCodeUnits: 4096,
     });
     expect(Object.isFrozen(LIMITS)).toBe(true);
-    expect(MARKDOWN_INSPECTION_DIALECT).toBe("ubc-markdown-verbatim-v1/markdown-it-15.0.2");
+    expect(MARKDOWN_INSPECTION_DIALECT).toBe("ubc-markdown-verbatim-v2/markdown-it-15.0.2");
   });
 
   it("keeps source authority and returns only deeply frozen metadata", () => {
@@ -399,6 +399,9 @@ describe("entities and strict URI validation", () => {
     ],
     ["tel:+1-604-555-0100;ext=9", "tel:+1-604-555-0100;ext=9"],
     ["https://example.org/%2520", "https://example.org/%2520"],
+    ["/relative/path?view=full#section", "/relative/path?view=full#section"],
+    ["../parent", "../parent"],
+    ["#fragment", "#fragment"],
   ])("validates raw and normalized safe destination %s", (destination, expected) => {
     expect(inspect(`[cite](${destination})`).links).toEqual([{ text: "cite", url: expected }]);
   });
@@ -407,8 +410,12 @@ describe("entities and strict URI validation", () => {
     "www.example.org/a",
     "a@example.org",
     "//example.org",
-    "/relative",
-    "#fragment",
+    "relative/without-prefix",
+    "/%2fexample.org",
+    "/%252fexample.org",
+    "/%5cevil",
+    ".%2fpath",
+    "..%2fpath",
     "javascript:evil",
     "data:text/plain,x",
     "https:example.org",
@@ -525,11 +532,11 @@ describe("state isolation and deterministic semantics", () => {
           continue;
         }
         accepted++;
-        expect(() => assertSafeMarkdown(source)).not.toThrow();
+        expect(() => assertSafeMarkdown(source, "https://example.ubc.ca/node/1.md")).not.toThrow();
         expect(() => safeText(result.title, "native title")).not.toThrow();
       }
     }
-    expect(accepted).toBe(54);
+    expect(accepted).toBe(63);
   });
 
   it("preserves declared semantic text on deterministic safe examples", () => {

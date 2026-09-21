@@ -818,6 +818,22 @@ describe("assertSafeMarkdown", () => {
     expect(() => assertSafeMarkdown(markdown)).toThrow(/Unsafe Markdown/);
   });
 
+  it("accepts explicit relative references only with an exact source URL", () => {
+    expect(() => assertSafeMarkdown("[relative](/guide)")).toThrow(/Unsafe Markdown/);
+    expect(() => assertSafeMarkdown("[relative](/guide)", SOURCE)).not.toThrow();
+    for (const destination of [
+      "//example.edu/file",
+      "bare/path",
+      "/%2fexample.edu",
+      "/%252fexample.edu",
+      "/%5cevil",
+      ".%2fpath",
+      "..%2fpath",
+      "javascript:bad",
+    ])
+      expect(() => assertSafeMarkdown(`[bad](${destination})`, SOURCE)).toThrow(/Unsafe Markdown/);
+  });
+
   it.each([
     "Literal &lt;script&gt; and &lt;img src=x&gt; text.",
     "`<script>alert(1)</script>`",

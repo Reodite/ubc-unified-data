@@ -1,8 +1,17 @@
 import { createHash } from "node:crypto";
 import { describe, expect, it, vi } from "vitest";
 import { collectRecordedHost, type CollectionFormats } from "./collect.ts";
-import type { HostArchive, HostScraper, Observation, ProducerContext, SavedUrl } from "./contracts.ts";
+import type {
+  HostArchive,
+  HostScraper,
+  MarkdownDocumentExtraction,
+  Observation,
+  ProducerContext,
+  SavedUrl,
+  SearchDocument,
+} from "./contracts.ts";
 import { formatDocument, MARKDOWN_DOCUMENT_FORMAT_VERSION, parseDocument } from "./document-format.ts";
+import { withMarkdownCollectionRuntime } from "./markdown-collection-runtime.ts";
 import { inspectMarkdownSource } from "./markdown-inspection.mjs";
 import { pageExclusion } from "./urls.ts";
 
@@ -116,6 +125,7 @@ function fixture() {
   };
   return {
     values,
+    put,
     refresh,
     homepage,
     robots,
@@ -132,10 +142,12 @@ function fixture() {
   };
 }
 
-function markdownDocument(result: Awaited<ReturnType<typeof collectRecordedHost>>) {
+function markdownDocument(
+  result: Awaited<ReturnType<typeof collectRecordedHost>>,
+): SearchDocument & { extraction: MarkdownDocumentExtraction } {
   const document = result.documents.find((candidate) => candidate.source_url === targetUrl);
   if (document?.extraction?.format !== "markdown") throw new Error("Missing Markdown fixture output");
-  return document;
+  return document as SearchDocument & { extraction: MarkdownDocumentExtraction };
 }
 
 describe("exact witnessed Markdown collection", () => {
@@ -176,6 +188,50 @@ describe("exact witnessed Markdown collection", () => {
     expect(parseDocument(wire)).toEqual(document);
     expect(f.archive.assertUnchanged).toHaveBeenCalledOnce();
   });
+
+  it("resolves explicit relative Markdown references into the bounded host traversal", async () => {
+    const f = fixture();
+    const bytes = Buffer.from("# Body heading\n\n[Program details](/program).", "utf8");
+    f.target.snapshot.body = bytes.toString("utf8");
+    f.target.snapshot.bytes = bytes.length;
+    f.refresh(f.target);
+    f.setReceipt(bytes);
+    f.put(
+      `${origin}/program`,
+      "<html><body><main><h1>Program details</h1><p>Academic requirements.</p></main></body></html>",
+      "text/html; charset=utf-8",
+    );
+    const result = await collectRecordedHost(f.scraper, f.archive, producer, f.formats);
+    const document = markdownDocument(result);
+    expect(document.content_markdown).toBe(bytes.toString("utf8"));
+    expect(document.body_sha256).toBe(hash(bytes));
+    expect(document.extraction.source_bytes_sha256).toBe(hash(bytes));
+    expect(result.documents.map((candidate) => candidate.source_url)).toContain(`${origin}/program`);
+    expect(f.archive.read).toHaveBeenCalledWith(`${origin}/program`);
+  });
+
+  it("carries real authenticated runtime links into bounded collector traversal", async () => {
+    const f = fixture();
+    const bytes = Buffer.from("# Body heading\n\n[Program details](/program).", "utf8");
+    f.target.snapshot.body = bytes.toString("utf8");
+    f.target.snapshot.bytes = bytes.length;
+    f.refresh(f.target);
+    f.setReceipt(bytes);
+    f.put(
+      `${origin}/program`,
+      "<html><body><main><h1>Program details</h1><p>Academic requirements.</p></main></body></html>",
+      "text/html; charset=utf-8",
+    );
+    const result = await withMarkdownCollectionRuntime(true, async (markdown) => {
+      if (!markdown) throw new Error("Missing real Markdown runtime");
+      return collectRecordedHost(f.scraper, f.archive, producer, { markdown });
+    });
+    const document = markdownDocument(result.value);
+    expect(result.value.documents.map((candidate) => candidate.source_url)).toContain(`${origin}/program`);
+    expect(document.extraction.profile_sha256).toBe(result.profile_sha256);
+    expect(document.content_markdown).toBe(bytes.toString("utf8"));
+    expect(f.archive.read).toHaveBeenCalledWith(`${origin}/program`);
+  }, 180_000);
 
   it("extracts one target when both the saved frontier and HTML links name it", async () => {
     const f = fixture();

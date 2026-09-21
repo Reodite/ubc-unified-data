@@ -423,8 +423,13 @@ describe("metadata schema consistency", () => {
 
   it.each([
     "javascript:alert(1)",
-    "/relative",
     "//example.test/",
+    "relative/without-prefix",
+    "/%2fexample.test",
+    "/%252fexample.test",
+    "/%5cbad",
+    ".%2fpath",
+    "..%2fpath",
     "ftp://example.test/",
     "https://u:p@example.test/",
     "https://example.test/\\bad",
@@ -445,6 +450,11 @@ describe("metadata schema consistency", () => {
     "HTTP://example.test/",
     "mailto:a@example.test?subject=hello&cc=b@example.test",
     "tel:+1-604-555-0100;ext=2",
+    "/relative",
+    "./child",
+    "../parent",
+    "?page=2",
+    "#fragment",
   ])("accepts shared nonlexical destination rules for %s", (url) => {
     const metadata = mutableMetadata();
     metadata.links[0].url = url;

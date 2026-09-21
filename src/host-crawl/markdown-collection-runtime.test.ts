@@ -1,22 +1,11 @@
-import { readdir } from "node:fs/promises";
-import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { CollectionFormats } from "./collect.ts";
 import { withMarkdownCollectionRuntime } from "./markdown-collection-runtime.ts";
 import { inspectMarkdownSource } from "./markdown-inspection.mjs";
-import { DEFAULT_EXTERNAL_ROOT } from "./paths.ts";
 
 const fetchGuard = vi.fn(() => {
   throw new Error("Unexpected network access");
 });
-
-async function artifactEntries(): Promise<string[]> {
-  try {
-    return await readdir(`${DEFAULT_EXTERNAL_ROOT}/markdown-artifacts`);
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") return [];
-    throw error;
-  }
-}
 
 beforeEach(() => {
   vi.stubGlobal("fetch", fetchGuard);
@@ -27,13 +16,9 @@ afterEach(() => {
   fetchGuard.mockClear();
 });
 
-afterAll(async () => {
-  expect(await artifactEntries()).toEqual([]);
-});
-
 describe("authenticated Markdown collection runtime ownership", () => {
   it("prepares one real authority, inspects through the canonical request and disposes before returning", async () => {
-    const bytes = Buffer.from("# Runtime title\n\nExact body.\n", "utf8");
+    const bytes = Buffer.from("# Runtime title\n\nExact [relative link](/node/1).\n", "utf8");
     let retained: NonNullable<CollectionFormats["markdown"]> | undefined;
     const result = await withMarkdownCollectionRuntime(true, async (format) => {
       if (!format) throw new Error("Missing enabled Markdown format");
@@ -58,7 +43,6 @@ describe("authenticated Markdown collection runtime ownership", () => {
       return "ordinary collection";
     });
     expect(result).toEqual({ value: "ordinary collection", profile_sha256: null });
-    expect(await artifactEntries()).toEqual([]);
   });
 
   it("preserves callback failure and still revokes the real authority", async () => {

@@ -44,7 +44,7 @@ describe("parser-free Markdown contract and inspector facade", () => {
   it("keeps the same deeply immutable limits object and dialect", () => {
     expect(INSPECTOR_LIMITS).toBe(MARKDOWN_INSPECTION_LIMITS);
     expect(INSPECTOR_DIALECT).toBe(MARKDOWN_INSPECTION_DIALECT);
-    expect(MARKDOWN_INSPECTION_DIALECT).toBe("ubc-markdown-verbatim-v1/markdown-it-15.0.2");
+    expect(MARKDOWN_INSPECTION_DIALECT).toBe("ubc-markdown-verbatim-v2/markdown-it-15.0.2");
     expect(MARKDOWN_INSPECTION_LIMITS).toEqual({
       inputBytes: 1048576,
       lineBytes: 16384,
@@ -129,7 +129,7 @@ describe("parser-free Markdown contract and inspector facade", () => {
     expectTypeOf(inspectMarkdownSource).parameters.toEqualTypeOf<[Uint8Array, readonly (string | null)[]]>();
     expectTypeOf(MARKDOWN_INSPECTION_LIMITS).toEqualTypeOf<typeof INSPECTOR_LIMITS>();
     expectTypeOf(MARKDOWN_INSPECTION_LIMITS.inputBytes).toEqualTypeOf<1048576>();
-    expectTypeOf(MARKDOWN_INSPECTION_DIALECT).toEqualTypeOf<"ubc-markdown-verbatim-v1/markdown-it-15.0.2">();
+    expectTypeOf(MARKDOWN_INSPECTION_DIALECT).toEqualTypeOf<"ubc-markdown-verbatim-v2/markdown-it-15.0.2">();
     expectTypeOf(fail).parameters.toEqualTypeOf<[string]>();
     expectTypeOf(fail).returns.toEqualTypeOf<never>();
     expectTypeOf(hasUnsafeMarkdownCharacter).parameters.toEqualTypeOf<[string]>();
@@ -230,15 +230,24 @@ describe("unchanged URI guards", () => {
     "mailto:a%40example.org?subject=Hello&CC=b%40example.org",
     "tel:+1-604-555-0100;ext=9",
     "tel:(604) 555-0100",
+    "/relative/path?view=full#section",
+    "./relative",
+    "../parent",
+    "?page=2",
+    "#fragment",
   ])("accepts the existing absolute destination %s", (value) => {
     expect(validateDestination(value)).toBeUndefined();
     expect(validateDestination(value, true)).toBeUndefined();
   });
 
   it.each([
-    "/relative",
     "//example.org/",
-    "#fragment",
+    "relative/without-prefix",
+    "/%2fexample.org",
+    "/%252fexample.org",
+    "/%5cevil",
+    ".%2fpath",
+    "..%2fpath",
     "javascript:evil",
     "data:text/plain,x",
     "https:example.org",

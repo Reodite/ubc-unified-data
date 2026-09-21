@@ -159,6 +159,30 @@ describe("document Markdown wire format", () => {
     ];
     expect(parseDocument(formatDocument(bodyTitle))).toEqual(bodyTitle);
 
+    const relative = structuredClone(markdown);
+    relative.content_markdown = "# Source title\n\n[Relative guide](/guide)";
+    relative.body_sha256 = sha256(relative.content_markdown);
+    relative.content_sha256 = sha256(`${relative.title}\n${relative.content_markdown}`);
+    const relativeExtraction = markdownExtraction(relative);
+    relativeExtraction.source_bytes = Buffer.byteLength(relative.content_markdown);
+    relativeExtraction.source_bytes_sha256 = relative.body_sha256;
+    expect(parseDocument(formatDocument(relative))).toEqual(relative);
+    const ordinaryRelative = fixtureDocument("example.ubc.ca", "/page", relative.content_markdown);
+    expect(() => formatDocument(ordinaryRelative)).toThrow(/unsafe link destination/i);
+    const pdfRelative = {
+      ...ordinaryRelative,
+      source_url: "https://example.ubc.ca/guide.pdf",
+      extraction: {
+        format: "pdf" as const,
+        source_bytes_sha256: sha256("raw PDF"),
+        source_bytes: 123,
+        pages: 1,
+        profile_sha256: sha256("PDF profile"),
+      },
+    };
+    pdfRelative.id = `documents:official-web:${sha256(pdfRelative.source_url).slice(0, 24)}`;
+    expect(() => formatDocument(pdfRelative)).toThrow(/unsafe link destination/i);
+
     const maximumWitnesses = structuredClone(markdown);
     const maximumExtraction = markdownExtraction(maximumWitnesses);
     maximumExtraction.title_origin = { kind: "advertisement", witness_index: 2 };

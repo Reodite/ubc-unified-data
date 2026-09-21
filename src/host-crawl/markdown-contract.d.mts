@@ -11,7 +11,7 @@ export declare const MARKDOWN_INSPECTION_LIMITS: Readonly<{
   advertisedTitleCodeUnits: 4096;
 }>;
 
-export declare const MARKDOWN_INSPECTION_DIALECT: "ubc-markdown-verbatim-v1/markdown-it-15.0.2";
+export declare const MARKDOWN_INSPECTION_DIALECT: "ubc-markdown-verbatim-v2/markdown-it-15.0.2";
 
 export type MarkdownTitleOrigin =
   Readonly<{ kind: "markdown-body" }> | Readonly<{ kind: "advertisement"; witness_index: number }>;

@@ -450,23 +450,33 @@ function* walkTokens(tokens: Token[]): Generator<Token> {
   }
 }
 
-function safeTokens(markdown: string): Token[] {
+function safeTokens(markdown: string, sourceUrl?: string): Token[] {
   const tokens = markdownParser.parse(markdown, {});
   for (const token of walkTokens(tokens)) {
     if (token.type === "html_block" || token.type === "html_inline")
       throw new Error("Unsafe Markdown: raw HTML is forbidden.");
     if (token.type === "image") throw new Error("Unsafe Markdown: image embedding is forbidden.");
     const href = token.attrGet("href");
-    if (href !== null && (typeof href !== "string" || safeUrl(href) === undefined)) {
+    const explicitRelative = sourceUrl !== undefined && typeof href === "string" && !/^[a-z][a-z\d+.-]*:/i.test(href);
+    const decodedRelative = explicitRelative ? inspectedUrl(href) : undefined;
+    if (
+      href !== null &&
+      (typeof href !== "string" ||
+        (explicitRelative &&
+          (!/^(?:\/(?!\/)|\.\.?\/|\?|#)/.test(href) ||
+            decodedRelative === undefined ||
+            !/^(?:\/(?!\/)|\.\.?\/|\?|#)/.test(decodedRelative))) ||
+        safeUrl(href, sourceUrl) === undefined)
+    ) {
       throw new Error("Unsafe Markdown: unsupported or unsafe link destination.");
     }
   }
   return tokens;
 }
 
-/** Reject raw HTML tokens, embedded images, and unsafe destinations; allow inert HTML spellings in code or escaped text. */
-export function assertSafeMarkdown(markdown: string): void {
-  safeTokens(markdown);
+/** Reject raw HTML tokens, embedded images, and unsafe destinations; resolve explicit source references when provided. */
+export function assertSafeMarkdown(markdown: string, sourceUrl?: string): void {
+  safeTokens(markdown, sourceUrl);
 }
 
 /**
