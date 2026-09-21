@@ -92,6 +92,22 @@ privacy/help links remain eligible. Names alone, query variants and normalized o
 do not establish these roles. These additional exclusions cannot override
 homepage identities, CMS/XML-advertised documents, required views or their base
 pages, PDFs, retained sources or already emitted text and aliases.
+An observed `/index%2ephp/` or `/index%2Ephp/` CAPTCHA route also requires the
+identical prefix spelling on its physical source and an owning form `data-action`
+that resolves exactly to that source. This does not collapse public variants,
+synthesize aliases or permit nested prefixes.
+
+Reviewed query documents use a separate finite, hostname-bound declaration in
+`src/host-crawl/document-query-policy.ts`. CCLI's exact
+`/?post_type=team-member&p=3962` selection must appear literally in its validated
+`team-member-sitemap.xml` before document dispatch. API membership does not add or
+remove that requirement. Recording, extraction and output checks share the same
+narrow admission; unreviewed selectors keep their default exclusions. The query
+must retain its exact identity through every observed redirect and provide
+complete public HTML and searchable text. Missing input, media responses, empty
+extraction, lost selections and contradictory machine evidence block publication;
+API fallback and scope-exclusion shortcuts cannot discard it. This declaration
+does not replace the separate form-validated GET-view contract.
 
 Existing specialized modules retain their narrower policies
 and previously published bytes. Their recognized empty containers do not fall

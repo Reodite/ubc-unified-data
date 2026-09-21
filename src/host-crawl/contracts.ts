@@ -34,6 +34,13 @@ export interface PublicGetView {
   placeholder: string;
 }
 
+/** An exact HTML query document required by its namespace's advertised sitemap. */
+export interface RequiredDocumentQuery {
+  readonly hostname: string;
+  readonly url: string;
+  readonly sitemap: string;
+}
+
 export interface HostScraper {
   hostname: string;
   title: string;
@@ -46,6 +53,7 @@ export interface HostScraper {
     exactHostInventory?: boolean;
     apiContentFallback?: boolean;
     views?: readonly PublicGetView[];
+    readonly requiredQueries?: readonly RequiredDocumentQuery[];
     optionalAbsent?: readonly string[];
     sitemaps?: readonly { path: string; rootOnlyLocation?: string }[];
   };

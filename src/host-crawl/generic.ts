@@ -3,6 +3,7 @@ import { publicUbcUrl } from "../prose/client.ts";
 import { plainText } from "../source-documents.ts";
 import type { CompletedHost, HostScraper, SearchDocument, Snapshot } from "./contracts.ts";
 import { digest, formatDocument, safeText, timestamp } from "./document-format.ts";
+import { assertRequiredQueryIdentity, requiredDocumentQueries } from "./document-query-policy.ts";
 import { htmlBaseUrl } from "./html-base.ts";
 import { validateVettedHost } from "./public-validation.ts";
 import { documentPageExclusion, hostUrl, normalizeHost } from "./urls.ts";
@@ -32,7 +33,14 @@ const compare = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
 
 function excludeUrl(value: string, hostname: string): string | null {
   const excluded = documentPageExclusion(value, hostname, ["pdf"]);
-  if (excluded !== null) return excluded;
+  if (
+    excluded !== null &&
+    !(
+      excluded === "Unsupported query or form selection" &&
+      requiredDocumentQueries(hostname).some((entry) => entry.url === value)
+    )
+  )
+    return excluded;
   const path = decodeURIComponent(new URL(hostUrl(value, hostname)).pathname).replace(/\.pdf$/i, "");
   if (
     /\/(?:user|login|login_required|signin|logout|auth|private|antibot|core|modules|libraries|jsonapi|system|batch|search)(?:\/|$)/i.test(
@@ -56,6 +64,7 @@ function assertPublicSnapshot(snapshot: Snapshot, hostname: string): void {
     const excluded = excludeUrl(value, hostname);
     if (excluded !== null) throw new Error(`Non-public document observation: ${excluded}`);
   }
+  assertRequiredQueryIdentity(hostname, requiredDocumentQueries(hostname), snapshot.requested_url, snapshot);
   if (snapshot.status !== 200 || snapshot.binary || !HTML.test(snapshot.headers["content-type"] ?? ""))
     throw new Error("A complete public HTML observation is required");
 }
@@ -117,7 +126,13 @@ export function createGenericScraper(value: string): HostScraper {
     hostname,
     title: hostname,
     scope: "Public HTML prose and native PDF text on this exact hostname.",
-    adapter: { kind: "auto", allowedTypes: [], allPublicTypes: true, exactHostInventory: true },
+    adapter: {
+      kind: "auto",
+      allowedTypes: [],
+      allPublicTypes: true,
+      exactHostInventory: true,
+      requiredQueries: requiredDocumentQueries(hostname),
+    },
     documentFormats: ["pdf"],
     excludeUrl: (url) => excludeUrl(url, hostname),
     vetHomepage(snapshot) {

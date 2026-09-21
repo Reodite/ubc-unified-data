@@ -22,6 +22,7 @@ import {
   type ProducerContext,
   type SearchDocument,
 } from "./contracts.ts";
+import { assertRequiredQueryIdentity, validateRequiredDocumentQueries } from "./document-query-policy.ts";
 import { htmlBaseUrl } from "./html-base.ts";
 import { discoverMachineLinks } from "./machine-links.ts";
 import { parseSitemap } from "./sitemap.ts";
@@ -91,7 +92,7 @@ async function sitemapPages(
   read: (url: string) => Promise<Observation>,
   policies: NonNullable<HostScraper["adapter"]["sitemaps"]> = [],
   exactHost = false,
-): Promise<{ pages: string[]; nonDocuments: Set<string> }> {
+): Promise<{ pages: string[]; nonDocuments: Set<string>; advertisingSitemaps: Map<string, Set<string>> }> {
   const htmlSitemap = (url: string) => /\.html?$/i.test(new URL(url).pathname);
   const queue = [...starts];
   if (exactHost) queue.sort((a, b) => Number(htmlSitemap(a)) - Number(htmlSitemap(b)));
@@ -101,6 +102,7 @@ async function sitemapPages(
   const requiredChildren = new Set<string>();
   const nonDocuments = new Set<string>();
   const pages = new Set<string>();
+  const advertisingSitemaps = new Map<string, Set<string>>();
   while (queue.length) {
     const url = hostUrl(queue.shift()!, hostname);
     if (seen.has(url)) continue;
@@ -152,12 +154,20 @@ async function sitemapPages(
       if (parsed.kind === "index") {
         requiredChildren.add(target);
         queue.push(target);
-      } else pages.add(target);
+      } else {
+        pages.add(target);
+        // Only the literal page entry and requested XML identity witness an exact query declaration.
+        if (location === target && observation.snapshot.requested_url === url) {
+          const witnesses = advertisingSitemaps.get(target) ?? new Set<string>();
+          witnesses.add(url);
+          advertisingSitemaps.set(target, witnesses);
+        }
+      }
     }
   }
   if ([...requiredChildren].some((url) => nonDocuments.has(url)))
     throw new Error("An advertised sitemap child lacks a complete XML observation");
-  return { pages: [...pages].filter((url) => !nonDocuments.has(url)).sort(), nonDocuments };
+  return { pages: [...pages].filter((url) => !nonDocuments.has(url)).sort(), nonDocuments, advertisingSitemaps };
 }
 
 export interface CollectionFormats {
@@ -181,6 +191,18 @@ export async function collectRecordedHost(
   const verdict = scraper.vetHomepage(archive.homepage.snapshot);
   if (!verdict.accepted) throw new Error(`Homepage is not vetted: ${verdict.reason}`);
   const hostname = scraper.hostname;
+  const queryDeclarations = validateRequiredDocumentQueries(hostname, scraper.adapter.requiredQueries);
+  const requiredQueries = new Set(queryDeclarations.map((entry) => entry.url));
+  const assertQueryObservation = (requested: string, observation: Observation) => {
+    assertRequiredQueryIdentity(hostname, queryDeclarations, requested, observation.snapshot);
+    if (
+      requiredQueries.has(requested) &&
+      (observation.snapshot.status !== 200 ||
+        observation.snapshot.binary ||
+        !/^(?:text\/html|application\/xhtml\+xml)(?:;|$)/i.test(observation.snapshot.headers["content-type"] ?? ""))
+    )
+      throw new Error(`Required query needs a complete HTML observation: ${requested}`);
+  };
   const exactHost = scraper.adapter.exactHostInventory === true;
   if (scraper.adapter.kind === "auto") {
     const advertised = advertisedWordpressRoots(archive.homepage).some((url) => {
@@ -232,13 +254,14 @@ export async function collectRecordedHost(
   const sitemaps = [...robots.getSitemaps(), ...(scraper.adapter.sitemaps ?? []).map((entry) => entry.path)]
     .map((url) => (exactHost ? inventoryUrl(url, hostname) : hostUrl(url, hostname)))
     .filter((url): url is string => url !== null);
-  const { pages: seedPages, nonDocuments } = await sitemapPages(
-    sitemaps,
-    hostname,
-    read,
-    scraper.adapter.sitemaps,
-    exactHost,
-  );
+  const {
+    pages: seedPages,
+    nonDocuments,
+    advertisingSitemaps,
+  } = await sitemapPages(sitemaps, hostname, read, scraper.adapter.sitemaps, exactHost);
+  for (const declaration of queryDeclarations)
+    if (!advertisingSitemaps.get(declaration.url)?.has(declaration.sitemap))
+      throw new Error(`Required query lacks its advertised sitemap witness: ${declaration.url}`);
   const homepageIdentities = new Set([
     `https://${hostname}/`,
     hostUrl(archive.homepage.snapshot.requested_url, hostname),
@@ -252,7 +275,7 @@ export async function collectRecordedHost(
   const requiredViews = new Set(
     (scraper.adapter.views ?? []).flatMap((view) => view.values.map((value) => publicViewUrl(hostname, view, value))),
   );
-  const advertisedPages = new Set([...cmsPages, ...seedPages, ...requiredViews]);
+  const advertisedPages = new Set([...cmsPages, ...seedPages, ...requiredViews, ...requiredQueries]);
   const viewBases = new Set((scraper.adapter.views ?? []).map((view) => hostUrl(view.path, hostname)));
   const retainedSources = new Set(archive.retained.map((document) => document.source_url));
   const emittedIdentities = new Set<string>();
@@ -263,6 +286,7 @@ export async function collectRecordedHost(
     if (
       homepageIdentities.has(url) ||
       requiredViews.has(url) ||
+      requiredQueries.has(url) ||
       (machineLink &&
         (advertisedPages.has(url) ||
           viewBases.has(url) ||
@@ -325,6 +349,7 @@ export async function collectRecordedHost(
   for (const url of [
     ...discovered.map((entry) => entry.url),
     ...seedPages,
+    ...requiredQueries,
     ...archive.urls.map((row) => row.url),
   ].sort())
     add(url);
@@ -380,6 +405,7 @@ export async function collectRecordedHost(
     try {
       observation = await read(requested, true);
     } catch (error) {
+      if (requiredQueries.has(requested)) throw error;
       if (exactHost && archive.observedScopeExclusion?.(requested)) continue;
       if (error instanceof NonTextMediaError) {
         if (isPdfUrl(requested) || requiredViews.has(requested))
@@ -409,6 +435,7 @@ export async function collectRecordedHost(
       }
     }
     assertPublicViewIdentity(scraper, requested, observation.snapshot);
+    assertQueryObservation(requested, observation);
     if (observation.snapshot.binary) {
       if (
         observation.snapshot.status !== 200 ||
@@ -483,6 +510,7 @@ export async function collectRecordedHost(
       if (hostUrl(observation.snapshot.url, hostname) !== sourceUrl)
         throw new Error("Retained representative has a different physical URL");
       assertObservedAccess(observation, true);
+      assertQueryObservation(requested, observation);
       for (const url of pageLinks(observation, hostname, exactHost, nonDocuments)) add(url, true);
     }
     const decision = apiInput ? { kind: "document" as const, input: apiInput } : scraper.extract(observation.snapshot);
@@ -499,7 +527,7 @@ export async function collectRecordedHost(
         throw new Error("Retained representative would hide changed observed text or classification");
     }
     if (decision.kind === "excluded") {
-      if (requiredViews.has(requested) || isPdfUrl(requested))
+      if (requiredViews.has(requested) || requiredQueries.has(requested) || isPdfUrl(requested))
         throw new Error(`Required linked document has no searchable representation: ${requested}`);
       continue;
     }
@@ -510,7 +538,7 @@ export async function collectRecordedHost(
     if (!title) throw new Error("Extracted document lacks a title");
     const converted = toSafeMarkdown(input.html, contentBase ?? sourceUrl);
     if (!converted.markdown.trim()) {
-      if (apiInput || requiredViews.has(requested) || isPdfUrl(requested))
+      if (apiInput || requiredViews.has(requested) || requiredQueries.has(requested) || isPdfUrl(requested))
         throw new Error(`Required API text or document becomes empty after sanitization: ${sourceUrl}`);
       continue;
     }
@@ -567,6 +595,9 @@ export async function collectRecordedHost(
   for (const url of requiredViews)
     if (!result.some((document) => document.source_url === url || document.alternate_urls.includes(url)))
       throw new Error(`Required public view is missing from complete output: ${url}`);
+  for (const url of requiredQueries)
+    if (!result.some((document) => document.source_url === url || document.alternate_urls.includes(url)))
+      throw new Error(`Required query is missing from complete output: ${url}`);
   await archive.assertUnchanged();
   return {
     complete: true,
