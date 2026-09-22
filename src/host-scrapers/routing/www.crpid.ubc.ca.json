@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "hostname": "www.crpid.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner ca37b94e-5757-4878-811c-907915e18161; primary retained-homepage review under article-only scope",
+    "rationale": "The Vancouver-based Centre for Research on Personhood in Dementia publishes substantive applied research, publications, knowledge application, people, events and participation opportunities.",
+    "evidence": [
+      "https://www.crpid.ubc.ca/ | 619e3c81d1b961a1426676463c14a6864f8a4855cd8605ba84c5aa286c27b729 | Conducting original research to create new knowledge",
+      "https://www.crpid.ubc.ca/ | 619e3c81d1b961a1426676463c14a6864f8a4855cd8605ba84c5aa286c27b729 | Creating a strong research community including recruiting students and post-doctoral researchers, and welcoming visiting scholars.",
+      "https://www.crpid.ubc.ca/ | 619e3c81d1b961a1426676463c14a6864f8a4855cd8605ba84c5aa286c27b729 | The Centre for Research on Personhood in Dementia (CRPiD) is an interdisciplinary team of practice-based and applied researchers who are committed to improving understanding and support for people living with dementia, their families and communities."
+    ]
+  },
+  "rules": [
+    {
+      "id": "research-participation",
+      "category": "opportunities",
+      "rationale": "Participation, jobs, training and event paths invite involvement in research and learning.",
+      "path_pattern": "^/(?:research-participation|training-job-opportunities|upcoming-events|webinar-series)(?:/|$)"
+    },
+    {
+      "id": "centre-blog",
+      "category": "stories",
+      "rationale": "The Blog presents narrative updates from the centre.",
+      "path_pattern": "^/blog(?:/|$)"
+    },
+    {
+      "id": "contact-support",
+      "category": "support",
+      "rationale": "The contact section provides assistance and connection information.",
+      "path_pattern": "^/contact-us(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "dementia-personhood-research",
+    "category": "research",
+    "rationale": "The centre primarily publishes personhood-in-dementia research, outputs and knowledge application."
+  }
+}

@@ -3856,6 +3856,37 @@
     "document_count": 27
   },
   {
+    "hostname": "www.crpid.ubc.ca",
+    "title": "www.crpid.ubc.ca",
+    "homepage_url": "https://www.crpid.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:05:04.310Z",
+    "homepage_sha256": "619e3c81d1b961a1426676463c14a6864f8a4855cd8605ba84c5aa286c27b729",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/www.crpid.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/www.crpid.ubc.ca",
+        "document_count": 58
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/www.crpid.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/www.crpid.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 68
+  },
+  {
     "hostname": "www.engphys.ubc.ca",
     "title": "www.engphys.ubc.ca",
     "homepage_url": "https://www.engphys.ubc.ca/",
