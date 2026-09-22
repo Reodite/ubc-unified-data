@@ -4032,5 +4032,36 @@
       }
     ],
     "document_count": 6
+  },
+  {
+    "hostname": "zhaolab.psych.ubc.ca",
+    "title": "zhaolab.psych.ubc.ca",
+    "homepage_url": "https://zhaolab.psych.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:29:52.203Z",
+    "homepage_sha256": "410c98b6d3207d153a43ea1b5d55a0e0253f4f48f104834103f1b47db5afb1f0",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/zhaolab.psych.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/zhaolab.psych.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/zhaolab.psych.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/zhaolab.psych.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 5
   }
 ]
