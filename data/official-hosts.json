@@ -4185,6 +4185,27 @@
     "document_count": 74
   },
   {
+    "hostname": "womenscentre.ams.ubc.ca",
+    "title": "womenscentre.ams.ubc.ca",
+    "homepage_url": "https://womenscentre.ams.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:58:37.908Z",
+    "homepage_sha256": "4031c454b0e575b47cda10670542eaaa5e4fb8742ab2e9e2aa8c257f41fdff1e",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/womenscentre.ams.ubc.ca",
+        "document_count": 8
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/womenscentre.ams.ubc.ca",
+        "document_count": 8
+      }
+    ],
+    "document_count": 16
+  },
+  {
     "hostname": "www.afrf.forestry.ubc.ca",
     "title": "www.afrf.forestry.ubc.ca",
     "homepage_url": "https://www.afrf.forestry.ubc.ca/",
