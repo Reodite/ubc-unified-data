@@ -4002,6 +4002,27 @@
     "document_count": 4
   },
   {
+    "hostname": "www.rise.ubc.ca",
+    "title": "www.rise.ubc.ca",
+    "homepage_url": "https://www.rise.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:21:43.299Z",
+    "homepage_sha256": "b76f02d5b9b769cea1498845cfcaedc9ed34d3d485eb12eaf293440199b25d10",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/www.rise.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/www.rise.ubc.ca",
+        "document_count": 7
+      }
+    ],
+    "document_count": 9
+  },
+  {
     "hostname": "www.saravyc.ubc.ca",
     "title": "www.saravyc.ubc.ca",
     "homepage_url": "https://www.saravyc.ubc.ca/",

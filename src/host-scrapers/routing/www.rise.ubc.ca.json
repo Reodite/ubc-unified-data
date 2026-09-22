@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "hostname": "www.rise.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner ca37b94e-5757-4878-811c-907915e18161; primary retained-homepage review under article-only scope",
+    "rationale": "The university-wide Research Information Systems site provides public registration, module, reporting, tutorial, maintenance and contact guidance for managing research applications.",
+    "evidence": [
+      "https://www.rise.ubc.ca/ | b76f02d5b9b769cea1498845cfcaedc9ed34d3d485eb12eaf293440199b25d10 | RISe is an online research administration tool that allows researchers and administrators to manage and track applications online through to approval, certification and awarding of funds.",
+      "https://www.rise.ubc.ca/ | b76f02d5b9b769cea1498845cfcaedc9ed34d3d485eb12eaf293440199b25d10 | Explore the six ways RISe can support your research",
+      "https://www.rise.ubc.ca/ | b76f02d5b9b769cea1498845cfcaedc9ed34d3d485eb12eaf293440199b25d10 | Get the advice you need to complete your applications"
+    ]
+  },
+  "rules": [
+    {
+      "id": "rise-news",
+      "category": "news",
+      "rationale": "The homepage labels dated system announcements.",
+      "path_pattern": "^/news(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "research-system-support",
+    "category": "support",
+    "rationale": "The host primarily provides practical guidance and support for the RISe research administration system."
+  }
+}
