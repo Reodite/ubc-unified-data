@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "hostname": "outcomes.grad.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner ca37b94e-5757-4878-811c-907915e18161; primary retained-homepage review under article-only scope",
+    "rationale": "The UBC Vancouver PhD Outcome Tracking site documents the methodology and findings of a systematic graduate career-outcomes research project through public analyses and profiles.",
+    "evidence": [
+      "https://outcomes.grad.ubc.ca/ | ec0f382b82bb564f527c1b93f6ef80e1021c5b82c1383f4e1632661f16acda42 | For the first time, UBC Graduate & Postdoctoral Studies has taken on the challenge of systematically tracking these outcomes, starting with the 3805 students who graduated between 2005-13.",
+      "https://outcomes.grad.ubc.ca/ | ec0f382b82bb564f527c1b93f6ef80e1021c5b82c1383f4e1632661f16acda42 | Using a combination of survey and internet searches, information was obtained for 91% of these graduates.",
+      "https://outcomes.grad.ubc.ca/ | ec0f382b82bb564f527c1b93f6ef80e1021c5b82c1383f4e1632661f16acda42 | We are also making the data available to all, through the Explore and Compare sections on this website, and encourage you to draw your own conclusions about our results."
+    ]
+  },
+  "rules": [
+    {
+      "id": "alumni-profiles",
+      "category": "stories",
+      "rationale": "Alumni Profiles present individual graduate career paths.",
+      "path_pattern": "^/profiles(?:/|$)"
+    },
+    {
+      "id": "contact-support",
+      "category": "support",
+      "rationale": "Contact information provides project assistance.",
+      "path_pattern": "^/contact(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "phd-outcomes-research",
+    "category": "research",
+    "rationale": "The host primarily publishes graduate career-outcomes methodology, data and analysis."
+  }
+}

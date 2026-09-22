@@ -1776,6 +1776,22 @@
     "document_count": 24
   },
   {
+    "hostname": "outcomes.grad.ubc.ca",
+    "title": "outcomes.grad.ubc.ca",
+    "homepage_url": "https://outcomes.grad.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:23:41.573Z",
+    "homepage_sha256": "ec0f382b82bb564f527c1b93f6ef80e1021c5b82c1383f4e1632661f16acda42",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/outcomes.grad.ubc.ca",
+        "document_count": 15
+      }
+    ],
+    "document_count": 15
+  },
+  {
     "hostname": "pair.ubc.ca",
     "title": "pair.ubc.ca",
     "homepage_url": "https://pair.ubc.ca/",
