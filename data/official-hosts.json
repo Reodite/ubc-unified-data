@@ -3028,6 +3028,32 @@
     "document_count": 36
   },
   {
+    "hostname": "skylight.science.ubc.ca",
+    "title": "skylight.science.ubc.ca",
+    "homepage_url": "https://skylight.science.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:12:06.939Z",
+    "homepage_sha256": "be6bf80ab110f201198ada817d29832b57da92a32bafab138500660f9d1f27ae",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/skylight.science.ubc.ca",
+        "document_count": 127
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/skylight.science.ubc.ca",
+        "document_count": 26
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/skylight.science.ubc.ca",
+        "document_count": 5
+      }
+    ],
+    "document_count": 158
+  },
+  {
     "hostname": "socialwork.ok.ubc.ca",
     "title": "socialwork.ok.ubc.ca",
     "homepage_url": "https://socialwork.ok.ubc.ca/",
