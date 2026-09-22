@@ -73,6 +73,42 @@ describe("explicit screensaver resources", () => {
   });
 });
 
+describe("article-only public URL boundary", () => {
+  const home = "https://fixture.ubc.ca/";
+
+  it.each([
+    "guide.pdf",
+    "guide.doc",
+    "guide.docx",
+    "slides.ppt",
+    "slides.pptx",
+    "source.md",
+    "source.markdown",
+    "book.epub",
+    "book.mobi",
+    "bundle.zip",
+    "bundle.tar.gz",
+    "bundle.7z",
+    "bundle.rar",
+  ])("excludes obvious download %s", (path) => {
+    expect(pageExclusion(home + path, "fixture.ubc.ca")).not.toBeNull();
+  });
+
+  it.each(["article/", "news/guide-pdf-accessibility/", "stories/archive-research/"])(
+    "keeps semantic HTML article path %s eligible",
+    (path) => {
+      expect(pageExclusion(home + path, "fixture.ubc.ca")).toBeNull();
+    },
+  );
+
+  it.each(["feed/", "wp-login.php", "guide.pdf?download=1", "archive.zip?token=one"])(
+    "does not widen machine private or query-bearing download %s",
+    (path) => {
+      expect(pageExclusion(home + path, "fixture.ubc.ca")).not.toBeNull();
+    },
+  );
+});
+
 describe("declared public document routes", () => {
   it.each(["/", "/guidance/", "/files/policy.pdf", "/wp-content/uploads/2025/guide.PDF", "/files/guide%2Epdf"])(
     "permits %s",

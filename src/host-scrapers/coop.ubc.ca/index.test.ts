@@ -63,7 +63,7 @@ function expectSourceBlocks(observation: Snapshot, selector: string): void {
 }
 
 describe("coopScraper institutional identity", () => {
-  it("declares HTML discovery, two FAQ views, optional JSON:API absence and PDF support", () => {
+  it("declares HTML discovery and two finite FAQ views without download support", () => {
     expect(scraper.hostname).toBe("coop.ubc.ca");
     expect(scraper.adapter).toEqual({
       kind: "html",
@@ -84,7 +84,7 @@ describe("coopScraper institutional identity", () => {
         },
       ],
     });
-    expect(scraper.documentFormats).toEqual(["pdf"]);
+    expect(scraper.documentFormats).toBeUndefined();
     expect(scraper.vetHomepage(snapshot("homepage")).accepted).toBe(true);
   });
 
@@ -169,8 +169,6 @@ describe("coopScraper URL policy", () => {
     employer,
     student,
     `${FAQ}?${PARAMETER}=Employer+Section`,
-    "/sites/default/files/2024-06/synthetic-responsibilities.pdf",
-    "/files/Synthetic%20Guide.PDF",
   ])("allows the bounded public URL %s", (path) => {
     expect(scraper.excludeUrl!(new URL(path, HOME).href)).toBeNull();
   });
@@ -199,6 +197,8 @@ describe("coopScraper URL policy", () => {
     "/sites/default/files/css/example",
     "/sites/default/files/js/example",
     "/sites/default/private/example.pdf",
+    "/sites/default/files/2024-06/synthetic-responsibilities.pdf",
+    "/files/Synthetic%20Guide.PDF",
     "/files/example.docx",
     "/files/example.csv",
     "/files/example.pdf/extra",
@@ -262,11 +262,11 @@ describe("coopScraper URL policy", () => {
     expect(scraper.excludeUrl!("https://coop.ubc.ca/sitemap.xml")).toBe("Static asset or machine-readable resource");
   });
 
-  it("uses shared host normalization and narrows only the supported document exception", () => {
-    expect(scraper.excludeUrl!("https://COOP.UBC.CA.:443/files/example.pdf#section")).toBeNull();
+  it("uses shared host normalization while keeping downloads outside article traversal", () => {
+    expect(scraper.excludeUrl!("https://COOP.UBC.CA.:443/files/example.pdf#section")).toBe(UNSUPPORTED_DOCUMENT);
     const pdf = `${HOME}files/example.pdf`;
     expect(pageExclusion(pdf, scraper.hostname)).toBe(UNSUPPORTED_DOCUMENT);
-    expect(scraper.excludeUrl!(pdf)).toBeNull();
+    expect(scraper.excludeUrl!(pdf)).toBe(UNSUPPORTED_DOCUMENT);
     expect(scraper.excludeUrl!(`${pdf}?download=1`)).toBe(UNSUPPORTED_DOCUMENT);
     expect(scraper.excludeUrl!(`${HOME}files/example.docx`)).toBe(UNSUPPORTED_DOCUMENT);
   });

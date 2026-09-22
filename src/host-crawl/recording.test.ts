@@ -131,6 +131,31 @@ describe("external immutable request recording", () => {
     );
     await expect(replay.verifySeal()).rejects.toThrow(/binary body changed/);
   });
+  it("reopens legacy PDF recording bounds unchanged under process-local HTML-only acquisition", async () => {
+    const f = await fixture(() => html("<p>Legacy cached article.</p>"), {
+      documentFormats: ["pdf"],
+      documentUrlAllowed: () => true,
+      maxResponseBytes: 32 * 1024 * 1024,
+    });
+    const article = await f.recording.readDocument(`${origin}/article`);
+    f.recording.close();
+    const reopened = await HostRecording.open({
+      ...f.options,
+      acquire: true,
+      documentFormats: undefined,
+      maxResponseBytes: undefined,
+      htmlDocumentsOnly: true,
+    });
+    opened.push(reopened);
+    expect(await reopened.readDocument(`${origin}/article`)).toEqual(article);
+    const db = new DatabaseSync(join(f.directory, "state.sqlite"), { readOnly: true });
+    const config = JSON.parse(
+      String((db.prepare("SELECT value FROM config WHERE id=1").get() as { value: string }).value),
+    );
+    expect(config).toMatchObject({ documentFormats: ["pdf"], maxResponseBytes: 32 * 1024 * 1024 });
+    db.close();
+  });
+
   it("retains empty binary-typed redirects without inventing a binary text body", async () => {
     const raw = Buffer.from("%PDF-1.7\nfixture bytes\n%%EOF");
     const f = await fixture(
@@ -338,6 +363,49 @@ describe("external immutable request recording", () => {
     );
     db.close();
     await f.recording.seal();
+  });
+
+  it.each([
+    ["application/pdf", {}],
+    ["application/vnd.openxmlformats-officedocument.wordprocessingml.document", {}],
+    ["text/html", { "content-disposition": 'attachment; filename="download.html"' }],
+  ] as const)("cancels out-of-scope article response %s before reading its body", async (contentType, extraHeaders) => {
+    let reads = 0;
+    let cancelled = false;
+    const f = await fixture(
+      () =>
+        new Response(
+          new ReadableStream(
+            {
+              pull(controller) {
+                reads++;
+                controller.enqueue(new Uint8Array(4096));
+                controller.close();
+              },
+              cancel() {
+                cancelled = true;
+              },
+            },
+            { highWaterMark: 0 },
+          ),
+          { headers: { "content-type": contentType, ...extraHeaders } },
+        ),
+      {
+        documentUrlAllowed: () => true,
+        htmlDocumentsOnly: true,
+      },
+    );
+    await expect(f.recording.readDocument(`${origin}/download`)).rejects.toThrow(/Observed non-text media/);
+    await expect(f.recording.readDocument(`${origin}/download`)).rejects.toThrow(/Observed non-text media/);
+    expect(reads).toBe(0);
+    expect(cancelled).toBe(true);
+    const db = new DatabaseSync(join(f.directory, "state.sqlite"), { readOnly: true });
+    expect(db.prepare("SELECT state,bytes,status FROM attempts WHERE url=?").get(`${origin}/download`)).toMatchObject({
+      state: "excluded-media",
+      bytes: 0,
+      status: 200,
+    });
+    db.close();
   });
 
   it.each([401, 403, 404])(

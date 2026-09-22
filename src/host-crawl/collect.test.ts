@@ -448,14 +448,17 @@ describe("recorded complete-host collection", () => {
     },
   );
 
-  it("skips unfetched CSS but refuses unsupported text-bearing resources", async () => {
+  it("skips unfetched CSS and download resources without weakening HTML completeness", async () => {
     const f = setup();
     f.archive.urls = [...f.archive.urls, { ...f.archive.urls[0]!, url: `${origin}/files/custom.css`, snapshot: null }];
     await expect(collectRecordedHost(fixtureScraper, f.archive, producer)).resolves.toMatchObject({
       complete: true,
     });
     f.values.get(root)!.snapshot.body += '<a href="/files/handbook.pdf">Handbook</a>';
-    await expect(collectRecordedHost(fixtureScraper, f.archive, producer)).rejects.toThrow(/text-extraction adapter/);
+    await expect(collectRecordedHost(fixtureScraper, f.archive, producer)).resolves.toMatchObject({
+      complete: true,
+    });
+    expect(f.archive.read).not.toHaveBeenCalledWith(`${origin}/files/handbook.pdf`);
   });
 
   it("follows every advertised CMS page and refuses changed totals", async () => {

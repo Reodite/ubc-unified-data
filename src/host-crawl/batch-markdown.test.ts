@@ -77,8 +77,7 @@ async function fixture() {
     "text/html; charset=utf-8",
   );
   put(`${origin}/robots.txt`, "User-agent: *\n", "text/plain");
-  const markdownBytes = Buffer.from("# Runtime body title\n\nExact source guidance.\n", "utf8");
-  const target = put(targetUrl, markdownBytes.toString("utf8"), "text/markdown; charset=utf-8");
+  put(targetUrl, "# Historical source that active collection must not read.\n", "text/markdown; charset=utf-8");
   const savedTarget: SavedUrl = {
     url: targetUrl,
     kind: "page",
@@ -116,9 +115,8 @@ async function fixture() {
     readBytes: vi.fn(async () => {
       throw new Error("No PDF expected");
     }),
-    readTextBytes: vi.fn(async (snapshot: string) => {
-      if (snapshot !== target.sha256) throw new Error("Unexpected Markdown receipt");
-      return { bytes: Buffer.from(markdownBytes), sha256: hash(markdownBytes) };
+    readTextBytes: vi.fn(async () => {
+      throw new Error("Standalone Markdown must remain outside active collection");
     }),
     observedDestination: (url: string) => url,
     observedScopeExclusion: () => null,
@@ -148,11 +146,11 @@ async function fixture() {
     seed: { bytes: seedBytes, urls: [savedTarget] },
     seedPath,
   });
-  return { batch, directory, token: claim.token, producer, seedBytes, seal, close };
+  return { batch, directory, token: claim.token, producer, seedBytes, seal, close, recording };
 }
 
-describe("batch Markdown ready v2 writer", () => {
-  it("binds real runtime profile into every document and ready bytes before returning", async () => {
+describe("batch article-only ready writer", () => {
+  it("excludes linked and seeded standalone Markdown without preparing its runtime", async () => {
     vi.stubGlobal(
       "fetch",
       vi.fn(() => Promise.reject(new Error("Unexpected network"))),
@@ -160,7 +158,7 @@ describe("batch Markdown ready v2 writer", () => {
     const f = await fixture();
     try {
       const result = await f.batch.collect(hostname, f.token);
-      expect(result).toMatchObject({ hostname, state: "ready", documents: 2 });
+      expect(result).toMatchObject({ hostname, state: "ready", documents: 1 });
       const row = f.batch.queue.get(hostname)!;
       expect(row.state).toBe("ready");
       const readyBytes = await readFile(String(row.details.ready_path));
@@ -170,24 +168,19 @@ describe("batch Markdown ready v2 writer", () => {
         recording_seal: string;
         seed_sha256: string;
         pdf_profile_sha256: string | null;
-        markdown_profile_sha256: string;
         completed: {
           documents: Array<{ input_sha256: string; extraction?: { format: string; profile_sha256: string } }>;
         };
       };
-      expect(ready.version).toBe(2);
+      expect(ready.version).toBe(1);
       expect(ready.pdf_profile_sha256).toBeNull();
-      expect(ready.markdown_profile_sha256).toMatch(/^[a-f0-9]{64}$/);
-      const expectedInput = deriveCollectionInputDigest({
-        recording: f.seal,
-        seed: sha256(f.seedBytes),
-        markdown_profile: ready.markdown_profile_sha256,
-      });
+      const expectedInput = deriveCollectionInputDigest({ recording: f.seal, seed: sha256(f.seedBytes) });
       expect(new Set(ready.completed.documents.map((document) => document.input_sha256))).toEqual(
         new Set([expectedInput]),
       );
-      const markdown = ready.completed.documents.find((document) => document.extraction?.format === "markdown");
-      expect(markdown?.extraction?.profile_sha256).toBe(ready.markdown_profile_sha256);
+      expect(ready.completed.documents.some((document) => document.extraction)).toBe(false);
+      expect(f.recording.readDocument).not.toHaveBeenCalledWith(targetUrl);
+      expect(f.recording.readTextBytes).not.toHaveBeenCalled();
       expect(f.close).toHaveBeenCalledOnce();
     } finally {
       f.batch.close();

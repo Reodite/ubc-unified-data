@@ -67,6 +67,7 @@ export interface RecordingOptions {
   recoverTransientFailures?: boolean;
   documentFormats?: readonly "pdf"[];
   documentUrlAllowed?: (url: string) => boolean;
+  htmlDocumentsOnly?: boolean;
 }
 
 /** Persist request intents and immutable outcomes externally; replay never falls through to a network request. */
@@ -155,7 +156,16 @@ export class HostRecording {
       const config = old ? JSON.parse(String(old)) : requested;
       if (config.hostname !== options.hostname || config.seed_sha256 !== (options.seedSha256 ?? null))
         throw new Error("Recording hostname or frontier digest mismatch");
-      if (options.acquire && JSON.stringify({ ...config, producer: requested.producer }) !== JSON.stringify(requested))
+      const compatibleRequest: Record<string, unknown> = { ...requested };
+      if (old && options.htmlDocumentsOnly === true) {
+        compatibleRequest.maxResponseBytes = config.maxResponseBytes;
+        if (Object.hasOwn(config, "documentFormats")) compatibleRequest.documentFormats = config.documentFormats;
+        else delete compatibleRequest.documentFormats;
+      }
+      if (
+        options.acquire &&
+        JSON.stringify({ ...config, producer: requested.producer }) !== JSON.stringify(compatibleRequest)
+      )
         throw new Error("Acquisition options changed; replay saved input or create a new explicit recording");
       if (options.acquire) {
         db.exec(
@@ -366,7 +376,7 @@ export class HostRecording {
     );
   }
 
-  private async dispatch(url: string, minimum: number): Promise<Observation> {
+  private async dispatch(url: string, minimum: number, document = false): Promise<Observation> {
     const repair = this.db.prepare("SELECT * FROM repair_authorizations WHERE url=?").get(url);
     const ceiling = Number(repair?.attempt_ceiling ?? 3);
     const saved = this.db
@@ -375,8 +385,8 @@ export class HostRecording {
     const count = Number(this.db.prepare("SELECT count(*) n FROM attempts WHERE url=?").get(url)!.n);
     if (saved?.state === "excluded-media") {
       const headers = JSON.parse(String(saved.headers)) as Record<string, string>;
-      const mediaType = headers["content-type"]?.split(";", 1)[0]?.trim().toLowerCase() ?? "";
-      if (!/^(?:image|audio|video)\/[a-z0-9.+-]+$/.test(mediaType))
+      const mediaType = headers["content-type"]?.split(";", 1)[0]?.trim().toLowerCase() || "application/octet-stream";
+      if (!/^[a-z0-9!#$&^_.+-]+\/[a-z0-9!#$&^_.+-]+$/.test(mediaType))
         throw new Error("Invalid saved media classification");
       throw new NonTextMediaError(mediaType);
     }
@@ -432,9 +442,14 @@ export class HostRecording {
         .prepare("UPDATE attempts SET status=?,headers=? WHERE id=?")
         .run(response.status, JSON.stringify(Object.fromEntries(response.headers)), id);
       const mediaType = response.headers.get("content-type")?.split(";", 1)[0]?.trim().toLowerCase() ?? "";
-      if (response.status === 200 && /^(?:image|audio|video)\/[a-z0-9.+-]+$/.test(mediaType)) {
+      const attachment = /^attachment(?:;|$)/i.test(response.headers.get("content-disposition") ?? "");
+      const nonHtmlDocument =
+        document &&
+        this.options.htmlDocumentsOnly === true &&
+        (attachment || (mediaType !== "" && !["text/html", "application/xhtml+xml"].includes(mediaType)));
+      if (response.status === 200 && (nonHtmlDocument || /^(?:image|audio|video)\/[a-z0-9.+-]+$/.test(mediaType))) {
         await response.body?.cancel();
-        throw new NonTextMediaError(mediaType);
+        throw new NonTextMediaError(mediaType || "application/octet-stream");
       }
       const chunks: Uint8Array[] = [];
       const reader = response.body?.getReader();
@@ -559,7 +574,7 @@ export class HostRecording {
         throw new DocumentPolicyError(
           `Saved document policy refusal: ${String(cached.error).slice("DocumentPolicyError: ".length)}`,
         );
-      const media = /^NonTextMediaError: Observed non-text media: ((?:image|audio|video)\/[a-z0-9.+-]+)$/.exec(
+      const media = /^NonTextMediaError: Observed non-text media: ([a-z0-9!#$&^_.+-]+\/[a-z0-9!#$&^_.+-]+)$/.exec(
         String(cached.error),
       );
       if (media) throw new NonTextMediaError(media[1]!);
@@ -589,7 +604,7 @@ export class HostRecording {
           const prior = Number(this.db.prepare("SELECT count(*) n FROM attempts WHERE url=?").get(url)!.n);
           const ceiling = this.attemptCeiling(url);
           try {
-            observation = await this.dispatch(url, minimum);
+            observation = await this.dispatch(url, minimum, document);
           } catch (error) {
             const failed = this.db
               .prepare("SELECT status,error FROM attempts WHERE url=? ORDER BY id DESC LIMIT 1")

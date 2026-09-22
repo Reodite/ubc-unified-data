@@ -189,13 +189,17 @@ describe("singleton query URL boundaries", () => {
   ])("rejects unsafe origin %s", (url) => {
     expect(createGenericScraper(host).excludeUrl!(url)).not.toBeNull();
   });
-  it.each(["?p=0", "?p=03962", "?page_id=12", "?page=2", "?paged=3", "guide.pdf"])(
+  it.each(["?p=0", "?p=03962", "?page_id=12", "?page=2", "?paged=3"])(
     "preserves existing generic policy %s",
     (path) => {
       expect(createGenericScraper(host).excludeUrl!(home + path)).toBeNull();
       expect(createGenericScraper("other.ubc.ca").excludeUrl!(`https://other.ubc.ca/${path}`)).toBeNull();
     },
   );
+  it("excludes downloads independently of otherwise valid generic query policy", () => {
+    expect(createGenericScraper(host).excludeUrl!(`${home}guide.pdf`)).not.toBeNull();
+    expect(createGenericScraper("other.ubc.ca").excludeUrl!("https://other.ubc.ca/guide.pdf")).not.toBeNull();
+  });
 });
 
 describe("required query collection", () => {

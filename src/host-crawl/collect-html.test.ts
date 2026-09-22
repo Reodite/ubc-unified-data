@@ -9,7 +9,7 @@ import {
   type ProducerContext,
 } from "./contracts.ts";
 import { formatDocument, parseDocument } from "./document-format.ts";
-import { pageExclusion } from "./urls.ts";
+import { pageExclusion, UNSUPPORTED_DOCUMENT } from "./urls.ts";
 
 const hostname = "fixture.ubc.ca",
   origin = `https://${hostname}`;
@@ -152,7 +152,7 @@ describe("complete HTML and linked-document collection", () => {
     expect(f.formats.pdf!.extract).not.toHaveBeenCalled();
   });
   it.each(["/guide.pdf", "/guide%2Epdf"])(
-    "does not silently omit a required PDF classified as non-text media: %s",
+    "treats an observed PDF media response as an intentional article-scope exclusion: %s",
     async (path) => {
       const f = fixture(),
         read = f.archive.read,
@@ -160,13 +160,16 @@ describe("complete HTML and linked-document collection", () => {
       f.home.snapshot.body = f.home.snapshot.body.replace("/guide.pdf", path);
       f.scraper.excludeUrl = (url) =>
         decodeURIComponent(new URL(url).pathname).endsWith(".pdf") ? null : exclude(url);
+      const observedRead = vi.fn();
       f.archive.read = async (url) => {
+        observedRead(url);
         if (url === `${origin}${path}`) throw new NonTextMediaError("image/jpeg");
         return read(url);
       };
-      await expect(collectRecordedHost(f.scraper, f.archive, producer, f.formats)).rejects.toThrow(
-        /Required.*non-text/,
-      );
+      const result = await collectRecordedHost(f.scraper, f.archive, producer, f.formats);
+      expect(result.complete).toBe(true);
+      expect(result.documents).toHaveLength(4);
+      expect(observedRead).toHaveBeenCalledWith(`${origin}${path}`);
       expect(f.formats.pdf!.extract).not.toHaveBeenCalled();
     },
   );
@@ -192,6 +195,36 @@ describe("complete HTML and linked-document collection", () => {
     await expect(collectRecordedHost(f.scraper, f.archive, producer, f.formats)).rejects.toThrow(/Linked pagination/);
     expect(f.archive.read).not.toHaveBeenCalledWith(`${origin}/?page=1`);
   });
+  it("completes HTML scope without reading linked or seeded downloads", async () => {
+    const f = fixture();
+    f.scraper.documentFormats = undefined;
+    const exclude = f.scraper.excludeUrl!;
+    f.scraper.excludeUrl = (url) => {
+      const ordinary = pageExclusion(url, hostname);
+      return ordinary === UNSUPPORTED_DOCUMENT ? ordinary : exclude(url);
+    };
+    f.home.snapshot.body +=
+      '<a href="/guide.docx">DOCX</a><a href="/slides.pptx">PPTX</a><a href="/source.md">Markdown</a><a href="/archive.zip">Archive</a>';
+    f.archive.urls = [
+      {
+        url: `${origin}/seeded.pdf`,
+        kind: "page",
+        state: "pending",
+        disposition: null,
+        reason: null,
+        snapshot: null,
+        article_id: null,
+        source_modified_at: null,
+      },
+    ];
+    const result = await collectRecordedHost(f.scraper, f.archive, producer);
+    expect(result.complete).toBe(true);
+    expect(result.documents).toHaveLength(4);
+    for (const suffix of ["guide.pdf", "guide.docx", "slides.pptx", "source.md", "archive.zip", "seeded.pdf"])
+      expect(f.archive.read).not.toHaveBeenCalledWith(`${origin}/${suffix}`);
+    expect(result.documents.every((document) => document.extraction === undefined)).toBe(true);
+  });
+
   it("includes both finite views and versioned PDF text through the real serializer", async () => {
     const f = fixture(),
       result = await collectRecordedHost(f.scraper, f.archive, producer, f.formats);

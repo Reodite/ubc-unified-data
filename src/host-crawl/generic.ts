@@ -7,7 +7,7 @@ import { assertRequiredQueryIdentity, requiredDocumentQueries } from "./document
 import { htmlBaseUrl } from "./html-base.ts";
 import { markdownSources } from "./markdown-source-policy.ts";
 import { validateVettedHost } from "./public-validation.ts";
-import { documentPageExclusion, hostUrl, normalizeHost } from "./urls.ts";
+import { hostUrl, normalizeHost, pageExclusion } from "./urls.ts";
 
 const HTML = /^(?:text\/html|application\/xhtml\+xml)(?:;|$)/i;
 const HEADINGS = "h1,h2,h3,h4,h5,h6";
@@ -33,7 +33,7 @@ const text = (value: string) => value.replace(/\s+/g, " ").trim();
 const compare = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
 
 function excludeUrl(value: string, hostname: string): string | null {
-  const excluded = documentPageExclusion(value, hostname, ["pdf"]);
+  const excluded = pageExclusion(value, hostname);
   if (
     excluded !== null &&
     !(
@@ -42,7 +42,7 @@ function excludeUrl(value: string, hostname: string): string | null {
     )
   )
     return excluded;
-  const path = decodeURIComponent(new URL(hostUrl(value, hostname)).pathname).replace(/\.pdf$/i, "");
+  const path = decodeURIComponent(new URL(hostUrl(value, hostname)).pathname);
   if (
     /\/(?:user|login|login_required|signin|logout|auth|private|antibot|core|modules|libraries|jsonapi|system|batch|search)(?:\/|$)/i.test(
       path,
@@ -126,7 +126,7 @@ export function createGenericScraper(value: string): HostScraper {
   return {
     hostname,
     title: hostname,
-    scope: "Public HTML prose and native PDF text on this exact hostname.",
+    scope: "Useful public article-style HTML prose on this exact hostname.",
     adapter: {
       kind: "auto",
       allowedTypes: [],
@@ -134,7 +134,6 @@ export function createGenericScraper(value: string): HostScraper {
       exactHostInventory: true,
       requiredQueries: requiredDocumentQueries(hostname),
     },
-    documentFormats: markdownSources(hostname).length ? ["pdf", "markdown"] : ["pdf"],
     excludeUrl: (url) => excludeUrl(url, hostname),
     vetHomepage(snapshot) {
       try {

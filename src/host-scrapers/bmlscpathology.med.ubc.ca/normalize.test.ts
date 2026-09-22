@@ -53,9 +53,9 @@ function mutate(name: string, change: ($: CheerioAPI) => void) {
 }
 
 describe("BMLSc semantic widget normalization", () => {
-  it("keeps the one normalizer on both host extraction paths", () => {
+  it("keeps the one normalizer on the HTML extraction path without API-body fallback", () => {
     expect(bmlscScraper.normalizeArticle).toBe(normalizeArticle);
-    expect(bmlscScraper.adapter).toMatchObject({ apiContentFallback: true });
+    expect(bmlscScraper.adapter).not.toHaveProperty("apiContentFallback");
     const html = `<div id="content"><div class="hentry"><div class="entry-content">${fixture("curriculum-grid")}</div></div></div>`;
     const result = bmlscScraper.extract({
       requested_url: `${HOME}sample/`,

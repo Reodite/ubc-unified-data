@@ -1,7 +1,7 @@
 import { load, type CheerioAPI } from "cheerio";
 import { discoverPublicViews } from "../../host-crawl/adapters/html-discovery.ts";
 import type { HostScraper, PublicGetView, Snapshot } from "../../host-crawl/contracts.ts";
-import { hostUrl, pageExclusion, UNSUPPORTED_DOCUMENT } from "../../host-crawl/urls.ts";
+import { hostUrl, pageExclusion } from "../../host-crawl/urls.ts";
 import { extractArticle } from "../../prose/html.ts";
 import { toSafeMarkdown } from "../../prose/markdown.ts";
 import { normalizeCoopStructure } from "./normalize.ts";
@@ -30,8 +30,7 @@ function selectedFaq(url: URL): boolean {
 
 function excludeUrl(value: string): string | null {
   const excluded = pageExclusion(value, HOST);
-  if (excluded && excluded !== UNSUPPORTED_DOCUMENT && excluded !== "Unsupported query or form selection")
-    return excluded;
+  if (excluded && excluded !== "Unsupported query or form selection") return excluded;
   const url = new URL(hostUrl(value, HOST));
   const pathname = decodeURIComponent(url.pathname);
   if (
@@ -41,14 +40,8 @@ function excludeUrl(value: string): string | null {
     /^\/sites\/[^/]+\/(?:files\/(?:css|js|styles)|private)(?:\/|$)/i.test(pathname)
   )
     return "Administration, form action or embedded resource";
-  if (url.search && !selectedFaq(url))
-    return /\.pdf$/i.test(pathname) ? UNSUPPORTED_DOCUMENT : "Unsupported query or form selection";
+  if (url.search && !selectedFaq(url)) return "Unsupported query or form selection";
   if (selectedFaq(url)) return null;
-  if (excluded === UNSUPPORTED_DOCUMENT && /\.pdf$/i.test(pathname)) {
-    // Recheck the route without its PDF suffix so document support cannot bypass an administrative exclusion.
-    url.pathname = pathname.slice(0, -4);
-    return pageExclusion(url.href, HOST);
-  }
   return excluded;
 }
 
@@ -162,7 +155,6 @@ export const coopScraper: HostScraper = {
       },
     ],
   },
-  documentFormats: ["pdf"],
   excludeUrl,
   vetHomepage(snapshot) {
     try {

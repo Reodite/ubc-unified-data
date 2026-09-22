@@ -82,7 +82,7 @@ const base = defineWordpressHost({
 
 export const bmlscScraper: HostScraper = {
   ...base,
-  adapter: { ...base.adapter, apiContentFallback: true },
+  adapter: base.adapter,
   normalizeArticle,
   extract(snapshot) {
     const result = base.extract(snapshot);

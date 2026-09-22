@@ -126,7 +126,7 @@ describe("generic exact-host discovery", () => {
     }
     for (const path of ["guide.pdf", "booking/search/", "?login", "?filter=all"])
       expect(nonDocumentInventoryUrl(home + path, host)).toBe(false);
-    expect(generic.excludeUrl!(`${home}wp-content/uploads/guide.pdf.pdf`)).toBeNull();
+    expect(generic.excludeUrl!(`${home}wp-content/uploads/guide.pdf.pdf`)).not.toBeNull();
     expect(generic.excludeUrl!(`${home}private/guide.pdf.pdf`)).not.toBeNull();
     expect(generic.excludeUrl!(`${home}guide.pdf.pdf?secret=1`)).not.toBeNull();
   });

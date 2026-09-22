@@ -138,17 +138,25 @@ describe("generic screensaver inventory", () => {
     expect(f.archive.read).not.toHaveBeenCalledWith(new URL(encoded, home).href);
   });
 
-  it.each([
-    "/screensaver/",
-    "/files/UBCFOM.src",
-    "/files/UBCFOM.scr-name/",
-    "/files/UBCFOM.scr.pdf",
-    "/files/guide.pdf",
-  ])("still requires an available text or PDF observation: %s", async (path) => {
-    const f = inventory([path]);
-    await expect(collectRecordedHost(scraper, f.archive, producer)).rejects.toThrow("Required page observations");
-    expect(f.archive.read).toHaveBeenCalledWith(new URL(path, home).href);
-  });
+  it.each(["/screensaver/", "/files/UBCFOM.src", "/files/UBCFOM.scr-name/"])(
+    "still requires an available article-looking observation: %s",
+    async (path) => {
+      const f = inventory([path]);
+      await expect(collectRecordedHost(scraper, f.archive, producer)).rejects.toThrow("Required page observations");
+      expect(f.archive.read).toHaveBeenCalledWith(new URL(path, home).href);
+    },
+  );
+
+  it.each(["/files/UBCFOM.scr.pdf", "/files/guide.pdf"])(
+    "excludes an advertised PDF without reading or blocking the HTML inventory: %s",
+    async (path) => {
+      const f = inventory([path]);
+      const result = await collectRecordedHost(scraper, f.archive, producer);
+      expect(result.complete).toBe(true);
+      expect(result.documents).toHaveLength(1);
+      expect(f.archive.read).not.toHaveBeenCalledWith(new URL(path, home).href);
+    },
+  );
 });
 
 describe("generic host throughput adapter", () => {
@@ -213,7 +221,7 @@ describe("generic host throughput adapter", () => {
     expect(fallback.kind === "document" && fallback.input.title).toBe("Source title");
   });
 
-  it("vets only public nonempty homepage HTML and preserves private, query and PDF boundaries", () => {
+  it("vets only public nonempty homepage HTML and excludes private queries and downloads", () => {
     const valid = observation("/", "<p>Public homepage.</p>").snapshot;
     expect(scraper.vetHomepage(valid).accepted).toBe(true);
     for (const change of [
@@ -223,8 +231,8 @@ describe("generic host throughput adapter", () => {
       { headers: { "content-type": "application/json" } },
     ])
       expect(scraper.vetHomepage({ ...valid, ...change }).accepted).toBe(false);
-    expect(scraper.documentFormats).toEqual(["pdf"]);
-    expect(scraper.excludeUrl!(`${home}wp-content/uploads/guide.pdf`)).toBeNull();
+    expect(scraper.documentFormats).toBeUndefined();
+    expect(scraper.excludeUrl!(`${home}wp-content/uploads/guide.pdf`)).not.toBeNull();
     expect(scraper.excludeUrl!(`${home}?page_id=12`)).toBeNull();
     for (const path of [
       "admin/guide.pdf",
@@ -242,11 +250,11 @@ describe("generic host throughput adapter", () => {
     ["macisaacnursing.ubc.ca", "/node/2421.md"],
     ["mining.ubc.ca", "/node/1.md"],
     ["scarp.ubc.ca", "/node/1.md"],
-  ])("enables Markdown separately from ordinary URL admission for %s", (hostname, target) => {
+  ])("keeps former standalone Markdown sources outside active collection for %s", (hostname, target) => {
     const reviewed = createGenericScraper(hostname);
-    expect(reviewed.documentFormats).toEqual(["pdf", "markdown"]);
+    expect(reviewed.documentFormats).toBeUndefined();
     expect(reviewed.excludeUrl!(`https://${hostname}${target}`)).not.toBeNull();
-    expect(createGenericScraper(`other.${hostname}`).documentFormats).toEqual(["pdf"]);
+    expect(createGenericScraper(`other.${hostname}`).documentFormats).toBeUndefined();
   });
 
   it("guards one exact declared Markdown target without admitting nearby paths", () => {

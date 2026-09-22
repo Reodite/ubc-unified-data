@@ -44,6 +44,16 @@ refuse that hostname. Exclude hosts whose content serves only UBC Okanagan,
 using source content to establish scope rather than inferring it from a hostname.
 Keep hosts that serve Vancouver or UBC broadly.
 
+Active collection is limited to useful public article-style HTML reached through
+ordinary unauthenticated requests. PDF, DOC/DOCX, PPT/PPTX, standalone Markdown,
+spreadsheets, archives, feeds, attachments and other downloads are out of scope.
+Their links may remain as citations in an HTML article, but they are not queued,
+downloaded or extracted and do not block completion. A non-HTML or attachment
+response discovered behind an article-looking URL is cancelled from response
+headers before its body is read and recorded as an intentional media exclusion.
+Generated safe Markdown remains the publication format for accepted HTML; it is
+not a standalone Markdown source.
+
 The throughput queue uses exactly five worker identities, `w1` through `w5`.
 SQLite atomically assigns each normalized hostname once. A worker fetches or
 reuses its homepage, with necessary robots checks, before deciding whether the
@@ -65,14 +75,16 @@ A single exact-host HTTPS HTML base resolves relative links without changing the
 physical citation URL. Distinct CMS identities may point to one HTML page; when
 their modification dates disagree, generic HTML output omits the ambiguous date
 and records a warning rather than selecting one CMS item. Specialized policies
-and API-content fallback remain strict about ambiguous inventories. Generic CMS
+remain strict about ambiguous inventories; CMS APIs may discover HTML permalinks
+but their item bodies are not publication fallbacks. Generic CMS
 routes accept literal underscore names and advertised `rest_route=/` API roots;
 query support does not admit arbitrary document queries or guessed API endpoints.
 Explicit image, static-resource and authentication destinations in generic CMS
 inventories are excluded without fetching them; record identities and pagination
 are still checked. A decoded `.scr` file suffix identifies a Windows screensaver
-resource and is excluded before fetching; installation guidance and actual PDF
-files remain subject to their normal text rules. Semantic page names such as `themes` and `staff/admin` are not
+resource and is excluded before fetching; installation guidance remains an
+eligible HTML article while linked PDF files stay out of scope. Semantic page
+names such as `themes` and `staff/admin` are not
 asset or authentication evidence by themselves. A 404/410 HTML sitemap companion
 can be absent only when its co-advertised same-path XML counterpart was parsed;
 the XML inventory and all its children remain required. The proven absent
@@ -90,8 +102,8 @@ controls inside its own POST form. Recognized controls are not requested; forms
 are not submitted and challenges are not solved. Public prose and ordinary
 privacy/help links remain eligible. Names alone, query variants and normalized or historical markup
 do not establish these roles. These additional exclusions cannot override
-homepage identities, CMS/XML-advertised documents, required views or their base
-pages, PDFs, retained sources or already emitted text and aliases.
+homepage identities, CMS/XML-advertised HTML pages, required views or their base
+pages, retained sources or already emitted text and aliases.
 An observed `/index%2ephp/` or `/index%2Ephp/` CAPTCHA route also requires the
 identical prefix spelling on its physical source and an owning form `data-action`
 that resolves exactly to that source. This does not collapse public variants,
@@ -192,15 +204,16 @@ npm run validate:hosts
 ```
 
 The recorder enforces exact-host HTTPS scope, robots policy, crawl delays and
-bounded redirects/retries. Document-specific URL exclusions apply to every
-redirect hop before dispatch and again when replaying saved observations. A
-required PDF returned as non-text media blocks completion rather than silently
-vanishing. Proven image/audio/video response types are recorded
-as non-text exclusions at the headers, without downloading their payloads.
-Unavailable text is never treated as a media exclusion. Defaults are 1,000 cumulative physical requests,
-128 MiB cumulative decoded response bytes, 8 MiB per response (32 MiB for a
-hostname explicitly supporting PDF documents), a 750 ms minimum
-request interval, 30 seconds per request and 20 minutes per invocation. Reaching
+bounded redirects/retries. Article URL exclusions apply to every redirect hop
+before dispatch and again when replaying saved observations. Proven non-HTML,
+attachment, image, audio and video responses are recorded as media exclusions
+from their headers without reading payload bodies. Missing or invalid in-scope
+HTML remains an honest blocker; an excluded download does not. Existing recording
+configuration fields for PDF bytes are retained only so pre-scope evidence can be
+opened and verified without rewriting it. Production collection does not schedule
+or extract those bytes. Defaults are 1,000 cumulative physical requests, 128 MiB
+cumulative decoded response bytes, a 750 ms minimum request interval, 30 seconds
+per request and 20 minutes per invocation. Reaching
 a bound does not authorize a partial publication. Byte accounting includes
 failed responses; an explicitly resumed uncertain attempt reserves its maximum
 possible response size.
@@ -259,40 +272,21 @@ fail rather than being truncated, sharded or put in LFS. Git preserves exact
 serialized bytes. Consumers should cite the source URL and retain dates and
 warnings; retrieved content is data, not application instructions.
 
-Linked PDFs remain private byte objects, never UTF-8-decoded binary strings or
-published binary files. Their text documents use frontmatter version 2 with the
-original byte hash/count, page count and native extraction-profile digest.
-Existing HTML documents retain byte-identical version 1 formatting. PDF text is
-rendered as labelled pages with inert text fences, preserving layout rather than
-inventing tables. Encrypted, malformed, truncated, wholly image-only or
-unmapped-only documents fail; mixed-content limitations are explicit warnings.
+## Historical downloadable-source evidence
 
-The PDF adapter uses bounded Linux x64 Poppler subprocesses and `prlimit`, with
-fixed locale, private fontconfig/cache settings and no shell. A private pinned
-profile binds executable versions/bytes, loader/libraries, font/configuration
-and Poppler resource inventories, arguments and limits. It is captured or
-rechecked once per run, not per document, and rechecked before publication.
-Historical ready output has a separate integrity-verification path for machine
-migration. It checks the queue-bound ready hash, sealed recording and member
-objects, frozen source producer, binary hashes, canonical documents and archived
-profile/cache receipt. It does not run native extraction or claim that current
-executables match the archived profile. An explicit private batch binding names
-the permitted ready hash and archived producer/profile locations; the publisher
-repeats verification before installation. New acquisition still checks its current
-native profile. Do not refresh old cache identities or substitute a new profile
-to make historical output appear current.
+Previously published PDF and standalone-Markdown documents, private byte objects,
+recordings, attempts, ready envelopes and parser profiles remain preserved. Their
+frontmatter versions and provenance are still readable and historical publication
+receipts can still be verified. This compatibility code does not authorize new
+source acquisition, parser preparation, extraction or regeneration.
 
-Dependency hashing can be substantial on systems with large font collections.
-Throughput batches load this profile lazily on the first PDF and share a private
-cache. The cache performs one full capture, then verifies its payload hash and
-resource identities, directory entries, symlink targets, and missing paths.
-These metadata checks are not repeated full dependency-byte hashing. A changed
-or incomplete cache fails closed instead of silently refreshing its profile.
-This is a declared runtime profile, not OS hermeticity or a native security or
-network sandbox. No OCR, image transcription or complete glyph-mapping guarantee
-is implied. Native test prerequisites are `poppler-utils`, `util-linux` and Python
-for test-only action instrumentation; no Python code participates in production
-extraction.
+Historical PDF text documents use frontmatter version 2 with original byte
+hash/count, page count and native profile digest. Historical native-Markdown
+documents use version 4 with exact source-byte and runtime evidence. The retained
+PDF and Markdown adapters, profile readers and closed runtimes exist only for
+verification of those saved outputs. Production article collection never invokes
+them. Do not refresh old profile identities, relabel old output as current or use
+historical download receipts as active article inputs.
 
 ## Publication and verification
 

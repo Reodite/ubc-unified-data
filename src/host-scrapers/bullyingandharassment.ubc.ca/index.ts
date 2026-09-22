@@ -201,5 +201,5 @@ const base = defineWordpressHost({
 
 export const bullyingAndHarassmentScraper: HostScraper = {
   ...base,
-  adapter: { ...base.adapter, apiContentFallback: true },
+  adapter: base.adapter,
 };

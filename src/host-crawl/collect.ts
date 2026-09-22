@@ -383,7 +383,7 @@ export async function collectRecordedHost(
     const exclusion = scraper.excludeUrl ? scraper.excludeUrl(url) : pageExclusion(url, hostname);
     if (advertisedPages.has(url) && exclusion === "Ambiguous repeated path separator")
       throw new Error("Publisher inventory advertises an ambiguous path");
-    if (exclusion === UNSUPPORTED_DOCUMENT) throw new Error(`${exclusion}: ${url}`);
+    if (exclusion === UNSUPPORTED_DOCUMENT) return;
     const parsed = new URL(url);
     if (
       scraper.adapter.kind === "html" &&
@@ -526,8 +526,8 @@ export async function collectRecordedHost(
       if (requiredQueries.has(requested)) throw error;
       if (exactHost && archive.observedScopeExclusion?.(requested)) continue;
       if (error instanceof NonTextMediaError) {
-        if (isPdfUrl(requested) || requiredViews.has(requested))
-          throw new Error(`Required document returned non-text media: ${requested}`, { cause: error });
+        if (requiredViews.has(requested))
+          throw new Error(`Required HTML view returned non-text media: ${requested}`, { cause: error });
         continue;
       }
       if (
@@ -555,12 +555,12 @@ export async function collectRecordedHost(
     assertPublicViewIdentity(scraper, requested, observation.snapshot);
     assertQueryObservation(requested, observation);
     if (observation.snapshot.binary) {
-      if (
-        observation.snapshot.status !== 200 ||
-        !scraper.documentFormats?.includes("pdf") ||
-        !formats.pdf ||
-        !archive.readBytes
-      )
+      if (!scraper.documentFormats?.includes("pdf")) {
+        if (requiredViews.has(requested))
+          throw new Error(`Required HTML view returned a recorded binary: ${requested}`);
+        continue;
+      }
+      if (observation.snapshot.status !== 200 || !formats.pdf || !archive.readBytes)
         throw new Error(`Required PDF extraction is unavailable: ${requested}`);
       const sourceUrl = hostUrl(observation.snapshot.url, hostname);
       if (retained.has(sourceUrl)) throw new Error("Retained PDF needs an explicit extraction comparison policy");

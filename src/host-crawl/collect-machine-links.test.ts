@@ -558,7 +558,7 @@ describe("machine-link protected document boundaries", () => {
   );
 
   it.each(["/guide.pdf", "/image-captcha-refresh/contact_form.pdf"])(
-    "does not hide an actual PDF behind machine-like markup: %s",
+    "excludes an actual PDF regardless of machine-like markup: %s",
     async (path) => {
       const f = fixture(html(`${anchor(path)}${captcha("contact_form.pdf", path)}`, feed(path)));
       const bytes = Buffer.from("%PDF-synthetic recorded fixture");
@@ -573,8 +573,10 @@ describe("machine-link protected document boundaries", () => {
         pageCount: 1,
       }));
       const result = await f.collect(f.scraper, { pdf: { profile_sha256: sha256("synthetic PDF profile"), extract } });
-      expect(requireDocument(result, path).extraction?.format).toBe("pdf");
-      expect(extract).toHaveBeenCalledWith(bytes, new URL(path, home).href);
+      expect(result.complete).toBe(true);
+      expect(result.documents.some((document) => document.source_url === new URL(path, home).href)).toBe(false);
+      expect(f.archive.readDocument).not.toHaveBeenCalledWith(new URL(path, home).href);
+      expect(extract).not.toHaveBeenCalled();
     },
   );
 

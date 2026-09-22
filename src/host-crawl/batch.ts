@@ -4,7 +4,6 @@ import { join, resolve } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { load } from "cheerio";
 import { ROOT } from "../base.ts";
-import { extractPdf } from "./adapters/pdf.ts";
 import { DOCUMENT_CATEGORIES } from "./categories.ts";
 import {
   assertAdmittedHostname,
@@ -17,7 +16,7 @@ import {
   type HostRoutingPolicy,
 } from "./category-routing.ts";
 import { assertSingleHostChange, type ChangedFile } from "./change-validation.ts";
-import { collectRecordedHost, type CollectionFormats } from "./collect.ts";
+import { collectRecordedHost } from "./collect.ts";
 import type { CompletedHost, HostArchive, ProducerContext } from "./contracts.ts";
 import { digest, documentFilename, exactObject, sha256 } from "./document-format.ts";
 import { cheapGuardCompletedHost, createGenericScraper } from "./generic.ts";
@@ -26,7 +25,6 @@ import { assertCollectedInput, decodeFrozenSeed, deriveCollectionInputDigest } f
 import { withMarkdownCollectionRuntime } from "./markdown-collection-runtime.ts";
 import { assertExternalPath, DEFAULT_EXTERNAL_ROOT, DEFAULT_LEGACY_STATE_FILE } from "./paths.ts";
 import { loadCachedPdfProfile } from "./pdf-profile-cache.ts";
-import type { PdfProfile } from "./pdf-profile.ts";
 import { assertSameProducer, captureProducer } from "./provenance.ts";
 import { hostDocumentRoots, readRegularFile } from "./public-validation.ts";
 import { publishCompletedHost } from "./publication.ts";
@@ -199,9 +197,8 @@ export class HostBatch {
       seedSha256: sha256(seed.bytes),
       acquire: acquire && !sealed,
       recoverTransientFailures: this.config.recoverTransientFailures === true,
-      documentFormats: scraper.documentFormats?.includes("pdf") ? ["pdf"] : undefined,
       documentUrlAllowed: (url) => scraper.excludeUrl!(url) === null,
-      maxResponseBytes: 32 * 1024 * 1024,
+      htmlDocumentsOnly: true,
     });
     try {
       if (acquire && !sealed && this.config.recoverTransientFailures) {
@@ -299,51 +296,27 @@ export class HostBatch {
         read: (url) => recording.read(url),
         readDocument: (url) => recording.readDocument(url),
         readSnapshot: (hash) => recording.readSnapshot(hash),
-        readBytes: (hash) => recording.readBytes(hash),
-        readTextBytes: (hash) => recording.readTextBytes(hash),
         observedDestination: (url) => recording.observedDestination(url),
         observedScopeExclusion: (url) => recording.observedScopeExclusion(url),
-        apiFallbackEligible: (url) => recording.apiFallbackEligible(url),
         assertUnchanged: () => recording.assertUnchanged(),
         close() {},
       };
-      let profile: PdfProfile | undefined;
-      const formats: CollectionFormats = {
-        pdf: {
-          get profile_sha256() {
-            if (!profile) throw new Error("PDF profile was not initialized by extraction");
-            return profile.sha256;
-          },
-          extract: async (bytes, sourceUrl) => {
-            profile ??= await loadCachedPdfProfile(join(this.directory, "pdf-profile-cache"));
-            return extractPdf({ bytes, sourceUrl, workspace: join(directory, "pdf-runtime"), profile });
-          },
-        },
-      };
-      const collected = await withMarkdownCollectionRuntime(
-        scraper.documentFormats?.includes("markdown") === true,
-        (markdown) => collectRecordedHost(scraper, archive, this.config.producer, { ...formats, markdown }),
-      );
-      const completed = collected.value;
-      const markdownProfileSha256 = collected.profile_sha256;
+      const completed = await collectRecordedHost(scraper, archive, this.config.producer);
       const seal = await recording.seal();
       if (!(await readRegularFile(seedPath, 16 * 1024 * 1024)).equals(seed.bytes))
         throw new Error("Saved frontier changed");
       const input = deriveCollectionInputDigest({
         recording: seal,
         seed: sha256(seed.bytes),
-        ...(profile ? { pdf_profile: profile.sha256 } : {}),
-        ...(markdownProfileSha256 ? { markdown_profile: markdownProfileSha256 } : {}),
       });
       for (const document of completed.documents) document.input_sha256 = input;
       const guarded = cheapGuardCompletedHost(completed);
-      const ready: ReadyHostV2 = {
-        version: 2,
+      const ready: ReadyHostV1 = {
+        version: 1,
         hostname,
         recording_seal: seal,
         seed_sha256: sha256(seed.bytes),
-        pdf_profile_sha256: profile?.sha256 ?? null,
-        markdown_profile_sha256: markdownProfileSha256,
+        pdf_profile_sha256: null,
         completed: guarded,
       };
       const bytes = Buffer.from(`${JSON.stringify(ready, null, 2)}\n`);

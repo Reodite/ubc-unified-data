@@ -86,7 +86,7 @@ describe("bullyingAndHarassmentScraper homepage evidence", () => {
   it("declares an exact hostname and explicitly opts into shared public API fallback", () => {
     expect(scraper.hostname).toBe("bullyingandharassment.ubc.ca");
     expect(scraper.title).toBe(UNIT);
-    expect(scraper.adapter).toEqual({ kind: "wordpress", allowedTypes: ["page", "post"], apiContentFallback: true });
+    expect(scraper.adapter).toEqual({ kind: "wordpress", allowedTypes: ["page", "post"] });
     expect(scraper.normalizeArticle).toBeUndefined();
     expect(scraper.vetHomepage(snapshot("homepage")).accepted).toBe(true);
   });

@@ -79,11 +79,7 @@ describe("bmlscScraper homepage evidence", () => {
   it("declares the exact hostname and shared WordPress adapter", () => {
     expect(bmlscScraper.hostname).toBe("bmlscpathology.med.ubc.ca");
     expect(bmlscScraper.title).toBe(`UBC ${PROGRAM}`);
-    expect(bmlscScraper.adapter).toEqual({
-      kind: "wordpress",
-      allowedTypes: ["page", "post"],
-      apiContentFallback: true,
-    });
+    expect(bmlscScraper.adapter).toEqual({ kind: "wordpress", allowedTypes: ["page", "post"] });
   });
 
   it("accepts institutional identity with substantive non-paragraph FAQ answers", () => {

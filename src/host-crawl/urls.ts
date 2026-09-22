@@ -38,7 +38,7 @@ export function inventoryUrl(value: string, hostname: string, base = `https://${
   return hostUrl(url.href, hostname);
 }
 
-export const UNSUPPORTED_DOCUMENT = "Document format requires a reviewed text-extraction adapter";
+export const UNSUPPORTED_DOCUMENT = "Download is outside article-only collection scope";
 
 /** Recognize explicit resources and authentication routes, not ambiguous semantic page names. */
 export function nonDocumentInventoryUrl(value: string, hostname: string): boolean {
@@ -95,7 +95,7 @@ function routeExclusion(value: string, hostname: string, checkScreensaverFile: b
   if (/%|\\/.test(pathname)) return "Ambiguous encoded route";
   if (/\/{2,}/.test(pathname)) return "Ambiguous repeated path separator";
   if (
-    /\.(?:pdf|docx?|odt|rtf|xlsx?|pptx?|csv|md)(?:$|\/)/i.test(pathname) ||
+    /\.(?:pdf|docx?|odt|rtf|xlsx?|pptx?|csv|md|markdown|epub|mobi|azw3?)(?:$|\/)/i.test(pathname) ||
     (/\.txt(?:$|\/)/i.test(pathname) && pathname !== "/robots.txt")
   )
     return UNSUPPORTED_DOCUMENT;
@@ -104,7 +104,7 @@ function routeExclusion(value: string, hostname: string, checkScreensaverFile: b
   if (/\/(?:wp-content|wp-includes|feed)(?:\/|$)/i.test(pathname)) return "Theme, script or feed resource";
   if (
     (checkScreensaverFile && pathname.toLowerCase().endsWith(".scr")) ||
-    /\.(?:css|[cm]?js|map|wasm|zip|gz|png|jpe?g|gif|webp|avif|tiff?|bmp|svg|ico|mp[34]|mov|avi|webm|wav|ogg|aac|flac|ics|xml|json|txt|woff2?|ttf|otf|eot)(?:$|\/)/i.test(
+    /\.(?:css|[cm]?js|map|wasm|zip|gz|tgz|tar|bz2|xz|7z|rar|png|jpe?g|gif|webp|avif|tiff?|bmp|svg|ico|mp[34]|mov|avi|webm|wav|ogg|aac|flac|ics|xml|json|txt|woff2?|ttf|otf|eot)(?:$|\/)/i.test(
       pathname,
     )
   )
