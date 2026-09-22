@@ -413,6 +413,27 @@
     "document_count": 63
   },
   {
+    "hostname": "institute.ctlt.ubc.ca",
+    "title": "institute.ctlt.ubc.ca",
+    "homepage_url": "https://institute.ctlt.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:11:25.001Z",
+    "homepage_sha256": "105e498dff0fbe4f5974aec0ce4171a01e7b76790da8fdbaefacec85088a2e97",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/institute.ctlt.ubc.ca",
+        "document_count": 100
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/institute.ctlt.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 101
+  },
+  {
     "hostname": "interdisciplinary.arts.ubc.ca",
     "title": "interdisciplinary.arts.ubc.ca",
     "homepage_url": "https://interdisciplinary.arts.ubc.ca/",
