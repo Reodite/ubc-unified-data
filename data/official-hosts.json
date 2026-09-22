@@ -3444,6 +3444,32 @@
     "document_count": 20
   },
   {
+    "hostname": "wfrt.eoas.ubc.ca",
+    "title": "wfrt.eoas.ubc.ca",
+    "homepage_url": "https://wfrt.eoas.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T15:02:03.747Z",
+    "homepage_sha256": "9c3fa93b0c4994a18d924afa17ad0ec82bda5871534ecceb1ea0a55b48a44989",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/wfrt.eoas.ubc.ca",
+        "document_count": 20
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/wfrt.eoas.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/wfrt.eoas.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 22
+  },
+  {
     "hostname": "wildandimmersive.ubc.ca",
     "title": "wildandimmersive.ubc.ca",
     "homepage_url": "https://wildandimmersive.ubc.ca/",

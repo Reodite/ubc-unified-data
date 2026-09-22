@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "hostname": "wfrt.eoas.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w1 first homepage review",
+    "rationale": "The Weather Forecast Research Team on the UBC EOAS hostname presents an institutional research team, UBC rooftop observations, research publications and useful public descriptions of forecasting applications. It is neither a personal site nor an Okanagan-exclusive service. Homepage sections support research as the main purpose, with testimonials as stories and contact information as support. The Special Projects and Opportunities label describes forecasting applications rather than student recruitment or funding.",
+    "evidence": [
+      "https://wfrt.eoas.ubc.ca/ | 9c3fa93b0c4994a18d924afa17ad0ec82bda5871534ecceb1ea0a55b48a44989 | Weather Forecast Research Team; UBC Rooftop Station: Observations and forecast; Live Webcams: UBC rooftop; Our Team: Current Members, Alumni, Past Members.",
+      "https://wfrt.eoas.ubc.ca/ | 9c3fa93b0c4994a18d924afa17ad0ec82bda5871534ecceb1ea0a55b48a44989 | We tailor our weather forecast products to suit your needs; Forecasting for Clean Energy, Transportation, Weather Hazards; Instrumentation & Field Work; Research Projects; Publications: Journal articles, theses, presentations, and books.",
+      "https://wfrt.eoas.ubc.ca/ | 9c3fa93b0c4994a18d924afa17ad0ec82bda5871534ecceb1ea0a55b48a44989 | Homepage links: /research/projects, /research/instrumentation, /research/publications/refereed-articles, /nwp/basics, /portfolio/products, /testimonials, /contact."
+    ]
+  },
+  "rules": [
+    {
+      "id": "testimonials",
+      "category": "stories",
+      "rationale": "The homepage identifies testimonials as accounts of the team's work and collaborations.",
+      "path_pattern": "^/testimonials(?:/|$)"
+    },
+    {
+      "id": "contact",
+      "category": "support",
+      "rationale": "The dedicated homepage Contact section provides access to the team and its services.",
+      "path_pattern": "^/contact(?:/|$)"
+    },
+    {
+      "id": "research-and-forecasting",
+      "category": "research",
+      "rationale": "Research, numerical weather models and portfolio sections describe scientific work, instrumentation, publications and applied forecasts.",
+      "path_pattern": "^/(?:research|nwp|portfolio)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "research",
+    "rationale": "The UBC Weather Forecast Research Team presents its scientific team, forecasting research and applications."
+  }
+}
