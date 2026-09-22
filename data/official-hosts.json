@@ -1393,6 +1393,37 @@
     "document_count": 45
   },
   {
+    "hostname": "met.ubc.ca",
+    "title": "met.ubc.ca",
+    "homepage_url": "https://met.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:54:26.655Z",
+    "homepage_sha256": "74b79f765c980ca7af2aa042b8975849a5592443a442de1126ac44f52d07497c",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/met.ubc.ca",
+        "document_count": 161
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/met.ubc.ca",
+        "document_count": 6
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/met.ubc.ca",
+        "document_count": 37
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/met.ubc.ca",
+        "document_count": 7
+      }
+    ],
+    "document_count": 211
+  },
+  {
     "hostname": "mfre.landfood.ubc.ca",
     "title": "mfre.landfood.ubc.ca",
     "homepage_url": "https://mfre.landfood.ubc.ca/",
