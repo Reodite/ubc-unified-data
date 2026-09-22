@@ -4378,6 +4378,27 @@
     "document_count": 35
   },
   {
+    "hostname": "www.facultyassociation.ubc.ca",
+    "title": "www.facultyassociation.ubc.ca",
+    "homepage_url": "https://www.facultyassociation.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:08:34.284Z",
+    "homepage_sha256": "cfe39fdd3603025bbea503ad5c4b44abf43880ff430d989bb9e02c13eb792449",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/www.facultyassociation.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/www.facultyassociation.ubc.ca",
+        "document_count": 747
+      }
+    ],
+    "document_count": 748
+  },
+  {
     "hostname": "www.igen.ubc.ca",
     "title": "www.igen.ubc.ca",
     "homepage_url": "https://www.igen.ubc.ca/",
