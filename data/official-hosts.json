@@ -471,6 +471,32 @@
     "document_count": 7
   },
   {
+    "hostname": "ipo.ubc.ca",
+    "title": "ipo.ubc.ca",
+    "homepage_url": "https://ipo.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:13:34.539Z",
+    "homepage_sha256": "761c2db0777235afecf4cd3c496ae27d1cbb975e392b35e5504271ddc6f2ea21",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/ipo.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/ipo.ubc.ca",
+        "document_count": 33
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/ipo.ubc.ca",
+        "document_count": 3
+      }
+    ],
+    "document_count": 41
+  },
+  {
     "hostname": "ir.arts.ubc.ca",
     "title": "ir.arts.ubc.ca",
     "homepage_url": "https://ir.arts.ubc.ca/",
