@@ -288,7 +288,9 @@ describe("toSafeMarkdown tables", () => {
       expect($("td code").text()).toBe("x\\y");
       expect($("br, img")).toHaveLength(0);
       expect(result.links).toEqual([{ text: "A | B", url: "https://students.example.edu/guide?q=a%7Cb" }]);
-      expect(result.warnings).toEqual([]);
+      expect(result.warnings).toEqual(
+        /[\f\v\u0085]/.test(breaks) ? ["Replaced HTML control characters with spaces."] : [],
+      );
     },
   );
 
@@ -716,6 +718,24 @@ describe("toSafeMarkdown XSS resistance", () => {
     expect(result.warnings.join(" ")).toMatch(/unsafe or unsupported link/);
   });
 
+  it("replaces retained HTML C0 and C1 controls without relaxing replacement-character checks", () => {
+    const result = toSafeMarkdown(
+      '<p>A small sense of self\u0002reliance and left\u0080\u009cright.</p><img src="/example.png" alt="that\u0003will help">',
+      SOURCE,
+    );
+    const $ = rendered(result);
+    expect($.text()).toContain("self reliance and left right");
+    expect($.text()).toContain("that will help");
+    expect(
+      [...result.markdown].some((character) => {
+        const code = character.codePointAt(0)!;
+        return code <= 8 || (code >= 11 && code <= 12) || (code >= 14 && code <= 31) || (code >= 127 && code <= 159);
+      }),
+    ).toBe(false);
+    expect(result.warnings).toContain("Replaced HTML control characters with spaces.");
+    expect(toSafeMarkdown("<p>Irreversible \uFFFD damage</p>", SOURCE).markdown).toContain("\uFFFD");
+  });
+
   it("removes executable markup, style, and forms before Markdown conversion", () => {
     const result = toSafeMarkdown(
       `<h2 onclick="bad()">Safe heading</h2><script>LEAK_SCRIPT</script><style>LEAK_STYLE</style>
@@ -783,12 +803,27 @@ describe("toSafeMarkdown XSS resistance", () => {
     expect($.text()).toContain("<img src=x onerror=bad>");
   });
 
-  it.each(["file:///tmp/page", "javascript:bad", "https://user:password@example.edu/page", "/relative-source"])(
-    "rejects an unsafe or nonabsolute source URL %s",
-    (source) => {
-      expect(() => toSafeMarkdown("<p>Text</p>", source)).toThrow(/source URL/);
-    },
-  );
+  it("accepts an exact percent-encoded word joiner only in an absolute source pathname", () => {
+    const source = "https://pediatrics.med.ubc.ca/2024/06/04/welcome-dr-susan-samuel%e2%81%a0/";
+    const result = toSafeMarkdown('<p>Read <a href="../help/">the related guidance</a>.</p>', source);
+    expect(result.links).toEqual([
+      { text: "the related guidance", url: "https://pediatrics.med.ubc.ca/2024/06/04/help/" },
+    ]);
+  });
+
+  it.each([
+    "file:///tmp/page",
+    "javascript:bad",
+    "https://user:password@example.edu/page",
+    "/relative-source",
+    "https://example.edu/path%E2%80%AE/",
+    "https://example.edu/path%00/",
+    "https://example.edu/path%5Cescape/",
+    "https://example.edu/path%25e2%2581%25a0/",
+    "https://example.edu/?value=%E2%81%A0",
+  ])("rejects an unsafe or nonabsolute source URL %s", (source) => {
+    expect(() => toSafeMarkdown("<p>Text</p>", source)).toThrow(/source URL/);
+  });
 
   it("returns a deterministic empty result for empty input", () => {
     expect(toSafeMarkdown("", SOURCE)).toEqual({ markdown: "", links: [], warnings: [] });

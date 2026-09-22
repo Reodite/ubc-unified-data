@@ -173,6 +173,19 @@ describe("complete HTML and linked-document collection", () => {
       expect(f.formats.pdf!.extract).not.toHaveBeenCalled();
     },
   );
+  it("serializes retained HTML controls only after deterministic compatibility normalization", async () => {
+    const f = fixture();
+    f.home.snapshot.body = f.home.snapshot.body.replace(
+      "Official public guidance.",
+      "Official\u0002 public\u0080\u009c guidance.",
+    );
+    const result = await collectRecordedHost(f.scraper, f.archive, producer, f.formats);
+    const homepage = result.documents.find((document) => document.source_url === `${origin}/`)!;
+    expect(homepage.content_markdown).toContain("Official public guidance");
+    expect(homepage.warnings).toContain("Replaced HTML control characters with spaces.");
+    expect(() => formatDocument(homepage)).not.toThrow();
+  });
+
   it("follows links exposed by a declared HTML normalization", async () => {
     const f = fixture();
     f.put("/expanded", "<p>Guidance linked from an expanded source tooltip.</p>");

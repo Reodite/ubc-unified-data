@@ -398,7 +398,8 @@ describe("document Markdown wire format", () => {
       expect(() => formatDocument({ ...doc, producer: { ...doc.producer, runtime } })).toThrow(
         /platform or architecture/,
       );
-    expect(() => formatDocument(fixtureDocument("example.ubc.ca", "/page", "Control \x80"))).toThrow(/UTF-8/);
+    for (const body of ["Control \x80", "Replacement \uFFFD"])
+      expect(() => formatDocument(fixtureDocument("example.ubc.ca", "/page", body))).toThrow(/UTF-8/);
   });
 
   it("rejects malformed producer metadata, unknown and duplicate JSON keys", () => {

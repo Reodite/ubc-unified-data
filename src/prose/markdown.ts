@@ -17,12 +17,30 @@ const LINK_SCHEMES = new Set([...HTTP_SCHEMES, "mailto:", "tel:"]);
 const REMOVED_CONTENT = ["script", "style", "form", "textarea", "select", "option", "xmp", "head"];
 const MEDIA_TAGS = new Set(["iframe", "embed", "object", "video", "audio", "canvas", "svg"]);
 const UNSAFE_URL_CHARACTERS = /[\\\p{Cc}\p{Cf}\uFFFD]/u;
+const ENCODED_WORD_JOINER = /%e2%81%a0/gi;
 const MAILBOX = /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$/i;
 const HTML_ENTITIES: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;" };
 const markdownParser = new MarkdownIt({ html: true, linkify: false });
 
 // Expose unsafe destinations to validation instead of letting the parser hide them as text.
 markdownParser.validateLink = () => true;
+
+function normalizeHtmlControls(value: string): { text: string; replaced: boolean } {
+  let text = "";
+  let replaced = false;
+  let previousWasControl = false;
+  for (const character of value) {
+    const code = character.codePointAt(0)!;
+    const control =
+      code <= 8 || (code >= 11 && code <= 12) || (code >= 14 && code <= 31) || (code >= 127 && code <= 159);
+    if (control) {
+      if (!previousWasControl) text += " ";
+      replaced = true;
+    } else text += character;
+    previousWasControl = control;
+  }
+  return { text, replaced };
+}
 
 function inspectedUrl(value: string): string | undefined {
   let decoded = value;
@@ -42,6 +60,22 @@ function inspectedUrl(value: string): string | undefined {
     decoded = next;
   }
   return undefined;
+}
+
+function safeSourceUrl(value: string): string | undefined {
+  if (UNSAFE_URL_CHARACTERS.test(value)) return undefined;
+  try {
+    const url = new URL(value);
+    if (!HTTP_SCHEMES.has(url.protocol) || url.username || url.password) return undefined;
+    const inspected = new URL(url.href);
+    inspected.pathname = inspected.pathname.replace(ENCODED_WORD_JOINER, "%20");
+    if (inspectedUrl(inspected.href) === undefined) return undefined;
+    const decodedPath = decodeURIComponent(url.pathname).replaceAll("\u2060", "");
+    if (UNSAFE_URL_CHARACTERS.test(decodedPath)) return undefined;
+    return url.href;
+  } catch {
+    return undefined;
+  }
 }
 
 function safeMailboxes(value: string): boolean {
@@ -220,6 +254,11 @@ function sanitizeProse(html: string, sourceUrl: string, warnings: Set<string>): 
     nonTextTags: REMOVED_CONTENT,
     parseStyleAttributes: false,
     enforceHtmlBoundary: false,
+    textFilter(text) {
+      const normalized = normalizeHtmlControls(text);
+      if (normalized.replaced) warnings.add("Replaced HTML control characters with spaces.");
+      return normalized.text;
+    },
     // Named transforms retain replacement text; sanitize-html ignores text on its wildcard transform.
     transformTags: Object.fromEntries(["*", "img", ...MEDIA_TAGS, "source", "track"].map((tag) => [tag, transform])),
     onOpenTag(name, attributes) {
@@ -485,7 +524,7 @@ export function assertSafeMarkdown(markdown: string, sourceUrl?: string): void {
  * Throw for an invalid source URL or unsafe generated Markdown.
  */
 export function toSafeMarkdown(html: string, sourceUrl: string): MarkdownResult {
-  const source = safeUrl(sourceUrl, undefined, HTTP_SCHEMES);
+  const source = safeSourceUrl(sourceUrl);
   if (!source) throw new Error("A credential-free HTTP(S) source URL is required.");
   const warnings = new Set<string>();
   const sanitized = sanitizeProse(html, source, warnings);
