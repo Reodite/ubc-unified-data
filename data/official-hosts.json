@@ -964,6 +964,37 @@
     "document_count": 77
   },
   {
+    "hostname": "ltic.ubc.ca",
+    "title": "ltic.ubc.ca",
+    "homepage_url": "https://ltic.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:39:10.957Z",
+    "homepage_sha256": "6bcddf39affadd5a242853f2fca14466de703dc8f5b32f311161d044b2e2f5bf",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/ltic.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/ltic.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/ltic.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/ltic.ubc.ca",
+        "document_count": 222
+      }
+    ],
+    "document_count": 229
+  },
+  {
     "hostname": "maa.library.ubc.ca",
     "title": "maa.library.ubc.ca",
     "homepage_url": "https://maa.library.ubc.ca/",

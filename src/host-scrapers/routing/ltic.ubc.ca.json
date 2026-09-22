@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "hostname": "ltic.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w3 first homepage review",
+    "rationale": "The UBC Learning Technology Innovation Centre provides public teaching-technology help, learning analytics, AI infrastructure and an incubator for faculty. Its broad UBC teaching support is useful beyond an exclusively Okanagan audience. Explicit announcements, project stories and employment headings override the support purpose.",
+    "evidence": [
+      "https://ltic.ubc.ca/ | 6bcddf39affadd5a242853f2fca14466de703dc8f5b32f311161d044b2e2f5bf | At the Learning Technology Innovation Centre (LTIC) we are dedicated to enabling an innovative, responsive, and elevated learning experience for students, and to serving faculty as a trusted ally and a valued accelerant for pedagogical transformation.",
+      "https://ltic.ubc.ca/ | 6bcddf39affadd5a242853f2fca14466de703dc8f5b32f311161d044b2e2f5bf | Help with Learning Technology; Use Learning Data for Inquiry; Apply AI in your Academic Work; Build and Transform LT",
+      "https://ltic.ubc.ca/ | 6bcddf39affadd5a242853f2fca14466de703dc8f5b32f311161d044b2e2f5bf | The Latest: What is happening in Learning Technology at UBC; Announcing AI Tools and Services for Academic Innovation; UBC Exam Card Scanner: Digitally check-in students during exams",
+      "https://ltic.ubc.ca/ | 6bcddf39affadd5a242853f2fca14466de703dc8f5b32f311161d044b2e2f5bf | Faculty projects we made happen!; LT Incubator Project – CREATE: Generating Interactive Learning; LT Incubator Project – BiocBot: a GenAI Study-Buddy Tool; This is not Utopia: Surviving an Outage; Open positions for students; Open positions for staff"
+    ]
+  },
+  "rules": [
+    {
+      "id": "employment",
+      "category": "opportunities",
+      "rationale": "The homepage explicitly advertises open student and staff positions.",
+      "title_pattern": "^(?:Open positions\\b|Join the LTIC team\\b)"
+    },
+    {
+      "id": "announcements",
+      "category": "news",
+      "rationale": "The homepage latest section announces AI services and the exam card scanner.",
+      "title_pattern": "^(?:Announcing\\b|UBC Exam Card Scanner:)"
+    },
+    {
+      "id": "project-and-experience-stories",
+      "category": "stories",
+      "rationale": "The homepage features narrative project development and a first-person outage reflection.",
+      "title_pattern": "^(?:This is not Utopia:|LT Incubator Project\\b|CREATE: Generating Interactive Learning|BiocBot: a GenAI Study-Buddy Tool)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "support",
+    "rationale": "LTIC provides teaching-technology services, tools, infrastructure and assistance for UBC faculty and learners."
+  }
+}
