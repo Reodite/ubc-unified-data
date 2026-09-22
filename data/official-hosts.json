@@ -1817,6 +1817,22 @@
     "document_count": 6
   },
   {
+    "hostname": "nursing-alumni.sites.olt.ubc.ca",
+    "title": "nursing-alumni.sites.olt.ubc.ca",
+    "homepage_url": "https://nursing-alumni.sites.olt.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:10:14.994Z",
+    "homepage_sha256": "1e0dc5d8a4487051267904d252cc786148d7c8a2182bfa792480424c78e50e32",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "stories",
+        "path": "data/documents/stories/nursing-alumni.sites.olt.ubc.ca",
+        "document_count": 427
+      }
+    ],
+    "document_count": 427
+  },
+  {
     "hostname": "nvd.ubc.ca",
     "title": "nvd.ubc.ca",
     "homepage_url": "https://nvd.ubc.ca/",
