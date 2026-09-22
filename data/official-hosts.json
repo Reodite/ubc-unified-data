@@ -2691,6 +2691,22 @@
     "document_count": 403
   },
   {
+    "hostname": "rel-lex.arts.ubc.ca",
+    "title": "rel-lex.arts.ubc.ca",
+    "homepage_url": "https://rel-lex.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:54:25.235Z",
+    "homepage_sha256": "7f71d2b917e1d7d762893d93c0df59e38fd320e46c5e349af8de13ae12d40895",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/rel-lex.arts.ubc.ca",
+        "document_count": 19
+      }
+    ],
+    "document_count": 19
+  },
+  {
     "hostname": "renew.forestry.ubc.ca",
     "title": "renew.forestry.ubc.ca",
     "homepage_url": "https://renew.forestry.ubc.ca/",
