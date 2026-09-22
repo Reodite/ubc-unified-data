@@ -3007,6 +3007,27 @@
     "document_count": 41
   },
   {
+    "hostname": "seoi.ubc.ca",
+    "title": "seoi.ubc.ca",
+    "homepage_url": "https://seoi.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:10:08.851Z",
+    "homepage_sha256": "6be7e7ce7c95b04a386c4a9556626279a2d68c5dcddd37bbb587ddff6d67b4c3",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/seoi.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/seoi.ubc.ca",
+        "document_count": 34
+      }
+    ],
+    "document_count": 36
+  },
+  {
     "hostname": "socialwork.ok.ubc.ca",
     "title": "socialwork.ok.ubc.ca",
     "homepage_url": "https://socialwork.ok.ubc.ca/",
