@@ -2934,6 +2934,22 @@
     "document_count": 41
   },
   {
+    "hostname": "studentplan.ubc.ca",
+    "title": "studentplan.ubc.ca",
+    "homepage_url": "https://studentplan.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:23:13.941Z",
+    "homepage_sha256": "893e2e31a384ac069cd2f3c608fe294f11826eedd38aa5fc1aeef8f0b4757efb",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/studentplan.ubc.ca",
+        "document_count": 2
+      }
+    ],
+    "document_count": 2
+  },
+  {
     "hostname": "students.canvas.ubc.ca",
     "title": "students.canvas.ubc.ca",
     "homepage_url": "https://students.canvas.ubc.ca/",
