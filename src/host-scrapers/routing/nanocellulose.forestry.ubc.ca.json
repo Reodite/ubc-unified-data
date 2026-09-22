@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hostname": "nanocellulose.forestry.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w3 first homepage review",
+    "rationale": "The official UBC Forestry Sustainable Functional Biomaterials Lab homepage presents useful public research descriptions of biodegradable biofoam, cellulose film, and high-performance cellulose materials. This is institutional lab content, not a personal page, login portal, duplicate homepage, or exclusively Okanagan-serving resource.",
+    "evidence": [
+      "https://nanocellulose.forestry.ubc.ca/ | deb5496d68f4f2ada0185518d16013ceb1f02761a18207be2111487fa462fa92 | Sustainable Functional Biomaterials Lab | UBC Forestry",
+      "https://nanocellulose.forestry.ubc.ca/ | deb5496d68f4f2ada0185518d16013ceb1f02761a18207be2111487fa462fa92 | A new biodegradable packing foam developed at UBC not only potentially addresses the world’s plastic pollution crisis but also serves as an equal and true partnership example of working with First Nations.",
+      "https://nanocellulose.forestry.ubc.ca/ | deb5496d68f4f2ada0185518d16013ceb1f02761a18207be2111487fa462fa92 | UBC researcher Dr. Feng Jiang has developed a cellulose film that looks like plastic and behaves like plastic—but is biodegradable."
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "research",
+    "rationale": "Institutional biomaterials laboratory research and related lab information."
+  }
+}

@@ -1434,6 +1434,22 @@
     "document_count": 18
   },
   {
+    "hostname": "nanocellulose.forestry.ubc.ca",
+    "title": "nanocellulose.forestry.ubc.ca",
+    "homepage_url": "https://nanocellulose.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:02:27.293Z",
+    "homepage_sha256": "deb5496d68f4f2ada0185518d16013ceb1f02761a18207be2111487fa462fa92",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/nanocellulose.forestry.ubc.ca",
+        "document_count": 14
+      }
+    ],
+    "document_count": 14
+  },
+  {
     "hostname": "nanomat.chem.ubc.ca",
     "title": "nanomat.chem.ubc.ca",
     "homepage_url": "https://nanomat.chem.ubc.ca/",
