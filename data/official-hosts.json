@@ -287,6 +287,37 @@
     "document_count": 314
   },
   {
+    "hostname": "gic.geog.ubc.ca",
+    "title": "gic.geog.ubc.ca",
+    "homepage_url": "https://gic.geog.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T14:48:10.108Z",
+    "homepage_sha256": "5099b33db840f7aba8bab3d618170012898130b988211d63b451715ee8d838c4",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/gic.geog.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/gic.geog.ubc.ca",
+        "document_count": 56
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/gic.geog.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/gic.geog.ubc.ca",
+        "document_count": 90
+      }
+    ],
+    "document_count": 149
+  },
+  {
     "hostname": "grad.lsi.ubc.ca",
     "title": "grad.lsi.ubc.ca",
     "homepage_url": "https://grad.lsi.ubc.ca/",
