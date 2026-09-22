@@ -623,6 +623,27 @@
     "document_count": 3
   },
   {
+    "hostname": "it.educ.ubc.ca",
+    "title": "it.educ.ubc.ca",
+    "homepage_url": "https://it.educ.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:17:40.659Z",
+    "homepage_sha256": "38dcebb2a8601bc1b65367047586da00bfd77c729fcecbdd87e93c8bb5a64b00",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/it.educ.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/it.educ.ubc.ca",
+        "document_count": 79
+      }
+    ],
+    "document_count": 80
+  },
+  {
     "hostname": "joshilab.forestry.ubc.ca",
     "title": "joshilab.forestry.ubc.ca",
     "homepage_url": "https://joshilab.forestry.ubc.ca/",
