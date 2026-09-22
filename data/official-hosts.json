@@ -1753,6 +1753,22 @@
     "document_count": 132
   },
   {
+    "hostname": "neurorehab.med.ubc.ca",
+    "title": "neurorehab.med.ubc.ca",
+    "homepage_url": "https://neurorehab.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:04:59.077Z",
+    "homepage_sha256": "d5650f8216298e879fe0f9eacd112536fd18a6b6c51454b87dbc7a9160c083ec",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/neurorehab.med.ubc.ca",
+        "document_count": 91
+      }
+    ],
+    "document_count": 91
+  },
+  {
     "hostname": "neuroscience.ubc.ca",
     "title": "neuroscience.ubc.ca",
     "homepage_url": "https://neuroscience.ubc.ca/",
