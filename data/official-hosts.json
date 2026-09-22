@@ -2409,6 +2409,27 @@
     "document_count": 202
   },
   {
+    "hostname": "postgrad.med.ubc.ca",
+    "title": "postgrad.med.ubc.ca",
+    "homepage_url": "https://postgrad.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:39:16.450Z",
+    "homepage_sha256": "232fa8815b717a0b496f99e609d74e41a4dac8bef8ab585d710e79528f1f7448",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/postgrad.med.ubc.ca",
+        "document_count": 170
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/postgrad.med.ubc.ca",
+        "document_count": 67
+      }
+    ],
+    "document_count": 237
+  },
+  {
     "hostname": "powerhouse.sauder.ubc.ca",
     "title": "powerhouse.sauder.ubc.ca",
     "homepage_url": "https://powerhouse.sauder.ubc.ca/",
