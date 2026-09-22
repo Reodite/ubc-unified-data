@@ -2519,6 +2519,27 @@
     "document_count": 24
   },
   {
+    "hostname": "ps-ementoringbc-2023.sites.olt.ubc.ca",
+    "title": "ps-ementoringbc-2023.sites.olt.ubc.ca",
+    "homepage_url": "https://ps-ementoringbc-2023.sites.olt.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:46:08.893Z",
+    "homepage_sha256": "3a89b22a02fdbe1d239c28d7c16a54f83e1812605f652cd6d38b904cad8b68be",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/ps-ementoringbc-2023.sites.olt.ubc.ca",
+        "document_count": 39
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/ps-ementoringbc-2023.sites.olt.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 40
+  },
+  {
     "hostname": "psctc.educ.ubc.ca",
     "title": "psctc.educ.ubc.ca",
     "homepage_url": "https://psctc.educ.ubc.ca/",

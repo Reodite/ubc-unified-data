@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "hostname": "ps-ementoringbc-2023.sites.olt.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner ca37b94e-5757-4878-811c-907915e18161; primary retained-homepage review under article-only closure",
+    "rationale": "Rural eMentoring BC publishes student mentoring programs, volunteer opportunities, events and rural learner resources.",
+    "evidence": [
+      "https://ps-ementoringbc-2023.sites.olt.ubc.ca/ | 3a89b22a02fdbe1d239c28d7c16a54f83e1812605f652cd6d38b904cad8b68be | Online mentoring for BC’s rural students"
+    ]
+  },
+  "rules": [
+    {
+      "id": "current-news",
+      "category": "news",
+      "rationale": "Explicit news, update, blog and announcement paths contain current public reporting.",
+      "path_pattern": "^/(?:news|blog|updates?|announcements?|category/(?:news|arena-news))(?:/|$)"
+    },
+    {
+      "id": "research-material",
+      "category": "research",
+      "rationale": "Explicit research, publication, project and scholarly-output paths describe research activity.",
+      "path_pattern": "^/(?:research|our-research|publications?|projects?|scholarly-output)(?:/|$)"
+    },
+    {
+      "id": "participation-opportunities",
+      "category": "opportunities",
+      "rationale": "Explicit event, career, application, admission, funding, award and volunteer paths invite participation.",
+      "path_pattern": "^/(?:events?|careers?|jobs?|employment|apply|admissions?|funding|awards?|volunteer|volunteering-opportunities|get-involved|prospective-students|summer-camps|funding-opportunities|directory-award-opportunities)(?:/|$)"
+    },
+    {
+      "id": "people-stories",
+      "category": "stories",
+      "rationale": "Explicit people, alumni, story, profile and memorial paths center personal accounts.",
+      "path_pattern": "^/(?:people|alumni|stories?|profiles?|faculty-spotlights|graduate-profiles|in-memoriam|home-page)(?:/|$)"
+    },
+    {
+      "id": "practical-support",
+      "category": "support",
+      "rationale": "Explicit contact, resource, service, safety, policy, form and student-support paths provide practical guidance.",
+      "path_pattern": "^/(?:contact|about-us/contact-us|resources?|services?|support|faq|faqs|safety|health-safety|forms?|policies|guidelines|current-students|student-resources|guest-information)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "ps-ementoringbc-2023-sites-olt-ubc-ca-opportunities",
+    "category": "opportunities",
+    "rationale": "Rural eMentoring BC publishes student mentoring programs, volunteer opportunities, events and rural learner resources."
+  }
+}
