@@ -937,6 +937,22 @@
     "document_count": 82
   },
   {
+    "hostname": "learningdesignviews.educ.ubc.ca",
+    "title": "learningdesignviews.educ.ubc.ca",
+    "homepage_url": "https://learningdesignviews.educ.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:29:36.627Z",
+    "homepage_sha256": "88ec53436c88132c5a96fbd323d8dec1ee519fbb1ec0fb8c03710c5619f66e49",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/learningdesignviews.educ.ubc.ca",
+        "document_count": 79
+      }
+    ],
+    "document_count": 79
+  },
+  {
     "hostname": "learningspaces.ubc.ca",
     "title": "learningspaces.ubc.ca",
     "homepage_url": "https://learningspaces.ubc.ca/",
