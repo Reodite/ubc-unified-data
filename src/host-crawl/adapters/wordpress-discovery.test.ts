@@ -121,6 +121,35 @@ describe("advertised WordPress discovery", () => {
     ]);
   });
 
+  it.each([
+    "elementor_library",
+    "elementor_snippet",
+    "foundry_comp_block",
+    "jp_act_log_event",
+    "view",
+    "view-template",
+    "wpcf7_contact_form",
+  ])("omits the reviewed internal CMS object type %s before requesting its collection", async (type) => {
+    const f = fixture();
+    f.scraper.adapter.allPublicTypes = true;
+    (f.types as Record<string, unknown>)[type] = { name: "Reviewed internal object" };
+    f.put(f.typesUrl, f.types);
+    expect(await f.discover()).toHaveLength(1);
+    expect(f.read.mock.calls.map(([url]) => url)).not.toContain(`${prettyRoot}wp/v2/${type}?${parameters(1)}`);
+  });
+
+  it("keeps an unreviewed custom type fatal for a specialized scraper", async () => {
+    const f = fixture();
+    (f.types as Record<string, unknown>).custom_article = {
+      rest_namespace: "wp/v2",
+      rest_base: "custom_article",
+      _links: { "wp:items": [{ href: `${prettyRoot}wp/v2/custom_article` }] },
+    };
+    f.put(f.typesUrl, f.types);
+    await expect(f.discover()).rejects.toThrow("Unreviewed public CMS type: custom_article");
+    expect(f.read).toHaveBeenCalledTimes(2);
+  });
+
   it("accepts literal underscore collection names only in generic inventory", async () => {
     const generic = fixture({ restBase: "dictionary_entries" });
     generic.scraper.adapter.allPublicTypes = true;

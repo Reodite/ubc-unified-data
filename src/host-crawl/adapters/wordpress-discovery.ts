@@ -4,6 +4,10 @@ import { hostUrl, inventoryUrl } from "../urls.ts";
 
 const NON_DOCUMENT_TYPES = new Set([
   "attachment",
+  "elementor_library",
+  "elementor_snippet",
+  "foundry_comp_block",
+  "jp_act_log_event",
   "nav_menu_item",
   "wp_block",
   "wp_template",
@@ -12,6 +16,9 @@ const NON_DOCUMENT_TYPES = new Set([
   "wp_font_family",
   "wp_font_face",
   "wp_global_styles",
+  "view",
+  "view-template",
+  "wpcf7_contact_form",
 ]);
 
 export interface DiscoveredPage {

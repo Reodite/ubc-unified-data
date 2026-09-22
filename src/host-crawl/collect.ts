@@ -111,6 +111,11 @@ async function sitemapPages(
   const nonDocuments = new Set<string>();
   const pages = new Set<string>();
   const advertisingSitemaps = new Map<string, Set<string>>();
+  const wordpressAttachment = (sitemap: string, target: string) => {
+    if (!/(?:^|\/)attachment-sitemap(?:\d+)?\.xml$/i.test(new URL(sitemap).pathname)) return false;
+    const url = new URL(target);
+    return url.searchParams.size === 1 && /^\d+$/.test(url.searchParams.get("attachment_id") ?? "");
+  };
   while (queue.length) {
     const url = hostUrl(queue.shift()!, hostname);
     if (seen.has(url)) continue;
@@ -163,9 +168,16 @@ async function sitemapPages(
         requiredChildren.add(target);
         queue.push(target);
       } else {
-        pages.add(target);
+        if (
+          exactHost &&
+          location === target &&
+          observation.snapshot.requested_url === url &&
+          wordpressAttachment(url, target)
+        )
+          nonDocuments.add(target);
+        else pages.add(target);
         // Only the literal page entry and requested XML identity witness an exact query declaration.
-        if (location === target && observation.snapshot.requested_url === url) {
+        if (!nonDocuments.has(target) && location === target && observation.snapshot.requested_url === url) {
           const witnesses = advertisingSitemaps.get(target) ?? new Set<string>();
           witnesses.add(url);
           advertisingSitemaps.set(target, witnesses);

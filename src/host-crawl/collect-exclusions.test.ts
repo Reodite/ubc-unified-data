@@ -111,6 +111,44 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
+describe("WordPress attachment sitemap identities", () => {
+  it("excludes a literal numeric attachment identity without requesting it", async () => {
+    const attachment = `${home}?attachment_id=22327`;
+    const f = fixture(page, `User-agent: *\nSitemap: ${home}sitemap.xml\n`);
+    f.put("/sitemap.xml", index(`${home}attachment-sitemap.xml`, `${home}page-sitemap.xml`));
+    f.put("/attachment-sitemap.xml", urlset(attachment));
+    f.put("/page-sitemap.xml", urlset(`${home}guide`));
+    f.put("/guide", page);
+    const result = await collectRecordedHost(f.scraper, f.archive, producer);
+    expect(result.documents.map((document) => document.source_url).sort()).toEqual([home, `${home}guide`]);
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(attachment);
+  });
+
+  it.each([
+    ["unrelated sitemap", "/page-sitemap.xml", `${home}?attachment_id=22327`],
+    ["nonnumeric identity", "/attachment-sitemap.xml", `${home}?attachment_id=media`],
+    ["additional selector", "/attachment-sitemap.xml", `${home}?attachment_id=22327&preview=1`],
+    ["nonliteral legacy identity", "/attachment-sitemap.xml", `http://${host}/?attachment_id=22327`],
+  ])("does not infer an attachment exclusion from a %s", async (_, sitemap, target) => {
+    const f = fixture(page, `User-agent: *\nSitemap: ${home}sitemap.xml\n`);
+    f.put("/sitemap.xml", index(new URL(sitemap, home).href));
+    f.put(sitemap, urlset(target.replaceAll("&", "&amp;")));
+    await expect(collectRecordedHost(f.scraper, f.archive, producer)).rejects.toThrow(
+      "Required publisher URL lacks a supported discovery policy",
+    );
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(`${home}?attachment_id=22327`);
+  });
+
+  it("keeps an attachment-looking semantic path eligible even inside that sitemap", async () => {
+    const target = `${home}attachment_id/22327`;
+    const f = fixture(page, `User-agent: *\nSitemap: ${home}attachment-sitemap.xml\n`);
+    f.put("/attachment-sitemap.xml", urlset(target));
+    f.put("/attachment_id/22327", page);
+    const result = await collectRecordedHost(f.scraper, f.archive, producer);
+    expect(result.documents.some((document) => document.source_url === target)).toBe(true);
+  });
+});
+
 describe("persistent absent sitemap companion exclusions", () => {
   it.each([404, 410])(
     "does not reinsert a validated HTTP %s companion from XML, seeds or later links",
