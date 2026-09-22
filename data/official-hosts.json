@@ -4399,6 +4399,32 @@
     "document_count": 748
   },
   {
+    "hostname": "www.hli.ubc.ca",
+    "title": "www.hli.ubc.ca",
+    "homepage_url": "https://www.hli.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:09:31.206Z",
+    "homepage_sha256": "f9231467e251bba59b0f31d9ab52df12800409b101201ec1d11961e9783fdaff",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/www.hli.ubc.ca",
+        "document_count": 18
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/www.hli.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/www.hli.ubc.ca",
+        "document_count": 266
+      }
+    ],
+    "document_count": 286
+  },
+  {
     "hostname": "www.igen.ubc.ca",
     "title": "www.igen.ubc.ca",
     "homepage_url": "https://www.igen.ubc.ca/",
