@@ -5,17 +5,14 @@ import { DatabaseSync } from "node:sqlite";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 import { ROOT } from "./base.ts";
-import { extractDocx } from "./host-crawl/adapters/docx.ts";
-import { captureOoxmlProfile, OOXML_PROFILE_SHA256 } from "./host-crawl/adapters/ooxml.ts";
-import { extractPdfV2 } from "./host-crawl/adapters/pdf-v2.ts";
-import { extractPptx } from "./host-crawl/adapters/pptx.ts";
+import { extractPdf } from "./host-crawl/adapters/pdf.ts";
 import { loadRoutingPolicy, loadSavedClassifications, routeCompletedHost } from "./host-crawl/category-routing.ts";
 import { collectRecordedHost } from "./host-crawl/collect.ts";
 import type { HostArchive, SavedUrl } from "./host-crawl/contracts.ts";
 import { assertCollectedInput, decodeFrozenSeed, deriveCollectionInputDigest } from "./host-crawl/inputs.ts";
 import { withMarkdownCollectionRuntime } from "./host-crawl/markdown-collection-runtime.ts";
 import { assertExternalPath, DEFAULT_EXTERNAL_ROOT, DEFAULT_LEGACY_STATE_FILE } from "./host-crawl/paths.ts";
-import { assertPdfV2Profile, capturePdfV2Profile, type PdfV2Profile } from "./host-crawl/pdf-profile-v2.ts";
+import { assertPdfProfile, capturePdfProfile, type PdfProfile } from "./host-crawl/pdf-profile.ts";
 import { assertSameProducer, captureProducer } from "./host-crawl/provenance.ts";
 import { readRegularFile } from "./host-crawl/public-validation.ts";
 import { publishCompletedHost } from "./host-crawl/publication.ts";
@@ -47,8 +44,24 @@ export async function runCollectHost(args: string[]) {
   const source = await captureProducer();
   const acquisitionSource = source;
   await mkdir(directory, { recursive: true, mode: 0o700 });
-  const pdfWorkspace = assertExternalPath(join(directory, "pdf-v2-runtime"));
-  let pdfProfile: PdfV2Profile | undefined;
+  const pdfWorkspace = assertExternalPath(join(directory, "pdf-runtime"));
+  const pdfProfilePath = join(directory, "pdf-profile.json");
+  let pdfProfile: PdfProfile | undefined;
+  let pdfProfileBytes: Buffer | undefined;
+  if (scraper.documentFormats?.includes("pdf")) {
+    try {
+      pdfProfileBytes = await readRegularFile(pdfProfilePath, 16 * 1024 * 1024);
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code !== "ENOENT" || !values.acquire) throw error;
+      pdfProfile = await capturePdfProfile(pdfWorkspace);
+      pdfProfileBytes = Buffer.from(`${JSON.stringify(pdfProfile, null, 2)}\n`);
+      await writeFile(pdfProfilePath, pdfProfileBytes, { flag: "wx", mode: 0o600 });
+    }
+    if (!pdfProfile) {
+      pdfProfile = JSON.parse(pdfProfileBytes!.toString("utf8")) as PdfProfile;
+      await assertPdfProfile(pdfProfile, pdfWorkspace);
+    }
+  }
   const seedPath = join(directory, "seed.json");
   let seedBytes: Buffer;
   try {
@@ -80,11 +93,10 @@ export async function runCollectHost(args: string[]) {
     seedSha256: digest(seed.bytes),
     acquire: values.acquire,
     resumeInterrupted: values["resume-interrupted"],
-    documentFormats: scraper.documentFormats?.filter((format) => format !== "markdown"),
+    documentFormats: scraper.documentFormats?.includes("pdf") ? ["pdf"] : undefined,
     documentUrlAllowed: (url) =>
       (scraper.excludeUrl ? scraper.excludeUrl(url) : pageExclusion(url, scraper.hostname)) === null,
-    allowDocumentPolicyUpgrade: true,
-    maxResponseBytes: scraper.documentFormats?.some((format) => format !== "markdown") ? 64 * 1024 * 1024 : undefined,
+    maxResponseBytes: scraper.documentFormats?.includes("pdf") ? 32 * 1024 * 1024 : undefined,
   });
   try {
     let replayInput: string | undefined;
@@ -125,69 +137,12 @@ export async function runCollectHost(args: string[]) {
       scraper.documentFormats?.includes("markdown") === true,
       (markdown) =>
         collectRecordedHost(scraper, archive, source, {
-          ...(scraper.documentFormats?.includes("pdf")
+          ...(pdfProfile
             ? {
                 pdf: {
-                  get profile_sha256() {
-                    if (!pdfProfile) throw new Error("PDF v2 profile was not initialized by extraction");
-                    return pdfProfile.sha256;
-                  },
-                  extract: async (bytes: Uint8Array, sourceUrl: string) => {
-                    pdfProfile ??= await capturePdfV2Profile(join(directory, "pdf-v2-profile"));
-                    const result = await extractPdfV2({
-                      bytes,
-                      sourceUrl,
-                      workspace: pdfWorkspace,
-                      profile: pdfProfile,
-                    });
-                    return {
-                      title: result.title,
-                      markdown: result.markdown,
-                      warnings: result.warnings,
-                      pageCount: result.pages,
-                      nativeTextPages: result.native_text_pages,
-                      ocrPages: result.ocr_pages,
-                    };
-                  },
-                },
-              }
-            : {}),
-          ...(scraper.documentFormats?.includes("docx")
-            ? {
-                docx: {
-                  profile_sha256: OOXML_PROFILE_SHA256,
-                  extract: async (bytes: Uint8Array) => {
-                    const result = await extractDocx({ bytes });
-                    if (result.profileSha256 !== OOXML_PROFILE_SHA256 || result.sourceSha256 !== digest(bytes))
-                      throw new Error("DOCX extraction evidence differs from the authenticated source or profile");
-                    return {
-                      title: result.title,
-                      markdown: result.markdown,
-                      warnings: result.warnings,
-                      paragraphs: result.paragraphCount,
-                      tables: result.tableCount,
-                    };
-                  },
-                },
-              }
-            : {}),
-          ...(scraper.documentFormats?.includes("pptx")
-            ? {
-                pptx: {
-                  profile_sha256: OOXML_PROFILE_SHA256,
-                  extract: async (bytes: Uint8Array) => {
-                    const result = await extractPptx({ bytes });
-                    if (result.profileSha256 !== OOXML_PROFILE_SHA256 || result.sourceSha256 !== digest(bytes))
-                      throw new Error("PPTX extraction evidence differs from the authenticated source or profile");
-                    return {
-                      title: result.title,
-                      markdown: result.markdown,
-                      warnings: result.warnings,
-                      slides: result.slideCount,
-                      tables: result.tableCount,
-                      slidesWithNotes: result.noteCount,
-                    };
-                  },
+                  profile_sha256: pdfProfile.sha256,
+                  extract: (bytes: Uint8Array, sourceUrl: string) =>
+                    extractPdf({ bytes, sourceUrl, workspace: pdfWorkspace, profile: pdfProfile! }),
                 },
               }
             : {}),
@@ -196,27 +151,21 @@ export async function runCollectHost(args: string[]) {
     );
     const result = collected.value;
     const markdownProfileSha256 = collected.profile_sha256;
-    const usedFormats = new Set(result.documents.map((document) => document.extraction?.format));
-    const docxProfileSha256 = usedFormats.has("docx") ? OOXML_PROFILE_SHA256 : null;
-    const pptxProfileSha256 = usedFormats.has("pptx") ? OOXML_PROFILE_SHA256 : null;
     const sealed = values.acquire ? await recording.seal() : await recording.verifySeal();
     if (replayInput) assertCollectedInput(replayInput, sealed);
     const input = deriveCollectionInputDigest({
       recording: sealed,
       seed: digest(seed.bytes),
       ...(pdfProfile ? { pdf_profile: pdfProfile.sha256 } : {}),
-      ...(docxProfileSha256 ? { docx_profile: docxProfileSha256 } : {}),
-      ...(pptxProfileSha256 ? { pptx_profile: pptxProfileSha256 } : {}),
       ...(markdownProfileSha256 ? { markdown_profile: markdownProfileSha256 } : {}),
     });
     for (const doc of result.documents) doc.input_sha256 = input;
     const verifyInputs = async () => {
-      if (pdfProfile) await assertPdfV2Profile(pdfProfile, join(directory, "pdf-v2-profile-verify"));
-      const currentOoxmlProfile = captureOoxmlProfile().sha256;
-      if (docxProfileSha256 && docxProfileSha256 !== currentOoxmlProfile)
-        throw new Error("Recorded DOCX profile changed");
-      if (pptxProfileSha256 && pptxProfileSha256 !== currentOoxmlProfile)
-        throw new Error("Recorded PPTX profile changed");
+      if (pdfProfile) {
+        await assertPdfProfile(pdfProfile, pdfWorkspace);
+        if (!(await readRegularFile(pdfProfilePath, 16 * 1024 * 1024)).equals(pdfProfileBytes!))
+          throw new Error("Recorded PDF profile changed");
+      }
       if (markdownProfileSha256) {
         const verified = await withMarkdownCollectionRuntime(true, async () => undefined);
         if (verified.profile_sha256 !== markdownProfileSha256) throw new Error("Recorded Markdown profile changed");

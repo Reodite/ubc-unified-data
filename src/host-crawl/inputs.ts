@@ -5,19 +5,10 @@ export interface CollectionInputDigests {
   readonly recording: string;
   readonly seed: string;
   readonly pdf_profile?: string;
-  readonly docx_profile?: string;
-  readonly pptx_profile?: string;
   readonly markdown_profile?: string;
 }
 
-const COLLECTION_INPUT_KEYS = new Set([
-  "recording",
-  "seed",
-  "pdf_profile",
-  "docx_profile",
-  "pptx_profile",
-  "markdown_profile",
-]);
+const COLLECTION_INPUT_KEYS = new Set(["recording", "seed", "pdf_profile", "markdown_profile"]);
 
 /** Hash canonical outer bindings; omitted profiles contribute no key to legacy preimages. */
 export function deriveCollectionInputDigest(input: CollectionInputDigests): string {

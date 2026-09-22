@@ -223,12 +223,18 @@ describe("generic host throughput adapter", () => {
       { headers: { "content-type": "application/json" } },
     ])
       expect(scraper.vetHomepage({ ...valid, ...change }).accepted).toBe(false);
-    expect(scraper.documentFormats).toEqual(["pdf", "docx", "pptx"]);
+    expect(scraper.documentFormats).toEqual(["pdf"]);
     expect(scraper.excludeUrl!(`${home}wp-content/uploads/guide.pdf`)).toBeNull();
     expect(scraper.excludeUrl!(`${home}?page_id=12`)).toBeNull();
-    for (const path of ["admin/guide.pdf", "private/guide.pdf", "user/login", "wp-admin/", "?filter=all"])
+    for (const path of [
+      "admin/guide.pdf",
+      "private/guide.pdf",
+      "user/login",
+      "wp-admin/",
+      "guide.pdf?download=1",
+      "?filter=all",
+    ])
       expect(scraper.excludeUrl!(new URL(path, home).href)).not.toBeNull();
-    expect(scraper.excludeUrl!(`${home}guide.pdf?download=1`)).toBeNull();
   });
 
   it.each([
@@ -238,9 +244,9 @@ describe("generic host throughput adapter", () => {
     ["scarp.ubc.ca", "/node/1.md"],
   ])("enables Markdown separately from ordinary URL admission for %s", (hostname, target) => {
     const reviewed = createGenericScraper(hostname);
-    expect(reviewed.documentFormats).toEqual(["pdf", "docx", "pptx", "markdown"]);
+    expect(reviewed.documentFormats).toEqual(["pdf", "markdown"]);
     expect(reviewed.excludeUrl!(`https://${hostname}${target}`)).not.toBeNull();
-    expect(createGenericScraper(`other.${hostname}`).documentFormats).toEqual(["pdf", "docx", "pptx"]);
+    expect(createGenericScraper(`other.${hostname}`).documentFormats).toEqual(["pdf"]);
   });
 
   it("guards one exact declared Markdown target without admitting nearby paths", () => {

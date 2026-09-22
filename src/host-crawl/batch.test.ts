@@ -3,22 +3,14 @@ import { readdirSync, readFileSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { describe, expect, it, vi } from "vitest";
-import { OOXML_PROFILE_SHA256 } from "./adapters/ooxml.ts";
 import { HostBatch } from "./batch.ts";
 import { formatRoutingPolicy, type HostRoutingPolicy } from "./category-routing.ts";
 import type { CompletedHost, ProducerContext, SearchDocument } from "./contracts.ts";
 import { sha256 } from "./document-format.ts";
-import { cheapGuardCompletedHost } from "./generic.ts";
 import { deriveCollectionInputDigest } from "./inputs.ts";
 import { DEFAULT_EXTERNAL_ROOT, EXTERNAL_BOUNDARY } from "./paths.ts";
 
-const mocks = vi.hoisted(() => ({
-  git: vi.fn(),
-  producer: vi.fn(),
-  seal: vi.fn(),
-  historical: vi.fn(),
-  pdfV2: vi.fn(),
-}));
+const mocks = vi.hoisted(() => ({ git: vi.fn(), producer: vi.fn(), seal: vi.fn(), historical: vi.fn() }));
 vi.mock("./historical-output.ts", () => ({ verifyHistoricalReady: mocks.historical }));
 vi.mock("node:child_process", async (original) => ({
   ...(await original<typeof import("node:child_process")>()),
@@ -29,10 +21,6 @@ vi.mock("./provenance.ts", async (original) => ({
   captureProducer: mocks.producer,
 }));
 vi.mock("./recording.ts", () => ({ HostRecording: { open: async () => ({ verifySeal: mocks.seal, close() {} }) } }));
-vi.mock("./pdf-profile-v2.ts", async (original) => ({
-  ...(await original<typeof import("./pdf-profile-v2.ts")>()),
-  capturePdfV2Profile: mocks.pdfV2,
-}));
 
 async function fixture() {
   const id = randomUUID();
@@ -55,7 +43,6 @@ async function fixture() {
   );
   mocks.producer.mockResolvedValue(producer);
   mocks.seal.mockResolvedValue("d".repeat(64));
-  mocks.pdfV2.mockResolvedValue({ sha256: "f".repeat(64), manifest: {} });
   const batch = await HostBatch.open(directory);
   batch.seed([{ hostname, admitted: true }]);
   return { batch, directory, repositoryRoot, hostname, producer, baseline, main };
@@ -188,128 +175,7 @@ describe("five-worker batch handoff", () => {
     }
   });
 
-  it("accepts a canonical mixed-format ready v3 and rejects tampered profile maps", async () => {
-    const { batch, directory, hostname, producer } = await fixture();
-    try {
-      const seal = "d".repeat(64);
-      const seedBytes = Buffer.from(JSON.stringify({ hostname, urls: [] }));
-      const seedSha256 = sha256(seedBytes);
-      const profiles: { pdf: string | null; docx: string | null; pptx: string | null; markdown: string | null } = {
-        pdf: "f".repeat(64),
-        docx: OOXML_PROFILE_SHA256,
-        pptx: OOXML_PROFILE_SHA256,
-        markdown: null,
-      };
-      const input = deriveCollectionInputDigest({
-        recording: seal,
-        seed: seedSha256,
-        pdf_profile: profiles.pdf!,
-        docx_profile: profiles.docx!,
-        pptx_profile: profiles.pptx!,
-      });
-      const body = "Searchable public document text.\n";
-      const base = (name: string): SearchDocument => {
-        const sourceUrl = `https://${hostname}/${name}`;
-        return {
-          id: `documents:official-web:${sha256(sourceUrl).slice(0, 24)}`,
-          hostname,
-          title: name,
-          source_url: sourceUrl,
-          retrieved_at: "2026-09-18T00:00:00.000Z",
-          source_modified_at: null,
-          snapshot_sha256: sha256(`snapshot:${name}`),
-          input_sha256: input,
-          body_sha256: sha256(body),
-          content_sha256: sha256(`${name}\n${body}`),
-          content_markdown: body,
-          warnings: [],
-          alternate_urls: [],
-          producer,
-        };
-      };
-      const pdf = base("guide.pdf");
-      pdf.extraction = {
-        format: "pdf-v2",
-        source_bytes_sha256: sha256("pdf bytes"),
-        source_bytes: 100,
-        pages: 2,
-        native_text_pages: [1],
-        ocr_pages: [2],
-        profile_sha256: profiles.pdf!,
-      };
-      const docx = base("guide.docx");
-      docx.extraction = {
-        format: "docx",
-        source_bytes_sha256: sha256("docx bytes"),
-        source_bytes: 101,
-        paragraphs: 3,
-        tables: 1,
-        profile_sha256: profiles.docx!,
-      };
-      const pptx = base("slides.pptx");
-      pptx.extraction = {
-        format: "pptx",
-        source_bytes_sha256: sha256("pptx bytes"),
-        source_bytes: 102,
-        slides: 4,
-        tables: 1,
-        slides_with_notes: 2,
-        profile_sha256: profiles.pptx!,
-      };
-      const completed = cheapGuardCompletedHost({
-        complete: true,
-        host: {
-          hostname,
-          title: "Public documents",
-          homepage_url: `https://${hostname}/`,
-          homepage_retrieved_at: "2026-09-18T00:00:00.000Z",
-          homepage_sha256: sha256("homepage"),
-          scope: "Public documents",
-          document_root: `data/documents/${hostname}`,
-          document_count: 3,
-        },
-        documents: [pdf, docx, pptx],
-      });
-      const ready = {
-        version: 3 as const,
-        hostname,
-        recording_seal: seal,
-        seed_sha256: seedSha256,
-        profiles,
-        completed,
-      };
-      const recording = join(DEFAULT_EXTERNAL_ROOT, "hosts", hostname, "recording");
-      await mkdir(recording, { recursive: true });
-      await writeFile(join(recording, "seed.json"), seedBytes);
-      const verifyReady = (
-        batch as unknown as {
-          verifyReady(row: { hostname: string; details: Record<string, unknown> }): Promise<{ version: number }>;
-        }
-      ).verifyReady.bind(batch);
-      const writeReady = async (name: string, value: unknown) => {
-        const bytes = Buffer.from(JSON.stringify(value));
-        const readyPath = join(directory, `${name}.json`);
-        await writeFile(readyPath, bytes);
-        return { hostname, details: { ready_path: readyPath, ready_sha256: sha256(bytes) } };
-      };
-      await expect(verifyReady(await writeReady("ready-v3", ready))).resolves.toMatchObject({ version: 3 });
-      const unknownProfile = structuredClone(ready) as typeof ready & { profiles: typeof profiles & { extra?: null } };
-      unknownProfile.profiles.extra = null;
-      await expect(verifyReady(await writeReady("ready-v3-unknown", unknownProfile))).rejects.toThrow(
-        /ready profiles fields/,
-      );
-      const missingPdf = structuredClone(ready);
-      missingPdf.profiles.pdf = null;
-      await expect(verifyReady(await writeReady("ready-v3-missing-pdf", missingPdf))).rejects.toThrow();
-      const wrongDocx = structuredClone(ready);
-      wrongDocx.profiles.docx = "a".repeat(64);
-      await expect(verifyReady(await writeReady("ready-v3-wrong-docx", wrongDocx))).rejects.toThrow();
-    } finally {
-      batch.close();
-    }
-  });
-
-  it.each(["legacy", "categorized", "ready-v2", "ready-v3", "historical"])(
+  it.each(["legacy", "categorized", "ready-v2", "historical"])(
     "publishes one %s hostname and retries an uncertain push without another commit",
     async (mode) => {
       const { batch, directory, repositoryRoot, hostname, producer, baseline, main } = await fixture();
@@ -356,26 +222,15 @@ describe("five-worker batch handoff", () => {
       await mkdir(recording, { recursive: true });
       await writeFile(join(recording, "seed.json"), seedBytes);
       const ready = Buffer.from(
-        JSON.stringify(
-          mode === "ready-v3"
-            ? {
-                version: 3,
-                hostname,
-                recording_seal: seal,
-                seed_sha256: sha256(seedBytes),
-                profiles: { pdf: null, docx: null, pptx: null, markdown: null },
-                completed: complete,
-              }
-            : {
-                version: mode === "ready-v2" ? 2 : 1,
-                hostname,
-                recording_seal: seal,
-                seed_sha256: sha256(seedBytes),
-                pdf_profile_sha256: null,
-                ...(mode === "ready-v2" ? { markdown_profile_sha256: null } : {}),
-                completed: complete,
-              },
-        ),
+        JSON.stringify({
+          version: mode === "ready-v2" ? 2 : 1,
+          hostname,
+          recording_seal: seal,
+          seed_sha256: sha256(seedBytes),
+          pdf_profile_sha256: null,
+          ...(mode === "ready-v2" ? { markdown_profile_sha256: null } : {}),
+          completed: complete,
+        }),
       );
       const readyPath = join(directory, "ready.json");
       await writeFile(readyPath, ready);

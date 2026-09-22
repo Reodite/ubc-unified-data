@@ -9,7 +9,6 @@ import {
   MAX_DOCUMENT_BYTES,
   parseDocument,
   sha256,
-  STRUCTURED_DOCUMENT_FORMAT_VERSION,
 } from "./document-format.ts";
 
 function fixtureDocument(
@@ -92,72 +91,6 @@ describe("document Markdown wire format", () => {
         formatDocument({ ...pdf, extraction: { ...pdf.extraction, ...change } } as SearchDocument),
       ).toThrow();
   });
-  it.each([
-    [
-      "pdf-v2",
-      {
-        format: "pdf-v2" as const,
-        source_bytes_sha256: sha256("raw PDF v2"),
-        source_bytes: 500,
-        pages: 3,
-        native_text_pages: [1, 3],
-        ocr_pages: [2],
-        profile_sha256: sha256("PDF v2 profile"),
-      },
-    ],
-    [
-      "docx",
-      {
-        format: "docx" as const,
-        source_bytes_sha256: sha256("raw DOCX"),
-        source_bytes: 600,
-        paragraphs: 4,
-        tables: 1,
-        profile_sha256: sha256("OOXML profile"),
-      },
-    ],
-    [
-      "pptx",
-      {
-        format: "pptx" as const,
-        source_bytes_sha256: sha256("raw PPTX"),
-        source_bytes: 700,
-        slides: 3,
-        tables: 1,
-        slides_with_notes: 2,
-        profile_sha256: sha256("OOXML profile"),
-      },
-    ],
-  ])("round-trips canonical structured %s provenance as v5", (_name, extraction) => {
-    const document = fixtureDocument("example.ubc.ca", `/download.${extraction.format.replace("-v2", "")}`);
-    document.extraction = extraction;
-    const bytes = formatDocument(document);
-    expect(bytes.toString()).toContain(`"format_version": ${STRUCTURED_DOCUMENT_FORMAT_VERSION}`);
-    expect(parseDocument(bytes)).toEqual(document);
-    expect(formatDocument(parseDocument(bytes))).toEqual(bytes);
-  });
-
-  it("rejects incomplete or contradictory structured extraction metadata", () => {
-    const document = fixtureDocument("example.ubc.ca", "/guide.pdf");
-    document.extraction = {
-      format: "pdf-v2",
-      source_bytes_sha256: sha256("raw"),
-      source_bytes: 10,
-      pages: 2,
-      native_text_pages: [1],
-      ocr_pages: [2],
-      profile_sha256: sha256("profile"),
-    };
-    for (const extraction of [
-      { ...document.extraction, native_text_pages: [1, 2], ocr_pages: [2] },
-      { ...document.extraction, native_text_pages: [2, 1] },
-      { ...document.extraction, ocr_pages: [] },
-      { ...document.extraction, pages: 0 },
-      { ...document.extraction, extra: true },
-    ])
-      expect(() => formatDocument({ ...document, extraction } as SearchDocument)).toThrow();
-  });
-
   it("round-trips verbatim Markdown provenance as v4, including categorized output", () => {
     const markdown = fixtureDocument(
       "example.ubc.ca",

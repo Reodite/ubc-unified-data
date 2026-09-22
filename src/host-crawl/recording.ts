@@ -12,7 +12,6 @@ import {
   type ProducerContext,
   type Snapshot,
 } from "./contracts.ts";
-import { detectBinaryDocument, type DocumentSourceFormat } from "./document-types.ts";
 import { assertExternalPath } from "./paths.ts";
 import { readRegularFile } from "./public-validation.ts";
 import { hostUrl, normalizeHost } from "./urls.ts";
@@ -27,17 +26,6 @@ const parser = createRequire(import.meta.url)("robots-parser") as (
 };
 const hash = (bytes: string | Uint8Array) => createHash("sha256").update(bytes).digest("hex");
 const retryable = new Set([408, 429, 500, 502, 503, 504]);
-const redirectStatuses = [301, 302, 303, 307, 308];
-const textualMediaType = (value: string): boolean => {
-  const mediaType = value.split(";", 1)[0]!.trim().toLowerCase();
-  return (
-    !mediaType ||
-    mediaType.startsWith("text/") ||
-    ["application/json", "application/xml", "application/javascript", "application/x-javascript"].includes(mediaType) ||
-    mediaType.endsWith("+json") ||
-    mediaType.endsWith("+xml")
-  );
-};
 const transientTransportFailure = (error: string): boolean =>
   /\b(?:ECONNRESET|AbortError|TimeoutError)\b|other side closed/i.test(error) &&
   !/\b(?:ENOTFOUND|EAI_[A-Z_]+|CERT_[A-Z_]+|ERR_TLS_[A-Z_]+|ERR_SSL_[A-Z_]+|DEPTH_ZERO_SELF_SIGNED_CERT|SELF_SIGNED_CERT_IN_CHAIN|UNABLE_TO_[A-Z_]+)\b|certificate|hostname mismatch|\bDNS\b/i.test(
@@ -77,9 +65,8 @@ export interface RecordingOptions {
   fetcher?: typeof fetch;
   resumeInterrupted?: boolean;
   recoverTransientFailures?: boolean;
-  documentFormats?: readonly DocumentSourceFormat[];
+  documentFormats?: readonly "pdf"[];
   documentUrlAllowed?: (url: string) => boolean;
-  allowDocumentPolicyUpgrade?: boolean;
 }
 
 /** Persist request intents and immutable outcomes externally; replay never falls through to a network request. */
@@ -155,7 +142,7 @@ export class HostRecording {
         ...(options.documentFormats?.length ? { documentFormats: [...options.documentFormats] } : {}),
       };
       if (
-        options.documentFormats?.some((format) => !["pdf", "docx", "pptx", "markdown"].includes(format)) ||
+        options.documentFormats?.some((format) => format !== "pdf") ||
         new Set(options.documentFormats).size !== (options.documentFormats?.length ?? 0)
       )
         throw new Error("Invalid declared recording document formats");
@@ -165,44 +152,11 @@ export class HostRecording {
       const old = db.prepare("SELECT value FROM config WHERE id=1").get()?.value;
       if (!old && !options.acquire) throw new Error("No saved recording to replay");
       if (!old) db.prepare("INSERT INTO config VALUES (1,?)").run(JSON.stringify(requested));
-      let config = old ? JSON.parse(String(old)) : requested;
+      const config = old ? JSON.parse(String(old)) : requested;
       if (config.hostname !== options.hostname || config.seed_sha256 !== (options.seedSha256 ?? null))
         throw new Error("Recording hostname or frontier digest mismatch");
-      const unchanged = JSON.stringify({ ...config, producer: requested.producer }) === JSON.stringify(requested);
-      if (options.acquire && !unchanged) {
-        const previousFormats = Array.isArray(config.documentFormats) ? config.documentFormats : [];
-        const nextFormats = requested.documentFormats ?? [];
-        const widening =
-          options.allowDocumentPolicyUpgrade === true &&
-          previousFormats.every((format: unknown) => nextFormats.includes(format as DocumentSourceFormat)) &&
-          Number(config.maxResponseBytes) <= requested.maxResponseBytes &&
-          JSON.stringify({
-            ...config,
-            producer: requested.producer,
-            maxResponseBytes: requested.maxResponseBytes,
-            ...(nextFormats.length ? { documentFormats: nextFormats } : {}),
-          }) === JSON.stringify(requested);
-        if (!widening)
-          throw new Error("Acquisition options changed; replay saved input or create a new explicit recording");
-        const upgraded = { ...requested, producer: config.producer };
-        db.exec(
-          "CREATE TABLE IF NOT EXISTS config_upgrades (id INTEGER PRIMARY KEY, previous TEXT NOT NULL, next TEXT NOT NULL, producer TEXT NOT NULL, upgraded_at TEXT NOT NULL); BEGIN IMMEDIATE;",
-        );
-        try {
-          db.prepare("INSERT INTO config_upgrades(previous,next,producer,upgraded_at) VALUES(?,?,?,?)").run(
-            JSON.stringify(config),
-            JSON.stringify(upgraded),
-            JSON.stringify(requested.producer),
-            new Date().toISOString(),
-          );
-          db.prepare("UPDATE config SET value=? WHERE id=1").run(JSON.stringify(upgraded));
-          db.exec("COMMIT");
-        } catch (error) {
-          db.exec("ROLLBACK");
-          throw error;
-        }
-        config = upgraded;
-      }
+      if (options.acquire && JSON.stringify({ ...config, producer: requested.producer }) !== JSON.stringify(requested))
+        throw new Error("Acquisition options changed; replay saved input or create a new explicit recording");
       if (options.acquire) {
         db.exec(
           "CREATE TABLE IF NOT EXISTS attempt_producers (attempt_id INTEGER PRIMARY KEY, producer TEXT NOT NULL); CREATE TABLE IF NOT EXISTS outcome_failures (id INTEGER PRIMARY KEY, url TEXT NOT NULL, error TEXT NOT NULL, recorded_at TEXT NOT NULL); CREATE TABLE IF NOT EXISTS repair_authorizations (url TEXT PRIMARY KEY, reason TEXT NOT NULL, authorized_at TEXT NOT NULL, producer TEXT NOT NULL, attempt_count INTEGER NOT NULL, attempt_ceiling INTEGER NOT NULL CHECK(attempt_ceiling <= 6 AND attempt_ceiling > attempt_count AND attempt_ceiling <= attempt_count + 3));",
@@ -271,17 +225,14 @@ export class HostRecording {
 
   private async binaryBytes(snapshot: Snapshot): Promise<Buffer> {
     const binary = snapshot.binary;
-    const format = binary?.format ?? (binary?.media_type === "application/pdf" ? "pdf" : undefined);
     if (
-      typeof binary?.media_type !== "string" ||
-      !format ||
-      !["pdf", "docx", "pptx"].includes(format) ||
+      binary?.media_type !== "application/pdf" ||
       !/^[a-f0-9]{64}$/.test(binary.sha256) ||
       snapshot.body !== "" ||
       !Number.isSafeInteger(snapshot.bytes) ||
       snapshot.bytes < 1 ||
       !Array.isArray(this.config.documentFormats) ||
-      !this.config.documentFormats.includes(format)
+      !this.config.documentFormats.includes("pdf")
     )
       throw new Error("Invalid or undeclared binary observation");
     const path = assertExternalPath(join(this.options.directory, "objects", `${binary.sha256}.body`));
@@ -350,6 +301,7 @@ export class HostRecording {
     if (!Object.hasOwn(snapshot, "redirects")) return this.readPhysicalTextBytes(observation);
 
     const { redirects, ...physical } = snapshot;
+    const redirectStatuses = [301, 302, 303, 307, 308];
     const outcomes = this.db.prepare("SELECT url,error FROM outcomes WHERE snapshot=?").all(snapshotSha256);
     if (
       !Array.isArray(redirects) ||
@@ -514,13 +466,13 @@ export class HostRecording {
       }
       this.db.prepare("UPDATE attempts SET body_sha=? WHERE id=?").run(hash(raw), id);
       const contentType = response.headers.get("content-type") ?? "";
-      const redirect = redirectStatuses.includes(response.status);
-      const documentFormat =
-        response.status === 200 && Array.isArray(this.config.documentFormats)
-          ? detectBinaryDocument(url, contentType, raw, this.config.documentFormats as DocumentSourceFormat[])
-          : undefined;
-      const opaqueRedirectBody = redirect && raw.length > 0 && !textualMediaType(contentType);
-      if (raw.length > 0 && !redirect && !documentFormat && !textualMediaType(contentType))
+      const pdf =
+        raw.length > 0 &&
+        Array.isArray(this.config.documentFormats) &&
+        this.config.documentFormats.includes("pdf") &&
+        (mediaType === "application/pdf" ||
+          (mediaType === "application/octet-stream" && raw.subarray(0, 5).toString("ascii") === "%PDF-"));
+      if (raw.length > 0 && !pdf && !/text|json|xml|javascript|^$/i.test(contentType))
         throw new Error(`Unsupported recorded document format: ${contentType}`);
       const charset = /charset\s*=\s*["']?([^;\s"']+)/i.exec(contentType)?.[1] ?? "utf-8";
       const snapshot: Snapshot = {
@@ -528,13 +480,10 @@ export class HostRecording {
         url,
         status: response.status,
         headers: Object.fromEntries(response.headers),
-        body:
-          opaqueRedirectBody || documentFormat || raw.length === 0
-            ? ""
-            : new TextDecoder(charset, { fatal: true }).decode(raw),
+        body: pdf || raw.length === 0 ? "" : new TextDecoder(charset, { fatal: true }).decode(raw),
         retrieved_at: new Date().toISOString(),
         bytes: raw.length,
-        ...(documentFormat ? { binary: { media_type: mediaType, sha256: hash(raw), format: documentFormat } } : {}),
+        ...(pdf ? { binary: { media_type: "application/pdf" as const, sha256: hash(raw) } } : {}),
       };
       const observation = await this.store(snapshot);
       this.db.prepare("UPDATE attempts SET state='observed',snapshot=? WHERE id=?").run(observation.sha256, id);
@@ -931,9 +880,6 @@ export class HostRecording {
       .get()
       ? this.db.prepare("SELECT * FROM repair_authorizations ORDER BY url").all()
       : [];
-    const upgrades = this.db.prepare("SELECT 1 FROM sqlite_master WHERE type='table' AND name='config_upgrades'").get()
-      ? this.db.prepare("SELECT * FROM config_upgrades ORDER BY id").all()
-      : [];
     return hash(
       JSON.stringify({
         config: this.config,
@@ -942,7 +888,6 @@ export class HostRecording {
         producers,
         failures,
         ...(repairs.length ? { repairs } : {}),
-        ...(upgrades.length ? { upgrades } : {}),
       }),
     );
   }

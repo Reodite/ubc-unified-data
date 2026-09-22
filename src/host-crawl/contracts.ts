@@ -1,11 +1,10 @@
 import type { ProseResponse } from "../prose/client.ts";
 import type { ArticleInput } from "../prose/model.ts";
 import type { DocumentCategory } from "./categories.ts";
-import type { BinaryDocumentFormat, DocumentSourceFormat } from "./document-types.ts";
 
 export interface Snapshot extends ProseResponse {
   bytes: number;
-  binary?: { media_type: string; sha256: string; format?: BinaryDocumentFormat };
+  binary?: { media_type: "application/pdf"; sha256: string };
   redirects?: Array<{ url: string; location: string; status: number; snapshot: string }>;
 }
 
@@ -58,7 +57,7 @@ export interface HostScraper {
     optionalAbsent?: readonly string[];
     sitemaps?: readonly { path: string; rootOnlyLocation?: string }[];
   };
-  documentFormats?: readonly DocumentSourceFormat[];
+  documentFormats?: readonly ("pdf" | "markdown")[];
   excludeUrl?(url: string): string | null;
   normalizeArticle?(input: ArticleInput): ArticleInput;
   vetHomepage(snapshot: Snapshot): { accepted: boolean; reason: string };
@@ -75,35 +74,6 @@ export interface PdfDocumentExtraction {
   source_bytes_sha256: string;
   source_bytes: number;
   pages: number;
-  profile_sha256: string;
-}
-
-export interface PdfV2DocumentExtraction {
-  format: "pdf-v2";
-  source_bytes_sha256: string;
-  source_bytes: number;
-  pages: number;
-  native_text_pages: number[];
-  ocr_pages: number[];
-  profile_sha256: string;
-}
-
-export interface DocxDocumentExtraction {
-  format: "docx";
-  source_bytes_sha256: string;
-  source_bytes: number;
-  paragraphs: number;
-  tables: number;
-  profile_sha256: string;
-}
-
-export interface PptxDocumentExtraction {
-  format: "pptx";
-  source_bytes_sha256: string;
-  source_bytes: number;
-  slides: number;
-  tables: number;
-  slides_with_notes: number;
   profile_sha256: string;
 }
 
@@ -125,12 +95,7 @@ export interface MarkdownDocumentExtraction {
   witnesses: MarkdownExtractionWitness[];
 }
 
-export type DocumentExtraction =
-  | PdfDocumentExtraction
-  | PdfV2DocumentExtraction
-  | DocxDocumentExtraction
-  | PptxDocumentExtraction
-  | MarkdownDocumentExtraction;
+export type DocumentExtraction = PdfDocumentExtraction | MarkdownDocumentExtraction;
 
 export interface SearchDocument {
   id: string;

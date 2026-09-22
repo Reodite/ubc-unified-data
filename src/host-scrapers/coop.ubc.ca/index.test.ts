@@ -84,7 +84,7 @@ describe("coopScraper institutional identity", () => {
         },
       ],
     });
-    expect(scraper.documentFormats).toEqual(["pdf", "docx", "pptx"]);
+    expect(scraper.documentFormats).toEqual(["pdf"]);
     expect(scraper.vetHomepage(snapshot("homepage")).accepted).toBe(true);
   });
 
@@ -199,9 +199,11 @@ describe("coopScraper URL policy", () => {
     "/sites/default/files/css/example",
     "/sites/default/files/js/example",
     "/sites/default/private/example.pdf",
+    "/files/example.docx",
     "/files/example.csv",
     "/files/example.pdf/extra",
     "/files/example.pdf/",
+    "/files/example.pdf?download=1",
     "/admin/example.pdf",
     "/core/example.pdf",
     "/wp-admin/example.pdf",
@@ -265,10 +267,8 @@ describe("coopScraper URL policy", () => {
     const pdf = `${HOME}files/example.pdf`;
     expect(pageExclusion(pdf, scraper.hostname)).toBe(UNSUPPORTED_DOCUMENT);
     expect(scraper.excludeUrl!(pdf)).toBeNull();
-    expect(scraper.excludeUrl!(`${pdf}?download=1`)).toBeNull();
-    expect(scraper.excludeUrl!(`${HOME}files/example.docx`)).toBeNull();
-    expect(scraper.excludeUrl!(`${HOME}files/slides.pptx`)).toBeNull();
-    expect(scraper.excludeUrl!(`${HOME}files/example.xlsx`)).toBe(UNSUPPORTED_DOCUMENT);
+    expect(scraper.excludeUrl!(`${pdf}?download=1`)).toBe(UNSUPPORTED_DOCUMENT);
+    expect(scraper.excludeUrl!(`${HOME}files/example.docx`)).toBe(UNSUPPORTED_DOCUMENT);
   });
 });
 

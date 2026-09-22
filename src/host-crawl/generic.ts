@@ -33,7 +33,7 @@ const text = (value: string) => value.replace(/\s+/g, " ").trim();
 const compare = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
 
 function excludeUrl(value: string, hostname: string): string | null {
-  const excluded = documentPageExclusion(value, hostname, ["pdf", "docx", "pptx"]);
+  const excluded = documentPageExclusion(value, hostname, ["pdf"]);
   if (
     excluded !== null &&
     !(
@@ -126,7 +126,7 @@ export function createGenericScraper(value: string): HostScraper {
   return {
     hostname,
     title: hostname,
-    scope: "Public HTML prose and supported document text on this exact hostname.",
+    scope: "Public HTML prose and native PDF text on this exact hostname.",
     adapter: {
       kind: "auto",
       allowedTypes: [],
@@ -134,7 +134,7 @@ export function createGenericScraper(value: string): HostScraper {
       exactHostInventory: true,
       requiredQueries: requiredDocumentQueries(hostname),
     },
-    documentFormats: markdownSources(hostname).length ? ["pdf", "docx", "pptx", "markdown"] : ["pdf", "docx", "pptx"],
+    documentFormats: markdownSources(hostname).length ? ["pdf", "markdown"] : ["pdf"],
     excludeUrl: (url) => excludeUrl(url, hostname),
     vetHomepage(snapshot) {
       try {

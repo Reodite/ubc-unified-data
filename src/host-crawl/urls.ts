@@ -1,5 +1,4 @@
 import { publicUbcUrl } from "../prose/client.ts";
-import { documentFormatFromUrl, type DocumentSourceFormat } from "./document-types.ts";
 
 export function normalizeHost(value: string): string {
   if (typeof value !== "string" || !value || /[\s/@:#?\\]/.test(value)) throw new Error("Invalid hostname");
@@ -58,33 +57,19 @@ export function nonDocumentInventoryUrl(value: string, hostname: string): boolea
   );
 }
 
-/** Allow declared downloadable documents without widening authentication or host boundaries. */
-export function documentPageExclusion(
-  value: string,
-  hostname: string,
-  formats: readonly DocumentSourceFormat[],
-): string | null {
+/** Allow declared PDF documents without widening authentication, query, or other resource boundaries. */
+export function documentPageExclusion(value: string, hostname: string, formats: readonly "pdf"[]): string | null {
   const exclusion = pageExclusion(value, hostname);
   let url: URL;
   try {
     url = new URL(publicUbcUrl(hostUrl(value, hostname)));
   } catch {
-    return "Different or unsafe host destination";
+    return "Different or unsafe public destination";
   }
   if (exclusion !== UNSUPPORTED_DOCUMENT) return exclusion;
   const path = decodeURIComponent(url.pathname);
-  const format = documentFormatFromUrl(url.href);
-  if (!format || !formats.includes(format)) return exclusion;
-  url.pathname = path.replace(new RegExp(`(?:\\.${format})+$`, "i"), "");
-  try {
-    publicUbcUrl(url.href);
-  } catch {
-    return "Different or unsafe host destination";
-  }
-  const query = [...url.searchParams];
-  if (query.length && (query.length !== 1 || query[0]![0] !== "download" || query[0]![1] !== "1"))
-    return "Unsupported query or form selection";
-  url.search = "";
+  if (!formats.includes("pdf") || !/\.pdf$/i.test(path) || url.search) return exclusion;
+  url.pathname = path.replace(/(?:\.pdf)+$/i, "");
   if (url.pathname.startsWith("/wp-content/uploads/")) url.pathname = url.pathname.slice("/wp-content/uploads".length);
   // The stripped PDF name is a route check, not an actual screensaver-file suffix.
   return routeExclusion(url.href, hostname, false);

@@ -1,8 +1,7 @@
 import { load, type CheerioAPI } from "cheerio";
 import { extractArticle } from "../../prose/html.ts";
 import type { HostScraper, Snapshot } from "../contracts.ts";
-import type { DocumentSourceFormat } from "../document-types.ts";
-import { documentPageExclusion, hostUrl, normalizeHost, pageExclusion } from "../urls.ts";
+import { hostUrl, normalizeHost, pageExclusion } from "../urls.ts";
 
 export interface WordpressHostOptions {
   hostname: string;
@@ -11,23 +10,16 @@ export interface WordpressHostOptions {
   selectors: readonly string[];
   officialHomepage: ($: CheerioAPI, snapshot: Snapshot) => boolean;
   excludePage?: ($: CheerioAPI, snapshot: Snapshot) => string | null;
-  documentFormats?: readonly DocumentSourceFormat[];
 }
 
 /** Keep platform parsing shared; host definitions supply evidence predicates and genuine content boundaries. */
 export function defineWordpressHost(options: WordpressHostOptions): HostScraper {
   const hostname = normalizeHost(options.hostname);
-  const urlExclusion = (url: string) =>
-    options.documentFormats?.length
-      ? documentPageExclusion(url, hostname, options.documentFormats)
-      : pageExclusion(url, hostname);
   return {
     hostname,
     title: options.title,
     scope: options.scope,
     adapter: { kind: "wordpress", allowedTypes: ["page", "post"] },
-    documentFormats: options.documentFormats,
-    excludeUrl: urlExclusion,
     vetHomepage(snapshot) {
       try {
         if (
@@ -69,7 +61,7 @@ export function defineWordpressHost(options: WordpressHostOptions): HostScraper 
         strategy: "wordpress",
         selectors: [...options.selectors],
         strictSelectors: true,
-        scope: urlExclusion,
+        scope: (url) => pageExclusion(url, hostname),
       });
       hostUrl(input.url, hostname);
       return { kind: "document", input };
