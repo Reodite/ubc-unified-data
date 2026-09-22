@@ -969,6 +969,27 @@
     "document_count": 327
   },
   {
+    "hostname": "lfsus.landfood.ubc.ca",
+    "title": "lfsus.landfood.ubc.ca",
+    "homepage_url": "https://lfsus.landfood.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:33:05.792Z",
+    "homepage_sha256": "43fcc7469e419800b6fd971e12c47f82d425bd089e40e05ace8f577ba3bc9ccd",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/lfsus.landfood.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/lfsus.landfood.ubc.ca",
+        "document_count": 26
+      }
+    ],
+    "document_count": 29
+  },
+  {
     "hostname": "library.ubc.ca",
     "title": "library.ubc.ca",
     "homepage_url": "https://library.ubc.ca/",
