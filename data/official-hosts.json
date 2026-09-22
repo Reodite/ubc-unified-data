@@ -1324,6 +1324,27 @@
     "document_count": 3
   },
   {
+    "hostname": "mediamakers.sites.olt.ubc.ca",
+    "title": "mediamakers.sites.olt.ubc.ca",
+    "homepage_url": "https://mediamakers.sites.olt.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:50:10.423Z",
+    "homepage_sha256": "99d98549bf40dbca30de2834c529042951cd2c37df158581ff36c9e64a5b35a9",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "stories",
+        "path": "data/documents/stories/mediamakers.sites.olt.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/mediamakers.sites.olt.ubc.ca",
+        "document_count": 16
+      }
+    ],
+    "document_count": 17
+  },
+  {
     "hostname": "meg.lsi.ubc.ca",
     "title": "meg.lsi.ubc.ca",
     "homepage_url": "https://meg.lsi.ubc.ca/",
