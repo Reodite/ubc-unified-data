@@ -1074,6 +1074,42 @@
     "document_count": 42
   },
   {
+    "hostname": "linguistics.ubc.ca",
+    "title": "linguistics.ubc.ca",
+    "homepage_url": "https://linguistics.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:36:04.120Z",
+    "homepage_sha256": "3c10f30d17f491690d3e8386e052af88c3c1c18185d184080c16324f3034b87c",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/linguistics.ubc.ca",
+        "document_count": 68
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/linguistics.ubc.ca",
+        "document_count": 186
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/linguistics.ubc.ca",
+        "document_count": 179
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/linguistics.ubc.ca",
+        "document_count": 8
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/linguistics.ubc.ca",
+        "document_count": 76
+      }
+    ],
+    "document_count": 517
+  },
+  {
     "hostname": "loonlake.ubc.ca",
     "title": "loonlake.ubc.ca",
     "homepage_url": "https://loonlake.ubc.ca/",
