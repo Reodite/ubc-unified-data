@@ -944,6 +944,27 @@
     "document_count": 63
   },
   {
+    "hostname": "manufacturing.engineering.ubc.ca",
+    "title": "manufacturing.engineering.ubc.ca",
+    "homepage_url": "https://manufacturing.engineering.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:43:38.861Z",
+    "homepage_sha256": "54b8f533d2ac8021036cf231ecb1c85666294a1674b9189609593b2417edf57c",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/manufacturing.engineering.ubc.ca",
+        "document_count": 27
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/manufacturing.engineering.ubc.ca",
+        "document_count": 16
+      }
+    ],
+    "document_count": 43
+  },
+  {
     "hostname": "mbim.ubc.ca",
     "title": "mbim.ubc.ca",
     "homepage_url": "https://mbim.ubc.ca/",

@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "hostname": "manufacturing.engineering.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1fdd672; primary first category assignment after verified Markdown integration",
+    "rationale": "The saved official Manufacturing Engineering homepage primarily explains an accredited multidisciplinary engineering program, hands-on learning and resources for future and current students. It separately exposes an explicit news section and dated announcements.",
+    "evidence": [
+      "https://manufacturing.engineering.ubc.ca/ | 54b8f533d2ac8021036cf231ecb1c85666294a1674b9189609593b2417edf57c | Manufacturing engineering combines mechanical, electrical and materials engineering to create efficient, sustainable manufacturing processes.",
+      "https://manufacturing.engineering.ubc.ca/ | 54b8f533d2ac8021036cf231ecb1c85666294a1674b9189609593b2417edf57c | The accredited program offers multidisciplinary and hands-on learning for future and current students.",
+      "https://manufacturing.engineering.ubc.ca/ | 54b8f533d2ac8021036cf231ecb1c85666294a1674b9189609593b2417edf57c | The homepage labels a News section and links dated accreditation, graduation and design-day announcements under /news."
+    ]
+  },
+  "rules": [
+    {
+      "id": "program-news",
+      "category": "news",
+      "rationale": "The homepage explicitly labels /news and its dated entries as program news.",
+      "path_pattern": "^/news(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "engineering-program",
+    "category": "academics",
+    "rationale": "Accredited Manufacturing Engineering program, curriculum, student learning and academic experience."
+  }
+}
