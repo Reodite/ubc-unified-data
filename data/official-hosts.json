@@ -3080,6 +3080,42 @@
     "document_count": 79
   },
   {
+    "hostname": "socialwork.ubc.ca",
+    "title": "socialwork.ubc.ca",
+    "homepage_url": "https://socialwork.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:12:50.385Z",
+    "homepage_sha256": "50fb0cc2d379a0f2e5967f2bd6a6ecf65949e4e6695f9ceb710742bb8d1aea4a",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/socialwork.ubc.ca",
+        "document_count": 75
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/socialwork.ubc.ca",
+        "document_count": 366
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/socialwork.ubc.ca",
+        "document_count": 93
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/socialwork.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/socialwork.ubc.ca",
+        "document_count": 79
+      }
+    ],
+    "document_count": 614
+  },
+  {
     "hostname": "sogi.educ.ubc.ca",
     "title": "sogi.educ.ubc.ca",
     "homepage_url": "https://sogi.educ.ubc.ca/",
