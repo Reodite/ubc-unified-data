@@ -1149,6 +1149,37 @@
     "document_count": 490
   },
   {
+    "hostname": "mining.ubc.ca",
+    "title": "mining.ubc.ca",
+    "homepage_url": "https://mining.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:56:56.165Z",
+    "homepage_sha256": "c2fbe701f748fd67e685020f53d3cdf278775ce93432ceefee2b04171223b26b",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/mining.ubc.ca",
+        "document_count": 92
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/mining.ubc.ca",
+        "document_count": 21
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/mining.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/mining.ubc.ca",
+        "document_count": 9
+      }
+    ],
+    "document_count": 127
+  },
+  {
     "hostname": "mint.forestry.ubc.ca",
     "title": "mint.forestry.ubc.ca",
     "homepage_url": "https://mint.forestry.ubc.ca/",
