@@ -3171,6 +3171,27 @@
     "document_count": 12
   },
   {
+    "hostname": "unitedway.ok.ubc.ca",
+    "title": "unitedway.ok.ubc.ca",
+    "homepage_url": "https://unitedway.ok.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:44:43.458Z",
+    "homepage_sha256": "b849b26fc2bfc2f9db589e6875b9624942b58f7d8569ad8dfacc8ec9fa2f8385",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/unitedway.ok.ubc.ca",
+        "document_count": 23
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/unitedway.ok.ubc.ca",
+        "document_count": 2
+      }
+    ],
+    "document_count": 25
+  },
+  {
     "hostname": "unpredictable-conf-2021.sites.olt.ubc.ca",
     "title": "unpredictable-conf-2021.sites.olt.ubc.ca",
     "homepage_url": "https://unpredictable-conf-2021.sites.olt.ubc.ca/",

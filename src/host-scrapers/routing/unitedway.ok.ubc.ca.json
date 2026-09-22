@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "hostname": "unitedway.ok.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w5 first homepage review",
+    "rationale": "This official UBC campaign homepage provides public participation and giving information. It is branded as the Okanagan campaign but explicitly discusses Vancouver and Okanagan together and describes the UBC-wide employee campaign and community participation. That mixed-campus content is retained rather than silently declaring the host exclusively Okanagan-serving. Events, giving and involvement are opportunities; FAQs and contact information provide support.",
+    "evidence": [
+      "https://unitedway.ok.ubc.ca/ | b849b26fc2bfc2f9db589e6875b9624942b58f7d8569ad8dfacc8ec9fa2f8385 | The University of British Columbia (Vancouver and Okanagan) has been recognized as a top contributor to United Way for many years. Since 2009, UBC has consistently raised over $550,000 annually in support of the local community.",
+      "https://unitedway.ok.ubc.ca/ | b849b26fc2bfc2f9db589e6875b9624942b58f7d8569ad8dfacc8ec9fa2f8385 | The UBC United Way Campaign is an annual workplace campaign that runs in the fall and creates opportunities for UBC staff, faculty and community members to connect, network and raise funds for a great cause.",
+      "https://unitedway.ok.ubc.ca/ | b849b26fc2bfc2f9db589e6875b9624942b58f7d8569ad8dfacc8ec9fa2f8385 | UBC Okanagan and the United Way; The UBC Okanagan campus started its United Way campaign in 2005 and has since achieved outstanding results in participation and donations that have greatly impacted their community.",
+      "https://unitedway.ok.ubc.ca/ | b849b26fc2bfc2f9db589e6875b9624942b58f7d8569ad8dfacc8ec9fa2f8385 | Navigation: Give /give/; Impact /impact/; FAQs /impact/faqs/; Events /events/; Get Involved /get-involved/; Host a Pit Stop /get-involved/host-a-pit-stop/; Contact Us /contact/"
+    ]
+  },
+  "rules": [
+    {
+      "id": "campaign-help",
+      "category": "support",
+      "rationale": "The homepage links FAQs and contact information for practical campaign assistance.",
+      "path_pattern": "^/(?:impact/faqs|contact)(?:/|$)"
+    },
+    {
+      "id": "participation-sections",
+      "category": "opportunities",
+      "rationale": "Giving, events and involvement sections describe ways to participate in the campaign, including hosting a Pit Stop.",
+      "path_pattern": "^/(?:give|events|get-involved)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "opportunities",
+    "rationale": "The campaign primarily invites UBC staff, faculty and community members to take part in fundraising and community engagement."
+  }
+}
