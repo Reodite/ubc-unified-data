@@ -2876,6 +2876,27 @@
     "document_count": 89
   },
   {
+    "hostname": "sap.ubc.ca",
+    "title": "sap.ubc.ca",
+    "homepage_url": "https://sap.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:02:17.067Z",
+    "homepage_sha256": "f41dcc8e3ca52bab0132dd8fb293f3825191a8f13f21e812655b6d2f63059f50",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/sap.ubc.ca",
+        "document_count": 57
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/sap.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 58
+  },
+  {
     "hostname": "sbelab.forestry.ubc.ca",
     "title": "sbelab.forestry.ubc.ca",
     "homepage_url": "https://sbelab.forestry.ubc.ca/",
