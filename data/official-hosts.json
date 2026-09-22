@@ -26,6 +26,42 @@
     "document_count": 16
   },
   {
+    "hostname": "anthfilm.anth.ubc.ca",
+    "title": "anthfilm.anth.ubc.ca",
+    "homepage_url": "https://anthfilm.anth.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T14:41:21.604Z",
+    "homepage_sha256": "d51fc6074b6056cf742b776f67c2d02672ffc78ce4aa4c2394fdaa031c7a51d4",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/anthfilm.anth.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/anthfilm.anth.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/anthfilm.anth.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/anthfilm.anth.ubc.ca",
+        "document_count": 11
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/anthfilm.anth.ubc.ca",
+        "document_count": 4
+      }
+    ],
+    "document_count": 22
+  },
+  {
     "hostname": "audiospeech.ubc.ca",
     "title": "audiospeech.ubc.ca",
     "homepage_url": "https://audiospeech.ubc.ca/",
