@@ -3983,6 +3983,32 @@
     "document_count": 34
   },
   {
+    "hostname": "wach.med.ubc.ca",
+    "title": "wach.med.ubc.ca",
+    "homepage_url": "https://wach.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:54:00.724Z",
+    "homepage_sha256": "36f4956a9c2bd7cc1688a555843ebc0bddaddbeaae31af6f2cf970ad2f85169d",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/wach.med.ubc.ca",
+        "document_count": 38
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/wach.med.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/wach.med.ubc.ca",
+        "document_count": 10
+      }
+    ],
+    "document_count": 53
+  },
+  {
     "hostname": "walllegacyawards.ubc.ca",
     "title": "walllegacyawards.ubc.ca",
     "homepage_url": "https://walllegacyawards.ubc.ca/",
