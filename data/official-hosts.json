@@ -1615,6 +1615,27 @@
     "document_count": 24
   },
   {
+    "hostname": "pair.ubc.ca",
+    "title": "pair.ubc.ca",
+    "homepage_url": "https://pair.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:24:46.875Z",
+    "homepage_sha256": "349b679e6c3761e670591f7909eda935821e71a53da9e24cb459d08e59fa722f",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/pair.ubc.ca",
+        "document_count": 6
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/pair.ubc.ca",
+        "document_count": 60
+      }
+    ],
+    "document_count": 66
+  },
+  {
     "hostname": "palliativecare.med.ubc.ca",
     "title": "palliativecare.med.ubc.ca",
     "homepage_url": "https://palliativecare.med.ubc.ca/",
