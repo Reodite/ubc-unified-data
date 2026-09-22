@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "hostname": "open.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w3 first homepage review",
+    "rationale": "Open UBC provides official public guidance and resources for UBC faculty and students on open scholarship, education, access, and research. Its homepage offers consultations, educational resources, funding guidance, and updates, explicitly serving Vancouver and Okanagan working groups rather than an exclusively Okanagan audience.",
+    "evidence": [
+      "https://open.ubc.ca/ | b853c5b1e453636a5779b1c55daf0c635f3e12314d5ac8f5d7563c6b6e0443a7 | Open UBC is a curated collection of resources for faculty and students to learn about open scholarship and what it means to teaching, learning, and research at UBC.",
+      "https://open.ubc.ca/ | b853c5b1e453636a5779b1c55daf0c635f3e12314d5ac8f5d7563c6b6e0443a7 | Learn about the Vancouver and Okanagan working groups and how you can contribute.",
+      "https://open.ubc.ca/ | b853c5b1e453636a5779b1c55daf0c635f3e12314d5ac8f5d7563c6b6e0443a7 | Looking for support for open access, open education, or open research? Tap into the supports available to you!",
+      "https://open.ubc.ca/ | b853c5b1e453636a5779b1c55daf0c635f3e12314d5ac8f5d7563c6b6e0443a7 | Funding Support; 2026-27 OER Grant Proposal Development Sessions; Call for Presentations at Alt-Grading Symposium; UBC Library Open Ed Impact & Activity Report 2025-2026; 2026 OER Excellence and Impact Award Recipients Announced"
+    ]
+  },
+  "rules": [
+    {
+      "id": "funding-and-participation",
+      "category": "opportunities",
+      "rationale": "Homepage-listed funding support, grant development, and calls for presentations offer participation opportunities.",
+      "title_pattern": "^(?:Funding Support|2026-27 OER Grant Proposal Development Sessions|Call for Presentations)"
+    },
+    {
+      "id": "institutional-updates",
+      "category": "news",
+      "rationale": "Homepage-listed impact reports and award recipient announcements report institutional activity.",
+      "title_pattern": "^(?:UBC Library Open Ed Impact & Activity Report|2026 OER Excellence and Impact Award Recipients Announced)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "support",
+    "rationale": "Public resources and practical guidance supporting open scholarship at UBC."
+  }
+}

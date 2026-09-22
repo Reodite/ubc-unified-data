@@ -1702,6 +1702,32 @@
     "document_count": 132
   },
   {
+    "hostname": "open.ubc.ca",
+    "title": "open.ubc.ca",
+    "homepage_url": "https://open.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:19:22.639Z",
+    "homepage_sha256": "b853c5b1e453636a5779b1c55daf0c635f3e12314d5ac8f5d7563c6b6e0443a7",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/open.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/open.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/open.ubc.ca",
+        "document_count": 495
+      }
+    ],
+    "document_count": 499
+  },
+  {
     "hostname": "ophthalmology.med.ubc.ca",
     "title": "ophthalmology.med.ubc.ca",
     "homepage_url": "https://ophthalmology.med.ubc.ca/",
