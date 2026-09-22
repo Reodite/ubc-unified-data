@@ -2126,6 +2126,32 @@
     "document_count": 70
   },
   {
+    "hostname": "plantcare.ubc.ca",
+    "title": "plantcare.ubc.ca",
+    "homepage_url": "https://plantcare.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:35:44.885Z",
+    "homepage_sha256": "90e8850b827f290aea0576f77d2e2be48219ac4098eb1c40e24e76405c0d970d",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/plantcare.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/plantcare.ubc.ca",
+        "document_count": 7
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/plantcare.ubc.ca",
+        "document_count": 9
+      }
+    ],
+    "document_count": 17
+  },
+  {
     "hostname": "polqm.med.ubc.ca",
     "title": "polqm.med.ubc.ca",
     "homepage_url": "https://polqm.med.ubc.ca/",

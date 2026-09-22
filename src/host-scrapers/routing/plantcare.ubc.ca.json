@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "hostname": "plantcare.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner ca37b94e-5757-4878-811c-907915e18161; primary retained-homepage review under article-only scope",
+    "rationale": "Plant Care Services is a UBC Vancouver shared research platform providing greenhouse and field facilities, experimental design advice, cultivation services and training.",
+    "evidence": [
+      "https://plantcare.ubc.ca/ | 90e8850b827f290aea0576f77d2e2be48219ac4098eb1c40e24e76405c0d970d | Plant Care Services at UBC Vancouver: a shared research platform for greenhouse and field scientific experiments.",
+      "https://plantcare.ubc.ca/ | 90e8850b827f290aea0576f77d2e2be48219ac4098eb1c40e24e76405c0d970d | Expert advice for experimental design, plant cultivation, integrated pest management, nutrition and hydroponics",
+      "https://plantcare.ubc.ca/ | 90e8850b827f290aea0576f77d2e2be48219ac4098eb1c40e24e76405c0d970d | The staff team, led by Melina Biron, includes three technicians who offer research services and training and are waiting to meet you!"
+    ]
+  },
+  "rules": [
+    {
+      "id": "plant-care-news",
+      "category": "news",
+      "rationale": "The homepage labels dated announcements and news.",
+      "path_pattern": "^/(?:announcements|news|announcement|news-announcements)(?:/|$)"
+    },
+    {
+      "id": "plant-training",
+      "category": "academics",
+      "rationale": "The service provides a distinct training section.",
+      "path_pattern": "^/our-services/training-services(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "plant-research-support",
+    "category": "support",
+    "rationale": "The platform primarily provides facilities, services, rates, locations and requests supporting research."
+  }
+}
