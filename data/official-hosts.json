@@ -1089,6 +1089,27 @@
     "document_count": 43
   },
   {
+    "hostname": "mastercardfdn.scholars.ubc.ca",
+    "title": "mastercardfdn.scholars.ubc.ca",
+    "homepage_url": "https://mastercardfdn.scholars.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:44:46.186Z",
+    "homepage_sha256": "d02393605463a312b55ddc91f4831b457897d4105c8986d2827dcf40b8ffd30a",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/mastercardfdn.scholars.ubc.ca",
+        "document_count": 442
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/mastercardfdn.scholars.ubc.ca",
+        "document_count": 6
+      }
+    ],
+    "document_count": 448
+  },
+  {
     "hostname": "mbim.ubc.ca",
     "title": "mbim.ubc.ca",
     "homepage_url": "https://mbim.ubc.ca/",
