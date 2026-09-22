@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hostname": "www.technicalguidelines.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner ca37b94e-5757-4878-811c-907915e18161; primary retained-homepage review under article-only scope",
+    "rationale": "The UBC Technical Guidelines site provides substantive design, construction, approval, safety, sustainability and turnover standards for university facilities and professional service providers.",
+    "evidence": [
+      "https://www.technicalguidelines.ubc.ca/ | 4e9ac4d1097adf2947f860cbc4f2211f12a8d32cf9c9c23826e14417020339e9 | The UBC Technical Guidelines serve as the code of quality and performance for the design, construction and renovation of University-owned institutional buildings.",
+      "https://www.technicalguidelines.ubc.ca/ | 4e9ac4d1097adf2947f860cbc4f2211f12a8d32cf9c9c23826e14417020339e9 | The UBC Technical Guidelines outline the principles of design and construction and include: performance objectives, technical requirements, recommended practices, project documentation requirements, sample front-end documentation, plus steps to follow to expedite completion of UBC projects.",
+      "https://www.technicalguidelines.ubc.ca/ | 4e9ac4d1097adf2947f860cbc4f2211f12a8d32cf9c9c23826e14417020339e9 | The UBC Technical Guidelines establishes the minimum acceptable standards for buildings, infrastructure and landscape on the campus."
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "facility-technical-support",
+    "category": "support",
+    "rationale": "All article-style pages provide technical standards, procedures and implementation guidance for UBC facilities."
+  }
+}

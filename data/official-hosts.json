@@ -3997,6 +3997,22 @@
     "document_count": 584
   },
   {
+    "hostname": "www.technicalguidelines.ubc.ca",
+    "title": "www.technicalguidelines.ubc.ca",
+    "homepage_url": "https://www.technicalguidelines.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:23:16.275Z",
+    "homepage_sha256": "4e9ac4d1097adf2947f860cbc4f2211f12a8d32cf9c9c23826e14417020339e9",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/www.technicalguidelines.ubc.ca",
+        "document_count": 22
+      }
+    ],
+    "document_count": 22
+  },
+  {
     "hostname": "xwi7xwa.library.ubc.ca",
     "title": "xwi7xwa.library.ubc.ca",
     "homepage_url": "https://xwi7xwa.library.ubc.ca/",
