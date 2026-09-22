@@ -876,6 +876,32 @@
     "document_count": 273
   },
   {
+    "hostname": "lingpapers.sites.olt.ubc.ca",
+    "title": "lingpapers.sites.olt.ubc.ca",
+    "homepage_url": "https://lingpapers.sites.olt.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T14:54:40.314Z",
+    "homepage_sha256": "cd3c6668bcce8bc600fc5f9c4d89581b4dd0bdb8949e8fda37459735e70a3bda",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/lingpapers.sites.olt.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/lingpapers.sites.olt.ubc.ca",
+        "document_count": 36
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/lingpapers.sites.olt.ubc.ca",
+        "document_count": 5
+      }
+    ],
+    "document_count": 42
+  },
+  {
     "hostname": "loonlake.ubc.ca",
     "title": "loonlake.ubc.ca",
     "homepage_url": "https://loonlake.ubc.ca/",
