@@ -4467,6 +4467,32 @@
     "document_count": 22
   },
   {
+    "hostname": "www.magic.ubc.ca",
+    "title": "www.magic.ubc.ca",
+    "homepage_url": "https://www.magic.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:13:43.631Z",
+    "homepage_sha256": "f1a46226503ce1a6513f6824f711a1b1af2add6a0c385aa52f5c817a8685e810",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/www.magic.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/www.magic.ubc.ca",
+        "document_count": 65
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/www.magic.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 67
+  },
+  {
     "hostname": "www.mkrf.forestry.ubc.ca",
     "title": "www.mkrf.forestry.ubc.ca",
     "homepage_url": "https://www.mkrf.forestry.ubc.ca/",
