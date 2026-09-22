@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "hostname": "urology.med.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w5 first homepage review",
+    "rationale": "The official UBC Department of Urologic Sciences provides public education, research and patient-information resources, with a Vancouver Faculty of Medicine address. Homepage navigation clearly distinguishes academic training, research programs, patient support, career and grant opportunities, and news. These sections receive explicit routing; no personal-story series is evidenced for a stories rule.",
+    "evidence": [
+      "https://urology.med.ubc.ca/ | 36be65f70529a4745630035c82fb3452ed68411ea0f019f4dfcc15cbf17fbf7a | Department of Urologic Sciences; Faculty of Medicine; Gordon & Leslie Diamond Health Care Centre; Level 6, 2775 Laurel Street; Vancouver, BC Canada V5Z 1M9",
+      "https://urology.med.ubc.ca/ | 36be65f70529a4745630035c82fb3452ed68411ea0f019f4dfcc15cbf17fbf7a | Navigation: Education /education/; Residency Program /education/residency-program/; Fellowship Programs /education/fellowship/; Undergraduate Program /education/undergraduate-program/; Graduate Program /education/graduate-program/",
+      "https://urology.med.ubc.ca/ | 36be65f70529a4745630035c82fb3452ed68411ea0f019f4dfcc15cbf17fbf7a | Navigation: Research /research/; Grant Information /research/grant-information/; Programs /programs/; Transplant Research /programs/transplantation/; Oncology & Clinical Trials /programs/oncology/; Careers /careers/",
+      "https://urology.med.ubc.ca/ | 36be65f70529a4745630035c82fb3452ed68411ea0f019f4dfcc15cbf17fbf7a | Navigation: Patient Information /patient-information/; General Information for Urology Patients; Dietary Management of Stone Disease; Bladder Care; Prostate Care; Events & News /news-events/",
+      "https://urology.med.ubc.ca/ | 36be65f70529a4745630035c82fb3452ed68411ea0f019f4dfcc15cbf17fbf7a | Dr. S. Larry Goldenberg honoured with UBC Medicine lifetime achievement award; Dr. Ryan Flannigan receives 2026 Matthew P. Hardy Young Andrologist Award; Meet our New Fellows and Residents for 2026!; UBC Urologic Sciences researchers receive over $3M in CIHR funding for advanced cancer treatment and AI-driven prostate cancer care; Dr. Gillian Vandekerkhove Awarded 2026 Canadian Cancer Society Emerging Scholar Research Grant"
+    ]
+  },
+  "rules": [
+    {
+      "id": "patient-guidance",
+      "category": "support",
+      "rationale": "The patient-information section provides practical health and care guidance rather than academic program descriptions.",
+      "path_pattern": "^/patient-information(?:/|$)"
+    },
+    {
+      "id": "careers-grants",
+      "category": "opportunities",
+      "rationale": "Careers and grant information describe employment and funding opportunities; the grant override precedes general research routing.",
+      "path_pattern": "^/(?:careers|research/grant-information)(?:/|$)"
+    },
+    {
+      "id": "medical-education",
+      "category": "academics",
+      "rationale": "The education section explicitly contains residency, fellowship, undergraduate and graduate training programs.",
+      "path_pattern": "^/education(?:/|$)"
+    },
+    {
+      "id": "research-programs",
+      "category": "research",
+      "rationale": "The research and clinical program sections describe urologic research areas, institutes and trials rather than degree curricula.",
+      "path_pattern": "^/(?:research|programs)(?:/|$)"
+    },
+    {
+      "id": "department-news",
+      "category": "news",
+      "rationale": "The homepage explicitly links an Events & News section and displays institutional announcements.",
+      "path_pattern": "^/news-events(?:/|$)"
+    },
+    {
+      "id": "homepage-announcements",
+      "category": "news",
+      "rationale": "These homepage article titles announce awards, new trainees and awarded research funding; they are not open funding calls or personal-story interviews.",
+      "title_pattern": "^(?:Dr\\. S\\. Larry Goldenberg honoured|Dr\\. Ryan Flannigan receives|Meet our New Fellows and Residents|UBC Urologic Sciences researchers receive|Dr\\. Gillian Vandekerkhove Awarded)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "The host represents a university medical academic department and its institutional educational context; explicit rules separate research, patient support, opportunities and news."
+  }
+}

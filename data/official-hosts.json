@@ -3260,6 +3260,42 @@
     "document_count": 44
   },
   {
+    "hostname": "urology.med.ubc.ca",
+    "title": "urology.med.ubc.ca",
+    "homepage_url": "https://urology.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:48:06.852Z",
+    "homepage_sha256": "36be65f70529a4745630035c82fb3452ed68411ea0f019f4dfcc15cbf17fbf7a",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/urology.med.ubc.ca",
+        "document_count": 156
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/urology.med.ubc.ca",
+        "document_count": 6
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/urology.med.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/urology.med.ubc.ca",
+        "document_count": 11
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/urology.med.ubc.ca",
+        "document_count": 9
+      }
+    ],
+    "document_count": 184
+  },
+  {
     "hostname": "usstudies.arts.ubc.ca",
     "title": "usstudies.arts.ubc.ca",
     "homepage_url": "https://usstudies.arts.ubc.ca/",
