@@ -591,6 +591,27 @@
     "document_count": 138
   },
   {
+    "hostname": "isotl.ctlt.ubc.ca",
+    "title": "isotl.ctlt.ubc.ca",
+    "homepage_url": "https://isotl.ctlt.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:17:03.178Z",
+    "homepage_sha256": "f2fa20586e41ba7616f78b4cbf5ffcc17322fafba3a90a0d0c4dbdd2feb1cd76",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/isotl.ctlt.ubc.ca",
+        "document_count": 551
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/isotl.ctlt.ubc.ca",
+        "document_count": 15
+      }
+    ],
+    "document_count": 566
+  },
+  {
     "hostname": "isp.ubc.ca",
     "title": "isp.ubc.ca",
     "homepage_url": "https://isp.ubc.ca/",
