@@ -28,6 +28,7 @@ beforeAll(async () => {
     "base.ts",
     "prose/client.ts",
     "host-crawl/paths.ts",
+    "host-crawl/document-types.ts",
     "host-crawl/urls.ts",
     "host-crawl/work-queue.ts",
   ]) {

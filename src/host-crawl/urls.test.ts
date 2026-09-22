@@ -74,18 +74,28 @@ describe("explicit screensaver resources", () => {
 });
 
 describe("declared public document routes", () => {
-  it.each(["/", "/guidance/", "/files/policy.pdf", "/wp-content/uploads/2025/guide.PDF", "/files/guide%2Epdf"])(
-    "permits %s",
-    (path) => {
-      expect(documentPageExclusion(`https://fixture.ubc.ca${path}`, "fixture.ubc.ca", ["pdf"])).toBeNull();
-    },
-  );
+  it.each([
+    "/",
+    "/guidance/",
+    "/files/policy.pdf",
+    "/wp-content/uploads/2025/guide.PDF",
+    "/files/guide%2Epdf",
+    "/guide.pdf?download=1",
+    "/files/UBCFOM.scr.pdf?download=1",
+  ])("permits %s", (path) => {
+    expect(documentPageExclusion(`https://fixture.ubc.ca${path}`, "fixture.ubc.ca", ["pdf"])).toBeNull();
+  });
   it.each([
     "https://outside.example/guide.pdf",
     "https://fixture.ubc.ca/admin/guide.pdf",
+    "https://fixture.ubc.ca/admin.pdf",
+    "https://fixture.ubc.ca/user.docx",
+    "https://fixture.ubc.ca/login.pptx",
+    "https://fixture.ubc.ca/guide.pdf?token=one",
+    "https://fixture.ubc.ca/guide.pdf?download=1&download=1",
+    "https://fixture.ubc.ca/guide.pdf?download=true",
     "https://fixture.ubc.ca/wp-admin/guide.pdf",
     "https://fixture.ubc.ca/wp-content/themes/guide.pdf",
-    "https://fixture.ubc.ca/guide.pdf?token=one",
     "https://fixture.ubc.ca/guide.docx",
     "https://fixture.ubc.ca/wp-content/uploads/%2fadmin/guide.pdf",
     "https://fixture.ubc.ca/wp-content/uploads/../themes/guide.pdf",
@@ -94,11 +104,27 @@ describe("declared public document routes", () => {
     "https://fixture.ubc.ca/files/guide.docx.pdf",
     "https://fixture.ubc.ca/files/guide.pdf.scr",
     "https://fixture.ubc.ca/wp-admin/UBCFOM.scr.pdf",
-    "https://fixture.ubc.ca/files/UBCFOM.scr.pdf?download=1",
   ])("rejects %s", (url) => {
     expect(documentPageExclusion(url, "fixture.ubc.ca", ["pdf"])).not.toBeNull();
   });
-  it("requires an explicit PDF adapter", () => {
+  it.each([
+    ["https://fixture.ubc.ca/files/guide.docx", "docx"],
+    ["https://fixture.ubc.ca/files/slides.pptx?download=1", "pptx"],
+    ["https://fixture.ubc.ca/wp-content/uploads/admin.docx", "docx"],
+  ] as const)("permits declared %s downloads", (url, format) => {
+    expect(documentPageExclusion(url, "fixture.ubc.ca", [format])).toBeNull();
+  });
+
+  it.each([
+    ["https://fixture.ubc.ca/admin.pdf", "pdf"],
+    ["https://fixture.ubc.ca/user.docx", "docx"],
+    ["https://fixture.ubc.ca/login.pptx", "pptx"],
+  ] as const)("does not let a declared %s suffix hide an authentication route", (url, format) => {
+    expect(documentPageExclusion(url, "fixture.ubc.ca", [format])).toBe("Different or unsafe host destination");
+  });
+
+  it("requires an explicit format adapter", () => {
     expect(documentPageExclusion("https://fixture.ubc.ca/files/guide.pdf", "fixture.ubc.ca", [])).not.toBeNull();
+    expect(documentPageExclusion("https://fixture.ubc.ca/files/guide.docx", "fixture.ubc.ca", ["pdf"])).not.toBeNull();
   });
 });

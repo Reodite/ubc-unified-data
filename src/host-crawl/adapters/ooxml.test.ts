@@ -1,6 +1,13 @@
 import { describe, expect, it } from "vitest";
 import { CONTENT_TYPES, makeZip, rootRelationships } from "./ooxml-test-helper.ts";
-import { OOXML_LIMITS, OOXML_PROFILE_SHA256, parseOoxmlXml, readOoxml } from "./ooxml.ts";
+import {
+  captureOoxmlProfile,
+  OOXML_LIMITS,
+  OOXML_PROFILE_MANIFEST,
+  OOXML_PROFILE_SHA256,
+  parseOoxmlXml,
+  readOoxml,
+} from "./ooxml.ts";
 
 const WORD_NS = "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
 
@@ -40,6 +47,20 @@ describe("bounded OOXML package reading", () => {
     expect(first.profileSha256).toBe(OOXML_PROFILE_SHA256);
     expect(first.profileSha256).toMatch(/^[a-f0-9]{64}$/);
     expect(first.sourceSha256).toBe(second.sourceSha256);
+    expect(captureOoxmlProfile()).toEqual({ manifest: OOXML_PROFILE_MANIFEST, sha256: OOXML_PROFILE_SHA256 });
+    expect(Object.values(OOXML_PROFILE_MANIFEST.implementation)).toHaveLength(3);
+    for (const value of Object.values(OOXML_PROFILE_MANIFEST.implementation)) expect(value).toMatch(/^[a-f0-9]{64}$/);
+    expect(Object.keys(OOXML_PROFILE_MANIFEST.dependencies)).toEqual(
+      expect.arrayContaining([
+        expect.stringMatching(/^saxes@/),
+        expect.stringMatching(/^yauzl@/),
+        expect.stringMatching(/^xmlchars@/),
+      ]),
+    );
+    for (const value of Object.values(OOXML_PROFILE_MANIFEST.dependencies)) {
+      expect(value.version).toMatch(/^\d+\.\d+\.\d+/);
+      expect(value.tree_sha256).toMatch(/^[a-f0-9]{64}$/);
+    }
     expect(first.relationships(first.mainPart)[0]).toMatchObject({
       external: true,
       target: "https://example.invalid/private",

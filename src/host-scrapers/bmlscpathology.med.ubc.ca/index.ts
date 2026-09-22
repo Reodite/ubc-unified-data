@@ -13,6 +13,7 @@ const base = defineWordpressHost({
   title: `UBC ${PROGRAM}`,
   scope: "Public BMLSc program, curriculum, admissions, prerequisite, laboratory training and student guidance prose.",
   selectors: [CONTENT],
+  documentFormats: ["pdf", "docx", "pptx"],
   officialHomepage($, snapshot) {
     const wordmark = $("#ubc7-header #ubc7-wordmark a").first();
     const unit = $("#ubc7-unit-name a").first();

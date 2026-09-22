@@ -58,6 +58,24 @@ describe("PPTX extraction", () => {
     expect(new MarkdownIt({ html: true }).render(result.markdown)).not.toContain("<script>");
   });
 
+  it("preserves explicit ordered and nested bullet lists with safe run hyperlinks", async () => {
+    const listShape = `<p:sp><p:nvSpPr><p:nvPr><p:ph type="body"/></p:nvPr></p:nvSpPr><p:txBody><a:p><a:pPr><a:buAutoNum type="arabicPeriod"/></a:pPr><a:r><a:rPr><a:hlinkClick r:id="link"/></a:rPr><a:t>Apply online</a:t></a:r></a:p><a:p><a:pPr lvl="1"><a:buChar char="•"/></a:pPr><a:r><a:t>Prepare documents</a:t></a:r></a:p></p:txBody></p:sp>`;
+    const result = await extractPptx({
+      bytes: packageWith({
+        presentation: presentation(["slide1"]),
+        slides: { "ppt/slides/slide1.xml": slide(`${shape("Admissions", "title")}${listShape}`) },
+        extra: [
+          {
+            name: "ppt/slides/_rels/slide1.xml.rels",
+            body: `<Relationships xmlns="${RELS}"><Relationship Id="link" Type="${R}/hyperlink" Target="https://you.ubc.ca/apply(a)" TargetMode="External"/></Relationships>`,
+          },
+        ],
+      }),
+    });
+    expect(result.markdown).toContain("1. [Apply online](https://you.ubc.ca/apply%28a%29)");
+    expect(result.markdown).toContain("  - Prepare documents");
+  });
+
   it("uses coordinate fallback for an unlabelled title and preserves merged table metadata", async () => {
     const table = `<p:graphicFrame><a:graphic><a:graphicData><a:tbl><a:tr><a:tc gridSpan="2" rowSpan="2"><a:txBody><a:p><a:r><a:t>Merged</a:t></a:r></a:p></a:txBody></a:tc><a:tc hMerge="1"><a:txBody><a:p><a:r><a:t>Continuation</a:t></a:r></a:p></a:txBody></a:tc></a:tr></a:tbl></a:graphicData></a:graphic></p:graphicFrame>`;
     const only = slide(`${shape("Lower body", "body", 0, 500)}${shape("Top inferred title", "body", 50, 10)}${table}`);

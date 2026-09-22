@@ -107,6 +107,12 @@ function usable(text: string): boolean {
   return /[^\s\p{Cc}\p{Cf}\p{Co}\ufffd]/u.test(text);
 }
 
+function sufficientNativeText(text: string): boolean {
+  const characters = text.match(/[\p{L}\p{N}]/gu)?.length ?? 0;
+  const words = text.match(/[\p{L}\p{N}]+/gu)?.length ?? 0;
+  return characters >= 24 || words >= 5;
+}
+
 function fenceText(text: string): string {
   let longest = 2;
   for (const match of text.matchAll(/`+/g)) longest = Math.max(longest, match[0].length);
@@ -341,7 +347,7 @@ export async function extractPdfV2({
     const nativeTextPages: number[] = [];
     const ocrPages: number[] = [];
     for (const [index, text] of pageTexts.entries()) {
-      if (usable(text)) nativeTextPages.push(index + 1);
+      if (sufficientNativeText(text)) nativeTextPages.push(index + 1);
       else ocrPages.push(index + 1);
     }
     if (ocrPages.length > PDF_V2_LIMITS.ocrPages) throw new Error("PDF v2 exceeds its OCR page limit");

@@ -34,19 +34,66 @@ function markdownText(value: string): string {
     .replace(/([`*_[\]<>])/g, "\\$1");
 }
 
-function paragraphText(node: XmlNode): string {
-  const chunks: string[] = [];
-  const visit = (item: XmlNode) => {
-    if (item.local === "t") chunks.push(markdownText(nodeText(item)));
-    else if (item.local === "br") chunks.push("\n");
-    else for (const child of childElements(item)) visit(child);
-  };
-  visit(node);
-  return chunks.join("").trim();
+function safeLink(target: string): string | undefined {
+  try {
+    const url = new URL(target);
+    if (!["http:", "https:", "mailto:"].includes(url.protocol) || url.username || url.password) return undefined;
+    return url.href.replace(/\(/g, "%28").replace(/\)/g, "%29");
+  } catch {
+    return undefined;
+  }
 }
 
-function shapeText(shape: XmlNode): string {
-  return descendants(shape, "p").map(paragraphText).filter(Boolean).join("\n");
+interface LinkEvidence {
+  unsafe: number;
+}
+
+function paragraphText(
+  node: XmlNode,
+  relationships: ReadonlyMap<string, OoxmlRelationship>,
+  links: LinkEvidence,
+): string {
+  const render = (item: XmlNode): string => {
+    if (item.local === "t") return markdownText(nodeText(item));
+    if (item.local === "br") return "\n";
+    if (item.local === "r") {
+      const label = childElements(item)
+        .filter((child) => child.local !== "rPr")
+        .map(render)
+        .join("");
+      const hyperlink = descendants(item, "hlinkClick")[0];
+      if (!hyperlink) return label;
+      const id = hyperlink.attributes.id ?? hyperlink.attributes["r:id"];
+      const relationship = id ? relationships.get(id) : undefined;
+      const target = relationship?.external ? safeLink(relationship.target) : undefined;
+      if (!target) links.unsafe++;
+      return target && label.trim() ? `[${label}](${target})` : label;
+    }
+    return childElements(item).map(render).join("");
+  };
+  const text = render(node).trim();
+  const properties = childElements(node, "pPr")[0];
+  const level = Math.max(0, Math.min(8, Number.parseInt(properties?.attributes.lvl ?? "0", 10) || 0));
+  const ordered = properties ? childElements(properties, "buAutoNum").length > 0 : false;
+  const bulleted = properties
+    ? ordered || ["buChar", "buBlip"].some((name) => childElements(properties, name).length > 0)
+    : false;
+  return text && bulleted ? `${"  ".repeat(level)}${ordered ? "1." : "-"} ${text}` : text;
+}
+
+function shapeText(shape: XmlNode, relationships: ReadonlyMap<string, OoxmlRelationship>, links: LinkEvidence): string {
+  return descendants(shape, "p")
+    .map((paragraph) => paragraphText(paragraph, relationships, links))
+    .filter(Boolean)
+    .join("\n");
+}
+
+function plainTitle(value: string): string {
+  return value
+    .replace(/^\s*(?:[-*]|\d+\.)\s+/, "")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/[*_`\\]/g, "")
+    .trim();
 }
 
 function placeholderType(shape: XmlNode): string {
@@ -60,12 +107,20 @@ function coordinates(shape: XmlNode): [number, number] {
   return [Number.isFinite(y) ? y : Number.MAX_SAFE_INTEGER, Number.isFinite(x) ? x : Number.MAX_SAFE_INTEGER];
 }
 
-function renderTable(node: XmlNode, index: number): { markdown: string; merged: boolean; firstText: string } {
+function renderTable(
+  node: XmlNode,
+  relationships: ReadonlyMap<string, OoxmlRelationship>,
+  links: LinkEvidence,
+  index: number,
+): { markdown: string; merged: boolean; firstText: string } {
   const rows = childElements(node, "tr");
   const cells = rows.map((row) =>
     childElements(row, "tc").map((cell) => ({
       node: cell,
-      text: descendants(cell, "p").map(paragraphText).filter(Boolean).join(" / "),
+      text: descendants(cell, "p")
+        .map((paragraph) => paragraphText(paragraph, relationships, links))
+        .filter(Boolean)
+        .join(" / "),
     })),
   );
   const merged = cells.some((row) =>
@@ -130,7 +185,12 @@ function slideRelationships(pkg: OoxmlPackage, presentation: XmlNode): OoxmlRela
   });
 }
 
-function notesText(pkg: OoxmlPackage, slidePart: string, relationships: readonly OoxmlRelationship[]): string[] {
+function notesText(
+  pkg: OoxmlPackage,
+  slidePart: string,
+  relationships: readonly OoxmlRelationship[],
+  links: LinkEvidence,
+): string[] {
   const notes = relationships.filter((relationship) => /\/notesSlide$/.test(relationship.type));
   if (notes.length > 1) throw new Error(`PPTX slide has contradictory notes relationships: ${slidePart}`);
   const relationship = notes[0];
@@ -141,9 +201,10 @@ function notesText(pkg: OoxmlPackage, slidePart: string, relationships: readonly
   if (root.local !== "notes" || root.uri !== PRESENTATION_NS)
     throw new Error("PPTX speaker notes part has an invalid root");
   const excluded = new Set(["dt", "ftr", "sldNum", "hdr"]);
+  const noteRelationships = new Map(pkg.relationships(relationship.target).map((item) => [item.id, item]));
   return descendants(root, "sp")
     .filter((shape) => !excluded.has(placeholderType(shape)))
-    .map(shapeText)
+    .map((shape) => shapeText(shape, noteRelationships, links))
     .filter(Boolean);
 }
 
@@ -166,6 +227,8 @@ export async function extractPptx(options: ReadOoxmlOptions | { package: OoxmlPa
     const slide = pkg.xml(relationship.target);
     if (slide.local !== "sld" || slide.uri !== PRESENTATION_NS) throw new Error("PPTX slide part has an invalid root");
     const relationships = pkg.relationships(relationship.target);
+    const relationshipMap = new Map(relationships.map((item) => [item.id, item]));
+    const links: LinkEvidence = { unsafe: 0 };
     relatedWarnings(relationships, warnings, slideIndex + 1);
     const tree = descendants(slide, "spTree")[0];
     if (!tree) throw new Error("PPTX slide lacks a shape tree");
@@ -184,7 +247,7 @@ export async function extractPptx(options: ReadOoxmlOptions | { package: OoxmlPa
       .map((shape, xmlOrder) => ({
         shape,
         xmlOrder,
-        text: shapeText(shape),
+        text: shapeText(shape, relationshipMap, links),
         placeholder: placeholderType(shape),
         position: coordinates(shape),
       }))
@@ -201,7 +264,7 @@ export async function extractPptx(options: ReadOoxmlOptions | { package: OoxmlPa
       )[0];
     }
     const titleText = title?.text.replace(/\n/g, " ") ?? `Slide ${slideIndex + 1}`;
-    documentTitle ||= titleText;
+    documentTitle ||= plainTitle(titleText);
     const slideBlocks = [`## Slide ${slideIndex + 1}: ${titleText}`];
     for (const record of records.sort((left, right) => left.xmlOrder - right.xmlOrder)) {
       if (record === title) continue;
@@ -209,28 +272,28 @@ export async function extractPptx(options: ReadOoxmlOptions | { package: OoxmlPa
     }
     for (const tableNode of descendants(tree, "tbl")) {
       tableCount++;
-      const rendered = renderTable(tableNode, tableCount);
+      const rendered = renderTable(tableNode, relationshipMap, links, tableCount);
       if (rendered.merged) warnings.push(`Table ${tableCount} uses merged cells; labelled span metadata is retained.`);
       if (/[\p{L}\p{N}]/u.test(rendered.firstText)) hasUsableText = true;
       slideBlocks.push(rendered.markdown);
     }
-    const notes = notesText(pkg, relationship.target, relationships);
+    const notes = notesText(pkg, relationship.target, relationships, links);
     if (notes.length) {
       noteCount++;
       if (notes.some((note) => /[\p{L}\p{N}]/u.test(note))) hasUsableText = true;
       slideBlocks.push("### Speaker notes", ...notes);
     }
+    if (links.unsafe)
+      warnings.push(
+        `Slide ${slideIndex + 1} has ${links.unsafe} hyperlink target(s) omitted because they were unsafe or unresolved.`,
+      );
     blocks.push(slideBlocks.join("\n\n"));
   }
   if (!hasUsableText) throw new Error("PPTX contains no usable slide or speaker-note text");
   const markdown = `${blocks.join("\n\n")}\n`;
   assertSafeMarkdown(markdown);
   return {
-    title:
-      documentTitle
-        .replace(/[*_`\\]/g, "")
-        .trim()
-        .slice(0, 512) || "PowerPoint presentation",
+    title: documentTitle.slice(0, 512) || "PowerPoint presentation",
     markdown,
     warnings: [...new Set(warnings)],
     slideCount: orderedSlides.length,

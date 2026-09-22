@@ -24,6 +24,7 @@ import {
 } from "./contracts.ts";
 import { validateSearchDocument } from "./document-format.ts";
 import { assertRequiredQueryIdentity, validateRequiredDocumentQueries } from "./document-query-policy.ts";
+import { documentFormatFromUrl, type BinaryDocumentFormat } from "./document-types.ts";
 import { htmlBaseUrl } from "./html-base.ts";
 import { discoverMachineLinks } from "./machine-links.ts";
 import type { MarkdownInspection } from "./markdown-contract.mjs";
@@ -37,7 +38,7 @@ import { parseSitemap } from "./sitemap.ts";
 import { hostUrl, inventoryUrl, nonDocumentInventoryUrl, pageExclusion, UNSUPPORTED_DOCUMENT } from "./urls.ts";
 
 const sha256 = (value: string | Uint8Array) => createHash("sha256").update(value).digest("hex");
-const isPdfUrl = (value: string) => /\.pdf$/i.test(decodeURIComponent(new URL(value).pathname));
+const isSupportedDocumentUrl = (value: string) => documentFormatFromUrl(value) !== undefined;
 const robotsParser = createRequire(import.meta.url)("robots-parser") as (
   url: string,
   body: string,
@@ -203,7 +204,35 @@ export interface CollectionFormats {
     extract(
       bytes: Uint8Array,
       sourceUrl: string,
-    ): Promise<{ title: string; markdown: string; warnings: string[]; pageCount: number }>;
+    ): Promise<{
+      title: string;
+      markdown: string;
+      warnings: string[];
+      pageCount: number;
+      nativeTextPages?: number[];
+      ocrPages?: number[];
+    }>;
+  };
+  docx?: {
+    profile_sha256: string;
+    extract(
+      bytes: Uint8Array,
+      sourceUrl: string,
+    ): Promise<{ title: string; markdown: string; warnings: string[]; paragraphs: number; tables: number }>;
+  };
+  pptx?: {
+    profile_sha256: string;
+    extract(
+      bytes: Uint8Array,
+      sourceUrl: string,
+    ): Promise<{
+      title: string;
+      markdown: string;
+      warnings: string[];
+      slides: number;
+      tables: number;
+      slidesWithNotes: number;
+    }>;
   };
   markdown?: {
     profile_sha256: string;
@@ -356,7 +385,7 @@ export async function collectRecordedHost(
           viewBases.has(url) ||
           retainedSources.has(url) ||
           emittedIdentities.has(url) ||
-          isPdfUrl(url)))
+          isSupportedDocumentUrl(url)))
     )
       throw new Error(`Non-document discovery conflicts with a required page: ${url}`);
     return true;
@@ -526,7 +555,7 @@ export async function collectRecordedHost(
       if (requiredQueries.has(requested)) throw error;
       if (exactHost && archive.observedScopeExclusion?.(requested)) continue;
       if (error instanceof NonTextMediaError) {
-        if (isPdfUrl(requested) || requiredViews.has(requested))
+        if (isSupportedDocumentUrl(requested) || requiredViews.has(requested))
           throw new Error(`Required document returned non-text media: ${requested}`, { cause: error });
         continue;
       }
@@ -555,24 +584,87 @@ export async function collectRecordedHost(
     assertPublicViewIdentity(scraper, requested, observation.snapshot);
     assertQueryObservation(requested, observation);
     if (observation.snapshot.binary) {
+      const binary = observation.snapshot.binary;
+      const format: BinaryDocumentFormat | undefined =
+        binary.format ?? (binary.media_type === "application/pdf" ? "pdf" : undefined);
+      const adapter =
+        format === "pdf"
+          ? formats.pdf
+          : format === "docx"
+            ? formats.docx
+            : format === "pptx"
+              ? formats.pptx
+              : undefined;
       if (
         observation.snapshot.status !== 200 ||
-        !scraper.documentFormats?.includes("pdf") ||
-        !formats.pdf ||
+        !format ||
+        !scraper.documentFormats?.includes(format) ||
+        !adapter ||
         !archive.readBytes
       )
-        throw new Error(`Required PDF extraction is unavailable: ${requested}`);
+        throw new Error(`Required ${format?.toUpperCase() ?? "document"} extraction is unavailable: ${requested}`);
       const sourceUrl = hostUrl(observation.snapshot.url, hostname);
-      if (retained.has(sourceUrl)) throw new Error("Retained PDF needs an explicit extraction comparison policy");
+      if (retained.has(sourceUrl))
+        throw new Error(`Retained ${format.toUpperCase()} needs an explicit extraction comparison policy`);
       const bytes = await archive.readBytes(observation.sha256);
-      if (
-        createHash("sha256").update(bytes).digest("hex") !== observation.snapshot.binary.sha256 ||
-        bytes.length !== observation.snapshot.bytes
-      )
-        throw new Error("PDF bytes differ from their recorded observation");
-      const converted = await formats.pdf.extract(bytes, sourceUrl);
-      const title = plainText(converted.title);
-      if (!title || !converted.markdown.trim()) throw new Error("Required PDF has no searchable text");
+      if (sha256(bytes) !== binary.sha256 || bytes.length !== observation.snapshot.bytes)
+        throw new Error(`${format.toUpperCase()} bytes differ from their recorded observation`);
+      let title: string;
+      let markdown: string;
+      let warnings: string[];
+      let extraction: NonNullable<SearchDocument["extraction"]>;
+      if (format === "pdf") {
+        const converted = await formats.pdf!.extract(bytes, sourceUrl);
+        title = plainText(converted.title);
+        markdown = converted.markdown;
+        warnings = converted.warnings;
+        extraction =
+          converted.nativeTextPages && converted.ocrPages
+            ? {
+                format: "pdf-v2",
+                source_bytes_sha256: binary.sha256,
+                source_bytes: bytes.length,
+                pages: converted.pageCount,
+                native_text_pages: converted.nativeTextPages,
+                ocr_pages: converted.ocrPages,
+                profile_sha256: formats.pdf!.profile_sha256,
+              }
+            : {
+                format: "pdf",
+                source_bytes_sha256: binary.sha256,
+                source_bytes: bytes.length,
+                pages: converted.pageCount,
+                profile_sha256: formats.pdf!.profile_sha256,
+              };
+      } else if (format === "docx") {
+        const converted = await formats.docx!.extract(bytes, sourceUrl);
+        title = plainText(converted.title);
+        markdown = converted.markdown;
+        warnings = converted.warnings;
+        extraction = {
+          format: "docx",
+          source_bytes_sha256: binary.sha256,
+          source_bytes: bytes.length,
+          paragraphs: converted.paragraphs,
+          tables: converted.tables,
+          profile_sha256: formats.docx!.profile_sha256,
+        };
+      } else {
+        const converted = await formats.pptx!.extract(bytes, sourceUrl);
+        title = plainText(converted.title);
+        markdown = converted.markdown;
+        warnings = converted.warnings;
+        extraction = {
+          format: "pptx",
+          source_bytes_sha256: binary.sha256,
+          source_bytes: bytes.length,
+          slides: converted.slides,
+          tables: converted.tables,
+          slides_with_notes: converted.slidesWithNotes,
+          profile_sha256: formats.pptx!.profile_sha256,
+        };
+      }
+      if (!title || !markdown.trim()) throw new Error(`Required ${format.toUpperCase()} has no searchable text`);
       keep(
         {
           id: `documents:official-web:${sha256(sourceUrl).slice(0, 24)}`,
@@ -583,19 +675,13 @@ export async function collectRecordedHost(
           source_modified_at: null,
           snapshot_sha256: observation.sha256,
           input_sha256: archive.input_sha256,
-          body_sha256: sha256(converted.markdown),
-          content_sha256: sha256(`${title}\n${converted.markdown}`),
-          content_markdown: converted.markdown,
-          warnings: [...new Set(converted.warnings)].sort(),
+          body_sha256: sha256(markdown),
+          content_sha256: sha256(`${title}\n${markdown}`),
+          content_markdown: markdown,
+          warnings: [...new Set(warnings)].sort(),
           alternate_urls: [],
           producer,
-          extraction: {
-            format: "pdf",
-            source_bytes_sha256: observation.snapshot.binary.sha256,
-            source_bytes: bytes.length,
-            pages: converted.pageCount,
-            profile_sha256: formats.pdf.profile_sha256,
-          },
+          extraction,
         },
         observation,
         requested,
@@ -606,7 +692,7 @@ export async function collectRecordedHost(
       for (const url of htmlLinks(apiInput.html, hostname, contentBase!, exactHost)) add(url, true);
     } else {
       if ([404, 410].includes(observation.snapshot.status)) {
-        if (advertisedPages.has(requested) || isPdfUrl(requested))
+        if (advertisedPages.has(requested) || isSupportedDocumentUrl(requested))
           throw new Error(`Advertised document is unavailable: ${requested}`);
         continue;
       }
@@ -645,7 +731,7 @@ export async function collectRecordedHost(
         throw new Error("Retained representative would hide changed observed text or classification");
     }
     if (decision.kind === "excluded") {
-      if (requiredViews.has(requested) || requiredQueries.has(requested) || isPdfUrl(requested))
+      if (requiredViews.has(requested) || requiredQueries.has(requested) || isSupportedDocumentUrl(requested))
         throw new Error(`Required linked document has no searchable representation: ${requested}`);
       continue;
     }
@@ -656,7 +742,12 @@ export async function collectRecordedHost(
     if (!title) throw new Error("Extracted document lacks a title");
     const converted = toSafeMarkdown(input.html, contentBase ?? sourceUrl);
     if (!converted.markdown.trim()) {
-      if (apiInput || requiredViews.has(requested) || requiredQueries.has(requested) || isPdfUrl(requested))
+      if (
+        apiInput ||
+        requiredViews.has(requested) ||
+        requiredQueries.has(requested) ||
+        isSupportedDocumentUrl(requested)
+      )
         throw new Error(`Required API text or document becomes empty after sanitization: ${sourceUrl}`);
       continue;
     }

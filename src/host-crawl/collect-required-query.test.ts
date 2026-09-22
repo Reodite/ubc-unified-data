@@ -189,7 +189,7 @@ describe("singleton query URL boundaries", () => {
   ])("rejects unsafe origin %s", (url) => {
     expect(createGenericScraper(host).excludeUrl!(url)).not.toBeNull();
   });
-  it.each(["?p=0", "?p=03962", "?page_id=12", "?page=2", "?paged=3", "guide.pdf"])(
+  it.each(["?p=0", "?p=03962", "?page_id=12", "?page=2", "?paged=3", "guide.pdf", "guide.pdf?download=1"])(
     "preserves existing generic policy %s",
     (path) => {
       expect(createGenericScraper(host).excludeUrl!(home + path)).toBeNull();

@@ -4,7 +4,10 @@ import { join, resolve } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { load } from "cheerio";
 import { ROOT } from "../base.ts";
-import { extractPdf } from "./adapters/pdf.ts";
+import { extractDocx } from "./adapters/docx.ts";
+import { captureOoxmlProfile, OOXML_PROFILE_SHA256 } from "./adapters/ooxml.ts";
+import { extractPdfV2 } from "./adapters/pdf-v2.ts";
+import { extractPptx } from "./adapters/pptx.ts";
 import { DOCUMENT_CATEGORIES } from "./categories.ts";
 import {
   assertAdmittedHostname,
@@ -26,7 +29,7 @@ import { assertCollectedInput, decodeFrozenSeed, deriveCollectionInputDigest } f
 import { withMarkdownCollectionRuntime } from "./markdown-collection-runtime.ts";
 import { assertExternalPath, DEFAULT_EXTERNAL_ROOT, DEFAULT_LEGACY_STATE_FILE } from "./paths.ts";
 import { loadCachedPdfProfile } from "./pdf-profile-cache.ts";
-import type { PdfProfile } from "./pdf-profile.ts";
+import { capturePdfV2Profile, type PdfV2Profile } from "./pdf-profile-v2.ts";
 import { assertSameProducer, captureProducer } from "./provenance.ts";
 import { hostDocumentRoots, readRegularFile } from "./public-validation.ts";
 import { publishCompletedHost } from "./publication.ts";
@@ -67,7 +70,20 @@ interface ReadyHostV2 extends ReadyHostBase {
   version: 2;
   markdown_profile_sha256: string | null;
 }
-type ReadyHost = ReadyHostV1 | ReadyHostV2;
+interface ReadyHostV3 {
+  version: 3;
+  hostname: string;
+  recording_seal: string;
+  seed_sha256: string;
+  profiles: {
+    pdf: string | null;
+    docx: string | null;
+    pptx: string | null;
+    markdown: string | null;
+  };
+  completed: CompletedHost;
+}
+type ReadyHost = ReadyHostV1 | ReadyHostV2 | ReadyHostV3;
 interface GitReceipt {
   hostname: string;
   parent: string;
@@ -199,9 +215,10 @@ export class HostBatch {
       seedSha256: sha256(seed.bytes),
       acquire: acquire && !sealed,
       recoverTransientFailures: this.config.recoverTransientFailures === true,
-      documentFormats: scraper.documentFormats?.includes("pdf") ? ["pdf"] : undefined,
+      documentFormats: scraper.documentFormats?.filter((format) => format !== "markdown"),
       documentUrlAllowed: (url) => scraper.excludeUrl!(url) === null,
-      maxResponseBytes: 32 * 1024 * 1024,
+      allowDocumentPolicyUpgrade: true,
+      maxResponseBytes: 64 * 1024 * 1024,
     });
     try {
       if (acquire && !sealed && this.config.recoverTransientFailures) {
@@ -307,16 +324,60 @@ export class HostBatch {
         assertUnchanged: () => recording.assertUnchanged(),
         close() {},
       };
-      let profile: PdfProfile | undefined;
+      let pdfProfile: PdfV2Profile | undefined;
       const formats: CollectionFormats = {
         pdf: {
           get profile_sha256() {
-            if (!profile) throw new Error("PDF profile was not initialized by extraction");
-            return profile.sha256;
+            if (!pdfProfile) throw new Error("PDF v2 profile was not initialized by extraction");
+            return pdfProfile.sha256;
           },
           extract: async (bytes, sourceUrl) => {
-            profile ??= await loadCachedPdfProfile(join(this.directory, "pdf-profile-cache"));
-            return extractPdf({ bytes, sourceUrl, workspace: join(directory, "pdf-runtime"), profile });
+            pdfProfile ??= await capturePdfV2Profile(join(this.directory, "pdf-v2-profile"));
+            const result = await extractPdfV2({
+              bytes,
+              sourceUrl,
+              workspace: join(directory, "pdf-v2-runtime"),
+              profile: pdfProfile,
+            });
+            return {
+              title: result.title,
+              markdown: result.markdown,
+              warnings: result.warnings,
+              pageCount: result.pages,
+              nativeTextPages: result.native_text_pages,
+              ocrPages: result.ocr_pages,
+            };
+          },
+        },
+        docx: {
+          profile_sha256: OOXML_PROFILE_SHA256,
+          extract: async (bytes) => {
+            const result = await extractDocx({ bytes });
+            if (result.profileSha256 !== OOXML_PROFILE_SHA256 || result.sourceSha256 !== sha256(bytes))
+              throw new Error("DOCX extraction evidence differs from the authenticated source or profile");
+            return {
+              title: result.title,
+              markdown: result.markdown,
+              warnings: result.warnings,
+              paragraphs: result.paragraphCount,
+              tables: result.tableCount,
+            };
+          },
+        },
+        pptx: {
+          profile_sha256: OOXML_PROFILE_SHA256,
+          extract: async (bytes) => {
+            const result = await extractPptx({ bytes });
+            if (result.profileSha256 !== OOXML_PROFILE_SHA256 || result.sourceSha256 !== sha256(bytes))
+              throw new Error("PPTX extraction evidence differs from the authenticated source or profile");
+            return {
+              title: result.title,
+              markdown: result.markdown,
+              warnings: result.warnings,
+              slides: result.slideCount,
+              tables: result.tableCount,
+              slidesWithNotes: result.noteCount,
+            };
           },
         },
       };
@@ -326,24 +387,36 @@ export class HostBatch {
       );
       const completed = collected.value;
       const markdownProfileSha256 = collected.profile_sha256;
+      const usedFormats = new Set(completed.documents.map((document) => document.extraction?.format));
+      const extractedPdfProfile = usedFormats.has("pdf-v2") ? pdfProfile?.sha256 : undefined;
+      if (usedFormats.has("pdf-v2") && !extractedPdfProfile) throw new Error("PDF v2 profile was not captured");
+      const pdfProfileSha256 = extractedPdfProfile ?? null;
+      const docxProfileSha256 = usedFormats.has("docx") ? OOXML_PROFILE_SHA256 : null;
+      const pptxProfileSha256 = usedFormats.has("pptx") ? OOXML_PROFILE_SHA256 : null;
       const seal = await recording.seal();
       if (!(await readRegularFile(seedPath, 16 * 1024 * 1024)).equals(seed.bytes))
         throw new Error("Saved frontier changed");
       const input = deriveCollectionInputDigest({
         recording: seal,
         seed: sha256(seed.bytes),
-        ...(profile ? { pdf_profile: profile.sha256 } : {}),
+        ...(pdfProfileSha256 ? { pdf_profile: pdfProfileSha256 } : {}),
+        ...(docxProfileSha256 ? { docx_profile: docxProfileSha256 } : {}),
+        ...(pptxProfileSha256 ? { pptx_profile: pptxProfileSha256 } : {}),
         ...(markdownProfileSha256 ? { markdown_profile: markdownProfileSha256 } : {}),
       });
       for (const document of completed.documents) document.input_sha256 = input;
       const guarded = cheapGuardCompletedHost(completed);
-      const ready: ReadyHostV2 = {
-        version: 2,
+      const ready: ReadyHostV3 = {
+        version: 3,
         hostname,
         recording_seal: seal,
         seed_sha256: sha256(seed.bytes),
-        pdf_profile_sha256: profile?.sha256 ?? null,
-        markdown_profile_sha256: markdownProfileSha256,
+        profiles: {
+          pdf: pdfProfileSha256,
+          docx: docxProfileSha256,
+          pptx: pptxProfileSha256,
+          markdown: markdownProfileSha256,
+        },
         completed: guarded,
       };
       const bytes = Buffer.from(`${JSON.stringify(ready, null, 2)}\n`);
@@ -413,30 +486,42 @@ export class HostBatch {
     const value: unknown = JSON.parse(bytes.toString("utf8"));
     if (!value || typeof value !== "object") throw new Error("Invalid ready result");
     const version = Object.getOwnPropertyDescriptor(value, "version");
-    if (!version || !("value" in version) || ![1, 2].includes(version.value))
+    if (!version || !("value" in version) || ![1, 2, 3].includes(version.value))
       throw new Error("Invalid ready result version");
     exactObject(
       value,
       version.value === 1
         ? ["version", "hostname", "recording_seal", "seed_sha256", "pdf_profile_sha256", "completed"]
-        : [
-            "version",
-            "hostname",
-            "recording_seal",
-            "seed_sha256",
-            "pdf_profile_sha256",
-            "markdown_profile_sha256",
-            "completed",
-          ],
+        : version.value === 2
+          ? [
+              "version",
+              "hostname",
+              "recording_seal",
+              "seed_sha256",
+              "pdf_profile_sha256",
+              "markdown_profile_sha256",
+              "completed",
+            ]
+          : ["version", "hostname", "recording_seal", "seed_sha256", "profiles", "completed"],
       "ready result",
     );
     const ready = value as unknown as ReadyHost;
     if (ready.hostname !== row.hostname) throw new Error("Invalid ready result owner");
     digest(ready.recording_seal, "ready recording seal");
     digest(ready.seed_sha256, "ready seed");
-    if (ready.pdf_profile_sha256 !== null) digest(ready.pdf_profile_sha256, "ready PDF profile");
-    const markdownProfileSha256 = ready.version === 2 ? ready.markdown_profile_sha256 : null;
-    if (markdownProfileSha256 !== null) digest(markdownProfileSha256, "ready Markdown profile");
+    if (ready.version === 3) exactObject(ready.profiles, ["pdf", "docx", "pptx", "markdown"], "ready profiles");
+    const pdfProfileSha256 = ready.version === 3 ? ready.profiles.pdf : ready.pdf_profile_sha256;
+    const docxProfileSha256 = ready.version === 3 ? ready.profiles.docx : null;
+    const pptxProfileSha256 = ready.version === 3 ? ready.profiles.pptx : null;
+    const markdownProfileSha256 =
+      ready.version === 3 ? ready.profiles.markdown : ready.version === 2 ? ready.markdown_profile_sha256 : null;
+    for (const [label, profile] of [
+      ["PDF", pdfProfileSha256],
+      ["DOCX", docxProfileSha256],
+      ["PPTX", pptxProfileSha256],
+      ["Markdown", markdownProfileSha256],
+    ] as const)
+      if (profile !== null) digest(profile, `ready ${label} profile`);
     exactObject(ready.completed, ["complete", "host", "documents"], "ready completed host");
     if (JSON.stringify(cheapGuardCompletedHost(ready.completed)) !== JSON.stringify(ready.completed))
       throw new Error("Ready output differs from guarded collection");
@@ -462,26 +547,48 @@ export class HostBatch {
         const input = deriveCollectionInputDigest({
           recording: ready.recording_seal,
           seed: ready.seed_sha256,
-          ...(ready.pdf_profile_sha256 ? { pdf_profile: ready.pdf_profile_sha256 } : {}),
+          ...(pdfProfileSha256 ? { pdf_profile: pdfProfileSha256 } : {}),
+          ...(docxProfileSha256 ? { docx_profile: docxProfileSha256 } : {}),
+          ...(pptxProfileSha256 ? { pptx_profile: pptxProfileSha256 } : {}),
           ...(markdownProfileSha256 ? { markdown_profile: markdownProfileSha256 } : {}),
         });
         for (const document of ready.completed.documents) {
           assertSameProducer(this.config.producer, document.producer);
           assertCollectedInput(input, document.input_sha256);
         }
-        const pdfDocuments = ready.completed.documents.filter((document) => document.extraction?.format === "pdf");
-        if (Boolean(pdfDocuments.length) !== Boolean(ready.pdf_profile_sha256))
+        const pdfDocuments = ready.completed.documents.filter((document) =>
+          ["pdf", "pdf-v2"].includes(document.extraction?.format ?? ""),
+        );
+        if (ready.version === 3 && pdfDocuments.some((document) => document.extraction?.format !== "pdf-v2"))
+          throw new Error("Ready v3 requires PDF v2 extraction provenance");
+        if (Boolean(pdfDocuments.length) !== Boolean(pdfProfileSha256))
           throw new Error("Ready PDF profile and document formats disagree");
         if (
-          ready.pdf_profile_sha256 &&
-          pdfDocuments.some((document) => document.extraction!.profile_sha256 !== ready.pdf_profile_sha256)
+          pdfProfileSha256 &&
+          pdfDocuments.some((document) => document.extraction!.profile_sha256 !== pdfProfileSha256)
         )
           throw new Error("Ready PDF document profile differs");
-        if (
-          ready.pdf_profile_sha256 &&
-          (await loadCachedPdfProfile(join(this.directory, "pdf-profile-cache"))).sha256 !== ready.pdf_profile_sha256
-        )
-          throw new Error("Ready PDF profile differs");
+        if (pdfProfileSha256) {
+          const verifiedPdf =
+            ready.version === 3
+              ? await capturePdfV2Profile(join(this.directory, "pdf-v2-profile-verify"))
+              : await loadCachedPdfProfile(join(this.directory, "pdf-profile-cache"));
+          if (verifiedPdf.sha256 !== pdfProfileSha256) throw new Error("Ready PDF profile differs");
+        }
+        for (const [format, profile] of [
+          ["docx", docxProfileSha256],
+          ["pptx", pptxProfileSha256],
+        ] as const) {
+          const documents = ready.completed.documents.filter((document) => document.extraction?.format === format);
+          if (Boolean(documents.length) !== Boolean(profile))
+            throw new Error(`Ready ${format.toUpperCase()} profile and document formats disagree`);
+          if (
+            profile &&
+            (profile !== captureOoxmlProfile().sha256 ||
+              documents.some((document) => document.extraction!.profile_sha256 !== profile))
+          )
+            throw new Error(`Ready ${format.toUpperCase()} document profile differs`);
+        }
         const markdownDocuments = ready.completed.documents.filter(
           (document) => document.extraction?.format === "markdown",
         );

@@ -193,13 +193,17 @@ npm run validate:hosts
 
 The recorder enforces exact-host HTTPS scope, robots policy, crawl delays and
 bounded redirects/retries. Document-specific URL exclusions apply to every
-redirect hop before dispatch and again when replaying saved observations. A
-required PDF returned as non-text media blocks completion rather than silently
-vanishing. Proven image/audio/video response types are recorded
-as non-text exclusions at the headers, without downloading their payloads.
-Unavailable text is never treated as a media exclusion. Defaults are 1,000 cumulative physical requests,
-128 MiB cumulative decoded response bytes, 8 MiB per response (32 MiB for a
-hostname explicitly supporting PDF documents), a 750 ms minimum
+redirect hop before dispatch and again when replaying saved observations.
+Extension, declared MIME type and PDF/ZIP magic must agree. Download URLs may
+carry only one inert `download=1` flag; capability, authentication and form
+queries are excluded. A required PDF, DOCX or PPTX returned as unrelated
+non-text media blocks completion rather than silently vanishing. Proven
+image/audio/video response
+types are recorded as non-text exclusions at the headers, without downloading
+their payloads. Unavailable text is never treated as a media exclusion. Defaults
+are 1,000 cumulative physical requests, 128 MiB cumulative decoded response
+bytes, 8 MiB per response (64 MiB for a hostname explicitly supporting binary
+documents), a 750 ms minimum
 request interval, 30 seconds per request and 20 minutes per invocation. Reaching
 a bound does not authorize a partial publication. Byte accounting includes
 failed responses; an explicitly resumed uncertain attempt reserves its maximum
@@ -221,8 +225,14 @@ allowance to newly encountered transient failures; it does not renew an exhauste
 allowance. Recorded invocation-duration pauses may be archived
 and resumed only while cumulative budgets and physical attempt limits still permit
 work. Neither recovery path clears access failures or raises cumulative limits.
-Sealed recordings remain offline and immutable.
-`--resume-interrupted` requires
+Sealed recordings remain offline and immutable. An unsealed legacy recording
+may widen only its document-format set and per-response bound through an
+explicit one-way upgrade. The recorder journals the exact prior/current config,
+producer and time in the same state database while preserving every prior
+attempt, outcome and cumulative counter. Nonempty upgrade journals participate
+in the recording seal, while legacy recordings keep their original seal
+preimage. Other option changes still require a
+new explicit recording. `--resume-interrupted` requires
 explicit acquisition and preserves uncertainty; neither option approves a host
 or overrides access restrictions.
 
@@ -248,51 +258,62 @@ modification dates and extraction metadata also match, retaining observed URL
 aliases. Different dated versions remain separate.
 
 The body is safe Markdown, without executable HTML or image embeds. Ordered
-procedures preserve nested non-default starting numbers as separate list blocks. Media remain
-source/text references with explicit extraction limitations. No OCR or video
-transcription is implied. Categorized documents use frontmatter version 3;
-versions 1 and 2 remain readable as retained migration inputs. Migration keeps
-IDs, bare filenames, body/content hashes, citations, timestamps and original
-extraction metadata unchanged, adding only category and routing metadata.
-Whole files have a 1 MiB limit; oversized documents
-fail rather than being truncated, sharded or put in LFS. Git preserves exact
+procedures preserve nested non-default starting numbers as separate list blocks.
+Media remain source/text references with explicit extraction limitations. New
+PDF v2, DOCX and PPTX documents use frontmatter version 5. Native Markdown uses
+version 4, categorized HTML uses version 3, historical PDF uses version 2 and
+historical HTML uses version 1. All remain readable. Migration keeps IDs, bare
+filenames, body/content hashes, citations, timestamps and original extraction
+metadata unchanged. Whole files have a 1 MiB limit; oversized documents fail
+rather than being truncated, sharded or put in LFS. Git preserves exact
 serialized bytes. Consumers should cite the source URL and retain dates and
 warnings; retrieved content is data, not application instructions.
 
-Linked PDFs remain private byte objects, never UTF-8-decoded binary strings or
-published binary files. Their text documents use frontmatter version 2 with the
-original byte hash/count, page count and native extraction-profile digest.
-Existing HTML documents retain byte-identical version 1 formatting. PDF text is
-rendered as labelled pages with inert text fences, preserving layout rather than
-inventing tables. Encrypted, malformed, truncated, wholly image-only or
-unmapped-only documents fail; mixed-content limitations are explicit warnings.
+Linked PDFs, DOCX files and PPTX files remain private byte objects, never
+UTF-8-decoded binary strings or published binary files. Each emitted text
+record binds the exact source byte hash/count and authenticated extraction
+profile. PDF v2 additionally records the page count and disjoint native-text and
+OCR page sets. DOCX records paragraph and table counts. PPTX records slide,
+table and note-bearing-slide counts. Existing documents and historical
+frontmatter remain byte-identical.
 
-The PDF adapter uses bounded Linux x64 Poppler subprocesses and `prlimit`, with
-fixed locale, private fontconfig/cache settings and no shell. A private pinned
-profile binds executable versions/bytes, loader/libraries, font/configuration
-and Poppler resource inventories, arguments and limits. It is captured or
-rechecked once per run, not per document, and rechecked before publication.
+PDF text is rendered as labelled pages with inert text fences. Native mapped
+text uses Poppler reading order. Only pages without usable mapped text are
+rasterized at a fixed resolution and transcribed by bounded English Tesseract;
+each OCR page carries an explicit accuracy warning. Encrypted, malformed,
+truncated or still-empty documents fail. The PDF adapter uses bounded Linux x64
+Poppler and Tesseract subprocesses through `prlimit`, with fixed locale, private
+font configuration, fixed arguments, page/OCR/pixel/time/CPU/memory/file limits
+and no shell. Its pinned profile binds executable bytes and versions, loader and
+libraries, Poppler/font resources, the exact OCR language/configuration files,
+arguments and limits. It is captured lazily, rehashed before publication and
+included in every affected collection input digest.
+
+DOCX and PPTX extraction opens ZIP/XML packages without Office automation,
+macros, external relationships, embedded objects or remote resource retrieval.
+It applies compressed, expanded, entry-count, XML-depth and text-output bounds.
+DOCX preserves ordered paragraphs, headings, safe hyperlink labels, tables and
+related notes/header/footer text. PPTX preserves presentation relationship
+order, shape text, tables and internal speaker notes. Unsupported or active
+package features produce explicit warnings or fail closed; they are never
+executed. The OOXML profile binds the exact adapter sources, limits, Node major
+and complete installed byte trees for the direct and transitive parser-package
+dependency closure. Its digest is bound separately for DOCX and PPTX and is
+recaptured before publication.
+
 Historical ready output has a separate integrity-verification path for machine
 migration. It checks the queue-bound ready hash, sealed recording and member
 objects, frozen source producer, binary hashes, canonical documents and archived
 profile/cache receipt. It does not run native extraction or claim that current
 executables match the archived profile. An explicit private batch binding names
 the permitted ready hash and archived producer/profile locations; the publisher
-repeats verification before installation. New acquisition still checks its current
-native profile. Do not refresh old cache identities or substitute a new profile
-to make historical output appear current.
+repeats verification before installation. New ready-v3 output instead binds an
+exact PDF, DOCX, PPTX and Markdown profile map. Do not refresh old cache
+identities or substitute a new profile to make historical output appear current.
 
-Dependency hashing can be substantial on systems with large font collections.
-Throughput batches load this profile lazily on the first PDF and share a private
-cache. The cache performs one full capture, then verifies its payload hash and
-resource identities, directory entries, symlink targets, and missing paths.
-These metadata checks are not repeated full dependency-byte hashing. A changed
-or incomplete cache fails closed instead of silently refreshing its profile.
-This is a declared runtime profile, not OS hermeticity or a native security or
-network sandbox. No OCR, image transcription or complete glyph-mapping guarantee
-is implied. Native test prerequisites are `poppler-utils`, `util-linux` and Python
-for test-only action instrumentation; no Python code participates in production
-extraction.
+The PDF v2 profile is a declared runtime profile, not OS hermeticity or a native
+security or network sandbox. Native prerequisites are `poppler-utils`,
+`tesseract-ocr`, the English Tesseract data, and `util-linux`.
 
 ## Publication and verification
 

@@ -13,6 +13,7 @@ const base = defineWordpressHost({
   scope:
     "Public UBC workplace bullying and harassment definitions, reporting, supervisor procedures, training and resources for faculty, staff and student employees.",
   selectors: [CONTENT],
+  documentFormats: ["pdf", "docx", "pptx"],
   officialHomepage($, snapshot) {
     const wordmark = $("#ubc7-header #ubc7-wordmark a").first();
     const unit = $("#ubc7-unit-name a").first();

@@ -47,6 +47,27 @@ describe("DOCX extraction", () => {
     expect(new MarkdownIt({ html: true }).render(result.markdown)).not.toMatch(/<guide>/);
   });
 
+  it("preserves ordered and nested unordered list structure from numbering definitions", async () => {
+    const bytes = packageWith(
+      document(`
+        <w:p><w:pPr><w:numPr><w:ilvl w:val="0"/><w:numId w:val="7"/></w:numPr></w:pPr><w:r><w:t>First requirement</w:t></w:r></w:p>
+        <w:p><w:pPr><w:numPr><w:ilvl w:val="1"/><w:numId w:val="7"/></w:numPr></w:pPr><w:r><w:t>Supporting detail</w:t></w:r></w:p>
+      `),
+      [
+        {
+          name: "word/_rels/document.xml.rels",
+          body: `<Relationships xmlns="${RELS}"><Relationship Id="numbering" Type="${R}/numbering" Target="numbering.xml"/></Relationships>`,
+        },
+        {
+          name: "word/numbering.xml",
+          body: `<w:numbering xmlns:w="${W}"><w:abstractNum w:abstractNumId="4"><w:lvl w:ilvl="0"><w:numFmt w:val="decimal"/></w:lvl><w:lvl w:ilvl="1"><w:numFmt w:val="bullet"/></w:lvl></w:abstractNum><w:num w:numId="7"><w:abstractNumId w:val="4"/></w:num></w:numbering>`,
+        },
+      ],
+    );
+    const result = await extractDocx({ bytes });
+    expect(result.markdown).toContain("1. First requirement\n\n  - Supporting detail");
+  });
+
   it("labels complex table spans and includes valid notes, headers, and footers", async () => {
     const rel = (id: string, type: string, target: string) =>
       `<Relationship Id="${id}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/${type}" Target="${target}"/>`;

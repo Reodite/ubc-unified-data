@@ -12,6 +12,8 @@ const recording = "a".repeat(64);
 const seed = "b".repeat(64);
 const pdf = "c".repeat(64);
 const markdown = "d".repeat(64);
+const docx = "e".repeat(64);
+const pptx = "f".repeat(64);
 describe("captured collection inputs", () => {
   it("binds parsed URLs to the same captured bytes even if the input buffer changes", () => {
     const original = Buffer.from(
@@ -46,6 +48,8 @@ describe("collection input digest encoding", () => {
     ["legacy", {}, "4cbe921b952001870e47e6036bafdb3114e321bb0c93a4e423ca3eb95b26bf49"],
     ["PDF", { pdf_profile: pdf }, "0d8f4a683ce48b93c14ed2c31293ba9a8f047c5f054bb60654af70a257cff209"],
     ["Markdown", { markdown_profile: markdown }, "19ef8e8e8ced4d00d13f6ec24de82a0db6493eaa45df28f031d42ea52a99d0f1"],
+    ["DOCX", { docx_profile: docx }, "53a6343952dbf7cbd910d3cf5165d5318a10c39283e21cabdbcde120ec998e01"],
+    ["PPTX", { pptx_profile: pptx }, "701734d074b47e7f6f54d05bf82b3b644c5a2d5ca3853535edb958ff6c2b4025"],
     [
       "both profiles",
       { pdf_profile: pdf, markdown_profile: markdown },
@@ -84,7 +88,14 @@ describe("collection input digest encoding", () => {
   });
 
   it("uses canonical field order for every permutation of the supplied keys", () => {
-    const entries = Object.entries({ recording, seed, pdf_profile: pdf, markdown_profile: markdown });
+    const entries = Object.entries({
+      recording,
+      seed,
+      pdf_profile: pdf,
+      docx_profile: docx,
+      pptx_profile: pptx,
+      markdown_profile: markdown,
+    });
     function* permutations<T>(values: T[]): Generator<T[]> {
       if (!values.length) yield [];
       for (let index = 0; index < values.length; index++) {
@@ -98,19 +109,26 @@ describe("collection input digest encoding", () => {
       const input = Object.fromEntries(permutation) as unknown as CollectionInputDigests;
       const before = JSON.stringify(input);
       expect(deriveCollectionInputDigest(input)).toBe(
-        "ff6cfe242477d7dd0b6aa587de09dda26ee7bcc5a4c3c43b89c32f884cf92bd4",
+        "ef1401669a7005e7281dcc06c0e88a3b8af215df08651d2fff918ea318333dbf",
       );
       expect(JSON.stringify(input)).toBe(before);
       checked++;
     }
-    expect(checked).toBe(24);
+    expect(checked).toBe(720);
   });
 
   it("binds every supplied digest and distinguishes profile roles", () => {
-    const input = { recording, seed, pdf_profile: pdf, markdown_profile: markdown };
+    const input = {
+      recording,
+      seed,
+      pdf_profile: pdf,
+      docx_profile: docx,
+      pptx_profile: pptx,
+      markdown_profile: markdown,
+    };
     const expected = deriveCollectionInputDigest(input);
     for (const key of Object.keys(input)) {
-      expect(deriveCollectionInputDigest({ ...input, [key]: "e".repeat(64) })).not.toBe(expected);
+      expect(deriveCollectionInputDigest({ ...input, [key]: "9".repeat(64) })).not.toBe(expected);
     }
     expect(deriveCollectionInputDigest({ ...input, pdf_profile: markdown, markdown_profile: pdf })).not.toBe(expected);
     expect(deriveCollectionInputDigest({ recording, seed, pdf_profile: pdf })).not.toBe(
@@ -128,13 +146,16 @@ describe("collection input digest encoding", () => {
     expect(Object.getPrototypeOf(nullPrototype)).toBeNull();
   });
 
-  it.each(["recording", "seed", "pdf_profile", "markdown_profile"] as const)("rejects malformed %s values", (field) => {
-    for (const invalid of [null, "", "a".repeat(63), "A".repeat(64), "g".repeat(64), `${recording}\n`, 1, {}, []]) {
-      expect(() =>
-        deriveCollectionInputDigest({ recording, seed, [field]: invalid } as unknown as CollectionInputDigests),
-      ).toThrow(/Invalid collection input/);
-    }
-  });
+  it.each(["recording", "seed", "pdf_profile", "docx_profile", "pptx_profile", "markdown_profile"] as const)(
+    "rejects malformed %s values",
+    (field) => {
+      for (const invalid of [null, "", "a".repeat(63), "A".repeat(64), "g".repeat(64), `${recording}\n`, 1, {}, []]) {
+        expect(() =>
+          deriveCollectionInputDigest({ recording, seed, [field]: invalid } as unknown as CollectionInputDigests),
+        ).toThrow(/Invalid collection input/);
+      }
+    },
+  );
 
   it.each([
     null,
@@ -154,7 +175,7 @@ describe("collection input digest encoding", () => {
     expect(() => deriveCollectionInputDigest(input as CollectionInputDigests)).toThrow(/Invalid collection input/);
   });
 
-  it.each(["recording", "seed", "pdf_profile", "markdown_profile"] as const)(
+  it.each(["recording", "seed", "pdf_profile", "docx_profile", "pptx_profile", "markdown_profile"] as const)(
     "does not invoke a %s accessor",
     (field) => {
       let calls = 0;
@@ -171,27 +192,30 @@ describe("collection input digest encoding", () => {
     },
   );
 
-  it.each(["pdf_profile", "markdown_profile"] as const)("does not read inherited %s descriptor values", (field) => {
-    const input = Object.assign(Object.create(null), { recording, seed }) as CollectionInputDigests;
-    const original = Object.getOwnPropertyDescriptor(Object.prototype, field);
-    let calls = 0;
-    let actual: string;
-    try {
-      Object.defineProperty(Object.prototype, field, {
-        configurable: true,
-        get() {
-          calls++;
-          return { value: pdf };
-        },
-      });
-      actual = deriveCollectionInputDigest(input);
-    } finally {
-      if (original) Object.defineProperty(Object.prototype, field, original);
-      else Reflect.deleteProperty(Object.prototype, field);
-    }
-    expect(calls).toBe(0);
-    expect(actual).toBe("4cbe921b952001870e47e6036bafdb3114e321bb0c93a4e423ca3eb95b26bf49");
-  });
+  it.each(["pdf_profile", "docx_profile", "pptx_profile", "markdown_profile"] as const)(
+    "does not read inherited %s descriptor values",
+    (field) => {
+      const input = Object.assign(Object.create(null), { recording, seed }) as CollectionInputDigests;
+      const original = Object.getOwnPropertyDescriptor(Object.prototype, field);
+      let calls = 0;
+      let actual: string;
+      try {
+        Object.defineProperty(Object.prototype, field, {
+          configurable: true,
+          get() {
+            calls++;
+            return { value: pdf };
+          },
+        });
+        actual = deriveCollectionInputDigest(input);
+      } finally {
+        if (original) Object.defineProperty(Object.prototype, field, original);
+        else Reflect.deleteProperty(Object.prototype, field);
+      }
+      expect(calls).toBe(0);
+      expect(actual).toBe("4cbe921b952001870e47e6036bafdb3114e321bb0c93a4e423ca3eb95b26bf49");
+    },
+  );
 
   it("does not invoke an unknown toJSON method or accessor", () => {
     let calls = 0;

@@ -48,11 +48,16 @@ function relationMap(relationships: readonly OoxmlRelationship[]): Map<string, O
 interface ParagraphResult {
   text: string;
   heading?: number;
+  list?: { ordered: boolean; level: number };
   fields: boolean;
   unsafeLinks: number;
 }
 
-function paragraph(node: XmlNode, relationships: Map<string, OoxmlRelationship>): ParagraphResult {
+function paragraph(
+  node: XmlNode,
+  relationships: Map<string, OoxmlRelationship>,
+  numbering: ReadonlyMap<string, boolean>,
+): ParagraphResult {
   let fields = false;
   let unsafeLinks = 0;
   const render = (current: XmlNode): string => {
@@ -83,11 +88,23 @@ function paragraph(node: XmlNode, relationships: Map<string, OoxmlRelationship>)
   const properties = childElements(node, "pPr")[0];
   const style = properties ? childElements(properties, "pStyle")[0]?.attributes.val : undefined;
   const match = style?.match(/^Heading([1-6])$/i);
+  const numberingProperties = properties ? childElements(properties, "numPr")[0] : undefined;
+  const listId = numberingProperties ? childElements(numberingProperties, "numId")[0]?.attributes.val : undefined;
+  const levelValue = numberingProperties ? childElements(numberingProperties, "ilvl")[0]?.attributes.val : undefined;
+  const level = Math.max(0, Math.min(8, Number.parseInt(levelValue ?? "0", 10) || 0));
+  const styledList = style?.match(/^List(Bullet|Number)(\d*)$/i);
+  const list =
+    listId !== undefined
+      ? { ordered: numbering.get(`${listId}:${level}`) ?? false, level }
+      : styledList
+        ? { ordered: styledList[1]!.toLowerCase() === "number", level: Math.max(0, Number(styledList[2] || 1) - 1) }
+        : undefined;
   return {
     text: render(node)
       .replace(/[ \t]+\n/g, "\n")
       .trim(),
     heading: match ? Number(match[1]) : undefined,
+    list,
     fields,
     unsafeLinks,
   };
@@ -100,7 +117,12 @@ interface TableResult {
   firstText: string;
 }
 
-function table(node: XmlNode, relationships: Map<string, OoxmlRelationship>, index: number): TableResult {
+function table(
+  node: XmlNode,
+  relationships: Map<string, OoxmlRelationship>,
+  numbering: ReadonlyMap<string, boolean>,
+  index: number,
+): TableResult {
   const rows = childElements(node, "tr");
   const complex =
     descendants(node, "gridSpan").length > 0 ||
@@ -111,7 +133,7 @@ function table(node: XmlNode, relationships: Map<string, OoxmlRelationship>, ind
     childElements(row, "tc").map((cell) => {
       const paragraphs = descendants(cell, "p").map((item) => {
         paragraphCount++;
-        return paragraph(item, relationships).text;
+        return paragraph(item, relationships, numbering).text;
       });
       return { node: cell, text: paragraphs.filter(Boolean).join(" / ") };
     }),
@@ -154,9 +176,45 @@ function table(node: XmlNode, relationships: Map<string, OoxmlRelationship>, ind
   };
 }
 
+function numberingFormats(
+  pkg: OoxmlPackage,
+  relationships: readonly OoxmlRelationship[],
+): ReadonlyMap<string, boolean> {
+  const relationship = relationships.find((item) => /\/numbering$/.test(item.type));
+  if (!relationship) return new Map();
+  if (relationship.external || !pkg.has(relationship.target))
+    throw new Error("DOCX numbering part is missing or external");
+  const root = pkg.xml(relationship.target);
+  if (root.local !== "numbering" || root.uri !== WORD_NS) throw new Error("DOCX numbering part has an invalid root");
+  const abstract = new Map<string, Map<number, boolean>>();
+  for (const definition of childElements(root, "abstractNum")) {
+    const id = definition.attributes.abstractNumId;
+    if (!id || abstract.has(id)) throw new Error("DOCX numbering has duplicate or missing abstract identifiers");
+    const levels = new Map<number, boolean>();
+    for (const level of childElements(definition, "lvl")) {
+      const index = Number(level.attributes.ilvl);
+      const format = childElements(level, "numFmt")[0]?.attributes.val;
+      if (!Number.isSafeInteger(index) || index < 0 || index > 8 || !format || levels.has(index))
+        throw new Error("DOCX numbering has an invalid level");
+      levels.set(index, format !== "bullet" && format !== "none");
+    }
+    abstract.set(id, levels);
+  }
+  const result = new Map<string, boolean>();
+  for (const numbering of childElements(root, "num")) {
+    const id = numbering.attributes.numId;
+    const abstractId = childElements(numbering, "abstractNumId")[0]?.attributes.val;
+    const levels = abstractId ? abstract.get(abstractId) : undefined;
+    if (!id || !levels) throw new Error("DOCX numbering instance has an unresolved definition");
+    for (const [level, ordered] of levels) result.set(`${id}:${level}`, ordered);
+  }
+  return result;
+}
+
 function renderStory(
   root: XmlNode,
   relationships: Map<string, OoxmlRelationship>,
+  numbering: ReadonlyMap<string, boolean>,
   warnings: string[],
   tableOffset: number,
 ): { blocks: string[]; paragraphs: number; tables: number; firstText: string } {
@@ -169,7 +227,7 @@ function renderStory(
   for (const item of childElements(container)) {
     if (item.local === "p") {
       paragraphs++;
-      const result = paragraph(item, relationships);
+      const result = paragraph(item, relationships, numbering);
       if (result.fields)
         warnings.push(
           "Word fields are displayed only through stored result text; field instructions are not executed.",
@@ -178,11 +236,17 @@ function renderStory(
         warnings.push(`${result.unsafeLinks} hyperlink target(s) were omitted because they were unsafe or unresolved.`);
       if (result.text) {
         firstText ||= result.text.replace(/\[([^\]]+)\]\([^)]*\)/g, "$1");
-        blocks.push(result.heading ? `${"#".repeat(result.heading)} ${result.text}` : result.text);
+        blocks.push(
+          result.heading
+            ? `${"#".repeat(result.heading)} ${result.text}`
+            : result.list
+              ? `${"  ".repeat(result.list.level)}${result.list.ordered ? "1." : "-"} ${result.text}`
+              : result.text,
+        );
       }
     } else if (item.local === "tbl") {
       tables++;
-      const result = table(item, relationships, tableOffset + tables);
+      const result = table(item, relationships, numbering, tableOffset + tables);
       paragraphs += result.paragraphCount;
       if (result.complex)
         warnings.push(
@@ -207,8 +271,9 @@ export async function extractDocx(options: ReadOoxmlOptions | { package: OoxmlPa
   if (main.local !== "document" || main.uri !== WORD_NS) throw new Error("DOCX main part has an invalid document root");
   const relationships = pkg.relationships(pkg.mainPart);
   const rels = relationMap(relationships);
+  const numbering = numberingFormats(pkg, relationships);
   const warnings: string[] = [];
-  const body = renderStory(main, rels, warnings, 0);
+  const body = renderStory(main, rels, numbering, warnings, 0);
   const blocks = [...body.blocks];
   let firstText = body.firstText;
   let paragraphCount = body.paragraphs;
@@ -230,7 +295,7 @@ export async function extractDocx(options: ReadOoxmlOptions | { package: OoxmlPa
     const containers = ["footnotes", "endnotes"].includes(root.local) ? childElements(root) : [root];
     const relatedBlocks: string[] = [];
     for (const container of containers) {
-      const rendered = renderStory(container, storyRelationships, warnings, tableCount);
+      const rendered = renderStory(container, storyRelationships, numbering, warnings, tableCount);
       paragraphCount += rendered.paragraphs;
       tableCount += rendered.tables;
       firstText ||= rendered.firstText;

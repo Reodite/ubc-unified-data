@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
+import { lstatSync, readdirSync, readFileSync, readlinkSync, realpathSync } from "node:fs";
 import { createRequire } from "node:module";
-import { posix } from "node:path";
+import { dirname, join, posix, relative, sep } from "node:path";
 import { SaxesParser, type SaxesTag } from "saxes";
 import yauzl, { type Entry, type ZipFile } from "yauzl";
 
@@ -17,16 +18,83 @@ export const OOXML_LIMITS = Object.freeze({
 });
 
 const require = createRequire(import.meta.url);
-const yauzlVersion = (require("yauzl/package.json") as { version: string }).version;
-const saxesVersion = (require("saxes/package.json") as { version: string }).version;
-export const OOXML_PROFILE_MANIFEST = Object.freeze({
-  schema: "host-ooxml-profile-v1",
-  limits: OOXML_LIMITS,
-  source: "host-crawl-ooxml-adapters-v1",
-  dependencies: { yauzl: yauzlVersion, saxes: saxesVersion },
-  runtime: { family: "node", major: Number(process.versions.node.split(".")[0]) },
-});
-export const OOXML_PROFILE_SHA256 = createHash("sha256").update(JSON.stringify(OOXML_PROFILE_MANIFEST)).digest("hex");
+const fileSha256 = (path: string | URL) => createHash("sha256").update(readFileSync(path)).digest("hex");
+
+function packageTreeSha256(root: string): string {
+  const entries: Array<[string, string, string]> = [];
+  const visit = (directory: string) => {
+    for (const name of readdirSync(directory).sort()) {
+      const path = join(directory, name);
+      const item = lstatSync(path);
+      const key = relative(root, path).split(sep).join("/");
+      if (item.isDirectory()) visit(path);
+      else if (item.isFile()) entries.push([key, "file", fileSha256(path)]);
+      else if (item.isSymbolicLink()) entries.push([key, "symlink", readlinkSync(path)]);
+      else throw new Error(`OOXML dependency package contains an unsupported entry: ${key}`);
+    }
+  };
+  visit(root);
+  return createHash("sha256").update(JSON.stringify(entries)).digest("hex");
+}
+
+function dependencyClosure(names: readonly string[]) {
+  const pending: Array<{ name: string; resolver: NodeJS.Require }> = names.map((name) => ({ name, resolver: require }));
+  const profiles = new Map<string, Readonly<{ version: string; tree_sha256: string }>>();
+  while (pending.length) {
+    const request = pending.shift()!;
+    const packagePath = realpathSync(request.resolver.resolve(`${request.name}/package.json`));
+    const metadata = JSON.parse(readFileSync(packagePath, "utf8")) as {
+      name: string;
+      version: string;
+      dependencies?: Record<string, string>;
+      optionalDependencies?: Record<string, string>;
+    };
+    if (!metadata.name || !metadata.version) throw new Error("OOXML dependency package metadata is incomplete");
+    const key = `${metadata.name}@${metadata.version}`;
+    const profile = Object.freeze({ version: metadata.version, tree_sha256: packageTreeSha256(dirname(packagePath)) });
+    const previous = profiles.get(key);
+    if (previous) {
+      if (previous.tree_sha256 !== profile.tree_sha256)
+        throw new Error(`OOXML dependency package has conflicting installed trees: ${key}`);
+      continue;
+    }
+    profiles.set(key, profile);
+    const resolver = createRequire(packagePath);
+    const children = new Set([
+      ...Object.keys(metadata.dependencies ?? {}),
+      ...Object.keys(metadata.optionalDependencies ?? {}),
+    ]);
+    for (const name of [...children].sort()) pending.push({ name, resolver });
+  }
+  return Object.freeze(Object.fromEntries([...profiles].sort(([left], [right]) => left.localeCompare(right))));
+}
+
+function profileManifest() {
+  return Object.freeze({
+    schema: "host-ooxml-profile-v3",
+    limits: OOXML_LIMITS,
+    source: "host-crawl-ooxml-adapters-v3",
+    implementation: Object.freeze({
+      ooxml_sha256: fileSha256(new URL(import.meta.url)),
+      docx_sha256: fileSha256(new URL("./docx.ts", import.meta.url)),
+      pptx_sha256: fileSha256(new URL("./pptx.ts", import.meta.url)),
+    }),
+    dependencies: dependencyClosure(["saxes", "yauzl"]),
+    runtime: Object.freeze({ family: "node", major: Number(process.versions.node.split(".")[0]) }),
+  });
+}
+
+export function captureOoxmlProfile() {
+  const manifest = profileManifest();
+  return Object.freeze({
+    manifest,
+    sha256: createHash("sha256").update(JSON.stringify(manifest)).digest("hex"),
+  });
+}
+
+const initialProfile = captureOoxmlProfile();
+export const OOXML_PROFILE_MANIFEST = initialProfile.manifest;
+export const OOXML_PROFILE_SHA256 = initialProfile.sha256;
 
 const REL_NS = "http://schemas.openxmlformats.org/package/2006/relationships";
 const TYPES_NS = "http://schemas.openxmlformats.org/package/2006/content-types";

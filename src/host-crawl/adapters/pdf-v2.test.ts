@@ -151,7 +151,7 @@ function mockMixed(ocrOutput = tsv, imageWidth = 100, imageHeight = 100): void {
     if (executable === PDF_V2_EXECUTABLES.info)
       return { stdout: Buffer.from("Title: Source title\nPages: 2\nEncrypted: no\n"), stderr: Buffer.alloc(0) };
     if (executable === PDF_V2_EXECUTABLES.text)
-      return { stdout: Buffer.from("Native page\f\f"), stderr: Buffer.alloc(0) };
+      return { stdout: Buffer.from("Native page contains sufficient mapped text\f\f"), stderr: Buffer.alloc(0) };
     if (executable === PDF_V2_EXECUTABLES.raster) {
       await writeFile(join(context.directory, `${args.at(-1)}.png`), pngHeader(imageWidth, imageHeight));
       return { stdout: Buffer.alloc(0), stderr: Buffer.alloc(0) };
@@ -175,7 +175,7 @@ describe("PDF v2 selection and output", () => {
       ocr_pages: [2],
       profile_sha256: profile.sha256,
     });
-    expect(result.markdown).toContain("Native page");
+    expect(result.markdown).toContain("Native page contains sufficient mapped text");
     expect(result.markdown).toContain("OCR first\nSecond line");
     expect(result.warnings).toEqual([...result.warnings].sort());
     expect(result.warnings.join(" ")).toContain("English Tesseract");
@@ -201,13 +201,36 @@ describe("PDF v2 selection and output", () => {
       if (executable === PDF_V2_EXECUTABLES.info)
         return { stdout: Buffer.from("Pages: 2\nEncrypted: no\n"), stderr: Buffer.alloc(0) };
       if (executable === PDF_V2_EXECUTABLES.text)
-        return { stdout: Buffer.from("first\fsecond\f"), stderr: Buffer.alloc(0) };
+        return {
+          stdout: Buffer.from(
+            "First native paragraph contains enough mapped text\fSecond native paragraph also has enough mapped text\f",
+          ),
+          stderr: Buffer.alloc(0),
+        };
       throw new Error("OCR must not run for mapped text");
     });
     const result = await extract();
     expect(result.native_text_pages).toEqual([1, 2]);
     expect(result.ocr_pages).toEqual([]);
     expect(result.warnings).toEqual([]);
+  });
+
+  it("OCRs a scanned page whose mapped layer contains only a sparse page label", async () => {
+    vi.mocked(runPdfV2Native).mockImplementation(async (executable, args, context) => {
+      if (executable === PDF_V2_EXECUTABLES.info)
+        return { stdout: Buffer.from("Pages: 1\nEncrypted: no\n"), stderr: Buffer.alloc(0) };
+      if (executable === PDF_V2_EXECUTABLES.text) return { stdout: Buffer.from("Page 1\f"), stderr: Buffer.alloc(0) };
+      if (executable === PDF_V2_EXECUTABLES.raster) {
+        await writeFile(join(context.directory, `${args.at(-1)}.png`), pngHeader(100, 100));
+        return { stdout: Buffer.alloc(0), stderr: Buffer.alloc(0) };
+      }
+      if (executable === PDF_V2_EXECUTABLES.ocr) return { stdout: Buffer.from(tsv), stderr: Buffer.alloc(0) };
+      throw new Error(`Unexpected executable: ${executable}`);
+    });
+    const result = await extract(makePdf([{ text: "Page 1" }]));
+    expect(result.native_text_pages).toEqual([]);
+    expect(result.ocr_pages).toEqual([1]);
+    expect(result.markdown).toContain("OCR first");
   });
 
   it.each([

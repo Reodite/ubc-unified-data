@@ -2,7 +2,14 @@ import { createHash } from "node:crypto";
 import { basename } from "node:path";
 import { assertSafeMarkdown } from "../prose/markdown.ts";
 import { assertDocumentCategory, type DocumentCategory } from "./categories.ts";
-import type { MarkdownDocumentExtraction, PdfDocumentExtraction, SearchDocument } from "./contracts.ts";
+import type {
+  DocxDocumentExtraction,
+  MarkdownDocumentExtraction,
+  PdfDocumentExtraction,
+  PdfV2DocumentExtraction,
+  PptxDocumentExtraction,
+  SearchDocument,
+} from "./contracts.ts";
 import { MARKDOWN_INSPECTION_LIMITS } from "./markdown-contract.mjs";
 import { hostUrl, normalizeHost } from "./urls.ts";
 
@@ -10,6 +17,7 @@ export const DOCUMENT_FORMAT_VERSION = 1;
 export const PDF_DOCUMENT_FORMAT_VERSION = 2;
 export const CATEGORIZED_DOCUMENT_FORMAT_VERSION = 3;
 export const MARKDOWN_DOCUMENT_FORMAT_VERSION = 4;
+export const STRUCTURED_DOCUMENT_FORMAT_VERSION = 5;
 export const MAX_DOCUMENT_BYTES = 1024 * 1024;
 const DOCUMENT_KEYS = [
   "id",
@@ -29,6 +37,32 @@ const DOCUMENT_KEYS = [
 ] as const;
 const RUNTIME_KEYS = ["node", "icu", "unicode", "platform", "arch"] as const;
 const PDF_EXTRACTION_KEYS = ["format", "source_bytes_sha256", "source_bytes", "pages", "profile_sha256"] as const;
+const PDF_V2_EXTRACTION_KEYS = [
+  "format",
+  "source_bytes_sha256",
+  "source_bytes",
+  "pages",
+  "native_text_pages",
+  "ocr_pages",
+  "profile_sha256",
+] as const;
+const DOCX_EXTRACTION_KEYS = [
+  "format",
+  "source_bytes_sha256",
+  "source_bytes",
+  "paragraphs",
+  "tables",
+  "profile_sha256",
+] as const;
+const PPTX_EXTRACTION_KEYS = [
+  "format",
+  "source_bytes_sha256",
+  "source_bytes",
+  "slides",
+  "tables",
+  "slides_with_notes",
+  "profile_sha256",
+] as const;
 const MARKDOWN_EXTRACTION_KEYS = [
   "format",
   "source_bytes_sha256",
@@ -114,6 +148,25 @@ function sortedStrings(value: unknown, label: string): asserts value is string[]
   if (Reflect.ownKeys(value).length !== value.length + 1) throw new Error(`Unexpected ${label} array fields`);
 }
 
+function boundedInteger(value: unknown, label: string, maximum = Number.MAX_SAFE_INTEGER): asserts value is number {
+  if (!Number.isSafeInteger(value) || Number(value) < 0 || Number(value) > maximum)
+    throw new Error(`Invalid ${label} count`);
+}
+
+function sortedPageNumbers(value: unknown, label: string, pages: number): asserts value is number[] {
+  if (!Array.isArray(value) || Object.getPrototypeOf(value) !== Array.prototype)
+    throw new Error(`Invalid ${label} array`);
+  const descriptors = Object.getOwnPropertyDescriptors(value);
+  if (Reflect.ownKeys(value).length !== value.length + 1) throw new Error(`Unexpected ${label} array fields`);
+  for (let index = 0; index < value.length; index++) {
+    if (!Object.hasOwn(descriptors, index) || !("value" in descriptors[index]!))
+      throw new Error(`Invalid ${label} array item`);
+    const page = value[index];
+    if (!Number.isSafeInteger(page) || page < 1 || page > pages || (index > 0 && value[index - 1]! >= page))
+      throw new Error(`${label} pages must be unique, sorted and bounded`);
+  }
+}
+
 export function validateSearchDocument(value: unknown): asserts value is SearchDocument {
   exactObject(value, documentKeys(value), "document");
   const doc = value as unknown as SearchDocument;
@@ -160,6 +213,39 @@ export function validateSearchDocument(value: unknown): asserts value is SearchD
         pdf.pages > 500
       )
         throw new Error("Invalid PDF extraction bounds");
+    } else if (formatProperty.value === "pdf-v2") {
+      exactObject(extraction as unknown, PDF_V2_EXTRACTION_KEYS, "PDF v2 extraction");
+      const pdf = extraction as PdfV2DocumentExtraction;
+      digest(pdf.source_bytes_sha256, "source bytes");
+      digest(pdf.profile_sha256, "extraction profile");
+      boundedInteger(pdf.source_bytes, "PDF source bytes");
+      boundedInteger(pdf.pages, "PDF pages", 500);
+      if (pdf.source_bytes < 1 || pdf.pages < 1) throw new Error("Invalid PDF v2 extraction bounds");
+      sortedPageNumbers(pdf.native_text_pages, "native text", pdf.pages);
+      sortedPageNumbers(pdf.ocr_pages, "OCR", pdf.pages);
+      const covered = [...pdf.native_text_pages, ...pdf.ocr_pages].sort((left, right) => left - right);
+      if (covered.length !== pdf.pages || covered.some((page, index) => page !== index + 1))
+        throw new Error("PDF v2 page evidence is incomplete or overlapping");
+    } else if (formatProperty.value === "docx") {
+      exactObject(extraction as unknown, DOCX_EXTRACTION_KEYS, "DOCX extraction");
+      const docx = extraction as DocxDocumentExtraction;
+      digest(docx.source_bytes_sha256, "source bytes");
+      digest(docx.profile_sha256, "extraction profile");
+      boundedInteger(docx.source_bytes, "DOCX source bytes");
+      boundedInteger(docx.paragraphs, "DOCX paragraphs");
+      boundedInteger(docx.tables, "DOCX tables");
+      if (docx.source_bytes < 1 || docx.paragraphs + docx.tables < 1) throw new Error("Invalid DOCX extraction bounds");
+    } else if (formatProperty.value === "pptx") {
+      exactObject(extraction as unknown, PPTX_EXTRACTION_KEYS, "PPTX extraction");
+      const pptx = extraction as PptxDocumentExtraction;
+      digest(pptx.source_bytes_sha256, "source bytes");
+      digest(pptx.profile_sha256, "extraction profile");
+      boundedInteger(pptx.source_bytes, "PPTX source bytes");
+      boundedInteger(pptx.slides, "PPTX slides");
+      boundedInteger(pptx.tables, "PPTX tables");
+      boundedInteger(pptx.slides_with_notes, "PPTX slides with notes");
+      if (pptx.source_bytes < 1 || pptx.slides < 1 || pptx.slides_with_notes > pptx.slides)
+        throw new Error("Invalid PPTX extraction bounds");
     } else if (formatProperty.value === "markdown") {
       exactObject(extraction as unknown, MARKDOWN_EXTRACTION_KEYS, "Markdown extraction");
       sourceRelativeMarkdown = true;
@@ -304,6 +390,7 @@ function compareNullable(left: string | null, right: string | null): number {
 }
 
 function documentFormatVersion(document: SearchDocument): number {
+  if (["pdf-v2", "docx", "pptx"].includes(document.extraction?.format ?? "")) return STRUCTURED_DOCUMENT_FORMAT_VERSION;
   if (document.extraction?.format === "markdown") return MARKDOWN_DOCUMENT_FORMAT_VERSION;
   if (document.category) return CATEGORIZED_DOCUMENT_FORMAT_VERSION;
   if (document.extraction) return PDF_DOCUMENT_FORMAT_VERSION;
@@ -314,6 +401,12 @@ function canonicalExtraction(extraction: SearchDocument["extraction"]): Record<s
   if (!extraction) throw new Error("Missing document extraction");
   if (extraction.format === "pdf")
     return Object.fromEntries(PDF_EXTRACTION_KEYS.map((name) => [name, extraction[name]]));
+  if (extraction.format === "pdf-v2")
+    return Object.fromEntries(PDF_V2_EXTRACTION_KEYS.map((name) => [name, extraction[name]]));
+  if (extraction.format === "docx")
+    return Object.fromEntries(DOCX_EXTRACTION_KEYS.map((name) => [name, extraction[name]]));
+  if (extraction.format === "pptx")
+    return Object.fromEntries(PPTX_EXTRACTION_KEYS.map((name) => [name, extraction[name]]));
   const titleOrigin =
     extraction.title_origin.kind === "markdown-body"
       ? { kind: "markdown-body" }
