@@ -26,21 +26,24 @@ const declaration = (item: Observation): ReviewedUnavailableLink => ({
   sourceUrl,
   sourceSnapshotSha256: item.sha256,
   targetUrl,
-  linkText: "Speaker Link",
-  containerClass: "speaker-link",
+  anchorText: targetUrl,
+  labelText: "Speaker Link:",
+  labelClass: "label-inline",
 });
 
 describe("reviewed unavailable article links", () => {
   it("requires the exact source snapshot, target, label and structural context", () => {
-    const item = observation(`<div class="speaker-link"><a href="/profiles/speaker">Speaker Link</a></div>`);
+    const item = observation(
+      `<div class="label-inline">Speaker Link:</div><a href="/profiles/speaker">${targetUrl}</a>`,
+    );
     const policy = declaration(item);
     expect(discoverReviewedUnavailableLinks(item, hostname, [policy])).toEqual([targetUrl]);
     const changed = observation(`${item.snapshot.body}<p>Changed source.</p>`);
     expect(discoverReviewedUnavailableLinks(changed, hostname, [policy])).toEqual([]);
     for (const body of [
-      `<div><a href="/profiles/speaker">Speaker Link</a></div>`,
-      `<div class="speaker-link"><a href="/profiles/other">Speaker Link</a></div>`,
-      `<div class="speaker-link"><a href="/profiles/speaker">Speaker profile</a></div>`,
+      `<div>Speaker Link:</div><a href="/profiles/speaker">${targetUrl}</a>`,
+      `<div class="label-inline">Speaker Link:</div><a href="/profiles/other">${targetUrl}</a>`,
+      `<div class="label-inline">Speaker Link:</div><a href="/profiles/speaker">Speaker profile</a>`,
     ]) {
       const negative = observation(body);
       expect(discoverReviewedUnavailableLinks(negative, hostname, [policy])).toEqual([]);
@@ -49,7 +52,7 @@ describe("reviewed unavailable article links", () => {
 
   it("rejects ambiguous matching citations within a reviewed snapshot", () => {
     const item = observation(
-      `<div class="speaker-link"><a href="/profiles/speaker">Speaker Link</a><a href="/profiles/speaker">Speaker Link</a></div>`,
+      `<div class="label-inline">Speaker Link:</div><a href="/profiles/speaker">${targetUrl}</a><div class="label-inline">Speaker Link:</div><a href="/profiles/speaker">${targetUrl}</a>`,
     );
     expect(() => discoverReviewedUnavailableLinks(item, hostname, [declaration(item)])).toThrow(/ambiguous/);
   });

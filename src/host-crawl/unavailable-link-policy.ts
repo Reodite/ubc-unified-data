@@ -8,8 +8,9 @@ export interface ReviewedUnavailableLink {
   sourceUrl: string;
   sourceSnapshotSha256: string;
   targetUrl: string;
-  linkText: string;
-  containerClass: string;
+  anchorText: string;
+  labelText: string;
+  labelClass: string;
 }
 
 const reviewedUnavailableLinks: readonly ReviewedUnavailableLink[] = [
@@ -18,8 +19,9 @@ const reviewedUnavailableLinks: readonly ReviewedUnavailableLink[] = [
     sourceUrl: "https://www.math.ubc.ca/events/apr-29-2025-organization-plant-cortical-microtubules",
     sourceSnapshotSha256: "5e6c436e53fc8db6a2b625e15eb1c7741ccecef0da9db79b22ee8c5df0bbaaf6",
     targetUrl: "https://www.math.ubc.ca/profiles/tim-tian",
-    linkText: "Speaker Link",
-    containerClass: "field-name-field-speaker-link",
+    anchorText: "https://www.math.ubc.ca/profiles/tim-tian",
+    labelText: "Speaker Link:",
+    labelClass: "label-inline",
   },
 ];
 
@@ -46,13 +48,17 @@ export function discoverReviewedUnavailableLinks(
     )
       continue;
     const targetUrl = hostUrl(declaration.targetUrl, hostname);
-    const matches = $(`.${declaration.containerClass} a[href]`)
+    const matches = $("a[href]")
       .toArray()
       .filter((node) => {
         try {
+          const anchor = $(node);
+          const label = anchor.prev();
           return (
-            hostUrl($(node).attr("href")!, hostname, sourceUrl) === targetUrl &&
-            text($(node).text()) === declaration.linkText
+            hostUrl(anchor.attr("href")!, hostname, sourceUrl) === targetUrl &&
+            text(anchor.text()) === declaration.anchorText &&
+            label.hasClass(declaration.labelClass) &&
+            text(label.text()) === declaration.labelText
           );
         } catch {
           return false;
