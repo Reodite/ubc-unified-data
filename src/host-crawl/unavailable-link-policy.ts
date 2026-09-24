@@ -23,6 +23,24 @@ const reviewedUnavailableLinks: readonly ReviewedUnavailableLink[] = [
     labelText: "Speaker Link:",
     labelClass: "label-inline",
   },
+  {
+    hostname: "www.math.ubc.ca",
+    sourceUrl: "https://www.math.ubc.ca/events/sep-17-2023-local-global-principle-higher-moments-natural-density",
+    sourceSnapshotSha256: "801ef23b91ebcdf0b840e44925742924eb3561bee40ddf67147e089e85000f77",
+    targetUrl: "https://www.math.ubc.ca/profiles/severin-schraven",
+    anchorText: "https://www.math.ubc.ca/profiles/severin-schraven",
+    labelText: "Speaker Link:",
+    labelClass: "label-inline",
+  },
+  {
+    hostname: "www.math.ubc.ca",
+    sourceUrl: "https://www.math.ubc.ca/topic/number-theory?page=49",
+    sourceSnapshotSha256: "c409edb003c79961dc59c3c2b4acee1dd02c4a5da77c971ea5ff57a9d72bffdf",
+    targetUrl: "https://www.math.ubc.ca/profiles/severin-schraven",
+    anchorText: "https://www.math.ubc.ca/profiles/severin-schraven",
+    labelText: "Speaker Link:",
+    labelClass: "label-inline",
+  },
 ];
 
 const snapshotDigest = (observation: Observation) =>
