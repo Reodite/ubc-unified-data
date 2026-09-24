@@ -233,8 +233,9 @@ byte capacity, and a minimum request interval in the recording ledger. It never 
 the original configuration or removes attempts. Reopening the same grant is
 idempotent; changed authority or bounds fail closed. A grant may replace the
 advertised crawl delay only with its explicit interval, which cannot be shorter
-than one second; robots path exclusions remain enforced. Grants cannot modify a
-sealed recording.
+than one second; robots path exclusions remain enforced. After a grant creates
+remaining capacity, an explicit budget-resume operation may archive only selected
+pre-dispatch cumulative-budget failures. Grants cannot modify a sealed recording.
 
 Successful responses are reused. Transient fetch failures and retryable HTTP
 responses have a three-attempt physical-URL bound. Failures are retained, not

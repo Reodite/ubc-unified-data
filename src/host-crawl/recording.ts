@@ -945,6 +945,42 @@ export class HostRecording {
     }
   }
 
+  /** Archive selected pre-dispatch budget failures only after an additive grant creates remaining capacity. */
+  resumeBudgetFailures(urls?: readonly string[]): number {
+    this.assertOpen();
+    if (!this.options.acquire || this.sealed) throw new Error("Budget resume requires unsealed explicit acquisition");
+    if (this.active.size) throw new Error("Budget resume requires an idle recording");
+    const selected = urls ? new Set(urls.map((url) => this.scoped(url))) : undefined;
+    this.db.exec("BEGIN IMMEDIATE");
+    try {
+      if (this.db.prepare("SELECT 1 FROM attempts WHERE state='dispatching' LIMIT 1").get())
+        throw new Error("Budget resume requires no dispatching attempts");
+      if (!this.budgetGrants().length) throw new Error("Budget resume requires an additive grant");
+      const stats = this.db.prepare("SELECT count(*) requests, coalesce(sum(bytes),0) bytes FROM attempts").get()!;
+      const bounds = this.effectiveAcquisitionBounds();
+      if (Number(stats.requests) >= bounds.maxRequests || Number(stats.bytes) >= bounds.maxBytes)
+        throw new Error("Budget resume requires remaining effective capacity");
+      const failures = this.db
+        .prepare("SELECT url,error FROM outcomes WHERE snapshot IS NULL AND error=? ORDER BY url")
+        .all("Error: Acquisition request/byte budget exhausted")
+        .filter((row) => !selected || selected.has(String(row.url)));
+      const now = new Date().toISOString();
+      for (const failure of failures) {
+        this.db
+          .prepare("INSERT INTO outcome_failures(url,error,recorded_at) VALUES (?,?,?)")
+          .run(String(failure.url), String(failure.error), now);
+        this.db
+          .prepare("DELETE FROM outcomes WHERE url=? AND error=? AND snapshot IS NULL")
+          .run(String(failure.url), String(failure.error));
+      }
+      this.db.exec("COMMIT");
+      return failures.length;
+    } catch (error) {
+      this.db.exec("ROLLBACK");
+      throw error;
+    }
+  }
+
   /** Archive selected per-invocation duration failures without renewing acquisition budgets or attempt limits. */
   resumeDurationFailures(urls?: readonly string[]): number {
     this.assertOpen();

@@ -510,7 +510,7 @@ describe("external immutable request recording", () => {
   it("supports a request-only grant without changing the byte ceiling", async () => {
     const robots = "User-agent: *\nDisallow: /private\n";
     const f = await fixture(() => html(), { maxRequests: 1 });
-    await f.recording.read(`${origin}/robots.txt`);
+    await expect(f.recording.read(`${origin}/page`)).rejects.toThrow(/budget/);
     expect(
       f.recording.authorizeBudgetGrant({
         id: "request-only-extension",
@@ -522,12 +522,15 @@ describe("external immutable request recording", () => {
         minimumIntervalMs: 1000,
       }),
     ).toBe(true);
+    await expect(f.recording.read(`${origin}/page`)).rejects.toThrow(/Saved request failure/);
+    expect(f.recording.resumeBudgetFailures([`${origin}/page`])).toBe(1);
     await expect(f.recording.read(`${origin}/page`)).resolves.toMatchObject({ snapshot: { status: 200 } });
     await expect(f.recording.read(`${origin}/after-request-grant`)).rejects.toThrow(/budget/);
     const state = recordingState(f.directory);
     expect(state.grants).toEqual([]);
     expect(state.grantsV2).toHaveLength(1);
     expect(state.grantsV2[0]).toMatchObject({ additional_requests: 1, additional_bytes: 0 });
+    expect(state.failures).toHaveLength(1);
   });
   it("rejects altered, malformed and sub-second budget grants", async () => {
     const f = await fixture(() => html());
