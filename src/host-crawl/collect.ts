@@ -34,6 +34,7 @@ import {
   type MarkdownSourceDeclaration,
 } from "./markdown-source-policy.ts";
 import { parseSitemap } from "./sitemap.ts";
+import { discoverReviewedUnavailableLinks } from "./unavailable-link-policy.ts";
 import { hostUrl, inventoryUrl, nonDocumentInventoryUrl, pageExclusion, UNSUPPORTED_DOCUMENT } from "./urls.ts";
 
 const sha256 = (value: string | Uint8Array) => createHash("sha256").update(value).digest("hex");
@@ -375,6 +376,7 @@ export async function collectRecordedHost(
   };
   const observedPageLinks = (observation: Observation) => {
     if (exactHost) {
+      for (const url of discoverReviewedUnavailableLinks(observation, hostname)) nonDocuments.add(url);
       for (const url of discoverMachineLinks(observation.snapshot.body, hostname, observation.snapshot.url)) {
         const exclusion = scraper.excludeUrl ? scraper.excludeUrl(url) : pageExclusion(url, hostname);
         if (exclusion !== null) continue;

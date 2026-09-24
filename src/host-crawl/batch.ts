@@ -28,7 +28,7 @@ import { loadCachedPdfProfile } from "./pdf-profile-cache.ts";
 import { assertSameProducer, captureProducer } from "./provenance.ts";
 import { hostDocumentRoots, readRegularFile } from "./public-validation.ts";
 import { publishCompletedHost } from "./publication.ts";
-import { HostRecording } from "./recording.ts";
+import { HostRecording, type AcquisitionBudgetGrant } from "./recording.ts";
 import { parseGenericHostnames } from "./registry.ts";
 import { normalizeHost } from "./urls.ts";
 import { HostWorkQueue, type HostWorkRecord } from "./work-queue.ts";
@@ -45,6 +45,7 @@ export interface HostBatchConfig {
   main: string;
   bootstrapFiles: Record<string, string>;
   recoverTransientFailures?: boolean;
+  acquisitionBudgetGrants?: Record<string, AcquisitionBudgetGrant>;
   requireSavedRouting?: boolean;
   historicalReady?: Record<
     string,
@@ -201,6 +202,8 @@ export class HostBatch {
       htmlDocumentsOnly: true,
     });
     try {
+      const budgetGrant = this.config.acquisitionBudgetGrants?.[hostname];
+      if (acquire && !sealed && budgetGrant) recording.authorizeBudgetGrant(budgetGrant);
       if (acquire && !sealed && this.config.recoverTransientFailures) {
         const selected = homepageOnly ? [`https://${hostname}/robots.txt`, `https://${hostname}/`] : undefined;
         recording.recoverTransientFailures(selected);

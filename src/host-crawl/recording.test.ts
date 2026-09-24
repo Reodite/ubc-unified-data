@@ -66,6 +66,7 @@ function recordingState(directory: string) {
       outcomes: db.prepare("SELECT * FROM outcomes ORDER BY url").all(),
       failures: db.prepare("SELECT * FROM outcome_failures ORDER BY id").all(),
       repairs: db.prepare("SELECT * FROM repair_authorizations ORDER BY url").all(),
+      grants: db.prepare("SELECT * FROM acquisition_budget_grants ORDER BY id").all(),
     };
   } finally {
     db.close();
@@ -461,6 +462,69 @@ describe("external immutable request recording", () => {
       kind === "requests" ? { maxRequests: 1 } : { maxResponseBytes: 64 },
     );
     await expect(f.recording.read(`${origin}/page`)).rejects.toThrow(/budget/);
+  });
+  it("adds an exact durable budget grant without replacing prior bounds, attempts or robots exclusions", async () => {
+    const robots = "User-agent: *\nCrawl-delay: 10\nDisallow: /private\n";
+    const fetcher = vi.fn(async (value: string | URL | Request) => {
+      const url = String(value);
+      return url === `${origin}/robots.txt`
+        ? new Response(robots, { headers: { "content-type": "text/plain" } })
+        : html();
+    }) as unknown as typeof fetch;
+    const f = await fixture(() => html(), { maxRequests: 1, fetcher });
+    await f.recording.read(`${origin}/robots.txt`);
+    const before = recordingState(f.directory);
+    const grant = {
+      id: "owner-approved-extension-1",
+      authoritySha256: "b".repeat(64),
+      expectedRequests: 1,
+      expectedBytes: Buffer.byteLength(robots),
+      additionalRequests: 1,
+      additionalBytes: 1024,
+      minimumIntervalMs: 1000,
+    };
+    expect(f.recording.authorizeBudgetGrant(grant)).toBe(true);
+    expect(f.recording.authorizeBudgetGrant(grant)).toBe(false);
+    await expect(f.recording.read(`${origin}/private`)).rejects.toThrow(/Robots/);
+    await expect(f.recording.read(`${origin}/page`)).resolves.toMatchObject({ snapshot: { status: 200 } });
+    await expect(f.recording.read(`${origin}/after-grant`)).rejects.toThrow(/budget/);
+    const after = recordingState(f.directory);
+    expect(after.config).toEqual(before.config);
+    expect(after.attempts.slice(0, before.attempts.length)).toEqual(before.attempts);
+    expect(after.grants).toHaveLength(1);
+    expect(after.grants[0]).toMatchObject({
+      id: grant.id,
+      authority_sha256: grant.authoritySha256,
+      expected_requests: 1,
+      additional_requests: 1,
+      additional_bytes: 1024,
+      minimum_interval_ms: 1000,
+    });
+    expect(fetcher).toHaveBeenCalledTimes(2);
+    expect(() => f.recording.authorizeBudgetGrant({ ...grant, id: "wrong-counters", expectedRequests: 0 })).toThrow(
+      /preserved acquisition counters/,
+    );
+    await f.recording.seal();
+  });
+  it("rejects altered, malformed and sub-second budget grants", async () => {
+    const f = await fixture(() => html());
+    const grant = {
+      id: "owner-approved-extension-1",
+      authoritySha256: "b".repeat(64),
+      expectedRequests: 0,
+      expectedBytes: 0,
+      additionalRequests: 1,
+      additionalBytes: 1024,
+      minimumIntervalMs: 1000,
+    };
+    expect(f.recording.authorizeBudgetGrant(grant)).toBe(true);
+    expect(() => f.recording.authorizeBudgetGrant({ ...grant, additionalRequests: 2 })).toThrow(/differs/);
+    expect(() =>
+      f.recording.authorizeBudgetGrant({ ...grant, id: "second", expectedRequests: 0, minimumIntervalMs: 999 }),
+    ).toThrow(/at least one second/);
+    expect(() => f.recording.authorizeBudgetGrant({ ...grant, id: "second", authoritySha256: "not-a-digest" })).toThrow(
+      /authority digest/,
+    );
   });
   it("rejects seed changes and competing writers while attributing code changes to new attempts", async () => {
     const f = await fixture(() => html(), { seedSha256: "b".repeat(64) });

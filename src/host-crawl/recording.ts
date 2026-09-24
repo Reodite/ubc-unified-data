@@ -50,6 +50,16 @@ async function durableObject(path: string, bytes: Uint8Array): Promise<void> {
     await directory.close();
   }
 }
+export interface AcquisitionBudgetGrant {
+  id: string;
+  authoritySha256: string;
+  expectedRequests: number;
+  expectedBytes: number;
+  additionalRequests: number;
+  additionalBytes: number;
+  minimumIntervalMs: number;
+}
+
 export interface RecordingOptions {
   hostname: string;
   directory: string;
@@ -169,7 +179,7 @@ export class HostRecording {
         throw new Error("Acquisition options changed; replay saved input or create a new explicit recording");
       if (options.acquire) {
         db.exec(
-          "CREATE TABLE IF NOT EXISTS attempt_producers (attempt_id INTEGER PRIMARY KEY, producer TEXT NOT NULL); CREATE TABLE IF NOT EXISTS outcome_failures (id INTEGER PRIMARY KEY, url TEXT NOT NULL, error TEXT NOT NULL, recorded_at TEXT NOT NULL); CREATE TABLE IF NOT EXISTS repair_authorizations (url TEXT PRIMARY KEY, reason TEXT NOT NULL, authorized_at TEXT NOT NULL, producer TEXT NOT NULL, attempt_count INTEGER NOT NULL, attempt_ceiling INTEGER NOT NULL CHECK(attempt_ceiling <= 6 AND attempt_ceiling > attempt_count AND attempt_ceiling <= attempt_count + 3));",
+          "CREATE TABLE IF NOT EXISTS attempt_producers (attempt_id INTEGER PRIMARY KEY, producer TEXT NOT NULL); CREATE TABLE IF NOT EXISTS outcome_failures (id INTEGER PRIMARY KEY, url TEXT NOT NULL, error TEXT NOT NULL, recorded_at TEXT NOT NULL); CREATE TABLE IF NOT EXISTS repair_authorizations (url TEXT PRIMARY KEY, reason TEXT NOT NULL, authorized_at TEXT NOT NULL, producer TEXT NOT NULL, attempt_count INTEGER NOT NULL, attempt_ceiling INTEGER NOT NULL CHECK(attempt_ceiling <= 6 AND attempt_ceiling > attempt_count AND attempt_ceiling <= attempt_count + 3)); CREATE TABLE IF NOT EXISTS acquisition_budget_grants (id TEXT PRIMARY KEY, authority_sha256 TEXT NOT NULL, authorized_at TEXT NOT NULL, expected_requests INTEGER NOT NULL, expected_bytes INTEGER NOT NULL, additional_requests INTEGER NOT NULL CHECK(additional_requests > 0), additional_bytes INTEGER NOT NULL CHECK(additional_bytes > 0), minimum_interval_ms INTEGER NOT NULL CHECK(minimum_interval_ms >= 1000));",
         );
         db.prepare("INSERT OR IGNORE INTO attempt_producers SELECT id,? FROM attempts").run(
           JSON.stringify(config.producer),
@@ -376,6 +386,84 @@ export class HostRecording {
     );
   }
 
+  private budgetGrants(): Record<string, unknown>[] {
+    return this.db.prepare("SELECT 1 FROM sqlite_master WHERE type='table' AND name='acquisition_budget_grants'").get()
+      ? this.db.prepare("SELECT * FROM acquisition_budget_grants ORDER BY id").all()
+      : [];
+  }
+
+  private effectiveAcquisitionBounds(): {
+    maxRequests: number;
+    maxBytes: number;
+    minimumIntervalMs?: number;
+  } {
+    let maxRequests = Number(this.config.maxRequests);
+    let maxBytes = Number(this.config.maxBytes);
+    let minimumIntervalMs: number | undefined;
+    for (const grant of this.budgetGrants()) {
+      maxRequests += Number(grant.additional_requests);
+      maxBytes += Number(grant.additional_bytes);
+      minimumIntervalMs = Math.max(minimumIntervalMs ?? 0, Number(grant.minimum_interval_ms));
+    }
+    if (!Number.isSafeInteger(maxRequests) || !Number.isSafeInteger(maxBytes))
+      throw new Error("Effective acquisition budget exceeds a safe integer");
+    return { maxRequests, maxBytes, ...(minimumIntervalMs ? { minimumIntervalMs } : {}) };
+  }
+
+  /** Add explicit capacity without replacing the immutable recording configuration or prior attempts. */
+  authorizeBudgetGrant(grant: AcquisitionBudgetGrant): boolean {
+    this.assertOpen();
+    if (!this.options.acquire || this.sealed) throw new Error("Budget grants require unsealed explicit acquisition");
+    if (this.active.size) throw new Error("Budget grants require an idle recording");
+    if (!/^[a-z0-9][a-z0-9._-]{0,127}$/.test(grant.id)) throw new Error("Invalid budget grant identifier");
+    if (!/^[a-f0-9]{64}$/.test(grant.authoritySha256)) throw new Error("Invalid budget grant authority digest");
+    for (const [key, value] of Object.entries(grant))
+      if (typeof value === "number" && (!Number.isSafeInteger(value) || value < (key.startsWith("expected") ? 0 : 1)))
+        throw new Error(`Invalid budget grant bound: ${key}`);
+    if (grant.minimumIntervalMs < 1000) throw new Error("Budget grant request interval must be at least one second");
+    const stored = this.db.prepare("SELECT * FROM acquisition_budget_grants WHERE id=?").get(grant.id);
+    const values = {
+      id: grant.id,
+      authority_sha256: grant.authoritySha256,
+      expected_requests: grant.expectedRequests,
+      expected_bytes: grant.expectedBytes,
+      additional_requests: grant.additionalRequests,
+      additional_bytes: grant.additionalBytes,
+      minimum_interval_ms: grant.minimumIntervalMs,
+    };
+    if (stored) {
+      for (const [key, value] of Object.entries(values))
+        if (stored[key] !== value) throw new Error("Saved budget grant differs from the requested authority");
+      return false;
+    }
+    this.db.exec("BEGIN IMMEDIATE");
+    try {
+      if (this.db.prepare("SELECT 1 FROM attempts WHERE state='dispatching' LIMIT 1").get())
+        throw new Error("Budget grants require no dispatching attempts");
+      const stats = this.db.prepare("SELECT count(*) requests, coalesce(sum(bytes),0) bytes FROM attempts").get()!;
+      if (Number(stats.requests) !== grant.expectedRequests || Number(stats.bytes) !== grant.expectedBytes)
+        throw new Error("Budget grant does not match the preserved acquisition counters");
+      this.db
+        .prepare("INSERT INTO acquisition_budget_grants VALUES (?,?,?,?,?,?,?,?)")
+        .run(
+          grant.id,
+          grant.authoritySha256,
+          new Date().toISOString(),
+          grant.expectedRequests,
+          grant.expectedBytes,
+          grant.additionalRequests,
+          grant.additionalBytes,
+          grant.minimumIntervalMs,
+        );
+      this.effectiveAcquisitionBounds();
+      this.db.exec("COMMIT");
+      return true;
+    } catch (error) {
+      this.db.exec("ROLLBACK");
+      throw error;
+    }
+  }
+
   private async dispatch(url: string, minimum: number, document = false): Promise<Observation> {
     const repair = this.db.prepare("SELECT * FROM repair_authorizations WHERE url=?").get(url);
     const ceiling = Number(repair?.attempt_ceiling ?? 3);
@@ -394,10 +482,8 @@ export class HostRecording {
       return this.readSnapshot(String(saved.snapshot));
     if (count >= ceiling) throw new Error("Physical URL attempt bound exhausted");
     const stats = this.db.prepare("SELECT count(*) requests, coalesce(sum(bytes),0) bytes FROM attempts").get()!;
-    if (
-      Number(stats.requests) >= Number(this.config.maxRequests) ||
-      Number(stats.bytes) >= Number(this.config.maxBytes)
-    )
+    const bounds = this.effectiveAcquisitionBounds();
+    if (Number(stats.requests) >= bounds.maxRequests || Number(stats.bytes) >= bounds.maxBytes)
       throw new Error("Acquisition request/byte budget exhausted");
     if (Date.now() - this.started >= Number(this.config.maxDurationMs))
       throw new Error("Acquisition duration exhausted");
@@ -459,10 +545,7 @@ export class HostRecording {
           if (item.done) break;
           received += item.value.length;
           this.db.prepare("UPDATE attempts SET bytes=? WHERE id=?").run(received, id);
-          if (
-            received > Number(this.config.maxResponseBytes) ||
-            Number(stats.bytes) + received > Number(this.config.maxBytes)
-          ) {
+          if (received > Number(this.config.maxResponseBytes) || Number(stats.bytes) + received > bounds.maxBytes) {
             await reader.cancel();
             throw new Error("Acquisition response/total byte budget exceeded");
           }
@@ -598,7 +681,11 @@ export class HostRecording {
         if (document) this.assertDocumentUrl(url);
         const policy = enforceRobots ? await this.policy() : undefined;
         if (policy?.isDisallowed(url, "ubc-data")) throw new Error(`Robots disallows ${url}`);
-        const minimum = Math.max(Number(this.config.minimumMs), (policy?.getCrawlDelay("ubc-data") ?? 0) * 1000);
+        const grantedInterval = this.effectiveAcquisitionBounds().minimumIntervalMs;
+        const minimum = Math.max(
+          Number(this.config.minimumMs),
+          grantedInterval ?? (policy?.getCrawlDelay("ubc-data") ?? 0) * 1000,
+        );
         let observation: Observation;
         for (;;) {
           const prior = Number(this.db.prepare("SELECT count(*) n FROM attempts WHERE url=?").get(url)!.n);
@@ -857,8 +944,9 @@ export class HostRecording {
       if (this.db.prepare("SELECT 1 FROM attempts WHERE state='dispatching' LIMIT 1").get())
         throw new Error("Duration resume requires no dispatching attempts");
       const stats = this.db.prepare("SELECT count(*) requests, coalesce(sum(bytes),0) bytes FROM attempts").get()!;
+      const bounds = this.effectiveAcquisitionBounds();
       const failures =
-        Number(stats.requests) < Number(this.config.maxRequests) && Number(stats.bytes) < Number(this.config.maxBytes)
+        Number(stats.requests) < bounds.maxRequests && Number(stats.bytes) < bounds.maxBytes
           ? this.db
               .prepare("SELECT url,error FROM outcomes WHERE snapshot IS NULL AND error IN (?,?,?) ORDER BY url")
               .all(
@@ -895,6 +983,7 @@ export class HostRecording {
       .get()
       ? this.db.prepare("SELECT * FROM repair_authorizations ORDER BY url").all()
       : [];
+    const grants = this.budgetGrants();
     return hash(
       JSON.stringify({
         config: this.config,
@@ -903,6 +992,7 @@ export class HostRecording {
         producers,
         failures,
         ...(repairs.length ? { repairs } : {}),
+        ...(grants.length ? { grants } : {}),
       }),
     );
   }

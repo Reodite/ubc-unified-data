@@ -95,15 +95,24 @@ A trackback link is a non-document action only when observed comment metadata
 identifies that page's own endpoint. Such actions are not requested; ordinary
 pages discussing trackbacks and unproved robots-denied URLs remain strict.
 
-Feed and CAPTCHA-refresh exclusions also require observed HTML evidence. Atom/RSS
-feeds need matching alternate-feed metadata in the HTML head and a matching file
-suffix. An image-CAPTCHA refresh link needs the exact form identifier and challenge
-controls inside its own POST form. Recognized controls are not requested; forms
-are not submitted and challenges are not solved. Public prose and ordinary
-privacy/help links remain eligible. Names alone, query variants and normalized or historical markup
+Feed, BibTeX-export and CAPTCHA-refresh exclusions also require observed HTML
+evidence. Atom/RSS feeds need matching alternate-feed metadata in the HTML head
+and a matching file suffix. A BibTeX export needs an exact numeric
+`/biblio/export/bibtex/<id>` anchor labeled `BibTex` inside the observed
+`biblio_bibtex` control, with its `nofollow` relation and download title; path or
+label vocabulary alone is insufficient. An image-CAPTCHA refresh link needs the exact form
+identifier and challenge controls inside its own POST form. Recognized controls
+are not requested; forms are not submitted and challenges are not solved. Public
+prose and ordinary privacy/help links remain eligible. Names alone, query variants and normalized or historical markup
 do not establish these roles. These additional exclusions cannot override
 homepage identities, CMS/XML-advertised HTML pages, required views or their base
 pages, retained sources or already emitted text and aliases.
+
+A finite reviewed unavailable-citation declaration can omit one linked target only
+when it is bound to the exact source snapshot, exact target, exact anchor text and
+structural context. A changed source observation gets no exclusion. The declaration
+cannot override an advertised, retained, required or emitted document identity, and
+does not authorize a request, robots bypass or invented replacement document.
 An observed `/index%2ephp/` or `/index%2Ephp/` CAPTCHA route also requires the
 identical prefix spelling on its physical source and an owning form `data-action`
 that resolves exactly to that source. This does not collapse public variants,
@@ -217,6 +226,15 @@ per request and 20 minutes per invocation. Reaching
 a bound does not authorize a partial publication. Byte accounting includes
 failed responses; an explicitly resumed uncertain attempt reserves its maximum
 possible response size.
+
+A separately authorized acquisition-budget grant is additive: it records an
+authority digest, the exact preserved request/byte counters, added request/byte
+capacity and a minimum request interval in the recording ledger. It never replaces
+the original configuration or removes attempts. Reopening the same grant is
+idempotent; changed authority or bounds fail closed. A grant may replace the
+advertised crawl delay only with its explicit interval, which cannot be shorter
+than one second; robots path exclusions remain enforced. Grants cannot modify a
+sealed recording.
 
 Successful responses are reused. Transient fetch failures and retryable HTTP
 responses have a three-attempt physical-URL bound. Failures are retained, not

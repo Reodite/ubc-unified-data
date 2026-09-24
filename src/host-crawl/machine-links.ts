@@ -2,7 +2,7 @@ import { load } from "cheerio";
 import { htmlBaseUrl } from "./html-base.ts";
 import { inventoryUrl, pageExclusion } from "./urls.ts";
 
-/** Identify exact feed and own-form refresh identities from observed HTML, without requesting either resource. */
+/** Identify exact feeds, own-form refreshes and labeled BibTeX exports from observed HTML without requesting them. */
 export function discoverMachineLinks(html: string, hostname: string, sourceUrl: string): Set<string> {
   const $ = load(html);
   const base = htmlBaseUrl(html, hostname, sourceUrl, true);
@@ -28,6 +28,17 @@ export function discoverMachineLinks(html: string, hostname: string, sourceUrl: 
     if (!suffix) return;
     const url = candidate(link.attr("href"));
     if (url && new URL(url).pathname.toLowerCase().endsWith(suffix)) result.add(url);
+  });
+  $("li.biblio_bibtex a[href][title][rel]").each((_, node) => {
+    const link = $(node);
+    if (
+      link.text().replace(/\s+/g, " ").trim().toLowerCase() !== "bibtex" ||
+      link.attr("title")?.trim().toLowerCase() !== "click to download the bibtex formatted file" ||
+      !(link.attr("rel") ?? "").toLowerCase().split(/\s+/).includes("nofollow")
+    )
+      return;
+    const url = candidate(link.attr("href"));
+    if (url && /^\/biblio\/export\/bibtex\/[1-9]\d*$/.test(new URL(url).pathname)) result.add(url);
   });
   $("a.reload-captcha[href]").each((_, node) => {
     const link = $(node);

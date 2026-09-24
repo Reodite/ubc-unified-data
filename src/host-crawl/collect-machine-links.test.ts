@@ -25,6 +25,8 @@ const html = (body = "", head = "") =>
 const anchor = (path: string, label = "Public guidance") => `<a href="${path}">${label}</a>`;
 const feed = (path: string, mime = "application/atom+xml", rel = "alternate") =>
   `<link rel="${rel}" type="${mime}" href="${path}">`;
+const bibtex = (path: string) =>
+  `<li class="biblio_bibtex"><a href="${path}" title="Click to download the BibTEX formatted file" rel="nofollow">BibTex</a></li>`;
 const formId = "contact_message_feedback_form";
 const action = `/image-captcha-refresh/${formId}`;
 const captcha = (id = formId, href = `/image-captcha-refresh/${id}`) =>
@@ -215,6 +217,16 @@ const machineCases = [
     mime: "application/rss+xml",
     denied: false,
   },
+  {
+    label: "BibTeX export",
+    path: "/biblio/export/bibtex/123",
+    head: "",
+    body: bibtex("/biblio/export/bibtex/123"),
+    source: "/a-publications",
+    response: "@article{fixture}",
+    mime: "application/text",
+    denied: false,
+  },
   ...[formId, "event_submission_form"].map((id, index) => ({
     label: index ? "events CAPTCHA" : "contact CAPTCHA",
     path: `/image-captcha-refresh/${id}`,
@@ -291,6 +303,25 @@ describe("machine-link preservation", () => {
     f.seed(path);
     requireDocument(await f.collect(), path);
     expect(f.archive.readDocument).toHaveBeenCalledWith(new URL(path, home).href);
+  });
+
+  it.each([
+    [
+      "expanded label",
+      "/biblio/export/bibtex/123",
+      bibtex("/biblio/export/bibtex/123").replace("BibTex", "Download BibTeX"),
+    ],
+    [
+      "missing relation",
+      "/biblio/export/bibtex/123",
+      bibtex("/biblio/export/bibtex/123").replace(' rel="nofollow"', ""),
+    ],
+    ["nonnumeric identity", "/biblio/export/bibtex/article", bibtex("/biblio/export/bibtex/article")],
+    ["unrelated route", "/guides/bibtex/123", bibtex("/guides/bibtex/123")],
+  ])("does not infer a BibTeX export from an %s", async (_, path, markup) => {
+    const f = fixture(html(markup));
+    f.put(path);
+    requireDocument(await f.collect(), path);
   });
 
   it.each(machineCases.flatMap((entry) => ["robots", "non-HTML"].map((failure) => ({ ...entry, failure }))))(
@@ -483,22 +514,28 @@ describe("machine-link preservation", () => {
     expect(f.archive.assertUnchanged).not.toHaveBeenCalled();
   });
 
-  it.each(machineCases)("does not use an old retained $label representative as proof", async ({ path, head, body }) => {
-    const currentBody = body.replace(/<input[^>]*name="form_id"[^>]*>/, "");
-    const f = fixture(html(currentBody));
-    f.put(path);
-    const first = await f.collect();
-    const previous = retained(requireDocument(first, "/"));
-    const old = structuredClone(f.archive.homepage);
-    old.snapshot.body = html(body, head);
-    old.snapshot.bytes = Buffer.byteLength(old.snapshot.body);
-    old.sha256 = sha256(JSON.stringify(old.snapshot));
-    previous.snapshot = old.sha256;
-    f.representatives.set(old.sha256, old);
-    f.archive.retained = [previous];
-    requireDocument(await f.collect(), path);
-    expect(f.archive.readSnapshot).toHaveBeenCalledWith(old.sha256);
-  });
+  it.each(machineCases)(
+    "does not use an old retained $label representative as proof",
+    async ({ label, path, head, body }) => {
+      const currentBody =
+        label === "BibTeX export"
+          ? body.replace(' rel="nofollow"', "")
+          : body.replace(/<input[^>]*name="form_id"[^>]*>/, "");
+      const f = fixture(html(currentBody));
+      f.put(path);
+      const first = await f.collect();
+      const previous = retained(requireDocument(first, "/"));
+      const old = structuredClone(f.archive.homepage);
+      old.snapshot.body = html(body, head);
+      old.snapshot.bytes = Buffer.byteLength(old.snapshot.body);
+      old.sha256 = sha256(JSON.stringify(old.snapshot));
+      previous.snapshot = old.sha256;
+      f.representatives.set(old.sha256, old);
+      f.archive.retained = [previous];
+      requireDocument(await f.collect(), path);
+      expect(f.archive.readSnapshot).toHaveBeenCalledWith(old.sha256);
+    },
+  );
 });
 
 describe("machine-link protected document boundaries", () => {
