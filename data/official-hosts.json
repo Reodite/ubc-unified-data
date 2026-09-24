@@ -4514,6 +4514,37 @@
     "document_count": 67
   },
   {
+    "hostname": "www.math.ubc.ca",
+    "title": "www.math.ubc.ca",
+    "homepage_url": "https://www.math.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:14:36.448Z",
+    "homepage_sha256": "3bfef60f9a53fb504199437458dc4c685b590fcbd2c5f808800f38ad55805014",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/www.math.ubc.ca",
+        "document_count": 2214
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/www.math.ubc.ca",
+        "document_count": 458
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/www.math.ubc.ca",
+        "document_count": 19
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/www.math.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 2692
+  },
+  {
     "hostname": "www.mkrf.forestry.ubc.ca",
     "title": "www.mkrf.forestry.ubc.ca",
     "homepage_url": "https://www.mkrf.forestry.ubc.ca/",
