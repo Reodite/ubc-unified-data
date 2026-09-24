@@ -179,7 +179,7 @@ export class HostRecording {
         throw new Error("Acquisition options changed; replay saved input or create a new explicit recording");
       if (options.acquire) {
         db.exec(
-          "CREATE TABLE IF NOT EXISTS attempt_producers (attempt_id INTEGER PRIMARY KEY, producer TEXT NOT NULL); CREATE TABLE IF NOT EXISTS outcome_failures (id INTEGER PRIMARY KEY, url TEXT NOT NULL, error TEXT NOT NULL, recorded_at TEXT NOT NULL); CREATE TABLE IF NOT EXISTS repair_authorizations (url TEXT PRIMARY KEY, reason TEXT NOT NULL, authorized_at TEXT NOT NULL, producer TEXT NOT NULL, attempt_count INTEGER NOT NULL, attempt_ceiling INTEGER NOT NULL CHECK(attempt_ceiling <= 6 AND attempt_ceiling > attempt_count AND attempt_ceiling <= attempt_count + 3)); CREATE TABLE IF NOT EXISTS acquisition_budget_grants (id TEXT PRIMARY KEY, authority_sha256 TEXT NOT NULL, authorized_at TEXT NOT NULL, expected_requests INTEGER NOT NULL, expected_bytes INTEGER NOT NULL, additional_requests INTEGER NOT NULL CHECK(additional_requests > 0), additional_bytes INTEGER NOT NULL CHECK(additional_bytes > 0), minimum_interval_ms INTEGER NOT NULL CHECK(minimum_interval_ms >= 1000));",
+          "CREATE TABLE IF NOT EXISTS attempt_producers (attempt_id INTEGER PRIMARY KEY, producer TEXT NOT NULL); CREATE TABLE IF NOT EXISTS outcome_failures (id INTEGER PRIMARY KEY, url TEXT NOT NULL, error TEXT NOT NULL, recorded_at TEXT NOT NULL); CREATE TABLE IF NOT EXISTS repair_authorizations (url TEXT PRIMARY KEY, reason TEXT NOT NULL, authorized_at TEXT NOT NULL, producer TEXT NOT NULL, attempt_count INTEGER NOT NULL, attempt_ceiling INTEGER NOT NULL CHECK(attempt_ceiling <= 6 AND attempt_ceiling > attempt_count AND attempt_ceiling <= attempt_count + 3)); CREATE TABLE IF NOT EXISTS acquisition_budget_grants (id TEXT PRIMARY KEY, authority_sha256 TEXT NOT NULL, authorized_at TEXT NOT NULL, expected_requests INTEGER NOT NULL, expected_bytes INTEGER NOT NULL, additional_requests INTEGER NOT NULL CHECK(additional_requests > 0), additional_bytes INTEGER NOT NULL CHECK(additional_bytes > 0), minimum_interval_ms INTEGER NOT NULL CHECK(minimum_interval_ms >= 1000)); CREATE TABLE IF NOT EXISTS acquisition_budget_grants_v2 (id TEXT PRIMARY KEY, authority_sha256 TEXT NOT NULL, authorized_at TEXT NOT NULL, expected_requests INTEGER NOT NULL, expected_bytes INTEGER NOT NULL, additional_requests INTEGER NOT NULL CHECK(additional_requests >= 0), additional_bytes INTEGER NOT NULL CHECK(additional_bytes >= 0), minimum_interval_ms INTEGER NOT NULL CHECK(minimum_interval_ms >= 1000), CHECK(additional_requests > 0 OR additional_bytes > 0));",
         );
         db.prepare("INSERT OR IGNORE INTO attempt_producers SELECT id,? FROM attempts").run(
           JSON.stringify(config.producer),
@@ -387,9 +387,15 @@ export class HostRecording {
   }
 
   private budgetGrants(): Record<string, unknown>[] {
-    return this.db.prepare("SELECT 1 FROM sqlite_master WHERE type='table' AND name='acquisition_budget_grants'").get()
-      ? this.db.prepare("SELECT * FROM acquisition_budget_grants ORDER BY id").all()
-      : [];
+    const table = (name: string) =>
+      this.db.prepare("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?").get(name)
+        ? this.db.prepare(`SELECT * FROM ${name} ORDER BY id`).all()
+        : [];
+    const grants = [...table("acquisition_budget_grants"), ...table("acquisition_budget_grants_v2")];
+    grants.sort((left, right) => String(left.id).localeCompare(String(right.id)));
+    for (let index = 1; index < grants.length; index++)
+      if (grants[index - 1]!.id === grants[index]!.id) throw new Error("Duplicate acquisition budget grant identifier");
+    return grants;
   }
 
   private effectiveAcquisitionBounds(): {
@@ -418,10 +424,12 @@ export class HostRecording {
     if (!/^[a-z0-9][a-z0-9._-]{0,127}$/.test(grant.id)) throw new Error("Invalid budget grant identifier");
     if (!/^[a-f0-9]{64}$/.test(grant.authoritySha256)) throw new Error("Invalid budget grant authority digest");
     for (const [key, value] of Object.entries(grant))
-      if (typeof value === "number" && (!Number.isSafeInteger(value) || value < (key.startsWith("expected") ? 0 : 1)))
+      if (typeof value === "number" && (!Number.isSafeInteger(value) || value < 0))
         throw new Error(`Invalid budget grant bound: ${key}`);
+    if (grant.additionalRequests === 0 && grant.additionalBytes === 0)
+      throw new Error("Budget grant must add requests, bytes or both");
     if (grant.minimumIntervalMs < 1000) throw new Error("Budget grant request interval must be at least one second");
-    const stored = this.db.prepare("SELECT * FROM acquisition_budget_grants WHERE id=?").get(grant.id);
+    const stored = this.budgetGrants().find((row) => row.id === grant.id);
     const values = {
       id: grant.id,
       authority_sha256: grant.authoritySha256,
@@ -443,8 +451,12 @@ export class HostRecording {
       const stats = this.db.prepare("SELECT count(*) requests, coalesce(sum(bytes),0) bytes FROM attempts").get()!;
       if (Number(stats.requests) !== grant.expectedRequests || Number(stats.bytes) !== grant.expectedBytes)
         throw new Error("Budget grant does not match the preserved acquisition counters");
+      const table =
+        grant.additionalRequests > 0 && grant.additionalBytes > 0
+          ? "acquisition_budget_grants"
+          : "acquisition_budget_grants_v2";
       this.db
-        .prepare("INSERT INTO acquisition_budget_grants VALUES (?,?,?,?,?,?,?,?)")
+        .prepare(`INSERT INTO ${table} VALUES (?,?,?,?,?,?,?,?)`)
         .run(
           grant.id,
           grant.authoritySha256,

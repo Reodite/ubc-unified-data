@@ -228,8 +228,8 @@ failed responses; an explicitly resumed uncertain attempt reserves its maximum
 possible response size.
 
 A separately authorized acquisition-budget grant is additive: it records an
-authority digest, the exact preserved request/byte counters, added request/byte
-capacity and a minimum request interval in the recording ledger. It never replaces
+authority digest, the exact preserved request/byte counters, added request and/or
+byte capacity, and a minimum request interval in the recording ledger. It never replaces
 the original configuration or removes attempts. Reopening the same grant is
 idempotent; changed authority or bounds fail closed. A grant may replace the
 advertised crawl delay only with its explicit interval, which cannot be shorter

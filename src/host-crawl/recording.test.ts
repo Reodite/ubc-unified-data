@@ -67,6 +67,7 @@ function recordingState(directory: string) {
       failures: db.prepare("SELECT * FROM outcome_failures ORDER BY id").all(),
       repairs: db.prepare("SELECT * FROM repair_authorizations ORDER BY url").all(),
       grants: db.prepare("SELECT * FROM acquisition_budget_grants ORDER BY id").all(),
+      grantsV2: db.prepare("SELECT * FROM acquisition_budget_grants_v2 ORDER BY id").all(),
     };
   } finally {
     db.close();
@@ -506,6 +507,28 @@ describe("external immutable request recording", () => {
     );
     await f.recording.seal();
   });
+  it("supports a request-only grant without changing the byte ceiling", async () => {
+    const robots = "User-agent: *\nDisallow: /private\n";
+    const f = await fixture(() => html(), { maxRequests: 1 });
+    await f.recording.read(`${origin}/robots.txt`);
+    expect(
+      f.recording.authorizeBudgetGrant({
+        id: "request-only-extension",
+        authoritySha256: "c".repeat(64),
+        expectedRequests: 1,
+        expectedBytes: Buffer.byteLength(robots),
+        additionalRequests: 1,
+        additionalBytes: 0,
+        minimumIntervalMs: 1000,
+      }),
+    ).toBe(true);
+    await expect(f.recording.read(`${origin}/page`)).resolves.toMatchObject({ snapshot: { status: 200 } });
+    await expect(f.recording.read(`${origin}/after-request-grant`)).rejects.toThrow(/budget/);
+    const state = recordingState(f.directory);
+    expect(state.grants).toEqual([]);
+    expect(state.grantsV2).toHaveLength(1);
+    expect(state.grantsV2[0]).toMatchObject({ additional_requests: 1, additional_bytes: 0 });
+  });
   it("rejects altered, malformed and sub-second budget grants", async () => {
     const f = await fixture(() => html());
     const grant = {
@@ -525,6 +548,14 @@ describe("external immutable request recording", () => {
     expect(() => f.recording.authorizeBudgetGrant({ ...grant, id: "second", authoritySha256: "not-a-digest" })).toThrow(
       /authority digest/,
     );
+    expect(() =>
+      f.recording.authorizeBudgetGrant({
+        ...grant,
+        id: "empty-extension",
+        additionalRequests: 0,
+        additionalBytes: 0,
+      }),
+    ).toThrow(/must add requests, bytes or both/);
   });
   it("rejects seed changes and competing writers while attributing code changes to new attempts", async () => {
     const f = await fixture(() => html(), { seedSha256: "b".repeat(64) });
