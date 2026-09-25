@@ -1,8 +1,8 @@
 import { mkdtemp, readdir, rm, stat } from "node:fs/promises";
-import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { ROOT } from "../base.ts";
+import { EXTERNAL_BOUNDARY } from "../host-crawl/paths.ts";
 import { ProseClient, publicUbcUrl } from "./client.ts";
 
 const temporary: string[] = [];
@@ -123,7 +123,7 @@ describe("public UBC prose requests", () => {
   });
 
   it("keeps the original retrieval timestamp when resuming from private cache", async () => {
-    const directory = await mkdtemp(path.join(os.tmpdir(), "prose-cache-"));
+    const directory = await mkdtemp(path.join(EXTERNAL_BOUNDARY, "prose-cache-"));
     temporary.push(directory);
     const first = new ProseClient({
       cacheDir: directory,
