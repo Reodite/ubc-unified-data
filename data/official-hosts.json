@@ -3631,6 +3631,32 @@
     "document_count": 36
   },
   {
+    "hostname": "teachingsupport.forestry.ubc.ca",
+    "title": "teachingsupport.forestry.ubc.ca",
+    "homepage_url": "https://teachingsupport.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:29:39.387Z",
+    "homepage_sha256": "8e5365894fe8f70a7c926587b961fda0ca2cc9de43dac8e22187a2fc538b7bc8",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/teachingsupport.forestry.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/teachingsupport.forestry.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/teachingsupport.forestry.ubc.ca",
+        "document_count": 170
+      }
+    ],
+    "document_count": 176
+  },
+  {
     "hostname": "team.forestry.ubc.ca",
     "title": "team.forestry.ubc.ca",
     "homepage_url": "https://team.forestry.ubc.ca/",
