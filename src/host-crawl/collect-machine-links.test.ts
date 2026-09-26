@@ -244,6 +244,51 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
+describe("OJS feed collection boundaries", () => {
+  const source = "/index.php/journal/about";
+  const target = "/index.php/journal/gateway/plugin/AnnouncementFeedGatewayPlugin/atom";
+  const head = `<meta name="generator" content="Open Journal Systems 3.3.0.21">${feed(target)}`;
+  const setup = () => {
+    const f = fixture(html(anchor(source)));
+    f.put(source, html(anchor(target, "Announcements feed"), head));
+    f.put(target, "<feed/>", "application/atom+xml");
+    return f;
+  };
+
+  it("skips an advertised feed even when the frozen frontier already queued it", async () => {
+    const f = setup();
+    f.seed(target, source);
+    const result = await f.collect();
+    requireDocument(result, source);
+    expect(result.documents).toHaveLength(2);
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(new URL(target, home).href);
+    expect(f.archive.assertUnchanged).toHaveBeenCalledOnce();
+  });
+
+  it.each(["sitemap", "CMS", "retained"])("does not override a %s document identity", async (required) => {
+    const f = setup();
+    f.seed(source);
+    if (required === "sitemap") {
+      f.put("/robots.txt", `User-agent: *\nSitemap: ${home}sitemap.xml`, "text/plain");
+      f.put("/sitemap.xml", urlset(target), "application/xml");
+    } else if (required === "CMS") wordpress(f, [source, target]);
+    else {
+      const plain = fixture(html(anchor(target)));
+      plain.put(target);
+      const document = requireDocument(await plain.collect(), target);
+      f.archive.retained = [retained(document)];
+    }
+    await expect(f.collect()).rejects.toThrow(/Non-document discovery conflicts with a required page/);
+    expect(f.archive.assertUnchanged).not.toHaveBeenCalled();
+  });
+
+  it("preserves specialized discovery behavior", async () => {
+    const f = setup();
+    await expect(f.collect(strict(f.scraper))).rejects.toThrow(/Missing complete HTML/);
+    expect(f.archive.readDocument).toHaveBeenCalledWith(new URL(target, home).href);
+  });
+});
+
 describe("positive observed machine-link exclusions", () => {
   it.each(machineCases.flatMap((entry) => ["seed", "link", "queued"].map((placement) => ({ ...entry, placement }))))(
     "omits $label from $placement dispatch while preserving ordinary form links",

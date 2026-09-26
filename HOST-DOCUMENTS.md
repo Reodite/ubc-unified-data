@@ -97,7 +97,12 @@ pages discussing trackbacks and unproved robots-denied URLs remain strict.
 
 Feed, BibTeX-export and CAPTCHA-refresh exclusions also require observed HTML
 evidence. Atom/RSS feeds need matching alternate-feed metadata in the HTML head
-and a matching file suffix. A BibTeX export needs an exact numeric
+and a matching file suffix. OJS 3 feed gateways instead require a generator and
+typed alternate link inside the explicitly closed original head, the physical
+source's own `/index.php/<journal>` namespace, and the exact
+`AnnouncementFeedGatewayPlugin` or `WebFeedGatewayPlugin` route. Atom, RDF/RSS 1
+and RSS 2 endpoints must agree with their advertised MIME type. Neither a gateway
+path alone nor a query/fragment variant establishes this role. A BibTeX export needs an exact numeric
 `/biblio/export/bibtex/<id>` anchor labeled `BibTex` inside the observed
 `biblio_bibtex` control, with its `nofollow` relation and download title; path or
 label vocabulary alone is insufficient. An image-CAPTCHA refresh link needs the exact form

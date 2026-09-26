@@ -4,7 +4,7 @@ import { inventoryUrl, pageExclusion } from "./urls.ts";
 
 /** Identify exact feeds, own-form refreshes and labeled BibTeX exports from observed HTML without requesting them. */
 export function discoverMachineLinks(html: string, hostname: string, sourceUrl: string): Set<string> {
-  const $ = load(html);
+  const $ = load(html, { sourceCodeLocationInfo: true });
   const base = htmlBaseUrl(html, hostname, sourceUrl, true);
   const result = new Set<string>();
   const candidate = (value: string | undefined): string | null => {
@@ -20,14 +20,49 @@ export function discoverMachineLinks(html: string, hostname: string, sourceUrl: 
       return null;
     }
   };
+  const head = $("head")[0]?.sourceCodeLocation;
+  const originalHead = new Set(
+    $("head > meta,head > link")
+      .filter((_, node) => {
+        const location = node.sourceCodeLocation;
+        return Boolean(
+          head?.startTag &&
+          head.endTag &&
+          location &&
+          location.startOffset >= head.startTag.endOffset &&
+          location.endOffset <= head.endTag.startOffset,
+        );
+      })
+      .toArray(),
+  );
+  const generators = $("head > meta[name=generator]");
+  const ojs =
+    generators.length === 1 &&
+    originalHead.has(generators[0]!) &&
+    /^Open Journal Systems 3(?:\.\d+){1,3}$/.test(generators.attr("content") ?? "");
+  const journal = new URL(sourceUrl).pathname.match(/^\/index\.php\/([A-Za-z0-9_-]+)(?:\/|$)/)?.[1];
   $("head link[rel][type][href]").each((_, node) => {
     const link = $(node);
     if (!(link.attr("rel") ?? "").toLowerCase().split(/\s+/).includes("alternate")) return;
     const mime = link.attr("type")?.trim().toLowerCase();
     const suffix = mime === "application/atom+xml" ? ".atom" : mime === "application/rss+xml" ? ".rss" : null;
-    if (!suffix) return;
     const url = candidate(link.attr("href"));
-    if (url && new URL(url).pathname.toLowerCase().endsWith(suffix)) result.add(url);
+    if (!url) return;
+    const path = new URL(url).pathname;
+    if (suffix && path.toLowerCase().endsWith(suffix)) result.add(url);
+    if (!ojs || !journal || !originalHead.has(node)) return;
+    const gateway = path.match(
+      /^\/index\.php\/([A-Za-z0-9_-]+)\/gateway\/plugin\/(?:AnnouncementFeedGatewayPlugin|WebFeedGatewayPlugin)\/(atom|rss|rss2)$/,
+    );
+    const format =
+      mime === "application/atom+xml"
+        ? "atom"
+        : mime === "application/rdf+xml"
+          ? "rss"
+          : mime === "application/rss+xml"
+            ? "rss2"
+            : null;
+    if (gateway && gateway[1] === journal && gateway[2] === format) result.add(url);
   });
   $("li.biblio_bibtex a[href][title][rel]").each((_, node) => {
     const link = $(node);
