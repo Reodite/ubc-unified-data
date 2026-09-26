@@ -1011,6 +1011,22 @@
     "document_count": 79
   },
   {
+    "hostname": "learningexchange.ubc.ca",
+    "title": "learningexchange.ubc.ca",
+    "homepage_url": "https://learningexchange.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:30:26.170Z",
+    "homepage_sha256": "75a94e5b9e73f14d979eeccb8ed8c3419bc8f8084685e0cbf559d69382423d75",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/learningexchange.ubc.ca",
+        "document_count": 147
+      }
+    ],
+    "document_count": 147
+  },
+  {
     "hostname": "learningspaces.ubc.ca",
     "title": "learningspaces.ubc.ca",
     "homepage_url": "https://learningspaces.ubc.ca/",
