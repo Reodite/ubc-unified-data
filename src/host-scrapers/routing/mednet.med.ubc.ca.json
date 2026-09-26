@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "hostname": "mednet.med.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w5 first homepage review",
+    "rationale": "MedNet is an official public resource and updates site for UBC Faculty of Medicine faculty and staff across the province. Public support guidance is its primary purpose; explicit news, event and personal-spotlight sections warrant separate categories. The homepage is not authentication-only or exclusively Okanagan-serving.",
+    "evidence": [
+      "https://mednet.med.ubc.ca/ | d16a53017c693db5492d8cdc2a4c596fbc6f7539d53da95ff90267fab9a734a5 | Updates and resources for faculty and staff at UBC’s Faculty of Medicine",
+      "https://mednet.med.ubc.ca/ | d16a53017c693db5492d8cdc2a4c596fbc6f7539d53da95ff90267fab9a734a5 | Quicklinks: Book a Room, FASmail, IT Support, Logos & Unit Signatures, Policies & Guidelines; Faculty of Medicine AI strategy & resources",
+      "https://mednet.med.ubc.ca/ | d16a53017c693db5492d8cdc2a4c596fbc6f7539d53da95ff90267fab9a734a5 | EVENTS: View the calendar to find events happening across the Faculty of Medicine; FACULTY & STAFF SPOTLIGHT: Meet faculty and staff members from across the Faculty of Medicine.",
+      "https://mednet.med.ubc.ca/ | d16a53017c693db5492d8cdc2a4c596fbc6f7539d53da95ff90267fab9a734a5 | NEWS & HONOURS: Read the latest news and stories from across the Faculty; Back to School 2026: Meet some of the 5,000+ learners starting a new academic year across the province."
+    ]
+  },
+  "rules": [
+    {
+      "id": "spotlight-sections",
+      "category": "stories",
+      "rationale": "Faculty and staff spotlights and one-on-one profiles recount individual experiences.",
+      "path_pattern": "^/(?:[^/]+/)*(?:staff-spotlight|faculty-spotlight|faculty-staff-spotlight|one-on-one|stories)(?:/|$)"
+    },
+    {
+      "id": "spotlight-titles",
+      "category": "stories",
+      "rationale": "The homepage names these personal profiles and spotlight series.",
+      "title_pattern": "^(?:Staff Spotlight|Faculty Spotlight|One-on-One|Rhonda Carriere|Dr\\. Bonita Sawatzky)(?:$|[\\s:|–—-])"
+    },
+    {
+      "id": "event-opportunities",
+      "category": "opportunities",
+      "rationale": "The event calendar provides opportunities to attend Faculty of Medicine talks and activities.",
+      "path_pattern": "^/(?:events|event|calendar)(?:/|$)"
+    },
+    {
+      "id": "news-sections",
+      "category": "news",
+      "rationale": "Explicit news, honours and update sections report faculty developments and announcements.",
+      "path_pattern": "^/(?:news|news-and-honours|news-honours|updates|whats-new|what-s-new)(?:/|$)"
+    },
+    {
+      "id": "homepage-update-titles",
+      "category": "news",
+      "rationale": "These titles appear in the homepage's What's New announcements.",
+      "title_pattern": "^(?:Welcome to a new academic year|Welcome back message from |UBC Alert expands notifications|Dr\\. Kishore Mulpuri reappointed|Dr\\. Rita Shah appointed)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "support",
+    "rationale": "MedNet supplies operational resources, policies, guidance and services for UBC Faculty of Medicine faculty and staff."
+  }
+}

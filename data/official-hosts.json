@@ -1466,6 +1466,32 @@
     "document_count": 17
   },
   {
+    "hostname": "mednet.med.ubc.ca",
+    "title": "mednet.med.ubc.ca",
+    "homepage_url": "https://mednet.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:52:28.464Z",
+    "homepage_sha256": "d16a53017c693db5492d8cdc2a4c596fbc6f7539d53da95ff90267fab9a734a5",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/mednet.med.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/mednet.med.ubc.ca",
+        "document_count": 65
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/mednet.med.ubc.ca",
+        "document_count": 1421
+      }
+    ],
+    "document_count": 1490
+  },
+  {
     "hostname": "meg.lsi.ubc.ca",
     "title": "meg.lsi.ubc.ca",
     "homepage_url": "https://meg.lsi.ubc.ca/",
