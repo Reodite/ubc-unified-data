@@ -2038,6 +2038,37 @@
     "document_count": 15
   },
   {
+    "hostname": "outreach.math.ubc.ca",
+    "title": "outreach.math.ubc.ca",
+    "homepage_url": "https://outreach.math.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:24:06.650Z",
+    "homepage_sha256": "636dae7005b02c9eea81ebbb203e0569642a326164b8d838cd19c742f22292d3",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/outreach.math.ubc.ca",
+        "document_count": 41
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/outreach.math.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/outreach.math.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/outreach.math.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 46
+  },
+  {
     "hostname": "pair.ubc.ca",
     "title": "pair.ubc.ca",
     "homepage_url": "https://pair.ubc.ca/",
