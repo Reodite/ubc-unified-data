@@ -14,6 +14,7 @@ import {
 } from "./contracts.ts";
 import { assertExternalPath } from "./paths.ts";
 import { readRegularFile } from "./public-validation.ts";
+import { decodeRecordedText } from "./text-decoding.ts";
 import { hostUrl, normalizeHost } from "./urls.ts";
 
 const parser = createRequire(import.meta.url)("robots-parser") as (
@@ -306,9 +307,7 @@ export class HostRecording {
     const bytes = await readRegularFile(path, Number(this.config.maxResponseBytes));
     if (bytes.length !== snapshot.bytes || hash(bytes) !== sha256) throw new Error("Recorded text body changed");
     this.seenTextBodies.set(path, sha256);
-    const charset = /charset\s*=\s*["']?([^;\s"']+)/i.exec(snapshot.headers["content-type"] ?? "")?.[1] ?? "utf-8";
-    // Dispatch does not invoke a decoder for an empty response, even with a binary charset label.
-    const decoded = bytes.length === 0 ? "" : new TextDecoder(charset, { fatal: true }).decode(bytes);
+    const decoded = decodeRecordedText(bytes, snapshot.headers["content-type"] ?? "");
     if (decoded !== snapshot.body) throw new Error("Recorded text decoding differs from snapshot body");
     return { bytes, sha256 };
   }
@@ -584,13 +583,12 @@ export class HostRecording {
           (mediaType === "application/octet-stream" && raw.subarray(0, 5).toString("ascii") === "%PDF-"));
       if (raw.length > 0 && !pdf && !/text|json|xml|javascript|^$/i.test(contentType))
         throw new Error(`Unsupported recorded document format: ${contentType}`);
-      const charset = /charset\s*=\s*["']?([^;\s"']+)/i.exec(contentType)?.[1] ?? "utf-8";
       const snapshot: Snapshot = {
         requested_url: url,
         url,
         status: response.status,
         headers: Object.fromEntries(response.headers),
-        body: pdf || raw.length === 0 ? "" : new TextDecoder(charset, { fatal: true }).decode(raw),
+        body: pdf ? "" : decodeRecordedText(raw, contentType),
         retrieved_at: new Date().toISOString(),
         bytes: raw.length,
         ...(pdf ? { binary: { media_type: "application/pdf" as const, sha256: hash(raw) } } : {}),
@@ -939,6 +937,98 @@ export class HostRecording {
       }
       this.db.exec("COMMIT");
       return recovered;
+    } catch (error) {
+      this.db.exec("ROLLBACK");
+      throw error;
+    }
+  }
+
+  /** Archive explicitly selected, byte-verified legacy HTML decode failures without changing their attempts or budgets. */
+  async recoverHtmlDecodeFailures(urls: readonly string[]): Promise<number> {
+    this.assertOpen();
+    if (!this.options.acquire || this.sealed) throw new Error("Decode recovery requires unsealed explicit acquisition");
+    if (this.active.size) throw new Error("Decode recovery requires an idle recording");
+    if (!urls.length) return 0;
+    const selected = new Set(urls.map((url) => this.scoped(url)));
+    if (selected.size !== urls.length) throw new Error("Decode recovery requires distinct exact URLs");
+    const stats = this.db.prepare("SELECT count(*) requests, coalesce(sum(bytes),0) bytes FROM attempts").get()!;
+    const bounds = this.effectiveAcquisitionBounds();
+    if (Number(stats.requests) + selected.size > bounds.maxRequests || Number(stats.bytes) >= bounds.maxBytes)
+      throw new Error("Decode recovery requires remaining acquisition capacity");
+    const verified: { url: string; error: string; attemptId: number }[] = [];
+    for (const url of selected) {
+      const outcome = this.db.prepare("SELECT snapshot,error FROM outcomes WHERE url=?").get(url);
+      const attempts = this.db.prepare("SELECT * FROM attempts WHERE url=? ORDER BY id").all(url);
+      const attempt = attempts[0];
+      if (
+        attempts.length !== 1 ||
+        attempt?.state !== "failed" ||
+        attempt.status !== 200 ||
+        attempt.snapshot !== null ||
+        !/^[a-f0-9]{64}$/.test(String(attempt.body_sha)) ||
+        !Number.isSafeInteger(attempt.bytes) ||
+        Number(attempt.bytes) < 1 ||
+        Number(attempt.bytes) > Number(this.config.maxResponseBytes) ||
+        outcome?.snapshot !== null ||
+        typeof outcome.error !== "string" ||
+        outcome.error !== attempt.error
+      )
+        throw new Error(`Not a single saved HTTP-200 decode failure: ${url}`);
+      let headers: Record<string, unknown>;
+      try {
+        headers = JSON.parse(String(attempt.headers));
+      } catch {
+        throw new Error(`Invalid saved decode headers: ${url}`);
+      }
+      if (
+        !headers ||
+        Array.isArray(headers) ||
+        Object.values(headers).some((value) => typeof value !== "string") ||
+        typeof headers["content-type"] !== "string" ||
+        headers["content-type"].split(";", 1)[0]?.trim().toLowerCase() !== "text/html" ||
+        /charset\s*=/i.test(headers["content-type"])
+      )
+        throw new Error(`Not charset-absent HTML: ${url}`);
+      const path = assertExternalPath(join(this.options.directory, "objects", `${attempt.body_sha}.body`));
+      const bytes = await readRegularFile(path, Number(this.config.maxResponseBytes));
+      if (bytes.length !== attempt.bytes || hash(bytes) !== attempt.body_sha)
+        throw new Error(`Saved decode body changed: ${url}`);
+      let originalError: string;
+      try {
+        new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+        throw new Error("Original UTF-8 decode succeeded");
+      } catch (error) {
+        originalError = String(error);
+      }
+      if (originalError !== outcome.error || !/^(?:TypeError|Error): /.test(originalError))
+        throw new Error(`Saved failure is not the original UTF-8 decode: ${url}`);
+      decodeRecordedText(bytes, headers["content-type"]);
+      verified.push({ url, error: outcome.error, attemptId: Number(attempt.id) });
+    }
+    this.db.exec("BEGIN IMMEDIATE");
+    try {
+      if (this.db.prepare("SELECT 1 FROM attempts WHERE state='dispatching' LIMIT 1").get())
+        throw new Error("Decode recovery requires no dispatching attempts");
+      const current = this.db.prepare("SELECT count(*) requests, coalesce(sum(bytes),0) bytes FROM attempts").get()!;
+      if (current.requests !== stats.requests || current.bytes !== stats.bytes)
+        throw new Error("Decode recovery counters changed");
+      for (const item of verified) {
+        const outcome = this.db.prepare("SELECT snapshot,error FROM outcomes WHERE url=?").get(item.url);
+        const attempt = this.db.prepare("SELECT id FROM attempts WHERE url=?").all(item.url);
+        if (
+          outcome?.snapshot !== null ||
+          outcome.error !== item.error ||
+          attempt.length !== 1 ||
+          attempt[0]?.id !== item.attemptId
+        )
+          throw new Error("Decode recovery lineage changed");
+        this.db
+          .prepare("INSERT INTO outcome_failures(url,error,recorded_at) VALUES (?,?,?)")
+          .run(item.url, item.error, new Date().toISOString());
+        this.db.prepare("DELETE FROM outcomes WHERE url=? AND error=? AND snapshot IS NULL").run(item.url, item.error);
+      }
+      this.db.exec("COMMIT");
+      return verified.length;
     } catch (error) {
       this.db.exec("ROLLBACK");
       throw error;

@@ -1132,6 +1132,158 @@ describe("external immutable request recording", () => {
     expect(recordingState(f.directory)).toEqual(before);
     expect(f.fetcher).not.toHaveBeenCalled();
   });
+  it.each([
+    ['<HEAD><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">', "windows-1252"],
+    ["<head><meta content='text/html; charset=iso-8859-1' http-equiv='CONTENT-TYPE'>", "iso-8859-1"],
+  ])("decodes legacy %s only from the original HTML head and verifies saved bytes", async (meta, _label) => {
+    const raw = Buffer.concat([
+      Buffer.from(`<!doctype html><html>${meta}</head><body>caf`),
+      Buffer.from([0xe9]),
+      Buffer.from("</body>"),
+    ]);
+    const f = await fixture(() => new Response(raw, { headers: { "content-type": "text/html" } }));
+    const observation = await f.recording.read(`${origin}/legacy`);
+    expect(observation.snapshot.body).toContain("café");
+    expect(observation.snapshot.headers["content-type"]).toBe("text/html");
+    expect(await f.recording.readTextBytes(observation.sha256)).toMatchObject({ bytes: raw });
+    const seal = await f.recording.seal();
+    f.recording.close();
+    const noNetwork = vi.fn(async () => {
+      throw new Error("No network");
+    });
+    const replay = await HostRecording.open({ ...f.options, acquire: false, fetcher: noNetwork });
+    opened.push(replay);
+    expect(await replay.verifySeal()).toBe(seal);
+    expect(await replay.readTextBytes(observation.sha256)).toMatchObject({ bytes: raw });
+    expect(noNetwork).not.toHaveBeenCalled();
+  });
+  it.each([
+    '<!-- <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"> -->',
+    '<script>"<meta http-equiv=Content-Type content="text/html; charset=windows-1252">"</script>',
+    '<template><meta http-equiv=Content-Type content="text/html; charset=windows-1252"></template>',
+    '<template><template></template><meta http-equiv=Content-Type content="text/html; charset=windows-1252"></template>',
+    '<title><meta http-equiv=Content-Type content="text/html; charset=windows-1252"></title>',
+    '<div><meta http-equiv=Content-Type content="text/html; charset=windows-1252">',
+    '</head><body><meta http-equiv=Content-Type content="text/html; charset=windows-1252">',
+    '<meta http-equiv=Content-Type content="text/html; charset=unknown">',
+    '<meta http-equiv=Content-Type content="text/html; charset=windows-1252oops">',
+  ])("does not honor inert or unsupported HTML meta: %s", async (meta) => {
+    const raw = Buffer.concat([Buffer.from(`<head>${meta}caf`), Buffer.from([0xe9])]);
+    const f = await fixture(() => new Response(raw, { headers: { "content-type": "text/html" } }));
+    await expect(f.recording.read(`${origin}/invalid`)).rejects.toThrow(/encoded data/);
+    expect(recordingState(f.directory).attempts.at(-1)).toMatchObject({ state: "failed", status: 200 });
+  });
+  it("honors HTTP charset before a conflicting HTML head and never sniffs other media", async () => {
+    const raw = Buffer.concat([
+      Buffer.from('<head><meta http-equiv=Content-Type content="text/html; charset=windows-1252"></head>caf'),
+      Buffer.from([0xe9]),
+    ]);
+    const f = await fixture(
+      (url) =>
+        new Response(raw, {
+          headers: { "content-type": url.endsWith("/http") ? "text/html; charset=utf-8" : "text/plain" },
+        }),
+    );
+    await expect(f.recording.read(`${origin}/http`)).rejects.toThrow(/encoded data/);
+    await expect(f.recording.read(`${origin}/plain`)).rejects.toThrow(/encoded data/);
+    expect(recordingState(f.directory).attempts.filter((row) => row.state === "failed")).toHaveLength(2);
+  });
+  it("archives only exact verified HTTP-200 decode failures and retains original attempts", async () => {
+    const raw = Buffer.concat([
+      Buffer.from('<head><meta http-equiv=Content-Type content="text/html; charset=windows-1252"></head>caf'),
+      Buffer.from([0xe9]),
+    ]);
+    let successor = false;
+    const f = await fixture(
+      (url) =>
+        new Response(raw, {
+          headers: { "content-type": successor && url.endsWith("/legacy") ? "text/html" : "text/plain" },
+        }),
+    );
+    await expect(f.recording.read(`${origin}/legacy`)).rejects.toThrow(/encoded data/);
+    await expect(f.recording.read(`${origin}/other`)).rejects.toThrow(/encoded data/);
+    const db = new DatabaseSync(join(f.directory, "state.sqlite"));
+    db.prepare("UPDATE attempts SET headers=? WHERE url=?").run(
+      JSON.stringify({ "content-type": "text/html" }),
+      `${origin}/legacy`,
+    );
+    db.close();
+    const before = recordingState(f.directory);
+    expect(await f.recording.recoverHtmlDecodeFailures([])).toBe(0);
+    await expect(f.recording.recoverHtmlDecodeFailures([`${origin}/other`])).rejects.toThrow(/charset-absent HTML/);
+    expect(recordingState(f.directory)).toEqual(before);
+    expect(await f.recording.recoverHtmlDecodeFailures([`${origin}/legacy`])).toBe(1);
+    const after = recordingState(f.directory);
+    expect(after.attempts).toEqual(before.attempts);
+    expect(after.producers).toEqual(before.producers);
+    expect(after.config).toEqual(before.config);
+    expect(after.outcomes).toEqual(before.outcomes.filter((row) => row.url !== `${origin}/legacy`));
+    expect(after.failures).toMatchObject([
+      { url: `${origin}/legacy`, error: before.outcomes.find((row) => row.url === `${origin}/legacy`)!.error },
+    ]);
+    expect(after.repairs).toEqual([]);
+    await expect(f.recording.recoverHtmlDecodeFailures([`${origin}/legacy`])).rejects.toThrow(/single saved/);
+    successor = true;
+    const observation = await f.recording.read(`${origin}/legacy`);
+    expect(observation.snapshot.body).toContain("café");
+    expect(recordingState(f.directory).attempts.filter((row) => row.url === `${origin}/legacy`)).toHaveLength(2);
+    await expect(f.recording.read(`${origin}/other`)).rejects.toThrow(/Saved request failure/);
+  });
+  it("rejects a historical HTTP charset and exhausted request capacity", async () => {
+    const raw = Buffer.concat([
+      Buffer.from('<head><meta http-equiv=Content-Type content="text/html; charset=windows-1252">'),
+      Buffer.from([0xe9]),
+    ]);
+    const f = await fixture(
+      (url) => new Response(url.endsWith("/cached") ? "cached" : raw, { headers: { "content-type": "text/plain" } }),
+      { maxRequests: 3 },
+    );
+    await expect(f.recording.read(`${origin}/legacy`)).rejects.toThrow(/encoded data/);
+    const db = new DatabaseSync(join(f.directory, "state.sqlite"));
+    db.prepare("UPDATE attempts SET headers=? WHERE url=?").run(
+      JSON.stringify({ "content-type": "text/html; charset=utf-8" }),
+      `${origin}/legacy`,
+    );
+    db.close();
+    const before = recordingState(f.directory);
+    await expect(f.recording.recoverHtmlDecodeFailures([`${origin}/legacy`])).rejects.toThrow(/charset-absent HTML/);
+    expect(recordingState(f.directory)).toEqual(before);
+    const corrected = new DatabaseSync(join(f.directory, "state.sqlite"));
+    corrected
+      .prepare("UPDATE attempts SET headers=? WHERE url=?")
+      .run(JSON.stringify({ "content-type": "text/html" }), `${origin}/legacy`);
+    corrected.close();
+    await f.recording.read(`${origin}/cached`);
+    const exhausted = recordingState(f.directory);
+    await expect(f.recording.recoverHtmlDecodeFailures([`${origin}/legacy`])).rejects.toThrow(/capacity/);
+    expect(recordingState(f.directory)).toEqual(exhausted);
+  });
+  it("refuses altered body receipts and unfinished attempts without archiving", async () => {
+    const raw = Buffer.concat([
+      Buffer.from('<head><meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">'),
+      Buffer.from([0xe9]),
+    ]);
+    const f = await fixture(() => new Response(raw, { headers: { "content-type": "text/plain" } }));
+    await expect(f.recording.read(`${origin}/legacy`)).rejects.toThrow(/encoded data/);
+    const saved = new DatabaseSync(join(f.directory, "state.sqlite"));
+    saved
+      .prepare("UPDATE attempts SET headers=? WHERE url=?")
+      .run(JSON.stringify({ "content-type": "text/html" }), `${origin}/legacy`);
+    saved.close();
+    const body = recordingState(f.directory).attempts.at(-1)!.body_sha;
+    await writeFile(join(f.directory, "objects", `${body}.body`), Buffer.from("changed"));
+    await expect(f.recording.recoverHtmlDecodeFailures([`${origin}/legacy`])).rejects.toThrow(/body changed/);
+    await writeFile(join(f.directory, "objects", `${body}.body`), raw);
+    const db = new DatabaseSync(join(f.directory, "state.sqlite"));
+    db.prepare("INSERT INTO attempts(url,started,state) VALUES (?,?,'dispatching')").run(
+      `${origin}/pending`,
+      new Date().toISOString(),
+    );
+    db.close();
+    const before = recordingState(f.directory);
+    await expect(f.recording.recoverHtmlDecodeFailures([`${origin}/legacy`])).rejects.toThrow(/no dispatching/);
+    expect(recordingState(f.directory)).toEqual(before);
+  });
   it("preserves the legacy digest when authorization tables are empty or absent", async () => {
     const f = await fixture(() => html());
     await f.recording.read(`${origin}/page`);
