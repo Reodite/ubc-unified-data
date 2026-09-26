@@ -95,6 +95,35 @@ function htmlLinks(
   return [...links].sort();
 }
 
+function rbscGalleryAttachments(observation: Observation, hostname: string): Set<string> {
+  const links = new Set<string>();
+  if (hostname !== "rbsc.library.ubc.ca") return links;
+  const $ = load(observation.snapshot.body);
+  const base = htmlBaseUrl(observation.snapshot.body, hostname, observation.snapshot.url, true);
+  $("dt.gallery-icon > a[href]").each((_, node) => {
+    const anchor = $(node);
+    const image = anchor.children("img");
+    if (
+      image.length !== 1 ||
+      anchor.children().length !== 1 ||
+      anchor.text().trim() ||
+      !/(?:^|\s)attachment-(?:medium|thumbnail|large|full|\d+x\d+)(?:\s|$)/.test(image.attr("class") ?? "")
+    )
+      return;
+    try {
+      const source = new URL(image.attr("src") ?? "", base);
+      if (source.origin !== `https://${hostname}` || !/^\/(?:files|wp-content\/uploads)\//.test(source.pathname))
+        return;
+      const raw = new URL(anchor.attr("href")!, base).href;
+      const target = inventoryUrl(raw, hostname);
+      if (target === raw && !new URL(target).search && !new URL(target).hash) links.add(target);
+    } catch {
+      return;
+    }
+  });
+  return links;
+}
+
 async function sitemapPages(
   starts: readonly string[],
   hostname: string,
@@ -383,6 +412,7 @@ export async function collectRecordedHost(
     throw new Error("Attachment sitemap conflicts with a required page");
   const emittedIdentities = new Set<string>();
   const machineLinks = new Set<string>();
+  const frozenSeedUrls = new Set(archive.urls.map((row) => row.url));
   const excludedDiscovery = (url: string) => {
     const machineLink = machineLinks.has(url);
     if (!nonDocuments.has(url) && !machineLink) return false;
@@ -404,6 +434,19 @@ export async function collectRecordedHost(
   const observedPageLinks = (observation: Observation) => {
     if (exactHost) {
       for (const url of discoverReviewedUnavailableLinks(observation, hostname)) nonDocuments.add(url);
+      for (const url of rbscGalleryAttachments(observation, hostname)) {
+        if (
+          advertisedPages.has(url) ||
+          viewBases.has(url) ||
+          homepageIdentities.has(url) ||
+          frozenSeedUrls.has(url) ||
+          retainedSources.has(url) ||
+          emittedIdentities.has(url) ||
+          isPdfUrl(url)
+        )
+          throw new Error(`Gallery attachment conflicts with a required page: ${url}`);
+        nonDocuments.add(url);
+      }
       for (const url of discoverMachineLinks(observation.snapshot.body, hostname, observation.snapshot.url)) {
         const exclusion = scraper.excludeUrl ? scraper.excludeUrl(url) : pageExclusion(url, hostname);
         if (exclusion !== null && exclusion !== "Unsupported query or form selection") continue;

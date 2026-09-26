@@ -184,6 +184,38 @@ describe("WordPress attachment sitemap identities", () => {
   );
 });
 
+describe("RBSC source-witnessed WordPress gallery attachments", () => {
+  const origin = "https://rbsc.library.ubc.ca/";
+  const media = `<dt class="gallery-icon"><a href="${origin}article/photo/"><img class="attachment-medium size-medium" src="${origin}files/photo.jpeg"></a></dt>`;
+
+  it("keeps the public article without fetching its gallery attachment page", async () => {
+    const f = fixture(`${page}<a href="/article/">Read article</a>`, "User-agent: *\n", "rbsc.library.ubc.ca");
+    f.put("/article/", `<title>Public article</title><main><p>Article guidance.</p><dl>${media}</dl></main>`);
+    const result = await collectRecordedHost(f.scraper, f.archive, producer);
+    expect(result.documents.map((document) => document.source_url).sort()).toEqual([origin, `${origin}article/`]);
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(`${origin}article/photo/`);
+  });
+
+  it("refuses to conceal an explicitly seeded gallery URL", async () => {
+    const f = fixture(`${page}<a href="/article/">Read article</a>`, "User-agent: *\n", "rbsc.library.ubc.ca");
+    f.put("/article/", `<title>Public article</title><main><p>Article guidance.</p><dl>${media}</dl></main>`);
+    f.seed("/article/photo/");
+    await expect(collectRecordedHost(f.scraper, f.archive, producer)).rejects.toThrow(
+      "Gallery attachment conflicts with a required page",
+    );
+  });
+
+  it("does not exclude a gallery-shaped link on another hostname", async () => {
+    const target = `${home}article/photo/`;
+    const f = fixture(
+      `${page}<dt class="gallery-icon"><a href="${target}"><img class="attachment-medium" src="${home}files/photo.jpeg"></a></dt>`,
+    );
+    f.put("/article/photo/", page);
+    const result = await collectRecordedHost(f.scraper, f.archive, producer);
+    expect(result.documents.map((document) => document.source_url).sort()).toEqual([home, target]);
+  });
+});
+
 describe("persistent absent sitemap companion exclusions", () => {
   it.each([404, 410])(
     "does not reinsert a validated HTTP %s companion from XML, seeds or later links",
