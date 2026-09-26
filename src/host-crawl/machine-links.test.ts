@@ -100,9 +100,10 @@ const blockLog = (user = "AmberSaundry") =>
 
 describe("observed MediaWiki administrative links", () => {
   const source = `${home}Special:Contributions/AmberSaundry`;
-  const target = `${home}index.php?title=Special:Log/block&page=User%3AAmberSaundry`;
-  it("recognizes only the matching block-log tool on its user-contributions page", () => {
-    expect(discoverMachineLinks(document(blockLog()), host, source)).toEqual(new Set([target]));
+  it.each(["AmberSaundry", "RehanRafique.1"])("recognizes the matching block-log tool for account %s", (user) => {
+    const page = `${home}Special:Contributions/${user}`;
+    const log = `${home}index.php?title=Special:Log/block&page=User%3A${user}`;
+    expect(discoverMachineLinks(document(blockLog(user)), host, page)).toEqual(new Set([log]));
   });
   it.each([
     { label: "different user", source, markup: blockLog("AnotherUser") },

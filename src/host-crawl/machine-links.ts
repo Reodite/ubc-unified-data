@@ -126,7 +126,7 @@ export function discoverMachineLinks(html: string, hostname: string, sourceUrl: 
     if (pathname === `${prefix}${endpoint}` && candidate(form.attr("data-action")) === source.href) result.add(url);
   });
   const source = new URL(sourceUrl);
-  const user = /^\/Special:Contributions\/([A-Za-z0-9_]+)$/.exec(source.pathname)?.[1];
+  const user = /^\/Special:Contributions\/([A-Za-z0-9_]+(?:[.-][A-Za-z0-9_]+)*)$/.exec(source.pathname)?.[1];
   if (source.origin === `https://${hostname}` && !source.search && !source.hash && user) {
     const target = `/index.php?title=Special:Log/block&page=User%3A${user}`;
     $("#contentSub .mw-contributions-user-tools a.mw-contributions-link-block-log[href][title]").each((_, node) => {
