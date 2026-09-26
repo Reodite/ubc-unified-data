@@ -681,6 +681,27 @@
     "document_count": 80
   },
   {
+    "hostname": "japanese-canadian-student-tribute.ubc.ca",
+    "title": "japanese-canadian-student-tribute.ubc.ca",
+    "homepage_url": "https://japanese-canadian-student-tribute.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:19:45.284Z",
+    "homepage_sha256": "a762a05fed2e18d9a7c9d015e349b77d7b52ab9b61a4e5f1dcfdbc0b02e47e42",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "stories",
+        "path": "data/documents/stories/japanese-canadian-student-tribute.ubc.ca",
+        "document_count": 50
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/japanese-canadian-student-tribute.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 51
+  },
+  {
     "hostname": "joshilab.forestry.ubc.ca",
     "title": "joshilab.forestry.ubc.ca",
     "homepage_url": "https://joshilab.forestry.ubc.ca/",
