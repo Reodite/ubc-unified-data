@@ -2817,6 +2817,27 @@
     "document_count": 88
   },
   {
+    "hostname": "rbsc.library.ubc.ca",
+    "title": "rbsc.library.ubc.ca",
+    "homepage_url": "https://rbsc.library.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:50:01.171Z",
+    "homepage_sha256": "0ecb8ed887dc7bbe7ac3e41d5d055af59ccccb2a0c7c66dd81f0202a23f6b47b",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/rbsc.library.ubc.ca",
+        "document_count": 41
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/rbsc.library.ubc.ca",
+        "document_count": 1365
+      }
+    ],
+    "document_count": 1406
+  },
+  {
     "hostname": "rbtlab.ubc.ca",
     "title": "rbtlab.ubc.ca",
     "homepage_url": "https://rbtlab.ubc.ca/",

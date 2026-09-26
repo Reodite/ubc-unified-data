@@ -1,0 +1,153 @@
+---
+{
+  "format_version": 3,
+  "id": "documents:official-web:465e1f1f24f2d564837c38c9",
+  "hostname": "rbsc.library.ubc.ca",
+  "title": "Uncategorized",
+  "source_url": "https://rbsc.library.ubc.ca/category/uncategorized/page/16/",
+  "retrieved_at": "2026-09-26T18:41:26.161Z",
+  "source_modified_at": null,
+  "snapshot_sha256": "feeef1e646557d80d9313d83e0a25cce6f6211128a6ea031a41c2c7a3ce0d643",
+  "input_sha256": "b100509056de90fe7a3fdb5513094e415e9e34478bd744c13553e9f7f2665d8e",
+  "body_sha256": "8cc887addf402081dbc70ffa0e708f643aee3b437f85b38d5a94b01fdc053135",
+  "content_sha256": "bcdfa1ff10032df3ccefc51bfd2c0858f2f8ea42859668ef0c47118a77f16956",
+  "warnings": [
+    "An image has no text alternative; any instructions or data within it are not transcribed or OCR-extracted."
+  ],
+  "alternate_urls": [],
+  "producer": {
+    "inputs_sha256": "24dddcd124280f7f3e5b130aa02800d8c6689ef4df8f51c55257886180858757",
+    "runtime": {
+      "node": "26.8.1",
+      "icu": "78.3",
+      "unicode": "17.0",
+      "platform": "linux",
+      "arch": "x64"
+    }
+  },
+  "category": "support",
+  "routing": {
+    "rule_id": "rbsc-library-ubc-ca-support",
+    "policy_sha256": "8ac861992d98c4b9047bcb12decc3314e551b0344ed3db200c19c1aa4b1796ab"
+  }
+}
+---
+## [Canada Day closure](https://rbsc.library.ubc.ca/2012/06/29/canada-day-closure/)
+
+By [sromkey](https://rbsc.library.ubc.ca/author/sromkey/ "Posts by sromkey") on June 29, 2012
+
+A reminder that like all UBC Library branches, Rare Books and Special Collections, University Archives and the Chung Collection will be closed in lieu of Canada Day on Monday July 2\. We will resume normal hours on Tuesday July 3\. The photograph above is attributed to Phillip Timms and probably was taken near the turn \[…\]
+
+Posted in [Announcements](https://rbsc.library.ubc.ca/category/announcements/), [Collections](https://rbsc.library.ubc.ca/category/collections/), [Uncategorized](https://rbsc.library.ubc.ca/category/uncategorized/) \| Tagged with
+
+## [Featured photograph: Summer\!](https://rbsc.library.ubc.ca/2012/06/28/featured-photograph-summer/)
+
+By [sromkey](https://rbsc.library.ubc.ca/author/sromkey/ "Posts by sromkey") on June 28, 2012
+
+It is *finally* starting to feel a *little* like summer in Vancouver\- we hope you have been enjoying yourselves\! Our featured [photograph](http://chung.library.ubc.ca/collection/details/9712) this month is a lovely summer scene:
+
+[Image](http://www.library.ubc.ca/spcoll/images/cc/summer.jpg)
+
+This young bather is enjoying the lake near Silver Island, Ontario in July of 1921\. The photo is from an [album](http://chung.library.ubc.ca/collection/details/4071) of photographs taken by a traveller on the Canadian Pacific Railway and steamships\. We would guess that Helen Pearson, as captioned in the album, was a family member or neighbour of the photographer who seems to have had a summer home on Silver Island \(south of Sudbury\)\.
+
+Posted in [Chung](https://rbsc.library.ubc.ca/category/chung/), [Uncategorized](https://rbsc.library.ubc.ca/category/uncategorized/) \| Tagged with
+
+## [“Curious” at the Wing Sang building](https://rbsc.library.ubc.ca/2012/06/16/curious-at-the-wing-sang-building/)
+
+By [sromkey](https://rbsc.library.ubc.ca/author/sromkey/ "Posts by sromkey") on June 16, 2012
+
+Do you plan on visiting “[Curious](http://rbcmvancouver.com/),” the Royal B\.C\. Museum exhibition at the Wing Sang gallery this summer? It looks like a fascinating and beautiful exhibtion\!
+
+Possibly the most anticipated part of this exhibition is “Intimate Glimpses” which features paintings, documents and artifacts from the life of Emily Carr\. The rest of the exhibition looks fascinating too though\- “Bottled Beauty” features items from their wet collection \(literally\- pickled specimens\!\) and you can play a game of “Artifact/Artifiction\-” the curators have provided true or false statements about the artifacts, and you get to guess\!
+
+I’m excited to see the “[Magic Lantern](http://rbcmvancouver.com/magic-lantern/)” section of the exhibition\. We have a number of magic lantern slides in the Chung Collection as well, primarily examples that were used by the CPR to promote tourism along their railway and ship lines\. The examples from the RBCM look beautiful, and all depict scenes throughout British Columbia\.
+
+When I last [reported](http://chung.library.ubc.ca/news/visit-wing-sang-building) about the Wing Sang gallery at the Rennie building, tours were free but required pre\-regisistration\. For this summer, you can visit any time during opening hours \(daily from 10 am – 6 pm\) but there is an admittance fee of $11 \(or $33 per family, children under 5 free, free for RBCM members\)\. Find all the visitor information you need [here](http://rbcmvancouver.com/about/)\. The exhibition opened on June 14, and is there until Sept\. 3\.
+
+Posted in [Chung](https://rbsc.library.ubc.ca/category/chung/), [Uncategorized](https://rbsc.library.ubc.ca/category/uncategorized/) \| Tagged with
+
+## [Featured place: Yukon](https://rbsc.library.ubc.ca/2012/06/05/featured-place-yukon/)
+
+By [sromkey](https://rbsc.library.ubc.ca/author/sromkey/ "Posts by sromkey") on June 5, 2012
+
+I am headed off this week to the Association of Canadian Archivists conference in Whitehorse, so it seemed appropriate to feature the Yukon Room in our ongoing blog series on places used as room names in the Irving K\. Barber Learning Centre\. The theme of the conference is “In Search for Archival Gold,” and archivists \[…\]
+
+Posted in [Collections](https://rbsc.library.ubc.ca/category/collections/), [Research and learning](https://rbsc.library.ubc.ca/category/research-and-learning/), [Uncategorized](https://rbsc.library.ubc.ca/category/uncategorized/) \| Tagged with
+
+## [Featured photo: Spring cleaning](https://rbsc.library.ubc.ca/2012/05/26/featured-photo-spring-cleaning/)
+
+By [sromkey](https://rbsc.library.ubc.ca/author/sromkey/ "Posts by sromkey") on May 26, 2012
+
+Have you been spring cleaning your home this weekend? How would you like to try spring cleaning an Empress steamship?
+
+[Image](http://library.ubc.ca/spcoll/images/cc/springclean.jpg)
+
+This month’s featured [photograph](http://chung.library.ubc.ca/collection/details/4579) depicts the second Empress of Britain being tugged for her “spring cleaning” in Southampton, England\. This photograph was taken in May of 1932\. According to the photographer, this cleaning was an annual affair, so this is probably only the first or second cleaning\- she was launched in July 1930\.
+
+For more photographs of the Empress of Britain, search the Chung Collection database for “Empress of Britain” and select photographic material as the media type\- or, click [here](http://chung.library.ubc.ca/search/collection/advanced/results/as_term/any%7C%22Empress%20of%20Britain%22%7CAND/as_media_type/8/media_type/8) for the search results\.
+
+Posted in [Chung](https://rbsc.library.ubc.ca/category/chung/), [Uncategorized](https://rbsc.library.ubc.ca/category/uncategorized/) \| Tagged with
+
+## [Featured place: Ucluelet](https://rbsc.library.ubc.ca/2012/05/26/featured-place-ucluelet/)
+
+By [sromkey](https://rbsc.library.ubc.ca/author/sromkey/ "Posts by sromkey") on May 26, 2012
+
+This post is part of a series which uses the room names in the Irving K\. Barber Learning Centre to explore places in B\.C\. and the collections at Rare Books and Special Collections\. Our featured place for this post is Ucluelet, located on the west coast of Vancouver Island\.  Ucluelet is located on the edge \[…\]
+
+Posted in [Collections](https://rbsc.library.ubc.ca/category/collections/), [Research and learning](https://rbsc.library.ubc.ca/category/research-and-learning/), [Uncategorized](https://rbsc.library.ubc.ca/category/uncategorized/) \| Tagged with
+
+## [psssst… We’re open this Saturday\!](https://rbsc.library.ubc.ca/2012/05/24/psssst-were-open-this-saturday/)
+
+By [sromkey](https://rbsc.library.ubc.ca/author/sromkey/ "Posts by sromkey") on May 24, 2012
+
+The Chung Collection exhibition space will be open this Saturday, May 26 from noon to 4 pm, specifically for [Alumni Weekend](http://www.alumni.ubc.ca/events/alumniweekend/), but anyone would be welcome to drop in to see the exhibition\. Please see our [contact page](http://chung.library.ubc.ca/contact) for information if you have never been here before\.
+
+If you are a UBC alumni and are interested in joining this or other alumni weekend events, Alumni Affairs will have a registration table in the SUB on Saturday\. Otherwise, feel free to drop in here to see the collection\! Alumni Weekend details can be found [here](http://www.alumni.ubc.ca/events/alumniweekend/)\.
+
+Posted in [Chung](https://rbsc.library.ubc.ca/category/chung/), [Uncategorized](https://rbsc.library.ubc.ca/category/uncategorized/) \| Tagged with
+
+## [National Archival Development Program cut this week](https://rbsc.library.ubc.ca/2012/05/04/national-archival-development-program-cut/)
+
+By [sromkey](https://rbsc.library.ubc.ca/author/sromkey/ "Posts by sromkey") on May 4, 2012
+
+We were shocked and saddened this week to learn of the cancellation of the National Archival Development Program\. This is in addition to a major round of cuts at Library and Archives Canada, which was the funding source of the program\. The funding is used by the Archives Association of British Columbia, as it is \[…\]
+
+Posted in [Collections](https://rbsc.library.ubc.ca/category/collections/), [Research and learning](https://rbsc.library.ubc.ca/category/research-and-learning/), [Services](https://rbsc.library.ubc.ca/category/services/), [Uncategorized](https://rbsc.library.ubc.ca/category/uncategorized/) \| Tagged with
+
+## [Have your \#ChinatownYVR photo displayed at Kee’s Laundry Gallery](https://rbsc.library.ubc.ca/2012/04/20/have-your-chinatownyvr-photo-displayed-at-kees-laundry-gallery/)
+
+By [sromkey](https://rbsc.library.ubc.ca/author/sromkey/ "Posts by sromkey") on April 20, 2012
+
+[Image](http://www.library.ubc.ca/spcoll/images/cc/chinatownyvr.jpg)
+
+Vancouver’s Chinatown is full of beautiful and interesting photo opportunities\. For the next month you can have your Chinatown photo on display at Kee’s Laundry Gallery on 228 East Georgia, and also online through their [gallery site](http://stbernadine.com/keesinstagallery/) \(be patient and give it a few minutes to load\- it’s worth it\!\)\. Using the popular photo sharing application [Instagram](http://instagr.am/), you can take a photo and give it the hashtag \#chinatownyvr to have it included in the gallery and online\.
+
+The exhibition is curated/sponsored by the advertising agency St\. Bernadine Mission Communications\. According to the Kee’s Laundry site, the agency moved to Chinatown in 2011 and wanted to do something to celebrate their new neighbourhood\. What a great idea\! Because Kee’s Laundry is a window gallery, you can go and view the exhibition from the street anytime of day or night\.
+
+If you’re curious about how Kee’s Laundry got it’s name, they have a little bit of history [here](http://www.keeslaundry.com/post/9087905637/history) – looks like they did a little archival research\!
+
+Posted in [Chung](https://rbsc.library.ubc.ca/category/chung/), [Uncategorized](https://rbsc.library.ubc.ca/category/uncategorized/) \| Tagged with
+
+## [Upcoming events with Vancouver Heritage](https://rbsc.library.ubc.ca/2012/04/18/upcoming-events-with-vancouver-heritage/)
+
+By [sromkey](https://rbsc.library.ubc.ca/author/sromkey/ "Posts by sromkey") on April 18, 2012
+
+Two upcoming events of interest to Chung Collection researchers, both with Vancouver Heritage:
+
+Their slate of upcoming [walking tours](http://www.vancouverheritagefoundation.org/projects/walkingtours.html) includes Chinatown tours on April 27, May 25 and June 22 from noon to 1:30\. The tour price is $12 per person, and leaves from the SE corner of Carrall and Pender \(walk\-ups welcome\)\.
+
+And on April 25, a [brown bag lunch lecture](http://www.vancouverheritagefoundation.org/workshops.html) at the downtown BCIT campus will discuss the influence of the Canadian Pacific Railway company in shaping downtown Vancouver\. The lecturer is Michael Gordon, the Senior Central Area Planner for the City of Vancouver\. The lecture admission is also $12\.
+
+Be sure to check out their [website](http://www.vancouverheritagefoundation.org/index.html) for other great heritage events\!
+
+Posted in [Chung](https://rbsc.library.ubc.ca/category/chung/), [Uncategorized](https://rbsc.library.ubc.ca/category/uncategorized/) \| Tagged with
+
+-   [Previous](https://rbsc.library.ubc.ca/category/uncategorized/page/15/)
+-   [1](https://rbsc.library.ubc.ca/category/uncategorized/)
+-   …
+-   [15](https://rbsc.library.ubc.ca/category/uncategorized/page/15/)
+-   16
+-   [17](https://rbsc.library.ubc.ca/category/uncategorized/page/17/)
+-   …
+-   [33](https://rbsc.library.ubc.ca/category/uncategorized/page/33/)
+-   [Next](https://rbsc.library.ubc.ca/category/uncategorized/page/17/)

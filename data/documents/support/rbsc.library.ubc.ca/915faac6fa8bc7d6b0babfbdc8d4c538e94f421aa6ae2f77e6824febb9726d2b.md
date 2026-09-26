@@ -1,0 +1,81 @@
+---
+{
+  "format_version": 3,
+  "id": "documents:official-web:5d41e28a44cc227ce4aa8b44",
+  "hostname": "rbsc.library.ubc.ca",
+  "title": "“They also serve:” Honouring Alexis Alvey",
+  "source_url": "https://rbsc.library.ubc.ca/2019/11/07/6069/",
+  "retrieved_at": "2026-09-22T13:41:38.613Z",
+  "source_modified_at": "2019-11-07T17:02:28Z",
+  "snapshot_sha256": "ccf0c3f54a5c4a31625cda1686fc51cb14f197f6a37c2270cc11fa8eda3ca739",
+  "input_sha256": "b100509056de90fe7a3fdb5513094e415e9e34478bd744c13553e9f7f2665d8e",
+  "body_sha256": "1e2ba6b65a3b24a157d4ede75c581a04d795ac9567b1297893f8b897642cfbf3",
+  "content_sha256": "2e496022c2e2a8ae80c842e495caedfa1b5974c5a3c83dcad26f8d4948d41d89",
+  "warnings": [
+    "An image has no text alternative; any instructions or data within it are not transcribed or OCR-extracted."
+  ],
+  "alternate_urls": [],
+  "producer": {
+    "inputs_sha256": "24dddcd124280f7f3e5b130aa02800d8c6689ef4df8f51c55257886180858757",
+    "runtime": {
+      "node": "26.8.1",
+      "icu": "78.3",
+      "unicode": "17.0",
+      "platform": "linux",
+      "arch": "x64"
+    }
+  },
+  "category": "support",
+  "routing": {
+    "rule_id": "rbsc-library-ubc-ca-support",
+    "policy_sha256": "8ac861992d98c4b9047bcb12decc3314e551b0344ed3db200c19c1aa4b1796ab"
+  }
+}
+---
+*Many thanks to guest blogger James Goldie for contributing the below post\! James is a graduate student at UBC’s iSchool \(School of Library, Archival and Information Studies\) and is currently working as a student archivist with Rare Books and Special Collections\.*
+
+# “They also serve:” A\. Alexis Alvey and the navy’s first female service members
+
+[Image](https://library-rbsc-2017.sites.olt.ubc.ca/files/2019/11/10c-2-300dpi-211x300.jpg)
+
+Unit Officer A\. Alexis Alvey of the W\.R\.C\.N\.S\.
+
+*Her mother calls her “the Canadian lieutenant” and the girls in the Women’s Royal Canadian Naval Service call her “Chiefie”…*
+
+So begins a 1943 Royal Canadian Navy press release announcing the promotion of Lieutenant Amelia Alexis Alvey to Unit Officer at H\.M\.C\.S\. Stadacona, a rank equivalent to that of an army captain\. This new position – granted just a year after she first enlisted – meant Alvey was in charge of more than 1,100 Halifax\-based service members from the Women’s Royal Canadian Naval Service \(WRCNS\), known as Wrens\. More than a third of all Wrens were stationed at H\.M\.C\.S\. Stadacona in Halifax\.
+
+Alvey \(who went by A\. Alexis Alvey\) was born November 22, 1903 in Seattle, Washington\. After completing her undergraduate studies in New York, Alvey studied science at McMaster University \(1932\-1933\) and went on to work as chief photographic technician at the University of Toronto’s Faculty of Medicine\. It was during this period she gained Canadian citizenship\. After the outbreak of World War II, Alvey helped organize the businesswomen’s company of the Toronto Red Cross Transport Corps and commanded it for two years\. She had also served as lecturer to the entire Transport Corps for Military Law, Map Reading, and Military and Naval Insignia\.
+
+[Image](https://library-rbsc-2017.sites.olt.ubc.ca/files/2019/11/12-2-personal-photo-300dpi-201x300.jpg)
+
+Recruitment advertisements ran in magazines throughout Canada from 1942\-1944, reminding readers that women could now serve in the navy as part of the Women’s Royal Canadian Naval Service\.
+
+### Men Can’t Do It Alone
+
+In 1942, top brass in the Canadian navy realized they could not solely rely on men in their fight against Hitler’s forces\. They contacted the Women’s Royal Naval Service \(WRNS\) in London requesting assistance in the formation of a Canadian counterpart\. “Please send us a Mother Wren,” they said, according to Alvey\. Those “mother wrens” were Joan Carpenter and Dorothy Isherwood, who came to Canada and established the WRCNS later that year\. Alvey was among the first to enlist\.
+
+Until then, the Canadian navy had been an all\-male service\. As one member wrote in 1943: until the establishment of the WRCNS, “ships and shore establishments alike were manned by men, and knitting seamen’s stockings, or collecting magazines, games and special parcels for ships’ crews at sea was about the limit of any contribution made by women\.”
+
+Women were not permitted to serve in combat roles, however, they took over the navy’s on\-land operations, which freed up male service members to join battles at sea\. The Wrens worked as signallers, wireless\-telegraphers, writers, information and intelligence workers, postal clerks, research assistants, cooks, stewards, wardroom attendants, laundry assistants, and more\.
+
+### Rising Through The Ranks
+
+[Image](https://library-rbsc-2017.sites.olt.ubc.ca/files/2019/11/10c-1-300dpi-360x244.jpg)
+
+A\. Alexis Alvey \(far right\) with fellow “Wrens” at the W\.R\.C\.N\.S\. training centre in Galt, Ontario\.
+
+In her first year with the WRCNS Alvey was appointed acting Chief Petty Officer Master\-at\-Arms\. Her other assignments included duty as Deputy Unit Officer H\.M\.C\.S\. Bytown \(Ottawa\), duty with the Commanding Officer Pacific Coast H\.M\.C\.S\. Burrard \(Vancouver\), assignment as Unit Officer, Lieutenant H\.M\.C\.S\. Bytown, and finally Unit Officer to H\.M\.C\.S\. Stadacona \(Halifax\)\. She was responsible for training and running practice drills, developing policies, and meeting with officers from ships that arrived in Halifax\.
+
+She served with the WRCNS from August 1942 to January 1945\.
+
+### The A\. Alexis Alvey Fonds
+
+After the war, Alvey returned to her home city of Seattle where she worked as a librarian at the University of Washington\. However, she never forgot her time with the WRCNS\. For the rest of her life, Alvey organized and attended Wrens reunions, she wrote articles and histories about the service, and collected all manner of documents, memorabilia, and ephemera related to the “The Women’s Navy” as it was sometimes called\.
+
+[Image](https://library-rbsc-2017.sites.olt.ubc.ca/files/2019/11/1-10-certificate-of-service-300dpi-360x245.jpg)
+
+The Royal Canadian Navy’s certificates of service were designed with only male service members in mind\.
+
+These records along with [Alvey’s personal papers](http://rbscarchives.library.ubc.ca/index.php/alexis-alvey-fonds) and an extensive collection of photographs are housed at UBC’s [Rare Books and Special Collections](https://rbsc.library.ubc.ca/) and are [available for research](https://rbsc.library.ubc.ca/visiting/)\.
+
+The materials that make up the [A\. Alexis Alvey fonds](http://rbscarchives.library.ubc.ca/index.php/alexis-alvey-fonds) express the profound sense of pride shared by Alvey and her fellow Wrens with respect to their years of military service\. An essay commemorating the WRCNS silver anniversary by Isabelle NcNair \(née Archer\) captures this pride\. In it, a grandmother tells her granddaughter the story of the Wrens\. “But Grannie, I thought Grandad won the war,” asks the child\.  “No dear,” responds her elder, “I did\.”
