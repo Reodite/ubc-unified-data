@@ -464,6 +464,244 @@ describe("external immutable request recording", () => {
     );
     await expect(f.recording.read(`${origin}/page`)).rejects.toThrow(/budget/);
   });
+  it("archives only selected streamed HTTP-200 byte failures after a byte-only grant", async () => {
+    const robots = "User-agent: *\nDisallow: /private\n";
+    const bytes = Buffer.byteLength(robots);
+    const page = `${origin}/page`;
+    const unrelated = `${origin}/unrelated`;
+    let failing = true;
+    const f = await fixture(
+      (url) => {
+        if (url === page && failing)
+          return new Response(
+            new ReadableStream({
+              start(controller) {
+                controller.enqueue(new TextEncoder().encode("x".repeat(32)));
+                controller.close();
+              },
+            }),
+            { status: 200, headers: { "content-type": "text/html" } },
+          );
+        return html("<p>Recovered article.</p>");
+      },
+      { maxBytes: bytes + 16, maxRequests: 4 },
+    );
+    await expect(f.recording.read(page)).rejects.toThrow("Acquisition response/total byte budget exceeded");
+    const failed = recordingState(f.directory);
+    expect(failed.attempts.at(-1)).toMatchObject({
+      url: page,
+      state: "failed",
+      status: 200,
+      bytes: 32,
+      body_sha: null,
+      snapshot: null,
+      error: "Error: Acquisition response/total byte budget exceeded",
+    });
+    const db = new DatabaseSync(join(f.directory, "state.sqlite"));
+    db.prepare("INSERT INTO outcomes(url,error) VALUES (?,'Error: Acquisition duration exhausted')").run(unrelated);
+    db.close();
+    const before = recordingState(f.directory);
+    const calls = vi.mocked(f.fetcher).mock.calls.length;
+    await expect(f.recording.read(page)).rejects.toThrow(/Saved request failure/);
+    expect(f.fetcher).toHaveBeenCalledTimes(calls);
+    expect(() => f.recording.resumeResponseBudgetFailures([page])).toThrow(/additive grant/);
+    expect(recordingState(f.directory)).toEqual(before);
+    expect(
+      f.recording.authorizeBudgetGrant({
+        id: "response-byte-grant",
+        authoritySha256: "b".repeat(64),
+        expectedRequests: before.attempts.length,
+        expectedBytes: bytes + 32,
+        additionalRequests: 0,
+        additionalBytes: 128,
+        minimumIntervalMs: 1000,
+      }),
+    ).toBe(true);
+    const granted = recordingState(f.directory);
+    expect(f.recording.resumeResponseBudgetFailures([page])).toBe(1);
+    const archived = recordingState(f.directory);
+    expect(archived.config).toEqual(granted.config);
+    expect(archived.attempts).toEqual(granted.attempts);
+    expect(archived.producers).toEqual(granted.producers);
+    expect(archived.grants).toEqual(granted.grants);
+    expect(archived.grantsV2).toEqual(granted.grantsV2);
+    expect(archived.repairs).toEqual(granted.repairs);
+    expect(archived.failures).toEqual([
+      expect.objectContaining({ url: page, error: "Error: Acquisition response/total byte budget exceeded" }),
+    ]);
+    expect(archived.outcomes).toEqual(granted.outcomes.filter((row) => row.url !== page));
+    expect(archived.outcomes).toContainEqual(expect.objectContaining({ url: unrelated }));
+    failing = false;
+    expect((await f.recording.read(page)).snapshot.body).toBe("<p>Recovered article.</p>");
+    expect(f.fetcher).toHaveBeenCalledTimes(calls + 1);
+    const retried = recordingState(f.directory);
+    expect(retried.attempts.slice(0, granted.attempts.length)).toEqual(granted.attempts);
+    expect(retried.producers.slice(0, granted.producers.length)).toEqual(granted.producers);
+    expect(retried.grantsV2).toEqual(granted.grantsV2);
+    expect(retried.failures).toEqual(archived.failures);
+    expect(f.recording.resumeResponseBudgetFailures([])).toBe(0);
+  });
+  it("refuses response budget recovery without both effective capacities or a usable physical attempt", async () => {
+    const robots = "User-agent: *\nDisallow: /private\n";
+    const bytes = Buffer.byteLength(robots);
+    const page = `${origin}/page`;
+    const f = await fixture(() => html("x".repeat(32)), { maxRequests: 2, maxBytes: bytes + 16 });
+    await expect(f.recording.read(page)).rejects.toThrow(/response\/total byte budget exceeded/);
+    const baseline = recordingState(f.directory);
+    const grant = {
+      id: "byte-only",
+      authoritySha256: "b".repeat(64),
+      expectedRequests: baseline.attempts.length,
+      expectedBytes: bytes + 32,
+      additionalRequests: 0,
+      additionalBytes: 64,
+      minimumIntervalMs: 1000,
+    };
+    expect(
+      f.recording.authorizeBudgetGrant({ ...grant, id: "request-only", additionalRequests: 1, additionalBytes: 0 }),
+    ).toBe(true);
+    const byteExhausted = recordingState(f.directory);
+    expect(() => f.recording.resumeResponseBudgetFailures([page])).toThrow(
+      /remaining effective request and byte capacity/,
+    );
+    expect(recordingState(f.directory)).toEqual(byteExhausted);
+    expect(f.recording.authorizeBudgetGrant(grant)).toBe(true);
+    const requestAvailable = recordingState(f.directory);
+    expect(requestAvailable.grantsV2).toHaveLength(2);
+    const db = new DatabaseSync(join(f.directory, "state.sqlite"));
+    db.prepare(
+      "INSERT INTO outcomes(url,error) VALUES (?,'Error: Acquisition response/total byte budget exceeded')",
+    ).run(`${origin}/fake`);
+    db.close();
+    const ready = recordingState(f.directory);
+    for (const selected of [
+      [page, page],
+      [page, `${origin}/fake`],
+      [page, "https://different.ubc.ca/page"],
+      [`${origin}/page#fragment`],
+      [page, `${origin}/PAGE`],
+    ]) {
+      expect(() => f.recording.resumeResponseBudgetFailures(selected)).toThrow();
+      expect(recordingState(f.directory)).toEqual(ready);
+    }
+    for (const [column, value] of [
+      ["status", 403],
+      ["state", "uncertain"],
+      ["error", "Error: Acquisition duration exhausted"],
+      ["body_sha", "a".repeat(64)],
+      ["snapshot", "a".repeat(64)],
+    ] as const) {
+      const mutate = new DatabaseSync(join(f.directory, "state.sqlite"));
+      mutate.prepare(`UPDATE attempts SET ${column}=? WHERE url=?`).run(value, page);
+      mutate.close();
+      const changed = recordingState(f.directory);
+      expect(() => f.recording.resumeResponseBudgetFailures([page])).toThrow();
+      expect(recordingState(f.directory)).toEqual(changed);
+      const restore = new DatabaseSync(join(f.directory, "state.sqlite"));
+      restore
+        .prepare(`UPDATE attempts SET ${column}=? WHERE url=?`)
+        .run(ready.attempts.at(-1)![column] as string | number | null, page);
+      restore.close();
+    }
+    expect(recordingState(f.directory)).toEqual(ready);
+    const db2 = new DatabaseSync(join(f.directory, "state.sqlite"));
+    db2.prepare("UPDATE outcomes SET error='Error: Acquisition duration exhausted' WHERE url=?").run(page);
+    db2.close();
+    const otherError = recordingState(f.directory);
+    expect(() => f.recording.resumeResponseBudgetFailures([page])).toThrow(/Not a resumable/);
+    expect(recordingState(f.directory)).toEqual(otherError);
+  });
+  it("refuses response budget recovery when a byte-only grant leaves no request capacity", async () => {
+    const page = `${origin}/page`;
+    const f = await fixture(() => html("x".repeat(32)), {
+      maxRequests: 2,
+      maxBytes: Buffer.byteLength("User-agent: *\nDisallow: /private\n") + 16,
+    });
+    await expect(f.recording.read(page)).rejects.toThrow(/response\/total byte budget exceeded/);
+    const prior = recordingState(f.directory);
+    expect(
+      f.recording.authorizeBudgetGrant({
+        id: "bytes-without-requests",
+        authoritySha256: "c".repeat(64),
+        expectedRequests: prior.attempts.length,
+        expectedBytes: prior.attempts.reduce((sum, attempt) => sum + Number(attempt.bytes), 0),
+        additionalRequests: 0,
+        additionalBytes: 64,
+        minimumIntervalMs: 1000,
+      }),
+    ).toBe(true);
+    const granted = recordingState(f.directory);
+    expect(() => f.recording.resumeResponseBudgetFailures([page])).toThrow(
+      /remaining effective request and byte capacity/,
+    );
+    expect(recordingState(f.directory)).toEqual(granted);
+  });
+  it("does not archive a per-response ceiling failure that a total-byte grant cannot fix", async () => {
+    const page = `${origin}/page`;
+    const f = await fixture(() => html("x".repeat(64)), { maxResponseBytes: 48 });
+    await expect(f.recording.read(page)).rejects.toThrow(/response\/total byte budget exceeded/);
+    const prior = recordingState(f.directory);
+    expect(
+      f.recording.authorizeBudgetGrant({
+        id: "unusable-byte-grant",
+        authoritySha256: "c".repeat(64),
+        expectedRequests: prior.attempts.length,
+        expectedBytes: prior.attempts.reduce((sum, attempt) => sum + Number(attempt.bytes), 0),
+        additionalRequests: 0,
+        additionalBytes: 128,
+        minimumIntervalMs: 1000,
+      }),
+    ).toBe(true);
+    const granted = recordingState(f.directory);
+    expect(() => f.recording.resumeResponseBudgetFailures([page])).toThrow(/Not a resumable/);
+    expect(recordingState(f.directory)).toEqual(granted);
+  });
+  it("rolls back selected response archives and preserves the three-attempt ceiling", async () => {
+    const f = await fixture(() => html("x".repeat(32)), {
+      maxBytes: Buffer.byteLength("User-agent: *\nDisallow: /private\n") + 16,
+    });
+    const first = `${origin}/first`;
+    const second = `${origin}/second`;
+    await expect(f.recording.read(first)).rejects.toThrow(/response\/total byte budget exceeded/);
+    const seed = new DatabaseSync(join(f.directory, "state.sqlite"));
+    seed
+      .prepare("INSERT INTO attempts(url,started,state,bytes,status,error) VALUES (?,?,'failed',32,200,?)")
+      .run(second, new Date().toISOString(), "Error: Acquisition response/total byte budget exceeded");
+    seed
+      .prepare("INSERT INTO outcomes(url,error) VALUES (?,'Error: Acquisition response/total byte budget exceeded')")
+      .run(second);
+    seed.close();
+    const original = recordingState(f.directory);
+    expect(
+      f.recording.authorizeBudgetGrant({
+        id: "byte-grant",
+        authoritySha256: "d".repeat(64),
+        expectedRequests: original.attempts.length,
+        expectedBytes: original.attempts.reduce((sum, attempt) => sum + Number(attempt.bytes), 0),
+        additionalRequests: 0,
+        additionalBytes: 128,
+        minimumIntervalMs: 1000,
+      }),
+    ).toBe(true);
+    const db = new DatabaseSync(join(f.directory, "state.sqlite"));
+    db.exec(
+      "CREATE TRIGGER refuse_response_archive BEFORE INSERT ON outcome_failures WHEN NEW.url='https://example.ubc.ca/second' BEGIN SELECT RAISE(ABORT,'fixture archive failure'); END;",
+    );
+    db.close();
+    const before = recordingState(f.directory);
+    expect(() => f.recording.resumeResponseBudgetFailures([first, second])).toThrow(/fixture archive failure/);
+    expect(recordingState(f.directory)).toEqual(before);
+    const mutate = new DatabaseSync(join(f.directory, "state.sqlite"));
+    mutate.exec("DROP TRIGGER refuse_response_archive");
+    for (let index = 0; index < 2; index++)
+      mutate
+        .prepare("INSERT INTO attempts(url,started,state,bytes,status,error) VALUES (?,?,'failed',32,200,?)")
+        .run(first, new Date().toISOString(), "Error: Acquisition response/total byte budget exceeded");
+    mutate.close();
+    const ceiling = recordingState(f.directory);
+    expect(() => f.recording.resumeResponseBudgetFailures([first, second])).toThrow(/Not a resumable/);
+    expect(recordingState(f.directory)).toEqual(ceiling);
+  });
   it("adds an exact durable budget grant without replacing prior bounds, attempts or robots exclusions", async () => {
     const robots = "User-agent: *\nCrawl-delay: 10\nDisallow: /private\n";
     const fetcher = vi.fn(async (value: string | URL | Request) => {

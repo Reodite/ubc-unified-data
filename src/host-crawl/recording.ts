@@ -1071,6 +1071,65 @@ export class HostRecording {
     }
   }
 
+  /** Archive exact HTTP-200 streaming byte failures for selected URLs after a recorded grant leaves retry capacity. */
+  resumeResponseBudgetFailures(urls: readonly string[]): number {
+    this.assertOpen();
+    if (!this.options.acquire || this.sealed)
+      throw new Error("Response budget resume requires unsealed explicit acquisition");
+    if (this.active.size) throw new Error("Response budget resume requires an idle recording");
+    const selected = new Set(
+      urls.map((url) => {
+        const scoped = this.scoped(url);
+        if (scoped !== url) throw new Error("Response budget resume requires exact same-host URLs");
+        return scoped;
+      }),
+    );
+    if (selected.size !== urls.length) throw new Error("Response budget resume requires distinct exact URLs");
+    this.db.exec("BEGIN IMMEDIATE");
+    try {
+      if (this.db.prepare("SELECT 1 FROM attempts WHERE state IN ('dispatching','uncertain') LIMIT 1").get())
+        throw new Error("Response budget resume requires no dispatching or uncertain attempts");
+      if (!this.budgetGrants().length) throw new Error("Response budget resume requires an additive grant");
+      const stats = this.db.prepare("SELECT count(*) requests, coalesce(sum(bytes),0) bytes FROM attempts").get()!;
+      const bounds = this.effectiveAcquisitionBounds();
+      if (Number(stats.requests) + selected.size > bounds.maxRequests || Number(stats.bytes) >= bounds.maxBytes)
+        throw new Error("Response budget resume requires remaining effective request and byte capacity");
+      const error = "Error: Acquisition response/total byte budget exceeded";
+      for (const url of selected) {
+        const outcome = this.db.prepare("SELECT snapshot,error FROM outcomes WHERE url=?").get(url);
+        const attempts = this.db
+          .prepare("SELECT state,status,bytes,snapshot,body_sha,error FROM attempts WHERE url=? ORDER BY id")
+          .all(url);
+        const last = attempts.at(-1);
+        if (
+          outcome?.snapshot !== null ||
+          outcome.error !== error ||
+          attempts.length === 0 ||
+          attempts.length >= 3 ||
+          last?.state !== "failed" ||
+          last.status !== 200 ||
+          !Number.isSafeInteger(last.bytes) ||
+          Number(last.bytes) < 1 ||
+          Number(last.bytes) > Number(this.config.maxResponseBytes) ||
+          last.snapshot !== null ||
+          last.body_sha !== null ||
+          last.error !== error
+        )
+          throw new Error(`Not a resumable HTTP-200 response byte failure: ${url}`);
+      }
+      const now = new Date().toISOString();
+      for (const url of selected) {
+        this.db.prepare("INSERT INTO outcome_failures(url,error,recorded_at) VALUES (?,?,?)").run(url, error, now);
+        this.db.prepare("DELETE FROM outcomes WHERE url=? AND error=? AND snapshot IS NULL").run(url, error);
+      }
+      this.db.exec("COMMIT");
+      return selected.size;
+    } catch (error) {
+      this.db.exec("ROLLBACK");
+      throw error;
+    }
+  }
+
   /** Archive selected per-invocation duration failures without renewing acquisition budgets or attempt limits. */
   resumeDurationFailures(urls?: readonly string[]): number {
     this.assertOpen();
