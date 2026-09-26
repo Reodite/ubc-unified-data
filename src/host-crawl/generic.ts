@@ -30,6 +30,7 @@ const TRIGGERS = [
   ".accordion__trigger,.accordion-trigger,.accordion-toggle,.accordion-button,.ui-accordion-header",
 ].join(",");
 const text = (value: string) => value.replace(/\s+/g, " ").trim();
+const titleText = (value: string) => plainText(value).replaceAll("\u2060", "");
 const compare = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
 
 function excludeUrl(value: string, hostname: string): string | null {
@@ -166,12 +167,12 @@ export function createGenericScraper(value: string): HostScraper {
       const title =
         $("h1")
           .toArray()
-          .map((node) => plainText($(node).html() ?? ""))
+          .map((node) => titleText($(node).html() ?? ""))
           .find(Boolean) ||
-        plainText(pageTitle) ||
+        titleText(pageTitle) ||
         $("body > center:first-child > p > b font[size='+2']")
           .toArray()
-          .map((node) => plainText($(node).html() ?? ""))
+          .map((node) => titleText($(node).html() ?? ""))
           .find((value) => Boolean(value) && value.length <= 160);
       if (/just a moment|access denied|captcha|sign in.*cwl|cwl.*login|page not found|404 not found/i.test(pageTitle))
         throw new Error("Access interstitial instead of public prose");
@@ -204,7 +205,7 @@ export function createGenericScraper(value: string): HostScraper {
         });
         content
           .find("h1")
-          .filter((_, node) => plainText($(node).html() ?? "") === title)
+          .filter((_, node) => titleText($(node).html() ?? "") === title)
           .remove();
         if (!text(content.text())) continue;
         if (!title) throw new Error("Extracted public prose lacks a source title");

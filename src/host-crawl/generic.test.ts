@@ -3,7 +3,7 @@ import { toSafeMarkdown } from "../prose/markdown.ts";
 import { wordpressCollectionUrl } from "./adapters/wordpress-discovery.ts";
 import { collectRecordedHost } from "./collect.ts";
 import type { CompletedHost, HostArchive, Observation, ProducerContext, SearchDocument } from "./contracts.ts";
-import { sha256 } from "./document-format.ts";
+import { safeText, sha256 } from "./document-format.ts";
 import { cheapGuardCompletedHost, createGenericScraper } from "./generic.ts";
 
 const host = "fixture.ubc.ca";
@@ -219,6 +219,26 @@ describe("generic host throughput adapter", () => {
       observation("/", "<title>Source title</title><main><h1>&nbsp;</h1><p>Public guidance.</p></main>").snapshot,
     );
     expect(fallback.kind === "document" && fallback.input.title).toBe("Source title");
+  });
+
+  it("removes source word joiners from titles without accepting other invisible controls", () => {
+    const heading = scraper.extract(
+      observation(
+        "/article/",
+        "<title>Welcome Dr. Susan Samuel!&#8288;</title><main><h1>Welcome Dr. Susan Samuel!&#8288;</h1><p>Public announcement.</p></main>",
+      ).snapshot,
+    );
+    expect(heading.kind === "document" && heading.input.title).toBe("Welcome Dr. Susan Samuel!");
+    const fallback = scraper.extract(
+      observation("/guide/", "<title>Public&#8288; guide</title><main><p>Public guidance.</p></main>").snapshot,
+    );
+    expect(fallback.kind === "document" && fallback.input.title).toBe("Public guide");
+    const bidi = scraper.extract(
+      observation("/unsafe/", "<title>Guide</title><main><h1>Unsafe&#8238; heading</h1><p>Public prose.</p></main>")
+        .snapshot,
+    );
+    if (bidi.kind !== "document") throw new Error("Expected the source heading to remain subject to validation");
+    expect(() => safeText(bidi.input.title, "title")).toThrow("Invalid title text");
   });
 
   it("uses a prominent centered report heading when the page has no title element", () => {
