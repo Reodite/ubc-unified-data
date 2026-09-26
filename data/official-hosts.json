@@ -3919,6 +3919,32 @@
     "document_count": 64
   },
   {
+    "hostname": "ubctoday.ubc.ca",
+    "title": "ubctoday.ubc.ca",
+    "homepage_url": "https://ubctoday.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:42:01.554Z",
+    "homepage_sha256": "52849f1beb4a4a17ebbad4dc731e032bfb381e5b349787fba4b2a96e17582a26",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/ubctoday.ubc.ca",
+        "document_count": 1937
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/ubctoday.ubc.ca",
+        "document_count": 101
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/ubctoday.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 2039
+  },
+  {
     "hostname": "ubcujp.psych.ubc.ca",
     "title": "ubcujp.psych.ubc.ca",
     "homepage_url": "https://ubcujp.psych.ubc.ca/",
