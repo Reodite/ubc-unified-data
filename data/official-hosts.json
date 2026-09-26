@@ -2897,6 +2897,32 @@
     "document_count": 89
   },
   {
+    "hostname": "sal-lab.landfood.ubc.ca",
+    "title": "sal-lab.landfood.ubc.ca",
+    "homepage_url": "https://sal-lab.landfood.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:01:59.366Z",
+    "homepage_sha256": "111dc48358a1a99b4c5876b7deee8b79e3eb91cbaf09e914d6ee55857428b5ae",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/sal-lab.landfood.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/sal-lab.landfood.ubc.ca",
+        "document_count": 159
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/sal-lab.landfood.ubc.ca",
+        "document_count": 17
+      }
+    ],
+    "document_count": 178
+  },
+  {
     "hostname": "sap.ubc.ca",
     "title": "sap.ubc.ca",
     "homepage_url": "https://sap.ubc.ca/",

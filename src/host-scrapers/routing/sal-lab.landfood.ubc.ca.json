@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "hostname": "sal-lab.landfood.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner e2f20159-4f8d-5b14-af46-3e6d394e3f72; retained homepage admissions in runs 09209d2d and 91a85d5f; offline successor recovery29",
+    "rationale": "Research laboratory, group, centre, forest or research project. Home/about/team/publications default to research, not stories merely because they mention people.",
+    "evidence": [
+      "https://sal-lab.landfood.ubc.ca/ | SAL Lab Home Page | Sustainable Agricultural Landscapes Lab",
+      "https://sal-lab.landfood.ubc.ca/people/ | People",
+      "https://sal-lab.landfood.ubc.ca/projects/ | Projects",
+      "https://sal-lab.landfood.ubc.ca/news-and-information/ | News and Publications"
+    ]
+  },
+  "rules": [
+    {
+      "id": "profile-story-sections",
+      "category": "stories",
+      "rationale": "Named story, testimonial and spotlight sections contain profiles or narratives.",
+      "path_pattern": "^/(?:stories|testimonials|student-profiles|faculty-profiles|alumni-stories)(?:/|$)"
+    },
+    {
+      "id": "spotlight-titles",
+      "category": "stories",
+      "rationale": "Titles explicitly identify a profile or spotlight narrative.",
+      "title_pattern": "^(?:Faculty|Student|Alumni|Researcher|Staff) (?:Spotlight|Profile)\\b"
+    },
+    {
+      "id": "reported-award-results",
+      "category": "news",
+      "rationale": "Recipient, winner and congratulation titles report an outcome rather than an open application.",
+      "title_pattern": "^.*\\b(?:recipient|recipients|congratulations|winner|winners|wins|awarded|award-winning)\\b"
+    },
+    {
+      "id": "recap-titles",
+      "category": "news",
+      "rationale": "Titles explicitly identify a retrospective recap or highlights report.",
+      "title_pattern": "^(?:Recap|Highlights from|Looking back|Year in review)\\b"
+    },
+    {
+      "id": "nested-openings",
+      "category": "opportunities",
+      "rationale": "Explicit opportunities and funding sections remain participation information within broader academic paths.",
+      "path_pattern": "^/(?:undergraduate|graduate|students|research)/(?:opportunities|funding|awards|scholarships)(?:/|$)"
+    },
+    {
+      "id": "participation-sections",
+      "category": "opportunities",
+      "rationale": "Named openings, funding and event sections describe participation; archived event pages retain their historical category.",
+      "path_pattern": "^/(?:jobs|careers|opportunities|funding|awards|scholarships|volunteer|participate|join-us|events|seminars|workshops|conferences)(?:/|$)"
+    },
+    {
+      "id": "practical-support-sections",
+      "category": "support",
+      "rationale": "Named help, service, policy, procedure and contact sections provide practical support.",
+      "path_pattern": "^/(?:support|services|resources|faq|faqs|help|contact|contact-us|policies|procedures|booking|bookings|equipment|accessibility)(?:/|$)"
+    },
+    {
+      "id": "research-output-sections",
+      "category": "research",
+      "rationale": "Named research, publication and project sections describe scholarly work.",
+      "path_pattern": "^/(?:research|publications|projects|our-research|research-projects)(?:/|$)"
+    },
+    {
+      "id": "announcement-sections",
+      "category": "news",
+      "rationale": "Named news, announcement and update sections publish institutional reports.",
+      "path_pattern": "^/(?:news|news-events|news-and-information|announcements|updates)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "research",
+    "rationale": "Research laboratory, group, centre, forest or research project. Home/about/team/publications default to research, not stories merely because they mention people."
+  }
+}
