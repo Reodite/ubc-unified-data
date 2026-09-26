@@ -167,7 +167,12 @@ export function createGenericScraper(value: string): HostScraper {
         $("h1")
           .toArray()
           .map((node) => plainText($(node).html() ?? ""))
-          .find(Boolean) || plainText(pageTitle);
+          .find(Boolean) ||
+        plainText(pageTitle) ||
+        $("body > center:first-child > p > b font[size='+2']")
+          .toArray()
+          .map((node) => plainText($(node).html() ?? ""))
+          .find((value) => Boolean(value) && value.length <= 160);
       if (/just a moment|access denied|captcha|sign in.*cwl|cwl.*login|page not found|404 not found/i.test(pageTitle))
         throw new Error("Access interstitial instead of public prose");
       if (!title && $("body").is(".attachment") && !text($(".entry-content").text()))

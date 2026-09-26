@@ -221,6 +221,24 @@ describe("generic host throughput adapter", () => {
     expect(fallback.kind === "document" && fallback.input.title).toBe("Source title");
   });
 
+  it("uses a prominent centered report heading when the page has no title element", () => {
+    const report = scraper.extract(
+      observation(
+        "/report.html",
+        '<html><head></head><body><center><b>UBC Physics Department</b><p><b><font><font size="+2">The First Year Physics Report</font></font></b></p></center><p>This report compares public results across schools.</p></body></html>',
+      ).snapshot,
+    );
+    expect(report.kind).toBe("document");
+    if (report.kind === "document") expect(report.input.title).toBe("The First Year Physics Report");
+    for (const body of [
+      "<center><p>Plain centered prose.</p></center><p>More public prose.</p>",
+      '<p>Introduction.</p><center><p><b><font size="+2">An unrelated caption</font></b></p></center>',
+    ])
+      expect(() =>
+        scraper.extract(observation("/untitled.html", `<html><body>${body}</body></html>`).snapshot),
+      ).toThrow("Extracted public prose lacks a source title");
+  });
+
   it("excludes titleless image attachments without weakening the prose title gate", () => {
     const attachment = scraper.extract(
       observation(
