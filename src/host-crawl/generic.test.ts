@@ -225,7 +225,7 @@ describe("generic host throughput adapter", () => {
     const attachment = scraper.extract(
       observation(
         "/attachment/",
-        '<title></title><main><div class="entry-content"><p class="attachment-image"><img src="/photo.jpg"></p><nav>Next</nav></div></main><div class="navigation-links"><a href="/article/">Return to entry</a></div>',
+        '<title></title><body class="attachment"><main><p class="post-byline">By Author on January 1, 2026</p><div class="entry-content"><p class="attachment-image"><img src="/photo.jpg"></p><nav>Next</nav></div><p class="entry-meta">Posted in | Tagged with</p></main><div class="navigation-links"><a href="/article/">Return to entry</a></div></body>',
       ).snapshot,
     );
     expect(attachment).toEqual({

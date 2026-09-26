@@ -170,6 +170,11 @@ export function createGenericScraper(value: string): HostScraper {
           .find(Boolean) || plainText(pageTitle);
       if (/just a moment|access denied|captcha|sign in.*cwl|cwl.*login|page not found|404 not found/i.test(pageTitle))
         throw new Error("Access interstitial instead of public prose");
+      if (!title && $("body").is(".attachment") && !text($(".entry-content").text()))
+        return {
+          kind: "excluded",
+          reason: "No nonempty public prose after removing page furniture",
+        };
       for (const selector of BOUNDARIES) {
         if (
           selector === ".entry-content" &&
