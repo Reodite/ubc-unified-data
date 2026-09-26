@@ -3086,6 +3086,27 @@
     "document_count": 10
   },
   {
+    "hostname": "scholcomm.ubc.ca",
+    "title": "scholcomm.ubc.ca",
+    "homepage_url": "https://scholcomm.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:05:25.001Z",
+    "homepage_sha256": "2af242147646426f96c3e35a9e5f45abb02ec39c1fd703021fcbbb46fbc8ba73",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/scholcomm.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/scholcomm.ubc.ca",
+        "document_count": 152
+      }
+    ],
+    "document_count": 153
+  },
+  {
     "hostname": "scienceone.ubc.ca",
     "title": "scienceone.ubc.ca",
     "homepage_url": "https://scienceone.ubc.ca/",
