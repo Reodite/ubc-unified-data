@@ -2,7 +2,7 @@ import { load } from "cheerio";
 import { htmlBaseUrl } from "./html-base.ts";
 import { inventoryUrl, pageExclusion } from "./urls.ts";
 
-/** Identify exact feeds, own-form refreshes and labeled BibTeX exports from observed HTML without requesting them. */
+/** Identify observed feed, export, form-refresh and administrative controls without requesting them. */
 export function discoverMachineLinks(html: string, hostname: string, sourceUrl: string): Set<string> {
   const $ = load(html, { sourceCodeLocationInfo: true });
   const base = htmlBaseUrl(html, hostname, sourceUrl, true);
@@ -125,5 +125,19 @@ export function discoverMachineLinks(html: string, hostname: string, sourceUrl: 
     // The observed form and source must agree on one prefix spelling; this does not establish URL aliases.
     if (pathname === `${prefix}${endpoint}` && candidate(form.attr("data-action")) === source.href) result.add(url);
   });
+  const source = new URL(sourceUrl);
+  const user = /^\/Special:Contributions\/([A-Za-z0-9_]+)$/.exec(source.pathname)?.[1];
+  if (source.origin === `https://${hostname}` && !source.search && !source.hash && user) {
+    const target = `/index.php?title=Special:Log/block&page=User%3A${user}`;
+    $("#contentSub .mw-contributions-user-tools a.mw-contributions-link-block-log[href][title]").each((_, node) => {
+      const link = $(node);
+      if (
+        link.attr("href") === target &&
+        link.attr("title") === "Special:Log/block" &&
+        link.text().replace(/\s+/g, " ").trim() === "block log"
+      )
+        result.add(`${source.origin}${target}`);
+    });
+  }
   return result;
 }

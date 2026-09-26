@@ -244,6 +244,36 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
+describe("MediaWiki block-log tool boundaries", () => {
+  const source = "/Special:Contributions/AmberSaundry";
+  const target = "/index.php?title=Special:Log/block&page=User%3AAmberSaundry";
+  const control = `<div id="contentSub"><div class="mw-contributions-user-tools"><a class="mw-contributions-link-block-log" title="Special:Log/block" href="${target.replace("&", "&amp;")}">block log</a></div></div>`;
+
+  it.each(["seed", "link"])("skips an evidenced administrative query from %s discovery", async (placement) => {
+    const f = fixture(html(anchor(source)));
+    f.put(source, html(control));
+    if (placement === "seed") f.seed(target, source);
+    const result = await f.collect();
+    requireDocument(result, source);
+    expect(result.documents).toHaveLength(2);
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(new URL(target, home).href);
+  });
+
+  it("does not hide required inventory identities", async () => {
+    const f = fixture(html(anchor(source)), `User-agent: *\nSitemap: ${home}sitemap.xml\n`);
+    f.put("/sitemap.xml", urlset(target.replace("&", "&amp;")), "application/xml");
+    f.put(source, html(control));
+    await expect(f.collect()).rejects.toThrow(/Required publisher URL lacks a supported discovery policy/);
+  });
+
+  it("keeps ordinary Special pages and unproved query pagination strict", async () => {
+    const f = fixture(html(anchor(source)));
+    f.put(source, html(anchor(target, "Read article")));
+    await expect(f.collect()).rejects.toThrow(/Linked pagination requires a declared complete query policy/);
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(new URL(target, home).href);
+  });
+});
+
 describe("OJS feed collection boundaries", () => {
   const source = "/index.php/journal/about";
   const target = "/index.php/journal/gateway/plugin/AnnouncementFeedGatewayPlugin/atom";

@@ -379,7 +379,7 @@ export async function collectRecordedHost(
       for (const url of discoverReviewedUnavailableLinks(observation, hostname)) nonDocuments.add(url);
       for (const url of discoverMachineLinks(observation.snapshot.body, hostname, observation.snapshot.url)) {
         const exclusion = scraper.excludeUrl ? scraper.excludeUrl(url) : pageExclusion(url, hostname);
-        if (exclusion !== null) continue;
+        if (exclusion !== null && exclusion !== "Unsupported query or form selection") continue;
         machineLinks.add(url);
         excludedDiscovery(url);
       }

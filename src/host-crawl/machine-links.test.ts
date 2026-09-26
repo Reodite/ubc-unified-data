@@ -95,6 +95,37 @@ describe("raw machine-link identity evidence", () => {
   });
 });
 
+const blockLog = (user = "AmberSaundry") =>
+  `<div id="contentSub"><div class="mw-contributions-user-tools"><a class="mw-contributions-link-block-log" title="Special:Log/block" href="/index.php?title=Special:Log/block&amp;page=User%3A${user}">block log</a></div></div>`;
+
+describe("observed MediaWiki administrative links", () => {
+  const source = `${home}Special:Contributions/AmberSaundry`;
+  const target = `${home}index.php?title=Special:Log/block&page=User%3AAmberSaundry`;
+  it("recognizes only the matching block-log tool on its user-contributions page", () => {
+    expect(discoverMachineLinks(document(blockLog()), host, source)).toEqual(new Set([target]));
+  });
+  it.each([
+    { label: "different user", source, markup: blockLog("AnotherUser") },
+    { label: "ordinary page", source: home, markup: blockLog() },
+    { label: "changed context", source, markup: blockLog().replace('id="contentSub"', 'id="main"') },
+    {
+      label: "changed control",
+      source,
+      markup: blockLog().replace("mw-contributions-link-block-log", "ordinary-link"),
+    },
+    { label: "changed label", source, markup: blockLog().replace("block log</a>", "read article</a>") },
+    { label: "extra query", source, markup: blockLog().replace('AmberSaundry"', 'AmberSaundry&action=edit"') },
+    { label: "no ownership title", source, markup: blockLog().replace('title="Special:Log/block"', "") },
+    {
+      label: "login route",
+      source,
+      markup: blockLog().replace("Special:Log/block&amp;page", "Special:UserLogin&amp;page"),
+    },
+  ])("does not exempt $label", ({ source, markup }) => {
+    expect(discoverMachineLinks(document(markup), host, source)).toEqual(new Set());
+  });
+});
+
 const prefixedForm = (prefix: string, dataAction: string | null) =>
   form()
     .replace('method="post"', `method="post"${dataAction === null ? "" : ` data-action="${dataAction}"`}`)
