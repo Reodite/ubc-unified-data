@@ -125,6 +125,22 @@
     "document_count": 6
   },
   {
+    "hostname": "campusmail.ubc.ca",
+    "title": "campusmail.ubc.ca",
+    "homepage_url": "https://campusmail.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:08:43.656Z",
+    "homepage_sha256": "c32a0e7a9e638f8d12bf344d3ade43207322de66f800e11807269eaf65fede0c",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/campusmail.ubc.ca",
+        "document_count": 91
+      }
+    ],
+    "document_count": 91
+  },
+  {
     "hostname": "cases.open.ubc.ca",
     "title": "cases.open.ubc.ca",
     "homepage_url": "https://cases.open.ubc.ca/",
