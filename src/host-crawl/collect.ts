@@ -101,7 +101,12 @@ async function sitemapPages(
   read: (url: string) => Promise<Observation>,
   policies: NonNullable<HostScraper["adapter"]["sitemaps"]> = [],
   exactHost = false,
-): Promise<{ pages: string[]; nonDocuments: Set<string>; advertisingSitemaps: Map<string, Set<string>> }> {
+): Promise<{
+  pages: string[];
+  nonDocuments: Set<string>;
+  attachmentPages: Set<string>;
+  advertisingSitemaps: Map<string, Set<string>>;
+}> {
   const htmlSitemap = (url: string) => /\.html?$/i.test(new URL(url).pathname);
   const queue = [...starts];
   if (exactHost) queue.sort((a, b) => Number(htmlSitemap(a)) - Number(htmlSitemap(b)));
@@ -110,12 +115,14 @@ async function sitemapPages(
   const xmlObserved = new Set<string>();
   const requiredChildren = new Set<string>();
   const nonDocuments = new Set<string>();
+  const attachmentPages = new Set<string>();
   const pages = new Set<string>();
   const advertisingSitemaps = new Map<string, Set<string>>();
   const wordpressAttachment = (sitemap: string, target: string) => {
     if (!/(?:^|\/)attachment-sitemap(?:\d+)?\.xml$/i.test(new URL(sitemap).pathname)) return false;
     const url = new URL(target);
-    return url.searchParams.size === 1 && /^\d+$/.test(url.searchParams.get("attachment_id") ?? "");
+    if (url.searchParams.size === 1 && /^\d+$/.test(url.searchParams.get("attachment_id") ?? "")) return true;
+    return hostname === "moa.ubc.ca" && !url.search && !url.hash && url.pathname !== "/" && url.pathname.endsWith("/");
   };
   while (queue.length) {
     const url = hostUrl(queue.shift()!, hostname);
@@ -174,9 +181,10 @@ async function sitemapPages(
           location === target &&
           observation.snapshot.requested_url === url &&
           wordpressAttachment(url, target)
-        )
+        ) {
           nonDocuments.add(target);
-        else pages.add(target);
+          if (hostname === "moa.ubc.ca" && !new URL(target).search) attachmentPages.add(target);
+        } else pages.add(target);
         // Only the literal page entry and requested XML identity witness an exact query declaration.
         if (!nonDocuments.has(target) && location === target && observation.snapshot.requested_url === url) {
           const witnesses = advertisingSitemaps.get(target) ?? new Set<string>();
@@ -188,7 +196,14 @@ async function sitemapPages(
   }
   if ([...requiredChildren].some((url) => nonDocuments.has(url)))
     throw new Error("An advertised sitemap child lacks a complete XML observation");
-  return { pages: [...pages].filter((url) => !nonDocuments.has(url)).sort(), nonDocuments, advertisingSitemaps };
+  if ([...attachmentPages].some((url) => pages.has(url)))
+    throw new Error("Attachment sitemap conflicts with a required page");
+  return {
+    pages: [...pages].filter((url) => !nonDocuments.has(url)).sort(),
+    nonDocuments,
+    attachmentPages,
+    advertisingSitemaps,
+  };
 }
 
 function markdownHeader(observation: Observation, name: string): string | undefined {
@@ -327,6 +342,7 @@ export async function collectRecordedHost(
   const {
     pages: seedPages,
     nonDocuments,
+    attachmentPages,
     advertisingSitemaps,
   } = await sitemapPages(sitemaps, hostname, read, scraper.adapter.sitemaps, exactHost);
   for (const declaration of queryDeclarations)
@@ -354,6 +370,17 @@ export async function collectRecordedHost(
   ]);
   const viewBases = new Set((scraper.adapter.views ?? []).map((view) => hostUrl(view.path, hostname)));
   const retainedSources = new Set(archive.retained.map((document) => document.source_url));
+  const requiredAttachmentConflicts = new Set([
+    ...homepageIdentities,
+    ...cmsPages,
+    ...requiredViews,
+    ...requiredQueries,
+    ...markdownTargets,
+    ...retainedSources,
+    ...archive.urls.map((row) => row.url),
+  ]);
+  if ([...attachmentPages].some((url) => requiredAttachmentConflicts.has(url)))
+    throw new Error("Attachment sitemap conflicts with a required page");
   const emittedIdentities = new Set<string>();
   const machineLinks = new Set<string>();
   const excludedDiscovery = (url: string) => {

@@ -19,7 +19,8 @@ const urlset = (...urls: string[]) => `<urlset>${urls.map((url) => `<url><loc>${
 const index = (...urls: string[]) =>
   `<sitemapindex>${urls.map((url) => `<sitemap><loc>${url}</loc></sitemap>`).join("")}</sitemapindex>`;
 
-function fixture(body = page, robots = "User-agent: *\n") {
+function fixture(body = page, robots = "User-agent: *\n", hostname = host) {
+  const origin = `https://${hostname}/`;
   vi.stubGlobal(
     "fetch",
     vi.fn(() => {
@@ -28,7 +29,7 @@ function fixture(body = page, robots = "User-agent: *\n") {
   );
   const values = new Map<string, Observation>();
   const put = (path: string, body: string, status = 200) => {
-    const url = new URL(path, home).href;
+    const url = new URL(path, origin).href;
     const snapshot: Observation["snapshot"] = {
       url,
       requested_url: url,
@@ -45,7 +46,7 @@ function fixture(body = page, robots = "User-agent: *\n") {
   const homepage = put("/", body);
   put("/robots.txt", robots);
   const archive: HostArchive = {
-    hostname: host,
+    hostname,
     input_sha256: sha256("input"),
     homepage,
     urls: [],
@@ -66,7 +67,7 @@ function fixture(body = page, robots = "User-agent: *\n") {
     archive.urls = [
       ...archive.urls,
       {
-        url: new URL(path, home).href,
+        url: new URL(path, origin).href,
         kind,
         state: "pending",
         disposition: null,
@@ -77,7 +78,7 @@ function fixture(body = page, robots = "User-agent: *\n") {
       },
     ];
   };
-  return { archive, values, put, seed, scraper: createGenericScraper(host) };
+  return { archive, values, put, seed, scraper: createGenericScraper(hostname) };
 }
 
 function pairFixture(status = 404) {
@@ -147,6 +148,40 @@ describe("WordPress attachment sitemap identities", () => {
     const result = await collectRecordedHost(f.scraper, f.archive, producer);
     expect(result.documents.some((document) => document.source_url === target)).toBe(true);
   });
+
+  it("excludes MOA attachment-sitemap permalinks even when linked from public HTML", async () => {
+    const origin = "https://moa.ubc.ca/";
+    const attachment = `${origin}2024/01/story/img_6687_banner/`;
+    const article = `${origin}2024/01/story/`;
+    const f = fixture(
+      `${page}<a href="${attachment}">View image</a>`,
+      `User-agent: *\nSitemap: ${origin}sitemap.xml\n`,
+      "moa.ubc.ca",
+    );
+    f.put("/sitemap.xml", index(`${origin}attachment-sitemap3.xml`, `${origin}post-sitemap.xml`));
+    f.put("/attachment-sitemap3.xml", urlset(attachment));
+    f.put("/post-sitemap.xml", urlset(article));
+    f.put("/2024/01/story/", page);
+    const result = await collectRecordedHost(f.scraper, f.archive, producer);
+    expect(result.documents.map((document) => document.source_url).sort()).toEqual([origin, article].sort());
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(attachment);
+  });
+
+  it.each(["another HTML sitemap", "the frozen seed"])(
+    "refuses a MOA attachment permalink also required by %s",
+    async (source) => {
+      const origin = "https://moa.ubc.ca/";
+      const attachment = `${origin}2024/01/story/img_6687_banner/`;
+      const f = fixture(page, `User-agent: *\nSitemap: ${origin}sitemap.xml\n`, "moa.ubc.ca");
+      f.put("/sitemap.xml", index(`${origin}attachment-sitemap3.xml`, `${origin}post-sitemap.xml`));
+      f.put("/attachment-sitemap3.xml", urlset(attachment));
+      f.put("/post-sitemap.xml", urlset(source === "another HTML sitemap" ? attachment : `${origin}article/`));
+      if (source === "the frozen seed") f.seed(attachment);
+      await expect(collectRecordedHost(f.scraper, f.archive, producer)).rejects.toThrow(
+        "Attachment sitemap conflicts with a required page",
+      );
+    },
+  );
 });
 
 describe("persistent absent sitemap companion exclusions", () => {
