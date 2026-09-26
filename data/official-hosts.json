@@ -2106,6 +2106,32 @@
     "document_count": 46
   },
   {
+    "hostname": "outreach.phas.ubc.ca",
+    "title": "outreach.phas.ubc.ca",
+    "homepage_url": "https://outreach.phas.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:24:05.767Z",
+    "homepage_sha256": "afb4b3a4bc236281971ae6f873718f7dabbc693e3967edd78e96b5afb1d47471",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/outreach.phas.ubc.ca",
+        "document_count": 72
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/outreach.phas.ubc.ca",
+        "document_count": 23
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/outreach.phas.ubc.ca",
+        "document_count": 9
+      }
+    ],
+    "document_count": 104
+  },
+  {
     "hostname": "pair.ubc.ca",
     "title": "pair.ubc.ca",
     "homepage_url": "https://pair.ubc.ca/",
