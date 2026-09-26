@@ -2357,6 +2357,27 @@
     "document_count": 16
   },
   {
+    "hostname": "pediatrics.med.ubc.ca",
+    "title": "pediatrics.med.ubc.ca",
+    "homepage_url": "https://pediatrics.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:28:40.736Z",
+    "homepage_sha256": "3464f18402cff43d055547d37d52056e4d5aa060698355e80f8c11ed5c1de588",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/pediatrics.med.ubc.ca",
+        "document_count": 1834
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/pediatrics.med.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 1835
+  },
+  {
     "hostname": "pharm-sci-fosteringscience-2021.sites.olt.ubc.ca",
     "title": "pharm-sci-fosteringscience-2021.sites.olt.ubc.ca",
     "homepage_url": "https://pharm-sci-fosteringscience-2021.sites.olt.ubc.ca/",

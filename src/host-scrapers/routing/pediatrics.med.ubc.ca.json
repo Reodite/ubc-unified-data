@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "hostname": "pediatrics.med.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w4 first homepage review",
+    "rationale": "The official Department of Pediatrics homepage provides substantive public information about UBC pediatric academic leadership, clinical research and teaching at BC Children's Hospital. Its current homepage is a departmental news digest; the broader institutional purpose is academic pediatrics. Evidence describes province-wide and national work, not an exclusively Okanagan service.",
+    "evidence": [
+      "https://pediatrics.med.ubc.ca/ | 3464f18402cff43d055547d37d52056e4d5aa060698355e80f8c11ed5c1de588 | New This Month",
+      "https://pediatrics.med.ubc.ca/ | 3464f18402cff43d055547d37d52056e4d5aa060698355e80f8c11ed5c1de588 | Since joining BC Children’s Hospital and the University of British Columbia, he has built a highly successful research program, secured significant research funding, and produced influential scholarship with national and international impact.",
+      "https://pediatrics.med.ubc.ca/ | 3464f18402cff43d055547d37d52056e4d5aa060698355e80f8c11ed5c1de588 | Drs. Doan and Devlin were both awarded a 2025/26 Killam Teaching Prize from UBC."
+    ]
+  },
+  "rules": [
+    {
+      "id": "monthly-news",
+      "category": "news",
+      "rationale": "The homepage title explicitly identifies the department's current monthly announcements and academic news digest.",
+      "title_pattern": "^New This Month$"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "The host represents UBC's Department of Pediatrics and its academic community, clinical education, teaching and scholarship."
+  }
+}
