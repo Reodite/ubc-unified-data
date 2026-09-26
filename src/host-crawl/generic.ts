@@ -17,7 +17,7 @@ const FURNITURE = [
   "form,input,select,textarea,.form-actions",
   "body > header,body > footer,#header,#footer,#masthead,#colophon,.site-header,.site-footer,.region-header,.region-footer",
   "#ubc7-header,#ubc7-footer,#ubc7-global-menu,#ubc7-unit-menu,#ubc7-unit-name",
-  ".navbar,.navigation,.menu,.breadcrumb,.breadcrumbs,.sidebar,.region-help",
+  ".navbar,.navigation,.menu,.breadcrumb,.breadcrumbs,.navigation-links,.sidebar,.region-help",
   ".entry-utility",
   ".ubc-accordion-tabs__tab-list",
   "#comments,#comments-template,#respond,.comments-area",

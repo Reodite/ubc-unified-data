@@ -221,6 +221,24 @@ describe("generic host throughput adapter", () => {
     expect(fallback.kind === "document" && fallback.input.title).toBe("Source title");
   });
 
+  it("excludes titleless image attachments without weakening the prose title gate", () => {
+    const attachment = scraper.extract(
+      observation(
+        "/attachment/",
+        '<title></title><main><div class="entry-content"><p class="attachment-image"><img src="/photo.jpg"></p><nav>Next</nav></div></main><div class="navigation-links"><a href="/article/">Return to entry</a></div>',
+      ).snapshot,
+    );
+    expect(attachment).toEqual({
+      kind: "excluded",
+      reason: "No nonempty public prose after removing page furniture",
+    });
+    expect(() =>
+      scraper.extract(
+        observation("/untitled/", "<title></title><main><p>Required public guidance.</p></main>").snapshot,
+      ),
+    ).toThrow("Extracted public prose lacks a source title");
+  });
+
   it("vets only public nonempty homepage HTML and excludes private queries and downloads", () => {
     const valid = observation("/", "<p>Public homepage.</p>").snapshot;
     expect(scraper.vetHomepage(valid).accepted).toBe(true);
