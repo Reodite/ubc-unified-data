@@ -1257,6 +1257,37 @@
     "document_count": 115
   },
   {
+    "hostname": "macisaacnursing.ubc.ca",
+    "title": "macisaacnursing.ubc.ca",
+    "homepage_url": "https://macisaacnursing.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:40:25.438Z",
+    "homepage_sha256": "94207820e1c82bc13f1b1af6a3ff8cfbc0d5d7c898f93bfbca93b84cb9acae8b",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/macisaacnursing.ubc.ca",
+        "document_count": 867
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/macisaacnursing.ubc.ca",
+        "document_count": 317
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/macisaacnursing.ubc.ca",
+        "document_count": 438
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/macisaacnursing.ubc.ca",
+        "document_count": 18
+      }
+    ],
+    "document_count": 1640
+  },
+  {
     "hostname": "macl.arts.ubc.ca",
     "title": "macl.arts.ubc.ca",
     "homepage_url": "https://macl.arts.ubc.ca/",

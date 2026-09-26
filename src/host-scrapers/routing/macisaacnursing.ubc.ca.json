@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "hostname": "macisaacnursing.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1fdd672; primary first category assignment after verified Markdown integration",
+    "rationale": "The saved official MacIsaac School of Nursing homepage describes nursing education, institutional history, Indigenous cultural safety, health-disparities research and student leadership. Preserve academic guidance as the default while routing the explicit research, news, event and career sections according to their published purpose.",
+    "evidence": [
+      "https://macisaacnursing.ubc.ca/ | 94207820e1c82bc13f1b1af6a3ff8cfbc0d5d7c898f93bfbca93b84cb9acae8b | The School was among UBC's first academic programs and the Commonwealth's first nursing program to offer a university degree.",
+      "https://macisaacnursing.ubc.ca/ | 94207820e1c82bc13f1b1af6a3ff8cfbc0d5d7c898f93bfbca93b84cb9acae8b | The homepage identifies research to reduce health disparities and links /research.",
+      "https://macisaacnursing.ubc.ca/ | 94207820e1c82bc13f1b1af6a3ff8cfbc0d5d7c898f93bfbca93b84cb9acae8b | The homepage separately labels News, Events and Careers with links under /community/news, /community/events and /about/careers."
+    ]
+  },
+  "rules": [
+    {
+      "id": "nursing-research",
+      "category": "research",
+      "rationale": "The homepage explicitly identifies the /research section as health-disparities research and scholarship.",
+      "path_pattern": "^/research(?:/|$)"
+    },
+    {
+      "id": "school-news",
+      "category": "news",
+      "rationale": "The homepage explicitly labels the /community/news section and dated entries as school news.",
+      "path_pattern": "^/community/news(?:/|$)"
+    },
+    {
+      "id": "events-and-careers",
+      "category": "opportunities",
+      "rationale": "Published event and career sections provide opportunities to attend or apply.",
+      "path_pattern": "^/(?:community/events|news-events/events|community/careers|about/careers)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "nursing-school",
+    "category": "academics",
+    "rationale": "Nursing education, curriculum, institutional mission and student academic guidance."
+  }
+}
