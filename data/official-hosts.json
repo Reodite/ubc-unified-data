@@ -1149,6 +1149,22 @@
     "document_count": 165
   },
   {
+    "hostname": "lilab.ok.ubc.ca",
+    "title": "lilab.ok.ubc.ca",
+    "homepage_url": "https://lilab.ok.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:34:58.301Z",
+    "homepage_sha256": "28629e85623cc665b25b6798a0ba0ba915f0fde27000f424d4ff0ce013d9e281",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/lilab.ok.ubc.ca",
+        "document_count": 14
+      }
+    ],
+    "document_count": 14
+  },
+  {
     "hostname": "lindinitiative.ubc.ca",
     "title": "lindinitiative.ubc.ca",
     "homepage_url": "https://lindinitiative.ubc.ca/",
