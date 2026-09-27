@@ -1032,6 +1032,22 @@
     "document_count": 82
   },
   {
+    "hostname": "learningcircle.ubc.ca",
+    "title": "learningcircle.ubc.ca",
+    "homepage_url": "https://learningcircle.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:29:20.129Z",
+    "homepage_sha256": "468712a6ea7ed0e6b68fe623543d5a27a494fe52ea4cdb631ed319e53f20a46f",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/learningcircle.ubc.ca",
+        "document_count": 1112
+      }
+    ],
+    "document_count": 1112
+  },
+  {
     "hostname": "learningdesignviews.educ.ubc.ca",
     "title": "learningdesignviews.educ.ubc.ca",
     "homepage_url": "https://learningdesignviews.educ.ubc.ca/",
