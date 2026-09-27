@@ -184,6 +184,70 @@ describe("WordPress attachment sitemap identities", () => {
   );
 });
 
+describe("reviewed Sport Facilities author sitemap", () => {
+  const hostname = "sportfacilities.ubc.ca";
+  const origin = `https://${hostname}/`;
+  const author = `${origin}author/agmiu/`;
+  const colleague = `${origin}author/webadmin/`;
+  const robots = `User-agent: *\nSitemap: ${origin}wp-sitemap.xml\n`;
+  const setup = () => {
+    const f = fixture(`${page}<a href="${author}">Posts by agmiu</a>`, robots, hostname);
+    f.put("/wp-sitemap.xml", index(`${origin}wp-sitemap-users-1.xml`, `${origin}wp-sitemap-posts-page-1.xml`));
+    const users = f.put("/wp-sitemap-users-1.xml", urlset(author, colleague));
+    f.put("/wp-sitemap-posts-page-1.xml", urlset(`${origin}guide/`));
+    f.put("/guide/", page);
+    return { ...f, users };
+  };
+
+  it("retains article pages but does not fetch source-identified WordPress author archives", async () => {
+    const f = setup();
+    const result = await collectRecordedHost(f.scraper, f.archive, producer);
+    expect(result.documents.map((document) => document.source_url).sort()).toEqual([origin, `${origin}guide/`]);
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(author);
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(colleague);
+  });
+
+  it("does not exclude the same author-shaped links on another hostname", async () => {
+    const other = "another.ubc.ca";
+    const base = `https://${other}/`;
+    const f = fixture(page, `User-agent: *\nSitemap: ${base}wp-sitemap.xml\n`, other);
+    f.put("/wp-sitemap.xml", index(`${base}wp-sitemap-users-1.xml`));
+    f.put("/wp-sitemap-users-1.xml", urlset(`${base}author/agmiu/`, `${base}author/webadmin/`));
+    f.put("/author/agmiu/", "<title>Staff stories</title><main><p>Public staff stories.</p></main>");
+    f.put("/author/webadmin/", "<title>Web team</title><main><p>Public web team updates.</p></main>");
+    const result = await collectRecordedHost(f.scraper, f.archive, producer);
+    expect(result.documents.map((document) => document.source_url).sort()).toEqual([
+      base,
+      `${base}author/agmiu/`,
+      `${base}author/webadmin/`,
+    ]);
+  });
+
+  it.each(["changed author", "added author", "seed conflict", "public sitemap conflict"])(
+    "refuses %s rather than hiding required articles",
+    async (kind) => {
+      const f = setup();
+      if (kind === "changed author") f.users.snapshot.body = urlset(author, `${origin}author/other/`);
+      if (kind === "added author") f.users.snapshot.body = urlset(author, colleague, `${origin}author/other/`);
+      if (kind === "seed conflict") f.seed("/author/agmiu/");
+      if (kind === "public sitemap conflict") {
+        f.put(
+          "/wp-sitemap.xml",
+          index(
+            `${origin}wp-sitemap-users-1.xml`,
+            `${origin}wp-sitemap-posts-page-1.xml`,
+            `${origin}wp-sitemap-posts-post-1.xml`,
+          ),
+        );
+        f.put("/wp-sitemap-posts-post-1.xml", urlset(author));
+      }
+      await expect(collectRecordedHost(f.scraper, f.archive, producer)).rejects.toThrow(
+        kind.includes("author") ? "Reviewed users sitemap changed" : "User archive conflicts with a required page",
+      );
+    },
+  );
+});
+
 describe("source-witnessed WordPress gallery attachments", () => {
   const origin = "https://rbsc.library.ubc.ca/";
   const media = `<dt class="gallery-icon"><a href="${origin}article/photo/"><img class="attachment-medium size-medium" src="${origin}files/photo.jpeg"></a></dt>`;

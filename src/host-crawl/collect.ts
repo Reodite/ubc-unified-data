@@ -169,6 +169,7 @@ async function sitemapPages(
   pages: string[];
   nonDocuments: Set<string>;
   attachmentPages: Set<string>;
+  userArchivePages: Set<string>;
   advertisingSitemaps: Map<string, Set<string>>;
 }> {
   const htmlSitemap = (url: string) => /\.html?$/i.test(new URL(url).pathname);
@@ -180,6 +181,7 @@ async function sitemapPages(
   const requiredChildren = new Set<string>();
   const nonDocuments = new Set<string>();
   const attachmentPages = new Set<string>();
+  const userArchivePages = new Set<string>();
   const pages = new Set<string>();
   const advertisingSitemaps = new Map<string, Set<string>>();
   const wordpressAttachment = (sitemap: string, target: string) => {
@@ -226,6 +228,18 @@ async function sitemapPages(
     if (observation.snapshot.status !== 200 || !/xml/i.test(observation.snapshot.headers["content-type"] ?? ""))
       throw new Error("An advertised sitemap lacks a complete XML observation");
     const parsed = parseSitemap(observation.snapshot.body);
+    const reviewedUsers =
+      exactHost && hostname === "sportfacilities.ubc.ca" && url === `https://${hostname}/wp-sitemap-users-1.xml`;
+    const reviewedUserTargets = [`https://${hostname}/author/agmiu/`, `https://${hostname}/author/webadmin/`];
+    if (
+      reviewedUsers &&
+      (parsed.kind !== "pages" ||
+        observation.snapshot.requested_url !== url ||
+        observation.snapshot.url !== url ||
+        parsed.locations.length !== 2 ||
+        !reviewedUserTargets.every((target) => parsed.locations.includes(target)))
+    )
+      throw new Error("Reviewed users sitemap changed");
     xmlObserved.add(url);
     const policy = policies.find((entry) => hostUrl(entry.path, hostname) === url);
     // A declared deployment-root placeholder supplies no page inventory; additional entries still require validation.
@@ -240,7 +254,10 @@ async function sitemapPages(
         requiredChildren.add(target);
         queue.push(target);
       } else {
-        if (
+        if (reviewedUsers && location === target) {
+          nonDocuments.add(target);
+          userArchivePages.add(target);
+        } else if (
           exactHost &&
           location === target &&
           observation.snapshot.requested_url === url &&
@@ -262,10 +279,13 @@ async function sitemapPages(
     throw new Error("An advertised sitemap child lacks a complete XML observation");
   if ([...attachmentPages].some((url) => pages.has(url)))
     throw new Error("Attachment sitemap conflicts with a required page");
+  if ([...userArchivePages].some((url) => pages.has(url)))
+    throw new Error("User archive conflicts with a required page");
   return {
     pages: [...pages].filter((url) => !nonDocuments.has(url)).sort(),
     nonDocuments,
     attachmentPages,
+    userArchivePages,
     advertisingSitemaps,
   };
 }
@@ -407,6 +427,7 @@ export async function collectRecordedHost(
     pages: seedPages,
     nonDocuments,
     attachmentPages,
+    userArchivePages,
     advertisingSitemaps,
   } = await sitemapPages(sitemaps, hostname, read, scraper.adapter.sitemaps, exactHost);
   for (const declaration of queryDeclarations)
@@ -445,6 +466,8 @@ export async function collectRecordedHost(
   ]);
   if ([...attachmentPages].some((url) => requiredAttachmentConflicts.has(url)))
     throw new Error("Attachment sitemap conflicts with a required page");
+  if ([...userArchivePages].some((url) => requiredAttachmentConflicts.has(url)))
+    throw new Error("User archive conflicts with a required page");
   const emittedIdentities = new Set<string>();
   const machineLinks = new Set<string>();
   const frozenSeedUrls = new Set(archive.urls.map((row) => row.url));
