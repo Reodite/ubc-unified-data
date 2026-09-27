@@ -243,6 +243,33 @@ describe("source-witnessed WordPress gallery attachments", () => {
     expect(kept.documents.map((document) => document.source_url)).toContain(`${origin}${photo.slice(1)}`);
   });
 
+  it("does not follow media-only Southern Medical photo pagination", async () => {
+    const host = "smp.med.ubc.ca";
+    const origin = `https://${host}/`;
+    const photo = "/2019/06/26/farewell-dr-allan-jones/smp-video-2/";
+    const next = "/2019/06/26/farewell-dr-allan-jones/smp-video-3/";
+    const attachment = (content: string) =>
+      `<title>SMP Video 2</title><body class="singular-attachment attachment-image"><div class="entry-content"><p class="attachment-image"><img src="${origin}wp-content/uploads/sites/93/2019/06/SMP-Video-2.jpg"></p>${content}<nav id="image-navigation"><ul class="pager"><li class="next next-image"><a href="${origin}${next.slice(1)}">Next</a></li></ul></nav></div></body>`;
+    const f = fixture(`${page}<a href="${photo}">Recorded photo</a>`, "User-agent: *\n", host);
+    f.put(photo, attachment(""));
+    const result = await collectRecordedHost(f.scraper, f.archive, producer);
+    expect(result.documents.map((document) => document.source_url)).toEqual([origin]);
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(`${origin}${next.slice(1)}`);
+
+    const seeded = fixture(`${page}<a href="${photo}">Recorded photo</a>`, "User-agent: *\n", host);
+    seeded.put(photo, attachment(""));
+    seeded.seed(next);
+    await expect(collectRecordedHost(seeded.scraper, seeded.archive, producer)).rejects.toThrow(
+      "Gallery attachment conflicts with a required page",
+    );
+
+    const captioned = fixture(`${page}<a href="${photo}">Recorded photo</a>`, "User-agent: *\n", host);
+    captioned.put(photo, attachment("<p>Medical training photo caption.</p>"));
+    captioned.put(next, `<title>Photo essay</title><main><p>Public explanatory prose.</p></main>`);
+    const kept = await collectRecordedHost(captioned.scraper, captioned.archive, producer);
+    expect(kept.documents.map((document) => document.source_url)).toContain(`${origin}${next.slice(1)}`);
+  });
+
   it("does not exclude a gallery-shaped link on another hostname", async () => {
     const target = `${home}article/photo/`;
     const f = fixture(

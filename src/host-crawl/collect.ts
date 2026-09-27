@@ -121,6 +121,41 @@ function reviewedGalleryAttachments(observation: Observation, hostname: string):
       return;
     }
   });
+  if (hostname === "smp.med.ubc.ca" && observation.snapshot.requested_url === observation.snapshot.url) {
+    const entry = $("body.singular-attachment.attachment-image .entry-content");
+    const photo = entry.find("> p.attachment-image > img[src]");
+    const navigation = entry.find("> nav#image-navigation");
+    const content = entry.clone();
+    content.find("nav#image-navigation").remove();
+    if (
+      entry.length === 1 &&
+      photo.length === 1 &&
+      navigation.length === 1 &&
+      !content.text().trim() &&
+      new URL(photo.attr("src")!, base).origin === `https://${hostname}` &&
+      /^\/wp-content\/uploads\//.test(new URL(photo.attr("src")!, base).pathname)
+    ) {
+      const parentPath = new URL(observation.snapshot.url).pathname.replace(/[^/]+\/$/, "");
+      navigation.find("li.previous-image > a[href],li.next-image > a[href]").each((_, node) => {
+        const anchor = $(node);
+        if (anchor.text().trim() !== (anchor.parent().hasClass("previous-image") ? "Previous" : "Next")) return;
+        try {
+          const raw = new URL(anchor.attr("href")!, base).href;
+          const target = inventoryUrl(raw, hostname);
+          if (
+            target === raw &&
+            !new URL(target).search &&
+            !new URL(target).hash &&
+            new URL(target).pathname.startsWith(parentPath) &&
+            target !== observation.snapshot.url
+          )
+            links.add(target);
+        } catch {
+          return;
+        }
+      });
+    }
+  }
   return links;
 }
 

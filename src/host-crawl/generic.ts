@@ -176,16 +176,16 @@ export function createGenericScraper(value: string): HostScraper {
           .find((value) => Boolean(value) && value.length <= 160);
       if (/just a moment|access denied|captcha|sign in.*cwl|cwl.*login|page not found|404 not found/i.test(pageTitle))
         throw new Error("Access interstitial instead of public prose");
+      const photo = $(".entry-content p.attachment-image img[src]");
       const emptyImageAttachment =
         hostname === "smp.med.ubc.ca" &&
-        /^https:\/\/smp\.med\.ubc\.ca\/2020\/03\/12\/student-health-conference-reaches-new-heights\/health-conference-[^/]+\/$/.test(
-          snapshot.url,
-        ) &&
         snapshot.requested_url === snapshot.url &&
         $("body").is(".singular-attachment.attachment-image") &&
         $(".entry-content").length === 1 &&
-        $(".entry-content .attachment-image img[src]").length === 1;
-      if (!title && ($("body").is(".attachment") || emptyImageAttachment) && !text($(".entry-content").text()))
+        photo.length === 1 &&
+        photo.attr("src")?.startsWith(`https://${hostname}/wp-content/uploads/`) &&
+        !text($(".entry-content").text());
+      if (emptyImageAttachment || (!title && $("body").is(".attachment") && !text($(".entry-content").text())))
         return {
           kind: "excluded",
           reason: "No nonempty public prose after removing page furniture",

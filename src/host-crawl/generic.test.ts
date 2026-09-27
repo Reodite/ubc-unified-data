@@ -277,7 +277,7 @@ describe("generic host throughput adapter", () => {
     ).toThrow("Extracted public prose lacks a source title");
   });
 
-  it("excludes titleless Southern Medical image attachments but not public captions", () => {
+  it("excludes Southern Medical image-only attachments but not public captions", () => {
     const medical = createGenericScraper("smp.med.ubc.ca");
     const url =
       "https://smp.med.ubc.ca/2020/03/12/student-health-conference-reaches-new-heights/health-conference-1-2/";
@@ -290,19 +290,35 @@ describe("generic host throughput adapter", () => {
       kind: "excluded",
       reason: "No nonempty public prose after removing page furniture",
     });
+    const titled = { ...snapshot, body: `<title>SMP Video 2</title>${page(photo)}` };
+    expect(medical.extract(titled)).toEqual({
+      kind: "excluded",
+      reason: "No nonempty public prose after removing page furniture",
+    });
+    const rootImage = {
+      ...titled,
+      url: "https://smp.med.ubc.ca/student-health-conference-1/",
+      requested_url: "https://smp.med.ubc.ca/student-health-conference-1/",
+    };
+    expect(medical.extract(rootImage).kind).toBe("excluded");
+    const captioned = medical.extract({
+      ...titled,
+      body: titled.body.replace(photo, `${photo}<p>Public medical photo caption.</p>`),
+    });
+    expect(captioned.kind).toBe("document");
     for (const body of [
       page(`${photo}<p>Medical conference photo caption.</p>`),
       page("<p>Public medical conference article.</p>"),
       page(photo).replace("singular-attachment ", ""),
     ])
       expect(() => medical.extract({ ...snapshot, body })).toThrow("Extracted public prose lacks a source title");
-    expect(() =>
+    expect(
       medical.extract({
         ...snapshot,
         url: "https://smp.med.ubc.ca/other-gallery/image/",
         requested_url: "https://smp.med.ubc.ca/other-gallery/image/",
-      }),
-    ).toThrow("Extracted public prose lacks a source title");
+      }).kind,
+    ).toBe("excluded");
     expect(() => scraper.extract({ ...snapshot, url: `${home}image/`, requested_url: `${home}image/` })).toThrow(
       "Extracted public prose lacks a source title",
     );
