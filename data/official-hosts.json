@@ -697,6 +697,27 @@
     "document_count": 80
   },
   {
+    "hostname": "it.ok.ubc.ca",
+    "title": "it.ok.ubc.ca",
+    "homepage_url": "https://it.ok.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:18:47.352Z",
+    "homepage_sha256": "53a68403f0c3d33e942859bfc9d038bf6233a2b20b3cbad0746e6fd60aa96f31",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/it.ok.ubc.ca",
+        "document_count": 6
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/it.ok.ubc.ca",
+        "document_count": 146
+      }
+    ],
+    "document_count": 152
+  },
+  {
     "hostname": "japanese-canadian-student-tribute.ubc.ca",
     "title": "japanese-canadian-student-tribute.ubc.ca",
     "homepage_url": "https://japanese-canadian-student-tribute.ubc.ca/",
