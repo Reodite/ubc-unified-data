@@ -161,6 +161,15 @@ describe("durable host work queue", () => {
     expect(queue.stats()).toMatchObject({ total: 6, claimed: 5, pending: 1 });
   });
 
+  it("leaves reviewed unavailable hosts pending while claiming eligible hosts", () => {
+    const { queue } = open();
+    queue.seed([{ hostname: "a.ubc.ca" }, { hostname: "b.ubc.ca" }]);
+    expect(queue.claim("w1", new Set(["a.ubc.ca"]))?.hostname).toBe("b.ubc.ca");
+    expect(queue.get("a.ubc.ca")?.state).toBe("pending");
+    expect(queue.claim("w2", new Set(["a.ubc.ca"]))).toBeNull();
+    expect(queue.claim("w2")?.hostname).toBe("a.ubc.ca");
+  });
+
   it("deduplicates canonical seeds and preserves cached homepage triage", () => {
     const { queue } = open();
     queue.seed([

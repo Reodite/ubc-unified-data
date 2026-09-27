@@ -213,7 +213,7 @@ export class HostWorkQueue {
   }
 
   /** Claim one pending host. A busy worker returns null; use get() and the saved token for explicit recovery. */
-  claim(worker: string): HostWorkClaim | null {
+  claim(worker: string, unavailable: ReadonlySet<string> = new Set()): HostWorkClaim | null {
     this.assertOpen();
     if (!HOST_WORKERS.includes(worker as HostWorker)) throw new Error("Worker must be one of w1..w5");
     return this.transaction(() => {
@@ -223,11 +223,15 @@ export class HostWorkQueue {
           .get(worker)
       )
         return null;
+      const excluded = [...unavailable];
+      if (excluded.length > 5000) throw new Error("Too many unavailable hostnames");
       const row = this.db
         .prepare(
-          "SELECT * FROM host_work WHERE state='pending' ORDER BY priority ASC,hostname COLLATE BINARY ASC LIMIT 1",
+          `SELECT * FROM host_work WHERE state='pending'
+          ${excluded.length ? `AND hostname NOT IN (${excluded.map(() => "?").join(",")})` : ""}
+          ORDER BY priority ASC,hostname COLLATE BINARY ASC LIMIT 1`,
         )
-        .get();
+        .get(...excluded);
       if (!row) return null;
       const host = record(row);
       const token = randomUUID();

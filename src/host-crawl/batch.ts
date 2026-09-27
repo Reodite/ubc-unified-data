@@ -21,6 +21,7 @@ import type { CompletedHost, HostArchive, ProducerContext } from "./contracts.ts
 import { digest, documentFilename, exactObject, sha256 } from "./document-format.ts";
 import { cheapGuardCompletedHost, createGenericScraper } from "./generic.ts";
 import { verifyHistoricalReady } from "./historical-output.ts";
+import { currentUnavailableHosts } from "./host-dispositions.ts";
 import { assertCollectedInput, decodeFrozenSeed, deriveCollectionInputDigest } from "./inputs.ts";
 import { withMarkdownCollectionRuntime } from "./markdown-collection-runtime.ts";
 import { assertExternalPath, DEFAULT_EXTERNAL_ROOT, DEFAULT_LEGACY_STATE_FILE } from "./paths.ts";
@@ -123,6 +124,9 @@ export class HostBatch {
   }
 
   seed(items: Parameters<HostWorkQueue["seed"]>[0]): void {
+    const unavailable = currentUnavailableHosts();
+    if (items.some((item) => unavailable.has(normalizeHost(item.hostname))))
+      throw new Error("Cannot seed a reviewed unavailable hostname");
     this.queue.seed(items);
   }
   close(): void {
@@ -132,10 +136,12 @@ export class HostBatch {
   async claim(worker: string) {
     if (!/^w[1-5]$/.test(worker)) throw new Error("Expected worker w1..w5");
     const receipt = join(this.directory, "workers", `${worker}.json`);
+    const unavailable = currentUnavailableHosts();
     try {
       const previous = (await json(receipt)) as { hostname: string; token: string };
       const row = this.queue.get(previous.hostname);
       if (row && !TERMINAL.has(row.state)) {
+        if (unavailable.has(row.hostname)) throw new Error("Retained claim is now unavailable");
         if (row.worker !== worker || row.token !== previous.token)
           throw new Error("Worker receipt does not own its retained claim");
         return { ...row, resumed: true };
@@ -144,7 +150,8 @@ export class HostBatch {
       if (!absent(error)) throw error;
     }
     const retained = this.queue.current(worker);
-    const claim = retained ?? this.queue.claim(worker);
+    if (retained && unavailable.has(retained.hostname)) throw new Error("Retained claim is now unavailable");
+    const claim = retained ?? this.queue.claim(worker, unavailable);
     if (claim) await save(receipt, claim);
     return claim;
   }
