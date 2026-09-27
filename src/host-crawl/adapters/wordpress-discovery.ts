@@ -152,15 +152,29 @@ export async function discoverWordpress(
     return href;
   };
   const types = object(json(await read(routeUrl("/wp/v2/types"))));
+  const reviewedIresHelper = (key: string) => {
+    if (scraper.hostname !== "ires.ubc.ca" || key !== "wpa-helper" || Object.hasOwn(routes, "/wp/v2/wpa-helper"))
+      return false;
+    const item = object(types[key]);
+    return (
+      item.name === "WordPress Archives Blocks" &&
+      item.slug === "wpa-helper" &&
+      item.has_archive === false &&
+      item.rest_namespace === "wp/v2" &&
+      item.rest_base === "wpa-helper" &&
+      link(item, "wp:items") === `https://${scraper.hostname}/wp-json/wp/v2/wpa-helper`
+    );
+  };
   const allowed = new Set(
     scraper.adapter.allPublicTypes
-      ? Object.keys(types).filter((key) => !NON_DOCUMENT_TYPES.has(key))
+      ? Object.keys(types).filter((key) => !NON_DOCUMENT_TYPES.has(key) && !reviewedIresHelper(key))
       : scraper.adapter.allowedTypes,
   );
   if (!allowed.size || (!scraper.adapter.allPublicTypes && allowed.size !== scraper.adapter.allowedTypes.length))
     throw new Error("Invalid declared CMS types");
   for (const key of Object.keys(types))
-    if (!allowed.has(key) && !NON_DOCUMENT_TYPES.has(key)) throw new Error(`Unreviewed public CMS type: ${key}`);
+    if (!allowed.has(key) && !NON_DOCUMENT_TYPES.has(key) && !reviewedIresHelper(key))
+      throw new Error(`Unreviewed public CMS type: ${key}`);
   const pages: DiscoveredPage[] = [];
   let corroboratedOrthopaedicsHomepage = false;
   for (const type of [...allowed].sort()) {

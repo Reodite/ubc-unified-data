@@ -329,6 +329,90 @@ describe("advertised WordPress discovery", () => {
   });
 });
 
+describe("reviewed IRES internal archive-block type", () => {
+  const host = "ires.ubc.ca";
+  const base = `https://${host}/`;
+  const api = `${base}wp-json/`;
+  const setup = () => {
+    const homepage = observation(base, `<link rel="https://api.w.org/" href="${api}">`);
+    const values = new Map<string, Observation>();
+    const routes = {
+      "/wp/v2/types": { methods: ["GET"], _links: { self: [{ href: `${api}wp/v2/types` }] } },
+      "/wp/v2/posts": { methods: ["GET"], _links: { self: [{ href: `${api}wp/v2/posts` }] } },
+    };
+    const types = {
+      post: {
+        rest_namespace: "wp/v2",
+        rest_base: "posts",
+        _links: { "wp:items": [{ href: `${api}wp/v2/posts` }] },
+      },
+      "wpa-helper": {
+        name: "WordPress Archives Blocks",
+        slug: "wpa-helper",
+        has_archive: false,
+        rest_namespace: "wp/v2",
+        rest_base: "wpa-helper",
+        _links: { "wp:items": [{ href: `${api}wp/v2/wpa-helper` }] },
+      },
+    };
+    const posts = observation(wordpressCollectionUrl(`${api}wp/v2/posts`, 1), [
+      {
+        id: 42,
+        link: `${base}public-article/`,
+        status: "publish",
+        type: "post",
+        modified_gmt: "2024-12-01T00:00:00",
+      },
+    ]);
+    posts.snapshot.headers["x-wp-total"] = "1";
+    posts.snapshot.headers["x-wp-totalpages"] = "1";
+    values.set(posts.snapshot.url, posts);
+    const scraper: HostScraper = {
+      hostname: host,
+      title: "IRES",
+      scope: "Public environmental research",
+      adapter: { kind: "wordpress", allowedTypes: [], allPublicTypes: true, exactHostInventory: true },
+      vetHomepage: () => ({ accepted: true, reason: "Public homepage" }),
+      extract: () => ({ kind: "excluded", reason: "Discovery fixture" }),
+    };
+    const discover = () => {
+      values.set(api, observation(api, { routes }));
+      values.set(`${api}wp/v2/types`, observation(`${api}wp/v2/types`, types));
+      return discoverWordpress(scraper, homepage, async (url) => {
+        const value = values.get(url);
+        if (!value) throw new Error(`Missing fixture ${url}`);
+        return value;
+      });
+    };
+    return { routes, types, scraper, discover };
+  };
+
+  it("counts public posts but omits only the non-GET WordPress Archives Blocks helper", async () => {
+    const f = setup();
+    expect((await f.discover()).map((item) => item.url)).toEqual([`${base}public-article/`]);
+  });
+
+  it.each(["name", "slug", "archive", "namespace", "base", "item", "route", "hostname"])(
+    "does not hide changed or public IRES helper metadata: %s",
+    async (change) => {
+      const f = setup();
+      const helper = f.types["wpa-helper"];
+      if (change === "name") helper.name = "Research articles";
+      if (change === "slug") helper.slug = "other";
+      if (change === "archive") helper.has_archive = true;
+      if (change === "namespace") helper.rest_namespace = "custom/v1";
+      if (change === "base") helper.rest_base = "public-helper";
+      if (change === "item") helper._links["wp:items"][0]!.href = `${api}wp/v2/other`;
+      if (change === "route")
+        Object.assign(f.routes, {
+          "/wp/v2/wpa-helper": { methods: ["GET"], _links: { self: [{ href: `${api}wp/v2/wpa-helper` }] } },
+        });
+      if (change === "hostname") f.scraper.hostname = "other.ubc.ca";
+      await expect(f.discover()).rejects.toThrow();
+    },
+  );
+});
+
 describe("reviewed Orthopaedics homepage inventory anomaly", () => {
   const host = "orthopaedics.med.ubc.ca";
   const base = `https://${host}/`;
