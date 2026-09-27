@@ -184,7 +184,7 @@ describe("WordPress attachment sitemap identities", () => {
   );
 });
 
-describe("RBSC source-witnessed WordPress gallery attachments", () => {
+describe("source-witnessed WordPress gallery attachments", () => {
   const origin = "https://rbsc.library.ubc.ca/";
   const media = `<dt class="gallery-icon"><a href="${origin}article/photo/"><img class="attachment-medium size-medium" src="${origin}files/photo.jpeg"></a></dt>`;
 
@@ -203,6 +203,44 @@ describe("RBSC source-witnessed WordPress gallery attachments", () => {
     await expect(collectRecordedHost(f.scraper, f.archive, producer)).rejects.toThrow(
       "Gallery attachment conflicts with a required page",
     );
+  });
+
+  it("excludes Southern Medical photo gallery links without hiding article prose", async () => {
+    const host = "smp.med.ubc.ca";
+    const origin = `https://${host}/`;
+    const article = "/2019/06/26/farewell-dr-allan-jones/";
+    const photo = `${article}smp-2015s-at-ubco/`;
+    const gallery = `<dt class="gallery-icon"><a href="${origin}${photo.slice(1)}"><img class="attachment-medium_large size-medium_large" src="${origin}wp-content/uploads/sites/93/2019/06/SMP-2015s-at-UBCO-768x546.jpg"></a></dt>`;
+    const f = fixture(`${page}<a href="${article}">Read article</a>`, "User-agent: *\n", host);
+    f.put(
+      article,
+      `<title>Farewell Dr. Allan Jones</title><main><p>Public medical programme article.</p><dl>${gallery}</dl></main>`,
+    );
+    const result = await collectRecordedHost(f.scraper, f.archive, producer);
+    expect(result.documents.map((document) => document.source_url).sort()).toEqual([
+      origin,
+      `${origin}${article.slice(1)}`,
+    ]);
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(`${origin}${photo.slice(1)}`);
+
+    const seeded = fixture(`${page}<a href="${article}">Read article</a>`, "User-agent: *\n", host);
+    seeded.put(
+      article,
+      `<title>Farewell Dr. Allan Jones</title><main><p>Public medical programme article.</p><dl>${gallery}</dl></main>`,
+    );
+    seeded.seed(photo);
+    await expect(collectRecordedHost(seeded.scraper, seeded.archive, producer)).rejects.toThrow(
+      "Gallery attachment conflicts with a required page",
+    );
+
+    const captioned = fixture(`${page}<a href="${article}">Read article</a>`, "User-agent: *\n", host);
+    captioned.put(
+      article,
+      `<title>Farewell Dr. Allan Jones</title><main><p>Public medical programme article.</p><dl>${gallery.replace("</a>", "Photo explanation</a>")}</dl></main>`,
+    );
+    captioned.put(photo, `<title>Image explanation</title><main><p>Public photo essay.</p></main>`);
+    const kept = await collectRecordedHost(captioned.scraper, captioned.archive, producer);
+    expect(kept.documents.map((document) => document.source_url)).toContain(`${origin}${photo.slice(1)}`);
   });
 
   it("does not exclude a gallery-shaped link on another hostname", async () => {

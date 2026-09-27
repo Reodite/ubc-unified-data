@@ -95,9 +95,9 @@ function htmlLinks(
   return [...links].sort();
 }
 
-function rbscGalleryAttachments(observation: Observation, hostname: string): Set<string> {
+function reviewedGalleryAttachments(observation: Observation, hostname: string): Set<string> {
   const links = new Set<string>();
-  if (hostname !== "rbsc.library.ubc.ca") return links;
+  if (hostname !== "rbsc.library.ubc.ca" && hostname !== "smp.med.ubc.ca") return links;
   const $ = load(observation.snapshot.body);
   const base = htmlBaseUrl(observation.snapshot.body, hostname, observation.snapshot.url, true);
   $("dt.gallery-icon > a[href]").each((_, node) => {
@@ -107,7 +107,7 @@ function rbscGalleryAttachments(observation: Observation, hostname: string): Set
       image.length !== 1 ||
       anchor.children().length !== 1 ||
       anchor.text().trim() ||
-      !/(?:^|\s)attachment-(?:medium|thumbnail|large|full|\d+x\d+)(?:\s|$)/.test(image.attr("class") ?? "")
+      !/(?:^|\s)attachment-(?:medium|medium_large|thumbnail|large|full|\d+x\d+)(?:\s|$)/.test(image.attr("class") ?? "")
     )
       return;
     try {
@@ -434,7 +434,7 @@ export async function collectRecordedHost(
   const observedPageLinks = (observation: Observation) => {
     if (exactHost) {
       for (const url of discoverReviewedUnavailableLinks(observation, hostname)) nonDocuments.add(url);
-      for (const url of rbscGalleryAttachments(observation, hostname)) {
+      for (const url of reviewedGalleryAttachments(observation, hostname)) {
         if (
           advertisedPages.has(url) ||
           viewBases.has(url) ||
