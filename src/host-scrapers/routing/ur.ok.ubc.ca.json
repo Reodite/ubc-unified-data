@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "hostname": "ur.ok.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "Owner continuation requests public exact-host HTML articles while preserving the saved PPTX digital-signage template as an excluded download.",
+    "rationale": "UBC Okanagan University Relations presents public communications, engagement, marketing, media, digital signage and web-service guidance.",
+    "evidence": [
+      "Retained homepage 708847bc99c83043612f3c43dd98fa266200c73132bd9f88e6bb029ec7b8e70a has title Home - University Relations.",
+      "Its retained navigation labels Internal Communications, Media Relations, Event Guidance and Resources, Design Services, Photography, Social Media, Digital Advertising and Web Services.",
+      "Official University Relations unit explains campus communications, creative-service and web-governance support functions."
+    ]
+  },
+  "rules": [
+    {
+      "id": "university-relations-updates",
+      "category": "news",
+      "rationale": "Named updates section publishes institutional reports.",
+      "path_pattern": "^/about/updates(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "communications-support",
+    "category": "support",
+    "rationale": "University Relations pages primarily provide public communications and brand-support information."
+  }
+}

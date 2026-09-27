@@ -4214,6 +4214,27 @@
     "document_count": 222
   },
   {
+    "hostname": "ur.ok.ubc.ca",
+    "title": "ur.ok.ubc.ca",
+    "homepage_url": "https://ur.ok.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:46:35.422Z",
+    "homepage_sha256": "708847bc99c83043612f3c43dd98fa266200c73132bd9f88e6bb029ec7b8e70a",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/ur.ok.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/ur.ok.ubc.ca",
+        "document_count": 70
+      }
+    ],
+    "document_count": 73
+  },
+  {
     "hostname": "urban.forestry.ubc.ca",
     "title": "urban.forestry.ubc.ca",
     "homepage_url": "https://urban.forestry.ubc.ca/",
