@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "hostname": "ors.ok.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "Owner continuation requests public exact-host HTML articles while preserving the saved XLSX RTI budget template as an excluded download.",
+    "rationale": "UBC Okanagan Office of Research Services offers public grant, proposal development, account management, research facilitation and ethics support.",
+    "evidence": [
+      "Retained homepage 271f2e59cd77a783cad53fb2a67adca618a059410a39156c6ff2b080173271f0 has title Office of Research Services: UBC's Okanagan Campus.",
+      "Its retained navigation labels Funding Opportunities, Proposal Development & Submission, Research Facilitation, Grant Application, Research Account Management and Ethics.",
+      "Official Okanagan research services explains grant development, submission deadlines and ethics compliance support"
+    ]
+  },
+  "rules": [
+    {
+      "id": "research-funding-openings",
+      "category": "opportunities",
+      "rationale": "Named funding opportunities describe public research participation.",
+      "path_pattern": "^/funding-opportunities(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "research-services",
+    "category": "support",
+    "rationale": "Research Services pages primarily provide grant, proposal and account support rather than research results."
+  }
+}
