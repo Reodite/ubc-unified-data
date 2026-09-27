@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hostname": "sportfacilities.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "Owner continuation requests exact-host public article HTML, preserving the two observed author-archive sitemap controls and original HTTP-500 attempts.",
+    "rationale": "UBC Sport Facilities presents public venue information, facility maps, availability, activities and rental details.",
+    "evidence": [
+      "Retained homepage 34623fb897dce3044f89d3f022135a5f50250ae06a54e0d84f102aa1abbc2019 has title UBC Sport Facilities.",
+      "Its retained navigation labels Venues, Aquatic Centre, Recreation Centre, Tennis Centre, Thunderbird Park, Facility Rental Information and Map & Locations.",
+      "Official UBC Sport Facilities explains public access and booking availability with concrete facility types and capacities."
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "facility-services",
+    "category": "support",
+    "rationale": "Sport Facilities pages primarily provide venue access, booking and recreation facility information."
+  }
+}
