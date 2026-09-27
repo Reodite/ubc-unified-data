@@ -162,6 +162,7 @@ export async function discoverWordpress(
   for (const key of Object.keys(types))
     if (!allowed.has(key) && !NON_DOCUMENT_TYPES.has(key)) throw new Error(`Unreviewed public CMS type: ${key}`);
   const pages: DiscoveredPage[] = [];
+  let corroboratedOrthopaedicsHomepage = false;
   for (const type of [...allowed].sort()) {
     const definition = object(types[type]);
     const namespace = string(definition.rest_namespace);
@@ -199,11 +200,30 @@ export async function discoverWordpress(
           throw new Error("Invalid or duplicate CMS identity");
         if (row.status !== "publish" || row.type !== type) throw new Error("Unexpected CMS publication status/type");
         ids.add(id);
+        if (
+          scraper.hostname === "orthopaedics.med.ubc.ca" &&
+          type === "post" &&
+          id === 5444 &&
+          row.link === `https://${scraper.hostname}/` &&
+          row.modified_gmt === "-0001-11-30T07:00:00" &&
+          object(row.title).rendered === "" &&
+          corroboratedOrthopaedicsHomepage
+        )
+          continue;
         const sourceModified = modified(row.modified_gmt);
         const url = scraper.adapter.exactHostInventory
           ? inventoryUrl(string(row.link), scraper.hostname)
           : hostUrl(string(row.link), scraper.hostname);
         if (!url) continue;
+        if (
+          scraper.hostname === "orthopaedics.med.ubc.ca" &&
+          type === "page" &&
+          id === 133 &&
+          url === `https://${scraper.hostname}/` &&
+          object(row.title).rendered === "UBC Orthopaedics" &&
+          sourceModified === "2026-07-07T22:50:50Z"
+        )
+          corroboratedOrthopaedicsHomepage = true;
         const itemUrl = new URL(collection);
         if (queryRoot !== null) itemUrl.searchParams.set("rest_route", `${restRoute(itemUrl)}/${id}`);
         else itemUrl.pathname += `/${id}`;

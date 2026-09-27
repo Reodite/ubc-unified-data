@@ -329,6 +329,126 @@ describe("advertised WordPress discovery", () => {
   });
 });
 
+describe("reviewed Orthopaedics homepage inventory anomaly", () => {
+  const host = "orthopaedics.med.ubc.ca";
+  const base = `https://${host}/`;
+  const api = `${base}wp-json/`;
+  const alias = {
+    id: 5444,
+    link: base,
+    status: "publish",
+    type: "post",
+    modified_gmt: "-0001-11-30T07:00:00",
+    title: { rendered: "" },
+  };
+  const page = {
+    id: 133,
+    link: base,
+    status: "publish",
+    type: "page",
+    modified_gmt: "2026-07-07T22:50:50",
+    title: { rendered: "UBC Orthopaedics" },
+  };
+  const fixture = () => {
+    const homepage = observation(base, `<link rel="https://api.w.org/" href="${api}">`);
+    const values = new Map<string, Observation>();
+    const paths = ["types", "pages", "posts"];
+    values.set(
+      api,
+      observation(api, {
+        routes: Object.fromEntries(
+          paths.map((path) => [
+            `/wp/v2/${path}`,
+            { methods: ["GET"], _links: { self: [{ href: `${api}wp/v2/${path}` }] } },
+          ]),
+        ),
+      }),
+    );
+    values.set(
+      `${api}wp/v2/types`,
+      observation(
+        `${api}wp/v2/types`,
+        Object.fromEntries(
+          ["page", "post"].map((type) => [
+            type,
+            {
+              rest_namespace: "wp/v2",
+              rest_base: `${type}s`,
+              _links: { "wp:items": [{ href: `${api}wp/v2/${type}s` }] },
+            },
+          ]),
+        ),
+      ),
+    );
+    const collection = (type: "page" | "post", rows: unknown[]) => {
+      const url = wordpressCollectionUrl(`${api}wp/v2/${type}s`, 1);
+      const result = observation(url, rows);
+      result.snapshot.headers["x-wp-total"] = String(rows.length);
+      result.snapshot.headers["x-wp-totalpages"] = "1";
+      values.set(url, result);
+      return result;
+    };
+    const pages = collection("page", [structuredClone(page)]);
+    const posts = collection("post", [structuredClone(alias)]);
+    const scraper: HostScraper = {
+      hostname: host,
+      title: "Orthopaedics",
+      scope: "Public academic pages",
+      adapter: { kind: "wordpress", allowedTypes: ["page", "post"], exactHostInventory: true },
+      vetHomepage: () => ({ accepted: true, reason: "Public homepage" }),
+      extract: () => ({ kind: "excluded", reason: "Discovery fixture" }),
+    };
+    const discover = () =>
+      discoverWordpress(scraper, homepage, async (url) => {
+        const value = values.get(url);
+        if (!value) throw new Error(`Missing fixture ${url}`);
+        return value;
+      });
+    return { pages, posts, discover };
+  };
+
+  it("counts but omits only the untitled invalid-date homepage post corroborated by the page record", async () => {
+    const f = fixture();
+    expect(await f.discover()).toEqual([
+      {
+        url: base,
+        modified: "2026-07-07T22:50:50Z",
+        id: 133,
+        type: "page",
+        api_url: `${api}wp/v2/pages/133`,
+      },
+    ]);
+  });
+
+  it.each(["id", "link", "title", "date", "status", "corroboration"])(
+    "rejects a changed Orthopaedics %s instead of weakening GMT validation",
+    async (change) => {
+      const f = fixture();
+      const [row] = JSON.parse(f.posts.snapshot.body);
+      if (change === "id") row.id = 5445;
+      if (change === "link") row.link = `${base}other/`;
+      if (change === "title") row.title.rendered = "Public article";
+      if (change === "date") row.modified_gmt = "-0001-11-30T07:00:01";
+      if (change === "status") row.status = "draft";
+      if (change === "corroboration") {
+        const [witness] = JSON.parse(f.pages.snapshot.body);
+        witness.title.rendered = "Changed homepage";
+        f.pages.snapshot.body = JSON.stringify([witness]);
+      }
+      f.posts.snapshot.body = JSON.stringify([row]);
+      await expect(f.discover()).rejects.toThrow();
+    },
+  );
+
+  it("keeps a genuinely dated homepage post visible to downstream conflict checks", async () => {
+    const f = fixture();
+    const [row] = JSON.parse(f.posts.snapshot.body);
+    row.modified_gmt = "2026-07-07T22:50:50";
+    f.posts.snapshot.body = JSON.stringify([row]);
+    expect((await f.discover()).map((item) => item.id)).toEqual([133, 5444]);
+  });
+});
+
 describe("WordPress collection requests", () => {
   it("retains only the REST route and appends fixed inventory parameters", () => {
     expect(wordpressCollectionUrl(`${prettyRoot}wp/v2/posts`, 2)).toBe(`${prettyRoot}wp/v2/posts?${parameters(2)}`);
