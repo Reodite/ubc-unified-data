@@ -4664,6 +4664,27 @@
     "document_count": 239
   },
   {
+    "hostname": "wildfire-symposium.forestry.ubc.ca",
+    "title": "wildfire-symposium.forestry.ubc.ca",
+    "homepage_url": "https://wildfire-symposium.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:56:58.313Z",
+    "homepage_sha256": "a9ba5ae9c7f465f13ad9667c0fd9df3da65725742dd497da476b6f4d37546c92",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/wildfire-symposium.forestry.ubc.ca",
+        "document_count": 33
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/wildfire-symposium.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 34
+  },
+  {
     "hostname": "wildlife.forestry.ubc.ca",
     "title": "wildlife.forestry.ubc.ca",
     "homepage_url": "https://wildlife.forestry.ubc.ca/",
