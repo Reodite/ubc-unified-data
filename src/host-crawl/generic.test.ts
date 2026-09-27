@@ -277,6 +277,37 @@ describe("generic host throughput adapter", () => {
     ).toThrow("Extracted public prose lacks a source title");
   });
 
+  it("excludes titleless Southern Medical image attachments but not public captions", () => {
+    const medical = createGenericScraper("smp.med.ubc.ca");
+    const url =
+      "https://smp.med.ubc.ca/2020/03/12/student-health-conference-reaches-new-heights/health-conference-1-2/";
+    const photo =
+      '<p class="attachment-image"><img src="https://smp.med.ubc.ca/wp-content/uploads/sites/93/2020/03/Health-Conference-1-1.jpg" alt=""></p>';
+    const page = (content: string) =>
+      `<body class="singular-attachment attachment-image"><div class="entry-content">${content}<nav id="image-navigation"><a href="/before/">Previous</a><a href="/after/">Next</a></nav></div><div class="related-pages">Other medical updates.</div></body>`;
+    const snapshot = { ...observation("/", page(photo)).snapshot, url, requested_url: url };
+    expect(medical.extract(snapshot)).toEqual({
+      kind: "excluded",
+      reason: "No nonempty public prose after removing page furniture",
+    });
+    for (const body of [
+      page(`${photo}<p>Medical conference photo caption.</p>`),
+      page("<p>Public medical conference article.</p>"),
+      page(photo).replace("singular-attachment ", ""),
+    ])
+      expect(() => medical.extract({ ...snapshot, body })).toThrow("Extracted public prose lacks a source title");
+    expect(() =>
+      medical.extract({
+        ...snapshot,
+        url: "https://smp.med.ubc.ca/other-gallery/image/",
+        requested_url: "https://smp.med.ubc.ca/other-gallery/image/",
+      }),
+    ).toThrow("Extracted public prose lacks a source title");
+    expect(() => scraper.extract({ ...snapshot, url: `${home}image/`, requested_url: `${home}image/` })).toThrow(
+      "Extracted public prose lacks a source title",
+    );
+  });
+
   it("vets only public nonempty homepage HTML and excludes private queries and downloads", () => {
     const valid = observation("/", "<p>Public homepage.</p>").snapshot;
     expect(scraper.vetHomepage(valid).accepted).toBe(true);
