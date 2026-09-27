@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hostname": "technicalguidelines.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "Owner continuation requests public exact-host HTML articles while preserving the saved XLS record-of-change form as an excluded download.",
+    "rationale": "UBC Technical Guidelines presents public campus construction standards, governance, specification divisions, approvals and reference guidance.",
+    "evidence": [
+      "Retained homepage 9c3bffef706ccc42d69119e337a9a26b2c46214738d40d0e918d0496bfe77a9e has title Home - UBC Technical Guidelines.",
+      "Its retained navigation labels Goals, Scope, and Governance, Quality Control Process, Safety and Security, Guidelines by Specification Division, Construction and Turnover and Reference Materials.",
+      "Official construction guidelines explain institutional design standards, compliance and approval procedures"
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "technical-guidelines",
+    "category": "support",
+    "rationale": "Campus technical guidelines provide practical construction, standards and governance support."
+  }
+}

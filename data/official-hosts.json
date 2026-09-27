@@ -3925,6 +3925,22 @@
     "document_count": 26
   },
   {
+    "hostname": "technicalguidelines.ubc.ca",
+    "title": "technicalguidelines.ubc.ca",
+    "homepage_url": "https://technicalguidelines.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:30:00.840Z",
+    "homepage_sha256": "9c3bffef706ccc42d69119e337a9a26b2c46214738d40d0e918d0496bfe77a9e",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/technicalguidelines.ubc.ca",
+        "document_count": 22
+      }
+    ],
+    "document_count": 22
+  },
+  {
     "hostname": "tek.forestry.ubc.ca",
     "title": "tek.forestry.ubc.ca",
     "homepage_url": "https://tek.forestry.ubc.ca/",
