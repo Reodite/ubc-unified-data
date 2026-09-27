@@ -1,0 +1,63 @@
+---
+{
+  "format_version": 3,
+  "id": "documents:official-web:200e05d4dd71b6059d699a35",
+  "hostname": "nursing.ok.ubc.ca",
+  "title": "Athletics (UBCO Heat)",
+  "source_url": "https://nursing.ok.ubc.ca/category/athletics-ubco-heat/",
+  "retrieved_at": "2026-09-18T19:55:25.182Z",
+  "source_modified_at": null,
+  "snapshot_sha256": "fb10850a50f8abf8b6ee64fb0f484bbae1ed989d3e8f3a6d36061a512850cd91",
+  "input_sha256": "bd16ce3b3e4d9268818568e191bf8d29daea365fd2eabb152d0d5835f1b2eb3e",
+  "body_sha256": "59aa89999445d1a334094c85f388a4d12111f7f1a0f1176b2c6e0366c1524271",
+  "content_sha256": "61c3b5a66709fcfb0b819d0f66c1f7f28436b230f56e003657d62c84c8ad82b8",
+  "warnings": [],
+  "alternate_urls": [],
+  "producer": {
+    "inputs_sha256": "ae66ff2410508aa5cb467d7706275e1468280c22a18648c978481bbd8ee4160a",
+    "runtime": {
+      "node": "26.8.1",
+      "icu": "78.3",
+      "unicode": "17.0",
+      "platform": "linux",
+      "arch": "x64"
+    }
+  },
+  "category": "academics",
+  "routing": {
+    "rule_id": "nursing-education",
+    "policy_sha256": "4092568141098a3b188e8913998d1a6beb59767deec036d98d680b627cc7b4ad"
+  }
+}
+---
+[Top athletes offer insights into women’s running](https://news.ok.ubc.ca/2024/10/29/top-athletes-offer-insights-into-womens-running/ "Top athletes offer insights into women’s running")[Top athletes offer insights into women’s running](https://nursing.ok.ubc.ca/wp-content/uploads/sites/120/2024/10/4fbe1e44f93d22bc4fb88ba19213ce9d-300x180.jpg)
+
+## [Top athletes offer insights into women’s running](https://news.ok.ubc.ca/2024/10/29/top-athletes-offer-insights-into-womens-running/)
+
+October 29, 2024 (Tuesday, October 29th, 2024, 6:00 am)
+
+Lacing up for Life will explore myths and challenges women face in endurance sports
+
+The post [Top athletes offer insights into women’s running](https://news.ok.ubc.ca/2024/10/29/top-athletes-offer-insights-into-womens-running/) appeared first on [UBC Okanagan News](https://news.ok.ubc.ca/)\.
+
+Posted in [Athletics \(UBCO Heat\)](https://nursing.ok.ubc.ca/category/athletics-ubco-heat/), [Faculty of Health and Social Development](https://nursing.ok.ubc.ca/category/faculty-of-health-and-social-development/), [Institute for Healthy Living and Chronic Disease Prevention \(IHLCDP\)](https://nursing.ok.ubc.ca/category/institute-for-healthy-living-and-chronic-disease-prevention-ihlcdp/), [Media Advisory](https://nursing.ok.ubc.ca/category/media-advisory/), [School of Health and Exercise Sciences](https://nursing.ok.ubc.ca/category/school-of-health-and-exercise-sciences/)
+
+## [11 recognized for more than 25 years of dedicated service](https://news.ok.ubc.ca/2017/05/01/11-recognized-for-more-than-25-years-dedicated-service/)
+
+May 1, 2017 (Monday, May 1st, 2017, 1:49 pm)
+
+From the Toronto Blue Jays winning their first World Series, to Dr\. Roberta Bondar became the first Canadian woman in space, to the world first SMS/text message — 1992 was a year of firsts\.
+
+The post [11 recognized for more than 25 years of dedicated service](https://news.ok.ubc.ca/2017/05/01/11-recognized-for-more-than-25-years-dedicated-service/) appeared first on [UBC’s Okanagan News](https://news.ok.ubc.ca/)\.
+
+Posted in [Academic Advising](https://nursing.ok.ubc.ca/category/academic-advising/), [Athletics \(UBCO Heat\)](https://nursing.ok.ubc.ca/category/athletics-ubco-heat/), [Computer Science, Mathematics, Physics, and Statistics](https://nursing.ok.ubc.ca/category/computer-science-mathematics-physics-and-statistics/), [Economics, Philosophy and Political Science](https://nursing.ok.ubc.ca/category/economics-philosophy-and-political-science/), [Exchange](https://nursing.ok.ubc.ca/category/exchange/), [Faculty of Creative and Critical Studies](https://nursing.ok.ubc.ca/category/faculty-of-creative-and-critical-studies/), [Faculty of Health and Social Development](https://nursing.ok.ubc.ca/category/faculty-of-health-and-social-development/), [History and Sociology](https://nursing.ok.ubc.ca/category/history-and-sociology/), [Irving K Barber School of Arts and Sciences \(prior July 2020\)](https://nursing.ok.ubc.ca/category/irving-k-barber-school-of-arts-and-sciences-prior-july-2020/), [Okanagan School of Education](https://nursing.ok.ubc.ca/category/okanagan-school-of-education/), [Psychology](https://nursing.ok.ubc.ca/category/psychology/), [School of Nursing](https://nursing.ok.ubc.ca/category/school-of-nursing/), [School of Social Work](https://nursing.ok.ubc.ca/category/school-of-social-work/), [Southern Medical Program](https://nursing.ok.ubc.ca/category/southern-medical-program/)
+
+## [11 recognized for more than 25 years of dedicated service](https://news.ok.ubc.ca/2017/05/01/11-recognized-for-more-than-25-years-dedicated-service/)
+
+May 1, 2017 (Monday, May 1st, 2017, 1:49 pm)
+
+From the Toronto Blue Jays winning their first World Series, to Dr\. Roberta Bondar became the first Canadian woman in space, to the world first SMS/text message — 1992 was a year of firsts\.
+
+The post [11 recognized for more than 25 years of dedicated service](https://news.ok.ubc.ca/2017/05/01/11-recognized-for-more-than-25-years-dedicated-service/) appeared first on [UBC’s Okanagan News](https://news.ok.ubc.ca/)\.
+
+Posted in [Academic Advising](https://nursing.ok.ubc.ca/category/academic-advising/), [Athletics \(UBCO Heat\)](https://nursing.ok.ubc.ca/category/athletics-ubco-heat/), [Computer Science, Mathematics, Physics, and Statistics](https://nursing.ok.ubc.ca/category/computer-science-mathematics-physics-and-statistics/), [Economics, Philosophy and Political Science](https://nursing.ok.ubc.ca/category/economics-philosophy-and-political-science/), [Exchange](https://nursing.ok.ubc.ca/category/exchange/), [Faculty of Creative and Critical Studies](https://nursing.ok.ubc.ca/category/faculty-of-creative-and-critical-studies/), [Faculty of Health and Social Development](https://nursing.ok.ubc.ca/category/faculty-of-health-and-social-development/), [History and Sociology](https://nursing.ok.ubc.ca/category/history-and-sociology/), [Irving K Barber School of Arts and Sciences \(prior July 2020\)](https://nursing.ok.ubc.ca/category/irving-k-barber-school-of-arts-and-sciences-prior-july-2020/), [Okanagan School of Education](https://nursing.ok.ubc.ca/category/okanagan-school-of-education/), [Psychology](https://nursing.ok.ubc.ca/category/psychology/), [School of Nursing](https://nursing.ok.ubc.ca/category/school-of-nursing/), [School of Social Work](https://nursing.ok.ubc.ca/category/school-of-social-work/), [Southern Medical Program](https://nursing.ok.ubc.ca/category/southern-medical-program/)

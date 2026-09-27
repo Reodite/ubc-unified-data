@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "hostname": "nursing.ok.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "Owner continuation requests public exact-host HTML articles while preserving the saved slide deck as an excluded download.",
+    "rationale": "UBC Okanagan School of Nursing publishes undergraduate and graduate nursing program, student resource and teaching information alongside research and news.",
+    "evidence": [
+      "Retained homepage bd62169cf911a2f9975945d6c497a774b97d2ed8a53af5cf8df75752d84ec56f has title Home - School of Nursing.",
+      "Its retained navigation labels Undergraduate Program, Bachelor of Science in Nursing, Master of Science in Nursing, PhD in Nursing, Student Resources and Research.",
+      "Official School of Nursing homepage presents undergraduate and graduate education, research and teaching news"
+    ]
+  },
+  "rules": [
+    {
+      "id": "nursing-news",
+      "category": "news",
+      "rationale": "Named news pages report nursing school updates.",
+      "path_pattern": "^/(?:news|news-events)(?:/|$)"
+    },
+    {
+      "id": "nursing-research",
+      "category": "research",
+      "rationale": "Named research sections present the school’s scholarly work.",
+      "path_pattern": "^/research(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "nursing-education",
+    "category": "academics",
+    "rationale": "UBC Okanagan nursing pages primarily describe academic programs, teaching and student resources."
+  }
+}
