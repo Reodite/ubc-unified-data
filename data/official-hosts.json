@@ -854,6 +854,27 @@
     "document_count": 9
   },
   {
+    "hostname": "knowledgebase.arts.ubc.ca",
+    "title": "knowledgebase.arts.ubc.ca",
+    "homepage_url": "https://knowledgebase.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T14:50:39.034Z",
+    "homepage_sha256": "e9dd4a7583e06153e100d4bc0a98bb020e4c7efa43ac602b15785f11895cd856",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/knowledgebase.arts.ubc.ca",
+        "document_count": 920
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/knowledgebase.arts.ubc.ca",
+        "document_count": 2
+      }
+    ],
+    "document_count": 922
+  },
+  {
     "hostname": "knowledgesynthesis.library.ubc.ca",
     "title": "knowledgesynthesis.library.ubc.ca",
     "homepage_url": "https://knowledgesynthesis.library.ubc.ca/",
