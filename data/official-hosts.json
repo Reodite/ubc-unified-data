@@ -109,6 +109,22 @@
     "document_count": 30
   },
   {
+    "hostname": "broadcastemail.ubc.ca",
+    "title": "broadcastemail.ubc.ca",
+    "homepage_url": "https://broadcastemail.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:09:34.347Z",
+    "homepage_sha256": "02a89ec1d53d81d9426e5b44e528f34c2cf18a270f7a63ba032b4d7d14b8059c",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/broadcastemail.ubc.ca",
+        "document_count": 1508
+      }
+    ],
+    "document_count": 1508
+  },
+  {
     "hostname": "bullyingandharassment.ubc.ca",
     "title": "Bullying and Harassment Prevention at UBC",
     "homepage_url": "https://bullyingandharassment.ubc.ca/",
