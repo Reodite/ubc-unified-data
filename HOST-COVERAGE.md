@@ -10,7 +10,7 @@ The preserved 500-host queue currently has these dispositions:
 | Disposition                                                | Hosts | Public documents |
 | ---------------------------------------------------------- | ----: | ---------------: |
 | Published complete collections                             |   245 |           45,427 |
-| Rejected during homepage review                            |    72 |                0 |
+| Rejected during host suitability review                    |    72 |                0 |
 | Reviewed as whole-host unavailable                         |    42 |                0 |
 | Historically blocked, still requiring case-specific review |   141 |                0 |
 
