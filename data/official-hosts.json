@@ -1514,6 +1514,32 @@
     "document_count": 644
   },
   {
+    "hostname": "mech.ubc.ca",
+    "title": "mech.ubc.ca",
+    "homepage_url": "https://mech.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:47:25.669Z",
+    "homepage_sha256": "620097ae32b19f7a07dab829f77af4702d880e272035eb7d03772d4bf39a2114",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/mech.ubc.ca",
+        "document_count": 1464
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/mech.ubc.ca",
+        "document_count": 57
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/mech.ubc.ca",
+        "document_count": 12
+      }
+    ],
+    "document_count": 1533
+  },
+  {
     "hostname": "med-fom-childspeech.sites.olt.ubc.ca",
     "title": "med-fom-childspeech.sites.olt.ubc.ca",
     "homepage_url": "https://med-fom-childspeech.sites.olt.ubc.ca/",
