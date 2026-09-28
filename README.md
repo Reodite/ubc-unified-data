@@ -69,8 +69,9 @@ opportunities, research, news and stories. Each host's `document_roots` lists
 its directories and counts. Saved first-classification policies drive later
 rescrapes without an LLM classifier. [HOST-DOCUMENTS.md](HOST-DOCUMENTS.md)
 describes their deterministic text format, admission checks and separate
-acquisition/replay/publication commands. No crawl queues, raw snapshots or
-partial host outputs are published.
+acquisition/replay/publication commands. [HOST-COVERAGE.md](HOST-COVERAGE.md)
+lists reviewed unavailable hostnames and reports the remaining queue limits.
+No crawl queues, raw snapshots or partial host outputs are published.
 
 See [PROSE.md](PROSE.md) for collection, schemas and limitations, and the
 [source guide](UNDERGRADUATE-SOURCES.md) for structured-data qualifications and
