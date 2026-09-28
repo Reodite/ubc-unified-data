@@ -307,6 +307,36 @@ describe("source-witnessed WordPress gallery attachments", () => {
     expect(kept.documents.map((document) => document.source_url)).toContain(`${origin}${photo.slice(1)}`);
   });
 
+  it("excludes Mechanical Engineering's observed image-only gallery permalinks", async () => {
+    const host = "mech.ubc.ca";
+    const origin = `https://${host}/`;
+    const article = "/2018/03/10/sailbot-and-mech-celebrate-adas-return-and-future-endeavors/";
+    const photo = `${article}img_9258/`;
+    const gallery = `<dt class="gallery-icon"><a href="${origin}${photo.slice(1)}"><img class="attachment-thumbnail size-thumbnail" src="${origin}files/2018/03/IMG_9258-150x150.jpg"></a></dt>`;
+    const articleBody = `<title>Sailbot and MECH Celebrate Ada's Return</title><main><p>Public mechanical engineering article.</p><dl>${gallery}</dl></main>`;
+    const f = fixture(`${page}<a href="${article}">Read article</a>`, "User-agent: *\n", host);
+    f.put(article, articleBody);
+    const result = await collectRecordedHost(f.scraper, f.archive, producer);
+    expect(result.documents.map((document) => document.source_url).sort()).toEqual([
+      origin,
+      `${origin}${article.slice(1)}`,
+    ]);
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(`${origin}${photo.slice(1)}`);
+
+    const seeded = fixture(`${page}<a href="${article}">Read article</a>`, "User-agent: *\n", host);
+    seeded.put(article, articleBody);
+    seeded.seed(photo);
+    await expect(collectRecordedHost(seeded.scraper, seeded.archive, producer)).rejects.toThrow(
+      "Gallery attachment conflicts with a required page",
+    );
+
+    const captioned = fixture(`${page}<a href="${article}">Read article</a>`, "User-agent: *\n", host);
+    captioned.put(article, articleBody.replace("</a>", "Read a photo essay</a>"));
+    captioned.put(photo, `<title>Gallery essay</title><main><p>Public engineering photo explanation.</p></main>`);
+    const kept = await collectRecordedHost(captioned.scraper, captioned.archive, producer);
+    expect(kept.documents.map((document) => document.source_url)).toContain(`${origin}${photo.slice(1)}`);
+  });
+
   it("does not follow media-only Southern Medical photo pagination", async () => {
     const host = "smp.med.ubc.ca";
     const origin = `https://${host}/`;

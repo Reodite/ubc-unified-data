@@ -97,7 +97,7 @@ function htmlLinks(
 
 function reviewedGalleryAttachments(observation: Observation, hostname: string): Set<string> {
   const links = new Set<string>();
-  if (hostname !== "rbsc.library.ubc.ca" && hostname !== "smp.med.ubc.ca") return links;
+  if (hostname !== "rbsc.library.ubc.ca" && hostname !== "smp.med.ubc.ca" && hostname !== "mech.ubc.ca") return links;
   const $ = load(observation.snapshot.body);
   const base = htmlBaseUrl(observation.snapshot.body, hostname, observation.snapshot.url, true);
   $("dt.gallery-icon > a[href]").each((_, node) => {
