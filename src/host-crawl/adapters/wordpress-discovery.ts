@@ -21,6 +21,17 @@ const NON_DOCUMENT_TYPES = new Set([
   "wpcf7_contact_form",
 ]);
 
+const RECURRING_EVENT_HOSTS = new Set([
+  "ischool.ubc.ca",
+  "mediastudies.arts.ubc.ca",
+  "migration.ubc.ca",
+  "music.ubc.ca",
+  "politics.ubc.ca",
+  "psych.ubc.ca",
+  "sppga.ubc.ca",
+  "theatrefilm.ubc.ca",
+]);
+
 export interface DiscoveredPage {
   url: string;
   modified: string | null;
@@ -198,9 +209,19 @@ export async function discoverWordpress(
     const items = hostUrl(cmsUrl(link(definition, "wp:items"), apiRoot.origin).href, scraper.hostname);
     if (routeIdentity(new URL(items)) !== routeIdentity(new URL(collection)))
       throw new Error("CMS type/route link mismatch");
+    const recurringEvents =
+      type === "event" &&
+      RECURRING_EVENT_HOSTS.has(scraper.hostname) &&
+      definition.name === "Events" &&
+      definition.slug === "event" &&
+      definition.has_archive === "events/event" &&
+      namespace === "wp/v2" &&
+      restBase === "events";
     let expectedTotal: number | undefined;
     let expectedPages: number | undefined;
+    let observedRows = 0;
     const ids = new Set<number>();
+    const recurrenceRows = new Map<number, string>();
     for (let page = 1; ; page++) {
       const observation = await read(wordpressCollectionUrl(collection, page));
       const records = json(observation);
@@ -215,10 +236,17 @@ export async function discoverWordpress(
       for (const raw of records) {
         const row = object(raw);
         const id = row.id;
-        if (typeof id !== "number" || !Number.isSafeInteger(id) || id <= 0 || ids.has(id))
+        if (typeof id !== "number" || !Number.isSafeInteger(id) || id <= 0)
           throw new Error("Invalid or duplicate CMS identity");
         if (row.status !== "publish" || row.type !== type) throw new Error("Unexpected CMS publication status/type");
+        observedRows++;
+        if (ids.has(id)) {
+          if (!recurringEvents || recurrenceRows.get(id) !== JSON.stringify(row))
+            throw new Error("Invalid or duplicate CMS identity");
+          continue;
+        }
         ids.add(id);
+        if (recurringEvents) recurrenceRows.set(id, JSON.stringify(row));
         if (
           scraper.hostname === "orthopaedics.med.ubc.ca" &&
           type === "post" &&
@@ -257,7 +285,8 @@ export async function discoverWordpress(
       if (page >= Math.max(1, pageCount)) break;
       if (records.length === 0) throw new Error("Premature empty CMS page");
     }
-    if (ids.size !== expectedTotal) throw new Error("CMS inventory did not exhaust its advertised total");
+    if ((recurringEvents ? observedRows : ids.size) !== expectedTotal)
+      throw new Error("CMS inventory did not exhaust its advertised total");
   }
   return pages;
 }

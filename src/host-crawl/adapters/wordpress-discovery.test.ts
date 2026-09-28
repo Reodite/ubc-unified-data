@@ -413,6 +413,94 @@ describe("reviewed IRES internal archive-block type", () => {
   );
 });
 
+describe("source-witnessed recurring UBC events", () => {
+  const host = "mediastudies.arts.ubc.ca";
+  const base = `https://${host}/`;
+  const api = `${base}wp-json/`;
+  const event = {
+    id: 18741,
+    link: `${base}events/event/bms-info-session-2026/`,
+    title: { rendered: "BMS Information Session" },
+    status: "publish",
+    type: "event",
+    modified_gmt: "2026-01-01T12:00:00",
+  };
+  const setup = (records: (typeof event)[] = [event, structuredClone(event)], advertisedTotal = records.length) => {
+    const homepage = observation(base, `<link rel="https://api.w.org/" href="${api}">`);
+    const routes = {
+      "/wp/v2/types": { methods: ["GET"], _links: { self: [{ href: `${api}wp/v2/types` }] } },
+      "/wp/v2/events": { methods: ["GET"], _links: { self: [{ href: `${api}wp/v2/events` }] } },
+    };
+    const types = {
+      event: {
+        name: "Events",
+        slug: "event",
+        has_archive: "events/event",
+        rest_namespace: "wp/v2",
+        rest_base: "events",
+        _links: { "wp:items": [{ href: `${api}wp/v2/events` }] },
+      },
+    };
+    const values = new Map<string, Observation>();
+    const put = (url: string, body: unknown, count = advertisedTotal) => {
+      const item = observation(url, body);
+      if (url.includes("?")) {
+        item.snapshot.headers["x-wp-total"] = String(count);
+        item.snapshot.headers["x-wp-totalpages"] = String(Math.ceil(count / 100));
+      }
+      values.set(url, item);
+    };
+    const scraper: HostScraper = {
+      hostname: host,
+      title: "Media Studies",
+      scope: "Public educational events",
+      adapter: { kind: "wordpress", allowedTypes: [], allPublicTypes: true, exactHostInventory: true },
+      vetHomepage: () => ({ accepted: true, reason: "Public homepage" }),
+      extract: () => ({ kind: "excluded", reason: "Discovery fixture" }),
+    };
+    const discover = () => {
+      put(api, { routes });
+      put(`${api}wp/v2/types`, types);
+      put(wordpressCollectionUrl(`${api}wp/v2/events`, 1), records);
+      return discoverWordpress(scraper, homepage, async (url) => {
+        const item = values.get(url);
+        if (!item) throw new Error(`Missing fixture ${url}`);
+        return item;
+      });
+    };
+    return { event, routes, types, scraper, discover };
+  };
+
+  it("counts both advertised recurrence rows but emits one physical event permalink", async () => {
+    const f = setup();
+    expect((await f.discover()).map((item) => item.url)).toEqual([event.link]);
+  });
+
+  it("still requires the complete advertised row count", async () => {
+    const f = setup([event, structuredClone(event)], 3);
+    await expect(f.discover()).rejects.toThrow("CMS inventory did not exhaust its advertised total");
+  });
+
+  it.each([
+    "changed link",
+    "changed title",
+    "changed modification",
+    "other host",
+    "wrong type metadata",
+    "wrong archive",
+  ])("refuses duplicate events without matching publisher identity: %s", async (change) => {
+    const rows = [structuredClone(event), structuredClone(event)];
+    const f = setup(rows);
+    if (change === "changed link") rows[1]!.link = `${base}events/event/another-session/`;
+    if (change === "changed title") rows[1]!.title.rendered = "Other event";
+    if (change === "changed modification") rows[1]!.modified_gmt = "2026-02-01T12:00:00";
+    if (change === "other host") f.scraper.hostname = "other.ubc.ca";
+    if (change === "wrong type metadata") f.types.event.name = "Articles";
+    if (change === "wrong archive") f.types.event.has_archive = "events/news";
+    await expect(f.discover()).rejects.toThrow();
+  });
+});
+
 describe("reviewed Korean Studies non-GET tour component", () => {
   const host = "korean.arts.ubc.ca";
   const base = `https://${host}/`;
