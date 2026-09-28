@@ -307,6 +307,34 @@ describe("source-witnessed WordPress gallery attachments", () => {
     expect(kept.documents.map((document) => document.source_url)).toContain(`${origin}${photo.slice(1)}`);
   });
 
+  it("excludes MSL image-only WordPress attachment links without hiding public essays", async () => {
+    const host = "www.msl.ubc.ca";
+    const origin = `https://${host}/`;
+    const photo = `${origin}article/photo/`;
+    const source = `<title>Laboratory research</title><main><p>Public molecular research report.</p><p><a rel="attachment wp-att-9437" href="${photo}"><img class="alignright wp-image-9437 size-full" src="${origin}wp-content/uploads/2022/07/Nobu-with-3-cakes.jpg"></a></p></main>`;
+    const f = fixture(`${page}<a href="/article/">Read article</a>`, "User-agent: *\n", host);
+    f.put("/article/", source);
+    const result = await collectRecordedHost(f.scraper, f.archive, producer);
+    expect(result.documents.map((document) => document.source_url).sort()).toEqual([origin, `${origin}article/`]);
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(photo);
+
+    const seeded = fixture(`${page}<a href="/article/">Read article</a>`, "User-agent: *\n", host);
+    seeded.put("/article/", source);
+    seeded.seed("/article/photo/");
+    await expect(collectRecordedHost(seeded.scraper, seeded.archive, producer)).rejects.toThrow(
+      "Gallery attachment conflicts with a required page",
+    );
+
+    const captioned = fixture(`${page}<a href="/article/">Read article</a>`, "User-agent: *\n", host);
+    captioned.put("/article/", source.replace("</a>", "Read public photo essay</a>"));
+    captioned.put(
+      "/article/photo/",
+      `<title>Public photo essay</title><main><p>Research image explanation.</p></main>`,
+    );
+    const kept = await collectRecordedHost(captioned.scraper, captioned.archive, producer);
+    expect(kept.documents.map((document) => document.source_url)).toContain(photo);
+  });
+
   it("excludes Mechanical Engineering's observed image-only gallery permalinks", async () => {
     const host = "mech.ubc.ca";
     const origin = `https://${host}/`;
@@ -372,6 +400,41 @@ describe("source-witnessed WordPress gallery attachments", () => {
     f.put("/article/photo/", page);
     const result = await collectRecordedHost(f.scraper, f.archive, producer);
     expect(result.documents.map((document) => document.source_url).sort()).toEqual([home, target]);
+  });
+});
+
+describe("MSL calendar-view controls", () => {
+  const host = "www.msl.ubc.ca";
+  const origin = `https://${host}/`;
+  const month = `${origin}events-calendar/month/`;
+  const html = `${page}<div class="wrap-nav-elements"><a class="nav-element nav-icon calendar-icon" href="${month}"></a></div><a href="/event/public-seminar/">Public seminar</a>`;
+
+  it("preserves event articles while excluding witnessed view controls", async () => {
+    const f = fixture(html, "User-agent: *\n", host);
+    f.put("/event/public-seminar/", `<title>Public seminar</title><main><p>Research seminar description.</p></main>`);
+    const result = await collectRecordedHost(f.scraper, f.archive, producer);
+    expect(result.documents.map((document) => document.source_url).sort()).toEqual([
+      origin,
+      `${origin}event/public-seminar/`,
+    ]);
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(month);
+  });
+
+  it("does not reactivate a source-witnessed view control from the old frontier", async () => {
+    const f = fixture(html, "User-agent: *\n", host);
+    f.seed("/events-calendar/month/");
+    f.put("/event/public-seminar/", `<title>Public seminar</title><main><p>Research seminar description.</p></main>`);
+    const result = await collectRecordedHost(f.scraper, f.archive, producer);
+    expect(result.documents.map((document) => document.source_url)).not.toContain(month);
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(month);
+  });
+
+  it("refuses to hide a publisher-advertised calendar page", async () => {
+    const f = fixture(html, `User-agent: *\nSitemap: ${origin}sitemap.xml\n`, host);
+    f.put("/sitemap.xml", urlset(month));
+    await expect(collectRecordedHost(f.scraper, f.archive, producer)).rejects.toThrow(
+      "Non-document discovery conflicts with a required page",
+    );
   });
 });
 

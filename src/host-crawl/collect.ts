@@ -33,6 +33,7 @@ import {
   markdownSources,
   type MarkdownSourceDeclaration,
 } from "./markdown-source-policy.ts";
+import { discoverReviewedMslUnavailableLinks } from "./msl-unavailable-citations.ts";
 import { parseSitemap } from "./sitemap.ts";
 import { discoverReviewedUnavailableLinks } from "./unavailable-link-policy.ts";
 import { hostUrl, inventoryUrl, nonDocumentInventoryUrl, pageExclusion, UNSUPPORTED_DOCUMENT } from "./urls.ts";
@@ -97,6 +98,47 @@ function htmlLinks(
 
 function reviewedGalleryAttachments(observation: Observation, hostname: string): Set<string> {
   const links = new Set<string>();
+  if (hostname === "www.msl.ubc.ca") {
+    if (
+      observation.snapshot.requested_url !== observation.snapshot.url ||
+      !observation.snapshot.body.includes("wp-att-")
+    )
+      return links;
+    const source = new URL(observation.snapshot.url);
+    if (source.search || source.hash) return links;
+    const $ = load(observation.snapshot.body);
+    $("a[href][rel*='wp-att-']").each((_, node) => {
+      const anchor = $(node);
+      const match = (anchor.attr("rel") ?? "").trim().match(/^attachment wp-att-([1-9]\d*)$/);
+      const image = anchor.children("img");
+      if (
+        !match ||
+        image.length !== 1 ||
+        anchor.children().length !== 1 ||
+        anchor.text().trim() ||
+        !image.attr("class")?.split(/\s+/).includes(`wp-image-${match[1]}`)
+      )
+        return;
+      try {
+        const photo = new URL(image.attr("src")!, source);
+        const raw = new URL(anchor.attr("href")!, source).href;
+        const target = inventoryUrl(raw, hostname);
+        if (
+          photo.origin === `https://${hostname}` &&
+          photo.pathname.startsWith("/wp-content/uploads/") &&
+          target === raw &&
+          !new URL(target).search &&
+          !new URL(target).hash &&
+          new URL(target).pathname.startsWith(source.pathname) &&
+          target !== observation.snapshot.url
+        )
+          links.add(target);
+      } catch {
+        return;
+      }
+    });
+    return links;
+  }
   if (hostname !== "rbsc.library.ubc.ca" && hostname !== "smp.med.ubc.ca" && hostname !== "mech.ubc.ca") return links;
   const $ = load(observation.snapshot.body);
   const base = htmlBaseUrl(observation.snapshot.body, hostname, observation.snapshot.url, true);
@@ -491,7 +533,22 @@ export async function collectRecordedHost(
   };
   const observedPageLinks = (observation: Observation) => {
     if (exactHost) {
-      for (const url of discoverReviewedUnavailableLinks(observation, hostname)) nonDocuments.add(url);
+      for (const url of [
+        ...discoverReviewedUnavailableLinks(observation, hostname),
+        ...discoverReviewedMslUnavailableLinks(observation, hostname),
+      ]) {
+        if (
+          advertisedPages.has(url) ||
+          viewBases.has(url) ||
+          homepageIdentities.has(url) ||
+          frozenSeedUrls.has(url) ||
+          retainedSources.has(url) ||
+          emittedIdentities.has(url) ||
+          isPdfUrl(url)
+        )
+          throw new Error(`Reviewed unavailable citation conflicts with a required page: ${url}`);
+        nonDocuments.add(url);
+      }
       for (const url of reviewedGalleryAttachments(observation, hostname)) {
         if (
           advertisedPages.has(url) ||
