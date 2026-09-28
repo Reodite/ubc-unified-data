@@ -5206,6 +5206,42 @@
     "document_count": 175
   },
   {
+    "hostname": "www.msl.ubc.ca",
+    "title": "www.msl.ubc.ca",
+    "homepage_url": "https://www.msl.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:17:05.480Z",
+    "homepage_sha256": "bda90cf5719b7fac1086b4c4eac3ac73835cee5edea354d839f85f4cdcb32a70",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/www.msl.ubc.ca",
+        "document_count": 31
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/www.msl.ubc.ca",
+        "document_count": 342
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/www.msl.ubc.ca",
+        "document_count": 1215
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/www.msl.ubc.ca",
+        "document_count": 140
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/www.msl.ubc.ca",
+        "document_count": 22
+      }
+    ],
+    "document_count": 1750
+  },
+  {
     "hostname": "www.pda.ubc.ca",
     "title": "www.pda.ubc.ca",
     "homepage_url": "https://www.pda.ubc.ca/",

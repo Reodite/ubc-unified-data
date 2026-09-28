@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "hostname": "www.msl.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "Owner requests maximum complete public article coverage; classify saved Michael Smith Laboratories homepage and retain exact WordPress inventory under the original exact-host and robots limits.",
+    "rationale": "Michael Smith Laboratories describes biotechnology research, educational outreach, facilities, people and public research news.",
+    "evidence": [
+      "Retained homepage bda90cf5719b7fac1086b4c4eac3ac73835cee5edea354d839f85f4cdcb32a70 has title Welcome | Michael Smith Laboratories: Where biotechnology research and educational outreach converge to inspire creative ideas for a better world.",
+      "Retained homepage H1 is BIOTECHNOLOGY RESEARCH CULTIVATING A BETTER WORLD PROVIDING THE FOUNDATION.",
+      "Its navigation lists Research, Research Clusters, Research Facilities, People, News, Graduate Programs, Outreach and Events.",
+      "Official Michael Smith Laboratories homepage explains interdisciplinary biotechnology research and educational outreach."
+    ]
+  },
+  "rules": [
+    {
+      "id": "msl-newsroom",
+      "category": "news",
+      "rationale": "Explicit newsroom, news releases and news taxonomy paths list current institutional research reports.",
+      "path_pattern": "^/(?:news|category/(?:newsroom|news-releases|awards-and-recognition))(?:/|$)"
+    },
+    {
+      "id": "msl-research",
+      "category": "research",
+      "rationale": "Explicit research and research-area paths document active biotechnology topics.",
+      "path_pattern": "^/(?:research|people-research-area)(?:/|$)"
+    },
+    {
+      "id": "msl-event",
+      "category": "opportunities",
+      "rationale": "Explicit event and workshop pages invite participation.",
+      "path_pattern": "^/(?:event|series|events-calendar|careers)(?:/|$)"
+    },
+    {
+      "id": "msl-services",
+      "category": "support",
+      "rationale": "Public booking and facility pages describe practical services.",
+      "path_pattern": "^/(?:room|booking-form|research-facilities|book-a-room|contact-us)(?:/|$)"
+    },
+    {
+      "id": "msl-people",
+      "category": "stories",
+      "rationale": "People and historical timelines describe individual researchers and milestones.",
+      "path_pattern": "^/(?:people|timeline)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "msl-biotechnology",
+    "category": "research",
+    "rationale": "The institute chiefly publishes biotechnology research and educational outreach context."
+  }
+}
