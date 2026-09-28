@@ -460,8 +460,11 @@ export async function collectRecordedHost(
   };
   if (scraper.adapter.kind === "html") await verifyHtmlDiscovery(scraper, read);
   else if (scraper.adapter.kind !== "wordpress") throw new Error("Unsupported registered discovery adapter");
+  const reviewedCmsNonDocuments = new Set<string>();
   const discovered =
-    scraper.adapter.kind === "wordpress" ? await discoverWordpress(scraper, archive.homepage, read) : [];
+    scraper.adapter.kind === "wordpress"
+      ? await discoverWordpress(scraper, archive.homepage, read, reviewedCmsNonDocuments)
+      : [];
   const sitemaps = [...robots.getSitemaps(), ...(scraper.adapter.sitemaps ?? []).map((entry) => entry.path)]
     .map((url) => (exactHost ? inventoryUrl(url, hostname) : hostUrl(url, hostname)))
     .filter((url): url is string => url !== null);
@@ -497,6 +500,24 @@ export async function collectRecordedHost(
   ]);
   const viewBases = new Set((scraper.adapter.views ?? []).map((view) => hostUrl(view.path, hostname)));
   const retainedSources = new Set(archive.retained.map((document) => document.source_url));
+  const reviewedCmsConflicts = new Set([
+    ...homepageIdentities,
+    ...cmsPages,
+    ...seedPages,
+    ...requiredViews,
+    ...requiredQueries,
+    ...markdownTargets,
+    ...retainedSources,
+    ...archive.urls.map((row) => row.url),
+  ]);
+  if ([...reviewedCmsNonDocuments].some((url) => reviewedCmsConflicts.has(url)))
+    throw new Error("Reviewed organizer identity conflicts with a required page");
+  for (const url of reviewedCmsNonDocuments) {
+    const witnessed = await read(url);
+    if (witnessed.snapshot.status !== 404 || witnessed.snapshot.url !== url || witnessed.snapshot.requested_url !== url)
+      throw new Error("Reviewed organizer root lacks its public 404 witness");
+    nonDocuments.add(url);
+  }
   const requiredAttachmentConflicts = new Set([
     ...homepageIdentities,
     ...cmsPages,

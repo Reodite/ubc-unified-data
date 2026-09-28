@@ -32,6 +32,15 @@ const RECURRING_EVENT_HOSTS = new Set([
   "theatrefilm.ubc.ca",
 ]);
 
+const ADVANCING_HEALTH_ORGANIZER_ROOT = "https://www.advancinghealth.ubc.ca/organizer/";
+const ADVANCING_HEALTH_ORGANIZER_ROOT_RECORDS = new Map([
+  [11041, ["VCH Research Institute", "2023-10-12T17:36:12Z"]],
+  [13325, ["Clinical Trials BC", "2025-06-05T22:37:45Z"]],
+  [13956, ["Providence Health", "2025-09-29T22:01:55Z"]],
+  [14109, ["Clinical Trials British Columbia", "2026-01-13T18:11:12Z"]],
+  [14140, ["UBC Centre for Health Services and Policy Research (CHSPR)", "2026-02-03T23:14:14Z"]],
+]);
+
 export interface DiscoveredPage {
   url: string;
   modified: string | null;
@@ -131,6 +140,7 @@ export async function discoverWordpress(
   scraper: HostScraper,
   homepage: Observation,
   read: (url: string) => Promise<Observation>,
+  reviewedNonDocuments = new Set<string>(),
 ): Promise<DiscoveredPage[]> {
   const roots = [
     ...new Set(
@@ -209,6 +219,17 @@ export async function discoverWordpress(
     const items = hostUrl(cmsUrl(link(definition, "wp:items"), apiRoot.origin).href, scraper.hostname);
     if (routeIdentity(new URL(items)) !== routeIdentity(new URL(collection)))
       throw new Error("CMS type/route link mismatch");
+    const reviewedOrganizer = scraper.hostname === "www.advancinghealth.ubc.ca" && type === "tribe_organizer";
+    if (
+      reviewedOrganizer &&
+      (definition.name !== "Organizers" ||
+        definition.slug !== type ||
+        definition.has_archive !== false ||
+        namespace !== "wp/v2" ||
+        restBase !== type ||
+        collection !== `https://${scraper.hostname}/wp-json/wp/v2/${type}`)
+    )
+      throw new Error("Reviewed organizer type changed");
     const recurringEvents =
       type === "event" &&
       RECURRING_EVENT_HOSTS.has(scraper.hostname) &&
@@ -222,6 +243,7 @@ export async function discoverWordpress(
     let observedRows = 0;
     const ids = new Set<number>();
     const recurrenceRows = new Map<number, string>();
+    const reviewedOrganizerIds = new Set<number>();
     for (let page = 1; ; page++) {
       const observation = await read(wordpressCollectionUrl(collection, page));
       const records = json(observation);
@@ -233,6 +255,8 @@ export async function discoverWordpress(
       expectedPages ??= pageCount;
       if (count !== expectedTotal || pageCount !== expectedPages)
         throw new Error("CMS totals changed during discovery");
+      if (reviewedOrganizer && (count !== 12 || pageCount !== 1 || records.length !== 12))
+        throw new Error("Reviewed organizer inventory changed");
       for (const raw of records) {
         const row = object(raw);
         const id = row.id;
@@ -262,6 +286,21 @@ export async function discoverWordpress(
           ? inventoryUrl(string(row.link), scraper.hostname)
           : hostUrl(string(row.link), scraper.hostname);
         if (!url) continue;
+        if (reviewedOrganizer) {
+          const expected = ADVANCING_HEALTH_ORGANIZER_ROOT_RECORDS.get(id);
+          if (url === ADVANCING_HEALTH_ORGANIZER_ROOT || expected) {
+            if (
+              url !== ADVANCING_HEALTH_ORGANIZER_ROOT ||
+              !expected ||
+              object(row.title).rendered !== expected[0] ||
+              sourceModified !== expected[1]
+            )
+              throw new Error("Reviewed organizer identity changed");
+            reviewedOrganizerIds.add(id);
+            reviewedNonDocuments.add(url);
+            continue;
+          }
+        }
         if (
           scraper.hostname === "orthopaedics.med.ubc.ca" &&
           type === "page" &&
@@ -287,6 +326,8 @@ export async function discoverWordpress(
     }
     if ((recurringEvents ? observedRows : ids.size) !== expectedTotal)
       throw new Error("CMS inventory did not exhaust its advertised total");
+    if (reviewedOrganizer && reviewedOrganizerIds.size !== ADVANCING_HEALTH_ORGANIZER_ROOT_RECORDS.size)
+      throw new Error("Reviewed organizer inventory changed");
   }
   return pages;
 }

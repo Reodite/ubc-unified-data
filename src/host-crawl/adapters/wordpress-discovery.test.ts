@@ -413,6 +413,114 @@ describe("reviewed IRES internal archive-block type", () => {
   );
 });
 
+describe("reviewed Advancing Health organizer identities", () => {
+  const host = "www.advancinghealth.ubc.ca";
+  const ids = [10702, 11041, 13325, 13329, 13956, 13975, 13980, 14109, 14140, 14176, 14250, 14279];
+  const broken = new Map([
+    [11041, ["VCH Research Institute", "2023-10-12T17:36:12"]],
+    [13325, ["Clinical Trials BC", "2025-06-05T22:37:45"]],
+    [13956, ["Providence Health", "2025-09-29T22:01:55"]],
+    [14109, ["Clinical Trials British Columbia", "2026-01-13T18:11:12"]],
+    [14140, ["UBC Centre for Health Services and Policy Research (CHSPR)", "2026-02-03T23:14:14"]],
+  ]);
+  const setup = (hostname = host) => {
+    const origin = `https://${hostname}`;
+    const api = `${origin}/wp-json/`;
+    const collection = `${api}wp/v2/tribe_organizer`;
+    const homepage = observation(`${origin}/`, `<link rel="https://api.w.org/" href="${api}">`);
+    const records = ids.map((id) => ({
+      id,
+      link: broken.has(id) ? `${origin}/organizer/` : `${origin}/organizer/organization-${id}/`,
+      title: { rendered: broken.get(id)?.[0] ?? `Organization ${id}` },
+      modified_gmt: broken.get(id)?.[1] ?? "2026-01-01T12:00:00",
+      status: "publish",
+      type: "tribe_organizer",
+    }));
+    const types = {
+      tribe_organizer: {
+        name: "Organizers",
+        slug: "tribe_organizer",
+        has_archive: false,
+        rest_namespace: "wp/v2",
+        rest_base: "tribe_organizer",
+        _links: { "wp:items": [{ href: collection }] },
+      },
+    };
+    const values = new Map<string, Observation>([
+      [
+        api,
+        observation(api, {
+          routes: {
+            "/wp/v2/types": { methods: ["GET"], _links: { self: [{ href: `${api}wp/v2/types` }] } },
+            "/wp/v2/tribe_organizer": { methods: ["GET"], _links: { self: [{ href: collection }] } },
+          },
+        }),
+      ],
+      [`${api}wp/v2/types`, observation(`${api}wp/v2/types`, types)],
+    ]);
+    const page = observation(wordpressCollectionUrl(collection, 1), records);
+    page.snapshot.headers["x-wp-total"] = "12";
+    page.snapshot.headers["x-wp-totalpages"] = "1";
+    values.set(page.snapshot.url, page);
+    const scraper: HostScraper = {
+      hostname,
+      title: "Health research",
+      scope: "Public health research",
+      adapter: { kind: "wordpress", allowedTypes: [], allPublicTypes: true, exactHostInventory: true },
+      vetHomepage: () => ({ accepted: true, reason: "Public research" }),
+      extract: () => ({ kind: "excluded", reason: "Discovery fixture" }),
+    };
+    const excluded = new Set<string>();
+    const discover = () =>
+      discoverWordpress(
+        scraper,
+        homepage,
+        async (url) => {
+          const item = values.get(url);
+          if (!item) throw new Error(`Missing fixture ${url}`);
+          return item;
+        },
+        excluded,
+      );
+    return { records, types, typeObservation: values.get(`${api}wp/v2/types`)!, page, excluded, discover, origin };
+  };
+
+  it("counts all twelve publisher records and keeps seven independent organizer pages", async () => {
+    const f = setup();
+    const pages = await f.discover();
+    expect(pages).toHaveLength(7);
+    expect(pages.map(({ id }) => id)).toEqual(ids.filter((id) => !broken.has(id)));
+    expect(f.excluded).toEqual(new Set([`${f.origin}/organizer/`]));
+  });
+
+  it.each(["changed name", "changed date", "changed identity", "new root identity", "changed type", "changed total"])(
+    "refuses an unreviewed organizer inventory: %s",
+    async (change) => {
+      const f = setup();
+      const record = f.records.find(({ id }) => id === 11041)!;
+      if (change === "changed name") record.title.rendered = "Different organization";
+      if (change === "changed date") record.modified_gmt = "2026-01-01T12:00:00";
+      if (change === "changed identity") record.link = `${f.origin}/organizer/new-location/`;
+      if (change === "new root identity") f.records[0]!.link = `${f.origin}/organizer/`;
+      if (change === "changed type") {
+        f.types.tribe_organizer.has_archive = true;
+        f.typeObservation.snapshot.body = JSON.stringify(f.types);
+      }
+      if (change === "changed total") f.page.snapshot.headers["x-wp-total"] = "13";
+      f.page.snapshot.body = JSON.stringify(f.records);
+      await expect(f.discover()).rejects.toThrow();
+    },
+  );
+
+  it("does not exclude similarly shaped links on another host", async () => {
+    const f = setup("lsi.ubc.ca");
+    const pages = await f.discover();
+    expect(pages).toHaveLength(12);
+    expect(pages.filter(({ url }) => url === `${f.origin}/organizer/`)).toHaveLength(5);
+    expect(f.excluded.size).toBe(0);
+  });
+});
+
 describe("source-witnessed recurring UBC events", () => {
   const host = "mediastudies.arts.ubc.ca";
   const base = `https://${host}/`;
