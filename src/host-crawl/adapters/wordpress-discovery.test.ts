@@ -413,6 +413,84 @@ describe("reviewed IRES internal archive-block type", () => {
   );
 });
 
+describe("reviewed Korean Studies non-GET tour component", () => {
+  const host = "korean.arts.ubc.ca";
+  const base = `https://${host}/`;
+  const api = `${base}wp-json/`;
+  const setup = () => {
+    const homepage = observation(base, `<link rel="https://api.w.org/" href="${api}">`);
+    const values = new Map<string, Observation>();
+    const routes = {
+      "/wp/v2/types": { methods: ["GET"], _links: { self: [{ href: `${api}wp/v2/types` }] } },
+      "/wp/v2/posts": { methods: ["GET"], _links: { self: [{ href: `${api}wp/v2/posts` }] } },
+    };
+    const types = {
+      post: {
+        rest_namespace: "wp/v2",
+        rest_base: "posts",
+        _links: { "wp:items": [{ href: `${api}wp/v2/posts` }] },
+      },
+      ubcvrpress: {
+        name: "Tours",
+        slug: "ubcvrpress",
+        has_archive: false,
+        rest_namespace: "wp/v2",
+        rest_base: "ubcvrpress",
+        _links: { "wp:items": [{ href: `${api}wp/v2/ubcvrpress` }] },
+      },
+    };
+    const posts = observation(wordpressCollectionUrl(`${api}wp/v2/posts`, 1), [
+      { id: 42, link: `${base}public-article/`, status: "publish", type: "post", modified_gmt: "2024-12-01T00:00:00" },
+    ]);
+    posts.snapshot.headers["x-wp-total"] = "1";
+    posts.snapshot.headers["x-wp-totalpages"] = "1";
+    values.set(posts.snapshot.url, posts);
+    const scraper: HostScraper = {
+      hostname: host,
+      title: "Korean Studies",
+      scope: "Public Korean Studies articles",
+      adapter: { kind: "wordpress", allowedTypes: [], allPublicTypes: true, exactHostInventory: true },
+      vetHomepage: () => ({ accepted: true, reason: "Public homepage" }),
+      extract: () => ({ kind: "excluded", reason: "Discovery fixture" }),
+    };
+    const discover = () => {
+      values.set(api, observation(api, { routes }));
+      values.set(`${api}wp/v2/types`, observation(`${api}wp/v2/types`, types));
+      return discoverWordpress(scraper, homepage, async (url) => {
+        const value = values.get(url);
+        if (!value) throw new Error(`Missing fixture ${url}`);
+        return value;
+      });
+    };
+    return { routes, types, scraper, discover };
+  };
+
+  it("keeps public posts but does not request an unadvertised GET tour component", async () => {
+    const f = setup();
+    expect((await f.discover()).map((item) => item.url)).toEqual([`${base}public-article/`]);
+  });
+
+  it.each(["name", "slug", "archive", "namespace", "base", "item", "route", "hostname"])(
+    "does not hide changed or public Korean tour metadata: %s",
+    async (change) => {
+      const f = setup();
+      const tour = f.types.ubcvrpress;
+      if (change === "name") tour.name = "Research articles";
+      if (change === "slug") tour.slug = "other";
+      if (change === "archive") tour.has_archive = true;
+      if (change === "namespace") tour.rest_namespace = "custom/v1";
+      if (change === "base") tour.rest_base = "public-tours";
+      if (change === "item") tour._links["wp:items"][0]!.href = `${api}wp/v2/other`;
+      if (change === "route")
+        Object.assign(f.routes, {
+          "/wp/v2/ubcvrpress": { methods: ["GET"], _links: { self: [{ href: `${api}wp/v2/ubcvrpress` }] } },
+        });
+      if (change === "hostname") f.scraper.hostname = "other.ubc.ca";
+      await expect(f.discover()).rejects.toThrow();
+    },
+  );
+});
+
 describe("reviewed Orthopaedics homepage inventory anomaly", () => {
   const host = "orthopaedics.med.ubc.ca";
   const base = `https://${host}/`;

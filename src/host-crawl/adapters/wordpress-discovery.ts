@@ -152,28 +152,33 @@ export async function discoverWordpress(
     return href;
   };
   const types = object(json(await read(routeUrl("/wp/v2/types"))));
-  const reviewedIresHelper = (key: string) => {
-    if (scraper.hostname !== "ires.ubc.ca" || key !== "wpa-helper" || Object.hasOwn(routes, "/wp/v2/wpa-helper"))
-      return false;
+  const reviewedNonDocumentType = (key: string) => {
+    const label =
+      scraper.hostname === "ires.ubc.ca" && key === "wpa-helper"
+        ? "WordPress Archives Blocks"
+        : scraper.hostname === "korean.arts.ubc.ca" && key === "ubcvrpress"
+          ? "Tours"
+          : null;
+    if (!label || Object.hasOwn(routes, `/wp/v2/${key}`)) return false;
     const item = object(types[key]);
     return (
-      item.name === "WordPress Archives Blocks" &&
-      item.slug === "wpa-helper" &&
+      item.name === label &&
+      item.slug === key &&
       item.has_archive === false &&
       item.rest_namespace === "wp/v2" &&
-      item.rest_base === "wpa-helper" &&
-      link(item, "wp:items") === `https://${scraper.hostname}/wp-json/wp/v2/wpa-helper`
+      item.rest_base === key &&
+      link(item, "wp:items") === `https://${scraper.hostname}/wp-json/wp/v2/${key}`
     );
   };
   const allowed = new Set(
     scraper.adapter.allPublicTypes
-      ? Object.keys(types).filter((key) => !NON_DOCUMENT_TYPES.has(key) && !reviewedIresHelper(key))
+      ? Object.keys(types).filter((key) => !NON_DOCUMENT_TYPES.has(key) && !reviewedNonDocumentType(key))
       : scraper.adapter.allowedTypes,
   );
   if (!allowed.size || (!scraper.adapter.allPublicTypes && allowed.size !== scraper.adapter.allowedTypes.length))
     throw new Error("Invalid declared CMS types");
   for (const key of Object.keys(types))
-    if (!allowed.has(key) && !NON_DOCUMENT_TYPES.has(key) && !reviewedIresHelper(key))
+    if (!allowed.has(key) && !NON_DOCUMENT_TYPES.has(key) && !reviewedNonDocumentType(key))
       throw new Error(`Unreviewed public CMS type: ${key}`);
   const pages: DiscoveredPage[] = [];
   let corroboratedOrthopaedicsHomepage = false;
