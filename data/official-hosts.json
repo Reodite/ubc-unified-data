@@ -3611,27 +3611,6 @@
     "document_count": 9
   },
   {
-    "hostname": "www.saravyc.ubc.ca",
-    "title": "www.saravyc.ubc.ca",
-    "homepage_url": "https://www.saravyc.ubc.ca/",
-    "homepage_retrieved_at": "2026-09-18T14:22:13.240Z",
-    "homepage_sha256": "4febe78d3a7312eef6a08a64485c05ee5546025388134ff52fbda0fa1ad6fecb",
-    "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_roots": [
-      {
-        "category": "research",
-        "path": "data/documents/research/www.saravyc.ubc.ca",
-        "document_count": 574
-      },
-      {
-        "category": "support",
-        "path": "data/documents/support/www.saravyc.ubc.ca",
-        "document_count": 10
-      }
-    ],
-    "document_count": 584
-  },
-  {
     "hostname": "www.technicalguidelines.ubc.ca",
     "title": "www.technicalguidelines.ubc.ca",
     "homepage_url": "https://www.technicalguidelines.ubc.ca/",
