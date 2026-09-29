@@ -2110,27 +2110,6 @@
     "document_count": 427
   },
   {
-    "hostname": "nursing.ok.ubc.ca",
-    "title": "nursing.ok.ubc.ca",
-    "homepage_url": "https://nursing.ok.ubc.ca/",
-    "homepage_retrieved_at": "2026-09-18T12:10:39.141Z",
-    "homepage_sha256": "bd62169cf911a2f9975945d6c497a774b97d2ed8a53af5cf8df75752d84ec56f",
-    "scope": "Useful public article-style HTML prose on this exact hostname.",
-    "document_roots": [
-      {
-        "category": "academics",
-        "path": "data/documents/academics/nursing.ok.ubc.ca",
-        "document_count": 435
-      },
-      {
-        "category": "research",
-        "path": "data/documents/research/nursing.ok.ubc.ca",
-        "document_count": 20
-      }
-    ],
-    "document_count": 455
-  },
-  {
     "hostname": "nvd.ubc.ca",
     "title": "nvd.ubc.ca",
     "homepage_url": "https://nvd.ubc.ca/",
