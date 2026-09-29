@@ -36,8 +36,14 @@ jobs:
       - name: Tests
         run: npm test -- --no-file-parallelism --maxWorkers=1
 
-      - name: Validate host documents
-        run: npm run validate:hosts
+      - name: Validate categorized host documents
+        run: npm run validate:hosts -- --require-categories
+
+      - name: Validate prose documents
+        run: npm run validate:prose
+
+      - name: Validate undergraduate facts
+        run: npm run validate:undergrad
 
       - name: Lint
         run: npm run lint
