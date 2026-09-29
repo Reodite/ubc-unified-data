@@ -9,10 +9,10 @@ The preserved 500-host queue currently has these dispositions:
 
 | Disposition                                                | Hosts | Public documents |
 | ---------------------------------------------------------- | ----: | ---------------: |
-| Published complete collections                             |   246 |           45,507 |
+| Published complete collections                             |   247 |           46,224 |
 | Rejected during host suitability review                    |    72 |                0 |
 | Reviewed as whole-host unavailable                         |    42 |                0 |
-| Historically blocked, still requiring case-specific review |   140 |                0 |
+| Historically blocked, still requiring case-specific review |   139 |                0 |
 
 The counts use the latest host-specific successor row, including the explicit
 migrated-queue tie precedence. A blocked row remains in its original queue when
@@ -80,7 +80,7 @@ does not authorize collecting its destination under the old name.
 
 ## Remaining limits
 
-The other 140 blocked identities are not counted as scraped or whole-host
+The other 139 blocked identities are not counted as scraped or whole-host
 unavailable. They include required pages returning HTTP 403, 404 or 500; saved
 publisher inventories whose totals changed during pagination; robots-restricted
 paths; private-login destinations; unresolved DNS/TLS failures; and bounded
