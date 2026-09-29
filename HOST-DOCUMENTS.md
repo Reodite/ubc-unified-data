@@ -325,17 +325,34 @@ corrupt recovery artifacts fail closed and remain available for diagnosis.
 The throughput path does not run exhaustive manual review or broad test suites
 per hostname. Shared-code changes receive focused tests and static checks once.
 Each host receives automated empty, duplicate, off-host, serialization and byte
-limit checks, plus one quick content sample. No manual visual or exhaustive
-source-fidelity review is implied. Full validators remain available for explicit
-audits outside this fast path.
+limit checks, plus one quick content sample. Collection and publication also
+reject known full-body scaffolding, placeholder, failed-rendering and access-denial
+messages. They do not rewrite those bodies or silently discard a required page.
+Exact empty archive exclusions need retained HTML role and message witnesses;
+conflicting inventory or required-document roles still block the host. Short
+useful answers and prose explaining a quoted example remain valid.
+
+`npm run validate:hosts -- --require-categories` applies the same article-quality
+gate to the full public corpus. Historical byte parsers remain separate so old
+outputs can be inspected and withdrawn without changing their evidence. No manual
+visual or exhaustive source-fidelity review is implied. See
+[HOST-COVERAGE.md](HOST-COVERAGE.md) for current inclusion and withdrawal decisions.
 
 Collection runs concurrently from a frozen source copy. Producer fingerprints
 identify that private batch copy, not later changes to the public dispatch list.
-An outer repository/Git lock serializes installation, staging, the commit and
-its ordinary feature-only push. Incremental publication checks the new host and
-index without re-reading every older document body; the Git boundary refuses
-other-host data changes. External receipts retain commit/push uncertainty so a
-restart does not create a duplicate hostname commit.
+An outer lock keyed by the physical Git common directory serializes installation,
+staging, the commit and its ordinary feature-only push across batches. Contention
+fails immediately rather than blocking an awaiting in-process owner. The durable
+fence binds the repository, originating batch, hostname and claim token; another
+batch cannot take over an unfinished publication. Cooperating publishers must
+use the same external root and current locking protocol. Older frozen producers
+must not run concurrently with current publishers.
+
+Incremental publication checks the new host and index without re-reading every
+older document body. The Git boundary validates an immutable tree, refuses
+other-host changes and verifies the committed tree and parent before push.
+External receipts retain commit/push uncertainty so a restart does not create a
+duplicate hostname commit.
 
 One substantive commit contains one complete hostname: its generic declaration
 (or existing specialized module), saved routing policy, final host-list entry,
