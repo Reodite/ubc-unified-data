@@ -51,6 +51,61 @@ export const HOST_REJECTIONS = {
     authority: "5cc613fe-c4e8-48ab-8c1c-cde6d90f5a5a",
     evidence: "https://irsslab.forestry.ubc.ca/",
   },
+  "it.ok.ubc.ca": {
+    reason: "Retained homepage offers IT support specifically at UBCO",
+    authority: "Retained-content review under the owner exclusion of Okanagan-only hosts",
+    evidence: "https://it.ok.ubc.ca/",
+  },
+  "library.ok.ubc.ca": {
+    reason: "Retained homepage and service descriptions establish an Okanagan Library audience",
+    authority: "Retained-content review under the owner exclusion of Okanagan-only hosts",
+    evidence: "https://library.ok.ubc.ca/",
+  },
+  "lilab.ok.ubc.ca": {
+    reason: "Retained lab introduction establishes its Okanagan-only institutional scope",
+    authority: "Retained-content review under the owner exclusion of Okanagan-only hosts",
+    evidence: "https://lilab.ok.ubc.ca/",
+  },
+  "nursing.ok.ubc.ca": {
+    reason: "Retained homepage identifies the School of Nursing at UBC's Okanagan campus",
+    authority: "Retained-content review under the owner exclusion of Okanagan-only hosts",
+    evidence: "https://nursing.ok.ubc.ca/",
+  },
+  "ok.ubc.ca": {
+    reason: "Retained homepage describes Okanagan campus programs and services",
+    authority: "Retained-content review under the owner exclusion of Okanagan-only hosts",
+    evidence: "https://ok.ubc.ca/",
+  },
+  "ors.ok.ubc.ca": {
+    reason: "Retained research services homepage limits its mandate to research funds at UBC Okanagan",
+    authority: "Retained-content review under the owner exclusion of Okanagan-only hosts",
+    evidence: "https://ors.ok.ubc.ca/",
+  },
+  "principal.ok.ubc.ca": {
+    reason: "Retained homepage identifies the office leading the Okanagan campus",
+    authority: "Retained-content review under the owner exclusion of Okanagan-only hosts",
+    evidence: "https://principal.ok.ubc.ca/",
+  },
+  "recreation.ok.ubc.ca": {
+    reason: "Retained homepage describes recreation services for the Okanagan campus community",
+    authority: "Retained-content review under the owner exclusion of Okanagan-only hosts",
+    evidence: "https://recreation.ok.ubc.ca/",
+  },
+  "socialwork.ok.ubc.ca": {
+    reason: "Retained program and unit descriptions identify the Okanagan School of Social Work",
+    authority: "Retained-content review under the owner exclusion of Okanagan-only hosts",
+    evidence: "https://socialwork.ok.ubc.ca/",
+  },
+  "ur.ok.ubc.ca": {
+    reason: "Retained homepage states a mandate to advance UBC Okanagan's priorities",
+    authority: "Retained-content review under the owner exclusion of Okanagan-only hosts",
+    evidence: "https://ur.ok.ubc.ca/",
+  },
+  "vems.ok.ubc.ca": {
+    reason: "Retained studio description and support instructions serve UBCO's Commons facility",
+    authority: "Retained-content review under the owner exclusion of Okanagan-only hosts",
+    evidence: "https://vems.ok.ubc.ca/",
+  },
   "med-fom-spph-internal.sites.olt.ubc.ca": {
     reason: "Published source articles and archive pages disclose shared access credentials; exclude the entire host",
     authority: "Public article-only scope and release security review",

@@ -28,6 +28,29 @@ it("refuses the credential-bearing host without rejecting unrelated public SPPH 
   expect(() => assertAdmittedHostname("spph.ubc.ca")).not.toThrow();
 });
 
+it.each([
+  "it.ok.ubc.ca",
+  "library.ok.ubc.ca",
+  "lilab.ok.ubc.ca",
+  "nursing.ok.ubc.ca",
+  "ok.ubc.ca",
+  "ors.ok.ubc.ca",
+  "principal.ok.ubc.ca",
+  "recreation.ok.ubc.ca",
+  "socialwork.ok.ubc.ca",
+  "ur.ok.ubc.ca",
+  "vems.ok.ubc.ca",
+])("refuses the source-reviewed Okanagan-only audience of %s", (hostname) => {
+  expect(() => assertAdmittedHostname(hostname)).toThrow(/Owner-rejected/);
+});
+
+it.each(["istand.ok.ubc.ca", "unitedway.ok.ubc.ca", "smp.med.ubc.ca"])(
+  "does not infer campus rejection from the name or location of %s",
+  (hostname) => {
+    expect(() => assertAdmittedHostname(hostname)).not.toThrow();
+  },
+);
+
 function policy(): HostRoutingPolicy {
   return {
     version: 1,
