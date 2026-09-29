@@ -9,12 +9,16 @@ const hostname = "visit.ubc.ca";
 const home = `https://${hostname}/`;
 const api = `${home}wp-json/`;
 const search = `${home}?s=search`;
+const missingLocation = `${home}eat-drink-and-stay/accommodation/standard-suites/`;
 const producer: ProducerContext = {
   inputs_sha256: sha256("visit producer"),
   runtime: { node: "26", icu: "78", unicode: "17", platform: "linux", arch: "x64" },
 };
 
-function fixture(conflict: "none" | "seed" | "sitemap" | "other-cms" = "none") {
+function fixture(
+  conflict: "none" | "seed" | "sitemap" | "other-cms" = "none",
+  location: "none" | "normal" | "seed" | "sitemap" | "other-cms" | "recovered" = "none",
+) {
   vi.stubGlobal(
     "fetch",
     vi.fn(() => {
@@ -40,13 +44,9 @@ function fixture(conflict: "none" | "seed" | "sitemap" | "other-cms" = "none") {
     home,
     `<html><head><title>Visit UBC campus guide</title><link rel="https://api.w.org/" href="${api}"></head><body><main><h1>Visit campus</h1><p>Plan a public campus visit with information about educational tours, attractions, directions and access.</p><form method="get" action="${home}"><input name="s" type="text" value="Search this site..."></form><a href="${search}">Search this site</a></main></body></html>`,
   );
-  put(
-    `${home}robots.txt`,
-    conflict === "sitemap" ? `User-agent: *\nSitemap: ${home}sitemap.xml` : "User-agent: *\n",
-    "text/plain",
-  );
-  if (conflict === "sitemap")
-    put(`${home}sitemap.xml`, `<urlset><url><loc>${search}</loc></url></urlset>`, "application/xml");
+  const sitemapUrl = conflict === "sitemap" ? search : location === "sitemap" ? missingLocation : null;
+  put(`${home}robots.txt`, sitemapUrl ? `User-agent: *\nSitemap: ${home}sitemap.xml` : "User-agent: *\n", "text/plain");
+  if (sitemapUrl) put(`${home}sitemap.xml`, `<urlset><url><loc>${sitemapUrl}</loc></url></urlset>`, "application/xml");
   const collection = `${api}wp/v2/pages`;
   const types: Record<string, unknown> = {
     page: {
@@ -62,7 +62,7 @@ function fixture(conflict: "none" | "seed" | "sitemap" | "other-cms" = "none") {
     "/wp/v2/types": { methods: ["GET"], _links: { self: [{ href: `${api}wp/v2/types` }] } },
     "/wp/v2/pages": { methods: ["GET"], _links: { self: [{ href: collection }] } },
   };
-  if (conflict === "other-cms") {
+  if (conflict === "other-cms" || location === "other-cms") {
     types.post = {
       name: "Posts",
       rest_namespace: "wp/v2",
@@ -75,7 +75,7 @@ function fixture(conflict: "none" | "seed" | "sitemap" | "other-cms" = "none") {
       JSON.stringify([
         {
           id: 1,
-          link: search,
+          link: location === "other-cms" ? missingLocation : search,
           title: { rendered: "Actual article" },
           status: "publish",
           type: "post",
@@ -86,6 +86,49 @@ function fixture(conflict: "none" | "seed" | "sitemap" | "other-cms" = "none") {
     );
     posts.snapshot.headers["x-wp-total"] = "1";
     posts.snapshot.headers["x-wp-totalpages"] = "1";
+  }
+  if (location !== "none") {
+    const collection = `${api}wp/v2/location`;
+    types.location = {
+      name: "Locations",
+      slug: "location",
+      has_archive: false,
+      rest_namespace: "wp/v2",
+      rest_base: "location",
+      _links: { "wp:items": [{ href: collection }] },
+    };
+    routes["/wp/v2/location"] = { methods: ["GET"], _links: { self: [{ href: collection }] } };
+    const marker = missingLocation.replace("https://", "http://");
+    const rows = [
+      {
+        id: 323,
+        link: marker,
+        title: { rendered: "Gage Suites" },
+        modified_gmt: "2024-06-17T17:33:55",
+        status: "publish",
+        type: "location",
+      },
+      ...Array.from({ length: 58 }, (_, index) => ({
+        id: 400 + index,
+        link: `${home}page-${index}/`,
+        title: { rendered: `Map marker ${index}` },
+        modified_gmt: "2026-01-01T12:00:00",
+        status: "publish",
+        type: "location",
+      })),
+      {
+        id: 810,
+        link: marker,
+        title: { rendered: "Standard Suites (Ponderosa Commons)" },
+        modified_gmt: "2019-05-03T23:20:28",
+        status: "publish",
+        type: "location",
+      },
+    ];
+    const page = put(wordpressCollectionUrl(collection, 1), JSON.stringify(rows), "application/json");
+    page.snapshot.headers["x-wp-total"] = "60";
+    page.snapshot.headers["x-wp-totalpages"] = "1";
+    put(missingLocation, "<title>Page not found</title>", "text/html", location === "recovered" ? 200 : 404);
   }
   put(api, JSON.stringify({ routes }), "application/json");
   put(`${api}wp/v2/types`, JSON.stringify(types), "application/json");
@@ -120,21 +163,16 @@ function fixture(conflict: "none" | "seed" | "sitemap" | "other-cms" = "none") {
     homepage,
     input_sha256: sha256("visit input"),
     retained: [],
-    urls:
-      conflict === "seed"
-        ? [
-            {
-              url: search,
-              kind: "page",
-              state: "pending",
-              disposition: null,
-              reason: null,
-              snapshot: null,
-              article_id: null,
-              source_modified_at: null,
-            },
-          ]
-        : [],
+    urls: [...(conflict === "seed" ? [search] : []), ...(location === "seed" ? [missingLocation] : [])].map((url) => ({
+      url,
+      kind: "page",
+      state: "pending" as const,
+      disposition: null,
+      reason: null,
+      snapshot: null,
+      article_id: null,
+      source_modified_at: null,
+    })),
     read: vi.fn(async (url) => {
       const item = values.get(url);
       if (!item) throw new Error(`Missing fixture ${url}`);
@@ -180,4 +218,29 @@ describe("source-witnessed Visit UBC search control", () => {
       expect(f.archive.read).not.toHaveBeenCalledWith(search);
     },
   );
+
+  it("preserves article pages while witnessing the two stale map markers' shared 404", async () => {
+    const f = fixture("none", "normal");
+    const result = await f.collect();
+    expect(result.documents.map(({ source_url }) => source_url)).toEqual(
+      expect.arrayContaining(Array.from({ length: 67 }, (_, index) => `${home}page-${index}/`)),
+    );
+    expect(result.documents.some(({ source_url }) => source_url === missingLocation)).toBe(false);
+    expect(f.archive.read).toHaveBeenCalledWith(missingLocation);
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(missingLocation);
+  });
+
+  it.each(["seed", "sitemap", "other-cms"] as const)(
+    "refuses another %s role for the missing map-marker URL",
+    async (conflict) => {
+      const f = fixture("none", conflict);
+      await expect(f.collect()).rejects.toThrow("Reviewed location identity conflicts with a required page");
+      expect(f.archive.read).not.toHaveBeenCalledWith(missingLocation);
+    },
+  );
+
+  it("refuses to hide a map-marker URL that now serves public HTML", async () => {
+    const f = fixture("none", "recovered");
+    await expect(f.collect()).rejects.toThrow("Reviewed location URL lacks its public 404 witness");
+  });
 });

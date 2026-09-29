@@ -416,6 +416,7 @@ describe("reviewed IRES internal archive-block type", () => {
 describe("reviewed Visit UBC search-control page", () => {
   const host = "visit.ubc.ca";
   const root = `https://${host}/`;
+  const api = `${root}wp-json/`;
   const search = `${root}?s=search`;
   const setup = (hostname = host) => {
     const origin = `https://${hostname}/`;
@@ -480,6 +481,7 @@ describe("reviewed Visit UBC search-control page", () => {
       extract: () => ({ kind: "excluded", reason: "Discovery fixture" }),
     };
     const excluded = new Set<string>();
+    const excludedLocations = new Set<string>();
     const discover = () =>
       discoverWordpress(
         scraper,
@@ -491,8 +493,9 @@ describe("reviewed Visit UBC search-control page", () => {
         },
         new Set<string>(),
         excluded,
+        excludedLocations,
       );
-    return { homepage, records, first, excluded, discover, origin };
+    return { homepage, records, first, values, excluded, excludedLocations, discover, origin };
   };
 
   it("keeps ordinary pages while excluding only the CMS-backed GET search form", async () => {
@@ -523,6 +526,90 @@ describe("reviewed Visit UBC search-control page", () => {
     const f = setup("other.ubc.ca");
     expect((await f.discover()).filter(({ url }) => url === `${f.origin}?s=search`)).toHaveLength(1);
     expect(f.excluded.size).toBe(0);
+  });
+
+  const locationFixture = () => {
+    const f = setup();
+    const typeUrl = `${api}wp/v2/types`;
+    const types = JSON.parse(f.values.get(typeUrl)!.snapshot.body);
+    const catalog = JSON.parse(f.values.get(api)!.snapshot.body);
+    const collection = `${api}wp/v2/location`;
+    types.location = {
+      name: "Locations",
+      slug: "location",
+      has_archive: false,
+      rest_namespace: "wp/v2",
+      rest_base: "location",
+      _links: { "wp:items": [{ href: collection }] },
+    };
+    catalog.routes["/wp/v2/location"] = { methods: ["GET"], _links: { self: [{ href: collection }] } };
+    f.values.get(typeUrl)!.snapshot.body = JSON.stringify(types);
+    f.values.get(api)!.snapshot.body = JSON.stringify(catalog);
+    const missing = `${root}eat-drink-and-stay/accommodation/standard-suites/`;
+    const locationRows = [
+      {
+        id: 323,
+        link: missing.replace("https://", "http://"),
+        title: { rendered: "Gage Suites" },
+        modified_gmt: "2024-06-17T17:33:55",
+        status: "publish",
+        type: "location",
+      },
+      ...Array.from({ length: 58 }, (_, index) => ({
+        id: 400 + index,
+        link: `${root}page-${index}/`,
+        title: { rendered: `Map marker ${index}` },
+        modified_gmt: "2026-01-01T12:00:00",
+        status: "publish",
+        type: "location",
+      })),
+      {
+        id: 810,
+        link: missing.replace("https://", "http://"),
+        title: { rendered: "Standard Suites (Ponderosa Commons)" },
+        modified_gmt: "2019-05-03T23:20:28",
+        status: "publish",
+        type: "location",
+      },
+    ];
+    const locationPage = observation(wordpressCollectionUrl(collection, 1), locationRows);
+    locationPage.snapshot.headers["x-wp-total"] = "60";
+    locationPage.snapshot.headers["x-wp-totalpages"] = "1";
+    f.values.set(locationPage.snapshot.url, locationPage);
+    return { ...f, types, locationRows, locationPage, missing };
+  };
+
+  it("counts all 60 map markers but keeps only 58 independently cited detail candidates", async () => {
+    const f = locationFixture();
+    const pages = await f.discover();
+    expect(pages.filter(({ type }) => type === "location")).toHaveLength(58);
+    expect(f.excludedLocations).toEqual(new Set([f.missing]));
+    expect(pages.some(({ url }) => url === f.missing)).toBe(false);
+  });
+
+  it.each([
+    "changed title",
+    "changed date",
+    "changed id",
+    "changed URL",
+    "new root identity",
+    "changed type",
+    "changed total",
+  ])("refuses changed map-marker identity: %s", async (change) => {
+    const f = locationFixture();
+    const record = f.locationRows.find(({ id }) => id === 323)!;
+    if (change === "changed title") record.title.rendered = "Different location";
+    if (change === "changed date") record.modified_gmt = "2025-01-01T12:00:00";
+    if (change === "changed id") record.id = 324;
+    if (change === "changed URL") record.link = `${root}eat-drink-and-stay/accommodation/other-suites/`;
+    if (change === "new root identity") f.locationRows[1]!.link = record.link;
+    if (change === "changed type") {
+      f.types.location.has_archive = true;
+      f.values.get(`${api}wp/v2/types`)!.snapshot.body = JSON.stringify(f.types);
+    }
+    if (change === "changed total") f.locationPage.snapshot.headers["x-wp-total"] = "61";
+    f.locationPage.snapshot.body = JSON.stringify(f.locationRows);
+    await expect(f.discover()).rejects.toThrow();
   });
 });
 

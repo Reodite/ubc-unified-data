@@ -32,6 +32,11 @@ const RECURRING_EVENT_HOSTS = new Set([
   "theatrefilm.ubc.ca",
 ]);
 
+const VISIT_MISSING_LOCATION = "https://visit.ubc.ca/eat-drink-and-stay/accommodation/standard-suites/";
+const VISIT_MISSING_LOCATION_RECORDS = new Map([
+  [323, ["Gage Suites", "2024-06-17T17:33:55Z"]],
+  [810, ["Standard Suites (Ponderosa Commons)", "2019-05-03T23:20:28Z"]],
+]);
 const ADVANCING_HEALTH_ORGANIZER_ROOT = "https://www.advancinghealth.ubc.ca/organizer/";
 const ADVANCING_HEALTH_ORGANIZER_ROOT_RECORDS = new Map([
   [11041, ["VCH Research Institute", "2023-10-12T17:36:12Z"]],
@@ -142,6 +147,7 @@ export async function discoverWordpress(
   read: (url: string) => Promise<Observation>,
   reviewedNonDocuments = new Set<string>(),
   reviewedSearchControls = new Set<string>(),
+  reviewedMissingLocations = new Set<string>(),
 ): Promise<DiscoveredPage[]> {
   const roots = [
     ...new Set(
@@ -231,6 +237,17 @@ export async function discoverWordpress(
         collection !== `https://${scraper.hostname}/wp-json/wp/v2/${type}`)
     )
       throw new Error("Reviewed organizer type changed");
+    const reviewedVisitLocation = scraper.hostname === "visit.ubc.ca" && type === "location";
+    if (
+      reviewedVisitLocation &&
+      (definition.name !== "Locations" ||
+        definition.slug !== type ||
+        definition.has_archive !== false ||
+        namespace !== "wp/v2" ||
+        restBase !== type ||
+        collection !== `https://${scraper.hostname}/wp-json/wp/v2/${type}`)
+    )
+      throw new Error("Reviewed location type changed");
     const reviewedVisitSearch = scraper.hostname === "visit.ubc.ca" && type === "page";
     if (
       reviewedVisitSearch &&
@@ -256,6 +273,7 @@ export async function discoverWordpress(
     const ids = new Set<number>();
     const recurrenceRows = new Map<number, string>();
     const reviewedOrganizerIds = new Set<number>();
+    const reviewedLocationIds = new Set<number>();
     let reviewedSearchPage = false;
     for (let page = 1; ; page++) {
       const observation = await read(wordpressCollectionUrl(collection, page));
@@ -270,6 +288,8 @@ export async function discoverWordpress(
         throw new Error("CMS totals changed during discovery");
       if (reviewedOrganizer && (count !== 12 || pageCount !== 1 || records.length !== 12))
         throw new Error("Reviewed organizer inventory changed");
+      if (reviewedVisitLocation && (count !== 60 || pageCount !== 1 || records.length !== 60))
+        throw new Error("Reviewed location inventory changed");
       if (reviewedVisitSearch && (count !== 68 || pageCount !== 1 || records.length !== 68))
         throw new Error("Reviewed search inventory changed");
       for (const raw of records) {
@@ -301,6 +321,20 @@ export async function discoverWordpress(
           ? inventoryUrl(string(row.link), scraper.hostname)
           : hostUrl(string(row.link), scraper.hostname);
         if (!url) continue;
+        if (reviewedVisitLocation && (VISIT_MISSING_LOCATION_RECORDS.has(id) || url === VISIT_MISSING_LOCATION)) {
+          const expected = VISIT_MISSING_LOCATION_RECORDS.get(id);
+          if (
+            !expected ||
+            row.link !== "http://visit.ubc.ca/eat-drink-and-stay/accommodation/standard-suites/" ||
+            url !== VISIT_MISSING_LOCATION ||
+            object(row.title).rendered !== expected[0] ||
+            sourceModified !== expected[1]
+          )
+            throw new Error("Reviewed location identity changed");
+          reviewedLocationIds.add(id);
+          reviewedMissingLocations.add(url);
+          continue;
+        }
         if (reviewedVisitSearch && (id === 970 || url === "https://visit.ubc.ca/?s=search")) {
           if (
             id !== 970 ||
@@ -373,6 +407,8 @@ export async function discoverWordpress(
     if (reviewedOrganizer && reviewedOrganizerIds.size !== ADVANCING_HEALTH_ORGANIZER_ROOT_RECORDS.size)
       throw new Error("Reviewed organizer inventory changed");
     if (reviewedVisitSearch && !reviewedSearchPage) throw new Error("Reviewed search inventory changed");
+    if (reviewedVisitLocation && reviewedLocationIds.size !== VISIT_MISSING_LOCATION_RECORDS.size)
+      throw new Error("Reviewed location inventory changed");
   }
   return pages;
 }
