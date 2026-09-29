@@ -451,32 +451,6 @@
     "document_count": 41
   },
   {
-    "hostname": "ir.arts.ubc.ca",
-    "title": "ir.arts.ubc.ca",
-    "homepage_url": "https://ir.arts.ubc.ca/",
-    "homepage_retrieved_at": "2026-09-18T11:14:22.809Z",
-    "homepage_sha256": "5efeb44943952976caf2060e03955c73816246fc53ad15f94dcf97d6d84aed88",
-    "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_roots": [
-      {
-        "category": "academics",
-        "path": "data/documents/academics/ir.arts.ubc.ca",
-        "document_count": 21
-      },
-      {
-        "category": "news",
-        "path": "data/documents/news/ir.arts.ubc.ca",
-        "document_count": 2
-      },
-      {
-        "category": "opportunities",
-        "path": "data/documents/opportunities/ir.arts.ubc.ca",
-        "document_count": 37
-      }
-    ],
-    "document_count": 60
-  },
-  {
     "hostname": "isc.ubc.ca",
     "title": "isc.ubc.ca",
     "homepage_url": "https://isc.ubc.ca/",
