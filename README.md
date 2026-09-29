@@ -489,6 +489,31 @@ is the fastest way for a reader to misread this repo. Name the same stem you
 pass to `table()`; both the JSON and the CSV pick it up. `columns` does not have
 to be exhaustive: describe the ones that are not self-evident.
 
+## Verification
+
+The Linux verification lane requires Node 24 or newer, Python 3, Poppler
+(`pdftotext`) and util-linux (`prlimit`). Install locked Node dependencies and run:
+
+```sh
+npm ci
+npm run test:inventory
+npm run test:portable -- --no-file-parallelism --maxWorkers=1
+npx tsc --noEmit
+npm run lint
+npm run format:check
+npm run validate:hosts -- --require-categories
+npm run validate:prose
+npm run validate:undergrad
+```
+
+`npm test` still runs the **complete** suite, including native integration.
+The native lane requires the reviewed fixed Linux toolchain; it is not portable
+to arbitrary Node installations or Linux distributions. Run
+`npm run test:native -- --no-file-parallelism --maxWorkers=1` on that toolchain
+and record its result against the release commit. GitHub's Ubuntu/Node 24 lane
+reports portable coverage only. See [test environments](HOST-DOCUMENTS.md#test-environments)
+for the supported native profile and qualification requirements.
+
 ## Source provenance
 
 Source URLs and timestamps identify each snapshot. Cite the official source page

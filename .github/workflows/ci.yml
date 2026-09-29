@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: Prepare external test workspace
         run: |
-          workspace="$RUNNER_TEMP/ubc-tmp"
+          workspace="$HOME/ubc-ci-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           install -d -m 700 "$workspace"
           printf 'UBC_TMP_ROOT=%s\nTMPDIR=%s\n' "$workspace" "$workspace" >> "$GITHUB_ENV"
 
@@ -40,8 +40,22 @@ jobs:
       - name: Typecheck
         run: npx tsc --noEmit
 
-      - name: Tests
-        run: npm test -- --no-file-parallelism --maxWorkers=1
+      - name: Audit complete test inventory
+        run: npm run test:inventory
+
+      - name: Portable tests on Ubuntu and Node 24
+        run: npm run test:portable -- --no-file-parallelism --maxWorkers=1
+
+      - name: State native qualification boundary
+        if: always()
+        run: |
+          printf '%s\n' \
+            '### Native-runtime qualification' \
+            'This Ubuntu job runs the portable test lane, not the fixed-profile native lane.' \
+            'The full npm test command still includes both lanes. Inventory validation prevents lost or duplicated tests.' \
+            'Native qualification must run on the reviewed CachyOS/Linux x86-64 toolchain and be reported separately for the release commit.' \
+            'A portable CI success is not evidence of native execution. See HOST-DOCUMENTS.md for commands and requirements.' \
+            >> "$GITHUB_STEP_SUMMARY"
 
       - name: Validate categorized host documents
         run: npm run validate:hosts -- --require-categories

@@ -365,6 +365,32 @@ its own withdrawal commit and preserves its original bytes privately. Push each 
 `refs/heads/feat/prose-documents`, never main, private backup refs or a forced
 history rewrite.
 
+### Test environments
+
+`npm test -- --no-file-parallelism --maxWorkers=1` runs the complete suite,
+including native integration. The named lanes partition that suite without
+changing its assertions:
+
+- `npm run test:portable -- --no-file-parallelism --maxWorkers=1` runs tests
+  independent of the fixed native Markdown deployment profile. GitHub CI runs
+  this lane on Ubuntu with Node 24, together with static and corpus validators.
+- `npm run test:native -- --no-file-parallelism --maxWorkers=1` executes the
+  `*.native.test.ts` integration files. They require the reviewed CachyOS/Linux
+  x86-64 toolchain, Node 26.8.1, matching ELF libraries and working unprivileged
+  namespaces. Missing permissions, libraries or namespace capabilities remain
+  test failures; there is no catch-and-skip fallback.
+- `npm run test:inventory` checks that the portable and native selections are
+  disjoint and together contain every default-suite test. This inventories tests;
+  it does not execute or qualify the native runtime.
+
+Native qualification must identify the exact release commit/tree, command,
+result, test counts, dependency hashes and toolchain. A locally executed result
+must be labelled as local evidence, not GitHub runner execution. Portable CI
+alone does not qualify the retained native runtime. Its fixed ownership, loader,
+filesystem and process checks remain unchanged; changing CI environments does
+not authorize relaxing them. Active article-only collection does not invoke the
+retained Markdown runtime.
+
 ## Retained-file migration
 
 Run `npm run migrate:host -- --host <hostname>` to validate retained files and

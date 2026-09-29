@@ -17,6 +17,9 @@
     "validate:prose": "tsx src/validate-prose.ts",
     "validate:undergrad": "tsx src/validate-undergrad.ts",
     "test": "vitest run --no-cache --configLoader native",
+    "test:portable": "vitest run --no-cache --configLoader native --exclude '**/*.native.test.ts'",
+    "test:native": "vitest run --no-cache --configLoader native .native.test.ts",
+    "test:inventory": "node test/check-partitions.mjs",
     "lint": "biome check src test",
     "format": "prettier --write .",
     "format:check": "prettier --check ."

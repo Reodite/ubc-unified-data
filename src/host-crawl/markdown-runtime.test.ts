@@ -1,24 +1,10 @@
-import { spawn } from "node:child_process";
-import { EventEmitter } from "node:events";
-import { chmodSync, constants } from "node:fs";
-import { mkdir, open, readdir, readFile, readlink, rm, writeFile } from "node:fs/promises";
-import { stripTypeScriptTypes } from "node:module";
-import { PassThrough } from "node:stream";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import type { EventEmitter } from "node:events";
+import { mkdir, rm } from "node:fs/promises";
 import { afterAll, beforeAll, describe, expect, expectTypeOf, it, vi } from "vitest";
-import {
-  captureMarkdownArtifactCandidate,
-  disposeMarkdownArtifactCandidate,
-  verifyMarkdownArtifactCandidate,
-  withVerifiedMarkdownArtifactBindings,
-  type MarkdownArtifactBindings,
-  type MarkdownArtifactCandidate,
-} from "./markdown-artifacts.ts";
-import type { MarkdownInspection } from "./markdown-contract.mjs";
+import type { MarkdownArtifactBindings, MarkdownArtifactCandidate } from "./markdown-artifacts.ts";
 import { inspectMarkdownSource } from "./markdown-inspection.mjs";
 import { MARKDOWN_RUNTIME_CONTRACT, type MarkdownProfileEvidence } from "./markdown-profile.ts";
 import {
-  createMarkdownResponseDecoder,
   encodeMarkdownRequest,
   encodeMarkdownResponse,
   prepareMarkdownRequest,
@@ -31,259 +17,31 @@ import {
   prepareMarkdownRuntime,
   type MarkdownRuntime,
   type MarkdownRuntimeResult,
-  type MarkdownTerminationEvidence,
 } from "./markdown-runtime.ts";
 import { DEFAULT_EXTERNAL_ROOT } from "./paths.ts";
+import {
+  FakeChild,
+  loadInternals,
+  SELF_TEST_BYTES,
+  SELF_TEST_INSPECTION,
+  type ExecutionOwner,
+  type FakeScenario,
+  type InstrumentedRuntimeModule,
+  type ProcessObservation,
+  type RuntimeDependencies,
+  type RuntimeInternals,
+  type SupervisionDependencies,
+} from "./test-support/markdown-runtime-harness.ts";
+import { createSyntheticMarkdownRuntimeProfile } from "./test-support/markdown-runtime-synthetic-profile.ts";
 
-const TEST_PARENT = `${DEFAULT_EXTERNAL_ROOT}/tests/markdown-runtime-${process.pid}`;
-const IMPLEMENTATION_PATH = fileURLToPath(new URL("./markdown-runtime.ts", import.meta.url));
-const SOURCE_DIRECTORY = new URL("./", import.meta.url);
-const SELF_TEST_BYTES = Buffer.from("Body\r\n", "utf8");
-const SELF_TEST_INSPECTION: MarkdownInspection = Object.freeze({
-  source_bytes: 6,
-  source_bytes_sha256: "c7f37cfe2bd17c6331179ea9f3fbe4ad368794f69d1a28c7456cf4301f3bf169",
-  title: "  Literal *title*  ",
-  title_origin: Object.freeze({ kind: "advertisement", witness_index: 2 }),
-  links: Object.freeze([]),
-  stats: Object.freeze({ emitted_tokens: 4, links: 0, max_depth: 1 }),
-});
+const TEST_PARENT = `${DEFAULT_EXTERNAL_ROOT}/tests/markdown-runtime-portable-${process.pid}`;
+const syntheticProfile = createSyntheticMarkdownRuntimeProfile();
 const fetchGuard = vi.fn(() => {
   throw new Error("Network forbidden in runtime tests");
 });
 
-type ProcessObservation =
-  Readonly<{ state: string; starttime: string }> | Readonly<{ absent: true }> | Readonly<{ error: true }>;
-
-type ExecutionOwner = { child: FakeChild | null; killSent: boolean };
-
-type RuntimeDependencies = {
-  capture(signal?: AbortSignal): Promise<MarkdownArtifactCandidate>;
-  verify(candidate: MarkdownArtifactCandidate): Promise<void>;
-  invoke(
-    candidate: MarkdownArtifactCandidate,
-    request: PreparedMarkdownRequest,
-    signal: AbortSignal | undefined,
-    owner: ExecutionOwner,
-  ): Promise<Readonly<{ ok: true; inspection: MarkdownInspection; termination: MarkdownTerminationEvidence }>>;
-  dispose(candidate: MarkdownArtifactCandidate): Promise<void>;
-};
-
-type InvocationDependencies = {
-  withBindings<T>(
-    candidate: MarkdownArtifactCandidate,
-    callback: (bindings: MarkdownArtifactBindings) => T | Promise<T>,
-  ): Promise<T>;
-  supervise(
-    profile: MarkdownProfileEvidence,
-    bindings: MarkdownArtifactBindings,
-    request: PreparedMarkdownRequest,
-    wire: Uint8Array,
-    owner: ExecutionOwner,
-  ): Promise<Readonly<{ ok: true; inspection: MarkdownInspection; termination: MarkdownTerminationEvidence }>>;
-};
-
-type SupervisionDependencies = {
-  spawn(command: string, args: string[], options: Record<string, unknown>): FakeChild;
-  observeProcess(pid: number): Promise<ProcessObservation>;
-  delay(milliseconds: number): Promise<unknown>;
-};
-
-interface RuntimeInternals {
-  invocationArguments(profile: MarkdownProfileEvidence, bindings: MarkdownArtifactBindings): readonly string[];
-  parseProcessStat(pid: number, stat: string): Readonly<{ state: string; starttime: string }> | null;
-  terminationEvidence(
-    initial: ProcessObservation | undefined,
-    final: ProcessObservation,
-  ): MarkdownTerminationEvidence | null;
-  superviseInvocation(
-    profile: MarkdownProfileEvidence,
-    bindings: MarkdownArtifactBindings,
-    request: PreparedMarkdownRequest,
-    wire: Uint8Array,
-    owner: ExecutionOwner,
-    dependencies?: SupervisionDependencies,
-  ): Promise<Readonly<{ ok: true; inspection: MarkdownInspection; termination: MarkdownTerminationEvidence }>>;
-  prepareMarkdownRuntimeWithDependencies(
-    options: { signal?: AbortSignal } | undefined,
-    dependencies: RuntimeDependencies,
-  ): Promise<MarkdownRuntime>;
-  invokeCandidate(
-    candidate: MarkdownArtifactCandidate,
-    request: PreparedMarkdownRequest,
-    signal: AbortSignal | undefined,
-    owner: ExecutionOwner,
-    dependencies?: InvocationDependencies,
-  ): Promise<Readonly<{ ok: true; inspection: MarkdownInspection; termination: MarkdownTerminationEvidence }>>;
-}
-
-interface InstrumentedRuntimeModule {
-  __runtimeTestInternals: RuntimeInternals;
-  inspectMarkdownRuntime: typeof inspectMarkdownRuntime;
-  disposeMarkdownRuntime: typeof disposeMarkdownRuntime;
-}
-
-interface FakeScenario {
-  stdout?: Uint8Array;
-  stdoutExtra?: Uint8Array;
-  stderr?: Uint8Array;
-  statuses?: readonly Uint8Array[];
-  exitCode?: number | null;
-  exitSignal?: NodeJS.Signals | null;
-  closeCode?: number | null;
-  closeSignal?: NodeJS.Signals | null;
-  endStdout?: boolean;
-  endStderr?: boolean;
-  endStatus?: boolean;
-  inputFinish?: boolean;
-  inputCallback?: boolean;
-  inputCallbackError?: boolean;
-  closeOnKill?: boolean;
-  automatic?: boolean;
-  statusTerminalAfterEnd?: boolean;
-  requiredEventsAfterClose?: boolean;
-  inputCallbackAfterClose?: boolean;
-}
-
-class FakeInput extends EventEmitter {
-  readonly bytes: Buffer[] = [];
-  private deferredCallback: ((error?: Error | null) => void) | null = null;
-
-  constructor(private readonly scenario: FakeScenario) {
-    super();
-  }
-
-  end(value: Uint8Array, callback: (error?: Error | null) => void): void {
-    this.bytes.push(Buffer.from(value));
-    queueMicrotask(() => {
-      if (this.scenario.inputFinish !== false) this.emit("finish");
-      if (this.scenario.inputCallback !== false) {
-        if (this.scenario.inputCallbackAfterClose === true) this.deferredCallback = callback;
-        else
-          callback(
-            this.scenario.inputCallbackError === true ? new Error("injected stdin callback failure") : undefined,
-          );
-      }
-      this.emit("close");
-    });
-  }
-
-  completeDeferredCallback(): void {
-    const callback = this.deferredCallback;
-    this.deferredCallback = null;
-    callback?.(this.scenario.inputCallbackError === true ? new Error("injected stdin callback failure") : undefined);
-  }
-}
-
-class FakeChild extends EventEmitter {
-  readonly stdin: FakeInput;
-  readonly stdout = new PassThrough();
-  readonly stderr = new PassThrough();
-  readonly status = new PassThrough();
-  readonly stdio: readonly unknown[];
-  readonly pid = 4242;
-  exitCode: number | null = null;
-  signalCode: NodeJS.Signals | null = null;
-  readonly kills: NodeJS.Signals[] = [];
-
-  constructor(readonly scenario: FakeScenario) {
-    super();
-    this.stdin = new FakeInput(scenario);
-    this.stdio = [this.stdin, this.stdout, this.stderr, this.status];
-    if (scenario.automatic !== false) setImmediate(() => this.complete());
-  }
-
-  kill(signal: NodeJS.Signals): boolean {
-    this.kills.push(signal);
-    if (this.scenario.closeOnKill === true) setImmediate(() => this.complete(null, signal));
-    return true;
-  }
-
-  complete(forcedCode?: number | null, forcedSignal?: NodeJS.Signals | null): void {
-    if (this.exitCode !== null || this.signalCode !== null) return;
-    if (this.scenario.stdout !== undefined) this.stdout.write(this.scenario.stdout);
-    if (this.scenario.stdoutExtra !== undefined) this.stdout.write(this.scenario.stdoutExtra);
-    if (this.scenario.stderr !== undefined) this.stderr.write(this.scenario.stderr);
-    const statuses = this.scenario.statuses ?? defaultStatuses();
-    if (this.scenario.statusTerminalAfterEnd === true) {
-      this.status.emit("data", statuses[0] ?? Buffer.from('{"child-pid":31337}\n'));
-      this.status.emit("end");
-      setImmediate(() => this.status.emit("data", statuses[1] ?? Buffer.from('{"exit-code":0}\n')));
-    } else {
-      for (const status of statuses) this.status.write(status);
-    }
-    const exitCode = forcedCode === undefined ? (this.scenario.exitCode ?? 0) : forcedCode;
-    const exitSignal = forcedSignal === undefined ? (this.scenario.exitSignal ?? null) : forcedSignal;
-    const closeCode = forcedCode === undefined ? (this.scenario.closeCode ?? exitCode) : forcedCode;
-    const closeSignal = forcedSignal === undefined ? (this.scenario.closeSignal ?? exitSignal) : forcedSignal;
-    if (this.scenario.requiredEventsAfterClose === true) {
-      this.emit("close", closeCode, closeSignal);
-      setImmediate(() => {
-        if (this.scenario.endStdout !== false) this.stdout.emit("end");
-        if (this.scenario.endStderr !== false) this.stderr.emit("end");
-        if (this.scenario.endStatus !== false) this.status.emit("end");
-        this.exitCode = exitCode;
-        this.signalCode = exitSignal;
-        this.emit("exit", exitCode, exitSignal);
-      });
-      return;
-    }
-    if (this.scenario.endStdout !== false) this.stdout.end();
-    if (this.scenario.endStderr !== false) this.stderr.end();
-    if (this.scenario.endStatus !== false && this.scenario.statusTerminalAfterEnd !== true) this.status.end();
-    this.exitCode = exitCode;
-    this.signalCode = exitSignal;
-    this.emit("exit", exitCode, exitSignal);
-    setImmediate(() => {
-      this.emit("close", closeCode, closeSignal);
-      setImmediate(() => this.stdin.completeDeferredCallback());
-    });
-  }
-}
-
 let internals: RuntimeInternals;
 let instrumented: InstrumentedRuntimeModule;
-let realRuntime: MarkdownRuntime;
-
-function defaultStatuses(): readonly Buffer[] {
-  return [Buffer.from('{"child-pid":31337}\n'), Buffer.from('{"exit-code":0}\n')];
-}
-
-function maximumMetadataFixture(): Readonly<{
-  request: PreparedMarkdownRequest;
-  inspection: MarkdownInspection;
-}> {
-  const make = (extra: number) =>
-    Buffer.from(
-      Array.from(
-        { length: 33 },
-        (_, index) => `[${"x".repeat(index < 32 ? 7900 : extra)}](https://example.org/${index})`,
-      ).join("\n\n"),
-    );
-  const titles = ["Advertisement"];
-  const baseline = inspectMarkdownSource(make(1), titles);
-  const extra = 1 + 262144 - Buffer.byteLength(JSON.stringify(baseline));
-  const bytes = make(extra);
-  return Object.freeze({
-    request: prepareMarkdownRequest(bytes, titles),
-    inspection: inspectMarkdownSource(bytes, titles),
-  });
-}
-
-async function loadInternals(): Promise<InstrumentedRuntimeModule> {
-  const source = (await readFile(IMPLEMENTATION_PATH, "utf8")).replace(
-    /(from\s+["'])(\.[^"']+)(["'])/g,
-    (_match, prefix: string, specifier: string, suffix: string) =>
-      `${prefix}${new URL(specifier, SOURCE_DIRECTORY).href}${suffix}`,
-  );
-  const instrumentedSource = `${source}\nexport const __runtimeTestInternals = Object.freeze({ invocationArguments: _invocationArguments, parseProcessStat, terminationEvidence, superviseInvocation, prepareMarkdownRuntimeWithDependencies, invokeCandidate });\n`;
-  const transformed = stripTypeScriptTypes(instrumentedSource, {
-    mode: "strip",
-    sourceUrl: pathToFileURL(IMPLEMENTATION_PATH).href,
-  });
-  const path = `${TEST_PARENT}/instrumented-${process.pid}.mjs`;
-  await writeFile(path, transformed, { mode: 0o600 });
-  return (await import(`${pathToFileURL(path).href}?${Date.now()}`)) as InstrumentedRuntimeModule;
-}
 
 function fakeBindings(profile: MarkdownProfileEvidence): MarkdownArtifactBindings {
   const artifacts = profile.manifest.artifacts.filter((artifact) => artifact.virtual_path !== null);
@@ -297,7 +55,7 @@ function fakeBindings(profile: MarkdownProfileEvidence): MarkdownArtifactBinding
   });
 }
 
-function candidateFor(profile = realRuntime.profile): MarkdownArtifactCandidate {
+function candidateFor(profile = syntheticProfile): MarkdownArtifactCandidate {
   return Object.freeze({ profile }) as MarkdownArtifactCandidate;
 }
 
@@ -391,8 +149,8 @@ async function supervise(
   const fake = fakeSupervision(request, scenario, observations);
   const owner: ExecutionOwner = { child: null, killSent: false };
   const result = await internals.superviseInvocation(
-    realRuntime.profile,
-    fakeBindings(realRuntime.profile),
+    syntheticProfile,
+    fakeBindings(syntheticProfile),
     request,
     wire,
     owner,
@@ -404,18 +162,12 @@ async function supervise(
 beforeAll(async () => {
   vi.stubGlobal("fetch", fetchGuard);
   await mkdir(TEST_PARENT, { recursive: true, mode: 0o700 });
-  instrumented = await loadInternals();
+  instrumented = await loadInternals(TEST_PARENT);
   internals = instrumented.__runtimeTestInternals;
-  realRuntime = await prepareMarkdownRuntime();
 }, 180_000);
 
 afterAll(async () => {
   const errors: unknown[] = [];
-  try {
-    if (realRuntime !== undefined) await disposeMarkdownRuntime(realRuntime);
-  } catch (error) {
-    errors.push(error);
-  }
   try {
     expect(fetchGuard).not.toHaveBeenCalled();
   } catch (error) {
@@ -450,215 +202,13 @@ describe("real fixed runtime", () => {
     >();
     expectTypeOf(disposeMarkdownRuntime).toEqualTypeOf<(runtime: MarkdownRuntime) => Promise<void>>();
   });
-
-  it("issues only a frozen null-prototype evidence handle after the real self-test", () => {
-    expect(Object.getPrototypeOf(realRuntime)).toBeNull();
-    expect(Object.keys(realRuntime)).toEqual(["profile"]);
-    expect(Object.isFrozen(realRuntime)).toBe(true);
-    expect(Object.isFrozen(realRuntime.profile)).toBe(true);
-    expect(JSON.stringify(realRuntime)).not.toContain("/home/admin");
-    expect(JSON.stringify(realRuntime)).not.toContain(DEFAULT_EXTERNAL_ROOT);
-  });
-
-  it("executes an ordinary prepared request through the real worker", async () => {
-    const bytes = Buffer.from("# Guide\n\nOwned [link](https://example.test/runtime).\n");
-    const request = prepareMarkdownRequest(bytes, []);
-    const result = await inspectMarkdownRuntime(realRuntime, request);
-    expect(result.inspection).toEqual(inspectMarkdownSource(bytes, []));
-    expect(result.profile_sha256).toBe(realRuntime.profile.sha256);
-    expect(["observed-pid-absence", "identity-matched-unreaped-zombie"]).toContain(result.termination);
-    expect(Reflect.ownKeys(result)).toEqual(["inspection", "profile_sha256", "termination"]);
-    expect(Object.isFrozen(result)).toBe(true);
-  }, 180_000);
-
-  it("executes the exact maximum honest metadata request through the real worker", async () => {
-    const fixture = maximumMetadataFixture();
-    expect(Buffer.byteLength(JSON.stringify(fixture.inspection))).toBe(262144);
-    const result = await inspectMarkdownRuntime(realRuntime, fixture.request);
-    expect(result.inspection).toEqual(fixture.inspection);
-    const decoder = createMarkdownResponseDecoder(fixture.request);
-    decoder.push(encodeMarkdownResponse(result.inspection, fixture.request));
-    expect(decoder.finish()).toEqual(fixture.inspection);
-  }, 180_000);
-
-  it("restores the exact descriptor table after every repeated real invocation", async () => {
-    const descriptors = async () => {
-      const result: string[] = [];
-      for (const entry of (await readdir("/proc/self/fd")).sort((left, right) => Number(left) - Number(right))) {
-        try {
-          result.push(`${entry}:${await readlink(`/proc/self/fd/${entry}`)}`);
-        } catch (error) {
-          if (!(error && typeof error === "object" && "code" in error && error.code === "ENOENT")) throw error;
-        }
-      }
-      return result;
-    };
-    const request = prepareMarkdownRequest(Buffer.from("# Guide\n\nDescriptor stability\n"), []);
-    await inspectMarkdownRuntime(realRuntime, request);
-    const baseline = await descriptors();
-    for (let index = 0; index < 3; index += 1) {
-      await inspectMarkdownRuntime(realRuntime, request);
-      expect(await descriptors()).toEqual(baseline);
-    }
-  }, 180_000);
-
-  it("enforces CPU exhaustion for an owned fixed synthetic entry through real Bubblewrap and prlimit", async () => {
-    const scriptPath = `${TEST_PARENT}/cpu-spin.mjs`;
-    await writeFile(
-      scriptPath,
-      'import { writeSync } from "node:fs";\nwriteSync(1, "CPU-SPIN-READY\\n");\nfor (;;) { Math.imul(123, 456); }\n',
-      { mode: 0o400 },
-    );
-    const script = await open(scriptPath, constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK);
-    const candidate = await captureMarkdownArtifactCandidate();
-    try {
-      const evidence = await withVerifiedMarkdownArtifactBindings(candidate, async (bindings) => {
-        const scriptDescriptor = 5 + bindings.mounts.length;
-        const nodeFlags = MARKDOWN_RUNTIME_CONTRACT.invocation.node.flags;
-        const permissionIndex = nodeFlags.indexOf("--permission");
-        const args = [
-          ...MARKDOWN_RUNTIME_CONTRACT.invocation.launcher.flags,
-          ...Object.entries({ LC_ALL: "C", LANG: "C", TZ: "UTC", UV_THREADPOOL_SIZE: "1", PWD: "/app" }).flatMap(
-            ([key, value]) => ["--setenv", key, value],
-          ),
-          ...candidate.profile.manifest.directories.filter((path) => path !== "/").flatMap((path) => ["--dir", path]),
-          "--dir",
-          "/fixture",
-          ...bindings.mounts.flatMap((mount, index) => ["--ro-bind-fd", String(index + 5), mount.virtual_path]),
-          "--ro-bind-fd",
-          String(scriptDescriptor),
-          "/fixture/cpu-spin.mjs",
-          "--dev-bind",
-          "/dev/null",
-          "/dev/null",
-          "--remount-ro",
-          "/",
-          "--",
-          MARKDOWN_RUNTIME_CONTRACT.invocation.prlimit.path,
-          "--cpu=1:1",
-          ...MARKDOWN_RUNTIME_CONTRACT.invocation.prlimit.flags.filter((flag) => !flag.startsWith("--cpu=")),
-          "--",
-          MARKDOWN_RUNTIME_CONTRACT.invocation.node.path,
-          ...nodeFlags.slice(0, permissionIndex + 1),
-          "--allow-fs-read=/fixture/cpu-spin.mjs",
-          ...nodeFlags.slice(permissionIndex + 1),
-          "/fixture/cpu-spin.mjs",
-        ];
-        const startedAt = process.hrtime.bigint();
-        const child = spawn("/proc/self/fd/4", args, {
-          cwd: "/",
-          env: { LC_ALL: "C", LANG: "C", TZ: "UTC", UV_THREADPOOL_SIZE: "1" },
-          shell: false,
-          stdio: [
-            "ignore",
-            "pipe",
-            "pipe",
-            "pipe",
-            bindings.launcher_fd,
-            ...bindings.mounts.map((mount) => mount.source_fd),
-            script.fd,
-          ],
-        });
-        const stdout: Buffer[] = [];
-        const stderr: Buffer[] = [];
-        const status: Buffer[] = [];
-        child.stdout!.on("data", (chunk: Buffer) => stdout.push(chunk));
-        child.stderr!.on("data", (chunk: Buffer) => stderr.push(chunk));
-        child.stdio[3]!.on("data", (chunk: Buffer) => status.push(chunk));
-        let timedOut = false;
-        const timer = setTimeout(() => {
-          timedOut = true;
-          child.kill("SIGKILL");
-        }, 8_000);
-        timer.unref();
-        try {
-          const closed = await new Promise<{ code: number | null; signal: NodeJS.Signals | null }>(
-            (resolvePromise, rejectPromise) => {
-              child.once("error", rejectPromise);
-              child.once("close", (code, signal) => resolvePromise({ code, signal }));
-            },
-          );
-          return Object.freeze({
-            ...closed,
-            timedOut,
-            elapsedMilliseconds: Number(process.hrtime.bigint() - startedAt) / 1_000_000,
-            stdout: Buffer.concat(stdout),
-            stderr: Buffer.concat(stderr),
-            status: Buffer.concat(status).toString("utf8"),
-          });
-        } finally {
-          clearTimeout(timer);
-        }
-      });
-      expect(evidence.timedOut).toBe(false);
-      expect(evidence.elapsedMilliseconds).toBeGreaterThanOrEqual(500);
-      expect(evidence.elapsedMilliseconds).toBeLessThan(8_000);
-      expect(evidence.code).toBe(137);
-      expect(evidence.signal).toBeNull();
-      expect(evidence.stdout.toString("utf8")).toBe("CPU-SPIN-READY\n");
-      expect(evidence.stderr).toHaveLength(0);
-      expect(evidence.status).toMatch(/"child-pid"\s*:\s*[0-9]+/);
-      expect(evidence.status).toMatch(/"exit-code"\s*:\s*137/);
-    } finally {
-      await disposeMarkdownArtifactCandidate(candidate);
-      await script.close();
-      await rm(scriptPath, { force: true });
-    }
-  }, 180_000);
-
-  it("refuses forged requests and invalid option records without using the runtime", async () => {
-    const request = prepareMarkdownRequest(Buffer.from("# Guide"), []);
-    for (const forged of [{ ...request }, structuredClone(request), JSON.parse(JSON.stringify(request))]) {
-      await expect(inspectMarkdownRuntime(realRuntime, forged as PreparedMarkdownRequest)).rejects.toThrow();
-    }
-    for (const options of [
-      null,
-      { unknown: true },
-      Object.create({}),
-      {
-        get signal() {
-          return undefined;
-        },
-      },
-    ]) {
-      await expect(inspectMarkdownRuntime(realRuntime, request, options as never)).rejects.toThrow(/invalid options/i);
-    }
-    await expect(inspectMarkdownRuntime(realRuntime, request)).resolves.toMatchObject({
-      profile_sha256: realRuntime.profile.sha256,
-    });
-  }, 180_000);
-
-  it("suppresses real invocation when cancellation arrives during artifact preverification", async () => {
-    const controller = new AbortController();
-    const request = prepareMarkdownRequest(Buffer.from("# Guide\n\nCancellation gate\n"), []);
-    const active = inspectMarkdownRuntime(realRuntime, request, { signal: controller.signal });
-    controller.abort(new Error("cancelled real precheck"));
-    await expect(active).rejects.toThrow(/cancelled real precheck/i);
-    await expect(inspectMarkdownRuntime(realRuntime, request)).resolves.toMatchObject({
-      profile_sha256: realRuntime.profile.sha256,
-    });
-  }, 180_000);
-
-  it("refuses forged, cloned, inherited, and serialized runtime handles", async () => {
-    const request = prepareMarkdownRequest(Buffer.from("# Guide"), []);
-    const handles = [
-      Object.freeze(Object.assign(Object.create(null), { profile: realRuntime.profile })),
-      structuredClone(realRuntime),
-      Object.create(realRuntime),
-      JSON.parse(JSON.stringify(realRuntime)),
-    ] as MarkdownRuntime[];
-    for (const handle of handles) {
-      await expect(inspectMarkdownRuntime(handle, request)).rejects.toThrow(/forged/i);
-      await expect(disposeMarkdownRuntime(handle)).rejects.toThrow(/forged/i);
-    }
-  });
 });
 
 describe("fixed descriptor invocation", () => {
   it("constructs the sole descriptor launch, canonical mounts, environments, and grants", async () => {
     const { fake } = await supervise();
     const call = fake.spawnCall();
-    const bindings = fakeBindings(realRuntime.profile);
+    const bindings = fakeBindings(syntheticProfile);
     expect(call.command).toBe("/proc/self/fd/4");
     expect(call.options).toMatchObject({
       cwd: "/",
@@ -727,9 +277,9 @@ describe("fixed descriptor invocation", () => {
     expect(call.args).toContain("--no-addons");
     expect(call.args.at(-2)).toBe("/app/markdown-worker.mjs");
     expect(call.args.at(-1)).toBe(
-      realRuntime.profile.manifest.artifacts.find((artifact) => artifact.id === "app/guard-policy")!.sha256,
+      syntheticProfile.manifest.artifacts.find((artifact) => artifact.id === "app/guard-policy")!.sha256,
     );
-    expect(call.args).not.toContain(realRuntime.profile.sha256);
+    expect(call.args).not.toContain(syntheticProfile.sha256);
     const nodeFlags = MARKDOWN_RUNTIME_CONTRACT.invocation.node.flags;
     const permissionIndex = nodeFlags.indexOf("--permission");
     const expectedArguments = [
@@ -737,7 +287,7 @@ describe("fixed descriptor invocation", () => {
       ...Object.entries({ LC_ALL: "C", LANG: "C", TZ: "UTC", UV_THREADPOOL_SIZE: "1", PWD: "/app" }).flatMap(
         ([key, value]) => ["--setenv", key, value],
       ),
-      ...realRuntime.profile.manifest.directories.filter((path) => path !== "/").flatMap((path) => ["--dir", path]),
+      ...syntheticProfile.manifest.directories.filter((path) => path !== "/").flatMap((path) => ["--dir", path]),
       ...bindings.mounts.flatMap((mount, index) => ["--ro-bind-fd", String(index + 5), mount.virtual_path]),
       "--dev-bind",
       "/dev/null",
@@ -753,14 +303,14 @@ describe("fixed descriptor invocation", () => {
       ...appPaths.map((path) => `--allow-fs-read=${path}`),
       ...nodeFlags.slice(permissionIndex + 1),
       MARKDOWN_RUNTIME_CONTRACT.invocation.entry,
-      realRuntime.profile.manifest.artifacts.find((artifact) => artifact.id === "app/guard-policy")!.sha256,
+      syntheticProfile.manifest.artifacts.find((artifact) => artifact.id === "app/guard-policy")!.sha256,
     ];
     expect(call.args).toEqual(expectedArguments);
   });
 
   it("rejects mutable, incomplete, reordered, duplicate, and noninteger bindings before spawn", () => {
-    const valid = fakeBindings(realRuntime.profile);
-    const expected = realRuntime.profile.manifest.artifacts.filter((artifact) => artifact.virtual_path !== null);
+    const valid = fakeBindings(syntheticProfile);
+    const expected = syntheticProfile.manifest.artifacts.filter((artifact) => artifact.virtual_path !== null);
     const cases = [
       { launcher_fd: valid.launcher_fd, mounts: valid.mounts },
       Object.freeze({ launcher_fd: valid.launcher_fd, mounts: valid.mounts.slice(1) }),
@@ -785,12 +335,12 @@ describe("fixed descriptor invocation", () => {
       }),
     ];
     for (const bindings of cases) {
-      expect(() => internals.invocationArguments(realRuntime.profile, bindings as MarkdownArtifactBindings)).toThrow();
+      expect(() => internals.invocationArguments(syntheticProfile, bindings as MarkdownArtifactBindings)).toThrow();
     }
   });
 
   it("rejects proxy, accessor, unusual-prototype, nonarray, and unsafe bindings without invoking hooks", () => {
-    const valid = fakeBindings(realRuntime.profile);
+    const valid = fakeBindings(syntheticProfile);
     let proxyTraps = 0;
     const proxy = new Proxy(valid, {
       get(target, key, receiver) {
@@ -802,7 +352,7 @@ describe("fixed descriptor invocation", () => {
         return Reflect.ownKeys(target);
       },
     });
-    expect(() => internals.invocationArguments(realRuntime.profile, proxy)).toThrow(/invalid artifact bindings/i);
+    expect(() => internals.invocationArguments(syntheticProfile, proxy)).toThrow(/invalid artifact bindings/i);
     expect(proxyTraps).toBe(0);
 
     let getterCalls = 0;
@@ -823,7 +373,7 @@ describe("fixed descriptor invocation", () => {
       mounts: Object.freeze([accessorMount, ...valid.mounts.slice(1)]),
     });
     expect(() =>
-      internals.invocationArguments(realRuntime.profile, accessorBindings as unknown as MarkdownArtifactBindings),
+      internals.invocationArguments(syntheticProfile, accessorBindings as unknown as MarkdownArtifactBindings),
     ).toThrow(/invalid artifact bindings/i);
     expect(getterCalls).toBe(0);
 
@@ -837,7 +387,7 @@ describe("fixed descriptor invocation", () => {
     const extraBindings = Object.freeze({ launcher_fd: valid.launcher_fd, mounts: extra });
     for (const bindings of [unusual, nonarray, negativeZero, unsafe, extraBindings]) {
       expect(() =>
-        internals.invocationArguments(realRuntime.profile, bindings as unknown as MarkdownArtifactBindings),
+        internals.invocationArguments(syntheticProfile, bindings as unknown as MarkdownArtifactBindings),
       ).toThrow();
     }
   });
@@ -1004,8 +554,8 @@ describe("conjunctive child lifecycle", () => {
       const fake = fakeSupervision(request, { automatic: false, closeOnKill: true });
       const owner: ExecutionOwner = { child: null, killSent: false };
       const promise = internals.superviseInvocation(
-        realRuntime.profile,
-        fakeBindings(realRuntime.profile),
+        syntheticProfile,
+        fakeBindings(syntheticProfile),
         request,
         encodeMarkdownRequest(request),
         owner,
@@ -1090,162 +640,6 @@ describe("authority, cancellation, revocation, and disposal", () => {
     await instrumented.disposeMarkdownRuntime(runtime);
     expect(phases).toEqual(["capture", "verify-1", "invoke", "verify-2", "dispose"]);
   });
-
-  it("suppresses valid worker output and revokes the artifact after real postverification mutation", async () => {
-    const candidate = await captureMarkdownArtifactCandidate();
-    try {
-      const request = prepareMarkdownRequest(Buffer.from("# Guide\n\nPostcheck mutation\n"), []);
-      const owner: ExecutionOwner = { child: null, killSent: false };
-      const dependencies: InvocationDependencies = {
-        async withBindings(value, callback) {
-          return withVerifiedMarkdownArtifactBindings(value, async (bindings) => {
-            const result = await callback(bindings);
-            chmodSync(`/proc/self/fd/${bindings.mounts[0]!.source_fd}`, 0o600);
-            return result;
-          });
-        },
-        supervise: internals.superviseInvocation,
-      };
-      await expect(internals.invokeCandidate(candidate, request, undefined, owner, dependencies)).rejects.toThrow(
-        /binding verification failed/i,
-      );
-      await expect(verifyMarkdownArtifactCandidate(candidate)).rejects.toThrow(/revoked|unavailable/i);
-      expect(owner.child).toBeNull();
-    } finally {
-      await disposeMarkdownArtifactCandidate(candidate);
-    }
-  }, 180_000);
-
-  it("refuses missing and wrongly mapped real resource descriptors without metadata", async () => {
-    for (const mode of ["missing", "wrong"] as const) {
-      const candidate = await captureMarkdownArtifactCandidate();
-      try {
-        const request = prepareMarkdownRequest(Buffer.from(`# Guide\n\n${mode} resource\n`), []);
-        const dependencies: InvocationDependencies = {
-          async withBindings(value, callback) {
-            return withVerifiedMarkdownArtifactBindings(value, async (bindings) => {
-              const mounts = bindings.mounts.map((mount, index) =>
-                Object.freeze({
-                  source_fd:
-                    mode === "missing" && index === 0
-                      ? 2_147_483_647
-                      : index === 0
-                        ? bindings.mounts[1]!.source_fd
-                        : index === 1
-                          ? bindings.mounts[0]!.source_fd
-                          : mount.source_fd,
-                  virtual_path: mount.virtual_path,
-                }),
-              );
-              return callback(Object.freeze({ launcher_fd: bindings.launcher_fd, mounts: Object.freeze(mounts) }));
-            });
-          },
-          supervise: internals.superviseInvocation,
-        };
-        await expect(
-          internals.invokeCandidate(candidate, request, undefined, { child: null, killSent: false }, dependencies),
-        ).rejects.toThrow();
-        await expect(verifyMarkdownArtifactCandidate(candidate)).resolves.toBeUndefined();
-      } finally {
-        await disposeMarkdownArtifactCandidate(candidate);
-      }
-    }
-  }, 180_000);
-
-  it("runs invokeCandidate cancellation checks before bindings and after supervision", async () => {
-    const candidate = await captureMarkdownArtifactCandidate();
-    try {
-      const request = prepareMarkdownRequest(Buffer.from("# Guide\n\nCancellation phases\n"), []);
-      const owner: ExecutionOwner = { child: null, killSent: false };
-      const precheck = new AbortController();
-      precheck.abort(new Error("cancelled before bindings"));
-      await expect(internals.invokeCandidate(candidate, request, precheck.signal, owner)).rejects.toThrow(
-        /cancelled before bindings/i,
-      );
-      await expect(verifyMarkdownArtifactCandidate(candidate)).resolves.toBeUndefined();
-
-      const postcheck = new AbortController();
-      const dependencies: InvocationDependencies = {
-        withBindings: withVerifiedMarkdownArtifactBindings,
-        async supervise() {
-          postcheck.abort(new Error("cancelled after supervision"));
-          return Object.freeze({
-            ok: true as const,
-            inspection: SELF_TEST_INSPECTION,
-            termination: "observed-pid-absence" as const,
-          });
-        },
-      };
-      await expect(
-        internals.invokeCandidate(candidate, request, postcheck.signal, owner, dependencies),
-      ).rejects.toThrow(/cancelled after supervision/i);
-      await expect(verifyMarkdownArtifactCandidate(candidate)).resolves.toBeUndefined();
-
-      const activeController = new AbortController();
-      let activeStarted!: () => void;
-      const started = new Promise<void>((resolvePromise) => {
-        activeStarted = resolvePromise;
-      });
-      let activeChild: FakeChild | undefined;
-      const activeOwner: ExecutionOwner = { child: null, killSent: false };
-      const activeDependencies: InvocationDependencies = {
-        withBindings: withVerifiedMarkdownArtifactBindings,
-        async supervise(_profile, _bindings, _request, _wire, executionOwner) {
-          activeChild = new FakeChild({ automatic: false, closeOnKill: true });
-          executionOwner.child = activeChild;
-          activeStarted();
-          return new Promise((_resolve, reject) => {
-            activeChild!.once("close", () => {
-              executionOwner.child = null;
-              reject(new Error("cancelled active child"));
-            });
-          });
-        },
-      };
-      const active = internals.invokeCandidate(
-        candidate,
-        request,
-        activeController.signal,
-        activeOwner,
-        activeDependencies,
-      );
-      await started;
-      activeController.abort(new Error("cancelled active child"));
-      await expect(active).rejects.toThrow(/cancelled active child/i);
-      expect(activeChild!.kills).toEqual(["SIGKILL"]);
-      await expect(verifyMarkdownArtifactCandidate(candidate)).resolves.toBeUndefined();
-
-      const wrapperController = new AbortController();
-      const wrapperDependencies: InvocationDependencies = {
-        async withBindings(value, callback) {
-          return withVerifiedMarkdownArtifactBindings(value, async (bindings) => {
-            const result = await callback(bindings);
-            wrapperController.abort(new Error("cancelled after bindings"));
-            return result;
-          });
-        },
-        async supervise() {
-          return Object.freeze({
-            ok: true as const,
-            inspection: SELF_TEST_INSPECTION,
-            termination: "observed-pid-absence" as const,
-          });
-        },
-      };
-      await expect(
-        internals.invokeCandidate(
-          candidate,
-          request,
-          wrapperController.signal,
-          { child: null, killSent: false },
-          wrapperDependencies,
-        ),
-      ).rejects.toThrow(/cancelled after bindings/i);
-      await expect(verifyMarkdownArtifactCandidate(candidate)).resolves.toBeUndefined();
-    } finally {
-      await disposeMarkdownArtifactCandidate(candidate);
-    }
-  }, 180_000);
 
   it("returns no handle and disposes the candidate when the self-test mismatches", async () => {
     const dependencies = fakeRuntimeDependencies({
