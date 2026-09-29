@@ -1462,6 +1462,37 @@
     "document_count": 448
   },
   {
+    "hostname": "masterdatascience.ubc.ca",
+    "title": "masterdatascience.ubc.ca",
+    "homepage_url": "https://masterdatascience.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:44:55.424Z",
+    "homepage_sha256": "659ac9a1c2b6d8efed508e3c90585143ba667924f60e5e233798e8f4ae6cdc0d",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/masterdatascience.ubc.ca",
+        "document_count": 622
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/masterdatascience.ubc.ca",
+        "document_count": 14
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/masterdatascience.ubc.ca",
+        "document_count": 76
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/masterdatascience.ubc.ca",
+        "document_count": 5
+      }
+    ],
+    "document_count": 717
+  },
+  {
     "hostname": "mbim.ubc.ca",
     "title": "mbim.ubc.ca",
     "homepage_url": "https://mbim.ubc.ca/",
