@@ -413,6 +413,99 @@ describe("reviewed IRES internal archive-block type", () => {
   );
 });
 
+describe("reviewed BioTeach order-control type", () => {
+  const host = "www.bioteach.ubc.ca";
+  const origin = `https://${host}/`;
+  const api = `${origin}wp-json/`;
+  const setup = () => {
+    const homepage = observation(origin, `<link rel="https://api.w.org/" href="${api}">`);
+    const routes = {
+      "/wp/v2/types": { methods: ["GET"], _links: { self: [{ href: `${api}wp/v2/types` }] } },
+      "/wp/v2/posts": { methods: ["GET"], _links: { self: [{ href: `${api}wp/v2/posts` }] } },
+      "/wp/v2/jp_pay_order": { methods: ["GET", "POST"], _links: { self: [{ href: `${api}wp/v2/jp_pay_order` }] } },
+    };
+    const types = {
+      post: {
+        rest_namespace: "wp/v2",
+        rest_base: "posts",
+        _links: { "wp:items": [{ href: `${api}wp/v2/posts` }] },
+      },
+      jp_pay_order: {
+        name: "Order",
+        slug: "jp_pay_order",
+        has_archive: false,
+        rest_namespace: "wp/v2",
+        rest_base: "jp_pay_order",
+        _links: { "wp:items": [{ href: `${api}wp/v2/jp_pay_order` }] },
+      },
+    };
+    const posts = observation(wordpressCollectionUrl(`${api}wp/v2/posts`, 1), [
+      {
+        id: 42,
+        link: `${origin}public-post/`,
+        status: "publish",
+        type: "post",
+        modified_gmt: "2025-05-01T00:00:00",
+      },
+    ]);
+    posts.snapshot.headers["x-wp-total"] = "1";
+    posts.snapshot.headers["x-wp-totalpages"] = "1";
+    const orders = observation(wordpressCollectionUrl(`${api}wp/v2/jp_pay_order`, 1), "<html>Publisher error</html>");
+    orders.snapshot.status = 500;
+    orders.snapshot.headers["content-type"] = "text/html";
+    const values = new Map<string, Observation>([
+      [api, observation(api, { routes })],
+      [`${api}wp/v2/types`, observation(`${api}wp/v2/types`, types)],
+      [posts.snapshot.url, posts],
+      [orders.snapshot.url, orders],
+    ]);
+    const scraper: HostScraper = {
+      hostname: host,
+      title: "BioTeach",
+      scope: "Public teaching articles",
+      adapter: { kind: "wordpress", allowedTypes: [], allPublicTypes: true, exactHostInventory: true },
+      vetHomepage: () => ({ accepted: true, reason: "Public homepage" }),
+      extract: () => ({ kind: "excluded", reason: "Discovery fixture" }),
+    };
+    const read = vi.fn(async (url: string) => {
+      const value = values.get(url);
+      if (!value) throw new Error(`Missing fixture ${url}`);
+      return value;
+    });
+    const discover = () => {
+      values.set(api, observation(api, { routes }));
+      values.set(`${api}wp/v2/types`, observation(`${api}wp/v2/types`, types));
+      return discoverWordpress(scraper, homepage, read);
+    };
+    return { routes, types, scraper, read, discover };
+  };
+
+  it("keeps public posts while omitting only the publisher's non-archive order records", async () => {
+    const fixture = setup();
+    expect((await fixture.discover()).map((item) => item.url)).toEqual([`${origin}public-post/`]);
+    expect(fixture.read).not.toHaveBeenCalledWith(wordpressCollectionUrl(`${api}wp/v2/jp_pay_order`, 1));
+  });
+
+  it.each(["hostname", "name", "slug", "archive", "namespace", "base", "item", "route", "methods", "self"])(
+    "does not hide a changed order type or route: %s",
+    async (change) => {
+      const fixture = setup();
+      const order = fixture.types.jp_pay_order;
+      if (change === "hostname") fixture.scraper.hostname = "other.ubc.ca";
+      if (change === "name") order.name = "Research articles";
+      if (change === "slug") order.slug = "articles";
+      if (change === "archive") order.has_archive = true;
+      if (change === "namespace") order.rest_namespace = "custom/v1";
+      if (change === "base") order.rest_base = "articles";
+      if (change === "item") order._links["wp:items"][0]!.href = `${api}wp/v2/other`;
+      if (change === "route") delete (fixture.routes as Record<string, unknown>)["/wp/v2/jp_pay_order"];
+      if (change === "methods") fixture.routes["/wp/v2/jp_pay_order"].methods = ["POST"];
+      if (change === "self") fixture.routes["/wp/v2/jp_pay_order"]._links.self[0]!.href = `${api}wp/v2/other`;
+      await expect(fixture.discover()).rejects.toThrow();
+    },
+  );
+});
+
 describe("reviewed Visit UBC search-control page", () => {
   const host = "visit.ubc.ca";
   const root = `https://${host}/`;

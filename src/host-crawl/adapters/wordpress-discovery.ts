@@ -184,6 +184,19 @@ export async function discoverWordpress(
   };
   const types = object(json(await read(routeUrl("/wp/v2/types"))));
   const reviewedNonDocumentType = (key: string) => {
+    if (scraper.hostname === "www.bioteach.ubc.ca" && key === "jp_pay_order") {
+      const item = object(types[key]);
+      const endpoint = `https://${scraper.hostname}/wp-json/wp/v2/jp_pay_order`;
+      return (
+        item.name === "Order" &&
+        item.slug === key &&
+        item.has_archive === false &&
+        item.rest_namespace === "wp/v2" &&
+        item.rest_base === key &&
+        link(item, "wp:items") === endpoint &&
+        routeUrl(`/wp/v2/${key}`) === endpoint
+      );
+    }
     const label =
       scraper.hostname === "ires.ubc.ca" && key === "wpa-helper"
         ? "WordPress Archives Blocks"
