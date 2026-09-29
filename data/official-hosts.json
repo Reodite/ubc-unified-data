@@ -1306,42 +1306,6 @@
     "document_count": 17
   },
   {
-    "hostname": "mediastudies.arts.ubc.ca",
-    "title": "mediastudies.arts.ubc.ca",
-    "homepage_url": "https://mediastudies.arts.ubc.ca/",
-    "homepage_retrieved_at": "2026-09-18T11:50:41.997Z",
-    "homepage_sha256": "5d8160835b3b38f83f9e8c39273018451f769a7cafc6ef18cffaa05dcc02fc5c",
-    "scope": "Useful public article-style HTML prose on this exact hostname.",
-    "document_roots": [
-      {
-        "category": "academics",
-        "path": "data/documents/academics/mediastudies.arts.ubc.ca",
-        "document_count": 24
-      },
-      {
-        "category": "news",
-        "path": "data/documents/news/mediastudies.arts.ubc.ca",
-        "document_count": 88
-      },
-      {
-        "category": "opportunities",
-        "path": "data/documents/opportunities/mediastudies.arts.ubc.ca",
-        "document_count": 81
-      },
-      {
-        "category": "stories",
-        "path": "data/documents/stories/mediastudies.arts.ubc.ca",
-        "document_count": 35
-      },
-      {
-        "category": "support",
-        "path": "data/documents/support/mediastudies.arts.ubc.ca",
-        "document_count": 9
-      }
-    ],
-    "document_count": 237
-  },
-  {
     "hostname": "mednet.med.ubc.ca",
     "title": "mednet.med.ubc.ca",
     "homepage_url": "https://mednet.med.ubc.ca/",
