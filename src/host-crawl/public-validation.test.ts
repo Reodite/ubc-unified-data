@@ -16,13 +16,12 @@ afterEach(async (context) => {
   }
 });
 
-async function setup() {
+async function setup(body = "Original document.\n") {
   await mkdir(assertExternalPath(EXTERNAL_BOUNDARY), { recursive: true });
   const root = await mkdtemp(join(EXTERNAL_BOUNDARY, "text-validation-test-"));
   roots.push(root);
   const hostname = "example.ubc.ca";
   const source_url = `https://${hostname}/page`;
-  const body = "Original document.\n";
   const doc: SearchDocument = {
     id: `documents:official-web:${sha256(source_url).slice(0, 24)}`,
     hostname,
@@ -130,6 +129,32 @@ describe("nonregular public artifacts", () => {
 });
 
 describe("published host validation", () => {
+  it.each([
+    "Apologies, but no results were found\\.\n",
+    "On this page\n",
+    "\\*\\*Under Construction\\*\\* – this page is currently under construction and will be updated soon\\.\n\nYou must be logged in as an instructor to view this content\\.\n",
+  ])("preserves historical placeholder bytes but rejects them for release: %s", async (body) => {
+    const fixture = await setup(body);
+    const before = await readFile(fixture.file);
+    expect(await validatePublishedHosts(fixture.options)).toEqual([fixture.host]);
+    expect(await validatePublishedHosts({ ...fixture.options, requireUsefulArticles: false })).toEqual([fixture.host]);
+    await expect(validatePublishedHosts({ ...fixture.options, requireUsefulArticles: true })).rejects.toThrow(
+      /known placeholder/,
+    );
+    expect(await readFile(fixture.file)).toEqual(before);
+  });
+
+  it.each([
+    "Open.\n",
+    "Apologies, but no results were found\\.\n\nContact the service desk if this message appears\\.\n",
+    "On this page\n\nRegistration closes on Friday\\.\n",
+  ])("accepts short articles and substantive discussion during release checks: %s", async (body) => {
+    const fixture = await setup(body);
+    const before = await readFile(fixture.file);
+    expect(await validatePublishedHosts({ ...fixture.options, requireUsefulArticles: true })).toEqual([fixture.host]);
+    expect(await readFile(fixture.file)).toEqual(before);
+  });
+
   it("validates only minimal output and preserves unrelated upstream data", async () => {
     const fixture = await setup();
     const upstream = join(fixture.root, "data/prose");

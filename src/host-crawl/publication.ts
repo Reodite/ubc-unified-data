@@ -2,7 +2,9 @@ import { constants } from "node:fs";
 import { chmod, mkdir, open, readdir, rename, rmdir, unlink } from "node:fs/promises";
 import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 import { DatabaseSync } from "node:sqlite";
+import { assertPublishableArticle } from "./article-quality.ts";
 import { DOCUMENT_CATEGORIES as CATEGORIES } from "./categories.ts";
+import { assertAdmittedHostname } from "./category-routing.ts";
 import type { CompletedHost, VettedHost } from "./contracts.ts";
 import { digest, documentFilename, exactObject, formatDocument, parseDocument, sha256 } from "./document-format.ts";
 import { EXTERNAL_BOUNDARY } from "./paths.ts";
@@ -735,6 +737,7 @@ export async function publishCompletedHost(options: PublishCompletedHostOptions)
   )
     throw new Error("Only complete, nonempty, input-verified hosts can be published");
   validateVettedHost(completed.host, registeredHosts);
+  assertAdmittedHostname(completed.host.hostname);
   if (completed.host.document_count !== completed.documents.length)
     throw new Error("Completed host document count mismatch");
   const host = structuredClone(completed.host);
@@ -747,6 +750,7 @@ export async function publishCompletedHost(options: PublishCompletedHostOptions)
       if (!root) throw new Error("Document category does not match a host root");
       const expected = { hostname: host.hostname, filename: documentFilename(doc.id), category: root.category };
       const parsed = parseDocument(bytes, expected);
+      assertPublishableArticle(parsed);
       return { path: root.path, name: documentFilename(parsed.id), bytes, document: parsed };
     })
     .sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));

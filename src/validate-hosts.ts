@@ -14,6 +14,7 @@ try {
     repositoryRoot: ROOT,
     registeredHosts: registeredHostnames(),
     requireCategories: values["require-categories"],
+    requireUsefulArticles: true,
   });
   for (const host of hosts) {
     if (!host.document_roots) continue;

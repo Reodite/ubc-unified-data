@@ -22,7 +22,7 @@ import { DOCUMENT_CATEGORIES, type DocumentCategory } from "./categories.ts";
 import type { CompletedHost, SearchDocument } from "./contracts.ts";
 import { documentFilename, formatDocument, parseDocument, sha256 } from "./document-format.ts";
 import { assertExternalPath, EXTERNAL_BOUNDARY } from "./paths.ts";
-import { hostDocumentRoots, validatePublishedHosts } from "./public-validation.ts";
+import { formatHostList, hostDocumentRoots, validatePublishedHosts } from "./public-validation.ts";
 import {
   publishCompletedHost,
   withdrawPublishedHost,
@@ -468,6 +468,110 @@ describe("incremental completed host publication", () => {
     });
   });
 });
+
+describe("article-quality publication preflight", () => {
+  it.each(
+    [false, true].flatMap((incremental) =>
+      [false, true].flatMap((existing) => [false, true].map((categories) => ({ incremental, existing, categories }))),
+    ),
+  )(
+    "rejects the entire host before staging ($incremental, $existing, $categories)",
+    async ({ incremental, existing, categories }) => {
+      const fixture = await setup();
+      const initial = categories ? categorized() : legacyOf(categorized());
+      if (existing) await publishCompletedHost({ ...fixture.options, completed: initial });
+      const before = await tree(fixture.options.repositoryRoot, true);
+      const externalBefore = await tree(fixture.root, true);
+      for (const body of [
+        "Apologies, but no results were found\\.\n",
+        "On this page\n",
+        "\\*\\*Under Construction\\*\\* – this page is currently under construction and will be updated soon\\.\n\nYou must be logged in as an instructor to view this content\\.\n",
+      ]) {
+        const completed = structuredClone(initial);
+        const document = completed.documents[1]!;
+        document.content_markdown = body;
+        document.body_sha256 = sha256(body);
+        document.content_sha256 = sha256(`${document.title}\n${body}`);
+        const inputBefore = structuredClone(completed);
+        const testHook = vi.fn();
+        const verifyInputs = vi.fn(async () => {});
+        await expect(
+          publishCompletedHost({ ...fixture.options, completed, incremental, testHook, verifyInputs }),
+        ).rejects.toThrow(/known placeholder/);
+        expect(testHook).not.toHaveBeenCalled();
+        expect(verifyInputs).not.toHaveBeenCalled();
+        expect(completed).toEqual(inputBefore);
+        expect(await tree(fixture.options.repositoryRoot, true)).toEqual(before);
+        expect(await tree(fixture.root, true)).toEqual(externalBefore);
+      }
+    },
+  );
+
+  it("publishes substantive discussion of placeholder messages without rewriting it", async () => {
+    const fixture = await setup();
+    const completed = complete(
+      "example.ubc.ca",
+      "On this page\n\nApologies, but no results were found\\.\n\nContact the service desk if this message appears\\.\n",
+    );
+    const bytes = formatDocument(completed.documents[0]!);
+    expect((await publishCompletedHost({ ...fixture.options, completed })).changed).toBe(true);
+    expect(await readFile(fixture.file)).toEqual(bytes);
+    expect(await validatePublishedHosts({ ...fixture.options, requireUsefulArticles: true })).toEqual([completed.host]);
+  });
+
+  it("refuses even a placeholder no-op while preserving historical parsing and withdrawal", async () => {
+    const fixture = await setup();
+    const completed = complete("example.ubc.ca", "Apologies, but no results were found\\.\n");
+    await installHistoricalFixture(fixture.options, completed);
+    const bytes = await readFile(fixture.file);
+    expect(parseDocument(bytes)).toEqual(completed.documents[0]);
+    expect(await validatePublishedHosts(fixture.options)).toEqual([completed.host]);
+    const before = await tree(fixture.root, true);
+    await expect(publishCompletedHost({ ...fixture.options, completed })).rejects.toThrow(/known placeholder/);
+    expect(await tree(fixture.root, true)).toEqual(before);
+    expect(await withdrawPublishedHost(withdrawal(fixture.options))).toEqual({ changed: true, hosts: [] });
+    expect(await validatePublishedHosts({ ...fixture.options, requireUsefulArticles: true })).toEqual([]);
+    await cleanWorkspace(fixture.workspace);
+  });
+});
+
+describe("direct publication hostname admission", () => {
+  it.each([false, true])("rejects a saved rejected hostname without mutation (existing: %s)", async (existing) => {
+    const fixture = await setup();
+    const hostname = "med-fom-spph-internal.sites.olt.ubc.ca";
+    const completed = complete(hostname, "Harmless synthetic historical fixture.\n");
+    const options = { ...fixture.options, completed, registeredHosts: [hostname] };
+    if (existing) {
+      await installHistoricalFixture(options, completed);
+      expect(await validatePublishedHosts(options)).toEqual([completed.host]);
+    }
+    const before = await tree(fixture.root, true);
+    const testHook = vi.fn();
+    const verifyInputs = vi.fn(async () => {});
+    await expect(publishCompletedHost({ ...options, testHook, verifyInputs })).rejects.toThrow(
+      /Owner-rejected hostname/,
+    );
+    expect(await tree(fixture.root, true)).toEqual(before);
+    expect(testHook).not.toHaveBeenCalled();
+    expect(verifyInputs).not.toHaveBeenCalled();
+    expect(await withdrawPublishedHost(withdrawal(options))).toEqual({ changed: existing, hosts: [] });
+    expect(await validatePublishedHosts({ ...options, allowAbsent: true })).toEqual([]);
+    await cleanWorkspace(fixture.workspace);
+  });
+});
+
+async function installHistoricalFixture(options: PublishCompletedHostOptions, completed: CompletedHost): Promise<void> {
+  for (const root of hostDocumentRoots(completed.host)) {
+    const directory = join(options.repositoryRoot, root.path);
+    await mkdir(directory, { recursive: true });
+    for (const document of completed.documents.filter((doc) => doc.category === root.category))
+      await writeFile(join(directory, documentFilename(document.id)), formatDocument(document));
+  }
+  await writeFile(
+    join(options.repositoryRoot, "data/official-hosts.json"),
+    formatHostList([completed.host], options.registeredHosts),
+  );
+}
 
 describe("completed host publication", () => {
   it.each([false, true])(

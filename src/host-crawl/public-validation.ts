@@ -1,6 +1,7 @@
 import { constants } from "node:fs";
 import { lstat, open, readdir } from "node:fs/promises";
 import { isAbsolute, join, parse, resolve } from "node:path";
+import { assertPublishableArticle } from "./article-quality.ts";
 import {
   assertDocumentCategory,
   categoryDocumentRoot,
@@ -197,6 +198,8 @@ export interface ValidatePublishedHostsOptions {
   documentHostnames?: readonly string[];
   /** Reject legacy flat roots after a host-by-host migration finishes. */
   requireCategories?: boolean;
+  /** Reject known placeholder-only bodies; omit when reading historical evidence for withdrawal. */
+  requireUsefulArticles?: boolean;
 }
 
 /** Validate only the owned host index and document tree, leaving upstream data outside that tree alone. */
@@ -206,6 +209,7 @@ export async function validatePublishedHosts({
   allowAbsent = false,
   documentHostnames,
   requireCategories = false,
+  requireUsefulArticles = false,
 }: ValidatePublishedHostsOptions): Promise<VettedHost[]> {
   const registered = registeredHostSet(registeredHosts);
   if (documentHostnames !== undefined && !Array.isArray(documentHostnames))
@@ -280,6 +284,7 @@ export async function validatePublishedHosts({
           filename: name,
           category: root.category,
         });
+        if (requireUsefulArticles) assertPublishableArticle(doc);
         if (!root.category && doc.category) throw new Error("Categorized document is stored in a legacy directory");
         if (ids.has(doc.id)) throw new Error("Duplicate document ID");
         ids.add(doc.id);

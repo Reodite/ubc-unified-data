@@ -12,6 +12,7 @@ import {
 } from "./adapters/html-discovery.ts";
 import { wordpressRecordInput } from "./adapters/wordpress-content.ts";
 import { advertisedWordpressRoots, discoverWordpress } from "./adapters/wordpress-discovery.ts";
+import { assertPublishableArticle, isKnownEmptyArchiveBody } from "./article-quality.ts";
 import {
   DocumentPolicyError,
   NonTextMediaError,
@@ -40,6 +41,16 @@ import { hostUrl, inventoryUrl, nonDocumentInventoryUrl, pageExclusion, UNSUPPOR
 
 const sha256 = (value: string | Uint8Array) => createHash("sha256").update(value).digest("hex");
 const isPdfUrl = (value: string) => /\.pdf$/i.test(decodeURIComponent(new URL(value).pathname));
+const REVIEWED_EMPTY_ARCHIVE_CLASSES: Readonly<Record<string, string>> = {
+  "lam.library.ubc.ca": "category",
+  "smp.med.ubc.ca": "author",
+  "macl.arts.ubc.ca": "post-type-archive-event",
+  "mech.ubc.ca": "post-type-archive-event",
+  "mes.arts.ubc.ca": "post-type-archive-event",
+  "mtrl.ubc.ca": "post-type-archive-event",
+  "nitep.educ.ubc.ca": "post-type-archive-event",
+  "rgst.arts.ubc.ca": "post-type-archive-event",
+};
 const robotsParser = createRequire(import.meta.url)("robots-parser") as (
   url: string,
   body: string,
@@ -948,6 +959,36 @@ export async function collectRecordedHost(
     const title = plainText(input.title);
     if (!title) throw new Error("Extracted document lacks a title");
     const converted = toSafeMarkdown(input.html, contentBase ?? sourceUrl);
+    const archiveClass = REVIEWED_EMPTY_ARCHIVE_CLASSES[hostname];
+    if (
+      !apiInput &&
+      archiveClass &&
+      isKnownEmptyArchiveBody(converted.markdown) &&
+      load(observation.snapshot.body)("body.archive").hasClass(archiveClass)
+    ) {
+      const identities = new Set(
+        [
+          requested,
+          sourceUrl,
+          ...[observed, observation].flatMap(({ snapshot }) => [
+            snapshot.requested_url,
+            snapshot.url,
+            ...(snapshot.redirects ?? []).flatMap((hop) => [hop.url, hostUrl(hop.location, hostname, hop.url)]),
+          ]),
+        ].map((url) => hostUrl(url, hostname)),
+      );
+      if (
+        [...identities].some(
+          (url) =>
+            reviewedCmsConflicts.has(url) ||
+            advertisedPages.has(url) ||
+            viewBases.has(url) ||
+            emittedIdentities.has(url),
+        )
+      )
+        throw new Error(`Reviewed empty archive conflicts with a required page: ${requested}`);
+      continue;
+    }
     if (!converted.markdown.trim()) {
       if (apiInput || requiredViews.has(requested) || requiredQueries.has(requested) || isPdfUrl(requested))
         throw new Error(`Required API text or document becomes empty after sanitization: ${sourceUrl}`);
@@ -1017,6 +1058,7 @@ export async function collectRecordedHost(
     )
       throw new Error(`Required Markdown target lacks its exact extracted witness context: ${declaration.target_url}`);
   }
+  for (const document of result) assertPublishableArticle(document);
   await archive.assertUnchanged();
   return {
     complete: true,
