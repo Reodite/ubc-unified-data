@@ -2405,22 +2405,6 @@
     "document_count": 237
   },
   {
-    "hostname": "powerhouse.sauder.ubc.ca",
-    "title": "powerhouse.sauder.ubc.ca",
-    "homepage_url": "https://powerhouse.sauder.ubc.ca/",
-    "homepage_retrieved_at": "2026-09-18T12:39:27.199Z",
-    "homepage_sha256": "84a2eca0d884bcc1bf3c4ffcf49c3af78ef8ca656273c6134adf80a3fb39120a",
-    "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_roots": [
-      {
-        "category": "stories",
-        "path": "data/documents/stories/powerhouse.sauder.ubc.ca",
-        "document_count": 11
-      }
-    ],
-    "document_count": 11
-  },
-  {
     "hostname": "proftalk.ubc.ca",
     "title": "proftalk.ubc.ca",
     "homepage_url": "https://proftalk.ubc.ca/",
