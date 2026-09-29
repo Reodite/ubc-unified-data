@@ -4113,27 +4113,6 @@
     "document_count": 449
   },
   {
-    "hostname": "www.biology.ubc.ca",
-    "title": "www.biology.ubc.ca",
-    "homepage_url": "https://www.biology.ubc.ca/",
-    "homepage_retrieved_at": "2026-09-18T14:02:18.988Z",
-    "homepage_sha256": "8c4fa0e1349d4a41caf42ac80d918d0971bf6cf7729b9618840517571bc1f293",
-    "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_roots": [
-      {
-        "category": "academics",
-        "path": "data/documents/academics/www.biology.ubc.ca",
-        "document_count": 24
-      },
-      {
-        "category": "news",
-        "path": "data/documents/news/www.biology.ubc.ca",
-        "document_count": 1
-      }
-    ],
-    "document_count": 25
-  },
-  {
     "hostname": "www.chinalinks.ubc.ca",
     "title": "www.chinalinks.ubc.ca",
     "homepage_url": "https://www.chinalinks.ubc.ca/",
