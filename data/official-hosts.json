@@ -2188,22 +2188,6 @@
     "document_count": 187
   },
   {
-    "hostname": "ok.ubc.ca",
-    "title": "ok.ubc.ca",
-    "homepage_url": "https://ok.ubc.ca/",
-    "homepage_retrieved_at": "2026-09-18T12:16:52.350Z",
-    "homepage_sha256": "12264fc8d6a379c43044676dffaf35200db9dec93b57146c0d458d618f70661c",
-    "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_roots": [
-      {
-        "category": "support",
-        "path": "data/documents/support/ok.ubc.ca",
-        "document_count": 132
-      }
-    ],
-    "document_count": 132
-  },
-  {
     "hostname": "open.ubc.ca",
     "title": "open.ubc.ca",
     "homepage_url": "https://open.ubc.ca/",
