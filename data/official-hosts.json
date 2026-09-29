@@ -2994,27 +2994,6 @@
     "document_count": 5
   },
   {
-    "hostname": "recreation.ok.ubc.ca",
-    "title": "recreation.ok.ubc.ca",
-    "homepage_url": "https://recreation.ok.ubc.ca/",
-    "homepage_retrieved_at": "2026-09-18T12:53:16.170Z",
-    "homepage_sha256": "7e8ef1be34bf73cefb0c288b62a2ddfd979a32c33dec44f829dbec5f6c5a0494",
-    "scope": "Useful public article-style HTML prose on this exact hostname.",
-    "document_roots": [
-      {
-        "category": "opportunities",
-        "path": "data/documents/opportunities/recreation.ok.ubc.ca",
-        "document_count": 5
-      },
-      {
-        "category": "support",
-        "path": "data/documents/support/recreation.ok.ubc.ca",
-        "document_count": 33
-      }
-    ],
-    "document_count": 38
-  },
-  {
     "hostname": "redi.med.ubc.ca",
     "title": "redi.med.ubc.ca",
     "homepage_url": "https://redi.med.ubc.ca/",
