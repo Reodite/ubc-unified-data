@@ -20,6 +20,7 @@ import { collectRecordedHost } from "./collect.ts";
 import type { CompletedHost, HostArchive, ProducerContext } from "./contracts.ts";
 import { digest, documentFilename, exactObject, sha256 } from "./document-format.ts";
 import { cheapGuardCompletedHost, createGenericScraper } from "./generic.ts";
+import { lockGitPublication, saveGitPublication } from "./git-publication-lock.ts";
 import { verifyHistoricalReady } from "./historical-output.ts";
 import { currentUnavailableHosts } from "./host-dispositions.ts";
 import { assertCollectedInput, decodeFrozenSeed, deriveCollectionInputDigest } from "./inputs.ts";
@@ -369,21 +370,21 @@ export class HostBatch {
     });
   }
 
-  private async staged(): Promise<ChangedFile[]> {
-    const fields = this.git(["diff", "--cached", "--name-status", "--no-renames", "-z"]).toString("utf8").split("\0");
+  private async staged(tree: string, parent: string): Promise<ChangedFile[]> {
+    const fields = this.git(["diff", "--name-status", "--no-renames", "-z", parent, tree]).toString("utf8").split("\0");
     fields.pop();
     const files: ChangedFile[] = [];
     for (let index = 0; index < fields.length; index += 2) {
       const status = fields[index]!;
       const path = fields[index + 1]!;
       if (!["A", "M", "D"].includes(status)) throw new Error("Unsupported staged change");
-      const bytes = status === "D" ? null : this.git(["show", `:${path}`]);
+      const bytes = status === "D" ? null : this.git(["show", `${tree}:${path}`]);
       if (bytes && !(await readRegularFile(join(this.config.repositoryRoot, path), LARGE_PRIVATE_FILE)).equals(bytes))
         throw new Error(`Staged bytes differ: ${path}`);
       files.push({
         path,
         bytes,
-        previousBytes: status === "A" ? null : this.git(["show", `HEAD:${path}`]),
+        previousBytes: status === "A" ? null : this.git(["show", `${parent}:${path}`]),
       });
     }
     return files;
@@ -488,18 +489,14 @@ export class HostBatch {
 
   async publish(hostname: string, token: string, sampleReview: string) {
     assertAdmittedHostname(hostname);
-    const row = this.owned(hostname, token);
-    if (!["ready", "publishing"].includes(row.state) || !sampleReview.trim())
-      throw new Error("Publication requires ready output and one quick content sample review");
-    const lock = new DatabaseSync(join(this.directory, "state", "git-publication.sqlite"));
-    lock.exec(
-      "PRAGMA busy_timeout=600000; CREATE TABLE IF NOT EXISTS owner(repository_root TEXT PRIMARY KEY); BEGIN IMMEDIATE",
+    const lock = lockGitPublication(
+      this.config.repositoryRoot,
+      this.git(["rev-parse", "--path-format=absolute", "--git-common-dir"]).toString().trim(),
     );
     try {
-      const owners = lock.prepare("SELECT repository_root FROM owner").all();
-      if (owners.length && (owners.length !== 1 || owners[0]!.repository_root !== this.config.repositoryRoot))
-        throw new Error("Publication lock belongs to another repository");
-      if (!owners.length) lock.prepare("INSERT INTO owner VALUES (?)").run(this.config.repositoryRoot);
+      const row = this.owned(hostname, token);
+      if (!["ready", "publishing", "published"].includes(row.state) || !sampleReview.trim())
+        throw new Error("Publication requires ready output and one quick content sample review");
       if (this.git(["branch", "--show-current"]).toString().trim() !== "feat/prose-documents")
         throw new Error("Publication is restricted to feat/prose-documents");
       if (this.git(["rev-parse", "refs/heads/main"]).toString().trim() !== this.config.main)
@@ -511,25 +508,23 @@ export class HostBatch {
         )
       )
         throw new Error("Unexpected publication push destination");
-      const marker = join(this.directory, "state", "active-publication.json");
-      try {
-        const prior = ((await json(marker)) as { hostname: string }).hostname;
-        if (prior !== hostname && this.queue.get(prior)?.state !== "published")
-          throw new Error("Another hostname has an unfinished publication");
-      } catch (error) {
-        if (!absent(error)) throw error;
-      }
-      const receiptPath = join(this.directory, "publications", `${hostname}.json`);
+      await lock.claim({ batch_directory: this.directory, hostname, token }, row.state === "published");
+      const receiptPath = assertExternalPath(
+        join(this.directory, "publications", `${hostname}.json`),
+        this.config.repositoryRoot,
+      );
+      const saveReceipt = (value: GitReceipt) => saveGitPublication(receiptPath, value, this.config.repositoryRoot);
       let receipt: GitReceipt;
       try {
         receipt = (await json(receiptPath)) as GitReceipt;
       } catch (error) {
-        if (!absent(error)) throw error;
+        if (!absent(error) || row.state === "published") throw error;
         receipt = { hostname, parent: this.git(["rev-parse", "HEAD"]).toString().trim() };
-        await save(receiptPath, receipt);
+        await saveReceipt(receipt);
       }
       if (receipt.hostname !== hostname) throw new Error("Publication receipt hostname differs");
-      await save(marker, { hostname });
+      if (row.state === "published" && (!receipt.commit || !receipt.tree || !receipt.pushed))
+        throw new Error("Published claim lacks a completed Git receipt");
       if (row.state === "ready") this.queue.update(hostname, token, "publishing", { sample_review: sampleReview });
       const head = this.git(["rev-parse", "HEAD"]).toString().trim();
       if (!receipt.commit && receipt.tree && head !== receipt.parent) {
@@ -539,7 +534,7 @@ export class HostBatch {
         )
           throw new Error("Unrecognized HEAD after interrupted commit");
         receipt.commit = head;
-        await save(receiptPath, receipt);
+        await saveReceipt(receipt);
       }
       if (!receipt.commit) {
         if (head !== receipt.parent) throw new Error("Publication parent changed");
@@ -625,7 +620,9 @@ export class HostBatch {
           ...(initial ? Object.keys(this.config.bootstrapFiles) : []),
         ];
         this.git(["add", "--", ...new Set(paths)]);
-        const files = await this.staged();
+        // Validate immutable tree bytes, not an index that may change across asynchronous file reads.
+        const tree = this.git(["write-tree"]).toString().trim();
+        const files = await this.staged(tree, receipt.parent);
         if (assertSingleHostChange(files) !== hostname) throw new Error("Staged commit belongs to another hostname");
         for (const file of files)
           if (!allowed.has(file.path) && !ownsDocument(file.path))
@@ -639,14 +636,30 @@ export class HostBatch {
             )
           )
             throw new Error("A final document is missing from the stage");
-        receipt.tree = this.git(["write-tree"]).toString().trim();
-        await save(receiptPath, receipt);
+        receipt.tree = tree;
+        await saveReceipt(receipt);
+        if (this.git(["write-tree"]).toString().trim() !== tree)
+          throw new Error("Git index changed after staged tree validation");
+        if (this.git(["rev-parse", "HEAD"]).toString().trim() !== receipt.parent)
+          throw new Error("Publication parent changed before commit");
         this.git(["commit", "-m", `feat: publish ${hostname} documents`]);
+        // Hooks and noncooperating Git writers must not turn an unvalidated tree into a valid receipt.
+        if (
+          this.git(["rev-parse", "HEAD^{tree}"]).toString().trim() !== tree ||
+          this.git(["rev-parse", "HEAD^"]).toString().trim() !== receipt.parent
+        )
+          throw new Error("Committed tree or parent differs from validated stage");
         receipt.commit = this.git(["rev-parse", "HEAD"]).toString().trim();
-        await save(receiptPath, receipt);
+        await saveReceipt(receipt);
       }
       if (this.git(["rev-parse", "HEAD"]).toString().trim() !== receipt.commit)
         throw new Error("Committed hostname is no longer HEAD");
+      if (
+        !receipt.tree ||
+        this.git(["rev-parse", "HEAD^{tree}"]).toString().trim() !== receipt.tree ||
+        this.git(["rev-parse", "HEAD^"]).toString().trim() !== receipt.parent
+      )
+        throw new Error("Committed tree or parent differs from publication receipt");
       if (this.git(["status", "--porcelain"]).length) throw new Error("Publication left a dirty checkout");
       this.git(["push", "origin", "HEAD:refs/heads/feat/prose-documents"]);
       const remote = this.git([
@@ -662,11 +675,10 @@ export class HostBatch {
       )
         throw new Error("Remote feature/main verification failed");
       receipt.pushed = true;
-      await save(receiptPath, receipt);
-      this.queue.update(hostname, token, "published", { commit: receipt.commit, pushed: true });
-      const { unlink } = await import("node:fs/promises");
-      await unlink(marker);
-      lock.exec("COMMIT");
+      await saveReceipt(receipt);
+      if (row.state !== "published")
+        this.queue.update(hostname, token, "published", { commit: receipt.commit, pushed: true });
+      await lock.finish();
       return { hostname, commit: receipt.commit, documents: row.details.documents, published: true };
     } finally {
       lock.close();

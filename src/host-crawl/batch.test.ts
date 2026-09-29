@@ -36,6 +36,7 @@ async function fixture() {
   const hostname = `batch-${id}.ubc.ca`;
   await mkdir(join(directory, "state"), { recursive: true });
   await mkdir(join(repositoryRoot, "src/host-scrapers"), { recursive: true });
+  await mkdir(join(repositoryRoot, ".git"), { recursive: true });
   await writeFile(join(repositoryRoot, "src/host-scrapers/generic-hosts.json"), "[]\n");
   await writeFile(
     join(directory, "config.json"),
@@ -279,8 +280,12 @@ describe("five-worker batch handoff", () => {
         const args = raw.slice(1);
         const call = args.join(" ");
         if (call === "branch --show-current") return Buffer.from("feat/prose-documents\n");
+        if (call === "rev-parse --path-format=absolute --git-common-dir")
+          return Buffer.from(join(repositoryRoot, ".git"));
         if (call === "rev-parse refs/heads/main") return Buffer.from(main);
         if (call === "rev-parse HEAD") return Buffer.from(head);
+        if (call === "rev-parse HEAD^") return Buffer.from(baseline);
+        if (call === "rev-parse HEAD^{tree}") return Buffer.from(tree);
         if (call === "remote get-url --push --all origin")
           return Buffer.from("https://github.com/Reodite/ubc-unified-data\n");
         if (args[0] === "ls-files" || args[0] === "status") return Buffer.alloc(0);
@@ -297,9 +302,9 @@ describe("five-worker batch handoff", () => {
           return Buffer.from(
             staged.map((path) => `${path.endsWith("generic-hosts.json") ? "M" : "A"}\0${path}\0`).join(""),
           );
-        if (call === "show HEAD:src/host-scrapers/generic-hosts.json") return Buffer.from("[]\n");
-        if (args[0] === "show" && args[1]!.startsWith(":"))
-          return readFileSync(join(repositoryRoot, args[1]!.slice(1)));
+        if (call === `show ${baseline}:src/host-scrapers/generic-hosts.json`) return Buffer.from("[]\n");
+        if (args[0] === "show" && args[1]!.startsWith(`${tree}:`))
+          return readFileSync(join(repositoryRoot, args[1]!.slice(tree.length + 1)));
         if (args[0] === "write-tree") return Buffer.from(tree);
         if (args[0] === "commit") {
           commits++;
