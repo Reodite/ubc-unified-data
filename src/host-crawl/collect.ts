@@ -295,7 +295,31 @@ async function sitemapPages(
         !observation.snapshot.body.startsWith('<?xml version="1.0" encoding="UTF-8"?>'))
     )
       throw new Error("Reviewed MDRU sitemap identity changed");
-    const parsed = parseSitemap(observation.snapshot.body);
+    const reviewedAmsEvents =
+      exactHost && hostname === "www.ams.ubc.ca" && url === `https://${hostname}/tec_recurring_events-sitemap.xml`;
+    let sitemapBody = observation.snapshot.body;
+    if (reviewedAmsEvents) {
+      const marker = '>"\\n"\t<url>';
+      if (
+        observation.snapshot.requested_url !== url ||
+        observation.snapshot.url !== url ||
+        observation.snapshot.headers["content-type"] !== "text/xml; charset=UTF-8" ||
+        !sitemapBody.startsWith('<?xml version="1.0" encoding="UTF-8"?>') ||
+        sitemapBody.indexOf(marker) < 0 ||
+        sitemapBody.indexOf(marker) !== sitemapBody.lastIndexOf(marker) ||
+        sitemapBody.indexOf(marker) > sitemapBody.indexOf("</urlset>")
+      )
+        throw new Error("Reviewed AMS sitemap artifact changed");
+      sitemapBody = sitemapBody.replace(marker, ">\t<url>");
+    }
+    const parsed = parseSitemap(sitemapBody);
+    if (
+      reviewedAmsEvents &&
+      (parsed.kind !== "pages" ||
+        parsed.locations.length !== 65 ||
+        parsed.locations.some((target) => !target.startsWith(`https://${hostname}/event/`)))
+    )
+      throw new Error("Reviewed AMS event sitemap changed");
     if (mdruRoot && (parsed.kind !== "index" || JSON.stringify(parsed.locations) !== JSON.stringify(mdruChildren)))
       throw new Error("Reviewed MDRU sitemap children changed");
     if (mdruChild && parsed.kind !== "pages") throw new Error("Reviewed MDRU sitemap child changed");
