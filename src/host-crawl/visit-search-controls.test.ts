@@ -10,6 +10,7 @@ const home = `https://${hostname}/`;
 const api = `${home}wp-json/`;
 const search = `${home}?s=search`;
 const missingLocation = `${home}eat-drink-and-stay/accommodation/standard-suites/`;
+const missingRestaurant = `${home}eat-drink-and-stay/restaurants/restaurants-lounges-and-pubs/biercraft/`;
 const producer: ProducerContext = {
   inputs_sha256: sha256("visit producer"),
   runtime: { node: "26", icu: "78", unicode: "17", platform: "linux", arch: "x64" },
@@ -101,6 +102,14 @@ function fixture(
     const marker = missingLocation.replace("https://", "http://");
     const rows = [
       {
+        id: 303,
+        link: missingRestaurant.replace("https://", "http://"),
+        title: { rendered: "Sports Illustrated Clubhouse" },
+        modified_gmt: "2025-01-14T22:32:49",
+        status: "publish",
+        type: "location",
+      },
+      {
         id: 323,
         link: marker,
         title: { rendered: "Gage Suites" },
@@ -108,7 +117,7 @@ function fixture(
         status: "publish",
         type: "location",
       },
-      ...Array.from({ length: 58 }, (_, index) => ({
+      ...Array.from({ length: 57 }, (_, index) => ({
         id: 400 + index,
         link: `${home}page-${index}/`,
         title: { rendered: `Map marker ${index}` },
@@ -129,6 +138,7 @@ function fixture(
     page.snapshot.headers["x-wp-total"] = "60";
     page.snapshot.headers["x-wp-totalpages"] = "1";
     put(missingLocation, "<title>Page not found</title>", "text/html", location === "recovered" ? 200 : 404);
+    put(missingRestaurant, "<title>Page not found</title>", "text/html", location === "recovered" ? 200 : 404);
   }
   put(api, JSON.stringify({ routes }), "application/json");
   put(`${api}wp/v2/types`, JSON.stringify(types), "application/json");
@@ -219,15 +229,19 @@ describe("source-witnessed Visit UBC search control", () => {
     },
   );
 
-  it("preserves article pages while witnessing the two stale map markers' shared 404", async () => {
+  it("preserves article pages while witnessing three stale map markers' two 404 URLs", async () => {
     const f = fixture("none", "normal");
     const result = await f.collect();
     expect(result.documents.map(({ source_url }) => source_url)).toEqual(
       expect.arrayContaining(Array.from({ length: 67 }, (_, index) => `${home}page-${index}/`)),
     );
-    expect(result.documents.some(({ source_url }) => source_url === missingLocation)).toBe(false);
+    expect(result.documents.some(({ source_url }) => [missingLocation, missingRestaurant].includes(source_url))).toBe(
+      false,
+    );
     expect(f.archive.read).toHaveBeenCalledWith(missingLocation);
+    expect(f.archive.read).toHaveBeenCalledWith(missingRestaurant);
     expect(f.archive.readDocument).not.toHaveBeenCalledWith(missingLocation);
+    expect(f.archive.readDocument).not.toHaveBeenCalledWith(missingRestaurant);
   });
 
   it.each(["seed", "sitemap", "other-cms"] as const)(
@@ -238,6 +252,12 @@ describe("source-witnessed Visit UBC search control", () => {
       expect(f.archive.read).not.toHaveBeenCalledWith(missingLocation);
     },
   );
+
+  it("refuses an independently seeded restaurant identity", async () => {
+    const f = fixture("none", "seed");
+    f.archive.urls[0]!.url = missingRestaurant;
+    await expect(f.collect()).rejects.toThrow("Reviewed location identity conflicts with a required page");
+  });
 
   it("refuses to hide a map-marker URL that now serves public HTML", async () => {
     const f = fixture("none", "recovered");

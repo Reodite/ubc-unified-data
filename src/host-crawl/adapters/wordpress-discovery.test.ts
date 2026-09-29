@@ -546,7 +546,16 @@ describe("reviewed Visit UBC search-control page", () => {
     f.values.get(typeUrl)!.snapshot.body = JSON.stringify(types);
     f.values.get(api)!.snapshot.body = JSON.stringify(catalog);
     const missing = `${root}eat-drink-and-stay/accommodation/standard-suites/`;
+    const missingRestaurant = `${root}eat-drink-and-stay/restaurants/restaurants-lounges-and-pubs/biercraft/`;
     const locationRows = [
+      {
+        id: 303,
+        link: missingRestaurant.replace("https://", "http://"),
+        title: { rendered: "Sports Illustrated Clubhouse" },
+        modified_gmt: "2025-01-14T22:32:49",
+        status: "publish",
+        type: "location",
+      },
       {
         id: 323,
         link: missing.replace("https://", "http://"),
@@ -555,7 +564,7 @@ describe("reviewed Visit UBC search-control page", () => {
         status: "publish",
         type: "location",
       },
-      ...Array.from({ length: 58 }, (_, index) => ({
+      ...Array.from({ length: 57 }, (_, index) => ({
         id: 400 + index,
         link: `${root}page-${index}/`,
         title: { rendered: `Map marker ${index}` },
@@ -576,15 +585,15 @@ describe("reviewed Visit UBC search-control page", () => {
     locationPage.snapshot.headers["x-wp-total"] = "60";
     locationPage.snapshot.headers["x-wp-totalpages"] = "1";
     f.values.set(locationPage.snapshot.url, locationPage);
-    return { ...f, types, locationRows, locationPage, missing };
+    return { ...f, types, locationRows, locationPage, missing, missingRestaurant };
   };
 
-  it("counts all 60 map markers but keeps only 58 independently cited detail candidates", async () => {
+  it("counts all 60 map markers but keeps only 57 independently cited detail candidates", async () => {
     const f = locationFixture();
     const pages = await f.discover();
-    expect(pages.filter(({ type }) => type === "location")).toHaveLength(58);
-    expect(f.excludedLocations).toEqual(new Set([f.missing]));
-    expect(pages.some(({ url }) => url === f.missing)).toBe(false);
+    expect(pages.filter(({ type }) => type === "location")).toHaveLength(57);
+    expect(f.excludedLocations).toEqual(new Set([f.missing, f.missingRestaurant]));
+    expect(pages.some(({ url }) => url === f.missing || url === f.missingRestaurant)).toBe(false);
   });
 
   it.each([
@@ -593,6 +602,7 @@ describe("reviewed Visit UBC search-control page", () => {
     "changed id",
     "changed URL",
     "new root identity",
+    "new restaurant identity",
     "changed type",
     "changed total",
   ])("refuses changed map-marker identity: %s", async (change) => {
@@ -602,7 +612,8 @@ describe("reviewed Visit UBC search-control page", () => {
     if (change === "changed date") record.modified_gmt = "2025-01-01T12:00:00";
     if (change === "changed id") record.id = 324;
     if (change === "changed URL") record.link = `${root}eat-drink-and-stay/accommodation/other-suites/`;
-    if (change === "new root identity") f.locationRows[1]!.link = record.link;
+    if (change === "new root identity") f.locationRows[2]!.link = record.link;
+    if (change === "new restaurant identity") f.locationRows[2]!.link = f.missingRestaurant;
     if (change === "changed type") {
       f.types.location.has_archive = true;
       f.values.get(`${api}wp/v2/types`)!.snapshot.body = JSON.stringify(f.types);

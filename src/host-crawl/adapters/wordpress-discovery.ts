@@ -33,9 +33,12 @@ const RECURRING_EVENT_HOSTS = new Set([
 ]);
 
 const VISIT_MISSING_LOCATION = "https://visit.ubc.ca/eat-drink-and-stay/accommodation/standard-suites/";
-const VISIT_MISSING_LOCATION_RECORDS = new Map([
-  [323, ["Gage Suites", "2024-06-17T17:33:55Z"]],
-  [810, ["Standard Suites (Ponderosa Commons)", "2019-05-03T23:20:28Z"]],
+const VISIT_MISSING_RESTAURANT =
+  "https://visit.ubc.ca/eat-drink-and-stay/restaurants/restaurants-lounges-and-pubs/biercraft/";
+const VISIT_MISSING_LOCATION_RECORDS = new Map<number, readonly [string, string, string]>([
+  [303, [VISIT_MISSING_RESTAURANT, "Sports Illustrated Clubhouse", "2025-01-14T22:32:49Z"]],
+  [323, [VISIT_MISSING_LOCATION, "Gage Suites", "2024-06-17T17:33:55Z"]],
+  [810, [VISIT_MISSING_LOCATION, "Standard Suites (Ponderosa Commons)", "2019-05-03T23:20:28Z"]],
 ]);
 const ADVANCING_HEALTH_ORGANIZER_ROOT = "https://www.advancinghealth.ubc.ca/organizer/";
 const ADVANCING_HEALTH_ORGANIZER_ROOT_RECORDS = new Map([
@@ -321,14 +324,17 @@ export async function discoverWordpress(
           ? inventoryUrl(string(row.link), scraper.hostname)
           : hostUrl(string(row.link), scraper.hostname);
         if (!url) continue;
-        if (reviewedVisitLocation && (VISIT_MISSING_LOCATION_RECORDS.has(id) || url === VISIT_MISSING_LOCATION)) {
+        if (
+          reviewedVisitLocation &&
+          (VISIT_MISSING_LOCATION_RECORDS.has(id) || url === VISIT_MISSING_LOCATION || url === VISIT_MISSING_RESTAURANT)
+        ) {
           const expected = VISIT_MISSING_LOCATION_RECORDS.get(id);
           if (
             !expected ||
-            row.link !== "http://visit.ubc.ca/eat-drink-and-stay/accommodation/standard-suites/" ||
-            url !== VISIT_MISSING_LOCATION ||
-            object(row.title).rendered !== expected[0] ||
-            sourceModified !== expected[1]
+            row.link !== expected[0].replace("https://", "http://") ||
+            url !== expected[0] ||
+            object(row.title).rendered !== expected[1] ||
+            sourceModified !== expected[2]
           )
             throw new Error("Reviewed location identity changed");
           reviewedLocationIds.add(id);
