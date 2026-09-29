@@ -59,8 +59,8 @@ function fixture(host = hostname, indexBody?: string, contentType = "text/html; 
   for (const url of targets)
     put(
       url,
-      url === targets[1] ? `<urlset><url><loc>${home}guide/</loc></url></urlset>` : "<urlset/>",
-      "application/xml",
+      `<?xml version="1.0" encoding="UTF-8"?>${url === targets[1] ? `<urlset><url><loc>${home}guide/</loc></url></urlset>` : "<urlset/>"}`,
+      contentType,
     );
   put(
     `${home}guide/`,
@@ -116,6 +116,13 @@ describe("source-witnessed MDRU XML MIME exception", () => {
 
   it("rejects HTML rather than an XML document", async () => {
     const f = fixture(hostname, "<html><body>Not a sitemap</body></html>");
+    await expect(f.collect()).rejects.toThrow("Reviewed MDRU sitemap identity changed");
+  });
+
+  it("rejects a mislabeled child that is not structural XML", async () => {
+    const f = fixture();
+    const child = await f.archive.read(f.targets[0]!);
+    child.snapshot.body = "<html><body>Not an XML child</body></html>";
     await expect(f.collect()).rejects.toThrow("Reviewed MDRU sitemap identity changed");
   });
 

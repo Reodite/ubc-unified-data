@@ -267,7 +267,21 @@ async function sitemapPages(
         continue;
       }
     }
-    const reviewedMDRU = exactHost && hostname === "www.mdru.ubc.ca" && url === `https://${hostname}/wp-sitemap.xml`;
+    const mdruChildren = [
+      "posts-post",
+      "posts-page",
+      "posts-location",
+      "posts-event",
+      "posts-mdru-projects",
+      "posts-mdru-publications",
+      "posts-mdru-theses",
+      "taxonomies-category",
+      "taxonomies-post_tag",
+      "users",
+    ].map((kind) => `https://${hostname}/wp-sitemap-${kind}-1.xml`);
+    const mdruRoot = exactHost && hostname === "www.mdru.ubc.ca" && url === `https://${hostname}/wp-sitemap.xml`;
+    const mdruChild = exactHost && hostname === "www.mdru.ubc.ca" && mdruChildren.includes(url);
+    const reviewedMDRU = mdruRoot || mdruChild;
     const mislabeledMDRU = reviewedMDRU && observation.snapshot.headers["content-type"] === "text/html; charset=UTF-8";
     if (
       observation.snapshot.status !== 200 ||
@@ -282,26 +296,9 @@ async function sitemapPages(
     )
       throw new Error("Reviewed MDRU sitemap identity changed");
     const parsed = parseSitemap(observation.snapshot.body);
-    if (
-      reviewedMDRU &&
-      (parsed.kind !== "index" ||
-        JSON.stringify(parsed.locations) !==
-          JSON.stringify(
-            [
-              "posts-post",
-              "posts-page",
-              "posts-location",
-              "posts-event",
-              "posts-mdru-projects",
-              "posts-mdru-publications",
-              "posts-mdru-theses",
-              "taxonomies-category",
-              "taxonomies-post_tag",
-              "users",
-            ].map((kind) => `https://${hostname}/wp-sitemap-${kind}-1.xml`),
-          ))
-    )
+    if (mdruRoot && (parsed.kind !== "index" || JSON.stringify(parsed.locations) !== JSON.stringify(mdruChildren)))
       throw new Error("Reviewed MDRU sitemap children changed");
+    if (mdruChild && parsed.kind !== "pages") throw new Error("Reviewed MDRU sitemap child changed");
     const reviewedUsers =
       exactHost && hostname === "sportfacilities.ubc.ca" && url === `https://${hostname}/wp-sitemap-users-1.xml`;
     const reviewedUserTargets = [`https://${hostname}/author/agmiu/`, `https://${hostname}/author/webadmin/`];
