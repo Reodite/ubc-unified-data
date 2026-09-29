@@ -15,6 +15,7 @@ const EMPTY_ARCHIVE_BODIES = new Set([
   "Apologies, but no results were found.",
   "Apologies, but no events were found for the requested venue.",
   "Apologies, but no events were found for the requested category.",
+  "Apologies, but no events were found for the requested tag.",
   "Apologies, but no results were found for the requested archive.",
 ]);
 
@@ -54,6 +55,42 @@ const PLACEHOLDER_BODIES = new Map<string, string>([
   ],
 ]);
 
+const NOTICE_PLACEHOLDERS = new Set(
+  [
+    "News page here",
+    "Events page goes here.",
+    "Sorry, no posts matched your criteria.",
+    "You are not allowed to view this content.",
+    "This is for students.",
+    "This page is for staff.",
+    "This page is for faculty.",
+    "This is the content of your about page",
+    "Oops\\! We could not locate your form.",
+    "Some paragraph",
+    "To be posted",
+    "test",
+    "\\[portfolio\\_slideshow id\\=380\\]",
+    "- xxxx - xxxx - xxxx",
+    "- xxxxxxx - xxxxxxx - xxxxxxx",
+    "Stay tuned for updates.",
+    "This is a sample post.",
+    "Coming soon...",
+    "This page is under construction.",
+    "A sample news post.",
+    "Page under construction",
+    "\\[table “3” not found /\\]",
+    "blah",
+    "Content coming soon",
+    "Contents to be added.",
+    "\\[profilelist\\]",
+    "Coming Soon\\!",
+    "Coming soon\\!",
+    "## Coming soon\\!",
+    "Coming Soon!",
+    "Coming soon!",
+  ].map(comparisonBody),
+);
+
 // These fingerprints cover complete normalized template bodies, including their fixed links and bylines.
 const TEMPLATE_BODY_DIGESTS = new Map([
   ["7739e4a8fb901f53bc16c26fa54133c77abfbfa270e96ebbb3b37898ac9da1e0", "pop-culture news template"],
@@ -85,7 +122,9 @@ export function assertPublishableArticle(
 ): void {
   const body = comparisonBody(document.content_markdown);
   const placeholder =
-    PLACEHOLDER_BODIES.get(body) ?? TEMPLATE_BODY_DIGESTS.get(createHash("sha256").update(body).digest("hex"));
+    PLACEHOLDER_BODIES.get(body) ??
+    (NOTICE_PLACEHOLDERS.has(body) ? "unfinished source or access-denial notice" : undefined) ??
+    TEMPLATE_BODY_DIGESTS.get(createHash("sha256").update(body).digest("hex"));
   if (placeholder)
     throw new Error(`Article body contains only a known placeholder (${placeholder}): ${document.source_url}`);
 }

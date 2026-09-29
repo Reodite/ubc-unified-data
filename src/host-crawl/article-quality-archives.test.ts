@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { load } from "cheerio";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { wordpressCollectionUrl } from "./adapters/wordpress-discovery.ts";
@@ -5,16 +6,9 @@ import { collectRecordedHost } from "./collect.ts";
 import type { HostArchive, HostScraper, Observation, ProducerContext } from "./contracts.ts";
 import { sha256 } from "./document-format.ts";
 
-const reviewed = [
-  ["lam.library.ubc.ca", "category"],
-  ["smp.med.ubc.ca", "author"],
-  ["macl.arts.ubc.ca", "post-type-archive-event"],
-  ["mech.ubc.ca", "post-type-archive-event"],
-  ["mes.arts.ubc.ca", "post-type-archive-event"],
-  ["mtrl.ubc.ca", "post-type-archive-event"],
-  ["nitep.educ.ubc.ca", "post-type-archive-event"],
-  ["rgst.arts.ubc.ca", "post-type-archive-event"],
-] as const;
+const reviewed: Array<{ hostname: string; role: string; bodyClass: string; message: string }> = JSON.parse(
+  readFileSync(new URL("../../test/fixtures/host-crawl/empty-archive-witnesses.json", import.meta.url), "utf8"),
+);
 const empty = "Apologies, but no results were found.";
 const producer: ProducerContext = {
   inputs_sha256: sha256("synthetic producer"),
@@ -106,9 +100,9 @@ afterEach(() => {
 
 describe("source-witnessed empty archive exclusions", () => {
   it.each(reviewed)(
-    "excludes only reviewed %s %s archives while retaining their discovered links",
-    async (hostname, role) => {
-      const f = fixture(hostname, `archive ${role}`);
+    "excludes only witnessed $hostname $role archives while retaining discovered links",
+    async ({ hostname, bodyClass, message }) => {
+      const f = fixture(hostname, bodyClass, `<p>${message}</p>`);
       const result = await collectRecordedHost(f.scraper, f.archive, producer);
       expect(result.complete).toBe(true);
       expect(result.documents.map((doc) => doc.source_url).sort()).toEqual([`${f.origin}/`, f.followup]);
@@ -135,6 +129,8 @@ describe("source-witnessed empty archive exclusions", () => {
     { hostname: "lam.library.ubc.ca", classes: "category" },
     { hostname: "lam.library.ubc.ca", classes: "archive" },
     { hostname: "smp.med.ubc.ca", classes: "archive category" },
+    { hostname: "smp.med.ubc.ca", classes: "archive author" },
+    { hostname: "macl.arts.ubc.ca", classes: "archive tax-event-category" },
     { hostname: "mech.ubc.ca", classes: "archive post-type-archive-eventual" },
   ])(
     "does not infer approval from hostname or archive-like URLs: $hostname $classes",

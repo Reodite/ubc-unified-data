@@ -41,15 +41,15 @@ import { hostUrl, inventoryUrl, nonDocumentInventoryUrl, pageExclusion, UNSUPPOR
 
 const sha256 = (value: string | Uint8Array) => createHash("sha256").update(value).digest("hex");
 const isPdfUrl = (value: string) => /\.pdf$/i.test(decodeURIComponent(new URL(value).pathname));
-const REVIEWED_EMPTY_ARCHIVE_CLASSES: Readonly<Record<string, string>> = {
-  "lam.library.ubc.ca": "category",
-  "smp.med.ubc.ca": "author",
-  "macl.arts.ubc.ca": "post-type-archive-event",
-  "mech.ubc.ca": "post-type-archive-event",
-  "mes.arts.ubc.ca": "post-type-archive-event",
-  "mtrl.ubc.ca": "post-type-archive-event",
-  "nitep.educ.ubc.ca": "post-type-archive-event",
-  "rgst.arts.ubc.ca": "post-type-archive-event",
+const REVIEWED_EMPTY_ARCHIVE_CLASSES: Readonly<Record<string, readonly string[]>> = {
+  "lam.library.ubc.ca": ["category"],
+  "smp.med.ubc.ca": ["user"],
+  "macl.arts.ubc.ca": ["post-type-archive-event", "tax-event-venue"],
+  "mech.ubc.ca": ["post-type-archive-event", "tax-event-venue", "tax-event-category", "tax-event-tag"],
+  "mes.arts.ubc.ca": ["post-type-archive-event", "tax-event-venue"],
+  "mtrl.ubc.ca": ["post-type-archive-event", "tax-event-category"],
+  "nitep.educ.ubc.ca": ["post-type-archive-event"],
+  "rgst.arts.ubc.ca": ["post-type-archive-event", "tax-event-category", "tax-event-venue"],
 };
 const robotsParser = createRequire(import.meta.url)("robots-parser") as (
   url: string,
@@ -959,12 +959,12 @@ export async function collectRecordedHost(
     const title = plainText(input.title);
     if (!title) throw new Error("Extracted document lacks a title");
     const converted = toSafeMarkdown(input.html, contentBase ?? sourceUrl);
-    const archiveClass = REVIEWED_EMPTY_ARCHIVE_CLASSES[hostname];
+    const archiveClasses = REVIEWED_EMPTY_ARCHIVE_CLASSES[hostname];
     if (
       !apiInput &&
-      archiveClass &&
+      archiveClasses &&
       isKnownEmptyArchiveBody(converted.markdown) &&
-      load(observation.snapshot.body)("body.archive").hasClass(archiveClass)
+      archiveClasses.some((role) => load(observation.snapshot.body)("body.archive").hasClass(role))
     ) {
       const identities = new Set(
         [
