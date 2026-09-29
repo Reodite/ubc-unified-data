@@ -2403,6 +2403,27 @@
     "document_count": 158
   },
   {
+    "hostname": "smp.med.ubc.ca",
+    "title": "smp.med.ubc.ca",
+    "homepage_url": "https://smp.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:12:35.249Z",
+    "homepage_sha256": "3a06bfb50cf2ce2fb37fc480566b75fc78e41f25506ca1d92420d8d43eed1590",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/smp.med.ubc.ca",
+        "document_count": 1006
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/smp.med.ubc.ca",
+        "document_count": 8
+      }
+    ],
+    "document_count": 1014
+  },
+  {
     "hostname": "sogi.educ.ubc.ca",
     "title": "sogi.educ.ubc.ca",
     "homepage_url": "https://sogi.educ.ubc.ca/",
