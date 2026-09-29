@@ -1344,37 +1344,6 @@
     "document_count": 36
   },
   {
-    "hostname": "neurology.med.ubc.ca",
-    "title": "neurology.med.ubc.ca",
-    "homepage_url": "https://neurology.med.ubc.ca/",
-    "homepage_retrieved_at": "2026-09-18T12:05:01.213Z",
-    "homepage_sha256": "d367e5f0402be0625bf3b3c006c3316bb199662b5e6720b931c0a330d33c2514",
-    "scope": "Public HTML prose and native PDF text on this exact hostname.",
-    "document_roots": [
-      {
-        "category": "academics",
-        "path": "data/documents/academics/neurology.med.ubc.ca",
-        "document_count": 110
-      },
-      {
-        "category": "news",
-        "path": "data/documents/news/neurology.med.ubc.ca",
-        "document_count": 6
-      },
-      {
-        "category": "opportunities",
-        "path": "data/documents/opportunities/neurology.med.ubc.ca",
-        "document_count": 1
-      },
-      {
-        "category": "support",
-        "path": "data/documents/support/neurology.med.ubc.ca",
-        "document_count": 15
-      }
-    ],
-    "document_count": 132
-  },
-  {
     "hostname": "neurorehab.med.ubc.ca",
     "title": "neurorehab.med.ubc.ca",
     "homepage_url": "https://neurorehab.med.ubc.ca/",
