@@ -2351,22 +2351,6 @@
     "document_count": 127
   },
   {
-    "hostname": "sportfacilities.ubc.ca",
-    "title": "sportfacilities.ubc.ca",
-    "homepage_url": "https://sportfacilities.ubc.ca/",
-    "homepage_retrieved_at": "2026-09-18T13:15:46.598Z",
-    "homepage_sha256": "34623fb897dce3044f89d3f022135a5f50250ae06a54e0d84f102aa1abbc2019",
-    "scope": "Useful public article-style HTML prose on this exact hostname.",
-    "document_roots": [
-      {
-        "category": "support",
-        "path": "data/documents/support/sportfacilities.ubc.ca",
-        "document_count": 124
-      }
-    ],
-    "document_count": 124
-  },
-  {
     "hostname": "sportmedicine.med.ubc.ca",
     "title": "sportmedicine.med.ubc.ca",
     "homepage_url": "https://sportmedicine.med.ubc.ca/",
