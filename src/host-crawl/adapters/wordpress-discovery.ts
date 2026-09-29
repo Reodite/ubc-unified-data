@@ -141,6 +141,7 @@ export async function discoverWordpress(
   homepage: Observation,
   read: (url: string) => Promise<Observation>,
   reviewedNonDocuments = new Set<string>(),
+  reviewedSearchControls = new Set<string>(),
 ): Promise<DiscoveredPage[]> {
   const roots = [
     ...new Set(
@@ -230,6 +231,17 @@ export async function discoverWordpress(
         collection !== `https://${scraper.hostname}/wp-json/wp/v2/${type}`)
     )
       throw new Error("Reviewed organizer type changed");
+    const reviewedVisitSearch = scraper.hostname === "visit.ubc.ca" && type === "page";
+    if (
+      reviewedVisitSearch &&
+      (definition.name !== "Pages" ||
+        definition.slug !== type ||
+        definition.has_archive !== false ||
+        namespace !== "wp/v2" ||
+        restBase !== "pages" ||
+        collection !== `https://${scraper.hostname}/wp-json/wp/v2/pages`)
+    )
+      throw new Error("Reviewed search page type changed");
     const recurringEvents =
       type === "event" &&
       RECURRING_EVENT_HOSTS.has(scraper.hostname) &&
@@ -244,6 +256,7 @@ export async function discoverWordpress(
     const ids = new Set<number>();
     const recurrenceRows = new Map<number, string>();
     const reviewedOrganizerIds = new Set<number>();
+    let reviewedSearchPage = false;
     for (let page = 1; ; page++) {
       const observation = await read(wordpressCollectionUrl(collection, page));
       const records = json(observation);
@@ -257,6 +270,8 @@ export async function discoverWordpress(
         throw new Error("CMS totals changed during discovery");
       if (reviewedOrganizer && (count !== 12 || pageCount !== 1 || records.length !== 12))
         throw new Error("Reviewed organizer inventory changed");
+      if (reviewedVisitSearch && (count !== 68 || pageCount !== 1 || records.length !== 68))
+        throw new Error("Reviewed search inventory changed");
       for (const raw of records) {
         const row = object(raw);
         const id = row.id;
@@ -286,6 +301,35 @@ export async function discoverWordpress(
           ? inventoryUrl(string(row.link), scraper.hostname)
           : hostUrl(string(row.link), scraper.hostname);
         if (!url) continue;
+        if (reviewedVisitSearch && (id === 970 || url === "https://visit.ubc.ca/?s=search")) {
+          if (
+            id !== 970 ||
+            url !== "https://visit.ubc.ca/?s=search" ||
+            object(row.title).rendered !== "Search" ||
+            sourceModified !== "2019-10-23T15:47:35Z"
+          )
+            throw new Error("Reviewed search page identity changed");
+          const $ = load(homepage.snapshot.body);
+          const forms = $("form")
+            .toArray()
+            .filter((node) => {
+              const form = $(node);
+              const action = form.attr("action");
+              if (form.attr("method")?.toLowerCase() !== "get" || !action) return false;
+              try {
+                return (
+                  hostUrl(action, scraper.hostname, homepage.snapshot.url) === `https://${scraper.hostname}/` &&
+                  form.find('input[name="s"][type="text"]').length === 1
+                );
+              } catch {
+                return false;
+              }
+            });
+          if (forms.length !== 1) throw new Error("Reviewed search page lacks its source form");
+          reviewedSearchPage = true;
+          reviewedSearchControls.add(url);
+          continue;
+        }
         if (reviewedOrganizer) {
           const expected = ADVANCING_HEALTH_ORGANIZER_ROOT_RECORDS.get(id);
           if (url === ADVANCING_HEALTH_ORGANIZER_ROOT || expected) {
@@ -328,6 +372,7 @@ export async function discoverWordpress(
       throw new Error("CMS inventory did not exhaust its advertised total");
     if (reviewedOrganizer && reviewedOrganizerIds.size !== ADVANCING_HEALTH_ORGANIZER_ROOT_RECORDS.size)
       throw new Error("Reviewed organizer inventory changed");
+    if (reviewedVisitSearch && !reviewedSearchPage) throw new Error("Reviewed search inventory changed");
   }
   return pages;
 }

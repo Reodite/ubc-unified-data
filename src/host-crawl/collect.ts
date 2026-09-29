@@ -461,9 +461,10 @@ export async function collectRecordedHost(
   if (scraper.adapter.kind === "html") await verifyHtmlDiscovery(scraper, read);
   else if (scraper.adapter.kind !== "wordpress") throw new Error("Unsupported registered discovery adapter");
   const reviewedCmsNonDocuments = new Set<string>();
+  const reviewedSearchControls = new Set<string>();
   const discovered =
     scraper.adapter.kind === "wordpress"
-      ? await discoverWordpress(scraper, archive.homepage, read, reviewedCmsNonDocuments)
+      ? await discoverWordpress(scraper, archive.homepage, read, reviewedCmsNonDocuments, reviewedSearchControls)
       : [];
   const sitemaps = [...robots.getSitemaps(), ...(scraper.adapter.sitemaps ?? []).map((entry) => entry.path)]
     .map((url) => (exactHost ? inventoryUrl(url, hostname) : hostUrl(url, hostname)))
@@ -512,6 +513,9 @@ export async function collectRecordedHost(
   ]);
   if ([...reviewedCmsNonDocuments].some((url) => reviewedCmsConflicts.has(url)))
     throw new Error("Reviewed organizer identity conflicts with a required page");
+  if ([...reviewedSearchControls].some((url) => reviewedCmsConflicts.has(url)))
+    throw new Error("Reviewed search control conflicts with a required page");
+  for (const url of reviewedSearchControls) nonDocuments.add(url);
   for (const url of reviewedCmsNonDocuments) {
     const witnessed = await read(url);
     if (witnessed.snapshot.status !== 404 || witnessed.snapshot.url !== url || witnessed.snapshot.requested_url !== url)

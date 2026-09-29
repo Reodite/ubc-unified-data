@@ -413,6 +413,119 @@ describe("reviewed IRES internal archive-block type", () => {
   );
 });
 
+describe("reviewed Visit UBC search-control page", () => {
+  const host = "visit.ubc.ca";
+  const root = `https://${host}/`;
+  const search = `${root}?s=search`;
+  const setup = (hostname = host) => {
+    const origin = `https://${hostname}/`;
+    const apiRoot = `${origin}wp-json/`;
+    const pages = `${apiRoot}wp/v2/pages`;
+    const homepage = observation(
+      origin,
+      `<html><head><link rel="https://api.w.org/" href="${apiRoot}"></head><body><form method="get" action="${origin}" class="search-form"><input type="text" name="s" value="Search this site..."></form></body></html>`,
+    );
+    const records = [
+      {
+        id: 970,
+        type: "page",
+        status: "publish",
+        title: { rendered: "Search" },
+        modified_gmt: "2019-10-23T15:47:35",
+        link: `${origin}?s=search`,
+      },
+      ...Array.from({ length: 67 }, (_, index) => ({
+        id: 1000 + index,
+        type: "page",
+        status: "publish",
+        title: { rendered: `Page ${index}` },
+        modified_gmt: "2026-01-01T12:00:00",
+        link: `${origin}page-${index}/`,
+      })),
+    ];
+    const values = new Map<string, Observation>([
+      [
+        apiRoot,
+        observation(apiRoot, {
+          routes: {
+            "/wp/v2/types": { methods: ["GET"], _links: { self: [{ href: `${apiRoot}wp/v2/types` }] } },
+            "/wp/v2/pages": { methods: ["GET"], _links: { self: [{ href: pages }] } },
+          },
+        }),
+      ],
+      [
+        `${apiRoot}wp/v2/types`,
+        observation(`${apiRoot}wp/v2/types`, {
+          page: {
+            name: "Pages",
+            slug: "page",
+            has_archive: false,
+            rest_namespace: "wp/v2",
+            rest_base: "pages",
+            _links: { "wp:items": [{ href: pages }] },
+          },
+        }),
+      ],
+    ]);
+    const first = observation(wordpressCollectionUrl(pages, 1), records);
+    first.snapshot.headers["x-wp-total"] = "68";
+    first.snapshot.headers["x-wp-totalpages"] = "1";
+    values.set(first.snapshot.url, first);
+    const scraper: HostScraper = {
+      hostname,
+      title: "Visit UBC",
+      scope: "Public campus guide",
+      adapter: { kind: "wordpress", allPublicTypes: true, allowedTypes: [], exactHostInventory: true },
+      vetHomepage: () => ({ accepted: true, reason: "Public campus guide" }),
+      extract: () => ({ kind: "excluded", reason: "Discovery fixture" }),
+    };
+    const excluded = new Set<string>();
+    const discover = () =>
+      discoverWordpress(
+        scraper,
+        homepage,
+        async (url) => {
+          const item = values.get(url);
+          if (!item) throw new Error(`Missing fixture ${url}`);
+          return item;
+        },
+        new Set<string>(),
+        excluded,
+      );
+    return { homepage, records, first, excluded, discover, origin };
+  };
+
+  it("keeps ordinary pages while excluding only the CMS-backed GET search form", async () => {
+    const f = setup();
+    const pages = await f.discover();
+    expect(pages).toHaveLength(67);
+    expect(pages.some(({ url }) => url === search)).toBe(false);
+    expect(f.excluded).toEqual(new Set([search]));
+  });
+
+  it.each(["changed form", "changed title", "changed date", "changed id", "changed query", "changed total"])(
+    "refuses an unreviewed search control: %s",
+    async (change) => {
+      const f = setup();
+      if (change === "changed form")
+        f.homepage.snapshot.body = f.homepage.snapshot.body.replace('method="get"', 'method="post"');
+      if (change === "changed title") f.records[0]!.title.rendered = "Campus article";
+      if (change === "changed date") f.records[0]!.modified_gmt = "2025-01-01T12:00:00";
+      if (change === "changed id") f.records[0]!.id = 971;
+      if (change === "changed query") f.records[0]!.link = `${root}?s=faculty`;
+      if (change === "changed total") f.first.snapshot.headers["x-wp-total"] = "69";
+      f.first.snapshot.body = JSON.stringify(f.records);
+      await expect(f.discover()).rejects.toThrow();
+    },
+  );
+
+  it("does not suppress a different host's search page", async () => {
+    const f = setup("other.ubc.ca");
+    expect((await f.discover()).filter(({ url }) => url === `${f.origin}?s=search`)).toHaveLength(1);
+    expect(f.excluded.size).toBe(0);
+  });
+});
+
 describe("reviewed Advancing Health organizer identities", () => {
   const host = "www.advancinghealth.ubc.ca";
   const ids = [10702, 11041, 13325, 13329, 13956, 13975, 13980, 14109, 14140, 14176, 14250, 14279];
