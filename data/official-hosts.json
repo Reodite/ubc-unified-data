@@ -4607,6 +4607,22 @@
     "document_count": 60
   },
   {
+    "hostname": "visit.ubc.ca",
+    "title": "visit.ubc.ca",
+    "homepage_url": "https://visit.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:53:10.173Z",
+    "homepage_sha256": "f9f4578bbe6284d65130c6cdd2bcd9c9606d199649567eab76fcba8542bd7f6e",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/visit.ubc.ca",
+        "document_count": 80
+      }
+    ],
+    "document_count": 80
+  },
+  {
     "hostname": "vpdevelopmentalumni.ubc.ca",
     "title": "vpdevelopmentalumni.ubc.ca",
     "homepage_url": "https://vpdevelopmentalumni.ubc.ca/",
