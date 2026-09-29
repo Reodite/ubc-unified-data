@@ -267,9 +267,41 @@ async function sitemapPages(
         continue;
       }
     }
-    if (observation.snapshot.status !== 200 || !/xml/i.test(observation.snapshot.headers["content-type"] ?? ""))
+    const reviewedMDRU = exactHost && hostname === "www.mdru.ubc.ca" && url === `https://${hostname}/wp-sitemap.xml`;
+    const mislabeledMDRU = reviewedMDRU && observation.snapshot.headers["content-type"] === "text/html; charset=UTF-8";
+    if (
+      observation.snapshot.status !== 200 ||
+      (!/xml/i.test(observation.snapshot.headers["content-type"] ?? "") && !mislabeledMDRU)
+    )
       throw new Error("An advertised sitemap lacks a complete XML observation");
+    if (
+      reviewedMDRU &&
+      (observation.snapshot.requested_url !== url ||
+        observation.snapshot.url !== url ||
+        !observation.snapshot.body.startsWith('<?xml version="1.0" encoding="UTF-8"?>'))
+    )
+      throw new Error("Reviewed MDRU sitemap identity changed");
     const parsed = parseSitemap(observation.snapshot.body);
+    if (
+      reviewedMDRU &&
+      (parsed.kind !== "index" ||
+        JSON.stringify(parsed.locations) !==
+          JSON.stringify(
+            [
+              "posts-post",
+              "posts-page",
+              "posts-location",
+              "posts-event",
+              "posts-mdru-projects",
+              "posts-mdru-publications",
+              "posts-mdru-theses",
+              "taxonomies-category",
+              "taxonomies-post_tag",
+              "users",
+            ].map((kind) => `https://${hostname}/wp-sitemap-${kind}-1.xml`),
+          ))
+    )
+      throw new Error("Reviewed MDRU sitemap children changed");
     const reviewedUsers =
       exactHost && hostname === "sportfacilities.ubc.ca" && url === `https://${hostname}/wp-sitemap-users-1.xml`;
     const reviewedUserTargets = [`https://${hostname}/author/agmiu/`, `https://${hostname}/author/webadmin/`];
