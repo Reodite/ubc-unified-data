@@ -1117,22 +1117,6 @@
     "document_count": 29
   },
   {
-    "hostname": "library.ok.ubc.ca",
-    "title": "library.ok.ubc.ca",
-    "homepage_url": "https://library.ok.ubc.ca/",
-    "homepage_retrieved_at": "2026-09-18T11:33:58.779Z",
-    "homepage_sha256": "72f1d8887b2245c23a035274fcb0ade8429c1b9f2b1b2c7e3b236ab0ebbd6df7",
-    "scope": "Useful public article-style HTML prose on this exact hostname.",
-    "document_roots": [
-      {
-        "category": "support",
-        "path": "data/documents/support/library.ok.ubc.ca",
-        "document_count": 506
-      }
-    ],
-    "document_count": 506
-  },
-  {
     "hostname": "library.ubc.ca",
     "title": "library.ubc.ca",
     "homepage_url": "https://library.ubc.ca/",
