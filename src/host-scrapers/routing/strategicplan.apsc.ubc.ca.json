@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "hostname": "strategicplan.apsc.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w4 first homepage review",
+    "rationale": "This official Faculty of Applied Science strategic-plan homepage explains its educational mission, academic organization, priorities and investment framework. It explicitly serves campuses in Vancouver and Kelowna, so it is not Okanagan-exclusive. Its visible academic-school and department sections support academics as the host default; no separate announcement, profile, research-output, application-call or practical-help section is evidenced.",
+    "evidence": [
+      "https://strategicplan.apsc.ubc.ca/ | b702e39fde28c7277022bdf50e13ecb94996bed8cd8c0cba8cf80e553e4f8b08 | The Faculty of Applied Science comprises a unique constellation of disciplines. Our core purpose is to discover, design, innovate, provide unwavering top-tier education and champion a community of responsible professionals.",
+      "https://strategicplan.apsc.ubc.ca/ | b702e39fde28c7277022bdf50e13ecb94996bed8cd8c0cba8cf80e553e4f8b08 | The priorities and strategies in the plan form a framework for decision-making and investment across the Faculty.",
+      "https://strategicplan.apsc.ubc.ca/ | b702e39fde28c7277022bdf50e13ecb94996bed8cd8c0cba8cf80e553e4f8b08 | 5 Schools; 6 Departments",
+      "https://strategicplan.apsc.ubc.ca/ | b702e39fde28c7277022bdf50e13ecb94996bed8cd8c0cba8cf80e553e4f8b08 | The location of our campuses in Vancouver and Kelowna allows us to leverage a diverse and inclusive international culture while respecting the rich Indigenous heritage in British Columbia."
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "The site documents the Applied Science faculty's academic mission, organization and strategic priorities for education and professional disciplines across its campuses."
+  }
+}

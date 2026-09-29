@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "hostname": "masterdatascience.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e / independent d1fdd672; first category assignment from retained homepage and inventory, before bounded successor admission",
+    "rationale": "The official MDS homepage explains accelerated program structure, applied learning and Vancouver, Okanagan and Vancouver Computational Linguistics programs. Named alumni quotations and explicit retained path families distinguish narratives, support and participation opportunities.",
+    "evidence": [
+      "https://masterdatascience.ubc.ca/ | 659ac9a1c2b6d8efed508e3c90585143ba667924f60e5e233798e8f4ae6cdc0d | Program structure, both campuses and alumni quotations.",
+      "Frozen seed contains /programs, /admissions, /why-data-science/data-stories, /why-ubc/people/alumni, /contact-us, /mentoring-program and /employers/capstone-project."
+    ]
+  },
+  "rules": [
+    {
+      "id": "student-alumni-narratives",
+      "category": "stories",
+      "rationale": "Explicit student, alumni and data-story path families publish individual experiences and project narratives.",
+      "path_pattern": "^/(?:why-data-science/(?:alumni-data-science-stories|data-stories|success-stories)|why-ubc/(?:students-and-alumni|people/(?:students|alumni)))(?:/|$)"
+    },
+    {
+      "id": "program-help",
+      "category": "support",
+      "rationale": "Contact, privacy, career services and financial-aid guidance provide practical program support.",
+      "path_pattern": "^/(?:contact-us|why-ubc/career-services|admissions/tuition-and-financial-aid)(?:/|$)"
+    },
+    {
+      "id": "participation-opportunities",
+      "category": "opportunities",
+      "rationale": "Mentoring, employer collaboration, recruitment and information events are participation opportunities.",
+      "path_pattern": "^/(?:mentoring-program|employers/(?:post-job|capstone-project|host-talk)|why-ubc/events)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "data-science-program",
+    "category": "academics",
+    "rationale": "The program site primarily explains data-science study, admissions, curriculum and learning outcomes."
+  }
+}

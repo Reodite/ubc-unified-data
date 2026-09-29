@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "hostname": "ipo.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner ca37b94e-5757-4878-811c-907915e18161; primary retained-homepage review under article-only scope",
+    "rationale": "The university-wide Institutional Programs Office provides public administrative and strategic support for researchers applying to major infrastructure funding programs.",
+    "evidence": [
+      "https://ipo.ubc.ca/ | 761c2db0777235afecf4cd3c496ae27d1cbb975e392b35e5504271ddc6f2ea21 | We provide administrative and strategic support to researchers pursuing major infrastructure awards.",
+      "https://ipo.ubc.ca/ | 761c2db0777235afecf4cd3c496ae27d1cbb975e392b35e5504271ddc6f2ea21 | Apply for major infrastructure funds through CFI",
+      "https://ipo.ubc.ca/ | 761c2db0777235afecf4cd3c496ae27d1cbb975e392b35e5504271ddc6f2ea21 | Find out what CFI-funded equipment and infrastructure is available at UBC"
+    ]
+  },
+  "rules": [
+    {
+      "id": "ipo-news",
+      "category": "news",
+      "rationale": "The homepage labels dated News and Announcements.",
+      "path_pattern": "^/about-ipo/news-announcements(?:/|$)"
+    },
+    {
+      "id": "ipo-support",
+      "category": "support",
+      "rationale": "Contact, reporting, tracking and data-management paths provide applicant and award-holder support.",
+      "path_pattern": "^/(?:about-ipo/contact-us|cfi-funds/reporting-and-tracking|canada-foundation-innovation-cfi-funds/data-management-plans)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "research-infrastructure-opportunities",
+    "category": "opportunities",
+    "rationale": "The office primarily presents infrastructure funding programs, application calls and award opportunities."
+  }
+}

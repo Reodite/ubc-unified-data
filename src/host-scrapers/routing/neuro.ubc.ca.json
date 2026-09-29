@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "hostname": "neuro.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0-5add-45c8-8377-a6612245e77f; classification correction 7d8d831e-4758-4ed1-87d7-6554a5f77117; primary-reviewed retained inventory f0c3f79c36c4684d7257385ddfa3009e2fb038093957139f9bd95737bbee53ad",
+    "rationale": "School, discipline, named academic program, course or curriculum site. Academic identity is the baseline for home/about/people pages; explicit news, research and opportunity sections override it.",
+    "evidence": [
+      "https://neuro.ubc.ca/ | The Undergraduate Program in Neuroscience is a tri-faculty collaboration between the Departments of Psychology (Faculty of Arts), Zoology (Faculty of Science), and Cellular & Physiological Sciences (Faculty of Medicine).",
+      "https://neuro.ubc.ca/2021/ | Archives by date",
+      "https://neuro.ubc.ca/2022/ | Archives by date",
+      "https://neuro.ubc.ca/aboutus/ | About Us - UBC Undergraduate Program in Neuroscience"
+    ]
+  },
+  "rules": [
+    {
+      "id": "profile-story-sections",
+      "category": "stories",
+      "rationale": "Named story, testimonial and spotlight sections contain profiles or narratives.",
+      "path_pattern": "^/(?:stories|testimonials|student-profiles|faculty-profiles|alumni-stories)(?:/|$)"
+    },
+    {
+      "id": "spotlight-titles",
+      "category": "stories",
+      "rationale": "Titles explicitly identify a profile or spotlight narrative.",
+      "title_pattern": "^(?:Faculty|Student|Alumni|Researcher|Staff) (?:Spotlight|Profile)\\b"
+    },
+    {
+      "id": "reported-award-results",
+      "category": "news",
+      "rationale": "Recipient, winner and congratulation titles report an outcome rather than an open application.",
+      "title_pattern": "^.*\\b(?:recipient|recipients|congratulations|winner|winners|wins|awarded|award-winning)\\b"
+    },
+    {
+      "id": "recap-titles",
+      "category": "news",
+      "rationale": "Titles explicitly identify a retrospective recap or highlights report.",
+      "title_pattern": "^(?:Recap|Highlights from|Looking back|Year in review)\\b"
+    },
+    {
+      "id": "nested-openings",
+      "category": "opportunities",
+      "rationale": "Explicit opportunities and funding sections remain participation information within broader academic paths.",
+      "path_pattern": "^/(?:undergraduate|graduate|students|research)/(?:opportunities|funding|awards|scholarships)(?:/|$)"
+    },
+    {
+      "id": "participation-sections",
+      "category": "opportunities",
+      "rationale": "Named openings, funding and event sections describe participation; archived event pages retain their historical category.",
+      "path_pattern": "^/(?:jobs|careers|opportunities|funding|awards|scholarships|volunteer|participate|join-us|events|seminars|workshops|conferences)(?:/|$)"
+    },
+    {
+      "id": "practical-support-sections",
+      "category": "support",
+      "rationale": "Named help, service, policy, procedure and contact sections provide practical support.",
+      "path_pattern": "^/(?:support|services|resources|faq|faqs|help|contact|contact-us|policies|procedures|booking|bookings|equipment|accessibility)(?:/|$)"
+    },
+    {
+      "id": "research-output-sections",
+      "category": "research",
+      "rationale": "Named research, publication and project sections describe scholarly work.",
+      "path_pattern": "^/(?:research|publications|projects|our-research|research-projects)(?:/|$)"
+    },
+    {
+      "id": "academic-program-sections",
+      "category": "academics",
+      "rationale": "Named course, program and curriculum sections provide academic reference.",
+      "path_pattern": "^/(?:programs|courses|curriculum|undergraduate|graduate|education|training|admissions|students)(?:/|$)"
+    },
+    {
+      "id": "announcement-sections",
+      "category": "news",
+      "rationale": "Named news, announcement and update sections publish institutional reports.",
+      "path_pattern": "^/(?:news|news-events|announcements|updates)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "School, discipline, named academic program, course or curriculum site. Academic identity is the baseline for home/about/people pages; explicit news, research and opportunity sections override it."
+  }
+}

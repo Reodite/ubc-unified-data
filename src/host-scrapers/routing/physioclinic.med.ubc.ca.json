@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "hostname": "physioclinic.med.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w1 first homepage review",
+    "rationale": "The official UBC Physical Therapy and Research Clinic provides public physiotherapy service information for the UBC campus and broader Vancouver community. Care and access information defaults to support; explicit research, news and homepage people-profile routes receive specific categories.",
+    "evidence": [
+      "https://physioclinic.med.ubc.ca/ | fca5941602ca432b757e08243e220a2ca8af79b69f66d2fe9780d2899f446032 | At the UBC Physical Therapy and Research Clinic (UBC PTRC), we offer physiotherapy services with an evidence-based approach, provided by a unique combination of clinicians and students.",
+      "https://physioclinic.med.ubc.ca/ | fca5941602ca432b757e08243e220a2ca8af79b69f66d2fe9780d2899f446032 | Conveniently located on the UBC campus, in the Friedman building, we serve all those who live, work, study or play on the UBC campus, as well as the broader Vancouver community.",
+      "https://physioclinic.med.ubc.ca/ | fca5941602ca432b757e08243e220a2ca8af79b69f66d2fe9780d2899f446032 | Homepage links /research/, /news/, /services/, /how-it-works/, /frequently-asked-questions/ and /price-list/",
+      "https://physioclinic.med.ubc.ca/ | fca5941602ca432b757e08243e220a2ca8af79b69f66d2fe9780d2899f446032 | Meet our New Students - August 2026; Meet our New Students - May 2026; Gavin Tonkin - National Physiotherapy Month; homepage links /meet-our-new-students-august-2026/, /meet-our-new-students-may-2026/ and /gavin-tonkin-national-physiotherapy-month/"
+    ]
+  },
+  "rules": [
+    {
+      "id": "research-section",
+      "category": "research",
+      "rationale": "Dedicated clinic research section linked from the homepage.",
+      "path_pattern": "^/research(?:/|$)"
+    },
+    {
+      "id": "clinic-people-stories",
+      "category": "stories",
+      "rationale": "Homepage student introductions and named physiotherapist interview are people profiles.",
+      "path_pattern": "^/(?:meet-our-new-students-|gavin-tonkin-national-physiotherapy-month(?:/|$))"
+    },
+    {
+      "id": "clinic-news",
+      "category": "news",
+      "rationale": "Explicit clinic news section linked from the homepage.",
+      "path_pattern": "^/news(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "support",
+    "rationale": "Public physiotherapy services, clinical programs, appointment guidance and practical clinic information."
+  }
+}

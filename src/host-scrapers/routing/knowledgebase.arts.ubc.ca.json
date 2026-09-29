@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "hostname": "knowledgebase.arts.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w3 first homepage review",
+    "rationale": "The official UBC Arts Relational Lexicography Knowledgebase provides substantive public descriptions of Indigenous-language dictionary research and practical technology guidance for community dictionary projects. The homepage explains research scope, review methods, access conditions, and technology evaluation, so this is useful explanatory content rather than a thin directory. Its North American community scope is not exclusively Okanagan.",
+    "evidence": [
+      "https://knowledgebase.arts.ubc.ca/ | e9dd4a7583e06153e100d4bc0a98bb020e4c7efa43ac602b15785f11895cd856 | Welcome to the Relational Lexicography Knowledgebase",
+      "https://knowledgebase.arts.ubc.ca/ | e9dd4a7583e06153e100d4bc0a98bb020e4c7efa43ac602b15785f11895cd856 | The database includes information on over 700 dictionaries and wordlists of North American Indigenous languages, and spans print dictionaries, ebooks, online dictionaries, interactive websites and apps for mobile devices.",
+      "https://knowledgebase.arts.ubc.ca/ | e9dd4a7583e06153e100d4bc0a98bb020e4c7efa43ac602b15785f11895cd856 | We reviewed each dictionary for information on authorship, how and if speakers were cited, when the resource was published, and whether the dictionary is openly accessible or only accessible through libraries or institutions.",
+      "https://knowledgebase.arts.ubc.ca/ | e9dd4a7583e06153e100d4bc0a98bb020e4c7efa43ac602b15785f11895cd856 | Technologies: For each technology, we provide a summary, some information on how it can and has been used, screenshots of the interface when available, highlights and considerations, any reviews or guides that we have located, and relevant information on access, flexibility and data management."
+    ]
+  },
+  "rules": [
+    {
+      "id": "technology-guidance",
+      "category": "support",
+      "rationale": "The explicit Technologies section provides practical selection, access, compatibility, and data-management guidance for community dictionary projects.",
+      "title_pattern": "^Technologies(?:\\b|$)"
+    },
+    {
+      "id": "dictionary-research",
+      "category": "research",
+      "rationale": "The explicit Dictionaries section documents a reviewed research catalogue and the scope and methods of lexicographical work.",
+      "title_pattern": "^Dictionaries(?:\\b|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "research",
+    "rationale": "Community-informed relational lexicography research and its Indigenous-language dictionary knowledgebase."
+  }
+}

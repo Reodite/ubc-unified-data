@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "hostname": "zhaolab.psych.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner ca37b94e-5757-4878-811c-907915e18161; primary retained-homepage review under article-only scope",
+    "rationale": "The Vancouver-based Behavioral Sustainability Lab homepage provides substantive research, publications, people, media and event material on psychological approaches to financial and environmental sustainability.",
+    "evidence": [
+      "https://zhaolab.psych.ubc.ca/ | 410c98b6d3207d153a43ea1b5d55a0e0253f4f48f104834103f1b47db5afb1f0 | We use psychological principles and insights to design behavioral solutions to solve financial and environmental sustainability challenges.",
+      "https://zhaolab.psych.ubc.ca/ | 410c98b6d3207d153a43ea1b5d55a0e0253f4f48f104834103f1b47db5afb1f0 | We do so by running field and lab experiments to promote behavior change in resource conservation, waste reduction, climate mitigation, and financial independence.",
+      "https://zhaolab.psych.ubc.ca/ | 410c98b6d3207d153a43ea1b5d55a0e0253f4f48f104834103f1b47db5afb1f0 | Crucially, our work demonstrates the value of psychology in addressing urgent societal problems and informing the design and implementation of public policy."
+    ]
+  },
+  "rules": [
+    {
+      "id": "lab-people",
+      "category": "stories",
+      "rationale": "The People section profiles lab members.",
+      "path_pattern": "^/people\\.html$"
+    },
+    {
+      "id": "lab-media",
+      "category": "news",
+      "rationale": "The Media section presents news coverage, talks, films and books.",
+      "path_pattern": "^/media\\.html$"
+    },
+    {
+      "id": "lab-events",
+      "category": "opportunities",
+      "rationale": "The Events section presents lab happenings and participation moments.",
+      "path_pattern": "^/events\\.html$"
+    }
+  ],
+  "fallback": {
+    "id": "behavioral-sustainability-research",
+    "category": "research",
+    "rationale": "The host primarily presents laboratory research and publications."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hostname": "studentplan.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner ca37b94e-5757-4878-811c-907915e18161; primary retained-homepage review under article-only scope",
+    "rationale": "The university-wide Student Strategic Plan explains UBC's commitments, support priorities, progress and participation channels for students across Vancouver and Okanagan.",
+    "evidence": [
+      "https://studentplan.ubc.ca/ | 893e2e31a384ac069cd2f3c608fe294f11826eedd38aa5fc1aeef8f0b4757efb | In 2021, UBC made a promise to you: To place students at the heart of everything we do.",
+      "https://studentplan.ubc.ca/ | 893e2e31a384ac069cd2f3c608fe294f11826eedd38aa5fc1aeef8f0b4757efb | This strategic plan is not a step-by-step action plan, but it sets the direction and priorities that will guide the actions we take to support you during your time at UBC.",
+      "https://studentplan.ubc.ca/ | 893e2e31a384ac069cd2f3c608fe294f11826eedd38aa5fc1aeef8f0b4757efb | We invite you to stay connected, get involved, and continue sharing your feedback."
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "student-plan-support",
+    "category": "support",
+    "rationale": "The site explains university-wide commitments, services and priorities intended to support students."
+  }
+}

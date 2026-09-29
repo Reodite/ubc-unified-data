@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "hostname": "mastercardfdn.scholars.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w3 first homepage review",
+    "rationale": "UBC explicitly partners with the Mastercard Foundation to provide university education opportunities to young people from Africa. The public homepage offers application information and scholar accounts, with no exclusively Okanagan scope. Scholarship opportunities are the host purpose; explicit scholar stories and contact assistance override that fallback.",
+    "evidence": [
+      "https://mastercardfdn.scholars.ubc.ca/ | d02393605463a312b55ddc91f4831b457897d4105c8986d2827dcf40b8ffd30a | The University of British Columbia (UBC) is pleased to be partnering with The Mastercard Foundation to foster the next generation of African leaders.",
+      "https://mastercardfdn.scholars.ubc.ca/ | d02393605463a312b55ddc91f4831b457897d4105c8986d2827dcf40b8ffd30a | The Mastercard Foundation Scholars Program at UBC will provide 351 academically talented young people from Africa with access to quality and relevant university education at UBC. Apply for the Mastercard Foundation Scholars Program at UBC",
+      "https://mastercardfdn.scholars.ubc.ca/ | d02393605463a312b55ddc91f4831b457897d4105c8986d2827dcf40b8ffd30a | Meet the Mastercard Foundation Scholars at UBC; Latest Stories and Impact; Africa Mindset Reset Forum 2026: From Pan-Africanism to Meta-Africanism; Looking Back to Move Forward: Oluwaseyi Ezekiel’s reflections from the McGill Africa Umoja Summit; Reflections from AWC West 2026: Mastercard Foundation Scholars on Leadership and Resilient Agriculture",
+      "https://mastercardfdn.scholars.ubc.ca/ | d02393605463a312b55ddc91f4831b457897d4105c8986d2827dcf40b8ffd30a | CONTACT: If you have questions about Mastercard Foundation Scholars Program at UBC, please email us. Graduate students email enquiries to scholars.admissions@ubc.ca"
+    ]
+  },
+  "rules": [
+    {
+      "id": "scholar-stories",
+      "category": "stories",
+      "rationale": "The homepage explicitly features scholar profiles, first-person reflections and stories of program impact.",
+      "title_pattern": "^(?:Africa Mindset Reset Forum\\b|Looking Back to Move Forward\\b|[“\"]?Reflections from\\b|Meet\\b|Latest Stories and Impact\\b|Stories(?: and Impact)?$)"
+    },
+    {
+      "id": "contact-help",
+      "category": "support",
+      "rationale": "The homepage directs program questions to a contact service.",
+      "title_pattern": "^Contact(?:\\s|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "opportunities",
+    "rationale": "The program offers funded access to UBC university education and explains how eligible prospective scholars can apply."
+  }
+}

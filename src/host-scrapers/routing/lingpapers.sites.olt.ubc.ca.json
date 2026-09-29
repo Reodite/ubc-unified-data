@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "hostname": "lingpapers.sites.olt.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w4 first homepage review",
+    "rationale": "The UBC-branded Working Papers in Linguistics institutional archive provides public linguistic conference volumes, papers, and contributor guidance. Its homepage identifies UBCWPL publishing in Vancouver and documents conferences in multiple locations; one Okanagan-hosted conference does not make the archive Okanagan-exclusive. Research is the default, with homepage-evidenced academic qualifying papers and practical contributor/citation guidance routed separately. No matching published hostname or saved first policy was found.",
+    "evidence": [
+      "https://lingpapers.sites.olt.ubc.ca/ | cd3c6668bcce8bc600fc5f9c4d89581b4dd0bdb8949e8fda37459735e70a3bda | Working Papers in Linguistics (UBCWPL). This page contains all ICSNL volumes. Volume from 1966 to 1999 are formally part of the Kinkade Collection. Volumes from 2000 onward are published by UBCWPL, as indicated by their UBCWPL publication number.",
+      "https://lingpapers.sites.olt.ubc.ca/ | cd3c6668bcce8bc600fc5f9c4d89581b4dd0bdb8949e8fda37459735e70a3bda | ICSNL 61 (2026): The Sixty-First International Conference on Salish and Neighbouring Languages was hosted by the Lil̓wat Nation in Mount Currie between July 16 and July 18, 2026. Vancouver, BC: UBCWPL.",
+      "https://lingpapers.sites.olt.ubc.ca/ | cd3c6668bcce8bc600fc5f9c4d89581b4dd0bdb8949e8fda37459735e70a3bda | Navigation includes WSCLA Volumes (/wscla-volumes/), NWLC Volumes (/nwlc-volumes/), UBC Qualifying Papers (/ubc-qualifying-papers/), and Other Volumes (/other-volumes/).",
+      "https://lingpapers.sites.olt.ubc.ca/ | cd3c6668bcce8bc600fc5f9c4d89581b4dd0bdb8949e8fda37459735e70a3bda | Navigation includes Authors and Reviewers (/authors-and-reviewers/), Guidelines for reviewers (/guidelines-for-reviewers/), Guidelines for authors (/guidelines-for-authors/), Guidelines for Authors: Publishing with WPL (/for-authors/), and How to Cite (/how-to-cite/)."
+    ]
+  },
+  "rules": [
+    {
+      "id": "contributor-and-citation-support",
+      "category": "support",
+      "rationale": "Observed navigation explicitly separates author, reviewer, publication, and citation instructions from the research volumes.",
+      "path_pattern": "^/(?:authors-and-reviewers|guidelines-for-reviewers|guidelines-for-authors|for-authors|how-to-cite)(?:/|$)"
+    },
+    {
+      "id": "academic-qualifying-papers",
+      "category": "academics",
+      "rationale": "The homepage identifies UBC Qualifying Papers as a distinct academic section.",
+      "path_pattern": "^/ubc-qualifying-papers(?:/|$)"
+    },
+    {
+      "id": "research-volume-collections",
+      "category": "research",
+      "rationale": "The homepage lists linguistic conference volumes and the Kinkade research archive as publication collections.",
+      "path_pattern": "^/(?:wscla-volumes|nwlc-volumes|other-volumes|introduction-to-the-kinkade-collection-the-on-line-archive-of-icsnl-papers)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "research",
+    "rationale": "UBCWPL is an institutional archive of linguistic research papers and conference proceedings."
+  }
+}

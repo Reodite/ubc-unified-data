@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "hostname": "www.math.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; primary first category assignment in bounded successor recovery",
+    "rationale": "The saved official Mathematics homepage identifies undergraduate/graduate academic guidance, research fields, outreach, memorials and award announcements. Use these observed sections with an academic department baseline.",
+    "evidence": [
+      "https://www.math.ubc.ca/ | 3bfef60f9a53fb504199437458dc4c685b590fcbd2c5f808800f38ad55805014 | Undergraduates: taking courses in the Math Department; Graduate Students: information for current and future students.",
+      "https://www.math.ubc.ca/research | Research Fields; graduate school or postdoctoral mentoring.",
+      "https://www.math.ubc.ca/about-our-department/memoriam | Former faculty memorials.",
+      "https://www.math.ubc.ca/news-events/awards | Awards won by faculty members and students."
+    ]
+  },
+  "rules": [
+    {
+      "id": "research-fields",
+      "category": "research",
+      "rationale": "The homepage explicitly links a research-fields section.",
+      "path_pattern": "^/research(?:/|$)"
+    },
+    {
+      "id": "memorial-profiles",
+      "category": "stories",
+      "rationale": "Memorials recount former faculty lives and contributions.",
+      "path_pattern": "^/about-our-department/memoriam(?:/|$)"
+    },
+    {
+      "id": "department-news",
+      "category": "news",
+      "rationale": "News-events and won-award reports describe announcements rather than open funding calls.",
+      "path_pattern": "^/news-events(?:/|$)"
+    },
+    {
+      "id": "teaching-outreach",
+      "category": "academics",
+      "rationale": "The homepage describes educational outreach for schoolchildren.",
+      "path_pattern": "^/outreach-programs(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "academic-department",
+    "category": "academics",
+    "rationale": "The official Mathematics department supplies academic program, course and discipline information."
+  }
+}

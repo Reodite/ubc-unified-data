@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "hostname": "radiology.med.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w2 first homepage review",
+    "rationale": "Official UBC Department of Radiology provides public undergraduate, postgraduate, residency and fellowship education, research information, clinical faculty resources and Grand Rounds information. The homepage establishes useful departmental content rather than a personal or authentication-only page.",
+    "evidence": [
+      "https://radiology.med.ubc.ca/ | 7c0bfeb22403346d35697633cffb1284c466b509ab4f2361a5334df8a6084c7b | Welcome to the Department of Radiology; Education Programs; Undergraduate; Postgraduate; Residency; Fellowship; Research; Resources for Clinical Faculty",
+      "https://radiology.med.ubc.ca/ | 7c0bfeb22403346d35697633cffb1284c466b509ab4f2361a5334df8a6084c7b | Grand Rounds 2025 videos are now available, and all CPD letters were emailed by January 9, 2026.",
+      "https://radiology.med.ubc.ca/ | 7c0bfeb22403346d35697633cffb1284c466b509ab4f2361a5334df8a6084c7b | Recorded homepage links: /research/opportunities/ Opportunities; /research/awards/ Awards; /research/seed2stem-summer-research-program-for-indigenous-youth/ seed2STEM Summer Research Program for Indigenous Youth; /research/ Research; /resources-for-clinical-faculty/ Resources for Clinical Faculty; /news-events/ Conferences, Grand Rounds & Events"
+    ]
+  },
+  "rules": [
+    {
+      "id": "research-opportunities",
+      "category": "opportunities",
+      "rationale": "The homepage explicitly links research opportunities, awards and an Indigenous youth summer research program.",
+      "path_pattern": "^/research/(?:opportunities|awards|seed2stem-summer-research-program-for-indigenous-youth)(?:/|$)"
+    },
+    {
+      "id": "research-section",
+      "category": "research",
+      "rationale": "The homepage links a dedicated research section and its named imaging and clinical research areas.",
+      "path_pattern": "^/research(?:/|$)"
+    },
+    {
+      "id": "clinical-faculty-resources",
+      "category": "support",
+      "rationale": "The homepage links clinical faculty resources and frequently asked questions.",
+      "path_pattern": "^/resources-for-clinical-faculty(?:/|$)"
+    },
+    {
+      "id": "news-events",
+      "category": "news",
+      "rationale": "The homepage identifies news and upcoming events and links conferences, Grand Rounds and event announcements.",
+      "path_pattern": "^/news-events(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "The department provides radiology education programs and academic departmental information; explicit research, opportunity, resource and announcement sections take precedence."
+  }
+}

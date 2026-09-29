@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "hostname": "wildandimmersive.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w2 first homepage review",
+    "rationale": "The homepage identifies Wild & Immersive as part of UBC Forestry through its linked faculty signature and describes public outdoor education at Malcolm Knapp Research Forest in Maple Ridge. It provides programs, practical educational guides, funding and volunteering opportunities, team profiles and scheduled events. Maple Ridge and Williams Lake content is not Okanagan-exclusive.",
+    "evidence": [
+      "https://wildandimmersive.ubc.ca/ | e820a0bba3886bde1386bb02fc92dd1be049204affa7bee6d4063aaae901ed32 | Wild & Immersive cultivates lifelong environmental enthusiasm in children and adults through our outdoor programs and activities. Join us at the Malcolm Knapp Research Forest in Maple Ridge for fun and interactive sessions for the whole family. Part of: linked UBC Faculty of Forestry and Environmental Stewardship signature at https://forestry.ubc.ca/",
+      "https://wildandimmersive.ubc.ca/ | e820a0bba3886bde1386bb02fc92dd1be049204affa7bee6d4063aaae901ed32 | Forest School /maple-ridge/forest-school/; Pro-D Day Camps; Spring Break Camps; Summer Day Camps; Field Trips; Teen Programs /teen-leaders-in-nature/; Retreats /maple-ridge/retreats/",
+      "https://wildandimmersive.ubc.ca/ | e820a0bba3886bde1386bb02fc92dd1be049204affa7bee6d4063aaae901ed32 | See funding opportunities /maple-ridge/findlay-family-bursary/; Volunteer /volunteer/; UBC Graduate Student Teaching Program /volunteer/ubc-graduate-student-teaching-program/; Careers /maple-ridge/careers/",
+      "https://wildandimmersive.ubc.ca/ | e820a0bba3886bde1386bb02fc92dd1be049204affa7bee6d4063aaae901ed32 | Our Story /maple-ridge/our-story/; Our Team /maple-ridge/our-team/; Special Events /events/kids/ and /events/adults/; Risk Tolerance in the Outdoors /special-events/risk-tolerance-in-the-outdoors/",
+      "https://wildandimmersive.ubc.ca/ | e820a0bba3886bde1386bb02fc92dd1be049204affa7bee6d4063aaae901ed32 | New Roots Blog resources: Ferns in Maple Ridge Forests: A Young Botanist’s Guide; Outdoor Preparedness: How to Dress, Pack, and Equip Kids for Any Weather /outdoor-preparedness-kids-weather/; Forest Plants in Williams Lake: A Guide for Budding Botanists"
+    ]
+  },
+  "rules": [
+    {
+      "id": "funding-and-participation-opportunities",
+      "category": "opportunities",
+      "rationale": "The homepage advertises bursary funding, volunteering, a graduate-student teaching opportunity and careers.",
+      "path_pattern": "^/(?:volunteer(?:/|$)|(?:maple-ridge|williams-lake)/(?:findlay-family-bursary|careers)(?:/|$))"
+    },
+    {
+      "id": "team-and-organizational-stories",
+      "category": "stories",
+      "rationale": "Our Team and Our Story present people and organizational background rather than educational program requirements.",
+      "path_pattern": "^/(?:maple-ridge|williams-lake)/(?:our-team|our-story)(?:/|$)"
+    },
+    {
+      "id": "special-event-announcements",
+      "category": "news",
+      "rationale": "Observed special-event sections announce activities for children and adults.",
+      "path_pattern": "^/(?:events|special-events)(?:/|$)"
+    },
+    {
+      "id": "practical-help-and-services",
+      "category": "support",
+      "rationale": "Outdoor preparedness is practical participant guidance, while contact, terms and privacy pages support use of the programs.",
+      "path_pattern": "^/(?:outdoor-preparedness-kids-weather|contact-us|terms|privacy)(?:/|$)"
+    },
+    {
+      "id": "outdoor-education-programs",
+      "category": "academics",
+      "rationale": "Forest school, camps, field trips and teen programs offer structured nature-based education, not scientific research outputs.",
+      "path_pattern": "^/(?:teen-leaders-in-nature(?:/|$)|(?:maple-ridge|williams-lake)/(?:forest-school|pro-d-day-camps|spring-break-camps|summer-day-camps|field-trips|retreats)(?:/|$))"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "Wild & Immersive provides outdoor environmental education and educational nature resources; explicit opportunities, profiles, announcements and practical support override this purpose. A research forest location alone does not make program or learning-guide content research outputs."
+  }
+}

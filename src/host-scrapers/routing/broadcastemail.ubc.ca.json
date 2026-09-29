@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hostname": "broadcastemail.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "Owner continuation requests autonomous public institutional article collection with preserved first routing and no private access.",
+    "rationale": "The retained public UBC Broadcast homepage lists dated institutional messages, campus notices and announcements; news is the faithful default for this host.",
+    "evidence": [
+      "Retained homepage 02a89ec1d53d81d9426e5b44e528f34c2cf18a270f7a63ba032b4d7d14b8059c has title Latest Messages | UBC Broadcast.",
+      "The retained homepage headlines include community Canvas incident updates, Senate elections, staff awards and phishing advisories.",
+      "Official university broadcast archive contains substantive institutional announcements and community guidance."
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "institutional-broadcasts",
+    "category": "news",
+    "rationale": "UBC Broadcast messages are dated campus-wide public updates."
+  }
+}

@@ -59,7 +59,19 @@ arrays, CSV exports and standalone sanitized Markdown. Its own `_catalog.json`,
 `_manifest.json` and per-source coverage ledgers distinguish complete inventories,
 exclusions and failures. The repository includes these generated exports.
 Run `npm run collect:prose` to refresh them and `npm run validate:prose` before
-committing. Raw response caches remain under the ignored `.cache/prose/` directory.
+committing. Raw response caches remain outside the repository under
+`~/Projects/ubc-tmp/ubc-unified-data/state/source-prose/cache/` by default
+(or `$UBC_TMP_ROOT/ubc-unified-data/state/source-prose/cache/` when configured).
+
+Separately, `data/official-hosts.json` indexes complete, homepage-vetted hostname
+collections in `data/documents/<category>/<hostname>/`, across support, academics,
+opportunities, research, news and stories. Each host's `document_roots` lists
+its directories and counts. Saved first-classification policies drive later
+rescrapes without an LLM classifier. [HOST-DOCUMENTS.md](HOST-DOCUMENTS.md)
+describes their deterministic text format, admission checks and separate
+acquisition/replay/publication commands. [HOST-COVERAGE.md](HOST-COVERAGE.md)
+lists reviewed unavailable hostnames and reports the remaining queue limits.
+No crawl queues, raw snapshots or partial host outputs are published.
 
 See [PROSE.md](PROSE.md) for collection, schemas and limitations, and the
 [source guide](UNDERGRADUATE-SOURCES.md) for structured-data qualifications and
@@ -476,6 +488,31 @@ through `Output` shows up in the manifest automatically.
 is the fastest way for a reader to misread this repo. Name the same stem you
 pass to `table()`; both the JSON and the CSV pick it up. `columns` does not have
 to be exhaustive: describe the ones that are not self-evident.
+
+## Verification
+
+The Linux verification lane requires Node 24 or newer, Python 3, Poppler
+(`pdftotext`) and util-linux (`prlimit`). Install locked Node dependencies and run:
+
+```sh
+npm ci
+npm run test:inventory
+npm run test:portable -- --no-file-parallelism --maxWorkers=1
+npx tsc --noEmit
+npm run lint
+npm run format:check
+npm run validate:hosts -- --require-categories
+npm run validate:prose
+npm run validate:undergrad
+```
+
+`npm test` still runs the **complete** suite, including native integration.
+The native lane requires the reviewed fixed Linux toolchain; it is not portable
+to arbitrary Node installations or Linux distributions. Run
+`npm run test:native -- --no-file-parallelism --maxWorkers=1` on that toolchain
+and record its result against the release commit. GitHub's Ubuntu/Node 24 lane
+reports portable coverage only. See [test environments](HOST-DOCUMENTS.md#test-environments)
+for the supported native profile and qualification requirements.
 
 ## Source provenance
 

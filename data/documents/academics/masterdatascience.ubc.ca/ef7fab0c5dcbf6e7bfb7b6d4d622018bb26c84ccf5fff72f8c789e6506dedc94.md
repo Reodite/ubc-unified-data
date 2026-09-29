@@ -1,0 +1,179 @@
+---
+{
+  "format_version": 3,
+  "id": "documents:official-web:632480559a5b181910ef4619",
+  "hostname": "masterdatascience.ubc.ca",
+  "title": "Data Science in Action",
+  "source_url": "https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-science-in-action?page=4",
+  "retrieved_at": "2026-09-29T07:51:51.432Z",
+  "source_modified_at": null,
+  "snapshot_sha256": "cfd037540bdeb46f9b8a542eaa3e6743887a5f90cd9d7b3a32af82ae12ca1c0e",
+  "input_sha256": "400af98ea79a2549761f207a6b9bf1c32eb962357b6e0d9a84bd7bc6fe4ad0a7",
+  "body_sha256": "e8b129857560e9876dcf75676017d9a6db6ab30bb4b7bf2c237625ab45dc6fef",
+  "content_sha256": "ac202a24693d077bfd3f5cfdc4ae5b525438ddb433611fb89f8a205e39fc58b8",
+  "warnings": [],
+  "alternate_urls": [],
+  "producer": {
+    "inputs_sha256": "deddc6f601ceeba0d646d651a6b16d6e8f5a854960e7e85b457fa8298aec3036",
+    "runtime": {
+      "node": "26.8.1",
+      "icu": "78.3",
+      "unicode": "17.0",
+      "platform": "linux",
+      "arch": "x64"
+    }
+  },
+  "category": "academics",
+  "routing": {
+    "rule_id": "data-science-program",
+    "policy_sha256": "54e0f11c4b15f490c83e03233f0d0c41ff5981eb59e599261a5a78eea316e748"
+  }
+}
+---
+### All
+
+[Vancouver Whitecaps FC](https://masterdatascience.ubc.ca/sites/default/files/styles/article_view_4x3_/public/media-images/UBC20-011_WhiteCaps-1800x640.jpg.webp?itok=IzusA_bF)
+
+Share Article
+
+## [Vancouver Whitecaps FC](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/vancouver-whitecaps-fc)
+
+### Modelling the Physical Performance of the Vancouver Whitecaps \| Student Capstone Project
+
+Oct 06 / 2020
+
+Working with the Vancouver Whitecaps, Vancouver’s professional Major League Soccer team, a group of UBC MDS Vancouver students analyzed players physical performance to build a model for player fatigue and fitness\.  The students developed a data pipeline which can help the Whitecaps analyze and understand training loads for each session and closely examine the players' physical outputs during training sessions and matches\.
+
+[Read more](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/vancouver-whitecaps-fc)
+
+[Data in Action: Using Machine Learning to Predict Playground Usage](https://masterdatascience.ubc.ca/sites/default/files/styles/article_view_4x3_/public/media-images/data-action-using-machine-learning-predict-playground-usage.jpg.webp?itok=MDEWmKhU)
+
+Share Article
+
+## [Biba Ventures](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/biba-ventures)
+
+### Using Machine Learning to Predict Playground Usage \| Student Capstone Project
+
+Oct 06 / 2020
+
+A team of UBC MDS Vancouver students worked with Biba, a smart playground company, to build several learning models in order to estimate the number of monthly sessions at particular playgrounds within a given month\. Data was collected from 2506 playgrounds across the US to help understand how playgrounds are being used in order for park managers to make meaningful decisions regarding the management of existing playgrounds and the planning of new playgrounds\.
+
+[Read more](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/biba-ventures)
+
+[Statistics Canada Data in Action](https://masterdatascience.ubc.ca/sites/default/files/styles/article_view_4x3_/public/media-images/FoS-Data-Science-In-Action-Care-Homes1800x640.jpg.webp?itok=lRMzb9jK)
+
+Share Article
+
+## [Statistics Canada](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/statistics-canada)
+
+### Bringing Understanding to the COVID\-19 Outbreak in Ontario \| Student Capstone Project
+
+Oct 06 / 2020
+
+In partnership with Statistics Canada, students of UBC’s Master of Data Science Okanagan program used clustering methods, principal component analysis and principal component regression to provide greater insight into the spread of COVID\-19 among of long\-term care homes\. The project showcased how leveraging various open data sources can produce comprehensive and meaningful results\.
+
+[Read more](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/statistics-canada)
+
+[Minerva Intelligence MDS Computational Linguistics](https://masterdatascience.ubc.ca/sites/default/files/styles/article_view_4x3_/public/media-images/UBC20-011_Minerva-Intelligence-1800x640-web.jpg.webp?itok=y0gWrtjo)
+
+Share Article
+
+## [Minerva Intelligence](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/minerva-intelligence)
+
+### Mineral Occurrence Text Extractor \| Student Capstone Project
+
+Oct 06 / 2020
+
+Students from UBC’s MDS in Computational Linguistics partnered with Minerva Intelligence, an AI company that provides knowledge in earth science domains like mining and natural hazards, to extract information from MINFILE, a British Columbia Government mineral occurrences database\.  The team developed a way to extract details from these reports in order to help Minerva’s knowledge base and make their AI system more robust\.
+
+[Read more](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/minerva-intelligence)
+
+[Peter A\. Allard School of Law MDS Computational Linguistics](https://masterdatascience.ubc.ca/sites/default/files/styles/article_view_4x3_/public/media-images/UBC20-011_Allard%20Law-1800x640.jpg.webp?itok=z2TkZclP)
+
+Share Article
+
+## [UBC's Peter Allard School of Law](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/ubcs-peter-allard-school-law)
+
+### Analysis of BC Negligence Decisions over 20 years \| Student Capstone Project
+
+Oct 06 / 2020
+
+In partnership with UBC’s Peter A\. Allard School of Law, a group of UBC MDS Computational Linguistics students examined all negligence cases in BC between 2000 and 2020 in order to determine how damages and contributory negligence have been changing over time\. Using cases pulled from LexisNexus, students used two specific methods to develop a system that extracted relevant information from large amounts of text data\.
+
+[Read more](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/ubcs-peter-allard-school-law)
+
+[Urban Logiq](https://masterdatascience.ubc.ca/sites/default/files/styles/article_view_4x3_/public/media-images/UBC20-011_Urban%20Logiq-06.jpg.webp?itok=Gg8LmDyy)
+
+Share Article
+
+## [Urban Logiq](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/urban-logiq)
+
+### Identifying Amenity Gaps \| Student Capstone Project
+
+Oct 06 / 2020
+
+In partnership with Urban Logiq, an organization that helps governments worldwide make faster, cheaper and more accurate decisions with their data, a group of MDS Vancouver students collected data from GPS\-enabled vehicles in a specific city of interest and created two sets of visualization tools, which they used to help answer two questions: How far does someone need to travel to reach an amenity? And are certain nearby amenities being bypassed in favour of others?
+
+[Read more](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/urban-logiq)
+
+[e\-comm 911](https://masterdatascience.ubc.ca/sites/default/files/styles/article_view_4x3_/public/media-images/e-comm_911_1200x628.jpg.webp?itok=AC3cKCdh)
+
+Share Article
+
+## [E\-Comm 9\-1\-1](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/e-comm-9-1-1)
+
+### ‘Saving Lives and Protecting Property’ with a Predictive Staffing Model \| Student Capstone Project
+
+Oct 28 / 2019
+
+Working with E\-Comm 9\-1\-1—a multi\-municipality emergency communications agency serving British Columbia—UBC Master of Data Science students looked at how the agency’s existing data could be used to create call\-taking and dispatch schedules that would correspond with shifting call volumes based on time of day, day of week, and holidays or special events throughout the year\.
+
+[Read more](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/e-comm-9-1-1)
+
+[Preparing for the Next Chapter of Culture in Kelowna](https://masterdatascience.ubc.ca/sites/default/files/styles/article_view_4x3_/public/media-images/preparing-for-the-next-chapter-of-culture-in-kelowna.jpg.webp?itok=9-LI2UQn)
+
+Share Article
+
+## [City of Kelowna](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/city-kelowna)
+
+### Preparing for the Next Chapter of Culture in Kelowna \| Student Capstone Project
+
+Oct 21 / 2019
+
+In partnership with the City of Kelowna, students of UBC’s Master of Data Science Okanagan program trained machines to uncover trends and insights into the community’s cultural needs\. The knowledge gained not only helped inform the City’s Cultural Plan, it helped the local government connect in a real way with its citizens\.
+
+[Read more](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/city-kelowna)
+
+[Data in Action: Delivering Better Care Through Education](https://masterdatascience.ubc.ca/sites/default/files/styles/article_view_4x3_/public/media-images/data-in-action-delivering-better-care-through-education_1800x940.jpg.webp?itok=Q3rxxPhn)
+
+Share Article
+
+## [QxMD](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/qxmd)
+
+### Delivering Better Care Through Education \| Student Capstone Project
+
+Oct 18 / 2019
+
+In partnership with QxMD—a Vancouver\-based digital learning technology company—students from UBC’s Master of Data Science program created a tool to identify trending health topics within news articles and match these with relevant medical journal articles\. Thus helping medical professionals better serve patients with questions related to specific news articles they’ve read\.
+
+[Read more](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/qxmd)
+
+[Data in Action: Predicting Customer Order Probabilities](https://masterdatascience.ubc.ca/sites/default/files/styles/article_view_4x3_/public/media-images/data-in-action-predicting-customer-order-probabilities_1800x940.jpg.webp?itok=6rGmt9f5)
+
+Share Article
+
+## [Fresh Prep](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/fresh-prep)
+
+### Predicting Customer Order Probabilities \| Student Capstone Project
+
+Oct 18 / 2019
+
+Students of UBC’s Master of Data Science program in Vancouver worked with Fresh Prep to design a dashboard tool that not only helped the meal kit delivery company predict its future orders but also provided the insights needed to help Fresh Prep better serve its existing customers and improve their order rate\.
+
+[Read more](https://masterdatascience.ubc.ca/index%2Ephp/why-data-science/data-stories/fresh-prep)
+
+### Vancouver
+
+### Okanagan
+
+### Computational Linguistics

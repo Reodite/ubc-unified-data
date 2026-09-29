@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "hostname": "alli.arts.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w1 first homepage review",
+    "rationale": "Official UBC Aboriginal Languages & Literacy Institute site identifies a Vancouver address and publicly documents the 2006 language education program and its outputs. Its historical courses, creative works and symposium remain useful institutional content. Homepage navigation supports academics for courses, stories for creative and impact material, and research for the symposium, with an academic institute-purpose fallback.",
+    "evidence": [
+      "https://alli.arts.ubc.ca/ | c3e5903a736dd789dfd6b4309179d74afa4ef4b5a6735b78c51fb8f29f2eb345 | The University of British Columbia; Aboriginal Languages & Literacy Institute; Buchanan C-354, 1866 Main Mall, Vancouver, BC Canada V6T 1Z1.",
+      "https://alli.arts.ubc.ca/ | c3e5903a736dd789dfd6b4309179d74afa4ef4b5a6735b78c51fb8f29f2eb345 | The Aboriginal Languages and Literacy Institute aims to increase awareness of endangered languages and to provide concrete expertise and skills to address community needs. This website showcases the outputs of the 2006 event.",
+      "https://alli.arts.ubc.ca/ | c3e5903a736dd789dfd6b4309179d74afa4ef4b5a6735b78c51fb8f29f2eb345 | Homepage navigation: Courses /courses/; Theatre /theatre/; Film /film/; Stories /stories/; Symposium /symposium/; Impact /impact/."
+    ]
+  },
+  "rules": [
+    {
+      "id": "courses",
+      "category": "academics",
+      "rationale": "The homepage identifies a Courses section for the institute's language education program.",
+      "path_pattern": "^/courses(?:/|$)"
+    },
+    {
+      "id": "creative-outputs-and-impact",
+      "category": "stories",
+      "rationale": "Homepage Theatre, Film, Stories and Impact sections present creative and narrative outputs of the historical institute program.",
+      "path_pattern": "^/(?:theatre|film|stories|impact)(?:/|$)"
+    },
+    {
+      "id": "symposium",
+      "category": "research",
+      "rationale": "The homepage's Symposium section records scholarly exchange accompanying the language documentation institute.",
+      "path_pattern": "^/symposium(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "The institute documents an educational program providing language documentation expertise and skills to researchers, educators and community members."
+  }
+}

@@ -16,6 +16,7 @@ export interface ProseSource {
   sitemaps?: string[];
   scope: (url: string, title?: string, recordType?: string) => string | null;
   selectors?: string[];
+  strictSelectors?: boolean;
   exclusions?: string[];
 }
 
