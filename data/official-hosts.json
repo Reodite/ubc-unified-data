@@ -2262,27 +2262,6 @@
     "document_count": 24
   },
   {
-    "hostname": "ors.ok.ubc.ca",
-    "title": "ors.ok.ubc.ca",
-    "homepage_url": "https://ors.ok.ubc.ca/",
-    "homepage_retrieved_at": "2026-09-18T12:22:36.303Z",
-    "homepage_sha256": "271f2e59cd77a783cad53fb2a67adca618a059410a39156c6ff2b080173271f0",
-    "scope": "Useful public article-style HTML prose on this exact hostname.",
-    "document_roots": [
-      {
-        "category": "opportunities",
-        "path": "data/documents/opportunities/ors.ok.ubc.ca",
-        "document_count": 1
-      },
-      {
-        "category": "support",
-        "path": "data/documents/support/ors.ok.ubc.ca",
-        "document_count": 108
-      }
-    ],
-    "document_count": 109
-  },
-  {
     "hostname": "outcomes.grad.ubc.ca",
     "title": "outcomes.grad.ubc.ca",
     "homepage_url": "https://outcomes.grad.ubc.ca/",
