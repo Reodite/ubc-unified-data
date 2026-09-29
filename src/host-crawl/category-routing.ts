@@ -51,6 +51,12 @@ export const HOST_REJECTIONS = {
     authority: "5cc613fe-c4e8-48ab-8c1c-cde6d90f5a5a",
     evidence: "https://irsslab.forestry.ubc.ca/",
   },
+  "med-fom-spph-internal.sites.olt.ubc.ca": {
+    reason: "Published source articles and archive pages disclose shared access credentials; exclude the entire host",
+    authority: "Public article-only scope and release security review",
+    evidence:
+      "https://med-fom-spph-internal.sites.olt.ubc.ca/2015/05/12/upcoming-webinars/ | https://med-fom-spph-internal.sites.olt.ubc.ca/2015/04/02/access-to-cfhi-webinar-series-shifting-culture-shifting-care/",
+  },
   "learningspaces.ok.ubc.ca": {
     reason:
       "Retained homepage limits space management to the Okanagan campus; classroom booking and AV support retain that local mandate. A linked cross-campus design guide does not extend this host's service scope.",

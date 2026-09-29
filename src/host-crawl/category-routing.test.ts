@@ -2,6 +2,7 @@ import { mkdir, mkdtemp, readFile, rename, rm, symlink, writeFile } from "node:f
 import { join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
+  assertAdmittedHostname,
   formatRoutingPolicy,
   loadRoutingPolicy,
   loadSavedClassifications,
@@ -20,6 +21,11 @@ const roots: string[] = [];
 afterEach(async () => {
   vi.unstubAllGlobals();
   for (const root of roots.splice(0)) await rm(root, { recursive: true, force: true });
+});
+
+it("refuses the credential-bearing host without rejecting unrelated public SPPH content", () => {
+  expect(() => assertAdmittedHostname("med-fom-spph-internal.sites.olt.ubc.ca")).toThrow(/rejected/);
+  expect(() => assertAdmittedHostname("spph.ubc.ca")).not.toThrow();
 });
 
 function policy(): HostRoutingPolicy {
