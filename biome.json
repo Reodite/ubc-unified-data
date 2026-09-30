@@ -27,6 +27,6 @@
     "enabled": false
   },
   "files": {
-    "includes": ["src/**", "test/**", "!test/fixtures/host-scrapers/**"]
+    "includes": ["src/**", "test/**", "!test/fixtures/host-scrapers/**", "!test/fixtures/cogs-modules.html"]
   }
 }

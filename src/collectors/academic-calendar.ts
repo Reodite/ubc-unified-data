@@ -23,6 +23,7 @@ import type { Http, Output } from "../base.ts";
 import { jsonapiCollection, jsonapiIndex, register, wants } from "../base.ts";
 import * as calendarpages from "../calendarpages.ts";
 import { enrich as enrichCourseText } from "../coursetext.ts";
+import * as cogsmodules from "./cogsmodules.ts";
 
 export const CAMPUSES: Record<string, string> = {
   vancouver: "vancouver.calendar.ubc.ca",
@@ -71,7 +72,7 @@ export const AcademicCalendar = register(
       "and specialization requirement pages on their own; the term dates and " +
       "drop deadlines; and the faculty, school, department and subject hierarchy " +
       "for both campuses.";
-    sources = Object.values(CAMPUSES).map((host) => `https://${host}/jsonapi`);
+    sources = [...Object.values(CAMPUSES).map((host) => `https://${host}/jsonapi`), cogsmodules.URL];
 
     async collect(http: Http, out: Output): Promise<void> {
       const unavailable: Record<string, string[]> = {};
@@ -106,6 +107,9 @@ export const AcademicCalendar = register(
           calendarpages.enrich(pages, { host, subjects: subjectCodes(fetched) });
         }
 
+        // A failed module acquisition must reject before writes; successful collectors prune unwritten files.
+        const modules = campus === "vancouver" ? await cogsmodules.fetch(http) : null;
+
         for (const [dataset, records] of Object.entries(fetched)) {
           await out.table(`${campus}/${dataset}`, records, {
             source: `https://${host}/jsonapi/${RESOURCES[dataset]}`,
@@ -113,6 +117,8 @@ export const AcademicCalendar = register(
         }
 
         await this.derived(out, pages, campus, host);
+
+        if (modules !== null) await out.table(`${campus}/cogs_module_courses`, modules, { source: cogsmodules.URL });
 
         if (missing.length > 0) unavailable[campus] = missing;
       }
@@ -146,6 +152,22 @@ export const AcademicCalendar = register(
 );
 
 function describeCal(out: Output, campus: string): void {
+  if (campus === "vancouver")
+    out.describe(`${campus}/cogs_module_courses`, {
+      grain: "one course code per source module listing; active and historical listings remain distinct",
+      columns: {
+        code: "subject and number, including any letter suffix",
+        code_raw: "source code cell, including alternatives and cross-listed codes",
+        subject: "course subject without the Vancouver campus marker",
+        number: "course number including any letter suffix",
+        course_name: "course name as listed by Cognitive Systems",
+        faculty_group: "faculty group assigned by the module list",
+        notes: "source restrictions, equivalencies and advising notes",
+        section: "Module List or Historic Modules",
+        active: "false for historical listings or explicit no-longer-offered notices; past credit may still qualify",
+      },
+      joins: ["subject + number ~ academic-calendar/vancouver/courses (retain lettered variants)"],
+    });
   out.describe(`${campus}/courses`, {
     grain:
       "one course in the catalogue -- what a course IS, not when it runs. " + "Join to courses/sections for offerings",

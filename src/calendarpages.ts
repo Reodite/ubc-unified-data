@@ -125,6 +125,12 @@ function slug(alias: string): string {
 
 /** Is this page a degree root, and at what level? */
 function degree(alias: string, title: string): [boolean, string] {
+  // This B.D.Sc. root omits its credential; generic "Degree Program" titles also name admissions policies.
+  if (
+    alias === `/${FACULTIES_SECTION}/faculty-dentistry/dental-hygiene-degree-program` &&
+    title === "Dental Hygiene Degree Program"
+  )
+    return [true, "undergraduate"];
   const slugText = slug(alias);
   const prefixHit = DEGREE_SLUG_PREFIXES.some((prefix) => slugText.startsWith(prefix));
   const suffixLevel = DEGREE_SLUG_SUFFIXES_BY_LEVEL.find(([suffix]) => slugText.endsWith(suffix))?.[1];
@@ -196,6 +202,15 @@ export function enrich(
     page["level"] = isDegree ? level : "";
   }
 
+  function ancestorAt(alias: string): Record<string, unknown> | undefined {
+    if (byAlias[alias]) return byAlias[alias];
+    // Vancouver's Forestry subtree uses both faculty spellings; degree slugs alone are not unique.
+    if (host !== "vancouver.calendar.ubc.ca") return undefined;
+    const faculty = `/${FACULTIES_SECTION}/faculty-forestry`;
+    if (alias !== faculty && !alias.startsWith(`${faculty}/`)) return undefined;
+    return byAlias[`${faculty}-and-environmental-stewardship${alias.slice(faculty.length)}`];
+  }
+
   for (const page of pages) {
     const alias = (page["alias"] as string) || "";
     const title = ((page["title"] as string) || "").trim();
@@ -204,7 +219,8 @@ export function enrich(
     const ancestors = [];
     for (let n = 1; n < segments.length; n++) {
       const candidate = `/${segments.slice(0, n).join("/")}`;
-      if (candidate in byAlias) ancestors.push(byAlias[candidate]!);
+      const ancestor = ancestorAt(candidate);
+      if (ancestor) ancestors.push(ancestor);
     }
 
     // The nearest enclosing degree, which for a degree root is itself.
@@ -217,10 +233,9 @@ export function enrich(
         }
       }
     }
-
     let faculty = "";
     if (segments.length > 0 && segments[0] === FACULTIES_SECTION && segments.length >= 2) {
-      const root = byAlias[`/${segments[0]}/${segments[1]}`];
+      const root = ancestorAt(`/${segments[0]}/${segments[1]}`);
       if (root !== undefined) faculty = (root["title"] as string) || "";
     }
 

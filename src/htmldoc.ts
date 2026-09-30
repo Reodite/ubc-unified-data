@@ -289,7 +289,7 @@ class Reader {
   private rowIsHeader = false;
   private cell: string[] | null = null;
 
-  feed(html: string): void {
+  feed(html: string, requireClosedTables: boolean): void {
     for (const token of tokenize(html ?? "")) {
       switch (token.kind) {
         case "data":
@@ -307,6 +307,7 @@ class Reader {
           break;
       }
     }
+    if (requireClosedTables && this.tables.length > 0) throw new Error("Unclosed HTML table");
     this.closeEverything();
   }
 
@@ -393,10 +394,12 @@ class Reader {
   }
 }
 
-/** Every heading and table on the page, in document order. */
-export function blocks(html: string): Block[] {
+/** Every heading and table on the page, in document order.
+ * Set requireClosedTables to reject tables that would otherwise be completed at EOF.
+ */
+export function blocks(html: string, opts: { requireClosedTables?: boolean } = {}): Block[] {
   const reader = new Reader();
-  reader.feed(html ?? "");
+  reader.feed(html ?? "", opts.requireClosedTables ?? false);
   return reader.blocks;
 }
 

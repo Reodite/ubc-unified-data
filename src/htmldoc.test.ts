@@ -33,6 +33,43 @@ describe("htmldoc block, section and text extraction", () => {
   }
 });
 
+describe("complete table admission", () => {
+  const unclosed = "<h4>Courses</h4><table><tr><td>Module</td></tr>";
+
+  it("keeps tolerant fragment parsing as the default", () => {
+    expect(blocks(unclosed)).toEqual([
+      { level: 4, text: "Courses" },
+      { headers: [], rows: [["Module"]] },
+    ]);
+    expect(() => blocks(unclosed, { requireClosedTables: true })).toThrow("Unclosed HTML table");
+  });
+
+  it.each([
+    "<table><tr><td>Module</td></tr></table>",
+    "<table><tr><td>Module</table>",
+    '<table title="unrelated > character"><tr><td>Module</td></tr></table>',
+    "<table><tr><td>Module</p></td></tr></table>",
+  ])("accepts an explicitly closed table with existing HTML tolerance: %s", (html) => {
+    expect(blocks(html, { requireClosedTables: true })).toEqual(blocks(html));
+  });
+
+  it.each([
+    "<!-- </table> -->",
+    '<script>const value = "</table>";</script>',
+    '<style>.x::after {content: "</table>"}</style>',
+    '<div title="</table>">Text</div>',
+    "&lt;/table&gt;",
+  ])("does not accept closing-tag text as table closure: %s", (decoy) => {
+    expect(() => blocks(unclosed + decoy, { requireClosedTables: true })).toThrow("Unclosed HTML table");
+  });
+
+  it("requires every opened table to close, including outer nested tables", () => {
+    expect(() => blocks("<table><tr><td>Outer<table><tr><td>Inner</table>", { requireClosedTables: true })).toThrow(
+      "Unclosed HTML table",
+    );
+  });
+});
+
 describe("items() falls back to prose", () => {
   it("returns list items when present", () => {
     expect(items("<ul><li>one</li><li>two</li></ul>")).toEqual(["one", "two"]);
