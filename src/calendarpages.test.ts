@@ -92,7 +92,19 @@ describe("enrich", () => {
     expect(pages[1]!["program"]).toBe("Dental Hygiene Degree Program");
   });
 
-  it("resolves a program across UBC's dual alias trees via the terminal slug", () => {
+  it.each([
+    ["Change of Degree Program", "/admissions/change-degree-program"],
+    ["Change of Degree Program", "/faculties-colleges-and-schools/faculty-dentistry/change-degree-program"],
+    ["Dental Hygiene Degree Program", "/admissions/dental-hygiene-degree-program"],
+    ["Unreviewed Degree Program", "/faculties-colleges-and-schools/faculty-arts/unreviewed-degree-program"],
+  ])("does not invent a credential for %s at %s", (title, alias) => {
+    const record = page({ title, alias });
+    enrich([record], { host: "vancouver.calendar.ubc.ca" });
+    expect(record).toMatchObject({ is_degree_root: false, program: "", program_url: "", level: "" });
+    if (alias.startsWith("/admissions/")) expect(record["kind"]).toBe("admission");
+  });
+
+  it("resolves a program across the equivalent Forestry faculty aliases", () => {
     const pages = [
       page({
         title: "B.U.F. (Bachelor of Urban Forestry)",
@@ -109,6 +121,73 @@ describe("enrich", () => {
     enrich(pages, { host: "vancouver.calendar.ubc.ca" });
     expect(pages[1]!["program"]).toBe("B.U.F. (Bachelor of Urban Forestry)");
     expect(pages[1]!["level"]).toBe("undergraduate");
+  });
+
+  it("uses the same Forestry ancestry for program, faculty and breadcrumbs without rewriting URLs", () => {
+    const facultyAlias = "/faculties-colleges-and-schools/faculty-forestry-and-environmental-stewardship";
+    const rootAlias = `${facultyAlias}/buf-bachelor-urban-forestry`;
+    const childAlias =
+      "/faculties-colleges-and-schools/faculty-forestry/buf-bachelor-urban-forestry/degree-requirements";
+    const pages = [
+      page({ title: "Forestry and Environmental Stewardship", alias: facultyAlias }),
+      page({ title: "B.U.F. (Bachelor of Urban Forestry)", alias: rootAlias }),
+      page({ title: "Degree Requirements", alias: childAlias }),
+    ];
+    enrich(pages, { host: "vancouver.calendar.ubc.ca" });
+    expect(pages[2]).toMatchObject({
+      alias: childAlias,
+      url: `https://vancouver.calendar.ubc.ca${childAlias}`,
+      faculty: "Forestry and Environmental Stewardship",
+      program_url: `https://vancouver.calendar.ubc.ca${rootAlias}`,
+      parent_url: `https://vancouver.calendar.ubc.ca${rootAlias}`,
+      breadcrumbs: ["Forestry and Environmental Stewardship", "B.U.F. (Bachelor of Urban Forestry)"],
+    });
+  });
+
+  it.each([false, true])("does not infer unrelated faculty equivalence from degree slugs (reverse=%s)", (reverse) => {
+    const roots = [
+      page({ title: "Master of Science", alias: "/faculties-colleges-and-schools/school-audiology/master-science" }),
+      page({ title: "Master of Science", alias: "/faculties-colleges-and-schools/faculty-medicine/master-science" }),
+    ];
+    if (reverse) roots.reverse();
+    const orphan = page({
+      title: "Degree Requirements",
+      alias: "/faculties-colleges-and-schools/faculty-medicine-old/master-science/degree-requirements",
+    });
+    enrich([...roots, orphan], { host: "vancouver.calendar.ubc.ca" });
+    expect(orphan).toMatchObject({ program: "", program_url: "", level: "" });
+  });
+
+  it("does not treat a page's terminal slug as a degree ancestor", () => {
+    const root = page({ title: "Bachelor of Arts", alias: "/bachelor-arts" });
+    const article = page({ title: "Program news", alias: "/news/bachelor-arts" });
+    enrich([root, article], { host: "vancouver.calendar.ubc.ca" });
+    expect(article).toMatchObject({ is_degree_root: false, program: "", program_url: "", level: "" });
+  });
+
+  it("prefers an exact Forestry ancestor over its equivalent alias", () => {
+    const prefix = "/faculties-colleges-and-schools/faculty-forestry";
+    const root = page({ title: "Bachelor of Science", alias: `${prefix}/bsc-forestry` });
+    const child = page({ title: "Degree Requirements", alias: `${prefix}/bsc-forestry/degree-requirements` });
+    const alternate = page({
+      title: "Bachelor of Science in Forestry",
+      alias: `${prefix}-and-environmental-stewardship/bsc-forestry`,
+    });
+    enrich([alternate, root, child], { host: "vancouver.calendar.ubc.ca" });
+    expect(child["program_url"]).toBe(`https://vancouver.calendar.ubc.ca${root["alias"]}`);
+  });
+
+  it("does not apply Vancouver faculty aliases to another campus", () => {
+    const root = page({
+      title: "Bachelor of Science",
+      alias: "/faculties-colleges-and-schools/faculty-forestry-and-environmental-stewardship/bsc-forestry",
+    });
+    const child = page({
+      title: "Degree Requirements",
+      alias: "/faculties-colleges-and-schools/faculty-forestry/bsc-forestry/degree-requirements",
+    });
+    enrich([root, child], { host: "okanagan.calendar.ubc.ca" });
+    expect(child["program_url"]).toBe("");
   });
 
   it("keeps a minor under a bachelor from being a degree itself", () => {
