@@ -17,12 +17,30 @@ const LINK_SCHEMES = new Set([...HTTP_SCHEMES, "mailto:", "tel:"]);
 const REMOVED_CONTENT = ["script", "style", "form", "textarea", "select", "option", "xmp", "head"];
 const MEDIA_TAGS = new Set(["iframe", "embed", "object", "video", "audio", "canvas", "svg"]);
 const UNSAFE_URL_CHARACTERS = /[\\\p{Cc}\p{Cf}\uFFFD]/u;
+const ENCODED_WORD_JOINER = /%e2%81%a0/gi;
 const MAILBOX = /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$/i;
 const HTML_ENTITIES: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;" };
 const markdownParser = new MarkdownIt({ html: true, linkify: false });
 
 // Expose unsafe destinations to validation instead of letting the parser hide them as text.
 markdownParser.validateLink = () => true;
+
+function normalizeHtmlControls(value: string): { text: string; replaced: boolean } {
+  let text = "";
+  let replaced = false;
+  let previousWasControl = false;
+  for (const character of value) {
+    const code = character.codePointAt(0)!;
+    const control =
+      code <= 8 || (code >= 11 && code <= 12) || (code >= 14 && code <= 31) || (code >= 127 && code <= 159);
+    if (control) {
+      if (!previousWasControl) text += " ";
+      replaced = true;
+    } else text += character;
+    previousWasControl = control;
+  }
+  return { text, replaced };
+}
 
 function inspectedUrl(value: string): string | undefined {
   let decoded = value;
@@ -42,6 +60,22 @@ function inspectedUrl(value: string): string | undefined {
     decoded = next;
   }
   return undefined;
+}
+
+function safeSourceUrl(value: string): string | undefined {
+  if (UNSAFE_URL_CHARACTERS.test(value)) return undefined;
+  try {
+    const url = new URL(value);
+    if (!HTTP_SCHEMES.has(url.protocol) || url.username || url.password) return undefined;
+    const inspected = new URL(url.href);
+    inspected.pathname = inspected.pathname.replace(ENCODED_WORD_JOINER, "%20");
+    if (inspectedUrl(inspected.href) === undefined) return undefined;
+    const decodedPath = decodeURIComponent(url.pathname).replaceAll("\u2060", "");
+    if (UNSAFE_URL_CHARACTERS.test(decodedPath)) return undefined;
+    return url.href;
+  } catch {
+    return undefined;
+  }
 }
 
 function safeMailboxes(value: string): boolean {
@@ -104,6 +138,10 @@ function sanitizeProse(html: string, sourceUrl: string, warnings: Set<string>): 
       return { tagName, attribs: href ? { href, title: attribs.title ?? "" } : {} };
     }
     if (tagName === "img") {
+      if (!attribs.alt?.trim() && !attribs.title?.trim())
+        warnings.add(
+          "An image has no text alternative; any instructions or data within it are not transcribed or OCR-extracted.",
+        );
       const href = attribs.src === undefined ? undefined : safeUrl(attribs.src, sourceUrl, HTTP_SCHEMES);
       if (attribs.src && !href) warnings.add("Removed an unsafe or unsupported image URL.");
       return { tagName: "a", attribs: href ? { href } : {}, text: attribs.alt || attribs.title || "Image" };
@@ -216,6 +254,11 @@ function sanitizeProse(html: string, sourceUrl: string, warnings: Set<string>): 
     nonTextTags: REMOVED_CONTENT,
     parseStyleAttributes: false,
     enforceHtmlBoundary: false,
+    textFilter(text) {
+      const normalized = normalizeHtmlControls(text);
+      if (normalized.replaced) warnings.add("Replaced HTML control characters with spaces.");
+      return normalized.text;
+    },
     // Named transforms retain replacement text; sanitize-html ignores text on its wildcard transform.
     transformTags: Object.fromEntries(["*", "img", ...MEDIA_TAGS, "source", "track"].map((tag) => [tag, transform])),
     onOpenTag(name, attributes) {
@@ -252,28 +295,56 @@ function tableMarkdown(html: string, converter: TurndownService, warnings: Set<s
       cells: $(row)
         .children("th, td")
         .toArray()
-        .map((cell) => ({
-          markdown: converter.turndown($(cell).html() ?? ""),
-          header: $(cell).is("th") || $(row).parent().is("thead"),
-          colspan: $(cell).attr("colspan"),
-          rowspan: $(cell).attr("rowspan"),
-          block: $(cell).find("blockquote, ul, ol, dl, pre, table, h1, h2, h3, h4, h5, h6, details").length > 0,
-          codePipe: $(cell)
-            .find("code")
-            .toArray()
-            .some((code) => $(code).text().includes("|")),
-        })),
+        .map((cell) => {
+          const inlineCell = $(cell).clone();
+          // Normalize source-level inline breaks, not Markdown block boundaries or code whitespace.
+          inlineCell
+            .find("br")
+            .filter((_, node) => !$(node).parents("code, pre").length)
+            .replaceWith(" ");
+          inlineCell
+            .find("*")
+            .addBack()
+            .contents()
+            .each((_, node) => {
+              if (node.type === "text" && !$(node).parents("code, pre").length) {
+                node.data = node.data.replace(/[\t\n\v\f\r\u0085\u2028\u2029]+/g, " ");
+              }
+            });
+          const markdown = converter.turndown(inlineCell.html() ?? "");
+          return {
+            html: $(cell).html() ?? "",
+            // GFM removes one backslash before a pipe, including inside a link title.
+            markdown: markdown.replace(/\\*\|/g, (pipe) => (pipe.length % 2 ? `\\${pipe}` : pipe)),
+            header: $(cell).is("th") || $(row).parent().is("thead"),
+            colspan: $(cell).attr("colspan"),
+            rowspan: $(cell).attr("rowspan"),
+            block:
+              $(cell).find(
+                "address, article, blockquote, dd, details, dl, dt, figcaption, figure, footer, h1, h2, h3, h4, h5, h6, header, hr, li, main, ol, pre, section, summary, table, ul",
+              ).length > 0,
+            codePipe: $(cell)
+              .find("code")
+              .toArray()
+              .some((code) => $(code).text().includes("|")),
+          };
+        }),
     }));
   if (!rows.length) return `\n\n${introduction}\n\n`;
-  const complex = rows.some((row) =>
-    row.cells.some(
-      (cell) =>
-        cell.block ||
-        cell.codePipe ||
-        cell.markdown.includes("\n") ||
-        (cell.colspan !== undefined && Number(cell.colspan) !== 1) ||
-        (cell.rowspan !== undefined && Number(cell.rowspan) !== 1),
-    ),
+  const width = rows[0]!.cells.length;
+  const hasHeader = width > 0 && rows[0]!.cells.every((cell) => cell.header);
+  const complex = rows.some(
+    (row, rowIndex) =>
+      row.cells.length !== width ||
+      row.cells.some(
+        (cell) =>
+          cell.block ||
+          cell.codePipe ||
+          cell.markdown.includes("\n") ||
+          (cell.header && !(hasHeader && rowIndex === 0)) ||
+          (cell.colspan !== undefined && Number(cell.colspan) !== 1) ||
+          (cell.rowspan !== undefined && Number(cell.rowspan) !== 1),
+      ),
   );
   if (complex) {
     warnings.add("A complex table is represented as row/cell lists; merged-cell spans are labelled.");
@@ -286,7 +357,7 @@ function tableMarkdown(html: string, converter: TurndownService, warnings: Set<s
               cell.rowspan === undefined ? "" : `rowspan ${escapeText(cell.rowspan)}`,
             ].filter(Boolean);
             const label = `${cell.header ? "Header cell" : "Cell"} ${cellIndex + 1}${spans.length ? ` (${spans.join("; ")})` : ""}`;
-            return `- **${label}:**\n\n${indent(cell.markdown || "(empty)", 2)}`;
+            return `- **${label}:**\n\n${indent(converter.turndown(cell.html) || "(empty)", 2)}`;
           })
           .join("\n\n");
         return `- **${row.footer ? "Footer row" : "Row"} ${rowIndex + 1}**\n\n${indent(cells || "(empty)", 2)}`;
@@ -294,19 +365,13 @@ function tableMarkdown(html: string, converter: TurndownService, warnings: Set<s
       .join("\n\n");
     return `\n\n${[introduction, body].filter(Boolean).join("\n\n")}\n\n`;
   }
-  const width = rows.reduce((maximum, row) => Math.max(maximum, row.cells.length), 0);
   if (!width) return `\n\n${introduction}\n\n`;
-  const hasHeader = rows[0]!.cells.length > 0 && rows[0]!.cells.every((cell) => cell.header);
   const line = (cells: string[]) =>
     `| ${Array.from({ length: width }, (_, index) => cells[index] ?? "").join(" | ")} |`;
   const header = hasHeader ? rows[0]!.cells.map((cell) => cell.markdown) : [];
   if (!hasHeader)
     warnings.add("A headerless table receives an empty Markdown header; all source rows remain data rows.");
-  const body = rows
-    .slice(hasHeader ? 1 : 0)
-    .map((row) =>
-      line(row.cells.map((cell) => (cell.header && cell.markdown ? `**${cell.markdown}**` : cell.markdown))),
-    );
+  const body = rows.slice(hasHeader ? 1 : 0).map((row) => line(row.cells.map((cell) => cell.markdown)));
   return `\n\n${[introduction, [line(header), line(Array<string>(width).fill("---")), ...body].join("\n")].filter(Boolean).join("\n\n")}\n\n`;
 }
 
@@ -345,6 +410,14 @@ function converterFor(warnings: Set<string>): TurndownService {
     },
   });
   converter.escape = escapeText;
+  converter.addRule("nonDefaultNestedOrderedLists", {
+    filter(node) {
+      const start = node.getAttribute("start");
+      return node.nodeName === "OL" && node.parentNode?.nodeName === "LI" && start !== null && start !== "1";
+    },
+    // Non-default ordered markers cannot interrupt an inline paragraph in CommonMark.
+    replacement: (content) => `\n\n${content}\n\n`,
+  });
   converter.addRule("safeLinks", {
     filter: "a",
     replacement(content, node) {
@@ -416,23 +489,33 @@ function* walkTokens(tokens: Token[]): Generator<Token> {
   }
 }
 
-function safeTokens(markdown: string): Token[] {
+function safeTokens(markdown: string, sourceUrl?: string): Token[] {
   const tokens = markdownParser.parse(markdown, {});
   for (const token of walkTokens(tokens)) {
     if (token.type === "html_block" || token.type === "html_inline")
       throw new Error("Unsafe Markdown: raw HTML is forbidden.");
     if (token.type === "image") throw new Error("Unsafe Markdown: image embedding is forbidden.");
     const href = token.attrGet("href");
-    if (href !== null && (typeof href !== "string" || safeUrl(href) === undefined)) {
+    const explicitRelative = sourceUrl !== undefined && typeof href === "string" && !/^[a-z][a-z\d+.-]*:/i.test(href);
+    const decodedRelative = explicitRelative ? inspectedUrl(href) : undefined;
+    if (
+      href !== null &&
+      (typeof href !== "string" ||
+        (explicitRelative &&
+          (!/^(?:\/(?!\/)|\.\.?\/|\?|#)/.test(href) ||
+            decodedRelative === undefined ||
+            !/^(?:\/(?!\/)|\.\.?\/|\?|#)/.test(decodedRelative))) ||
+        safeUrl(href, sourceUrl) === undefined)
+    ) {
       throw new Error("Unsafe Markdown: unsupported or unsafe link destination.");
     }
   }
   return tokens;
 }
 
-/** Reject raw HTML tokens, embedded images, and unsafe destinations; allow inert HTML spellings in code or escaped text. */
-export function assertSafeMarkdown(markdown: string): void {
-  safeTokens(markdown);
+/** Reject raw HTML tokens, embedded images, and unsafe destinations; resolve explicit source references when provided. */
+export function assertSafeMarkdown(markdown: string, sourceUrl?: string): void {
+  safeTokens(markdown, sourceUrl);
 }
 
 /**
@@ -441,7 +524,7 @@ export function assertSafeMarkdown(markdown: string): void {
  * Throw for an invalid source URL or unsafe generated Markdown.
  */
 export function toSafeMarkdown(html: string, sourceUrl: string): MarkdownResult {
-  const source = safeUrl(sourceUrl, undefined, HTTP_SCHEMES);
+  const source = safeSourceUrl(sourceUrl);
   if (!source) throw new Error("A credential-free HTTP(S) source URL is required.");
   const warnings = new Set<string>();
   const sanitized = sanitizeProse(html, source, warnings);

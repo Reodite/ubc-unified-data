@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "hostname": "enunciate.arts.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w5 first homepage review",
+    "rationale": "The official UBC Arts eNunciate homepage offers public phonetics and pronunciation learning materials for linguistics and language students, without an Okanagan-exclusive mandate. Observed research and media sections override the academic learning purpose; copyright guidance is support. No separate opportunities or personal-story section is evidenced.",
+    "evidence": [
+      "https://enunciate.arts.ubc.ca/ | f1667066e99532d47fa5ff0ee1208c34fbf1475fdd392c0357c47be3808239be | The University of British Columbia; eNunciate!; Faculty of Arts link to www.arts.ubc.ca; A Visual Language Learning Tool.",
+      "https://enunciate.arts.ubc.ca/ | f1667066e99532d47fa5ff0ee1208c34fbf1475fdd392c0357c47be3808239be | Our INTERACTIVE IPA CHART provides articulatory information including ULTRASOUND-enhanced videos and high-quality animations about the sounds of the world's languages. Watch introductory videos to learn about phonetics and the use of ultrasound in speech research.",
+      "https://enunciate.arts.ubc.ca/ | f1667066e99532d47fa5ff0ee1208c34fbf1475fdd392c0357c47be3808239be | Self-Directed Modules: For students in Linguistics or in Language Programmes, watch PRONUNCIATION TUTORIAL videos about challenging sounds in JAPANESE and other languages.",
+      "https://enunciate.arts.ubc.ca/ | f1667066e99532d47fa5ff0ee1208c34fbf1475fdd392c0357c47be3808239be | Homepage sections: Learning Tools; Introductory Videos; Pronunciation Station; Self-Directed Modules; Research and Case Studies; Research by the eNunciate Team; Other Research; Case Studies; Media; Copyright."
+    ]
+  },
+  "rules": [
+    {
+      "id": "speech-research",
+      "category": "research",
+      "rationale": "The homepage explicitly separates team research, other research and case studies from language-learning tools.",
+      "path_pattern": "^/research-and-case-studies(?:/|$)"
+    },
+    {
+      "id": "media-coverage",
+      "category": "news",
+      "rationale": "The homepage identifies a separate Media section for coverage of the project.",
+      "path_pattern": "^/media(?:/|$)"
+    },
+    {
+      "id": "reuse-guidance",
+      "category": "support",
+      "rationale": "The Copyright section provides guidance for using the learning resources.",
+      "path_pattern": "^/about/copyright(?:/|$)"
+    },
+    {
+      "id": "language-learning",
+      "category": "academics",
+      "rationale": "Learning Tools, Self-Directed Modules and Japanese Pronunciation support phonetics and language study.",
+      "path_pattern": "^/(?:linguistics|self-directed-courses|japanese-pronunciation)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "eNunciate is a visual language-learning resource providing phonetic instruction and pronunciation tutorials."
+  }
+}

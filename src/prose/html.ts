@@ -69,17 +69,21 @@ export function extractArticle(response: ProseResponse, source: ProseSource): Ar
   const selectors = [
     ...new Set([
       ...(source.selectors ?? []),
-      ".s-la-faq-answer",
-      ".entry-content",
-      "#s-lg-guide-main",
-      ".admissions-content",
-      "article .field--name-body",
-      "article .field-name-body",
-      "#unit-content",
-      "article",
-      "main",
-      "#content",
-      "[role=main]",
+      ...(source.strictSelectors
+        ? []
+        : [
+            ".s-la-faq-answer",
+            ".entry-content",
+            "#s-lg-guide-main",
+            ".admissions-content",
+            "article .field--name-body",
+            "article .field-name-body",
+            "#unit-content",
+            "article",
+            "main",
+            "#content",
+            "[role=main]",
+          ]),
     ]),
   ];
   let html: string | null = null;

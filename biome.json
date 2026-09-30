@@ -27,6 +27,6 @@
     "enabled": false
   },
   "files": {
-    "includes": ["src/**", "test/**"]
+    "includes": ["src/**", "test/**", "!test/fixtures/host-scrapers/**"]
   }
 }

@@ -1,0 +1,163 @@
+---
+{
+  "format_version": 3,
+  "id": "documents:official-web:0297423fc0260a8d8b2f69b7",
+  "hostname": "open.ubc.ca",
+  "title": "Campus",
+  "source_url": "https://open.ubc.ca/category/campus/page/2/",
+  "retrieved_at": "2026-09-20T14:14:45.825Z",
+  "source_modified_at": null,
+  "snapshot_sha256": "152ae7d7842411438a2a504fa312ee94b063d8322bb3e0b39fb51dfa2d781edc",
+  "input_sha256": "205a729709180a0517ba346f0fb87b58b6e4d8af3bca0d488f55c3f5864d0c11",
+  "body_sha256": "de2500fee1c704ff5d68209245009e78d5e967ac58f622172268029e6fe3bf9f",
+  "content_sha256": "da048e185f4d52c57a6f30bd84b7bde83f8e4ab7b390ed73cfba6a71259472e5",
+  "warnings": [
+    "Replaced HTML control characters with spaces."
+  ],
+  "alternate_urls": [],
+  "producer": {
+    "inputs_sha256": "19d18c1f3902e243c70e768e3e8bc6468ec6194aef2a2a456eefcd08b6596934",
+    "runtime": {
+      "node": "26.8.1",
+      "icu": "78.3",
+      "unicode": "17.0",
+      "platform": "linux",
+      "arch": "x64"
+    }
+  },
+  "category": "support",
+  "routing": {
+    "rule_id": "host-purpose",
+    "policy_sha256": "84bf48a192d727d273b4764f198a3b8bdd5c75eb4d14f1a47b913456acce1656"
+  }
+}
+---
+[Open UBC Snapshot 2021: Open Strategies for Remote Teaching and Learning](https://open.ubc.ca/2021-open-ubc-snapshot/ "Open UBC Snapshot 2021: Open Strategies for Remote Teaching and Learning")[Image shows growth trend of students impacted by OER](https://open.ubc.ca/files/2021/05/Estimated-Number-of-Students-Impacted-by-Open-Resources-Per-Year-360x222.png)
+
+## [Open UBC Snapshot 2021: Open Strategies for Remote Teaching and Learning](https://open.ubc.ca/2021-open-ubc-snapshot/)
+
+By [Will Engle](https://open.ubc.ca/author/wmengle/ "Posts by Will Engle") on May 10, 2021 in [Open UBC Snapshot](https://open.ubc.ca/category/updates/reports/open-snapshots/), [Reports](https://open.ubc.ca/category/updates/reports/), [UBCV](https://open.ubc.ca/category/campus/ubcv-campus/), [Updates](https://open.ubc.ca/category/updates/)  
+
+---
+
+The 2020/21 academic year brought a transition to remote learning and delivery of online courses\. This transition, due to the COVID\-19 pandemic, exposed the importance of student ease of access to textbooks and other course materials\. One strategy for ensuring students had barrier free access to learning materials was the use of open educational resources \[…\]
+
+[Read More](https://open.ubc.ca/2021-open-ubc-snapshot/) \| [No Comments](https://open.ubc.ca/2021-open-ubc-snapshot/#respond "No Comments")
+
+[UBC Library – 2020/2021 Open Education Impact &amp; Activity Report](https://open.ubc.ca/ubc-library-2020-open-education-impact-activity-report/ "UBC Library – 2020/2021 Open Education Impact &amp; Activity Report")[UBC Library – 2020/2021 Open Education Impact &amp; Activity Report](https://open.ubc.ca/files/2021/05/IKBLC-360x226.jpg)
+
+## [UBC Library – 2020/2021 Open Education Impact &amp; Activity Report](https://open.ubc.ca/ubc-library-2020-open-education-impact-activity-report/)
+
+By [Erin Fields](https://open.ubc.ca/author/efields/ "Posts by Erin Fields") on May 7, 2021 in [Reports](https://open.ubc.ca/category/updates/reports/), [Slider](https://open.ubc.ca/category/slider/), [UBCO](https://open.ubc.ca/category/campus/ubco-campus/), [UBCV](https://open.ubc.ca/category/campus/ubcv-campus/), [Updates](https://open.ubc.ca/category/updates/)  
+
+---
+
+UBC Library’s open education supports play an active role in moving forward UBC Library’s Strategic Framework vision to be leaders and experts in open scholarship\.
+
+[Read More](https://open.ubc.ca/ubc-library-2020-open-education-impact-activity-report/) \| [No Comments](https://open.ubc.ca/ubc-library-2020-open-education-impact-activity-report/#respond "No Comments")
+
+[Opening up a business analytics community](https://open.ubc.ca/opening-up-a-business-analytics-community/ "Opening up a business analytics community")[Photo of Sauder School of Business Professor Harish Krishnan](https://open.ubc.ca/files/2021/05/TLEFSauder_HarishKrishnanHeadshot-360x240.jpg)
+
+## [Opening up a business analytics community](https://open.ubc.ca/opening-up-a-business-analytics-community/)
+
+By [Sheridan Powell](https://open.ubc.ca/opening-up-a-business-analytics-community/ "Posts by Sheridan Powell ") on May 6, 2021 in [Profiles](https://open.ubc.ca/category/updates/profiles/), [UBCV](https://open.ubc.ca/category/campus/ubcv-campus/), [Updates](https://open.ubc.ca/category/updates/)  
+
+---
+
+Sauder School of Business Professor Harish Krishnan aims to build a collaborative business analytics community, while developing sought\-after skills, through his open, interactive platform\.
+
+[Read More](https://open.ubc.ca/opening-up-a-business-analytics-community/) \| [No Comments](https://open.ubc.ca/opening-up-a-business-analytics-community/#respond "No Comments")
+
+[UBC Open Access Fund for Humanities and Social Sciences Research](https://scholcomm.ubc.ca/ubc-open-access-fund/ "UBC Open Access Fund for Humanities and Social Sciences Research")[UBC Open Access Fund for Humanities and Social Sciences Research](https://open.ubc.ca/files/2020/10/chuttersnap-AG2Ct_DqCh0-unsplash-360x240.jpg)
+
+## [UBC Open Access Fund for Humanities and Social Sciences Research](https://scholcomm.ubc.ca/ubc-open-access-fund/)
+
+By [Rie Namba](https://open.ubc.ca/author/rienamba/ "Posts by Rie Namba") on April 28, 2021 in [Funding Updates](https://open.ubc.ca/category/updates/funding-updates/), [Slider](https://open.ubc.ca/category/slider/), [UBCV](https://open.ubc.ca/category/campus/ubcv-campus/), [Updates](https://open.ubc.ca/category/updates/)  
+
+---
+
+The UBC Open Access Fund for Humanities and Social Sciences Research will support open access charges for faculty researchers in SSHRC\-aligned disciplines\.
+
+[Read More](https://scholcomm.ubc.ca/ubc-open-access-fund/) \| [No Comments](https://scholcomm.ubc.ca/ubc-open-access-fund/#respond "No Comments")
+
+[Open Education Week 2021](https://open.ubc.ca/oeweek2021/ "Open Education Week 2021")[Open Education Week 2021](https://open.ubc.ca/files/2021/02/oeweek-21-360x225.png)
+
+## [Open Education Week 2021](https://open.ubc.ca/oeweek2021/)
+
+By [Alexandra Alisauskas](https://open.ubc.ca/oeweek2021/ "Posts by Alexandra Alisauskas") on February 8, 2021 in [Events](https://open.ubc.ca/category/updates/events/), [UBCO](https://open.ubc.ca/category/campus/ubco-campus/), [UBCV](https://open.ubc.ca/category/campus/ubcv-campus/), [Updates](https://open.ubc.ca/category/updates/)  
+
+---
+
+As we head closer towards Open Education Week 2021 \(Mar 1\-5\), here’s what UBC has planned\.
+
+[Read More](https://open.ubc.ca/oeweek2021/) \| [No Comments](https://open.ubc.ca/oeweek2021/#respond "No Comments")
+
+[Honouring Indigenous Writers on Wikipedia 2021](https://open.ubc.ca/honouring-indigenous-writers-on-wikipedia-2021/ "Honouring Indigenous Writers on Wikipedia 2021")[Honouring Indigenous Writers on Wikipedia 2021](https://open.ubc.ca/files/2021/02/OpenUBCHIW-e1612811652835-360x125.jpg)
+
+## [Honouring Indigenous Writers on Wikipedia 2021](https://open.ubc.ca/honouring-indigenous-writers-on-wikipedia-2021/)
+
+By [Alexandra Alisaukas](https://open.ubc.ca/honouring-indigenous-writers-on-wikipedia-2021/ "Posts by Alexandra Alisaukas") on February 8, 2021 in [Events](https://open.ubc.ca/category/updates/events/), [UBCO](https://open.ubc.ca/category/campus/ubco-campus/), [UBCV](https://open.ubc.ca/category/campus/ubcv-campus/), [Updates](https://open.ubc.ca/category/updates/)  
+
+---
+
+Join us throughout the month of March 2021 with author readings, panels, and Wikipedia editing challenges that seek to highlight the diversity and excellence of Indigenous writers\.
+
+[Read More](https://open.ubc.ca/honouring-indigenous-writers-on-wikipedia-2021/) \| [No Comments](https://open.ubc.ca/honouring-indigenous-writers-on-wikipedia-2021/#respond "No Comments")
+
+[Emerging Perspectives in Open Access Book Publishing](https://open.ubc.ca/emerging-perspectives-in-open-access-book-publishing/ "Emerging Perspectives in Open Access Book Publishing")[Emerging Perspectives in Open Access Book Publishing](https://open.ubc.ca/files/2020/09/openpicsliderimage-360x158.png)
+
+## [Emerging Perspectives in Open Access Book Publishing](https://open.ubc.ca/emerging-perspectives-in-open-access-book-publishing/)
+
+By [Jessica Wilkin](https://open.ubc.ca/emerging-perspectives-in-open-access-book-publishing/ "Posts by Jessica Wilkin") on December 14, 2020 in [Events](https://open.ubc.ca/category/updates/events/), [UBCV](https://open.ubc.ca/category/campus/ubcv-campus/), [Updates](https://open.ubc.ca/category/updates/)  
+
+---
+
+This recorded webinar explores the opportunities, challenges, and experiences of Open Access book publishing\.
+
+[Read More](https://open.ubc.ca/emerging-perspectives-in-open-access-book-publishing/) \| [No Comments](https://open.ubc.ca/emerging-perspectives-in-open-access-book-publishing/#respond "No Comments")
+
+[Working in Public: Generosity and the Knowledge Commons](https://open.ubc.ca/working-in-public-generosity-and-the-knowledge-commons/ "Working in Public: Generosity and the Knowledge Commons")[Open Scholarship in Practice: Join us November 2\-6 for a week of workshops and webinars that will transform the way you create and share your research\.](https://open.ubc.ca/files/2020/10/OSIP-2020-Slider-360x157.jpg)
+
+## [Working in Public: Generosity and the Knowledge Commons](https://open.ubc.ca/working-in-public-generosity-and-the-knowledge-commons/)
+
+By [Erin Fields](https://open.ubc.ca/author/efields/ "Posts by Erin Fields") on November 27, 2020 in [Events](https://open.ubc.ca/category/updates/events/), [UBCO](https://open.ubc.ca/category/campus/ubco-campus/), [UBCV](https://open.ubc.ca/category/campus/ubcv-campus/), [Updates](https://open.ubc.ca/category/updates/)  
+
+---
+
+The recorded webinar, “Working in Public: Generosity and the Knowledge Commons,” explores Dr\. Kathleen Fitzpatrick’s ideas in her influential book, Generous Thinking\.[https://open\.ubc\.ca/working\-in\-public\-generosity\-and\-the\-knowledge\-commons/](https://open.ubc.ca/working-in-public-generosity-and-the-knowledge-commons/)
+
+[https://open\.ubc\.ca/working\-in\-public\-generosity\-and\-the\-knowledge\-commons/](https://open.ubc.ca/working-in-public-generosity-and-the-knowledge-commons/)
+
+[https://open\.ubc\.ca/working\-in\-public\-generosity\-and\-the\-knowledge\-commons/](https://open.ubc.ca/working-in-public-generosity-and-the-knowledge-commons/)[Read More](https://open.ubc.ca/working-in-public-generosity-and-the-knowledge-commons/) \| [No Comments](https://open.ubc.ca/working-in-public-generosity-and-the-knowledge-commons/#respond "No Comments")
+
+[Chatting with Champions Interview Series – Christina Hendricks](https://open.ubc.ca/chatting-with-champions-interview-series-christina-hendricks/ "Chatting with Champions Interview Series – Christina Hendricks")[Christina Hendricks teaching in the classroom](https://open.ubc.ca/files/2013/03/ChristinaHendricks-Rie-360x150.jpg)
+
+## [Chatting with Champions Interview Series – Christina Hendricks](https://open.ubc.ca/chatting-with-champions-interview-series-christina-hendricks/)
+
+By [Amanda Gray](https://open.ubc.ca/chatting-with-champions-interview-series-christina-hendricks/ "Posts by Amanda Gray ") on November 27, 2020 in [Profiles](https://open.ubc.ca/category/updates/profiles/), [UBCV](https://open.ubc.ca/category/campus/ubcv-campus/), [Updates](https://open.ubc.ca/category/updates/)  
+
+---
+
+Welcome back for the last mini interview with one of the 2019 AMS OER Champions to hear more about their project\(s\), why Open is important to them, some of the challenges they faced along the way, and what advice they have to offer\. These interviews were done via email\. This week, we hear from Christina \[…\]
+
+[Read More](https://open.ubc.ca/chatting-with-champions-interview-series-christina-hendricks/) \| [No Comments](https://open.ubc.ca/chatting-with-champions-interview-series-christina-hendricks/#respond "No Comments")
+
+[Chatting with Champions Interview Series – Georg Rieger](https://open.ubc.ca/chatting-with-champions-interview-series-georg-rieger/ "Chatting with Champions Interview Series – Georg Rieger")[Chatting with Champions Interview Series – Georg Rieger](https://open.ubc.ca/files/2020/01/Header-image-360x240.jpg)
+
+## [Chatting with Champions Interview Series – Georg Rieger](https://open.ubc.ca/chatting-with-champions-interview-series-georg-rieger/)
+
+By [Amanda Grey](https://open.ubc.ca/chatting-with-champions-interview-series-georg-rieger/ "Posts by Amanda Grey ") on November 13, 2020 in [Profiles](https://open.ubc.ca/category/updates/profiles/), [UBCV](https://open.ubc.ca/category/campus/ubcv-campus/), [Updates](https://open.ubc.ca/category/updates/)  
+
+---
+
+Welcome back for another mini interview with one of the 2019 AMS OER Champions to hear more about their project\(s\), why Open is important to them, some of the challenges they faced along the way, and what advice they have to offer\. These interviews were done via email, and this interview was conducted before the \[…\]
+
+[Read More](https://open.ubc.ca/chatting-with-champions-interview-series-georg-rieger/) \| [No Comments](https://open.ubc.ca/chatting-with-champions-interview-series-georg-rieger/#respond "No Comments")
+
+-   [Previous](https://open.ubc.ca/category/campus/)
+-   [1](https://open.ubc.ca/category/campus/)
+-   2
+-   [3](https://open.ubc.ca/category/campus/page/3/)
+-   …
+-   [10](https://open.ubc.ca/category/campus/page/10/)
+-   [Next](https://open.ubc.ca/category/campus/page/3/)

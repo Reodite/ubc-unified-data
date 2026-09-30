@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hostname": "learningcircle.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "Owner continuation requests autonomous exact-host public article collection with retained homepage approval and no private access.",
+    "rationale": "The UBC Learning Circle homepage presents an ongoing educational health and well-being webinar resource for First Nations communities and health care workers; archived sessions primarily provide learning and practical support.",
+    "evidence": [
+      "Retained homepage 468712a6ea7ed0e6b68fe623543d5a27a494fe52ea4cdb631ed319e53f20a46f has title | UBC Learning Circle and heading Upcoming Webinars in the fall.",
+      "Its retained introduction says the initiative shares health and well-being knowledge through webinars, in partnership with the Centre for Excellence in Indigenous Health and First Nations Health Authority.",
+      "Official Indigenous-health educational partnership explains public learning webinars and professional health knowledge sharing."
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "community-health-learning",
+    "category": "support",
+    "rationale": "Learning Circle provides public Indigenous health education, recorded webinars and community health knowledge."
+  }
+}

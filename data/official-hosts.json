@@ -1,0 +1,3838 @@
+[
+  {
+    "hostname": "alli.arts.ubc.ca",
+    "title": "alli.arts.ubc.ca",
+    "homepage_url": "https://alli.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T14:41:19.772Z",
+    "homepage_sha256": "c3e5903a736dd789dfd6b4309179d74afa4ef4b5a6735b78c51fb8f29f2eb345",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/alli.arts.ubc.ca",
+        "document_count": 8
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/alli.arts.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/alli.arts.ubc.ca",
+        "document_count": 7
+      }
+    ],
+    "document_count": 16
+  },
+  {
+    "hostname": "anthfilm.anth.ubc.ca",
+    "title": "anthfilm.anth.ubc.ca",
+    "homepage_url": "https://anthfilm.anth.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T14:41:21.604Z",
+    "homepage_sha256": "d51fc6074b6056cf742b776f67c2d02672ffc78ce4aa4c2394fdaa031c7a51d4",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/anthfilm.anth.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/anthfilm.anth.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/anthfilm.anth.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/anthfilm.anth.ubc.ca",
+        "document_count": 11
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/anthfilm.anth.ubc.ca",
+        "document_count": 4
+      }
+    ],
+    "document_count": 22
+  },
+  {
+    "hostname": "bmlscpathology.med.ubc.ca",
+    "title": "UBC Bachelor of Medical Laboratory Science (BMLSc) Program",
+    "homepage_url": "https://bmlscpathology.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T03:58:32.997Z",
+    "homepage_sha256": "ffc3fb9f11c7c3218daf7e3d33963bfdc719ca37351e2920334f5aeaf2c718ae",
+    "scope": "Public BMLSc program, curriculum, admissions, prerequisite, laboratory training and student guidance prose.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/bmlscpathology.med.ubc.ca",
+        "document_count": 30
+      }
+    ],
+    "document_count": 30
+  },
+  {
+    "hostname": "broadcastemail.ubc.ca",
+    "title": "broadcastemail.ubc.ca",
+    "homepage_url": "https://broadcastemail.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:09:34.347Z",
+    "homepage_sha256": "02a89ec1d53d81d9426e5b44e528f34c2cf18a270f7a63ba032b4d7d14b8059c",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/broadcastemail.ubc.ca",
+        "document_count": 1508
+      }
+    ],
+    "document_count": 1508
+  },
+  {
+    "hostname": "bullyingandharassment.ubc.ca",
+    "title": "Bullying and Harassment Prevention at UBC",
+    "homepage_url": "https://bullyingandharassment.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T05:32:05.544Z",
+    "homepage_sha256": "a3268b08fd354ff674344538f1647f68746b1dca9f9367eca0e7c5fa5dd35568",
+    "scope": "Public UBC workplace bullying and harassment definitions, reporting, supervisor procedures, training and resources for faculty, staff and student employees.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/bullyingandharassment.ubc.ca",
+        "document_count": 6
+      }
+    ],
+    "document_count": 6
+  },
+  {
+    "hostname": "celebrateresearch.ubc.ca",
+    "title": "celebrateresearch.ubc.ca",
+    "homepage_url": "https://celebrateresearch.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:09:42.416Z",
+    "homepage_sha256": "949d3c6b2f0385dfceccd8cdd6176df149b374ad8afbfd540b59e44a230de01b",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/celebrateresearch.ubc.ca",
+        "document_count": 4
+      }
+    ],
+    "document_count": 4
+  },
+  {
+    "hostname": "cirtl.ubc.ca",
+    "title": "cirtl.ubc.ca",
+    "homepage_url": "https://cirtl.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:08:43.666Z",
+    "homepage_sha256": "a0c07b3ff79c8efb43eab844ef6bc8380672a5e5637a04be4e1a4621b1072f80",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/cirtl.ubc.ca",
+        "document_count": 36
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/cirtl.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 37
+  },
+  {
+    "hostname": "coop.ubc.ca",
+    "title": "UBC Co-op Programs",
+    "homepage_url": "https://coop.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T06:26:26.105Z",
+    "homepage_sha256": "777c001e5a5ec1915d92f44161c0c6b3a6b4d5a84677f6e3c23bce4daf25bca5",
+    "scope": "Public Co-op program information, employer and student guidance, FAQs, announcements, testimonials and posting instructions.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/coop.ubc.ca",
+        "document_count": 30
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/coop.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/coop.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 32
+  },
+  {
+    "hostname": "cwc.ubc.ca",
+    "title": "cwc.ubc.ca",
+    "homepage_url": "https://cwc.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T18:21:47.527Z",
+    "homepage_sha256": "e013e0ee03422779cbcf16f73a200b2be20eed9220bfd0c19ce03b74c09ce228",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/cwc.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/cwc.ubc.ca",
+        "document_count": 7
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/cwc.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 9
+  },
+  {
+    "hostname": "gic.geog.ubc.ca",
+    "title": "gic.geog.ubc.ca",
+    "homepage_url": "https://gic.geog.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T14:48:10.108Z",
+    "homepage_sha256": "5099b33db840f7aba8bab3d618170012898130b988211d63b451715ee8d838c4",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/gic.geog.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/gic.geog.ubc.ca",
+        "document_count": 56
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/gic.geog.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/gic.geog.ubc.ca",
+        "document_count": 90
+      }
+    ],
+    "document_count": 149
+  },
+  {
+    "hostname": "humanities101.arts.ubc.ca",
+    "title": "humanities101.arts.ubc.ca",
+    "homepage_url": "https://humanities101.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:07:33.746Z",
+    "homepage_sha256": "c196f54633f4bcd4549841383e4453b224fada0914209dec566cd62aac36ec79",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/humanities101.arts.ubc.ca",
+        "document_count": 61
+      }
+    ],
+    "document_count": 61
+  },
+  {
+    "hostname": "ics.nursing.ubc.ca",
+    "title": "ics.nursing.ubc.ca",
+    "homepage_url": "https://ics.nursing.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:07:33.339Z",
+    "homepage_sha256": "fe4df88bb320df2ec1440ae57885dfe29caae524062844a23cd5efcf21268895",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/ics.nursing.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/ics.nursing.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/ics.nursing.ubc.ca",
+        "document_count": 22
+      }
+    ],
+    "document_count": 24
+  },
+  {
+    "hostname": "iii.lsi.ubc.ca",
+    "title": "iii.lsi.ubc.ca",
+    "homepage_url": "https://iii.lsi.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:11:14.838Z",
+    "homepage_sha256": "3dba253d2c72fe770bccd7861bef465a3d9053de6fb4492c007ec7cbf9b8aa0f",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/iii.lsi.ubc.ca",
+        "document_count": 60
+      }
+    ],
+    "document_count": 60
+  },
+  {
+    "hostname": "imaging.lsi.ubc.ca",
+    "title": "imaging.lsi.ubc.ca",
+    "homepage_url": "https://imaging.lsi.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:12:17.283Z",
+    "homepage_sha256": "3bdcf2f87a137c9aded2d665aa1bf752656d98b45693add7e7380f65ce0da0ab",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/imaging.lsi.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/imaging.lsi.ubc.ca",
+        "document_count": 62
+      }
+    ],
+    "document_count": 63
+  },
+  {
+    "hostname": "institute.ctlt.ubc.ca",
+    "title": "institute.ctlt.ubc.ca",
+    "homepage_url": "https://institute.ctlt.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:11:25.001Z",
+    "homepage_sha256": "105e498dff0fbe4f5974aec0ce4171a01e7b76790da8fdbaefacec85088a2e97",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/institute.ctlt.ubc.ca",
+        "document_count": 100
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/institute.ctlt.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 101
+  },
+  {
+    "hostname": "intheclass.arts.ubc.ca",
+    "title": "intheclass.arts.ubc.ca",
+    "homepage_url": "https://intheclass.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T18:28:51.025Z",
+    "homepage_sha256": "a5c866a604ca9f5b252e206d5f3ae9c43e0a37955fa6d032a9bc2f4e380fd42a",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/intheclass.arts.ubc.ca",
+        "document_count": 53
+      }
+    ],
+    "document_count": 53
+  },
+  {
+    "hostname": "io.ubc.ca",
+    "title": "io.ubc.ca",
+    "homepage_url": "https://io.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:13:20.704Z",
+    "homepage_sha256": "5b46be44091c0449e1de23d0a5435183d12eca679d219e1d6e3f3c5de2a25c4b",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/io.ubc.ca",
+        "document_count": 7
+      }
+    ],
+    "document_count": 7
+  },
+  {
+    "hostname": "ipo.ubc.ca",
+    "title": "ipo.ubc.ca",
+    "homepage_url": "https://ipo.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:13:34.539Z",
+    "homepage_sha256": "761c2db0777235afecf4cd3c496ae27d1cbb975e392b35e5504271ddc6f2ea21",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/ipo.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/ipo.ubc.ca",
+        "document_count": 33
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/ipo.ubc.ca",
+        "document_count": 3
+      }
+    ],
+    "document_count": 41
+  },
+  {
+    "hostname": "isc.ubc.ca",
+    "title": "isc.ubc.ca",
+    "homepage_url": "https://isc.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:15:40.204Z",
+    "homepage_sha256": "7e4a48a2969b294ceaefc0f427de5687e6a490ddbe342f99d167296f35062c5e",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/isc.ubc.ca",
+        "document_count": 22
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/isc.ubc.ca",
+        "document_count": 16
+      }
+    ],
+    "document_count": 38
+  },
+  {
+    "hostname": "isgp.ubc.ca",
+    "title": "isgp.ubc.ca",
+    "homepage_url": "https://isgp.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:16:15.997Z",
+    "homepage_sha256": "e6776628439896584ce428b2d5438d0e7b330c6087630514672406b469e2776f",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/isgp.ubc.ca",
+        "document_count": 136
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/isgp.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/isgp.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 138
+  },
+  {
+    "hostname": "isotl.ctlt.ubc.ca",
+    "title": "isotl.ctlt.ubc.ca",
+    "homepage_url": "https://isotl.ctlt.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:17:03.178Z",
+    "homepage_sha256": "f2fa20586e41ba7616f78b4cbf5ffcc17322fafba3a90a0d0c4dbdd2feb1cd76",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/isotl.ctlt.ubc.ca",
+        "document_count": 551
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/isotl.ctlt.ubc.ca",
+        "document_count": 15
+      }
+    ],
+    "document_count": 566
+  },
+  {
+    "hostname": "isp.ubc.ca",
+    "title": "isp.ubc.ca",
+    "homepage_url": "https://isp.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:17:07.393Z",
+    "homepage_sha256": "2679a7e5bf9bf3aeef3449bdd2d945517d0f0a56dd5ecce079d14e99777c3d18",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/isp.ubc.ca",
+        "document_count": 87
+      }
+    ],
+    "document_count": 87
+  },
+  {
+    "hostname": "istand.ok.ubc.ca",
+    "title": "istand.ok.ubc.ca",
+    "homepage_url": "https://istand.ok.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:17:18.287Z",
+    "homepage_sha256": "8f9104f4d1fdd9c90ef67e12a6449685ff9dd2e6665fdeccc654614244757281",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/istand.ok.ubc.ca",
+        "document_count": 3
+      }
+    ],
+    "document_count": 3
+  },
+  {
+    "hostname": "joshilab.forestry.ubc.ca",
+    "title": "joshilab.forestry.ubc.ca",
+    "homepage_url": "https://joshilab.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:21:24.544Z",
+    "homepage_sha256": "0729839dae8a2f905a6d2c76f69ff060f597be30d90624fc54b1e1e9e6b4783b",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/joshilab.forestry.ubc.ca",
+        "document_count": 6
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/joshilab.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 7
+  },
+  {
+    "hostname": "jps.arts.ubc.ca",
+    "title": "jps.arts.ubc.ca",
+    "homepage_url": "https://jps.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:21:31.502Z",
+    "homepage_sha256": "1d8e9ac8844dc49caf4d70b31975c409d5585e99e66b64944e0dde580124f825",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/jps.arts.ubc.ca",
+        "document_count": 7
+      }
+    ],
+    "document_count": 7
+  },
+  {
+    "hostname": "keeplearning.ubc.ca",
+    "title": "keeplearning.ubc.ca",
+    "homepage_url": "https://keeplearning.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:22:53.176Z",
+    "homepage_sha256": "467fedb38274eb1e31bf9b8f1f1e09f6f7da7b238573834df6ffdb9a902a9e8c",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/keeplearning.ubc.ca",
+        "document_count": 7
+      }
+    ],
+    "document_count": 7
+  },
+  {
+    "hostname": "keepteaching.ubc.ca",
+    "title": "keepteaching.ubc.ca",
+    "homepage_url": "https://keepteaching.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:23:02.962Z",
+    "homepage_sha256": "962ba097d11ca235bf05c3f78fa78899dfbdd3ea5419ba1a7d4ce2e3d1a0797f",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/keepteaching.ubc.ca",
+        "document_count": 9
+      }
+    ],
+    "document_count": 9
+  },
+  {
+    "hostname": "knowledgebase.arts.ubc.ca",
+    "title": "knowledgebase.arts.ubc.ca",
+    "homepage_url": "https://knowledgebase.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T14:50:39.034Z",
+    "homepage_sha256": "e9dd4a7583e06153e100d4bc0a98bb020e4c7efa43ac602b15785f11895cd856",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/knowledgebase.arts.ubc.ca",
+        "document_count": 920
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/knowledgebase.arts.ubc.ca",
+        "document_count": 2
+      }
+    ],
+    "document_count": 922
+  },
+  {
+    "hostname": "knowledgesynthesis.library.ubc.ca",
+    "title": "knowledgesynthesis.library.ubc.ca",
+    "homepage_url": "https://knowledgesynthesis.library.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:23:20.697Z",
+    "homepage_sha256": "b2f1558d8bfa01a10f92f27e119a819addf4e487c6a4451fca3b6ae154c141f3",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/knowledgesynthesis.library.ubc.ca",
+        "document_count": 3
+      }
+    ],
+    "document_count": 3
+  },
+  {
+    "hostname": "ksaresearch.med.ubc.ca",
+    "title": "ksaresearch.med.ubc.ca",
+    "homepage_url": "https://ksaresearch.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:24:25.980Z",
+    "homepage_sha256": "1bf514a32742465ba31cebcf8ce4f219e1ba94121c3ac38022a734b524dec538",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/ksaresearch.med.ubc.ca",
+        "document_count": 9
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/ksaresearch.med.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 10
+  },
+  {
+    "hostname": "landone.ubc.ca",
+    "title": "landone.ubc.ca",
+    "homepage_url": "https://landone.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:25:09.847Z",
+    "homepage_sha256": "439e5d238a229c25f5ca112c08ac0133ed62bcd07dd4e9908baa0e9d431f85a1",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/landone.ubc.ca",
+        "document_count": 11
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/landone.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 12
+  },
+  {
+    "hostname": "learning.chem.ubc.ca",
+    "title": "learning.chem.ubc.ca",
+    "homepage_url": "https://learning.chem.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:29:00.580Z",
+    "homepage_sha256": "a8288ae8b3a156bfe2c406a2a0ab31b0cc8927dd83b1e34ebde89dfda29123d2",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/learning.chem.ubc.ca",
+        "document_count": 79
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/learning.chem.ubc.ca",
+        "document_count": 3
+      }
+    ],
+    "document_count": 82
+  },
+  {
+    "hostname": "learningcircle.ubc.ca",
+    "title": "learningcircle.ubc.ca",
+    "homepage_url": "https://learningcircle.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:29:20.129Z",
+    "homepage_sha256": "468712a6ea7ed0e6b68fe623543d5a27a494fe52ea4cdb631ed319e53f20a46f",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/learningcircle.ubc.ca",
+        "document_count": 1112
+      }
+    ],
+    "document_count": 1112
+  },
+  {
+    "hostname": "learningdesignviews.educ.ubc.ca",
+    "title": "learningdesignviews.educ.ubc.ca",
+    "homepage_url": "https://learningdesignviews.educ.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:29:36.627Z",
+    "homepage_sha256": "88ec53436c88132c5a96fbd323d8dec1ee519fbb1ec0fb8c03710c5619f66e49",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/learningdesignviews.educ.ubc.ca",
+        "document_count": 79
+      }
+    ],
+    "document_count": 79
+  },
+  {
+    "hostname": "learningexchange.ubc.ca",
+    "title": "learningexchange.ubc.ca",
+    "homepage_url": "https://learningexchange.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:30:26.170Z",
+    "homepage_sha256": "75a94e5b9e73f14d979eeccb8ed8c3419bc8f8084685e0cbf559d69382423d75",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/learningexchange.ubc.ca",
+        "document_count": 147
+      }
+    ],
+    "document_count": 147
+  },
+  {
+    "hostname": "lfsus.landfood.ubc.ca",
+    "title": "lfsus.landfood.ubc.ca",
+    "homepage_url": "https://lfsus.landfood.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:33:05.792Z",
+    "homepage_sha256": "43fcc7469e419800b6fd971e12c47f82d425bd089e40e05ace8f577ba3bc9ccd",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/lfsus.landfood.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/lfsus.landfood.ubc.ca",
+        "document_count": 26
+      }
+    ],
+    "document_count": 29
+  },
+  {
+    "hostname": "library.ubc.ca",
+    "title": "library.ubc.ca",
+    "homepage_url": "https://library.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:34:32.458Z",
+    "homepage_sha256": "4e2a0217b51d8f4e8d81bfe4e7425997dc580852fc38a5c023fb356bd487e8a8",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/library.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 1
+  },
+  {
+    "hostname": "licenses.library.ubc.ca",
+    "title": "licenses.library.ubc.ca",
+    "homepage_url": "https://licenses.library.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T14:53:02.814Z",
+    "homepage_sha256": "5e6bf49186687f56076e0f3372dbaa0784950f28c0612cfa626938f201c67eef",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/licenses.library.ubc.ca",
+        "document_count": 165
+      }
+    ],
+    "document_count": 165
+  },
+  {
+    "hostname": "lindinitiative.ubc.ca",
+    "title": "lindinitiative.ubc.ca",
+    "homepage_url": "https://lindinitiative.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:35:42.014Z",
+    "homepage_sha256": "8c2df84be426cf92b609385d3e08d56eb282973134f24ce3a7985041997ebb90",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/lindinitiative.ubc.ca",
+        "document_count": 13
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/lindinitiative.ubc.ca",
+        "document_count": 259
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/lindinitiative.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 273
+  },
+  {
+    "hostname": "lingpapers.sites.olt.ubc.ca",
+    "title": "lingpapers.sites.olt.ubc.ca",
+    "homepage_url": "https://lingpapers.sites.olt.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T14:54:40.314Z",
+    "homepage_sha256": "cd3c6668bcce8bc600fc5f9c4d89581b4dd0bdb8949e8fda37459735e70a3bda",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/lingpapers.sites.olt.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/lingpapers.sites.olt.ubc.ca",
+        "document_count": 36
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/lingpapers.sites.olt.ubc.ca",
+        "document_count": 5
+      }
+    ],
+    "document_count": 42
+  },
+  {
+    "hostname": "loonlake.ubc.ca",
+    "title": "loonlake.ubc.ca",
+    "homepage_url": "https://loonlake.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:37:58.554Z",
+    "homepage_sha256": "6d238951681c993bf16f450bea86e958cc9fb6d206e9e88baf25cf51f1620dec",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/loonlake.ubc.ca",
+        "document_count": 27
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/loonlake.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/loonlake.ubc.ca",
+        "document_count": 49
+      }
+    ],
+    "document_count": 77
+  },
+  {
+    "hostname": "ltic.ubc.ca",
+    "title": "ltic.ubc.ca",
+    "homepage_url": "https://ltic.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:39:10.957Z",
+    "homepage_sha256": "6bcddf39affadd5a242853f2fca14466de703dc8f5b32f311161d044b2e2f5bf",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/ltic.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/ltic.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/ltic.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/ltic.ubc.ca",
+        "document_count": 222
+      }
+    ],
+    "document_count": 229
+  },
+  {
+    "hostname": "maa.library.ubc.ca",
+    "title": "maa.library.ubc.ca",
+    "homepage_url": "https://maa.library.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:40:00.939Z",
+    "homepage_sha256": "c310b0de84332b6c8a3bb9724917e54ea94757802c0ce045b5e093c2395779ca",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/maa.library.ubc.ca",
+        "document_count": 115
+      }
+    ],
+    "document_count": 115
+  },
+  {
+    "hostname": "macisaacnursing.ubc.ca",
+    "title": "macisaacnursing.ubc.ca",
+    "homepage_url": "https://macisaacnursing.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:40:25.438Z",
+    "homepage_sha256": "94207820e1c82bc13f1b1af6a3ff8cfbc0d5d7c898f93bfbca93b84cb9acae8b",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/macisaacnursing.ubc.ca",
+        "document_count": 867
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/macisaacnursing.ubc.ca",
+        "document_count": 317
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/macisaacnursing.ubc.ca",
+        "document_count": 438
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/macisaacnursing.ubc.ca",
+        "document_count": 18
+      }
+    ],
+    "document_count": 1640
+  },
+  {
+    "hostname": "macl.arts.ubc.ca",
+    "title": "macl.arts.ubc.ca",
+    "homepage_url": "https://macl.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:40:47.937Z",
+    "homepage_sha256": "57f4cd2b7ae2b717d91ade7e8f232455385a4e35c22bdc1edd4e89d57aecf558",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/macl.arts.ubc.ca",
+        "document_count": 48
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/macl.arts.ubc.ca",
+        "document_count": 11
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/macl.arts.ubc.ca",
+        "document_count": 2
+      }
+    ],
+    "document_count": 61
+  },
+  {
+    "hostname": "manufacturing.engineering.ubc.ca",
+    "title": "manufacturing.engineering.ubc.ca",
+    "homepage_url": "https://manufacturing.engineering.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:43:38.861Z",
+    "homepage_sha256": "54b8f533d2ac8021036cf231ecb1c85666294a1674b9189609593b2417edf57c",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/manufacturing.engineering.ubc.ca",
+        "document_count": 27
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/manufacturing.engineering.ubc.ca",
+        "document_count": 16
+      }
+    ],
+    "document_count": 43
+  },
+  {
+    "hostname": "masterdatascience.ubc.ca",
+    "title": "masterdatascience.ubc.ca",
+    "homepage_url": "https://masterdatascience.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:44:55.424Z",
+    "homepage_sha256": "659ac9a1c2b6d8efed508e3c90585143ba667924f60e5e233798e8f4ae6cdc0d",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/masterdatascience.ubc.ca",
+        "document_count": 622
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/masterdatascience.ubc.ca",
+        "document_count": 14
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/masterdatascience.ubc.ca",
+        "document_count": 76
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/masterdatascience.ubc.ca",
+        "document_count": 5
+      }
+    ],
+    "document_count": 717
+  },
+  {
+    "hostname": "mbim.ubc.ca",
+    "title": "mbim.ubc.ca",
+    "homepage_url": "https://mbim.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:45:58.112Z",
+    "homepage_sha256": "25209a87442a529ed45a355b01ebd0ed3763040317d3f0216348a312fd162843",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/mbim.ubc.ca",
+        "document_count": 119
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/mbim.ubc.ca",
+        "document_count": 60
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/mbim.ubc.ca",
+        "document_count": 88
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/mbim.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/mbim.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 273
+  },
+  {
+    "hostname": "mdprogram.med.ubc.ca",
+    "title": "mdprogram.med.ubc.ca",
+    "homepage_url": "https://mdprogram.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:46:07.440Z",
+    "homepage_sha256": "d2637c679840dff7e5c114a16408747dd4656ebfc56209a4beaa1638b023fc2a",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/mdprogram.med.ubc.ca",
+        "document_count": 644
+      }
+    ],
+    "document_count": 644
+  },
+  {
+    "hostname": "med-fom-childspeech.sites.olt.ubc.ca",
+    "title": "med-fom-childspeech.sites.olt.ubc.ca",
+    "homepage_url": "https://med-fom-childspeech.sites.olt.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:47:32.753Z",
+    "homepage_sha256": "9ec4eb83ebe8987bf56596325aaf51b92c1f04c478d046585c07114fa1e74a5f",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/med-fom-childspeech.sites.olt.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/med-fom-childspeech.sites.olt.ubc.ca",
+        "document_count": 2
+      }
+    ],
+    "document_count": 3
+  },
+  {
+    "hostname": "mediamakers.sites.olt.ubc.ca",
+    "title": "mediamakers.sites.olt.ubc.ca",
+    "homepage_url": "https://mediamakers.sites.olt.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:50:10.423Z",
+    "homepage_sha256": "99d98549bf40dbca30de2834c529042951cd2c37df158581ff36c9e64a5b35a9",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "stories",
+        "path": "data/documents/stories/mediamakers.sites.olt.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/mediamakers.sites.olt.ubc.ca",
+        "document_count": 16
+      }
+    ],
+    "document_count": 17
+  },
+  {
+    "hostname": "mednet.med.ubc.ca",
+    "title": "mednet.med.ubc.ca",
+    "homepage_url": "https://mednet.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:52:28.464Z",
+    "homepage_sha256": "d16a53017c693db5492d8cdc2a4c596fbc6f7539d53da95ff90267fab9a734a5",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/mednet.med.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/mednet.med.ubc.ca",
+        "document_count": 65
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/mednet.med.ubc.ca",
+        "document_count": 1421
+      }
+    ],
+    "document_count": 1490
+  },
+  {
+    "hostname": "meg.lsi.ubc.ca",
+    "title": "meg.lsi.ubc.ca",
+    "homepage_url": "https://meg.lsi.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:52:14.350Z",
+    "homepage_sha256": "82d0bdd914ef82d5b3e62d248c1a28b23773892ce394198ea60f2594351c6cfb",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/meg.lsi.ubc.ca",
+        "document_count": 44
+      }
+    ],
+    "document_count": 44
+  },
+  {
+    "hostname": "meijiat150.arts.ubc.ca",
+    "title": "meijiat150.arts.ubc.ca",
+    "homepage_url": "https://meijiat150.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:52:20.436Z",
+    "homepage_sha256": "19e52472d32f13c6824d3cb84d871dfd78094dedd374e4c5eda8fba8e68e9ebd",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/meijiat150.arts.ubc.ca",
+        "document_count": 111
+      }
+    ],
+    "document_count": 111
+  },
+  {
+    "hostname": "mes.arts.ubc.ca",
+    "title": "mes.arts.ubc.ca",
+    "homepage_url": "https://mes.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:54:05.493Z",
+    "homepage_sha256": "4ec5d0e3e5658cd4d5bf4b223c958e195466131e37aa59ff04cff6d5929c8bb8",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/mes.arts.ubc.ca",
+        "document_count": 43
+      }
+    ],
+    "document_count": 43
+  },
+  {
+    "hostname": "met.ubc.ca",
+    "title": "met.ubc.ca",
+    "homepage_url": "https://met.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:54:26.655Z",
+    "homepage_sha256": "74b79f765c980ca7af2aa042b8975849a5592443a442de1126ac44f52d07497c",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/met.ubc.ca",
+        "document_count": 161
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/met.ubc.ca",
+        "document_count": 6
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/met.ubc.ca",
+        "document_count": 37
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/met.ubc.ca",
+        "document_count": 7
+      }
+    ],
+    "document_count": 211
+  },
+  {
+    "hostname": "mfre.landfood.ubc.ca",
+    "title": "mfre.landfood.ubc.ca",
+    "homepage_url": "https://mfre.landfood.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T19:41:37.740Z",
+    "homepage_sha256": "2d57a8eb5ad30c75156c95b6b13297722f3e089315a7654daed92bdce688ae53",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/mfre.landfood.ubc.ca",
+        "document_count": 33
+      }
+    ],
+    "document_count": 33
+  },
+  {
+    "hostname": "midterm.teacheval.ubc.ca",
+    "title": "midterm.teacheval.ubc.ca",
+    "homepage_url": "https://midterm.teacheval.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:55:12.476Z",
+    "homepage_sha256": "73476d15bf363ba08ea15fce9738ec9d301ca835ba743612e35ea2457c11874c",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/midterm.teacheval.ubc.ca",
+        "document_count": 17
+      }
+    ],
+    "document_count": 17
+  },
+  {
+    "hostname": "mining.ubc.ca",
+    "title": "mining.ubc.ca",
+    "homepage_url": "https://mining.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:56:56.165Z",
+    "homepage_sha256": "c2fbe701f748fd67e685020f53d3cdf278775ce93432ceefee2b04171223b26b",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/mining.ubc.ca",
+        "document_count": 92
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/mining.ubc.ca",
+        "document_count": 21
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/mining.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/mining.ubc.ca",
+        "document_count": 9
+      }
+    ],
+    "document_count": 127
+  },
+  {
+    "hostname": "mint.forestry.ubc.ca",
+    "title": "mint.forestry.ubc.ca",
+    "homepage_url": "https://mint.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:57:46.090Z",
+    "homepage_sha256": "a758528bc5e884543c2cd5381422673e3a7ec4f2c811dfcb4c2958f21fd347e8",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/mint.forestry.ubc.ca",
+        "document_count": 18
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/mint.forestry.ubc.ca",
+        "document_count": 30
+      }
+    ],
+    "document_count": 48
+  },
+  {
+    "hostname": "mistreatmenthelp.med.ubc.ca",
+    "title": "mistreatmenthelp.med.ubc.ca",
+    "homepage_url": "https://mistreatmenthelp.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T11:58:17.467Z",
+    "homepage_sha256": "733c1689169004bf476154d71ecd9480537270f27d485ada0a6ec90975c91f59",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/mistreatmenthelp.med.ubc.ca",
+        "document_count": 12
+      }
+    ],
+    "document_count": 12
+  },
+  {
+    "hostname": "mtrl.ubc.ca",
+    "title": "mtrl.ubc.ca",
+    "homepage_url": "https://mtrl.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:00:44.644Z",
+    "homepage_sha256": "745e6a19f4d141ecde5f05a59a7ce89443e436824c36b1bb13adcf9aa6f86855",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/mtrl.ubc.ca",
+        "document_count": 111
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/mtrl.ubc.ca",
+        "document_count": 81
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/mtrl.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/mtrl.ubc.ca",
+        "document_count": 6
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/mtrl.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/mtrl.ubc.ca",
+        "document_count": 5
+      }
+    ],
+    "document_count": 210
+  },
+  {
+    "hostname": "naisa2017.arts.ubc.ca",
+    "title": "naisa2017.arts.ubc.ca",
+    "homepage_url": "https://naisa2017.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:02:03.930Z",
+    "homepage_sha256": "de492e42e227c681bd480e0a884787d23db71bf157cf404cb1a3123f5e2474ed",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/naisa2017.arts.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/naisa2017.arts.ubc.ca",
+        "document_count": 17
+      }
+    ],
+    "document_count": 18
+  },
+  {
+    "hostname": "nanocellulose.forestry.ubc.ca",
+    "title": "nanocellulose.forestry.ubc.ca",
+    "homepage_url": "https://nanocellulose.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:02:27.293Z",
+    "homepage_sha256": "deb5496d68f4f2ada0185518d16013ceb1f02761a18207be2111487fa462fa92",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/nanocellulose.forestry.ubc.ca",
+        "document_count": 14
+      }
+    ],
+    "document_count": 14
+  },
+  {
+    "hostname": "nanomat.chem.ubc.ca",
+    "title": "nanomat.chem.ubc.ca",
+    "homepage_url": "https://nanomat.chem.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:03:27.003Z",
+    "homepage_sha256": "fcd69e9abd5d92e25379f5e731eecbb83c319afe71c88a5a6f070f45191a79ec",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/nanomat.chem.ubc.ca",
+        "document_count": 15
+      }
+    ],
+    "document_count": 15
+  },
+  {
+    "hostname": "nationalparks.forestry.ubc.ca",
+    "title": "nationalparks.forestry.ubc.ca",
+    "homepage_url": "https://nationalparks.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:04:35.627Z",
+    "homepage_sha256": "2f132391f5f604a4b28a27d16d656c8bba7e766e9e348b645545bd315809a37d",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/nationalparks.forestry.ubc.ca",
+        "document_count": 9
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/nationalparks.forestry.ubc.ca",
+        "document_count": 30
+      }
+    ],
+    "document_count": 39
+  },
+  {
+    "hostname": "neuro.ubc.ca",
+    "title": "neuro.ubc.ca",
+    "homepage_url": "https://neuro.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:04:57.531Z",
+    "homepage_sha256": "64a4f0c4e49e863672b1eaaec948c03844a90b7e98f6bc532f03fff0ea89e774",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/neuro.ubc.ca",
+        "document_count": 35
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/neuro.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 36
+  },
+  {
+    "hostname": "neuroscience.ubc.ca",
+    "title": "neuroscience.ubc.ca",
+    "homepage_url": "https://neuroscience.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:06:16.974Z",
+    "homepage_sha256": "f695c3b26ca97a262a588b5f5490651a3b125e28435be8d5a42b031807846a07",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/neuroscience.ubc.ca",
+        "document_count": 224
+      }
+    ],
+    "document_count": 224
+  },
+  {
+    "hostname": "nitep.educ.ubc.ca",
+    "title": "nitep.educ.ubc.ca",
+    "homepage_url": "https://nitep.educ.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:09:31.105Z",
+    "homepage_sha256": "e2946f899e330c4948cfb2ea6ff8c0a14d3a070cbe270c720a82321214359d2b",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/nitep.educ.ubc.ca",
+        "document_count": 263
+      }
+    ],
+    "document_count": 263
+  },
+  {
+    "hostname": "nunavutsocialhistory.arts.ubc.ca",
+    "title": "nunavutsocialhistory.arts.ubc.ca",
+    "homepage_url": "https://nunavutsocialhistory.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:10:10.148Z",
+    "homepage_sha256": "b12f74de67346443a99baaaa9465dcb87b173b7b526d2b794edee5ed05a9d191",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/nunavutsocialhistory.arts.ubc.ca",
+        "document_count": 6
+      }
+    ],
+    "document_count": 6
+  },
+  {
+    "hostname": "nursing-alumni.sites.olt.ubc.ca",
+    "title": "nursing-alumni.sites.olt.ubc.ca",
+    "homepage_url": "https://nursing-alumni.sites.olt.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:10:14.994Z",
+    "homepage_sha256": "1e0dc5d8a4487051267904d252cc786148d7c8a2182bfa792480424c78e50e32",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "stories",
+        "path": "data/documents/stories/nursing-alumni.sites.olt.ubc.ca",
+        "document_count": 427
+      }
+    ],
+    "document_count": 427
+  },
+  {
+    "hostname": "nvd.ubc.ca",
+    "title": "nvd.ubc.ca",
+    "homepage_url": "https://nvd.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:11:19.084Z",
+    "homepage_sha256": "a87dde86cac30f12d612adac001f57921004e6412021da2f38587b54a03fa657",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/nvd.ubc.ca",
+        "document_count": 6
+      }
+    ],
+    "document_count": 6
+  },
+  {
+    "hostname": "oceanleaders.ubc.ca",
+    "title": "oceanleaders.ubc.ca",
+    "homepage_url": "https://oceanleaders.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:12:31.173Z",
+    "homepage_sha256": "822db85b7b2881fb150a0969fad85fe643d3036ed5c79d6677843b019e3861f7",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/oceanleaders.ubc.ca",
+        "document_count": 26
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/oceanleaders.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/oceanleaders.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 28
+  },
+  {
+    "hostname": "oerfund.open.ubc.ca",
+    "title": "oerfund.open.ubc.ca",
+    "homepage_url": "https://oerfund.open.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:14:26.889Z",
+    "homepage_sha256": "3587ea481c9a4c0ecbfbec3426cbca691465dfd149c34f970e8828f0583ed6b0",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/oerfund.open.ubc.ca",
+        "document_count": 8
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/oerfund.open.ubc.ca",
+        "document_count": 175
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/oerfund.open.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/oerfund.open.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/oerfund.open.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 187
+  },
+  {
+    "hostname": "open.ubc.ca",
+    "title": "open.ubc.ca",
+    "homepage_url": "https://open.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:19:22.639Z",
+    "homepage_sha256": "b853c5b1e453636a5779b1c55daf0c635f3e12314d5ac8f5d7563c6b6e0443a7",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/open.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/open.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/open.ubc.ca",
+        "document_count": 495
+      }
+    ],
+    "document_count": 499
+  },
+  {
+    "hostname": "ophthalmology.med.ubc.ca",
+    "title": "ophthalmology.med.ubc.ca",
+    "homepage_url": "https://ophthalmology.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:20:34.872Z",
+    "homepage_sha256": "a3d851c9a25b379c2ada023139667d9458208853a510d547b326701708a89a69",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/ophthalmology.med.ubc.ca",
+        "document_count": 100
+      }
+    ],
+    "document_count": 100
+  },
+  {
+    "hostname": "outcomes.grad.ubc.ca",
+    "title": "outcomes.grad.ubc.ca",
+    "homepage_url": "https://outcomes.grad.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:23:41.573Z",
+    "homepage_sha256": "ec0f382b82bb564f527c1b93f6ef80e1021c5b82c1383f4e1632661f16acda42",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/outcomes.grad.ubc.ca",
+        "document_count": 15
+      }
+    ],
+    "document_count": 15
+  },
+  {
+    "hostname": "outreach.math.ubc.ca",
+    "title": "outreach.math.ubc.ca",
+    "homepage_url": "https://outreach.math.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:24:06.650Z",
+    "homepage_sha256": "636dae7005b02c9eea81ebbb203e0569642a326164b8d838cd19c742f22292d3",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/outreach.math.ubc.ca",
+        "document_count": 41
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/outreach.math.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/outreach.math.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/outreach.math.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 46
+  },
+  {
+    "hostname": "outreach.phas.ubc.ca",
+    "title": "outreach.phas.ubc.ca",
+    "homepage_url": "https://outreach.phas.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:24:05.767Z",
+    "homepage_sha256": "afb4b3a4bc236281971ae6f873718f7dabbc693e3967edd78e96b5afb1d47471",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/outreach.phas.ubc.ca",
+        "document_count": 72
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/outreach.phas.ubc.ca",
+        "document_count": 23
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/outreach.phas.ubc.ca",
+        "document_count": 9
+      }
+    ],
+    "document_count": 104
+  },
+  {
+    "hostname": "pair.ubc.ca",
+    "title": "pair.ubc.ca",
+    "homepage_url": "https://pair.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:24:46.875Z",
+    "homepage_sha256": "349b679e6c3761e670591f7909eda935821e71a53da9e24cb459d08e59fa722f",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/pair.ubc.ca",
+        "document_count": 6
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/pair.ubc.ca",
+        "document_count": 60
+      }
+    ],
+    "document_count": 66
+  },
+  {
+    "hostname": "palliativecare.med.ubc.ca",
+    "title": "palliativecare.med.ubc.ca",
+    "homepage_url": "https://palliativecare.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:25:05.243Z",
+    "homepage_sha256": "7d63426fa6980337d5bf6e35062565b00ce32c219616602a9640969f5d623183",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/palliativecare.med.ubc.ca",
+        "document_count": 90
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/palliativecare.med.ubc.ca",
+        "document_count": 10
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/palliativecare.med.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/palliativecare.med.ubc.ca",
+        "document_count": 26
+      }
+    ],
+    "document_count": 130
+  },
+  {
+    "hostname": "parking.ubc.ca",
+    "title": "parking.ubc.ca",
+    "homepage_url": "https://parking.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:26:01.189Z",
+    "homepage_sha256": "6f45dbd6e1736301aa79b86a43f2e8d80561ccd445530db0d95082a6de56ffbc",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/parking.ubc.ca",
+        "document_count": 31
+      }
+    ],
+    "document_count": 31
+  },
+  {
+    "hostname": "pathwaysmagazine.med.ubc.ca",
+    "title": "pathwaysmagazine.med.ubc.ca",
+    "homepage_url": "https://pathwaysmagazine.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:27:25.916Z",
+    "homepage_sha256": "81950c0cfb95083d7d902bc39a2fc662ba2fd00fe3947b249214c1537d0dba6c",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "stories",
+        "path": "data/documents/stories/pathwaysmagazine.med.ubc.ca",
+        "document_count": 82
+      }
+    ],
+    "document_count": 82
+  },
+  {
+    "hostname": "pediatrics.med.ubc.ca",
+    "title": "pediatrics.med.ubc.ca",
+    "homepage_url": "https://pediatrics.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:28:40.736Z",
+    "homepage_sha256": "3464f18402cff43d055547d37d52056e4d5aa060698355e80f8c11ed5c1de588",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/pediatrics.med.ubc.ca",
+        "document_count": 1834
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/pediatrics.med.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 1835
+  },
+  {
+    "hostname": "pharm-sci-fosteringscience-2021.sites.olt.ubc.ca",
+    "title": "pharm-sci-fosteringscience-2021.sites.olt.ubc.ca",
+    "homepage_url": "https://pharm-sci-fosteringscience-2021.sites.olt.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T20:17:46.316Z",
+    "homepage_sha256": "a1fb42b5a0a5f21bd157a9edee1bbafe04ff35829fcd51e5a010341cda187a44",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/pharm-sci-fosteringscience-2021.sites.olt.ubc.ca",
+        "document_count": 6
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/pharm-sci-fosteringscience-2021.sites.olt.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 7
+  },
+  {
+    "hostname": "physioclinic.med.ubc.ca",
+    "title": "physioclinic.med.ubc.ca",
+    "homepage_url": "https://physioclinic.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:30:47.226Z",
+    "homepage_sha256": "fca5941602ca432b757e08243e220a2ca8af79b69f66d2fe9780d2899f446032",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/physioclinic.med.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/physioclinic.med.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/physioclinic.med.ubc.ca",
+        "document_count": 21
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/physioclinic.med.ubc.ca",
+        "document_count": 48
+      }
+    ],
+    "document_count": 71
+  },
+  {
+    "hostname": "physsoc.phas.ubc.ca",
+    "title": "physsoc.phas.ubc.ca",
+    "homepage_url": "https://physsoc.phas.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:32:04.764Z",
+    "homepage_sha256": "62bfcd37c75b5d4a505126cd850e9b125a9a91e5ace139cf76bb52ddc4be07f9",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/physsoc.phas.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/physsoc.phas.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/physsoc.phas.ubc.ca",
+        "document_count": 50
+      }
+    ],
+    "document_count": 55
+  },
+  {
+    "hostname": "piee-lab.landfood.ubc.ca",
+    "title": "piee-lab.landfood.ubc.ca",
+    "homepage_url": "https://piee-lab.landfood.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:32:19.314Z",
+    "homepage_sha256": "e8a4ad6f6f49a97d8e3dbde28a7f1b917ba0270df45196afc51b7b1d7d528d66",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/piee-lab.landfood.ubc.ca",
+        "document_count": 28
+      }
+    ],
+    "document_count": 28
+  },
+  {
+    "hostname": "pif.forestry.ubc.ca",
+    "title": "pif.forestry.ubc.ca",
+    "homepage_url": "https://pif.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:32:25.186Z",
+    "homepage_sha256": "b69f1de26035122d3dd133855eade4ae7f2a676f60e1c16e91e41fce09fd86a5",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/pif.forestry.ubc.ca",
+        "document_count": 70
+      }
+    ],
+    "document_count": 70
+  },
+  {
+    "hostname": "plantcare.ubc.ca",
+    "title": "plantcare.ubc.ca",
+    "homepage_url": "https://plantcare.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:35:44.885Z",
+    "homepage_sha256": "90e8850b827f290aea0576f77d2e2be48219ac4098eb1c40e24e76405c0d970d",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/plantcare.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/plantcare.ubc.ca",
+        "document_count": 7
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/plantcare.ubc.ca",
+        "document_count": 9
+      }
+    ],
+    "document_count": 17
+  },
+  {
+    "hostname": "postgrad.med.ubc.ca",
+    "title": "postgrad.med.ubc.ca",
+    "homepage_url": "https://postgrad.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:39:16.450Z",
+    "homepage_sha256": "232fa8815b717a0b496f99e609d74e41a4dac8bef8ab585d710e79528f1f7448",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/postgrad.med.ubc.ca",
+        "document_count": 170
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/postgrad.med.ubc.ca",
+        "document_count": 67
+      }
+    ],
+    "document_count": 237
+  },
+  {
+    "hostname": "proftalk.ubc.ca",
+    "title": "proftalk.ubc.ca",
+    "homepage_url": "https://proftalk.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:41:26.726Z",
+    "homepage_sha256": "7eab5c31672ed31afbfab6c1589d4a6572bbb08b382bc7bb38bfdde7d5f95956",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/proftalk.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/proftalk.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/proftalk.ubc.ca",
+        "document_count": 43
+      }
+    ],
+    "document_count": 46
+  },
+  {
+    "hostname": "projectlab.engphys.ubc.ca",
+    "title": "projectlab.engphys.ubc.ca",
+    "homepage_url": "https://projectlab.engphys.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:41:27.742Z",
+    "homepage_sha256": "b8a7f218d6e32502a7236f79b2055e816447e1a021df44e5f61066008489360a",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/projectlab.engphys.ubc.ca",
+        "document_count": 22
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/projectlab.engphys.ubc.ca",
+        "document_count": 2
+      }
+    ],
+    "document_count": 24
+  },
+  {
+    "hostname": "ps-ementoringbc-2023.sites.olt.ubc.ca",
+    "title": "ps-ementoringbc-2023.sites.olt.ubc.ca",
+    "homepage_url": "https://ps-ementoringbc-2023.sites.olt.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:46:08.893Z",
+    "homepage_sha256": "3a89b22a02fdbe1d239c28d7c16a54f83e1812605f652cd6d38b904cad8b68be",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/ps-ementoringbc-2023.sites.olt.ubc.ca",
+        "document_count": 39
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/ps-ementoringbc-2023.sites.olt.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 40
+  },
+  {
+    "hostname": "psctc.educ.ubc.ca",
+    "title": "psctc.educ.ubc.ca",
+    "homepage_url": "https://psctc.educ.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:47:09.619Z",
+    "homepage_sha256": "24b5f979ed8106eae06975bd7f409d0feb8a7fe70254cf499f7f893425aa908b",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/psctc.educ.ubc.ca",
+        "document_count": 34
+      }
+    ],
+    "document_count": 34
+  },
+  {
+    "hostname": "rbsc.library.ubc.ca",
+    "title": "rbsc.library.ubc.ca",
+    "homepage_url": "https://rbsc.library.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:50:01.171Z",
+    "homepage_sha256": "0ecb8ed887dc7bbe7ac3e41d5d055af59ccccb2a0c7c66dd81f0202a23f6b47b",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/rbsc.library.ubc.ca",
+        "document_count": 41
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/rbsc.library.ubc.ca",
+        "document_count": 1365
+      }
+    ],
+    "document_count": 1406
+  },
+  {
+    "hostname": "rcl.ece.ubc.ca",
+    "title": "rcl.ece.ubc.ca",
+    "homepage_url": "https://rcl.ece.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:51:11.934Z",
+    "homepage_sha256": "92d2b4efa39b1de1d38697bad9e6f9ec3f3defbeab414f853248fe93677a82c0",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/rcl.ece.ubc.ca",
+        "document_count": 43
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/rcl.ece.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 44
+  },
+  {
+    "hostname": "really.ubc.ca",
+    "title": "really.ubc.ca",
+    "homepage_url": "https://really.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:52:10.992Z",
+    "homepage_sha256": "2d916f20d7eafedb668c099aec911dc4c641660ce59690e0b1a6614cb545e470",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/really.ubc.ca",
+        "document_count": 5
+      }
+    ],
+    "document_count": 5
+  },
+  {
+    "hostname": "renew.forestry.ubc.ca",
+    "title": "renew.forestry.ubc.ca",
+    "homepage_url": "https://renew.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:54:53.851Z",
+    "homepage_sha256": "9786528c0a751595e433af55cdd4e7254c6bd7a3b76caa00669551b22315caa2",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/renew.forestry.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/renew.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 5
+  },
+  {
+    "hostname": "restech.med.ubc.ca",
+    "title": "restech.med.ubc.ca",
+    "homepage_url": "https://restech.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:58:16.386Z",
+    "homepage_sha256": "47a2f96523f5e16c44d7945aaf956cb6f5fd4e4a8b14b52b781c727659b2f994",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/restech.med.ubc.ca",
+        "document_count": 61
+      }
+    ],
+    "document_count": 61
+  },
+  {
+    "hostname": "reuseit.ubc.ca",
+    "title": "reuseit.ubc.ca",
+    "homepage_url": "https://reuseit.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:58:34.996Z",
+    "homepage_sha256": "b0f1303f349a0f037254303a2376de860ad51a62c96be2890590fa30e7d447b0",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/reuseit.ubc.ca",
+        "document_count": 11
+      }
+    ],
+    "document_count": 11
+  },
+  {
+    "hostname": "rgst.arts.ubc.ca",
+    "title": "rgst.arts.ubc.ca",
+    "homepage_url": "https://rgst.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T12:59:17.025Z",
+    "homepage_sha256": "3c9446a64fb1414e7f27e0531fbd22b3c3f9533c38efecbe645ff6dfa52eb9db",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/rgst.arts.ubc.ca",
+        "document_count": 41
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/rgst.arts.ubc.ca",
+        "document_count": 8
+      }
+    ],
+    "document_count": 49
+  },
+  {
+    "hostname": "riselab.forestry.ubc.ca",
+    "title": "riselab.forestry.ubc.ca",
+    "homepage_url": "https://riselab.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:00:05.342Z",
+    "homepage_sha256": "d7636a7e494da9fb8477a36d232d71d27a865a9ef3f7524e2adaf20049ae375a",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/riselab.forestry.ubc.ca",
+        "document_count": 15
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/riselab.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 16
+  },
+  {
+    "hostname": "rits.ubc.ca",
+    "title": "rits.ubc.ca",
+    "homepage_url": "https://rits.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:00:33.930Z",
+    "homepage_sha256": "3b9ba8f314a1bdb882ef42a29f776a61ccf81b52a493ba7e2d0d46addda454f8",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/rits.ubc.ca",
+        "document_count": 7
+      }
+    ],
+    "document_count": 7
+  },
+  {
+    "hostname": "rojas.chbe.ubc.ca",
+    "title": "rojas.chbe.ubc.ca",
+    "homepage_url": "https://rojas.chbe.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:00:35.418Z",
+    "homepage_sha256": "42fae56ddd622d3af71914788cf3a7e21fd8cc82e1d8cc41351305672692ca92",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/rojas.chbe.ubc.ca",
+        "document_count": 89
+      }
+    ],
+    "document_count": 89
+  },
+  {
+    "hostname": "sal-lab.landfood.ubc.ca",
+    "title": "sal-lab.landfood.ubc.ca",
+    "homepage_url": "https://sal-lab.landfood.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:01:59.366Z",
+    "homepage_sha256": "111dc48358a1a99b4c5876b7deee8b79e3eb91cbaf09e914d6ee55857428b5ae",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/sal-lab.landfood.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/sal-lab.landfood.ubc.ca",
+        "document_count": 159
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/sal-lab.landfood.ubc.ca",
+        "document_count": 17
+      }
+    ],
+    "document_count": 178
+  },
+  {
+    "hostname": "sbelab.forestry.ubc.ca",
+    "title": "sbelab.forestry.ubc.ca",
+    "homepage_url": "https://sbelab.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:03:37.934Z",
+    "homepage_sha256": "4416957d0a62b98205b32eb5b5288990ebe977cf2af4daa06366dea7852977eb",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/sbelab.forestry.ubc.ca",
+        "document_count": 10
+      }
+    ],
+    "document_count": 10
+  },
+  {
+    "hostname": "scholcomm.ubc.ca",
+    "title": "scholcomm.ubc.ca",
+    "homepage_url": "https://scholcomm.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:05:25.001Z",
+    "homepage_sha256": "2af242147646426f96c3e35a9e5f45abb02ec39c1fd703021fcbbb46fbc8ba73",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/scholcomm.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/scholcomm.ubc.ca",
+        "document_count": 152
+      }
+    ],
+    "document_count": 153
+  },
+  {
+    "hostname": "scienceone.ubc.ca",
+    "title": "scienceone.ubc.ca",
+    "homepage_url": "https://scienceone.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:06:50.045Z",
+    "homepage_sha256": "42f8ed47307500787c0e8ccbbf7095d797a294af76bac10bd70600f34ca2525e",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/scienceone.ubc.ca",
+        "document_count": 13
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/scienceone.ubc.ca",
+        "document_count": 2
+      }
+    ],
+    "document_count": 15
+  },
+  {
+    "hostname": "sciencespo.ubc.ca",
+    "title": "sciencespo.ubc.ca",
+    "homepage_url": "https://sciencespo.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:06:52.210Z",
+    "homepage_sha256": "1da24f1558c2edecbfd1b2a4a6b8e9344d90fcb1765ee860a61f654ce7aebd44",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/sciencespo.ubc.ca",
+        "document_count": 46
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/sciencespo.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/sciencespo.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/sciencespo.ubc.ca",
+        "document_count": 6
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/sciencespo.ubc.ca",
+        "document_count": 13
+      }
+    ],
+    "document_count": 67
+  },
+  {
+    "hostname": "sds.ubc.ca",
+    "title": "sds.ubc.ca",
+    "homepage_url": "https://sds.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:07:47.248Z",
+    "homepage_sha256": "c309304efb433124f4eb6c919d328cd3f12983cb30662d21129199b44e1d8091",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/sds.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/sds.ubc.ca",
+        "document_count": 38
+      }
+    ],
+    "document_count": 41
+  },
+  {
+    "hostname": "seoi.ubc.ca",
+    "title": "seoi.ubc.ca",
+    "homepage_url": "https://seoi.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:10:08.851Z",
+    "homepage_sha256": "6be7e7ce7c95b04a386c4a9556626279a2d68c5dcddd37bbb587ddff6d67b4c3",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/seoi.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/seoi.ubc.ca",
+        "document_count": 34
+      }
+    ],
+    "document_count": 36
+  },
+  {
+    "hostname": "skylight.science.ubc.ca",
+    "title": "skylight.science.ubc.ca",
+    "homepage_url": "https://skylight.science.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:12:06.939Z",
+    "homepage_sha256": "be6bf80ab110f201198ada817d29832b57da92a32bafab138500660f9d1f27ae",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/skylight.science.ubc.ca",
+        "document_count": 127
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/skylight.science.ubc.ca",
+        "document_count": 26
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/skylight.science.ubc.ca",
+        "document_count": 5
+      }
+    ],
+    "document_count": 158
+  },
+  {
+    "hostname": "smp.med.ubc.ca",
+    "title": "smp.med.ubc.ca",
+    "homepage_url": "https://smp.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:12:35.249Z",
+    "homepage_sha256": "3a06bfb50cf2ce2fb37fc480566b75fc78e41f25506ca1d92420d8d43eed1590",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/smp.med.ubc.ca",
+        "document_count": 1006
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/smp.med.ubc.ca",
+        "document_count": 8
+      }
+    ],
+    "document_count": 1014
+  },
+  {
+    "hostname": "sogi.educ.ubc.ca",
+    "title": "sogi.educ.ubc.ca",
+    "homepage_url": "https://sogi.educ.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:14:14.307Z",
+    "homepage_sha256": "975188d6f974cfd3d555b4febe09c4871e38933731b8bbb7c7e54cfc423cd4dd",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/sogi.educ.ubc.ca",
+        "document_count": 18
+      }
+    ],
+    "document_count": 18
+  },
+  {
+    "hostname": "somalab.psych.ubc.ca",
+    "title": "somalab.psych.ubc.ca",
+    "homepage_url": "https://somalab.psych.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:14:20.014Z",
+    "homepage_sha256": "e898e5a7624eeb1161159f10a2894e0ae9def284f403879ba811db228060f732",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/somalab.psych.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/somalab.psych.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/somalab.psych.ubc.ca",
+        "document_count": 173
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/somalab.psych.ubc.ca",
+        "document_count": 6
+      }
+    ],
+    "document_count": 182
+  },
+  {
+    "hostname": "speaking.arts.ubc.ca",
+    "title": "speaking.arts.ubc.ca",
+    "homepage_url": "https://speaking.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:14:27.627Z",
+    "homepage_sha256": "d530ac0d9edc0b7bf41578813401cd4490251a43a646e6ef45e05f349cb62925",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/speaking.arts.ubc.ca",
+        "document_count": 125
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/speaking.arts.ubc.ca",
+        "document_count": 2
+      }
+    ],
+    "document_count": 127
+  },
+  {
+    "hostname": "sportmedicine.med.ubc.ca",
+    "title": "sportmedicine.med.ubc.ca",
+    "homepage_url": "https://sportmedicine.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:15:56.677Z",
+    "homepage_sha256": "f640c8daae0f428ec710244022bf814a6a24da35861e71b71d547d23607434fd",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/sportmedicine.med.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/sportmedicine.med.ubc.ca",
+        "document_count": 66
+      }
+    ],
+    "document_count": 67
+  },
+  {
+    "hostname": "star.ubc.ca",
+    "title": "star.ubc.ca",
+    "homepage_url": "https://star.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:17:48.652Z",
+    "homepage_sha256": "3bd0741925413438a872c0a6d59e65097e66ed482d02d94e0ae34ff7221d3006",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/star.ubc.ca",
+        "document_count": 35
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/star.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 36
+  },
+  {
+    "hostname": "status.it.ubc.ca",
+    "title": "status.it.ubc.ca",
+    "homepage_url": "https://status.it.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:18:56.806Z",
+    "homepage_sha256": "7a8a44d3d0f898a36fa8aef351c365599631a01c1d631306df9e7929e2426529",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/status.it.ubc.ca",
+        "document_count": 51
+      }
+    ],
+    "document_count": 51
+  },
+  {
+    "hostname": "stonecentre.economics.ubc.ca",
+    "title": "stonecentre.economics.ubc.ca",
+    "homepage_url": "https://stonecentre.economics.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:20:08.744Z",
+    "homepage_sha256": "b8bfb3bb28b9a8c5158ac7fcb0f62cb8440427439881f326e8d7a076211da0e9",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/stonecentre.economics.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/stonecentre.economics.ubc.ca",
+        "document_count": 22
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/stonecentre.economics.ubc.ca",
+        "document_count": 111
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/stonecentre.economics.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/stonecentre.economics.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 141
+  },
+  {
+    "hostname": "strategicplan.apsc.ubc.ca",
+    "title": "strategicplan.apsc.ubc.ca",
+    "homepage_url": "https://strategicplan.apsc.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:20:17.828Z",
+    "homepage_sha256": "b702e39fde28c7277022bdf50e13ecb94996bed8cd8c0cba8cf80e553e4f8b08",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/strategicplan.apsc.ubc.ca",
+        "document_count": 52
+      }
+    ],
+    "document_count": 52
+  },
+  {
+    "hostname": "stratplan.med.ubc.ca",
+    "title": "stratplan.med.ubc.ca",
+    "homepage_url": "https://stratplan.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:21:51.546Z",
+    "homepage_sha256": "589355c060737702205bdddc706f30973f8b58764a46ab4b08fa737f38e4336a",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "stories",
+        "path": "data/documents/stories/stratplan.med.ubc.ca",
+        "document_count": 116
+      }
+    ],
+    "document_count": 116
+  },
+  {
+    "hostname": "studentplan.ubc.ca",
+    "title": "studentplan.ubc.ca",
+    "homepage_url": "https://studentplan.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:23:13.941Z",
+    "homepage_sha256": "893e2e31a384ac069cd2f3c608fe294f11826eedd38aa5fc1aeef8f0b4757efb",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/studentplan.ubc.ca",
+        "document_count": 2
+      }
+    ],
+    "document_count": 2
+  },
+  {
+    "hostname": "suewatts.forestry.ubc.ca",
+    "title": "suewatts.forestry.ubc.ca",
+    "homepage_url": "https://suewatts.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:24:25.638Z",
+    "homepage_sha256": "7588646161ab2f390db7d98c6104e83cb6eead09c83135f57349587bdeec5881",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/suewatts.forestry.ubc.ca",
+        "document_count": 4
+      }
+    ],
+    "document_count": 4
+  },
+  {
+    "hostname": "sunderlandlab.forestry.ubc.ca",
+    "title": "sunderlandlab.forestry.ubc.ca",
+    "homepage_url": "https://sunderlandlab.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:24:42.253Z",
+    "homepage_sha256": "fb66d5a10d9f137423b327f33505e99f69500a88e4b32febf3fbd7f44ec3ab6d",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/sunderlandlab.forestry.ubc.ca",
+        "document_count": 137
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/sunderlandlab.forestry.ubc.ca",
+        "document_count": 6
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/sunderlandlab.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 144
+  },
+  {
+    "hostname": "svpro.ubc.ca",
+    "title": "svpro.ubc.ca",
+    "homepage_url": "https://svpro.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:26:34.646Z",
+    "homepage_sha256": "298f8b7869b4ec1fc2d74a0430a967fe6cab3332e48b055d3f2c2a9a5ff29046",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/svpro.ubc.ca",
+        "document_count": 34
+      }
+    ],
+    "document_count": 34
+  },
+  {
+    "hostname": "systopia.cs.ubc.ca",
+    "title": "systopia.cs.ubc.ca",
+    "homepage_url": "https://systopia.cs.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:27:04.379Z",
+    "homepage_sha256": "400df9ae59bc24350a08ae7a8b7baaafe18b5c5760c42828e9d66a0a8c993cfe",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/systopia.cs.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/systopia.cs.ubc.ca",
+        "document_count": 35
+      }
+    ],
+    "document_count": 36
+  },
+  {
+    "hostname": "teachingsupport.forestry.ubc.ca",
+    "title": "teachingsupport.forestry.ubc.ca",
+    "homepage_url": "https://teachingsupport.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:29:39.387Z",
+    "homepage_sha256": "8e5365894fe8f70a7c926587b961fda0ca2cc9de43dac8e22187a2fc538b7bc8",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/teachingsupport.forestry.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/teachingsupport.forestry.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/teachingsupport.forestry.ubc.ca",
+        "document_count": 170
+      }
+    ],
+    "document_count": 176
+  },
+  {
+    "hostname": "team.forestry.ubc.ca",
+    "title": "team.forestry.ubc.ca",
+    "homepage_url": "https://team.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:29:41.116Z",
+    "homepage_sha256": "a41c6b0d2e67344b25584eb46fac2a7c59e6e931a9031d096afc9d26c2284ed9",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/team.forestry.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/team.forestry.ubc.ca",
+        "document_count": 24
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/team.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 26
+  },
+  {
+    "hostname": "technicalguidelines.ubc.ca",
+    "title": "technicalguidelines.ubc.ca",
+    "homepage_url": "https://technicalguidelines.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:30:00.840Z",
+    "homepage_sha256": "9c3bffef706ccc42d69119e337a9a26b2c46214738d40d0e918d0496bfe77a9e",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/technicalguidelines.ubc.ca",
+        "document_count": 22
+      }
+    ],
+    "document_count": 22
+  },
+  {
+    "hostname": "tek.forestry.ubc.ca",
+    "title": "tek.forestry.ubc.ca",
+    "homepage_url": "https://tek.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:31:00.620Z",
+    "homepage_sha256": "39882b2e17f39a9d617f82b4cec9ff38555b62f7a6cc199305efe1ec078da529",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/tek.forestry.ubc.ca",
+        "document_count": 157
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/tek.forestry.ubc.ca",
+        "document_count": 2
+      }
+    ],
+    "document_count": 159
+  },
+  {
+    "hostname": "thesismodules.edst.educ.ubc.ca",
+    "title": "thesismodules.edst.educ.ubc.ca",
+    "homepage_url": "https://thesismodules.edst.educ.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:31:51.158Z",
+    "homepage_sha256": "4bdb5d8cad64600da0f074da1f3b7dafd828a48a7f3b9c73157065fc8b4c31aa",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/thesismodules.edst.educ.ubc.ca",
+        "document_count": 13
+      }
+    ],
+    "document_count": 13
+  },
+  {
+    "hostname": "thunderbirds.ubc.ca",
+    "title": "thunderbirds.ubc.ca",
+    "homepage_url": "https://thunderbirds.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:34:20.835Z",
+    "homepage_sha256": "b66a4ce3ed56595969c2ebd87047e0944b8a7552ddd5153225f35a87071bf14c",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/thunderbirds.ubc.ca",
+        "document_count": 15
+      }
+    ],
+    "document_count": 15
+  },
+  {
+    "hostname": "timeandplace.ubc.ca",
+    "title": "timeandplace.ubc.ca",
+    "homepage_url": "https://timeandplace.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T14:59:56.393Z",
+    "homepage_sha256": "e3671d730cce085d64890390ed405d2b794fd4515ffb6a03e2a3da087b55c63c",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/timeandplace.ubc.ca",
+        "document_count": 36
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/timeandplace.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/timeandplace.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/timeandplace.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 45
+  },
+  {
+    "hostname": "treebiotech.forestry.ubc.ca",
+    "title": "treebiotech.forestry.ubc.ca",
+    "homepage_url": "https://treebiotech.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:37:27.388Z",
+    "homepage_sha256": "3b157e0fb0d6e45aeaa4f324f70e032b3f863ceeb4145a2c6e3e8252da0fcf26",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/treebiotech.forestry.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/treebiotech.forestry.ubc.ca",
+        "document_count": 42
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/treebiotech.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 44
+  },
+  {
+    "hostname": "ubctoday.ubc.ca",
+    "title": "ubctoday.ubc.ca",
+    "homepage_url": "https://ubctoday.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:42:01.554Z",
+    "homepage_sha256": "52849f1beb4a4a17ebbad4dc731e032bfb381e5b349787fba4b2a96e17582a26",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/ubctoday.ubc.ca",
+        "document_count": 1937
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/ubctoday.ubc.ca",
+        "document_count": 101
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/ubctoday.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 2039
+  },
+  {
+    "hostname": "ubcujp.psych.ubc.ca",
+    "title": "ubcujp.psych.ubc.ca",
+    "homepage_url": "https://ubcujp.psych.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:42:41.845Z",
+    "homepage_sha256": "b308919de2d0ff6af607d188f554638dff881d5b2992b0c8dbbf8f1bed0ba363",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/ubcujp.psych.ubc.ca",
+        "document_count": 17
+      }
+    ],
+    "document_count": 17
+  },
+  {
+    "hostname": "unclaimedtuitioncredit.ubc.ca",
+    "title": "unclaimedtuitioncredit.ubc.ca",
+    "homepage_url": "https://unclaimedtuitioncredit.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:43:33.868Z",
+    "homepage_sha256": "a9766fe195b7d4c4219c803c551c546b48a6f9583591ed44981c9c1787672a8d",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/unclaimedtuitioncredit.ubc.ca",
+        "document_count": 3
+      }
+    ],
+    "document_count": 3
+  },
+  {
+    "hostname": "undergrad.familypractice.ubc.ca",
+    "title": "undergrad.familypractice.ubc.ca",
+    "homepage_url": "https://undergrad.familypractice.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:43:58.707Z",
+    "homepage_sha256": "ec1444b3f64c5e3e50a095cdd41c02e6195a3756558436ae3d31db65dda372eb",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/undergrad.familypractice.ubc.ca",
+        "document_count": 11
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/undergrad.familypractice.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 12
+  },
+  {
+    "hostname": "unpredictable-conf-2021.sites.olt.ubc.ca",
+    "title": "unpredictable-conf-2021.sites.olt.ubc.ca",
+    "homepage_url": "https://unpredictable-conf-2021.sites.olt.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:46:02.027Z",
+    "homepage_sha256": "f7c6b79191b9448f742f618d716c8ce9e5102ab72a046fd3d0ccdb36b86fed3e",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/unpredictable-conf-2021.sites.olt.ubc.ca",
+        "document_count": 22
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/unpredictable-conf-2021.sites.olt.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 23
+  },
+  {
+    "hostname": "uplift.psych.ubc.ca",
+    "title": "uplift.psych.ubc.ca",
+    "homepage_url": "https://uplift.psych.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T21:26:53.042Z",
+    "homepage_sha256": "872f2f6563ae6094809558caf06dfd64229e64cfce90e289d96591fb6879146c",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/uplift.psych.ubc.ca",
+        "document_count": 145
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/uplift.psych.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/uplift.psych.ubc.ca",
+        "document_count": 74
+      }
+    ],
+    "document_count": 222
+  },
+  {
+    "hostname": "urban.forestry.ubc.ca",
+    "title": "urban.forestry.ubc.ca",
+    "homepage_url": "https://urban.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:47:01.064Z",
+    "homepage_sha256": "470b38ca5fc0392522af20c03b2faacc0456444a2f34a4717a9522b2fcab702b",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/urban.forestry.ubc.ca",
+        "document_count": 43
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/urban.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 44
+  },
+  {
+    "hostname": "vascularsurgery.med.ubc.ca",
+    "title": "vascularsurgery.med.ubc.ca",
+    "homepage_url": "https://vascularsurgery.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:49:43.665Z",
+    "homepage_sha256": "b05da6792b9adaeb4957d2374ee621602abead3bd1c87c8a87617674f165d5ef",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/vascularsurgery.med.ubc.ca",
+        "document_count": 51
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/vascularsurgery.med.ubc.ca",
+        "document_count": 3
+      }
+    ],
+    "document_count": 54
+  },
+  {
+    "hostname": "vibrantforestlandscapes.forestry.ubc.ca",
+    "title": "vibrantforestlandscapes.forestry.ubc.ca",
+    "homepage_url": "https://vibrantforestlandscapes.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:50:45.474Z",
+    "homepage_sha256": "2dab7a411a4c90fa0268d07c84ff2c673e45861214160f520167892803e61561",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/vibrantforestlandscapes.forestry.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/vibrantforestlandscapes.forestry.ubc.ca",
+        "document_count": 20
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/vibrantforestlandscapes.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 23
+  },
+  {
+    "hostname": "vigolab.med.ubc.ca",
+    "title": "vigolab.med.ubc.ca",
+    "homepage_url": "https://vigolab.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:50:47.766Z",
+    "homepage_sha256": "cdb8679a7dad22dc1d423d8fd990922328e512fbc50073eac48ced4a6ebd06c0",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/vigolab.med.ubc.ca",
+        "document_count": 49
+      }
+    ],
+    "document_count": 49
+  },
+  {
+    "hostname": "vision.med.ubc.ca",
+    "title": "vision.med.ubc.ca",
+    "homepage_url": "https://vision.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:52:17.272Z",
+    "homepage_sha256": "82d2e9e835eb5f484b97c9f2643790a11847ac3efbf02bfe2b8076a7a337bea4",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/vision.med.ubc.ca",
+        "document_count": 57
+      }
+    ],
+    "document_count": 57
+  },
+  {
+    "hostname": "visionlab.psych.ubc.ca",
+    "title": "visionlab.psych.ubc.ca",
+    "homepage_url": "https://visionlab.psych.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T21:33:05.466Z",
+    "homepage_sha256": "1b999bebdcb00b2a2f9390c01cff848ac3ad319bd2d56f47c1698baef2e250f8",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/visionlab.psych.ubc.ca",
+        "document_count": 7
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/visionlab.psych.ubc.ca",
+        "document_count": 49
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/visionlab.psych.ubc.ca",
+        "document_count": 4
+      }
+    ],
+    "document_count": 60
+  },
+  {
+    "hostname": "visit.ubc.ca",
+    "title": "visit.ubc.ca",
+    "homepage_url": "https://visit.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:53:10.173Z",
+    "homepage_sha256": "f9f4578bbe6284d65130c6cdd2bcd9c9606d199649567eab76fcba8542bd7f6e",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/visit.ubc.ca",
+        "document_count": 80
+      }
+    ],
+    "document_count": 80
+  },
+  {
+    "hostname": "vpdevelopmentalumni.ubc.ca",
+    "title": "vpdevelopmentalumni.ubc.ca",
+    "homepage_url": "https://vpdevelopmentalumni.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:53:28.214Z",
+    "homepage_sha256": "6697e5e5ec85c31751589092406572022fd988df714a70759ec76c52f60ff7a3",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/vpdevelopmentalumni.ubc.ca",
+        "document_count": 4
+      }
+    ],
+    "document_count": 4
+  },
+  {
+    "hostname": "vsp.arts.ubc.ca",
+    "title": "vsp.arts.ubc.ca",
+    "homepage_url": "https://vsp.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:53:58.529Z",
+    "homepage_sha256": "da38ff91c160e6fc8a4a2ddd7e8262fd0a52658fcb340d9ab7073cceff1c1842",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/vsp.arts.ubc.ca",
+        "document_count": 20
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/vsp.arts.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/vsp.arts.ubc.ca",
+        "document_count": 9
+      }
+    ],
+    "document_count": 34
+  },
+  {
+    "hostname": "wach.med.ubc.ca",
+    "title": "wach.med.ubc.ca",
+    "homepage_url": "https://wach.med.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:54:00.724Z",
+    "homepage_sha256": "36f4956a9c2bd7cc1688a555843ebc0bddaddbeaae31af6f2cf970ad2f85169d",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/wach.med.ubc.ca",
+        "document_count": 38
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/wach.med.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/wach.med.ubc.ca",
+        "document_count": 10
+      }
+    ],
+    "document_count": 53
+  },
+  {
+    "hostname": "wfrt.eoas.ubc.ca",
+    "title": "wfrt.eoas.ubc.ca",
+    "homepage_url": "https://wfrt.eoas.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-20T15:02:03.747Z",
+    "homepage_sha256": "9c3fa93b0c4994a18d924afa17ad0ec82bda5871534ecceb1ea0a55b48a44989",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/wfrt.eoas.ubc.ca",
+        "document_count": 20
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/wfrt.eoas.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/wfrt.eoas.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 22
+  },
+  {
+    "hostname": "wildandimmersive.ubc.ca",
+    "title": "wildandimmersive.ubc.ca",
+    "homepage_url": "https://wildandimmersive.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:56:33.583Z",
+    "homepage_sha256": "e820a0bba3886bde1386bb02fc92dd1be049204affa7bee6d4063aaae901ed32",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/wildandimmersive.ubc.ca",
+        "document_count": 186
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/wildandimmersive.ubc.ca",
+        "document_count": 43
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/wildandimmersive.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/wildandimmersive.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/wildandimmersive.ubc.ca",
+        "document_count": 4
+      }
+    ],
+    "document_count": 239
+  },
+  {
+    "hostname": "wildfire-symposium.forestry.ubc.ca",
+    "title": "wildfire-symposium.forestry.ubc.ca",
+    "homepage_url": "https://wildfire-symposium.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:56:58.313Z",
+    "homepage_sha256": "a9ba5ae9c7f465f13ad9667c0fd9df3da65725742dd497da476b6f4d37546c92",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/wildfire-symposium.forestry.ubc.ca",
+        "document_count": 33
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/wildfire-symposium.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 34
+  },
+  {
+    "hostname": "wildlife.forestry.ubc.ca",
+    "title": "wildlife.forestry.ubc.ca",
+    "homepage_url": "https://wildlife.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:57:09.925Z",
+    "homepage_sha256": "ff4d4d7f38fd64168751eba8b3705d10ef315a5ebe4c75e098a7b362ec3dff28",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/wildlife.forestry.ubc.ca",
+        "document_count": 27
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/wildlife.forestry.ubc.ca",
+        "document_count": 36
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/wildlife.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 64
+  },
+  {
+    "hostname": "wine.ubc.ca",
+    "title": "wine.ubc.ca",
+    "homepage_url": "https://wine.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:58:03.772Z",
+    "homepage_sha256": "e895dc218528b6fe9ff9c88342f557c029263e8ee6ac243146fc1ff809f0c6f4",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/wine.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/wine.ubc.ca",
+        "document_count": 25
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/wine.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 30
+  },
+  {
+    "hostname": "woh.arts.ubc.ca",
+    "title": "woh.arts.ubc.ca",
+    "homepage_url": "https://woh.arts.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:58:12.604Z",
+    "homepage_sha256": "f98273b264c65677ab84e0bde552dc701ec6f84622127a8df1920970fd6c9edb",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/woh.arts.ubc.ca",
+        "document_count": 68
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/woh.arts.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/woh.arts.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/woh.arts.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/woh.arts.ubc.ca",
+        "document_count": 2
+      }
+    ],
+    "document_count": 74
+  },
+  {
+    "hostname": "womenscentre.ams.ubc.ca",
+    "title": "womenscentre.ams.ubc.ca",
+    "homepage_url": "https://womenscentre.ams.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T13:58:37.908Z",
+    "homepage_sha256": "4031c454b0e575b47cda10670542eaaa5e4fb8742ab2e9e2aa8c257f41fdff1e",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/womenscentre.ams.ubc.ca",
+        "document_count": 8
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/womenscentre.ams.ubc.ca",
+        "document_count": 8
+      }
+    ],
+    "document_count": 16
+  },
+  {
+    "hostname": "www.afrf.forestry.ubc.ca",
+    "title": "www.afrf.forestry.ubc.ca",
+    "homepage_url": "https://www.afrf.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:00:37.874Z",
+    "homepage_sha256": "a4e8d2e6ab2ed16af696550f7e0fb37f2cacf72b174a1b7033b8e724dff41816",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "research",
+        "path": "data/documents/research/www.afrf.forestry.ubc.ca",
+        "document_count": 25
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/www.afrf.forestry.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 26
+  },
+  {
+    "hostname": "www.bioimaging.ubc.ca",
+    "title": "www.bioimaging.ubc.ca",
+    "homepage_url": "https://www.bioimaging.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:01:01.139Z",
+    "homepage_sha256": "4a3a8b7dc5c2cca2ad9d117e348714b725ed58882a1e335796081c524d884b46",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/www.bioimaging.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/www.bioimaging.ubc.ca",
+        "document_count": 448
+      }
+    ],
+    "document_count": 449
+  },
+  {
+    "hostname": "www.crpid.ubc.ca",
+    "title": "www.crpid.ubc.ca",
+    "homepage_url": "https://www.crpid.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:05:04.310Z",
+    "homepage_sha256": "619e3c81d1b961a1426676463c14a6864f8a4855cd8605ba84c5aa286c27b729",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/www.crpid.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/www.crpid.ubc.ca",
+        "document_count": 58
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/www.crpid.ubc.ca",
+        "document_count": 5
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/www.crpid.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 68
+  },
+  {
+    "hostname": "www.engphys.ubc.ca",
+    "title": "www.engphys.ubc.ca",
+    "homepage_url": "https://www.engphys.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T21:50:41.769Z",
+    "homepage_sha256": "46b1dc44ad8fbafd31df503a1220e84c520048f1e783d99a115b443b9ce41879",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/www.engphys.ubc.ca",
+        "document_count": 152
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/www.engphys.ubc.ca",
+        "document_count": 262
+      }
+    ],
+    "document_count": 414
+  },
+  {
+    "hostname": "www.enve.ubc.ca",
+    "title": "www.enve.ubc.ca",
+    "homepage_url": "https://www.enve.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:07:34.428Z",
+    "homepage_sha256": "f3e618db3de7eee89431df8bed82bd7f9de28e38a1a01813538e1e750bc06494",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/www.enve.ubc.ca",
+        "document_count": 24
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/www.enve.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/www.enve.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/www.enve.ubc.ca",
+        "document_count": 4
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/www.enve.ubc.ca",
+        "document_count": 3
+      }
+    ],
+    "document_count": 35
+  },
+  {
+    "hostname": "www.facultyassociation.ubc.ca",
+    "title": "www.facultyassociation.ubc.ca",
+    "homepage_url": "https://www.facultyassociation.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:08:34.284Z",
+    "homepage_sha256": "cfe39fdd3603025bbea503ad5c4b44abf43880ff430d989bb9e02c13eb792449",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/www.facultyassociation.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/www.facultyassociation.ubc.ca",
+        "document_count": 747
+      }
+    ],
+    "document_count": 748
+  },
+  {
+    "hostname": "www.hli.ubc.ca",
+    "title": "www.hli.ubc.ca",
+    "homepage_url": "https://www.hli.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:09:31.206Z",
+    "homepage_sha256": "f9231467e251bba59b0f31d9ab52df12800409b101201ec1d11961e9783fdaff",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/www.hli.ubc.ca",
+        "document_count": 18
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/www.hli.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/www.hli.ubc.ca",
+        "document_count": 266
+      }
+    ],
+    "document_count": 286
+  },
+  {
+    "hostname": "www.igen.ubc.ca",
+    "title": "www.igen.ubc.ca",
+    "homepage_url": "https://www.igen.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:10:45.517Z",
+    "homepage_sha256": "3dc9b630cf3a21cd9b071199877c464722bce707b3c67b56085a9de5a0985f3e",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/www.igen.ubc.ca",
+        "document_count": 10
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/www.igen.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/www.igen.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 12
+  },
+  {
+    "hostname": "www.magic.ubc.ca",
+    "title": "www.magic.ubc.ca",
+    "homepage_url": "https://www.magic.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:13:43.631Z",
+    "homepage_sha256": "f1a46226503ce1a6513f6824f711a1b1af2add6a0c385aa52f5c817a8685e810",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/www.magic.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/www.magic.ubc.ca",
+        "document_count": 65
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/www.magic.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 67
+  },
+  {
+    "hostname": "www.mkrf.forestry.ubc.ca",
+    "title": "www.mkrf.forestry.ubc.ca",
+    "homepage_url": "https://www.mkrf.forestry.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:16:15.201Z",
+    "homepage_sha256": "9f6445827707363e96489ec15c643ded138737e373b33f6d1970f981fd69c293",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "academics",
+        "path": "data/documents/academics/www.mkrf.forestry.ubc.ca",
+        "document_count": 8
+      },
+      {
+        "category": "news",
+        "path": "data/documents/news/www.mkrf.forestry.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/www.mkrf.forestry.ubc.ca",
+        "document_count": 3
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/www.mkrf.forestry.ubc.ca",
+        "document_count": 163
+      }
+    ],
+    "document_count": 175
+  },
+  {
+    "hostname": "www.msl.ubc.ca",
+    "title": "www.msl.ubc.ca",
+    "homepage_url": "https://www.msl.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:17:05.480Z",
+    "homepage_sha256": "bda90cf5719b7fac1086b4c4eac3ac73835cee5edea354d839f85f4cdcb32a70",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/www.msl.ubc.ca",
+        "document_count": 31
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/www.msl.ubc.ca",
+        "document_count": 342
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/www.msl.ubc.ca",
+        "document_count": 1215
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/www.msl.ubc.ca",
+        "document_count": 140
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/www.msl.ubc.ca",
+        "document_count": 22
+      }
+    ],
+    "document_count": 1750
+  },
+  {
+    "hostname": "www.pda.ubc.ca",
+    "title": "www.pda.ubc.ca",
+    "homepage_url": "https://www.pda.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:18:48.612Z",
+    "homepage_sha256": "eaecaee8efdd40499cf5a3e1a37c028d74166c02d83b6f130d05d5bb6290be8a",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/www.pda.ubc.ca",
+        "document_count": 4
+      }
+    ],
+    "document_count": 4
+  },
+  {
+    "hostname": "www.rise.ubc.ca",
+    "title": "www.rise.ubc.ca",
+    "homepage_url": "https://www.rise.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:21:43.299Z",
+    "homepage_sha256": "b76f02d5b9b769cea1498845cfcaedc9ed34d3d485eb12eaf293440199b25d10",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/www.rise.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/www.rise.ubc.ca",
+        "document_count": 7
+      }
+    ],
+    "document_count": 9
+  },
+  {
+    "hostname": "www.technicalguidelines.ubc.ca",
+    "title": "www.technicalguidelines.ubc.ca",
+    "homepage_url": "https://www.technicalguidelines.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:23:16.275Z",
+    "homepage_sha256": "4e9ac4d1097adf2947f860cbc4f2211f12a8d32cf9c9c23826e14417020339e9",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/www.technicalguidelines.ubc.ca",
+        "document_count": 22
+      }
+    ],
+    "document_count": 22
+  },
+  {
+    "hostname": "xwi7xwa.library.ubc.ca",
+    "title": "xwi7xwa.library.ubc.ca",
+    "homepage_url": "https://xwi7xwa.library.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:27:39.951Z",
+    "homepage_sha256": "83551a06662803e2124bd3abece9b4fc1c9ff76d553915b4b95e88d375599296",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/xwi7xwa.library.ubc.ca",
+        "document_count": 343
+      },
+      {
+        "category": "support",
+        "path": "data/documents/support/xwi7xwa.library.ubc.ca",
+        "document_count": 93
+      }
+    ],
+    "document_count": 436
+  },
+  {
+    "hostname": "zero-waste-market.ubc.ca",
+    "title": "zero-waste-market.ubc.ca",
+    "homepage_url": "https://zero-waste-market.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:29:01.704Z",
+    "homepage_sha256": "b9633fbea215bcbdbac3aa9cc502854ec81321f54b7fcfa3fb2d3b1be5ac847e",
+    "scope": "Public HTML prose and native PDF text on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "support",
+        "path": "data/documents/support/zero-waste-market.ubc.ca",
+        "document_count": 6
+      }
+    ],
+    "document_count": 6
+  },
+  {
+    "hostname": "zhaolab.psych.ubc.ca",
+    "title": "zhaolab.psych.ubc.ca",
+    "homepage_url": "https://zhaolab.psych.ubc.ca/",
+    "homepage_retrieved_at": "2026-09-18T14:29:52.203Z",
+    "homepage_sha256": "410c98b6d3207d153a43ea1b5d55a0e0253f4f48f104834103f1b47db5afb1f0",
+    "scope": "Useful public article-style HTML prose on this exact hostname.",
+    "document_roots": [
+      {
+        "category": "news",
+        "path": "data/documents/news/zhaolab.psych.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "opportunities",
+        "path": "data/documents/opportunities/zhaolab.psych.ubc.ca",
+        "document_count": 1
+      },
+      {
+        "category": "research",
+        "path": "data/documents/research/zhaolab.psych.ubc.ca",
+        "document_count": 2
+      },
+      {
+        "category": "stories",
+        "path": "data/documents/stories/zhaolab.psych.ubc.ca",
+        "document_count": 1
+      }
+    ],
+    "document_count": 5
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hostname": "ubcstudios.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w4 first homepage review",
+    "rationale": "The official UBC Studios homepage explains practical institutional media services for education, research and communications, including consultation, production and DIY recording. Its explicit sections describe help and facilities rather than research outputs, academic programs, profiles, calls or announcements. The content is public and useful, without personal-site, duplicate-host, login-only or exclusively Okanagan service evidence.",
+    "evidence": [
+      "https://ubcstudios.ubc.ca/ | 07796dc139aaba1ce8e6833f39bb047a7caeaf376b1b45124dafcade459a44e8 | We create quality media for education, research and brand communications. UBC Studios offers services for every budget including Do-It-Yourself media, teaching and learning support, and full professional media production services.",
+      "https://ubcstudios.ubc.ca/ | 07796dc139aaba1ce8e6833f39bb047a7caeaf376b1b45124dafcade459a44e8 | Media Consultation; Video Production; Motion Graphics; Visual Design; Immersive Media; Photography; Lightboard Studio; Do-It-Yourself Media",
+      "https://ubcstudios.ubc.ca/ | 07796dc139aaba1ce8e6833f39bb047a7caeaf376b1b45124dafcade459a44e8 | Record video and audio content easily in our DIY Recording Studio and Audio Desk."
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "support",
+    "rationale": "UBC Studios provides practical media-production assistance, consultation, teaching support and recording facilities; the visible homepage service sections share this support purpose."
+  }
+}

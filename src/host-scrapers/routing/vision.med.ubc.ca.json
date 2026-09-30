@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "hostname": "vision.med.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w4 first homepage review",
+    "rationale": "The official Faculty of Medicine homepage explains its institutional vision, equity commitment and province-wide academic community. It also identifies a film featuring people who embody that vision and an explicit film-award announcement. Academic mission is the host default, with the evidenced film narrative routed to stories and MUSE award announcements to news. The public content is not personal, login-only or Okanagan-exclusive.",
+    "evidence": [
+      "https://vision.med.ubc.ca/ | 82d2e9e835eb5f484b97c9f2643790a11847ac3efbf02bfe2b8076a7a337bea4 | As one of the world’s leading medical schools, UBC’s Faculty of Medicine has a bold vision: to transform health for everyone.",
+      "https://vision.med.ubc.ca/ | 82d2e9e835eb5f484b97c9f2643790a11847ac3efbf02bfe2b8076a7a337bea4 | The film Vision: Transforming Health for Everyone is the winner of two internationally-recognized platinum MUSE Creative Awards for 2020.",
+      "https://vision.med.ubc.ca/ | 82d2e9e835eb5f484b97c9f2643790a11847ac3efbf02bfe2b8076a7a337bea4 | Watch our film to learn more about the many people at the Faculty of Medicine who exemplify this vision by being transformative, inclusive, passionate, authentic and driven by a collective desire for a more equitable, healthier world for all people.",
+      "https://vision.med.ubc.ca/ | 82d2e9e835eb5f484b97c9f2643790a11847ac3efbf02bfe2b8076a7a337bea4 | more than 16,000 faculty, staff and students spread out over a vast, rugged and richly diverse province"
+    ]
+  },
+  "rules": [
+    {
+      "id": "film-award-announcement",
+      "category": "news",
+      "rationale": "The homepage explicitly announces the film's MUSE Creative Awards; documents titled for that award are announcements rather than academic-program information.",
+      "title_pattern": "^.*\\bMUSE Creative Awards\\b"
+    },
+    {
+      "id": "vision-film-story",
+      "category": "stories",
+      "rationale": "The named film tells the stories of Faculty of Medicine people who exemplify its vision.",
+      "title_pattern": "^Vision: Transforming Health for Everyone\\b"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "The site's primary purpose is the UBC medical school's institutional vision, values and academic-community mission."
+  }
+}

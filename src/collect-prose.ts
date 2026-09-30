@@ -1,7 +1,8 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { parseArgs } from "node:util";
-import { DATA_DIR, ROOT } from "./base.ts";
+import { DATA_DIR } from "./base.ts";
+import { assertExternalPath, DEFAULT_EXTERNAL_ROOT } from "./host-crawl/paths.ts";
 import { ProseClient } from "./prose/client.ts";
 import { collectLiveSource } from "./prose/collect.ts";
 import { collectMirroredSource, MIRROR_PROSE_SOURCES } from "./prose/mirrors.ts";
@@ -52,7 +53,7 @@ export async function main(argv: string[]): Promise<number> {
       !values.skip.includes(source.key) &&
       (!values["mirror-only"] || source.strategy === "mirror"),
   );
-  const cacheDir = path.join(ROOT, ".cache/prose");
+  const cacheDir = assertExternalPath(path.join(DEFAULT_EXTERNAL_ROOT, "state/source-prose/cache"));
   await mkdir(cacheDir, { recursive: true, mode: 0o700 });
   const client = new ProseClient({
     cacheDir,

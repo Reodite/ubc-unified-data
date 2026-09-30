@@ -10,3 +10,7 @@ data/student-support/*.csv -text -whitespace
 
 # Preserve prose export bytes for content hashes and manifest sizes.
 data/prose/** -text -whitespace
+
+# Preserve serialized host-document bytes and their hashes.
+data/documents/** -text -whitespace
+data/official-hosts.json -text -whitespace

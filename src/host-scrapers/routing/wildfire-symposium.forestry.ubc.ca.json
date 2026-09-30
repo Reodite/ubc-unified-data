@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "hostname": "wildfire-symposium.forestry.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "Owner continuation requests public exact-host HTML articles while preserving the saved sponsor PDF parser failure without retry.",
+    "rationale": "The UBC-hosted Wildfire Coexistence in BC Solutions Symposium presents public participation details, schedule, speakers, sponsors and travel information for the event.",
+    "evidence": [
+      "Retained homepage a9ba5ae9c7f465f13ad9667c0fd9df3da65725742dd497da476b6f4d37546c92 has title Wildfire Coexistence in BC: Solutions Symposium |.",
+      "Its retained navigation labels Schedule, Speakers, Sponsors, Travel Info, Media & Press and Register Now.",
+      "Official UBC wildfire symposium explains public education purpose and climate-related wildfire management challenges"
+    ]
+  },
+  "rules": [
+    {
+      "id": "symposium-speakers",
+      "category": "stories",
+      "rationale": "Named speaker profiles present participant biographies.",
+      "path_pattern": "^/speakers(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "symposium-participation",
+    "category": "opportunities",
+    "rationale": "The symposium offers public schedule, participation, sponsorship and event guidance."
+  }
+}

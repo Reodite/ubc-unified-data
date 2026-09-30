@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "hostname": "pair.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w1 first homepage review",
+    "rationale": "PAIR provides university-wide institutional data, analytics and survey services supporting planning and educational decision-making at both Vancouver and Okanagan. Institutional support is the default; the homepage exposes a distinct news section and dated updates.",
+    "evidence": [
+      "https://pair.ubc.ca/ | 349b679e6c3761e670591f7909eda935821e71a53da9e24cb459d08e59fa722f | PAIR is a university-wide unit that reports into the Provost and Vice-President, Academic on each campus.",
+      "https://pair.ubc.ca/ | 349b679e6c3761e670591f7909eda935821e71a53da9e24cb459d08e59fa722f | View the Okanagan & Vancouver Fact Sheets, Faculty & Staff Data, Department Profiles, and Comparative Metrics; View Admissions, Demographics, Enrolment, and Performance Dashboards; View information about institutional student surveys at UBC Vancouver and Okanagan",
+      "https://pair.ubc.ca/ | 349b679e6c3761e670591f7909eda935821e71a53da9e24cb459d08e59fa722f | Explore the latest updates from the PAIR team; homepage links /about/news/, /2026/04/21/sei-dashboard-presentation-2026/, /2026/03/05/annual-enrolment-report-2025-26/, /2026/01/05/course-enrolments-dashboard-update/ and /2025/12/03/decommissioning-of-courseval/"
+    ]
+  },
+  "rules": [
+    {
+      "id": "office-news",
+      "category": "news",
+      "rationale": "Explicit office news section and dated updates exposed on the homepage.",
+      "path_pattern": "^/(?:about/news(?:/|$)|[0-9]{4}/[0-9]{2}/[0-9]{2}/)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "support",
+    "rationale": "University-wide institutional analytics, survey information and reporting services supporting UBC planning and educational decisions."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hostname": "nunavutsocialhistory.arts.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w1 first homepage review",
+    "rationale": "Official UBC Faculty of Arts research resource explaining a public database of Eastern Arctic social-history archival documents for researchers, students and community members. The homepage supports a research-purpose default, with database-use guidance remaining research context.",
+    "evidence": [
+      "https://nunavutsocialhistory.arts.ubc.ca/ | b12f74de67346443a99baaaa9465dcb87b173b7b526d2b794edee5ed05a9d191 | The University of British Columbia; Faculty of Arts; Vancouver",
+      "https://nunavutsocialhistory.arts.ubc.ca/ | b12f74de67346443a99baaaa9465dcb87b173b7b526d2b794edee5ed05a9d191 | This database contains abstracts of documents that deal principally with what is now Nunavut Territory and includes other material from the Inuvialuit Settlement Area, the Northwest Territories and Nunavik (Arctic Quebec).",
+      "https://nunavutsocialhistory.arts.ubc.ca/ | b12f74de67346443a99baaaa9465dcb87b173b7b526d2b794edee5ed05a9d191 | This website is designed to allow researchers, students and community members to learn about and gain access to the vast collection of documents relating to the social history of the Eastern Arctic that are located in archives across Canada."
+    ]
+  },
+  "rules": [],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "research",
+    "rationale": "Research database description, archival context and usage information for Eastern Arctic social history."
+  }
+}

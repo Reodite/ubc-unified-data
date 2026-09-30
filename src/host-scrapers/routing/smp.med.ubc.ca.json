@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "hostname": "smp.med.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "Owner continuation requests public exact-host HTML articles while preserving the original invalid-parser PDF result without retry.",
+    "rationale": "The Southern Medical Program presents MD undergraduate education, clinical teaching, research and community engagement across BC’s Interior.",
+    "evidence": [
+      "Retained homepage 3a06bfb50cf2ce2fb37fc480566b75fc78e41f25506ca1d92420d8d43eed1590 has title Southern Medical Program.",
+      "Its retained navigation labels Admissions, MD Undergraduate Program, Education Sites, Student Research, Faculty Research, Volunteer Patients, Clinical Teaching Associates and News.",
+      "Official Southern Medical Program describes MD education, clinical teaching and chronic-disease research in the BC Interior"
+    ]
+  },
+  "rules": [
+    {
+      "id": "medical-program-research",
+      "category": "research",
+      "rationale": "Named research sections present Southern Medical Program scholarly work.",
+      "path_pattern": "^/research(?:/|$)"
+    },
+    {
+      "id": "medical-program-news",
+      "category": "news",
+      "rationale": "Named news section reports program updates.",
+      "path_pattern": "^/news(?:/|$)"
+    },
+    {
+      "id": "medical-program-volunteers",
+      "category": "opportunities",
+      "rationale": "Volunteer sections describe participation in medical training.",
+      "path_pattern": "^/volunteer(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "medical-education",
+    "category": "academics",
+    "rationale": "Southern Medical Program pages primarily describe MD teaching, programs and clinical education."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "hostname": "www.engphys.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w1 first homepage review",
+    "rationale": "Official UBC Faculty of Applied Science Engineering Physics program provides curriculum, admissions, courses, timetables and cooperative learning information. Academic program information is the default; dated program reports and announcements appear under the homepage News & Events section.",
+    "evidence": [
+      "https://www.engphys.ubc.ca/ | 46b1dc44ad8fbafd31df503a1220e84c520048f1e783d99a115b443b9ce41879 | The University of British Columbia; Faculty of Applied Science UBC Engineering Physics; UBC Engineering Physics is the ideal program for those who strive to invent new devices, advance science and pursue careers at the leading edge of high-technology, both locally and internationally.",
+      "https://www.engphys.ubc.ca/ | 46b1dc44ad8fbafd31df503a1220e84c520048f1e783d99a115b443b9ce41879 | Homepage navigation links /prospective-students/admissions/, /prospective-students/curriculum/, /courses/, /timetables/ and /co-op/",
+      "https://www.engphys.ubc.ca/ | 46b1dc44ad8fbafd31df503a1220e84c520048f1e783d99a115b443b9ce41879 | News & Events: Engineering Physics Air Hockey Robot Puck Pilot vs The Humans; 2026 Robot Competition Mars Habitat Robots; Imagine Day Orientation September 8 @ 10 a.m. HENN 200; dated links /2026/09/11/engineering-physics-air-hockey-robot-puck-pilot-vs-the-humans/ and /2026/09/04/2026-robot-competition-mars-habitat-robots/"
+    ]
+  },
+  "rules": [
+    {
+      "id": "program-news-and-events",
+      "category": "news",
+      "rationale": "Dated announcements and program achievements are explicitly listed under homepage News & Events.",
+      "path_pattern": "^/[0-9]{4}/[0-9]{2}/[0-9]{2}/"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "Engineering Physics degree program, curriculum, admissions, courses and academic community context."
+  }
+}

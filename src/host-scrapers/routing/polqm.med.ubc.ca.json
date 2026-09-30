@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "hostname": "polqm.med.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w5 first homepage review",
+    "rationale": "The official UBC Program Office for Laboratory Quality Management provides public descriptions of accredited laboratory quality courses and continuing professional education. Its mandate serves Canada and international learners, not exclusively Okanagan. Academic program information is the primary purpose.",
+    "evidence": [
+      "https://polqm.med.ubc.ca/ | 0de6b9c9684f2d59203e451087680198fad85e0f49ac60800fa273a4f40d9b6c | Established in 2002 within the Department of Pathology and Laboratory Medicine at the University of British Columbia, the Program Office for Laboratory Quality Management (POLQM) is dedicated to advancing quality excellence in medical laboratories worldwide.",
+      "https://polqm.med.ubc.ca/ | 0de6b9c9684f2d59203e451087680198fad85e0f49ac60800fa273a4f40d9b6c | The UBC Certificate Program in Laboratory Quality Management is a comprehensive, online training program designed to equip laboratory professionals with the practical tools and expertise needed to implement and sustain rigorous quality systems.",
+      "https://polqm.med.ubc.ca/ | 0de6b9c9684f2d59203e451087680198fad85e0f49ac60800fa273a4f40d9b6c | Our catalog of accredited courses supports the continuing education goals of diagnostic professionals and promote a deeper understanding of the principles and practices of medical laboratory quality in line with international standards and guidelines (e.g. ISO 15189:2022)."
+    ]
+  },
+  "rules": [
+    {
+      "id": "news-updates",
+      "category": "news",
+      "rationale": "Explicit news and updates sections report program announcements rather than enduring course descriptions.",
+      "path_pattern": "^/(?:news|updates)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "The program office primarily describes laboratory quality management courses, training and continuing professional education."
+  }
+}

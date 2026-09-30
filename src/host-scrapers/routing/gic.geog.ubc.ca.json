@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "hostname": "gic.geog.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w2 first homepage review",
+    "rationale": "The official Geographic Information Centre homepage explicitly identifies UBC Vancouver and provides public geography course readings, library collections, air-photo request services and dated service announcements. Route evidenced sections separately, with support as the centre's service-purpose fallback.",
+    "evidence": [
+      "https://gic.geog.ubc.ca/ | 5099b33db840f7aba8bab3d618170012898130b988211d63b451715ee8d838c4 | The University of British Columbia; Vancouver campus; Geographic Information Centre; Room 112 - 1984 West Mall",
+      "https://gic.geog.ubc.ca/ | 5099b33db840f7aba8bab3d618170012898130b988211d63b451715ee8d838c4 | GIC Reserve Readings: Reserve readings for all geography courses; /2014/09/18/reserve-readings-at-the-gic/; Book Collection at /resources/book-collection/",
+      "https://gic.geog.ubc.ca/ | 5099b33db840f7aba8bab3d618170012898130b988211d63b451715ee8d838c4 | Resources: Air Photo Collection, Sample Orthophotos, Map Collection, Thesis Collection at /resources/thesis-collection/; cIRcle: UBC digital repository for research and teaching materials",
+      "https://gic.geog.ubc.ca/ | 5099b33db840f7aba8bab3d618170012898130b988211d63b451715ee8d838c4 | About Us, Location and Hours, Staff, Air Photo Request at /aerial-photo-request/, ePayment at /epayment/; GIC Winter Holiday Hours 2025 at /2025/11/17/gic-winter-holiday-hours-2025/"
+    ]
+  },
+  "rules": [
+    {
+      "id": "course-readings",
+      "category": "academics",
+      "rationale": "Homepage course-reserve reading guidance directly supports geography coursework and takes priority over dated-post routing.",
+      "path_pattern": "^/[0-9]{4}/[0-9]{2}/[0-9]{2}/reserve-readings-at-the-gic(?:/|$)"
+    },
+    {
+      "id": "book-collection",
+      "category": "academics",
+      "rationale": "The homepage links the book collection and describes geographical books and course reserves as learning resources.",
+      "path_pattern": "^/resources/book-collection(?:/|$)"
+    },
+    {
+      "id": "thesis-collection",
+      "category": "research",
+      "rationale": "The homepage explicitly links the thesis collection and describes UBC research and teaching materials including Masters and PhD theses.",
+      "path_pattern": "^/resources/thesis-collection(?:/|$)"
+    },
+    {
+      "id": "centre-services",
+      "category": "support",
+      "rationale": "Homepage navigation identifies centre access, staff, geographic collections, photo requests and payment as public services.",
+      "path_pattern": "^/(?:about|resources|aerial-photo-request|epayment)(?:/|$)"
+    },
+    {
+      "id": "dated-announcements",
+      "category": "news",
+      "rationale": "Dated homepage links report holiday closures, ordering deadlines and collection announcements, apart from the specific course-reading override.",
+      "path_pattern": "^/[0-9]{4}/[0-9]{2}/[0-9]{2}/"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "support",
+    "rationale": "The Geographic Information Centre provides access to geography collections and practical public and student services at UBC Vancouver."
+  }
+}
