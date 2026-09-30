@@ -7,7 +7,7 @@
  */
 
 import type { Http } from "../base.ts";
-import { blocks, type Table } from "../htmldoc.ts";
+import { blocks, type Heading, type Table } from "../htmldoc.ts";
 
 export const URL = "https://cogsys.ubc.ca/module-courses/";
 
@@ -50,17 +50,22 @@ function tableRows(table: Table, historic: boolean): string[][] {
 export function parse(html: string): Array<Record<string, unknown>> {
   const rows: Array<Record<string, unknown>> = [];
   const sections = new Set<string>();
-  let section = "";
+  let section: Heading | null = null;
 
-  for (const block of blocks(html)) {
+  for (const block of blocks(html, { requireClosedTables: true })) {
     if ("level" in block) {
-      section = block.text;
+      if (block.text === MODULE_SECTION || block.text === HISTORIC_SECTION) {
+        if (section && block.level > section.level) throw new Error("Nested COGS module section");
+        section = block;
+      } else if (section && block.level <= section.level) {
+        section = null;
+      }
       continue;
     }
-    if (section !== MODULE_SECTION && section !== HISTORIC_SECTION) continue;
-    if (sections.has(section)) throw new Error(`Repeated COGS module table: ${section}`);
-    sections.add(section);
-    const historic = section === HISTORIC_SECTION;
+    if (section === null) continue;
+    if (sections.has(section.text)) throw new Error(`Repeated COGS module table: ${section.text}`);
+    sections.add(section.text);
+    const historic = section.text === HISTORIC_SECTION;
     for (const cells of tableRows(block, historic)) {
       const faculty = cells[0]!;
       const codeText = cells[1]!;
@@ -77,7 +82,7 @@ export function parse(html: string): Array<Record<string, unknown>> {
           course_name: courseName,
           faculty_group: faculty,
           notes,
-          section,
+          section: section.text,
           active,
           source_url: URL,
         });

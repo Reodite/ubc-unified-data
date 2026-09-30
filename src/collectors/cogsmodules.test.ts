@@ -66,6 +66,29 @@ function modulePage(code = "AI_V 322", historicCode = "THTR 399E/ MDIA 470A"): s
 }
 
 describe("module source validation", () => {
+  it("rejects a response cut off after a valid historical row", () => {
+    const historicStart = html.indexOf("<h4>Historic Modules</h4>");
+    const headerEnd = html.indexOf("</tr>", historicStart) + "</tr>".length;
+    const rowEnd = html.indexOf("</tr>", headerEnd) + "</tr>".length;
+    expect(historicStart).toBeGreaterThan(0);
+    expect(rowEnd).toBeGreaterThan(headerEnd);
+    expect(() => parse(html.slice(0, rowEnd))).toThrow(/table/i);
+  });
+
+  it("rejects additional tables nested under a module subsection rather than omitting them", () => {
+    const additional =
+      "<h5>Additional modules</h5><table><tr><th>Faculty</th><th>Course Code</th><th>Course Name</th><th>Notes</th></tr>" +
+      "<tr><td>Science</td><td>CPSC 499</td><td>Additional module</td><td></td></tr></table>";
+    expect(() =>
+      parse(modulePage().replace("<h4>Historic Modules</h4>", `${additional}<h4>Historic Modules</h4>`)),
+    ).toThrow(/repeated.*module.*table/i);
+  });
+
+  it("retains an enclosing module section across lower-level headings", () => {
+    const nested = modulePage().replace("<h4>Module List</h4>", "<h4>Module List</h4><h5>Course listings</h5>");
+    expect(parse(nested)).toEqual(parse(modulePage()));
+  });
+
   it.each(["", "<h1>Checking your browser</h1>", "<h1>Module Courses</h1>", "<h4>Module List</h4>"])(
     "refuses unavailable or incomplete source HTML: %s",
     (html) => expect(() => parse(html)).toThrow(/module/i),

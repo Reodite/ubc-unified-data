@@ -86,7 +86,7 @@ describe("AcademicCalendar collection", () => {
     await out.prune();
   }
 
-  it.each(["http403", "network", "challenge", "empty", "missing-section"])(
+  it.each(["http403", "network", "challenge", "empty", "missing-section", "truncated-table", "nested-table"])(
     "rejects %s before writing output or pruning the previous dataset",
     async (failure) => {
       const previous = await previousModules();
@@ -95,6 +95,20 @@ describe("AcademicCalendar collection", () => {
         if (failure === "http403") return new Response("Forbidden", { status: 403 });
         if (failure === "challenge") return new Response("<h1>Checking your browser</h1>");
         if (failure === "empty") return new Response("");
+        if (failure === "truncated-table") {
+          const historicStart = moduleHtml.indexOf("<h4>Historic Modules</h4>");
+          const headerEnd = moduleHtml.indexOf("</tr>", historicStart) + "</tr>".length;
+          const rowEnd = moduleHtml.indexOf("</tr>", headerEnd) + "</tr>".length;
+          return new Response(moduleHtml.slice(0, rowEnd));
+        }
+        if (failure === "nested-table")
+          return new Response(
+            moduleHtml.replace(
+              "<h4>Historic Modules</h4>",
+              "<h5>Additional modules</h5><table><tr><th>Faculty</th><th>Course Code</th><th>Course Name</th><th>Notes</th></tr>" +
+                "<tr><td>Science</td><td>CPSC 499</td><td>Additional module</td><td></td></tr></table><h4>Historic Modules</h4>",
+            ),
+          );
         return new Response(moduleHtml.replace("<h4>Historic Modules</h4>", "<h4>Unknown section</h4>"));
       };
       const write = vi.spyOn(out, "json");
