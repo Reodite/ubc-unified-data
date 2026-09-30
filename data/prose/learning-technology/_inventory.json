@@ -1,0 +1,2198 @@
+[
+  {
+    "url": "https://lthub.ubc.ca/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-23T17:16:05+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2020/08/17/microsoft-teams-onedrive-live/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2021-11-16T19:57:13+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2020/08/23/zoom-cloud-recording-canvas-integration-available/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2021-11-16T19:57:39+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2020/09/02/iclicker-cloud-ready-for-polling-ubc-courses/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2021-11-16T19:58:00+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2020/09/11/new-vpn-to-help-students-in-china-connect-to-coursework/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2022-04-27T02:04:38+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2020/10/30/chat-filter-bug-in-collaborate-ultra/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2021-11-16T19:58:44+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2020/11/18/new-quizzes-in-canvas-now-fixed/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2021-11-16T19:59:48+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2020/12/23/new-rich-content-editor-in-canvas/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2021-11-16T20:00:06+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2021/02/03/saying-goodbye-to-collaborate-ultra/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2021-11-16T20:00:19+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2021/03/12/zoom-large-meeting-add-on/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2021-11-16T20:00:28+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2021/03/18/ubcv-senate-motion-proctoring/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2021-11-16T20:00:43+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2021/03/31/microsoft-teams-90-day-retention/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2025-03-14T22:25:27+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2021/04/13/recommendation-against-zoom-with-lockdown-browser-invigilation/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2021-11-16T20:01:17+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2021/06/24/collaborate-ultra-turned-off-june-30/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2021-11-16T20:01:28+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2021/08/16/iclicker-classic-remotes-end-support/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2021-11-16T20:01:43+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2021/10/15/ubc-renews-turnitin/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2021-12-10T22:06:56+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2021/11/19/funding-changes-for-crowdmark-gradescope/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-12T22:20:55+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2022/05/17/new-ubc-developed-resource-intro-to-online-teaching/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2022-05-18T16:55:47+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2022/07/04/potential-change-to-your-name/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2022-07-04T21:30:29+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2022/10/13/support-changes-coming-for-edx-edge/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-15T18:39:24+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2022/10/28/zoom-and-microsoft-teams-video-retention-policy/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2025-03-14T22:25:08+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2023/03/03/changes-coming-to-kaltura/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2023-09-19T20:36:17+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2023/04/03/migration-to-kaltura-cloud-underway/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2023-09-19T20:36:34+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2023/04/04/ubc-not-enabling-turnitins-ai-detection/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-24T22:00:30+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2023/04/21/improvement-to-how-iclicker-cloud-works-with-canvas/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2023-04-21T18:21:39+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2023/05/12/migration-of-videos-to-the-kaltura-cloud-is-complete/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2023-09-19T20:39:24+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2023/06/21/central-support-for-crowdmark-ending-april-2024/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2023-09-13T17:55:04+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2023/07/20/new-support-is-available-for-developing-learning-technologies/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2023-07-20T23:05:13+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2023/08/28/ubc-affirms-decision-to-not-enable-turnitin-ai-detection/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2023-08-29T17:05:15+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2023/10/18/zoom-and-microsoft-teams-video-retention-policy-going-into-effect/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2024-03-29T00:08:31+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2023/11/14/zoom-chats-to-be-removed-after-90-days/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2023-11-14T18:30:23+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2023/11/20/pause-on-central-support-for-ally/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2023-11-21T18:01:02+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2023/12/14/annotation-tool-to-receive-support-outside-canvas/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2023-12-14T21:02:03+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2024/01/19/temporary-or-unexpected-remote-instruction/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2025-03-20T23:32:59+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2024/03/20/turnitin-can-be-used-in-coordination-with-canvas/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2024-03-20T18:15:41+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2024/03/28/zoom-video-retention-policy-postponed-recordings-to-be-stored-in-kaltura/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2024-03-28T23:56:47+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2024/09/03/what-to-know-about-working-with-gen-ai-at-ubc/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-03T22:15:10+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2024/10/28/new-process-launched-for-requesting-learning-technology/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-28T21:00:07+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2024/10/31/changes-coming-to-how-publisher-content-and-tools-are-included-in-canvas/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-31T21:15:06+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2024/12/18/kaltura-to-be-upgraded-and-unavailable-overnight-dec-21-22/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2024-12-18T19:05:26+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2025/01/17/new-ai-driven-tool-for-improving-student-writing-available-to-pilot/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2025-01-17T22:00:22+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2025/01/28/new-interim-process-in-place-for-how-publisher-content-and-tools-are-included-in-canvas/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2025-01-28T23:15:42+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2025/03/10/central-support-for-myla-and-ontask-ending/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2025-03-10T19:15:45+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2025/03/21/call-for-summer-learning-analytics-project-proposals/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2025-03-21T18:00:39+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2025/04/07/central-support-for-mattermost-ending/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-07T18:16:36+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2025/08/20/studiosity-pilot-concluded/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2025-09-19T00:33:04+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2025/08/25/recent-zoom-upgrade-may-require-re-adding-zoom-links-to-canvas/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2025-08-25T18:22:35+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2025/12/03/kaltura-lti-integration-upgrade-for-canvas-catalog/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2025-12-03T20:47:02+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2025/12/15/students-beginning-of-term-canvas-course-access/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-20T22:37:26+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2026/01/13/kaltura-lti-integration-upgrade-for-canvas/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-15T23:04:36+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2026/01/20/enabling-a-new-differentiation-tags-feature-within-canvas/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-20T21:36:42+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2026/05/26/migrating-from-eportfolio-to-the-new-canvas-portfolio-feature/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-27T21:12:59+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2026/05/26/threadz-and-student-timezones-suspended-in-may-2026/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-26T20:58:33+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/2026/06/30/introducing-the-new-accessibility-checker-within-canvas/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/posts",
+      "https://lthub.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-30T16:18:21+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/camtasia/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-07T19:09:17+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/canvas-catalog/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-08T19:42:50+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/canvas/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-13T21:40:53+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/canvas/canvas-news/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-30T16:18:21+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/clas/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-22T20:21:34+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/collaborate-ultra/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/collaborate-ultra/collaborate-ultra-news/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2021-11-16T20:01:28+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/compair/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-10-28T17:02:10+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/course-insights/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-31T21:27:18+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/crowdmark/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/crowdmark/crowdmark-news/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-12T22:20:55+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/edx/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/edx/edx-edge-news/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-15T18:39:24+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/github/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-22T20:27:10+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/gradescope/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-26T23:29:10+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/gradescope/gradescope-news/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-12T22:20:55+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/hypothesis/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-06T17:55:41+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/iclicker-cloud/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-12-05T23:32:52+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/iclicker-cloud/iclicker-cloud-news/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2023-04-21T18:21:39+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/ipeer/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2026-02-25T22:41:58+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/jupyterhub/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-22T20:27:10+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/kaltura/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-13T21:40:53+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/kaltura/kaltura-news/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-15T23:04:36+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/lockdown-browser/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-26T23:29:10+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/lockdown-browser/lockdown-browser-news/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2021-11-16T20:01:17+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/locr/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-11T23:17:48+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/microsoft-onedrive/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-06T17:53:54+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/microsoft-onedrive/microsoft-onedrive-news/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-03-14T22:25:27+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/microsoft-teams/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-21T23:08:09+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/microsoft-teams/microsoft-teams-news/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-03-14T22:25:27+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/other-tools/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-09-19T00:33:04+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/peerscholar/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-22T20:21:34+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/peerwise/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-22T20:27:10+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/piazza/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-21T23:08:09+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/prairielearn/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-30T21:28:13+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/proctorio/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/proctorio/proctorio-news/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2021-11-16T20:00:43+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/qualtrics/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-06T17:54:38+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/respondus-quiz/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-22T20:27:10+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/snagit/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-06T17:55:41+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/threadz/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/threadz/threadz-news/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-26T20:58:33+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/turnitin/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-22T20:27:10+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/turnitin/turnitin-news/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-24T22:00:30+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/ubc-blogs/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-21T23:08:09+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/ubc-wiki/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-06T17:54:59+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/videoscribe/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-06T17:55:41+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/webwork/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-07-16T23:17:12+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/zoom/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-26T23:29:10+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/category/zoom/zoom-news/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2025-08-25T18:22:35+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/contact-lthub-popup-form/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages"
+    ],
+    "source_modified_at": "2023-07-10T18:21:42Z",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/dropin/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-23T17:17:02+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/exams/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages"
+    ],
+    "source_modified_at": "2026-07-13T17:24:00Z",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/governance/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-13T19:07:13+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/governance/learning-data-committee/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-06-30T18:40:08+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/governance/learning-tech-leadership/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-03T23:04:23+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/governance/learning-technology-advisory-group/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-06-30T18:34:07+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/governance/lt-hub-leadership/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-07-06T13:57:24+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/governance/operations-committee/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-06-30T18:42:57+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-01-22T00:52:13+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/camtasia-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-07T18:29:55+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/canvas-catalog-administrator-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-07T18:31:08+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/canvas-catalog-learner-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-08T19:42:50+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/canvas-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-30T16:26:35+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/canvas-instructor-guide/canvas-faculty-story-engineering/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-06-30T22:14:53+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/canvas-instructor-guide/canvas-faculty-story-land-and-food-systems/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-12-21T21:55:35+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/canvas-instructor-guide/canvas-faculty-story-law/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-12-20T23:11:17+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/canvas-student-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-04-16T00:21:55+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:learning-technology:10541",
+    "resolved_url": "https://lthub.ubc.ca/guides/canvas-student-guide/"
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/compair-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-10-28T17:02:10+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/course-insights-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-31T21:27:18+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/github-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-07T18:32:15+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/gradescope-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-07T18:32:36+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/gradescope-student-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-07T18:32:56+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:learning-technology:11228",
+    "resolved_url": "https://lthub.ubc.ca/guides/gradescope-student-guide/"
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/iclicker-cloud-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-12-05T22:44:49+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-12-05T23:32:52+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:learning-technology:9771",
+    "resolved_url": "https://lthub.ubc.ca/guides/iclicker-cloud-student-guide/"
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/ipeer-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-02-25T22:41:58+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/jupyterhub-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-07T18:34:46+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/kaltura-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-13T21:40:53+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/kaltura-instructor-guide/kaltura-faculty-story-dentistry/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-12-21T20:14:20+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/kaltura-instructor-guide/kaltura-faculty-story-medicine/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-12-21T20:14:10+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/kaltura-instructor-guide/kaltura-terms-of-use/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages"
+    ],
+    "source_modified_at": "2023-12-21T00:02:30Z",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/lockdown-browser-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-04-18T00:05:14+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/lockdown-browser-student-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-04-18T00:04:28+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:learning-technology:11539",
+    "resolved_url": "https://lthub.ubc.ca/guides/lockdown-browser-student-guide/"
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/locr-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-11T23:17:48+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/locr-student-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-10T20:40:17+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:learning-technology:12509",
+    "resolved_url": "https://lthub.ubc.ca/guides/locr-student-guide/"
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/microsoft-onedrive-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-06T17:53:54+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/microsoft-teams-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-06T17:54:01+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/other-tools/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-06T17:55:41+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/peerscholar-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-06T17:54:10+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/peerscholar-student-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-06T17:54:27+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:learning-technology:14171",
+    "resolved_url": "https://lthub.ubc.ca/guides/peerscholar-student-guide/"
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/piazza-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-11-13T23:09:55+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/piazza-instructor-guide/piazza-faculty-story-science/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-12-21T00:33:14+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/prairielearn-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-30T21:28:13+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/qualtrics-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-06T17:54:38+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/qualtrics-guide/qualtrics-faculty-story-arts/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-12-20T23:14:50+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/turnitin-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-06T17:54:49+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/turnitin-instructor-guide/turnitin-faculty-story-arts/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2024-04-15T18:34:18+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/ubc-blogs-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-06T17:54:54+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/ubc-blogs-guide/ubc-blogs-faculty-story/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2024-12-04T20:41:36+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/ubc-wiki-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-06T17:54:59+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/ubc-wiki-instructor-guide/ubc-wiki-faculty-story/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-12-20T23:14:04+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/webwork-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-07-16T23:17:12+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/webwork-instructor-guide/webwork-faculty-story-science/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-12-21T21:47:47+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/webwork-student-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-06T17:55:24+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:learning-technology:10551",
+    "resolved_url": "https://lthub.ubc.ca/guides/webwork-student-guide/"
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/zoom-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-04-01T16:21:10+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/guides/zoom-student-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-06T17:55:35+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:learning-technology:10553",
+    "resolved_url": "https://lthub.ubc.ca/guides/zoom-student-guide/"
+  },
+  {
+    "url": "https://lthub.ubc.ca/incubating-and-catalysing-pedagogical-innovation-and-inquiry/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-02-26T01:15:42+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/initiatives/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-08-13T17:14:27+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/initiatives/faculty-working-groups/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-22T20:24:09+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/initiatives/learning-technology-decisions/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-18T20:54:09+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/initiatives/learning-technology-decisions/request-technology/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-08-20T22:20:57+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/initiatives/open-source-projects/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-08-13T17:10:15+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/initiatives/student-opportunities/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-11T21:51:21+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/llm-sandbox-a-locally-hosted-privacy-focused-language-model-service/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-06-16T22:24:33+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/news/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-06-30T22:13:44+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/student-support/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-06-30T23:04:49+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/student-support/accommodations-and-accessibility/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-11-03T21:16:07+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/student-support/contacts/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-06-30T23:06:17+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/student-support/tech-requirements/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-14T16:35:50+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/student-support/tool-guides/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-03-20T23:39:26+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/support/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-03-21T17:56:34+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/support/copyright/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-11-03T03:34:50+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/support/educational-media/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-11-03T03:22:44+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/support/instructional-units/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-08-07T17:01:51+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/support/learning-analytics/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-03-21T17:57:58+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/support/learning-analytics/la-faculty-partnership-program/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-12-11T19:12:16+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/support/lt-hub/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-23T17:16:35+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/support/lt-hub/contact/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2022-12-01T20:34:30+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/support/privacy/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2024-12-04T01:00:06+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/support/training-and-professional-development/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2022-07-19T00:15:50+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/technology-tips/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-08T00:07:09+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/technology-tips/accessibility-and-inclusivity/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-06-30T22:38:09+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/technology-tips/email-security/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-07T23:58:19+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/technology-tips/internet-connection/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-07T23:55:45+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/technology-tips/online-assessment/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-07T23:56:06+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/tool-finder/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-06-30T22:12:20+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/tool-finder/assignments-quizzes/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-22T20:27:10+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/tool-finder/communications/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-07T19:05:00+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/tool-finder/course-content/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-07T19:03:20+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/tool-finder/discussions/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-21T23:08:09+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/tool-finder/exams/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-26T23:29:10+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/tool-finder/grading/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-07T21:20:04+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/tool-finder/group-work/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-07T21:12:17+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/tool-finder/lectures-presentations/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-07T19:09:17+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/tool-finder/polls-surveys/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-07T21:16:08+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/tool-finder/student-peer-assessments/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-22T20:21:34+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/ubc-exam-card-scanner-instructor-guide/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/wp-json/wp/v2/pages",
+      "https://lthub.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-03-27T18:42:19+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/ubc_wp_vote_rubric/downvote/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/ubc_wp_vote_rubric-sitemap.xml"
+    ],
+    "source_modified_at": "2022-11-16T21:45:23+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/ubc_wp_vote_rubric/rating/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/ubc_wp_vote_rubric-sitemap.xml"
+    ],
+    "source_modified_at": "2022-11-16T21:45:23+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  },
+  {
+    "url": "https://lthub.ubc.ca/ubc_wp_vote_rubric/upvote/",
+    "discovered_by": [
+      "https://lthub.ubc.ca/ubc_wp_vote_rubric-sitemap.xml"
+    ],
+    "source_modified_at": "2022-11-16T21:45:23+00:00",
+    "status": "excluded",
+    "reason": "Outside the dedicated student-guide collection; instructor and general platform pages stay separate.",
+    "article_id": null
+  }
+]

@@ -1,0 +1,3 @@
+##### I already submitted my courses with my Exchange application\. Why do I need to submit them again?
+
+The proposed course list submitted with your application was based on the course schedule for last year and for admission purposes only\. As course offerings change from year to year, and each course has various scheduled sections, that list is not suitable for registration\. The course schedule for 2026/27 was recently published, so the course requests submitted now through the survey will be used for actual registration\.

@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "hostname": "mfre.landfood.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w3 first homepage review",
+    "rationale": "The public UBC Master of Food and Resource Economics homepage explains a one-year graduate program, courses, concentrations, faculty, professional skills and applications. It provides useful academic information without an exclusively Okanagan mandate. Explicit careers, event participation and contact assistance override the academic host purpose.",
+    "evidence": [
+      "https://mfre.landfood.ubc.ca/ | 2d57a8eb5ad30c75156c95b6b13297722f3e089315a7654daed92bdce688ae53 | The Master of Food and Resource Economics (MFRE) is a one‐year course‐based graduate program. Our program focuses on economic solutions for climate, food and the environment, offering a strong combination of academic concentrations, paired with a 4‐month work experience project and a full year of professional and data analytic workshops.",
+      "https://mfre.landfood.ubc.ca/ | 2d57a8eb5ad30c75156c95b6b13297722f3e089315a7654daed92bdce688ae53 | Impactful Academics; Courses, Concentrations, and Real-World Applications; Globally Recognized Faculty; Follow us on Instagram UBCMFRE and LinkedIn",
+      "https://mfre.landfood.ubc.ca/ | 2d57a8eb5ad30c75156c95b6b13297722f3e089315a7654daed92bdce688ae53 | MFRE EVENTS Fall 2026; Industry Insight Series; Career Opportunities; High Job Prospects and Valuable Work Experience",
+      "https://mfre.landfood.ubc.ca/ | 2d57a8eb5ad30c75156c95b6b13297722f3e089315a7654daed92bdce688ae53 | Questions? Connect with one of our team members in-person or virtually; Contact us; Apply Now"
+    ]
+  },
+  "rules": [
+    {
+      "id": "careers-and-events",
+      "category": "opportunities",
+      "rationale": "The homepage presents career opportunities and an industry insight event series.",
+      "title_pattern": "^(?:Career Opportunities\\b|MFRE Events\\b|Industry Insight Series\\b)"
+    },
+    {
+      "id": "contact-help",
+      "category": "support",
+      "rationale": "The homepage offers direct assistance from the program team.",
+      "title_pattern": "^Contact(?:\\s|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "MFRE provides graduate degree program information, academic concentrations, courses, faculty expertise, professional training and application guidance."
+  }
+}

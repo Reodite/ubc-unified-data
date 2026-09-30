@@ -1,0 +1,993 @@
+[
+  {
+    "url": "https://academicintegrity.ubc.ca/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-02T20:33:22+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:5784",
+    "resolved_url": "https://academicintegrity.ubc.ca/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/2022/02/10/launch-of-academic-integrity-website/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/posts",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2022-02-23T19:38:14+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:5195",
+    "resolved_url": "https://academicintegrity.ubc.ca/2022/02/10/launch-of-academic-integrity-website/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/2022/02/23/academic-integrity-working-group-creates-a-website-for-academic-integrity/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/posts",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2022-02-24T05:35:11+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:5240",
+    "resolved_url": "https://academicintegrity.ubc.ca/2022/02/23/academic-integrity-working-group-creates-a-website-for-academic-integrity/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/2022/03/25/international-center-for-academic-integrity/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/posts",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2022-04-13T17:31:46+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:5270",
+    "resolved_url": "https://academicintegrity.ubc.ca/2022/03/25/international-center-for-academic-integrity/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/2022/04/13/academic-integrity-events-at-2022-ctlt-spring-institute/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/posts",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2022-04-14T03:46:36+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:5332",
+    "resolved_url": "https://academicintegrity.ubc.ca/2022/04/13/academic-integrity-events-at-2022-ctlt-spring-institute/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/2022/04/13/academic-integrity-issue-of-ctlts-edubytes-newsletter/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/posts",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2022-04-13T18:29:47+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:5320",
+    "resolved_url": "https://academicintegrity.ubc.ca/2022/04/13/academic-integrity-issue-of-ctlts-edubytes-newsletter/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/2022/05/03/academic-integrity-at-celebrate-learning-week-2022/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/posts",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2022-05-03T21:45:39+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:5352",
+    "resolved_url": "https://academicintegrity.ubc.ca/2022/05/03/academic-integrity-at-celebrate-learning-week-2022/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/2022/05/31/dr-laurie-mcneill-receives-tricia-bertram-gallant-award-for-outstanding-service-from-the-international-center-for-academic-integrity/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/posts",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2022-06-03T19:22:16+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:5363",
+    "resolved_url": "https://academicintegrity.ubc.ca/2022/05/31/dr-laurie-mcneill-receives-tricia-bertram-gallant-award-for-outstanding-service-from-the-international-center-for-academic-integrity/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/2022/08/26/academic-integrity-week-2022/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/posts",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2022-09-12T18:35:09+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:8806",
+    "resolved_url": "https://academicintegrity.ubc.ca/2022/08/26/academic-integrity-week-2022/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/2022/09/15/academic-integrity-new-regulation-website/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/posts",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2022-09-15T21:03:47+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:9412",
+    "resolved_url": "https://academicintegrity.ubc.ca/2022/09/15/academic-integrity-new-regulation-website/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/2022/11/24/connecting-on-academic-integrity-at-ubc-okanagan/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/posts",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2022-11-24T22:24:35+00:00",
+    "status": "excluded",
+    "reason": "Okanagan-specific content outside this Vancouver corpus.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/2022/11/24/panel-session-educative-approaches-to-academic-integrity/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/posts",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2023-01-10T20:39:09+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:9676",
+    "resolved_url": "https://academicintegrity.ubc.ca/2022/11/24/panel-session-educative-approaches-to-academic-integrity/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/2023/01/10/teaching-with-integrity-methods-and-strategies-for-fostering-academic-integrity-in-your-classroom-or-laboratory/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/posts",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2023-01-10T20:37:27+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:9710",
+    "resolved_url": "https://academicintegrity.ubc.ca/2023/01/10/teaching-with-integrity-methods-and-strategies-for-fostering-academic-integrity-in-your-classroom-or-laboratory/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/2023/02/15/the-opportunities-of-chatgpt/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/posts",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2023-02-15T23:39:56+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:9734",
+    "resolved_url": "https://academicintegrity.ubc.ca/2023/02/15/the-opportunities-of-chatgpt/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/2023/05/17/editorial-academic-integrity-and-the-role-of-the-office-of-the-ombudsperson-for-students/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/posts",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2023-05-18T16:13:32+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:9935",
+    "resolved_url": "https://academicintegrity.ubc.ca/2023/05/17/editorial-academic-integrity-and-the-role-of-the-office-of-the-ombudsperson-for-students/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/2023/05/17/profiles-qa-with-ubcv-and-ubco-student-partners/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/posts",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2023-05-17T22:19:59+00:00",
+    "status": "excluded",
+    "reason": "Okanagan-specific content outside this Vancouver corpus.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/2024/04/12/editorial-the-evolution-of-generative-ai-in-teaching-and-learning-at-ubc/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/posts",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2024-04-12T16:45:32+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:10936",
+    "resolved_url": "https://academicintegrity.ubc.ca/2024/04/12/editorial-the-evolution-of-generative-ai-in-teaching-and-learning-at-ubc/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/2024/09/19/academic-integrity-digest-september-2024/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/posts",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-01T19:35:55+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:11369",
+    "resolved_url": "https://academicintegrity.ubc.ca/2024/09/19/academic-integrity-digest-september-2024/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/about-academic-integrity/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-13T18:49:17+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:3599",
+    "resolved_url": "https://academicintegrity.ubc.ca/about-academic-integrity/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/about-academic-integrity/academic-integrity-at-ubc/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-08-03T19:38:35+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:3711",
+    "resolved_url": "https://academicintegrity.ubc.ca/about-academic-integrity/academic-integrity-at-ubc/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/about-academic-integrity/glossary/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-19T21:23:36+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:3697",
+    "resolved_url": "https://academicintegrity.ubc.ca/about-academic-integrity/glossary/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/academic-integrity-hub",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/diversionary-process-updated/"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:academic-integrity:11520",
+    "resolved_url": "https://sandbox-academic-integrity-2022.sites.olt.ubc.ca/aihub/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/academic-integrity-in-teaching-and-learning/contract-cheating/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/teaching-and-learning/"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:academic-integrity:3353",
+    "resolved_url": "https://sandbox-academic-integrity-2022.sites.olt.ubc.ca/teaching-and-learning/contract-cheating/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/academic-integrity-in-teaching-and-learning/producing-knowledge/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/teaching-and-learning/"
+    ],
+    "source_modified_at": null,
+    "status": "unavailable",
+    "reason": "ProseFetchError: HTTP 404: https://academicintegrity.ubc.ca/academic-integrity-in-teaching-and-learning/producing-knowledge/",
+    "article_id": null,
+    "http_status": 404
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/academic-integrity-in-teaching-and-learning/teaching",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/teaching-and-learning/"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:academic-integrity:3436",
+    "resolved_url": "https://sandbox-academic-integrity-2022.sites.olt.ubc.ca/teaching-and-learning/teaching-academic-integrity/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/academic-integrity-in-teaching-and-learning/understanding-academic-integrity/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/teaching-and-learning/"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:academic-integrity:3387",
+    "resolved_url": "https://sandbox-academic-integrity-2022.sites.olt.ubc.ca/teaching-and-learning/understanding-academic-integrity/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/academic-integrity-syllabus-statement/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-19T16:37:09+00:00",
+    "status": "excluded",
+    "reason": "Faculty administration, instructor templates or syllabus-authoring material.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/academic-integrity-ubco/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-09T17:48:44+00:00",
+    "status": "excluded",
+    "reason": "Okanagan-specific content outside this Vancouver corpus.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/academic-integrity-week/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-10T17:34:59+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:9152",
+    "resolved_url": "https://academicintegrity.ubc.ca/academic-integrity-week/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/academic-integrity-working-group/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2022-02-24T05:30:08+00:00",
+    "status": "excluded",
+    "reason": "Faculty administration, instructor templates or syllabus-authoring material.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/academic-misconduct",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/regulation-and-process-updated/"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:academic-integrity:7559",
+    "resolved_url": "https://academicintegrity.ubc.ca/regulation-process/academic-misconduct/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/aid/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-02T19:24:18+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:9827",
+    "resolved_url": "https://academicintegrity.ubc.ca/aid/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/aid/subscribed/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-05-23T18:44:32+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:9985",
+    "resolved_url": "https://academicintegrity.ubc.ca/aid/subscribed/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/aihub/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-23T17:28:20+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:11520",
+    "resolved_url": "https://academicintegrity.ubc.ca/aihub/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/aim-modules/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/diversionary-process/"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:academic-integrity:11562",
+    "resolved_url": "https://academicintegrity.ubc.ca/modules/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/author/breeonne/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/author-sitemap.xml"
+    ],
+    "source_modified_at": "2022-02-23T19:30:22+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/awareness/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-01-29T17:40:28+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:11548",
+    "resolved_url": "https://academicintegrity.ubc.ca/awareness/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/bcai-day/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-10-26T21:50:42+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:10584",
+    "resolved_url": "https://academicintegrity.ubc.ca/bcai-day/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/category/community/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2022-06-03T19:22:16+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/category/uncategorized/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/category-sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-01T19:35:55+00:00",
+    "status": "excluded",
+    "reason": "Authentication, administration, search or taxonomy route rather than an article.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/chatgpt-faq/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/2024/09/19/academic-integrity-digest-september-2024/"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:academic-integrity:11516",
+    "resolved_url": "https://academicintegrity.ubc.ca/genai/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/coll-0919-wip/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages"
+    ],
+    "source_modified_at": "2025-12-03T18:22:57Z",
+    "status": "excluded",
+    "reason": "Source API marks the record protected or not published.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/collaborative-learning",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/teaching-and-learning/"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:academic-integrity:3089",
+    "resolved_url": "https://academicintegrity.ubc.ca/teaching-and-learning/collaborative-learning/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/conch-0919-wip/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages"
+    ],
+    "source_modified_at": "2026-06-02T19:28:08Z",
+    "status": "excluded",
+    "reason": "Source API marks the record protected or not published.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/contact/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-07-20T20:30:27+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:3612",
+    "resolved_url": "https://academicintegrity.ubc.ca/contact/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/creating-knowledge/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/teaching-and-learning/"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:academic-integrity:3428",
+    "resolved_url": "https://academicintegrity.ubc.ca/teaching-and-learning/creating-knowledge/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/demonstrating-knowledge",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/teaching-and-learning/"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:academic-integrity:3433",
+    "resolved_url": "https://sandbox-academic-integrity-2022.sites.olt.ubc.ca/teaching-and-learning/demonstrating-knowledge/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/diversionary-process-at-ubcv/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-04T21:41:47+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:13065",
+    "resolved_url": "https://academicintegrity.ubc.ca/diversionary-process-at-ubcv/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/diversionary-process-updated/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-04T21:41:04+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:13058",
+    "resolved_url": "https://academicintegrity.ubc.ca/diversionary-process-updated/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/diversionary-process/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-01-29T17:49:50+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:8109",
+    "resolved_url": "https://academicintegrity.ubc.ca/diversionary-process/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/faculty-forum/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-05-25T03:03:14+00:00",
+    "status": "excluded",
+    "reason": "Faculty administration, instructor templates or syllabus-authoring material.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/faculty-start/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2022-09-06T20:28:42+00:00",
+    "status": "excluded",
+    "reason": "Faculty administration, instructor templates or syllabus-authoring material.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/faq/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-29T18:52:17+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:3285",
+    "resolved_url": "https://academicintegrity.ubc.ca/faq/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/genai/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-29T18:54:46+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:11516",
+    "resolved_url": "https://academicintegrity.ubc.ca/genai/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/generative-ai-syllabus/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-29T18:55:53+00:00",
+    "status": "excluded",
+    "reason": "Faculty administration, instructor templates or syllabus-authoring material.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/grad-students/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-02T17:28:17+00:00",
+    "status": "excluded",
+    "reason": "Graduate-only topic outside the undergraduate/shared-service scope.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/home",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:academic-integrity:5784",
+    "resolved_url": "https://academicintegrity.ubc.ca/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/modules/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-20T14:42:12+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:11562",
+    "resolved_url": "https://academicintegrity.ubc.ca/modules/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/news/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/post-sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-01T19:35:55+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:5185",
+    "resolved_url": "https://sandbox-academic-integrity-2022.sites.olt.ubc.ca/news/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/regulation-and-process-updated/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-04T21:28:09+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:13031",
+    "resolved_url": "https://academicintegrity.ubc.ca/regulation-and-process-updated/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/regulation-process/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-29T18:40:54+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:3142",
+    "resolved_url": "https://academicintegrity.ubc.ca/regulation-process/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/regulation-process/academic-misconduct-updated/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-04T21:29:36+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:13035",
+    "resolved_url": "https://academicintegrity.ubc.ca/regulation-process/academic-misconduct-updated/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/regulation-process/academic-misconduct/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-08-02T22:26:16+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:7559",
+    "resolved_url": "https://academicintegrity.ubc.ca/regulation-process/academic-misconduct/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/regulation-process/contract-cheating",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/regulation-process/academic-misconduct/"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:academic-integrity:3353",
+    "resolved_url": "https://sandbox-academic-integrity-2022.sites.olt.ubc.ca/teaching-and-learning/contract-cheating/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/regulation-process/faculty-updated/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-04T21:34:51+00:00",
+    "status": "excluded",
+    "reason": "Faculty administration, instructor templates or syllabus-authoring material.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/regulation-process/faculty/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-01T21:23:23+00:00",
+    "status": "excluded",
+    "reason": "Faculty administration, instructor templates or syllabus-authoring material.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/regulation-process/faculty/faculty-contacts/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-10-10T20:07:54+00:00",
+    "status": "excluded",
+    "reason": "Faculty administration, instructor templates or syllabus-authoring material.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/regulation-process/faculty/important-considerations/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-08-02T23:23:10+00:00",
+    "status": "excluded",
+    "reason": "Faculty administration, instructor templates or syllabus-authoring material.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/regulation-process/faculty/templates/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-02-04T00:35:56+00:00",
+    "status": "excluded",
+    "reason": "Faculty administration, instructor templates or syllabus-authoring material.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/regulation-process/information-for-students-updated/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-04T21:32:08+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:13039",
+    "resolved_url": "https://academicintegrity.ubc.ca/regulation-process/information-for-students-updated/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/regulation-process/resources/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages"
+    ],
+    "source_modified_at": "2025-01-24T15:07:19Z",
+    "status": "excluded",
+    "reason": "Source API marks the record protected or not published.",
+    "article_id": null
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/regulation-process/students/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-29T18:42:32+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:3554",
+    "resolved_url": "https://academicintegrity.ubc.ca/regulation-process/students/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/regulation-process/students/top-10-things",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/regulation-process/students/"
+    ],
+    "source_modified_at": null,
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:03e54eccbaeb0131684cf7f7",
+    "resolved_url": "https://academic.ubc.ca/teaching-learning/10-things-ubc-students-should-know/academic-integrity"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/regulation/faculty-contacts/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/regulation-and-process-updated/"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "Faculty administration, instructor templates or syllabus-authoring material.",
+    "article_id": null,
+    "resolved_url": "https://academicintegrity.ubc.ca/regulation-process/faculty/faculty-contacts/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/resources/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-02T17:17:25+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:4274",
+    "resolved_url": "https://academicintegrity.ubc.ca/resources/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/roundup/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-03-28T18:40:25+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:12119",
+    "resolved_url": "https://academicintegrity.ubc.ca/roundup/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/student-start/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml",
+      "Declared public source root"
+    ],
+    "source_modified_at": "2026-08-04T18:46:22+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:5447",
+    "resolved_url": "https://academicintegrity.ubc.ca/student-start/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/take-five/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/teaching-and-learning/teaching-academic-integrity/"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:academic-integrity:11548",
+    "resolved_url": "https://academicintegrity.ubc.ca/awareness/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/teaching-and-learning/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-29T18:39:14+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:3047",
+    "resolved_url": "https://academicintegrity.ubc.ca/teaching-and-learning/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/teaching-and-learning/collaborative-learning/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-29T16:49:30+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:3089",
+    "resolved_url": "https://academicintegrity.ubc.ca/teaching-and-learning/collaborative-learning/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/teaching-and-learning/contract-cheating/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-29T16:50:09+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:3353",
+    "resolved_url": "https://academicintegrity.ubc.ca/teaching-and-learning/contract-cheating/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/teaching-and-learning/creating-knowledge/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-08-01T20:27:23+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:3428",
+    "resolved_url": "https://academicintegrity.ubc.ca/teaching-and-learning/creating-knowledge/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/teaching-and-learning/demonstrating-knowledge/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2024-12-02T19:25:19+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:3433",
+    "resolved_url": "https://academicintegrity.ubc.ca/teaching-and-learning/demonstrating-knowledge/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/teaching-and-learning/teaching-academic-integrity/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-02T20:01:20+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:3436",
+    "resolved_url": "https://academicintegrity.ubc.ca/teaching-and-learning/teaching-academic-integrity/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/teaching-and-learning/technology/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2022-08-30T20:11:47+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:3932",
+    "resolved_url": "https://academicintegrity.ubc.ca/teaching-and-learning/technology/"
+  },
+  {
+    "url": "https://academicintegrity.ubc.ca/teaching-and-learning/understanding-academic-integrity/",
+    "discovered_by": [
+      "https://academicintegrity.ubc.ca/wp-json/wp/v2/pages",
+      "https://academicintegrity.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2023-07-28T21:33:24+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:academic-integrity:3387",
+    "resolved_url": "https://academicintegrity.ubc.ca/teaching-and-learning/understanding-academic-integrity/"
+  }
+]

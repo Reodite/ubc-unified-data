@@ -1,0 +1,52 @@
+[
+  {
+    "url": "https://wellbeing.ubc.ca/move-ubc-classroom-stretching-video",
+    "discovered_by": [
+      "student-support/wellbeing_resources.json"
+    ],
+    "source_modified_at": "2017-12-08T18:33:48+00:00",
+    "status": "collected",
+    "article_id": "prose:wellbeing:wellbeing:1f942fc0-627c-4752-abc1-f6343e80db69",
+    "reason": null
+  },
+  {
+    "url": "https://wellbeing.ubc.ca/nurs-180-stress-and-strategies-promote-wellbeing",
+    "discovered_by": [
+      "student-support/wellbeing_resources.json"
+    ],
+    "source_modified_at": "2025-03-19T21:16:29+00:00",
+    "status": "collected",
+    "article_id": "prose:wellbeing:wellbeing:7f15668b-0817-4e40-8cec-50afa55b2a67",
+    "reason": null
+  },
+  {
+    "url": "https://wellbeing.ubc.ca/suicide-awareness-intervention-training-sait",
+    "discovered_by": [
+      "student-support/wellbeing_resources.json"
+    ],
+    "source_modified_at": "2024-05-01T22:28:02+00:00",
+    "status": "collected",
+    "article_id": "prose:wellbeing:wellbeing:5a119b52-bea6-42b6-b1c1-8016fa63050e",
+    "reason": null
+  },
+  {
+    "url": "https://wellbeing.ubc.ca/wellness-workshops-student-leaders",
+    "discovered_by": [
+      "student-support/wellbeing_resources.json"
+    ],
+    "source_modified_at": "2024-05-01T22:28:02+00:00",
+    "status": "collected",
+    "article_id": "prose:wellbeing:wellbeing:c9fde04f-9102-473e-b8e2-fd32f50b88ef",
+    "reason": null
+  },
+  {
+    "url": "https://wellbeing.ubc.ca/wellness-workshops-students",
+    "discovered_by": [
+      "student-support/wellbeing_resources.json"
+    ],
+    "source_modified_at": "2024-05-01T22:28:02+00:00",
+    "status": "collected",
+    "article_id": "prose:wellbeing:wellbeing:7d9fe76e-82b7-4b6b-82af-ec66e7a4d4a3",
+    "reason": null
+  }
+]

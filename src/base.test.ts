@@ -255,6 +255,24 @@ describe("Http", () => {
     expect(backoff).toBe(3000);
   });
 
+  it("posts form data and reads HTML calendar responses", async () => {
+    const http = new Http({ retries: 0 });
+    http.responder = (method, url, body) => {
+      expect(method).toBe("POST");
+      expect(url).toBe("https://hours.library.ubc.ca/includes/calendar.inc.php");
+      expect(body).toBe("location_id=2&month=10&year=2026");
+      return respond(200, "<section>October hours</section>");
+    };
+    await expect(
+      http.postText("https://hours.library.ubc.ca/includes/calendar.inc.php", {
+        location_id: 2,
+        month: 10,
+        year: 2026,
+        absent: null,
+      }),
+    ).resolves.toBe("<section>October hours</section>");
+  });
+
   it("does not retry 404 (not a retry status)", async () => {
     let calls = 0;
     const http = new Http({ retries: 3, minInterval: 0, timeout: 5 });

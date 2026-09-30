@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "hostname": "outreach.math.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner ca37b94e-5757-4878-811c-907915e18161; primary retained-homepage review under article-only scope",
+    "rationale": "The UBC Vancouver Mathematics Outreach site provides public school workshops, contests, math circles, teacher training, Indigenous mathematics education and participation information.",
+    "evidence": [
+      "https://outreach.math.ubc.ca/ | 636dae7005b02c9eea81ebbb203e0569642a326164b8d838cd19c742f22292d3 | We invite you to learn more about the UBC Mathematics Outreach activities.",
+      "https://outreach.math.ubc.ca/ | 636dae7005b02c9eea81ebbb203e0569642a326164b8d838cd19c742f22292d3 | The School Workshop program, successful for over 20 years, involves UBC faculty and students running problem solving workshops in high school and elementary schools.",
+      "https://outreach.math.ubc.ca/ | 636dae7005b02c9eea81ebbb203e0569642a326164b8d838cd19c742f22292d3 | Over the last few years the UBC Math Department has increased its program to support Aboriginal learners in mathematics."
+    ]
+  },
+  "rules": [
+    {
+      "id": "outreach-participation",
+      "category": "opportunities",
+      "rationale": "Get-involved, donor, volunteer and teacher paths invite participation.",
+      "path_pattern": "^/inv_(?:home|donor|volunteer|instructor)\\.html$"
+    },
+    {
+      "id": "outreach-news",
+      "category": "news",
+      "rationale": "The site identifies a bounded news path.",
+      "path_pattern": "^/info_news\\.html$"
+    },
+    {
+      "id": "outreach-contact",
+      "category": "support",
+      "rationale": "The site identifies a bounded contact path.",
+      "path_pattern": "^/info_contact\\.html$"
+    }
+  ],
+  "fallback": {
+    "id": "mathematics-outreach-education",
+    "category": "academics",
+    "rationale": "The site primarily presents mathematics learning, workshops, contests and teacher education."
+  }
+}

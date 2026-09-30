@@ -159,7 +159,7 @@ export const Reports = register(
       const unique: Array<Record<string, unknown>> = [];
       const byUrl = new Map<string, Record<string, unknown>>();
       for (const row of allDocuments) {
-        // last page linking a URL wins, like the Python dict it replaces
+        // The last page linking a URL supplies that document's metadata.
         byUrl.set(String(row["url"]), row);
       }
       unique.push(...byUrl.values());

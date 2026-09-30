@@ -1,0 +1,130 @@
+[
+  {
+    "hostname": "lam.library.ubc.ca",
+    "role": "category",
+    "bodyClass": "archive category category-carousel-test category-10743 wp-theme-wp-hybrid-clf l2-column-sm l2-column primary-active secondary-inactive subsidiary-inactive",
+    "message": "Apologies, but no results were found.",
+    "source_url": "https://lam.library.ubc.ca/category/carousel-test/",
+    "snapshot_sha256": "4cc3ada7c120a217cfa6033f0306c2d651ac2d225130ba28c3288a28d605d846"
+  },
+  {
+    "hostname": "macl.arts.ubc.ca",
+    "role": "tax-event-venue",
+    "bodyClass": "archive tax-event-venue term-online term-433602 wp-theme-wp-hybrid-clf l3-column-pms l3-column primary-active secondary-inactive subsidiary-inactive",
+    "message": "Apologies, but no events were found for the requested venue.",
+    "source_url": "https://macl.arts.ubc.ca/events/venues/online/",
+    "snapshot_sha256": "f58cf7a2548aafaeb869e2f6bf842da00ea0c3b90124a80e23a24e1dfe19e294"
+  },
+  {
+    "hostname": "macl.arts.ubc.ca",
+    "role": "post-type-archive-event",
+    "bodyClass": "archive post-type-archive post-type-archive-event wp-theme-wp-hybrid-clf l3-column-pms l3-column primary-active secondary-inactive subsidiary-inactive",
+    "message": "Apologies, but no results were found for the requested archive.",
+    "source_url": "https://macl.arts.ubc.ca/events/event/",
+    "snapshot_sha256": "d920fdeb341febea2b3c76a13b54b8fb603daa09e1eae4cf584126b8be356007"
+  },
+  {
+    "hostname": "mech.ubc.ca",
+    "role": "tax-event-venue",
+    "bodyClass": "archive tax-event-venue term-university-golf-club term-55555305909 wp-theme-wp-hybrid-clf full-width l2-column-sm l2-column primary-active secondary-active subsidiary-active",
+    "message": "Apologies, but no events were found for the requested venue.",
+    "source_url": "https://mech.ubc.ca/events/venues/university-golf-club/",
+    "snapshot_sha256": "eb173eb0dc47e98de15eccfece81fbb063f2d0ad0f7f45196d5ec2384f2871f5"
+  },
+  {
+    "hostname": "mech.ubc.ca",
+    "role": "tax-event-category",
+    "bodyClass": "archive tax-event-category term-alumni term-55555305901 wp-theme-wp-hybrid-clf full-width l2-column-sm l2-column primary-active secondary-active subsidiary-active",
+    "message": "Apologies, but no events were found for the requested category.",
+    "source_url": "https://mech.ubc.ca/events/category/alumni/",
+    "snapshot_sha256": "1a0bdc559d4fadf7cc6ff92372b787040dc6328d37785637a770a95a36558db6"
+  },
+  {
+    "hostname": "mech.ubc.ca",
+    "role": "tax-event-tag",
+    "bodyClass": "archive tax-event-tag term-naval-architecture-and-marine-engineering term-55555306058 wp-theme-wp-hybrid-clf full-width l2-column-sm l2-column primary-active secondary-active subsidiary-active",
+    "message": "Apologies, but no events were found for the requested tag.",
+    "source_url": "https://mech.ubc.ca/events/tag/naval-architecture-and-marine-engineering/",
+    "snapshot_sha256": "094053deb11baea68f3c46fb94c1dc5182af2f5a6f9243629bad9ee195a1796a"
+  },
+  {
+    "hostname": "mech.ubc.ca",
+    "role": "post-type-archive-event",
+    "bodyClass": "archive post-type-archive post-type-archive-event wp-theme-wp-hybrid-clf full-width l2-column-sm l2-column primary-active secondary-active subsidiary-active",
+    "message": "Apologies, but no results were found for the requested archive.",
+    "source_url": "https://mech.ubc.ca/events/event/",
+    "snapshot_sha256": "40cd95616b179d38b2046aea42d6b5cc10371690eb3f45a0c51ce7b503529f96"
+  },
+  {
+    "hostname": "mes.arts.ubc.ca",
+    "role": "post-type-archive-event",
+    "bodyClass": "archive post-type-archive post-type-archive-event wp-theme-wp-hybrid-clf l3-column-pms l3-column primary-active secondary-inactive subsidiary-inactive",
+    "message": "Apologies, but no results were found for the requested archive.",
+    "source_url": "https://mes.arts.ubc.ca/events/event/",
+    "snapshot_sha256": "454503ad8a614777fedb6742cb6b8f28ead12e9fa52e3b8ec79dbdf694215a39"
+  },
+  {
+    "hostname": "mes.arts.ubc.ca",
+    "role": "tax-event-venue",
+    "bodyClass": "archive tax-event-venue term-place-of-many-trees term-433613 wp-theme-wp-hybrid-clf l3-column-pms l3-column primary-active secondary-inactive subsidiary-inactive",
+    "message": "Apologies, but no events were found for the requested venue.",
+    "source_url": "https://mes.arts.ubc.ca/events/venues/place-of-many-trees/",
+    "snapshot_sha256": "b016352428bf4b48805772b4d39087a8f116f64269e1eb0223c3c97923a9e363"
+  },
+  {
+    "hostname": "mtrl.ubc.ca",
+    "role": "tax-event-category",
+    "bodyClass": "archive tax-event-category term-research term-574691 wp-theme-wp-hybrid-clf full-width l2-column-sm l2-column primary-active secondary-inactive subsidiary-inactive",
+    "message": "Apologies, but no events were found for the requested category.",
+    "source_url": "https://mtrl.ubc.ca/events/category/research/",
+    "snapshot_sha256": "e3a654035b0b1e9d4cf4695a7438632fc071a7655cf81e0b16b0ec54107dda1c"
+  },
+  {
+    "hostname": "mtrl.ubc.ca",
+    "role": "post-type-archive-event",
+    "bodyClass": "archive post-type-archive post-type-archive-event wp-theme-wp-hybrid-clf full-width l2-column-sm l2-column primary-active secondary-inactive subsidiary-inactive",
+    "message": "Apologies, but no results were found for the requested archive.",
+    "source_url": "https://mtrl.ubc.ca/events/",
+    "snapshot_sha256": "ae381c718308500aa809bed95576ba6db6f1de5afe19ba62a882d4ba6660928d"
+  },
+  {
+    "hostname": "nitep.educ.ubc.ca",
+    "role": "post-type-archive-event",
+    "bodyClass": "archive post-type-archive post-type-archive-event wp-theme-wp-hybrid-clf full-width l2-column-sm l2-column primary-active secondary-active subsidiary-inactive",
+    "message": "Apologies, but no results were found for the requested archive.",
+    "source_url": "https://nitep.educ.ubc.ca/NITEPevents/",
+    "snapshot_sha256": "817bb9a9519b18cb8acf85c0cc201ad947f41b2e42f6bb4bcf237ea194f9871d"
+  },
+  {
+    "hostname": "rgst.arts.ubc.ca",
+    "role": "post-type-archive-event",
+    "bodyClass": "archive post-type-archive post-type-archive-event wp-theme-wp-hybrid-clf full-width l2-column-sm l2-column primary-active secondary-inactive subsidiary-inactive",
+    "message": "Apologies, but no results were found for the requested archive.",
+    "source_url": "https://rgst.arts.ubc.ca/events/event/",
+    "snapshot_sha256": "874db119a4c71adc75cf298f2012e4601cb9987ec0d317eec2a2ddd1f31ccea6"
+  },
+  {
+    "hostname": "rgst.arts.ubc.ca",
+    "role": "tax-event-category",
+    "bodyClass": "archive tax-event-category term-events term-153 wp-theme-wp-hybrid-clf full-width l2-column-sm l2-column primary-active secondary-inactive subsidiary-inactive",
+    "message": "Apologies, but no events were found for the requested category.",
+    "source_url": "https://rgst.arts.ubc.ca/events/category/events/",
+    "snapshot_sha256": "5edd23c5f11f40abe5bef8186dc1251dfa4e68f79f425ab9fc2a9b622031357c"
+  },
+  {
+    "hostname": "rgst.arts.ubc.ca",
+    "role": "tax-event-venue",
+    "bodyClass": "archive tax-event-venue term-buchanan-c203 term-529780 wp-theme-wp-hybrid-clf full-width l2-column-sm l2-column primary-active secondary-inactive subsidiary-inactive",
+    "message": "Apologies, but no events were found for the requested venue.",
+    "source_url": "https://rgst.arts.ubc.ca/events/venues/buchanan-c203/",
+    "snapshot_sha256": "460e5e966f20cc6faf0a35d87dcc941d5d47c681ae4d0f9b5da8702439a9887e"
+  },
+  {
+    "hostname": "smp.med.ubc.ca",
+    "role": "user",
+    "bodyClass": "wordpress ltr en_US child-theme multisite blog-93 y2026 m09 d27 h01 sunday logged-out archive user user-sarah-purcell full-width l2-column-sm l2-column primary-active secondary-inactive subsidiary-inactive",
+    "message": "Apologies, but no results were found.",
+    "source_url": "https://smp.med.ubc.ca/about/contact/sarah-purcell/",
+    "snapshot_sha256": "97388957eddfb5198f0b3f31f66fffb0f3906261a6b3b536843ed2389abe91f9"
+  }
+]

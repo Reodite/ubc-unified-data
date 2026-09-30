@@ -1,0 +1,35 @@
+[
+  {
+    "source": "https://it.ubc.ca/jsonapi/node/service",
+    "authority": "UBC Information Technology",
+    "representation": "facts_and_links",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "records": 19,
+    "upstream_records": 101,
+    "excluded_by_audience": 82,
+    "robots_url": "https://it.ubc.ca/robots.txt",
+    "campus": null
+  },
+  {
+    "source": "https://wellbeing.ubc.ca/jsonapi/node/resources",
+    "authority": "UBC Wellbeing",
+    "representation": "facts_and_links",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "records": 5,
+    "upstream_records": 40,
+    "excluded_by_scope": 35,
+    "robots_url": "https://wellbeing.ubc.ca/robots.txt",
+    "scope": "undergraduate",
+    "notes": "Requires Students in the audience taxonomy; excludes graduate-only populations and other campuses. Missing targets are recorded in _unavailable.json, not fetched or inferred. Multi-campus/virtual resources remain. Historical resources are not assumed current."
+  },
+  {
+    "source": "https://learningcommons.ubc.ca/wp-json/wp/v2/pages",
+    "authority": "UBC Learning Commons",
+    "representation": "facts_and_links",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "records": 34,
+    "robots_url": "https://learningcommons.ubc.ca/robots.txt",
+    "campus": "vancouver",
+    "skipped": null
+  }
+]

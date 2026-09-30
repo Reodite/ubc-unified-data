@@ -1,0 +1,3822 @@
+[
+  {
+    "url": "https://recreation.ubc.ca/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-03T18:41:55",
+    "status": "collected",
+    "article_id": "prose:recreation:133",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/2025/06/17/physical-activity-programming-update/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-06-17T17:39:24",
+    "status": "collected",
+    "article_id": "prose:recreation:148418",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-06-10T19:37:11",
+    "status": "collected",
+    "article_id": "prose:recreation:759",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/about/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-01-06T20:08:32",
+    "status": "collected",
+    "article_id": "prose:recreation:78708",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/about/aquatics-faq/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-06-26T20:05:20",
+    "status": "collected",
+    "article_id": "prose:recreation:65227",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/about/etiquette/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-11-29T17:44:58",
+    "status": "collected",
+    "article_id": "prose:recreation:53283",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/adult/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-07-02T18:13:38",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/adult/fall/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-06-28T23:35:17",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/adult/spring-summer/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-02-21T21:04:21",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/adult/winter/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-14T00:52:20",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/certifications/fall",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2020-10-20T19:03:19",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/certifications/fall/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-07-09T23:35:38",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/certifications/spring-summer/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-02-19T17:55:07",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/certifications/winter/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-14T00:53:02",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/contact/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-05-14T23:52:23",
+    "status": "collected",
+    "article_id": "prose:recreation:3250",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/lifeguard/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-06-12T17:23:00",
+    "status": "collected",
+    "article_id": "prose:recreation:69442",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/memberships/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-05-01T15:54:59",
+    "status": "collected",
+    "article_id": "prose:recreation:97061",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/private/fall",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2020-10-20T19:07:09",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/private/fall/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-06-28T23:36:46",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/private/spring-summer/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-02-21T21:08:52",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/private/winter/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-14T00:52:32",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/schedule/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-08-07T00:01:48",
+    "status": "collected",
+    "article_id": "prose:recreation:98812",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/youth/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-07-02T18:13:32",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/youth/fall/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-07-05T20:01:01",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/youth/spring-summer/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-02-21T17:52:15",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/aquatics/youth/winter/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-20T20:40:42",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/baseball/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-09-12T16:36:35",
+    "status": "collected",
+    "article_id": "prose:recreation:108365",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/baseball/baseball-instructors/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-01-12T19:50:10",
+    "status": "collected",
+    "article_id": "prose:recreation:111376",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/baseball/cage-rentals/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-06-09T18:51:05",
+    "status": "collected",
+    "article_id": "prose:recreation:112439",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/baseball/contact/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-08-19T16:58:57",
+    "status": "collected",
+    "article_id": "prose:recreation:108371",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/baseball/player-performance/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-07-14T17:55:33",
+    "status": "collected",
+    "article_id": "prose:recreation:108619",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/baseball/youth/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-11-18T23:52:54",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/baseball/youth/fall/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-10-03T16:24:11",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/baseball/youth/spring-summer/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-06-29T17:44:19",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/baseball/youth/winter/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-12T21:30:28",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/bouldering",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-13T21:06:43",
+    "status": "duplicate",
+    "article_id": "prose:recreation:165060",
+    "reason": "Same canonical article is represented in another mirrored table."
+  },
+  {
+    "url": "https://recreation.ubc.ca/bouldering/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-08-11T02:03:53",
+    "status": "collected",
+    "article_id": "prose:recreation:165060",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-05-13T23:46:29",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/about/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-01-21T23:16:58",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/academies/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-09-25T20:40:13",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/academies/academies-id-programs-events/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-06-03T18:14:37",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/camps-rate-form/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-04-16T23:50:22",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/consent-forms/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-22T20:12:22",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/contact/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-05-23T23:04:40",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/exceptionalities/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-02T20:03:03",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/fall/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-01-20T00:58:07",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/fall/fall-winter-camps-events/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-09-10T17:33:57",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/faqs/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-12-09T19:53:17",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/first-day/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-09-12T16:08:18",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/medication/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-12-10T19:12:57",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/parking/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-06-18T00:10:44",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/photos/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-07-04T22:06:15",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/policies/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2020-11-25T06:46:04",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/registration/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-11-15T00:27:19",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/search/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:36:46",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/sign-out/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-01-13T22:44:25",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/spring-break/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-02-03T20:09:29",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/spring-break/spring-break-camps-events/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-02-04T22:36:01",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/summer/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-02-03T20:09:01",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/summer/summer-camps-events/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-02-04T22:35:13",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/camps/weather-air-quality/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2021-08-11T23:38:35",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/draft-dance-pass/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-16T00:32:06",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/drop-in/drop-in-sports-schedule/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-09-03T23:14:59",
+    "status": "duplicate",
+    "article_id": "prose:recreation:96048",
+    "reason": "Same canonical article is represented in another mirrored table."
+  },
+  {
+    "url": "https://recreation.ubc.ca/drop-in/group-fitness/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-05-28T00:18:02",
+    "status": "collected",
+    "article_id": "prose:recreation:96080",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/drop-in/gym-sports/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-05-29T20:17:05",
+    "status": "collected",
+    "article_id": "prose:recreation:96048",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/drop-in/moves-on-macinnes/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-28T23:40:58",
+    "status": "collected",
+    "article_id": "prose:recreation:118546",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/drop-in/studios-schedule/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-06-12T16:56:08",
+    "status": "collected",
+    "article_id": "prose:recreation:96722",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/drop-in/track/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-05-01T17:00:53",
+    "status": "collected",
+    "article_id": "prose:recreation:157527",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness-attendance/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-09-03T23:05:03",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-08-12T20:47:43",
+    "status": "collected",
+    "article_id": "prose:recreation:74630",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/boot-camps-spin-instructors/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2019-06-19T18:28:47",
+    "status": "collected",
+    "article_id": "prose:recreation:85034",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/cardio-conditioning-strength/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-06-23T20:30:57",
+    "status": "collected",
+    "article_id": "prose:recreation:74673",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/cardio-conditioning-strength/instructors/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-01-12T20:40:32",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Faculty, staff, instructor or employer-only section."
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/contact/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-04-14T01:48:09",
+    "status": "collected",
+    "article_id": "prose:recreation:75500",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/dance/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-02-17T21:56:57",
+    "status": "collected",
+    "article_id": "prose:recreation:74726",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/dance/instructors/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-01-12T20:38:28",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Faculty, staff, instructor or employer-only section."
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/fitness-centres/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-08-22T18:16:25",
+    "status": "collected",
+    "article_id": "prose:recreation:76796",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/fitness-centres/fitness-centre-rules-etiquette/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-08-21T22:37:34",
+    "status": "collected",
+    "article_id": "prose:recreation:75489",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/fitness-centres/women-fitness-hours/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-05-04T20:19:13",
+    "status": "collected",
+    "article_id": "prose:recreation:85246",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/martial-arts/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-06-23T20:31:47",
+    "status": "collected",
+    "article_id": "prose:recreation:74728",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/martial-arts/instructors/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-01-12T20:46:05",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Faculty, staff, instructor or employer-only section."
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/memberships/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-08-06T18:50:45",
+    "status": "collected",
+    "article_id": "prose:recreation:154036",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/personal-training/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-14T21:37:33",
+    "status": "collected",
+    "article_id": "prose:recreation:74734",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/personal-training/personal-trainers/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-01-12T21:29:15",
+    "status": "collected",
+    "article_id": "prose:recreation:74738",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/personal-training/personal-training-interest-form/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2020-10-21T07:15:08",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/teen-access/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-04-07T21:00:39",
+    "status": "collected",
+    "article_id": "prose:recreation:163217",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/yoga-pilates/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2018-06-27T03:06:49",
+    "status": "collected",
+    "article_id": "prose:recreation:74732",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/fitness/yoga-pilates/instructors/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2018-06-27T03:31:14",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Faculty, staff, instructor or employer-only section."
+  },
+  {
+    "url": "https://recreation.ubc.ca/get-moving/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-09-12T16:32:17",
+    "status": "collected",
+    "article_id": "prose:recreation:42987",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/get-moving/first-year/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-10-03T17:12:33",
+    "status": "collected",
+    "article_id": "prose:recreation:97801",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/get-moving/indigenous-wellbeing-series/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-02-02T23:26:00",
+    "status": "collected",
+    "article_id": "prose:recreation:115111",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/get-moving/intercultural-physical-activity/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-12-10T18:47:53",
+    "status": "collected",
+    "article_id": "prose:recreation:130501",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/get-moving/move-more-learn-more/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-08-06T20:44:05",
+    "status": "collected",
+    "article_id": "prose:recreation:81016",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/get-moving/move-u-crew/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-08-12T20:09:17",
+    "status": "collected",
+    "article_id": "prose:recreation:64552",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/get-moving/move-u-crew/book-the-move-u-crew-form/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-09-26T18:05:21",
+    "status": "collected",
+    "article_id": "prose:recreation:104629",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/get-moving/move-ubc-events/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-02-24T23:30:31",
+    "status": "collected",
+    "article_id": "prose:recreation:106075",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/get-moving/rad/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-05-19T16:48:09",
+    "status": "collected",
+    "article_id": "prose:recreation:158247",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/get-moving/thrive/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-10-23T20:39:43",
+    "status": "collected",
+    "article_id": "prose:recreation:128836",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/get-moving/walking/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-06-23T20:33:26",
+    "status": "collected",
+    "article_id": "prose:recreation:53330",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/get-moving/walking/walkabout-newsletter/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2018-03-30T00:29:55",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/activate-ubc/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-09-12T19:18:53",
+    "status": "collected",
+    "article_id": "prose:recreation:116000",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/cancellations-closures/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-01-29T18:44:23",
+    "status": "collected",
+    "article_id": "prose:recreation:34762",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/cancellations-closures/facility-holiday-hours/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-01-29T18:35:09",
+    "status": "collected",
+    "article_id": "prose:recreation:34924",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/cancellations-closures/weather/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-01-06T02:05:53",
+    "status": "collected",
+    "article_id": "prose:recreation:82207",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/contact-us/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T18:18:47",
+    "status": "collected",
+    "article_id": "prose:recreation:114497",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/employment/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-03-02T00:26:50",
+    "status": "collected",
+    "article_id": "prose:recreation:26593",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/employment/camps/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-11-19T21:57:01",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/employment/intramural-staff/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-07T23:34:53",
+    "status": "collected",
+    "article_id": "prose:recreation:81422",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/employment/intramural-staff/events-staff/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-04T22:47:39",
+    "status": "collected",
+    "article_id": "prose:recreation:161883",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/employment/intramural-staff/leagues-staff/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-04T22:48:04",
+    "status": "collected",
+    "article_id": "prose:recreation:161886",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/employment/intramural-staff/media-digital-content-staff/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-04T22:52:45",
+    "status": "collected",
+    "article_id": "prose:recreation:161896",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/faculty-staff-recreation/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-08-04T18:21:43",
+    "status": "collected",
+    "article_id": "prose:recreation:162963",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/free-week/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-29T00:02:25",
+    "status": "collected",
+    "article_id": "prose:recreation:98762",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/inclusive-rec/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-05-07T22:14:41",
+    "status": "collected",
+    "article_id": "prose:recreation:63574",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/inclusive-rec/inclusivity-accessibility-feedback-form/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-27T18:45:28",
+    "status": "collected",
+    "article_id": "prose:recreation:65776",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/locker-rentals/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-08-11T01:12:58",
+    "status": "collected",
+    "article_id": "prose:recreation:4884",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/new-reg/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-10-22T15:56:40",
+    "status": "collected",
+    "article_id": "prose:recreation:91035",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/new-reg/new-reg-cwl/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-09-12T17:03:06",
+    "status": "collected",
+    "article_id": "prose:recreation:95802",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/new-reg/reg-help-tool/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-04T17:14:05",
+    "status": "collected",
+    "article_id": "prose:recreation:160955",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/new-reg/student-eligibility/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-05-20T17:23:36",
+    "status": "collected",
+    "article_id": "prose:recreation:147697",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/newsletters/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-10-24T22:57:19",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/policies/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-12-19T01:23:41",
+    "status": "collected",
+    "article_id": "prose:recreation:27034",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/policies/dmtsc-rules/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-10-03T17:10:24",
+    "status": "collected",
+    "article_id": "prose:recreation:55503",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/policies/privacy/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-11-20T22:24:37",
+    "status": "collected",
+    "article_id": "prose:recreation:35062",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/policies/src-rules-policies/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-10-16T23:55:31",
+    "status": "collected",
+    "article_id": "prose:recreation:53238",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/policies/ubc-boathouse-program-safety-policies/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2016-08-10T21:13:47",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/home/withdrawal-transfer-request/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-01-27T00:12:34",
+    "status": "collected",
+    "article_id": "prose:recreation:90492",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-11-06T20:11:46",
+    "status": "collected",
+    "article_id": "prose:recreation:96218",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-09-12T16:09:38",
+    "status": "duplicate",
+    "article_id": "prose:recreation:96218",
+    "reason": "Same canonical article is represented in another mirrored table."
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/adult/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-07-02T17:27:47",
+    "status": "duplicate",
+    "article_id": "prose:recreation:2963",
+    "reason": "Same canonical article is represented in another mirrored table."
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/adult/fall/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-06-29T18:59:21",
+    "status": "collected",
+    "article_id": "prose:recreation:2963",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/adult/spring-summer/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-02-21T22:54:01",
+    "status": "collected",
+    "article_id": "prose:recreation:111733",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/adult/winter/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-14T00:54:25",
+    "status": "collected",
+    "article_id": "prose:recreation:104977",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/contact/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-09-12T17:06:24",
+    "status": "collected",
+    "article_id": "prose:recreation:3364",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2020-10-27T18:47:57",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/father-bauer-locker-rooms-friday/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-08T22:36:45",
+    "status": "collected",
+    "article_id": "prose:recreation:41846",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/father-bauer-locker-rooms-mon/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:39:21",
+    "status": "collected",
+    "article_id": "prose:recreation:34863",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/father-bauer-locker-rooms-sat/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:28:34",
+    "status": "collected",
+    "article_id": "prose:recreation:41848",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/father-bauer-locker-rooms-sun/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:31:44",
+    "status": "collected",
+    "article_id": "prose:recreation:41850",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/father-bauer-locker-rooms-thu/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:11:54",
+    "status": "collected",
+    "article_id": "prose:recreation:41844",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/father-bauer-locker-rooms-tue-2/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:53:47",
+    "status": "collected",
+    "article_id": "prose:recreation:41823",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/father-bauer-locker-rooms-wed/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:58:04",
+    "status": "collected",
+    "article_id": "prose:recreation:41825",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/pro-trans-locker-rooms-fri/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-08T22:37:00",
+    "status": "collected",
+    "article_id": "prose:recreation:41861",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/pro-trans-locker-rooms-mon/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:40:45",
+    "status": "collected",
+    "article_id": "prose:recreation:41853",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/pro-trans-locker-rooms-sat/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:26:20",
+    "status": "collected",
+    "article_id": "prose:recreation:41863",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/pro-trans-locker-rooms-sun/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:36:34",
+    "status": "collected",
+    "article_id": "prose:recreation:41865",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/pro-trans-locker-rooms-thu/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:11:45",
+    "status": "collected",
+    "article_id": "prose:recreation:41859",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/pro-trans-locker-rooms-tue-2/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:44:21",
+    "status": "collected",
+    "article_id": "prose:recreation:41855",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/pro-trans-locker-rooms-wed/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:59:10",
+    "status": "collected",
+    "article_id": "prose:recreation:41857",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/thunderbird-locker-rooms-fri/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-08T22:37:15",
+    "status": "collected",
+    "article_id": "prose:recreation:41875",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/thunderbird-locker-rooms-mon/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:41:30",
+    "status": "collected",
+    "article_id": "prose:recreation:41867",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/thunderbird-locker-rooms-sat/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:29:08",
+    "status": "collected",
+    "article_id": "prose:recreation:41877",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/thunderbird-locker-rooms-sun/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:34:48",
+    "status": "collected",
+    "article_id": "prose:recreation:41879",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/thunderbird-locker-rooms-thu/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:11:05",
+    "status": "collected",
+    "article_id": "prose:recreation:41873",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/thunderbird-locker-rooms-tue/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T17:55:05",
+    "status": "collected",
+    "article_id": "prose:recreation:41869",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/dmtsc-locker-rooms/thunderbird-locker-rooms-wed/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T18:00:03",
+    "status": "collected",
+    "article_id": "prose:recreation:41871",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/drop-in-ice/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-05-26T23:43:00",
+    "status": "collected",
+    "article_id": "prose:recreation:101905",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/junior-thunderbirds/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-16T21:21:09",
+    "status": "collected",
+    "article_id": "prose:recreation:56696",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/tahl/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-07-07T16:32:02",
+    "status": "collected",
+    "article_id": "prose:recreation:333",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/tahl/standings-schedule/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-09-08T18:42:16",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/youth/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-07-02T18:16:50",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/youth/fall/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-06-29T18:56:44",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/youth/spring-summer/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-05-28T22:35:16",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/ice/youth/winter/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-12T21:18:35",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-01-13T20:23:00",
+    "status": "collected",
+    "article_id": "prose:recreation:128218",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/cancel-default-process/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2021-08-31T00:52:59",
+    "status": "collected",
+    "article_id": "prose:recreation:75538",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-24T18:17:31",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/3-on-3-jam/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-24T18:16:34",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/adaptive-sports/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-07-15T22:48:40",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/ball-hockey-classic/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-08T17:54:27",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/curling-bonspiel/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-13T21:45:40",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/day-of-the-longboat/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-28T21:39:43",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/day-of-the-longboat/register/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-07T23:03:15",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/day-of-the-longboat/schedule/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-09-21T19:59:12",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/day-of-the-longboat/team-listings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-09-15T15:55:52",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/gladiator/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-06-11T17:58:26",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/great-trek-relay/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-17T17:34:24",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/gutterball-bowling/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-09-12T16:15:48",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/howl-at-the-moon-volleyball/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-07T22:29:14",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/icebreaker/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-06-11T17:50:36",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/storm-the-wall/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-19T18:24:44",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/storm-the-wall/communityfestival/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2020-02-21T23:25:30",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/storm-the-wall/heat-page/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-12-15T19:55:30",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/storm-the-wall/register/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-13T20:05:27",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/storm-the-wall/schedule/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-12-15T19:51:11",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/storm-the-wall/team-listings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-16T16:49:56",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/storm-the-wall/team-page/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-03-13T05:42:56",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/storm-the-wall/team-structure/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-01-25T23:06:49",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/the-great-escape/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-07T22:27:26",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/ubc-tri-du/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-08T18:33:47",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/ubc-tri-du/first-time-tri/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-08T19:38:07",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/ubc-tri-du/races-registration/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-08-04T20:44:55",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/ubc-tri-du/ubctridu-details/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-08T19:42:57",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/ubc-tri-du/ubctridu-youth/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-08T17:20:38",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/events/water-wars/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-07T22:26:00",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Individual profile or event record; these are not prose article collections."
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/feedback/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-22T22:16:43",
+    "status": "collected",
+    "article_id": "prose:recreation:158001",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/free-agent-single-participants/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-10T23:13:06",
+    "status": "collected",
+    "article_id": "prose:recreation:33206",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/free-agent-single-participants/free-agent-directory/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-08-07T18:10:19",
+    "status": "collected",
+    "article_id": "prose:recreation:148489",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/free-agent-single-participants/free-agent-form/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-08-07T18:09:44",
+    "status": "collected",
+    "article_id": "prose:recreation:148596",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/gayton-family-award/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-07T20:25:21",
+    "status": "collected",
+    "article_id": "prose:recreation:149226",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/intramurals-participation-structure/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-08-13T22:08:46",
+    "status": "collected",
+    "article_id": "prose:recreation:65151",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-20T18:37:36",
+    "status": "collected",
+    "article_id": "prose:recreation:33183",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/badminton/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-03T19:28:00",
+    "status": "collected",
+    "article_id": "prose:recreation:139279",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/badminton/team-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-21T22:06:08",
+    "status": "collected",
+    "article_id": "prose:recreation:140472",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/badminton/winter-teams-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-08-14T19:55:30",
+    "status": "collected",
+    "article_id": "prose:recreation:142669",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/champions/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-01-23T21:35:24",
+    "status": "collected",
+    "article_id": "prose:recreation:160789",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/cross-volleyball/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-03T19:29:24",
+    "status": "collected",
+    "article_id": "prose:recreation:33293",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/cross-volleyball/playoff-brackets/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-06T17:43:49",
+    "status": "collected",
+    "article_id": "prose:recreation:161932",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/cross-volleyball/term-1-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-21T22:15:38",
+    "status": "collected",
+    "article_id": "prose:recreation:38862",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/cross-volleyball/term-2-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-08-14T20:18:27",
+    "status": "collected",
+    "article_id": "prose:recreation:38864",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/dodgeball/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-03T19:30:05",
+    "status": "collected",
+    "article_id": "prose:recreation:33309",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/dodgeball/playoff-brackets/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-05T18:40:36",
+    "status": "collected",
+    "article_id": "prose:recreation:161940",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/dodgeball/term-1-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-21T21:41:02",
+    "status": "collected",
+    "article_id": "prose:recreation:38888",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/dodgeball/term-2-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-08-14T20:21:08",
+    "status": "collected",
+    "article_id": "prose:recreation:38890",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/handley-cup-soccer/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-03T19:30:23",
+    "status": "collected",
+    "article_id": "prose:recreation:33296",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/handley-cup-soccer/playoff-brackets/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-05T18:27:33",
+    "status": "collected",
+    "article_id": "prose:recreation:162075",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/handley-cup-soccer/term-1-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-21T21:57:44",
+    "status": "collected",
+    "article_id": "prose:recreation:38866",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/handley-cup-soccer/term-2-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-08-14T20:23:01",
+    "status": "collected",
+    "article_id": "prose:recreation:38868",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/inner-tube-water-polo/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-09-12T16:11:33",
+    "status": "collected",
+    "article_id": "prose:recreation:73940",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/inner-tube-water-polo/term-1-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-09-22T23:45:35",
+    "status": "collected",
+    "article_id": "prose:recreation:75635",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/inner-tube-water-polo/term-2-teams/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-01-13T07:05:49",
+    "status": "collected",
+    "article_id": "prose:recreation:75637",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/nitobe-basketball/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-03T19:30:43",
+    "status": "collected",
+    "article_id": "prose:recreation:33298",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/nitobe-basketball/playoff-brackets/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-09T17:49:28",
+    "status": "collected",
+    "article_id": "prose:recreation:161943",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/nitobe-basketball/term-1-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-29T07:01:01",
+    "status": "collected",
+    "article_id": "prose:recreation:38874",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/nitobe-basketball/term-2-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-08-14T20:25:06",
+    "status": "collected",
+    "article_id": "prose:recreation:38876",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/pickleball/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-03T19:31:54",
+    "status": "collected",
+    "article_id": "prose:recreation:139292",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/pickleball/fall-teams-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-21T22:08:24",
+    "status": "collected",
+    "article_id": "prose:recreation:140497",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/pickleball/winter-teams-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-08-14T20:28:20",
+    "status": "collected",
+    "article_id": "prose:recreation:142678",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/point-grey-cup-football/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-03T19:30:59",
+    "status": "collected",
+    "article_id": "prose:recreation:33300",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/point-grey-cup-football/playoff-brackets/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-09T17:53:01",
+    "status": "collected",
+    "article_id": "prose:recreation:161946",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/point-grey-cup-football/term-1-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-21T21:46:32",
+    "status": "collected",
+    "article_id": "prose:recreation:38811",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/point-grey-cup-football/term-2-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-08-14T20:26:38",
+    "status": "collected",
+    "article_id": "prose:recreation:38814",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/roundnet-league/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-03T19:32:15",
+    "status": "collected",
+    "article_id": "prose:recreation:125614",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/roundnet-league/term-1-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-21T22:09:35",
+    "status": "collected",
+    "article_id": "prose:recreation:128548",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/roundnet-league/winter-teams-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-08-14T20:30:35",
+    "status": "collected",
+    "article_id": "prose:recreation:142684",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/src-futsal/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-03T19:32:28",
+    "status": "collected",
+    "article_id": "prose:recreation:33302",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/src-futsal/playoff-brackets/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-06T17:50:33",
+    "status": "collected",
+    "article_id": "prose:recreation:161948",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/src-futsal/term-1-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-21T21:43:26",
+    "status": "collected",
+    "article_id": "prose:recreation:128517",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/src-futsal/term-2-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-08-14T21:14:54",
+    "status": "collected",
+    "article_id": "prose:recreation:38882",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/todd-ice-hockey/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-03T19:32:43",
+    "status": "collected",
+    "article_id": "prose:recreation:33306",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/todd-ice-hockey/playoff-brackets/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-06T17:47:22",
+    "status": "collected",
+    "article_id": "prose:recreation:161952",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/todd-ice-hockey/term-1-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-21T21:49:08",
+    "status": "collected",
+    "article_id": "prose:recreation:38858",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/todd-ice-hockey/term-2-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-08-14T21:15:56",
+    "status": "collected",
+    "article_id": "prose:recreation:38860",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/ultimate/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-03T19:32:54",
+    "status": "collected",
+    "article_id": "prose:recreation:33304",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/ultimate/term-1-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-21T22:02:37",
+    "status": "collected",
+    "article_id": "prose:recreation:38884",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/ultimate/term-2-standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-08-14T21:19:19",
+    "status": "collected",
+    "article_id": "prose:recreation:38886",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/leagues/womens-community-nights/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-02T18:21:26",
+    "status": "collected",
+    "article_id": "prose:recreation:148089",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/policies-program-rules/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-05-22T18:58:17",
+    "status": "collected",
+    "article_id": "prose:recreation:148663",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/summer-leagues/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-09T20:40:35",
+    "status": "collected",
+    "article_id": "prose:recreation:157626",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/summer-leagues/tbird-roundnet/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-09-03T23:07:16",
+    "status": "collected",
+    "article_id": "prose:recreation:118917",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/summer-leagues/tbird-roundnet/standings-2/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-05-21T22:16:22",
+    "status": "collected",
+    "article_id": "prose:recreation:136394",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/summer-leagues/tbird-soccer/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-24T05:10:31",
+    "status": "collected",
+    "article_id": "prose:recreation:30802",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/summer-leagues/tbird-soccer/playoff-brackets/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-31T22:55:52",
+    "status": "collected",
+    "article_id": "prose:recreation:165609",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/summer-leagues/tbird-soccer/standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-08-11T17:26:30",
+    "status": "collected",
+    "article_id": "prose:recreation:122913",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/summer-leagues/tbird-soccer/summer-teams/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-01-29T18:43:10",
+    "status": "collected",
+    "article_id": "prose:recreation:41833",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/summer-leagues/tbird-soccer/wednesday/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-08-03T17:20:38",
+    "status": "collected",
+    "article_id": "prose:recreation:122847",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/summer-leagues/tbird-softball-league/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-09-03T23:07:16",
+    "status": "collected",
+    "article_id": "prose:recreation:134355",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/summer-leagues/tbird-softball-league/playoff-brackets/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-27T18:28:54",
+    "status": "collected",
+    "article_id": "prose:recreation:165606",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/summer-leagues/tbird-softball-league/standings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-05-10T17:06:34",
+    "status": "collected",
+    "article_id": "prose:recreation:136381",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/intramurals/teams/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-01-29T18:45:52",
+    "status": "collected",
+    "article_id": "prose:recreation:35266",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/mail-relay/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-09-03T23:05:03",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/pm-feed-staffview/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-07-02T23:13:50",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Program/feed service endpoint rather than an explanatory article."
+  },
+  {
+    "url": "https://recreation.ubc.ca/pm-feed/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-12T20:18:10",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Program/feed service endpoint rather than an explanatory article."
+  },
+  {
+    "url": "https://recreation.ubc.ca/program-listing-audit/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-05-07T20:36:18",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Program/feed service endpoint rather than an explanatory article."
+  },
+  {
+    "url": "https://recreation.ubc.ca/program-listing-cs-dev/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-04-14T17:13:31",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Program/feed service endpoint rather than an explanatory article."
+  },
+  {
+    "url": "https://recreation.ubc.ca/program-listing-cs/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2020-10-17T06:42:50",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Program/feed service endpoint rather than an explanatory article."
+  },
+  {
+    "url": "https://recreation.ubc.ca/program-listing-service/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2020-10-28T04:50:53",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Program/feed service endpoint rather than an explanatory article."
+  },
+  {
+    "url": "https://recreation.ubc.ca/program-listing/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-05-24T00:50:34",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Program/feed service endpoint rather than an explanatory article."
+  },
+  {
+    "url": "https://recreation.ubc.ca/rec-north/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-07-17T18:38:07",
+    "status": "collected",
+    "article_id": "prose:recreation:154906",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/roster-report/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-09-03T23:05:03",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/rowing/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-09-12T16:05:03",
+    "status": "collected",
+    "article_id": "prose:recreation:2692",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/rowing/contact/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-09-12T17:06:04",
+    "status": "collected",
+    "article_id": "prose:recreation:3368",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/rowing/youth/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-17T17:39:43",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/rowing/youth/fall/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2020-10-29T16:47:06",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/rowing/youth/spring-summer/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-06-29T19:11:34",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/rowing/youth/winter/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-12T21:17:08",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-08-28T15:52:01",
+    "status": "collected",
+    "article_id": "prose:recreation:48848",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-08-31T20:57:53",
+    "status": "duplicate",
+    "article_id": "prose:recreation:48848",
+    "reason": "Same canonical article is represented in another mirrored table."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/alpine-skiing/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-08-20T21:09:30",
+    "status": "collected",
+    "article_id": "prose:recreation:43762",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/alpine-skiing/roster/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2015-08-26T00:46:23",
+    "status": "collected",
+    "article_id": "prose:recreation:43764",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/artistic-swimming/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2015-08-26T01:17:31",
+    "status": "collected",
+    "article_id": "prose:recreation:43808",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/artistic-swimming/roster/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-11-02T23:40:46",
+    "status": "collected",
+    "article_id": "prose:recreation:43812",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/curling-sc/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-02-27T17:36:41",
+    "status": "collected",
+    "article_id": "prose:recreation:144005",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/curling-sc/roster/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-12-04T20:51:37",
+    "status": "collected",
+    "article_id": "prose:recreation:151554",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/cycling-sc/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2016-07-28T17:44:58",
+    "status": "collected",
+    "article_id": "prose:recreation:53024",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/cycling-sc/roster/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2016-07-28T17:49:26",
+    "status": "collected",
+    "article_id": "prose:recreation:53027",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/equestrian-sc/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2016-07-28T17:54:13",
+    "status": "collected",
+    "article_id": "prose:recreation:53035",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/equestrian-sc/roster/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2016-07-28T17:55:45",
+    "status": "collected",
+    "article_id": "prose:recreation:53038",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/about/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-02-02T22:23:50",
+    "status": "collected",
+    "article_id": "prose:recreation:48916",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/alpine-sc-team-report/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-09-15T19:02:07",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/artistic-swim-sc-team-report/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-10-11T18:53:32",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/athlete-hub/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-06-08T21:05:21",
+    "status": "collected",
+    "article_id": "prose:recreation:53366",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/awards/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-04-27T20:35:56",
+    "status": "collected",
+    "article_id": "prose:recreation:53485",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/curling-team-report/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-07-16T21:21:42",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/cycling-sc-team-report/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-09-05T20:12:09",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/equestrian-sc-team-report/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-09-05T20:11:58",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/lacrosse-sc-team-report/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-09-05T20:11:44",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/mens-tennis-report/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-10-19T04:09:20",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/mens-ultimate-sc-team-report/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-10-19T04:11:27",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/nordic-skiing-sc-team-report/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-09-15T18:47:59",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/prospective-athletes/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-07-11T17:02:00",
+    "status": "collected",
+    "article_id": "prose:recreation:48946",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/quadball-report/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-10-16T23:45:33",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/sailing-sc-team-report/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-09-15T18:57:09",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/table-tennis-sc-team-report/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-09-15T18:59:14",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/triathlon-sc-report/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-08-21T16:36:20",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/tsc-application/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-06-04T23:43:33",
+    "status": "collected",
+    "article_id": "prose:recreation:57739",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/womens-tennis-sc-team-report/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-10-19T04:10:38",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/home/womens-ultimate-sc-team-report/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-10-19T04:07:51",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/lacrosse/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2015-08-26T00:57:12",
+    "status": "collected",
+    "article_id": "prose:recreation:43781",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/lacrosse/roster/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2015-08-26T00:58:12",
+    "status": "collected",
+    "article_id": "prose:recreation:43784",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/nordic-skiing/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-07-10T20:17:44",
+    "status": "collected",
+    "article_id": "prose:recreation:43791",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/nordic-skiing/roster/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2015-08-26T01:07:29",
+    "status": "collected",
+    "article_id": "prose:recreation:43795",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/quidditch-sc/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-09-05T20:49:53",
+    "status": "collected",
+    "article_id": "prose:recreation:53041",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/quidditch-sc/roster/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-09-05T20:49:46",
+    "status": "collected",
+    "article_id": "prose:recreation:53043",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/sailing/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2015-08-26T01:14:59",
+    "status": "collected",
+    "article_id": "prose:recreation:43800",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/sailing/roster/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2015-08-26T01:15:45",
+    "status": "collected",
+    "article_id": "prose:recreation:43802",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/squash-sc/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-10T22:50:58",
+    "status": "collected",
+    "article_id": "prose:recreation:162834",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/table-tennis-sc/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2019-11-30T21:58:13",
+    "status": "collected",
+    "article_id": "prose:recreation:90389",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/table-tennis-sc/roster/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2021-04-30T16:18:14",
+    "status": "collected",
+    "article_id": "prose:recreation:90397",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/tennis-m/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2015-08-26T01:22:26",
+    "status": "collected",
+    "article_id": "prose:recreation:43818",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/tennis-m/roster/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2015-08-26T01:22:55",
+    "status": "collected",
+    "article_id": "prose:recreation:43820",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/tennis-w/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2018-05-17T18:56:08",
+    "status": "collected",
+    "article_id": "prose:recreation:73617",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/tennis-w/roster/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-11-02T23:39:54",
+    "status": "collected",
+    "article_id": "prose:recreation:73620",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/triathlon-sc/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2017-05-31T17:58:33",
+    "status": "collected",
+    "article_id": "prose:recreation:62963",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/triathlon-sc/roster/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2017-05-31T18:07:38",
+    "status": "collected",
+    "article_id": "prose:recreation:62965",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/ultimate-m/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2015-08-06T03:40:45",
+    "status": "collected",
+    "article_id": "prose:recreation:43123",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/ultimate-m/roster/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-11-02T23:39:28",
+    "status": "collected",
+    "article_id": "prose:recreation:43755",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/ultimate-w/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-09-14T23:59:00",
+    "status": "collected",
+    "article_id": "prose:recreation:43834",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/ultimate-w/roster/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2015-08-26T01:28:21",
+    "status": "collected",
+    "article_id": "prose:recreation:43836",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sport-clubs/wrestling-sc/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-10T22:50:42",
+    "status": "collected",
+    "article_id": "prose:recreation:162830",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sportsday/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-03-19T17:55:18",
+    "status": "collected",
+    "article_id": "prose:recreation:30098",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sportsday/activities/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-04-29T00:31:30",
+    "status": "collected",
+    "article_id": "prose:recreation:135727",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sportsday/register/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-25T01:12:05",
+    "status": "collected",
+    "article_id": "prose:recreation:31219",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sportsday/team-listings/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-04-15T19:14:15",
+    "status": "collected",
+    "article_id": "prose:recreation:163432",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sportsday/teams-page/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-04-15T19:10:49",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/sportsday/vancouver/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-12T21:39:57",
+    "status": "collected",
+    "article_id": "prose:recreation:120150",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/sportsday/volunteer/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-13T23:13:45",
+    "status": "collected",
+    "article_id": "prose:recreation:109906",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/staff/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2021-04-15T22:07:24",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/staff/aqua-schedule-staff-only/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-08-07T00:04:11",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/staff/arena-schedule/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-09-15T17:40:11",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/staff/baseball-schedule-staff/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-01-10T09:38:20",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/staff/facility-schedule-field-staff/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-04-24T16:28:21",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/staff/mail/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-05-28T21:56:17",
+    "status": "collected",
+    "article_id": "prose:recreation:35138",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/staff/marketing_communications/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-09-26T18:06:06",
+    "status": "collected",
+    "article_id": "prose:recreation:5200",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/staff/pm-config-issue-reporting/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-09-12T15:32:57",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/staff/pm-merge-account/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-09-05T21:36:51",
+    "status": "collected",
+    "article_id": "prose:recreation:96979",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/staff/pm-service-request/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2020-10-21T07:16:13",
+    "status": "no_prose",
+    "article_id": null,
+    "reason": "No prose remains in the source body after sanitization."
+  },
+  {
+    "url": "https://recreation.ubc.ca/staff/tbird-park-availability/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-09-14T16:05:22",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/staff/waiver-check/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-09-11T23:40:09",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-09-12T16:04:07",
+    "status": "collected",
+    "article_id": "prose:recreation:528",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/about/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-07-03T17:57:58",
+    "status": "collected",
+    "article_id": "prose:recreation:78166",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/about/etiquette/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-04-04T19:40:31",
+    "status": "collected",
+    "article_id": "prose:recreation:32310",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/about/faqs/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-05-10T06:08:12",
+    "status": "collected",
+    "article_id": "prose:recreation:32899",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/adult/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-07-02T18:17:02",
+    "status": "duplicate",
+    "article_id": "prose:recreation:98697",
+    "reason": "Same canonical article is represented in another mirrored table."
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/adult/fall/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-06T23:19:58",
+    "status": "collected",
+    "article_id": "prose:recreation:98697",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/adult/level-of-play/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-11-06T19:07:54",
+    "status": "collected",
+    "article_id": "prose:recreation:32302",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/adult/spring-summer/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-02-21T22:52:29",
+    "status": "collected",
+    "article_id": "prose:recreation:2521",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/adult/winter/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-01-30T19:52:43",
+    "status": "collected",
+    "article_id": "prose:recreation:104938",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/coaches/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-03-24T01:00:39",
+    "status": "collected",
+    "article_id": "prose:recreation:102479",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/contact/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-05-09T20:32:07",
+    "status": "collected",
+    "article_id": "prose:recreation:3366",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/court-booking/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-22T18:25:42",
+    "status": "collected",
+    "article_id": "prose:recreation:32279",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/court-booking/advanced-booking/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2022-08-10T21:51:57",
+    "status": "collected",
+    "article_id": "prose:recreation:113962",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/performance/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-07-02T18:16:56",
+    "status": "duplicate",
+    "article_id": "prose:recreation:98710",
+    "reason": "Same canonical article is represented in another mirrored table."
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/performance/fall/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-08T22:28:26",
+    "status": "collected",
+    "article_id": "prose:recreation:98710",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/performance/spring-summer/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2023-02-21T22:52:59",
+    "status": "collected",
+    "article_id": "prose:recreation:108346",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/performance/winter/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-12T21:18:28",
+    "status": "collected",
+    "article_id": "prose:recreation:104965",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/youth-performance/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-08T22:32:09",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/youth/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-07-02T18:17:07",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/youth/fall/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-06T23:34:08",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/youth/spring-summer/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2024-06-21T18:40:26",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/tennis/youth/winter/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-11-20T20:39:55",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Child/youth-only recreation outside undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://recreation.ubc.ca/test-addfacilities/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-08-07T16:45:30",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/the-point-blog/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-11T00:16:44",
+    "status": "collected",
+    "article_id": "prose:recreation:5843",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/the-point-blog/best-of-im-leagues/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2021-09-24T07:54:48",
+    "status": "collected",
+    "article_id": "prose:recreation:86363",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/the-point-blog/im-event-highlights/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2021-09-24T07:59:14",
+    "status": "collected",
+    "article_id": "prose:recreation:39767",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/the-point-blog/tsc-fyi/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2021-09-24T08:16:03",
+    "status": "collected",
+    "article_id": "prose:recreation:48934",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/thunderbird-takes-flight/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-09-03T23:05:03",
+    "status": "collected",
+    "article_id": "prose:recreation:135410",
+    "reason": null
+  },
+  {
+    "url": "https://recreation.ubc.ca/wp-content/uploads/2018/05/Visiting-Team-Guide-Draft-2-1.pdf",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2016-11-15T01:47:08",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Linked attachment rather than an HTML prose article; retained as a source link."
+  },
+  {
+    "url": "https://recreation.ubc.ca/wp-content/uploads/2025/03/2025UBCTriathlonSchedule.pdf",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2025-03-07T01:01:59",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Linked attachment rather than an HTML prose article; retained as a source link."
+  },
+  {
+    "url": "https://recreation.ubc.ca/youth-performance/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-17T02:13:19",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/youth-performance/coaches/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-07-17T02:08:03",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  },
+  {
+    "url": "https://recreation.ubc.ca/youth-performance/safe-sport/",
+    "discovered_by": [
+      "campus-services/recreation_pages.json"
+    ],
+    "source_modified_at": "2026-08-11T01:44:21",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Protected or unpublished source record."
+  }
+]

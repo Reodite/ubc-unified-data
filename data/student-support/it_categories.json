@@ -1,0 +1,299 @@
+[
+  {
+    "id": "0c47374b-f0d8-4849-8b2d-d3c88aedcfb9",
+    "source_url": "https://it.ubc.ca/service-category/accounts",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/0c47374b-f0d8-4849-8b2d-d3c88aedcfb9",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Accounts",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "0589b69af2edd862b232c65d72d566b2c163894c500eaa8a3806347987b28c83"
+  },
+  {
+    "id": "0cbb74ea-3e75-4817-881e-cf290fd2cbcc",
+    "source_url": "https://it.ubc.ca/service-category/teaching-learning-tools-0",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/0cbb74ea-3e75-4817-881e-cf290fd2cbcc",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Teaching & Learning Tools",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "b2cef01de8a07b94ea50788a51f889049a5769d129d50977305dcad91eafdfce"
+  },
+  {
+    "id": "1a05fefc-e48b-4b3d-84f8-1bb0f40bbbe3",
+    "source_url": "https://it.ubc.ca/service-category/campus-wide-login-cwl",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/1a05fefc-e48b-4b3d-84f8-1bb0f40bbbe3",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Campus-Wide Login (CWL)",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "701936e18243df29a8fd84b3555c73b04b78138f8084ddc5c7aff22b6ce5b93e"
+  },
+  {
+    "id": "2664ae49-8d77-4dd0-976f-08d0c7c56e07",
+    "source_url": "https://it.ubc.ca/service-category/audio-visual",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/2664ae49-8d77-4dd0-976f-08d0c7c56e07",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Audio Visual",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "30e234fef5f0f29cdb57920066320547097fa30076e6363203f50e674d5f36ff"
+  },
+  {
+    "id": "270c1433-40a0-46e9-b936-8a205c87aa51",
+    "source_url": "https://it.ubc.ca/service-category/web-services",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/270c1433-40a0-46e9-b936-8a205c87aa51",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Web Services",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "5b1c81f4f6f04531331c49168caa4d2b7632afa92f3ff4e5680e192966907187"
+  },
+  {
+    "id": "2d6f3018-f2d6-47b5-9ae8-6006af2489da",
+    "source_url": "https://it.ubc.ca/service-category/hardware",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/2d6f3018-f2d6-47b5-9ae8-6006af2489da",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Hardware",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "3cd4526727de34e986d67c1f811f639d655530ce704c0c504734d16bd84a2d51"
+  },
+  {
+    "id": "2edc4e58-eac3-4682-95a8-0a77ddc73876",
+    "source_url": "https://it.ubc.ca/service-category/audio-visual-creative-services-0",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/2edc4e58-eac3-4682-95a8-0a77ddc73876",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Audio, Visual & Creative Services",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "c12519795ad20fddd22015ce2ef43c9e1c0e6ad26af68c05e887632831625316"
+  },
+  {
+    "id": "3b587fb6-a49d-4b69-ade8-49e2d3c1ab0d",
+    "source_url": "https://it.ubc.ca/service-category/creative-media",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/3b587fb6-a49d-4b69-ade8-49e2d3c1ab0d",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Creative Media",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "eab143844dae8e94eefc447844ce47b57247a0a195940e75c2194fabec3bfa16"
+  },
+  {
+    "id": "439f4ab5-4dd0-4902-b7c2-efac08787508",
+    "source_url": "https://it.ubc.ca/service-category/ai-services",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/439f4ab5-4dd0-4902-b7c2-efac08787508",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "AI Services",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "bc58808c9534e76a8ae0b67bc6068ce25e9a90f6d2b42a2340176cd8c4c3ecf4"
+  },
+  {
+    "id": "466b539d-4a35-4876-9c2e-702e9e114129",
+    "source_url": "https://it.ubc.ca/service-category/voice",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/466b539d-4a35-4876-9c2e-702e9e114129",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Voice",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "e2f2436be0784648c44bc8d500b93df116b7675386744376f4c1ceae5e23256e"
+  },
+  {
+    "id": "5b6f5fa7-d813-45dd-8c49-3b5a8e4505f3",
+    "source_url": "https://it.ubc.ca/service-category/servers-storage",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/5b6f5fa7-d813-45dd-8c49-3b5a8e4505f3",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Servers & Storage",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "b5d78f616a39786bc3c9ba09f94375ada15488392772772ecd2e2d518980fbd5"
+  },
+  {
+    "id": "6398578a-4af0-4777-a1a5-09f5a2d5cadd",
+    "source_url": "https://it.ubc.ca/service-category/artificial-intelligence",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/6398578a-4af0-4777-a1a5-09f5a2d5cadd",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Artificial Intelligence",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "431c2908437c3af98e7b317bdcef1b65c3bae57305a632ae77b8deceab501e07"
+  },
+  {
+    "id": "64fd5742-8da7-4fb3-b752-5663027c37f8",
+    "source_url": "https://it.ubc.ca/service-category/productivity-tools",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/64fd5742-8da7-4fb3-b752-5663027c37f8",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Productivity Tools",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "750b6919f3b7bc5814a4b1512f3f72395edd8150bfab38b9ef0621f2369fbd2a"
+  },
+  {
+    "id": "68d633bd-ee05-417d-be03-f6875a8c819f",
+    "source_url": "https://it.ubc.ca/service-category/business-administrative-systems",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/68d633bd-ee05-417d-be03-f6875a8c819f",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Business & Administrative Systems",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "b1f86b1706ae749c9d05cbdfdb4a83a4b2d1fa99afcff22a8b924e62761ff25b"
+  },
+  {
+    "id": "69f5f19b-936b-4f6a-8730-b1343e47b1b5",
+    "source_url": "https://it.ubc.ca/service-category/ubc-directory",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/69f5f19b-936b-4f6a-8730-b1343e47b1b5",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "UBC Directory",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "e1b37e477d0f3e88bef0993e24b8d73871842f801605abdccf36051db051ed07"
+  },
+  {
+    "id": "8062281e-d8be-4eb3-8f8e-9428cd93c8bf",
+    "source_url": "https://it.ubc.ca/service-category/web-servers-storage-0",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/8062281e-d8be-4eb3-8f8e-9428cd93c8bf",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Web, Servers & Storage",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "1fb5c528a3295b22d783648407cdb8a526a57955dbc92c8e8bb95dfdb9c24036"
+  },
+  {
+    "id": "853f42c1-fdc2-43bc-93c2-e8bc52653141",
+    "source_url": "https://it.ubc.ca/service-category/email-voice-internet-0",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/853f42c1-fdc2-43bc-93c2-e8bc52653141",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Email, Voice & Internet",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "414da5b5640f816c10a8a0165a9cd1eaa46037eb572670682524c9dcfb49b8f7"
+  },
+  {
+    "id": "86bd971a-adc1-4dd0-9425-abbada269bfd",
+    "source_url": "https://it.ubc.ca/service-category/campus-operations",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/86bd971a-adc1-4dd0-9425-abbada269bfd",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Campus Operations",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "8f3062f710bea02461fa7b2574473ac439fea214a57e76e3679394939ba0f7f6"
+  },
+  {
+    "id": "87046637-5d72-49e9-9697-db7bfd392284",
+    "source_url": "https://it.ubc.ca/service-category/robotic-process-automation",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/87046637-5d72-49e9-9697-db7bfd392284",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Robotic Process Automation",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "70d1837294adffa53f4a33a7dd700588fbcdb42dda11b6b35f49245627cf399d"
+  },
+  {
+    "id": "99d4016c-b818-4866-b652-59921b844512",
+    "source_url": "https://it.ubc.ca/service-category/software",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/99d4016c-b818-4866-b652-59921b844512",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Software",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "26cd75b1550f5971abbcf0a1f207b8efe549d56c805a17c9daf8e8f5e768aa09"
+  },
+  {
+    "id": "9c4fe1fd-8fec-4f02-a288-971b5bf1a8a7",
+    "source_url": "https://it.ubc.ca/service-category/campus-systems-0",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/9c4fe1fd-8fec-4f02-a288-971b5bf1a8a7",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Campus Systems",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "bae4f173c28aa93dceb3e66c50c1b9088d443a8bd92829276d5ac887069ff626"
+  },
+  {
+    "id": "9e3621cf-69a7-48c1-859a-1ce8066b39f3",
+    "source_url": "https://it.ubc.ca/service-category/authentication",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/9e3621cf-69a7-48c1-859a-1ce8066b39f3",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Authentication",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "5cc8a72db448ed21d6aa4263df356bd692e61ca1f3c3fcf3ae34e045d00a237c"
+  },
+  {
+    "id": "9fe1fff5-4ad3-4707-8944-1fb378f2626e",
+    "source_url": "https://it.ubc.ca/service-category/desktop-support-services-0",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/9fe1fff5-4ad3-4707-8944-1fb378f2626e",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Desktop Support Services",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "4f234fe28c8a808ada1abecba86c71bff65b5e64590162d79f3b4d73f297ada1"
+  },
+  {
+    "id": "ac4275ea-84fe-4c3f-a5de-c2d6a95c217b",
+    "source_url": "https://it.ubc.ca/service-category/cybersecurity-services-0",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/ac4275ea-84fe-4c3f-a5de-c2d6a95c217b",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Cybersecurity Services",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "a05d7e71d91dc383f0d8c2cb49f02c61eff178865aa4005bec6c4db24bc24a93"
+  },
+  {
+    "id": "b32be0dc-8ff0-43a4-98a5-cdba6794e6d3",
+    "source_url": "https://it.ubc.ca/service-category/accounts-passwords-0",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/b32be0dc-8ff0-43a4-98a5-cdba6794e6d3",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Accounts & Passwords",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "0cf457ede955cba4d3d82213602b542b23ebcfdb7c13b2bc5f19c32f1d0db459"
+  },
+  {
+    "id": "ba8844a2-ba07-496e-9b29-fd910e1d917d",
+    "source_url": "https://it.ubc.ca/service-category/internet-cable",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/ba8844a2-ba07-496e-9b29-fd910e1d917d",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Internet & Cable",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "9347ac289470a34bb6daf3ab5ef21f70cf197c61f45504d30c5852e26f2787b2"
+  },
+  {
+    "id": "babba4f4-5a69-4f18-9a83-32d4cf6d0a2d",
+    "source_url": "https://it.ubc.ca/service-category/productivity-tools-0",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/babba4f4-5a69-4f18-9a83-32d4cf6d0a2d",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Productivity Tools",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "37f28e6555bead8124164ee06c8b0e2f7a510c42a6b5600c9e6835f6b6ee1616"
+  },
+  {
+    "id": "bcf49e43-3bcf-4036-bc09-5fea9153bd83",
+    "source_url": "https://it.ubc.ca/service-category/ai-services-0",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/bcf49e43-3bcf-4036-bc09-5fea9153bd83",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "AI Services",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "fd52a6f0358be899bde0d87582c9d15a921b6f136f983c434da6d4177063c70d"
+  },
+  {
+    "id": "bd51002d-c863-4e72-8b14-7e6a74ad10cb",
+    "source_url": "https://it.ubc.ca/service-category/learning-management-system",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/bd51002d-c863-4e72-8b14-7e6a74ad10cb",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Learning Management System",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "130eadad30652863cb65ebc81fd494e28f9428f73bceb5a81c7ff77fa79f8833"
+  },
+  {
+    "id": "c685eae6-f988-48b3-87e1-228b7038ea4e",
+    "source_url": "https://it.ubc.ca/service-category/guidelines-standards",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/c685eae6-f988-48b3-87e1-228b7038ea4e",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Guidelines & Standards",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "e92f6cc56b58908b2e61f1707513878d6bca3250cc9e6bb96a679d72afef054f"
+  },
+  {
+    "id": "d1ad3e25-4bce-4ad4-a65e-f3baa8c4a1d5",
+    "source_url": "https://it.ubc.ca/service-category/operational-security",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/d1ad3e25-4bce-4ad4-a65e-f3baa8c4a1d5",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Operational Security",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "9cd84068deca67cf3f565fbd21afcf50125303b864664af630ce967bdcf02b19"
+  },
+  {
+    "id": "dca496f4-a7a5-4bc2-96fc-e64214af4a10",
+    "source_url": "https://it.ubc.ca/service-category/email-messaging",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/dca496f4-a7a5-4bc2-96fc-e64214af4a10",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Email & Messaging",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "1311efbf37f80ac9339a684f055b080cfce5d11c7a6d852d6d3a714185063bb4"
+  },
+  {
+    "id": "f742c601-4c52-4c15-8b63-05996901816d",
+    "source_url": "https://it.ubc.ca/service-category/policy-guidance",
+    "api_url": "https://it.ubc.ca/jsonapi/taxonomy_term/parent_service_category/f742c601-4c52-4c15-8b63-05996901816d",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Policy & Guidance",
+    "type": "taxonomy_term--parent_service_category",
+    "record_sha256": "a36eefa0b1976e1cbc29dcfdf20cc9cf60bd4a4051a4030e10e0df5fd541397f"
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1863a800-85c0-420e-b909-5d2e6e7f911d",
+    "source_url": "https://wellbeing.ubc.ca/campus-category/vancouver-campus",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/taxonomy_term/campus_category/1863a800-85c0-420e-b909-5d2e6e7f911d",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Vancouver Campus",
+    "type": "taxonomy_term--campus_category",
+    "record_sha256": "932daf83c4e5cf6d14704452fd880d47e4c6f368cb6995bb84c9285b6cd6d1d7"
+  },
+  {
+    "id": "456b70ba-ea03-44a2-afef-9a5734bc1ff2",
+    "source_url": "https://wellbeing.ubc.ca/campus-category/virtual",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/taxonomy_term/campus_category/456b70ba-ea03-44a2-afef-9a5734bc1ff2",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Virtual",
+    "type": "taxonomy_term--campus_category",
+    "record_sha256": "d03a0f41c5661141985dd747c5cb6d8224b677dd0b1fd0a69b47804a7986bdad"
+  },
+  {
+    "id": "c078f574-ee5a-4a2c-b463-eb0ff336ed46",
+    "source_url": "https://wellbeing.ubc.ca/campus-category/okanagan-campus",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/taxonomy_term/campus_category/c078f574-ee5a-4a2c-b463-eb0ff336ed46",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Okanagan Campus",
+    "type": "taxonomy_term--campus_category",
+    "record_sha256": "32287ed849911217bc11ff2f4ea1a753fef268a7f2a09dbde1046018ef8cf272"
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "hostname": "learningspaces.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w5 first homepage review",
+    "rationale": "UBC Learning Spaces provides public classroom, study-space, course-recording and design support for the university. Its homepage includes a distinct News & Announcements section. It is not exclusively Okanagan-serving: it describes UBC-wide learning spaces and names Allard Hall and Gateway Health facilities.",
+    "evidence": [
+      "https://learningspaces.ubc.ca/ | 633986e33d83bb1b6da7e75121e438df88dd7d1b878d63e4e1f3b0e12034b93f | Outstanding learning spaces are critical to UBC’s academic mission. We create inspiring spaces that support excellence in teaching and learning.",
+      "https://learningspaces.ubc.ca/ | 633986e33d83bb1b6da7e75121e438df88dd7d1b878d63e4e1f3b0e12034b93f | Find a classroom; Classroom recording and streaming; Learning Spaces Design Guidelines; Find an informal space",
+      "https://learningspaces.ubc.ca/ | 633986e33d83bb1b6da7e75121e438df88dd7d1b878d63e4e1f3b0e12034b93f | News & Announcements; $40M gift to UBC is the largest ever to a Canadian school of nursing; State-of-the-art Gateway Health building opens as integrated hub for student health, teaching and research; Upgrading accessibility at Allard Hall with new sit-stand desks"
+    ]
+  },
+  "rules": [
+    {
+      "id": "news-section",
+      "category": "news",
+      "rationale": "Explicit news and announcement sections report learning-space developments rather than provide ongoing support guidance.",
+      "path_pattern": "^/(?:news|announcements|news-announcements|news-and-announcements)(?:/|$)"
+    },
+    {
+      "id": "homepage-news-titles",
+      "category": "news",
+      "rationale": "The homepage explicitly lists these reports in News & Announcements.",
+      "title_pattern": "^(?:News\\s*(?:&|and)\\s*Announcements|\\$40M gift to UBC is the largest ever to a Canadian school of nursing|State-of-the-art Gateway Health building opens as integrated hub for student health, teaching and research|Upgrading accessibility at Allard Hall\\s+with new sit-stand desks)(?:$|\\s*[|–—-])"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "support",
+    "rationale": "The host's primary purpose is practical support for finding, using and designing UBC learning spaces and classroom recording facilities."
+  }
+}

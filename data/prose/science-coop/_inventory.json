@@ -1,0 +1,3348 @@
+[
+  {
+    "url": "https://sciencecoop.ubc.ca/",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-23T12:34:28-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:b70cac554164c4ce0f4620f6",
+    "resolved_url": "https://sciencecoop.ubc.ca/node/518"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/Entrepreneurial-Co-op",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-04-24T17:49:01-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/Entrepreneurial-Co-op",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/about/pubs",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-10T11:42:45-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:c529dca5-aa56-44b1-88b4-2906d17a9edd",
+    "resolved_url": "https://sciencecoop.ubc.ca/about/pubs"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/amber-wong",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-06T09:09:02-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/amber-wong",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/anna-rodgers",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-08-20T13:44:43-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/anna-rodgers",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/barb-seredick",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-20T09:10:56-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/barb-seredick",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/betty-cho",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-20T09:10:56-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/betty-cho",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/blog",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_landing_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-29T14:07:13-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:418a9360-41bc-4c1e-bcfa-34eda8c651e8",
+    "resolved_url": "https://sciencecoop.ubc.ca/blog"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/blog?page=0",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/blog"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:418a9360-41bc-4c1e-bcfa-34eda8c651e8",
+    "resolved_url": "https://sciencecoop.ubc.ca/blog"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/blog?page=1",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/blog"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:418a9360-41bc-4c1e-bcfa-34eda8c651e8",
+    "resolved_url": "https://sciencecoop.ubc.ca/blog"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/blog?page=10",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/blog?page=6"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:418a9360-41bc-4c1e-bcfa-34eda8c651e8",
+    "resolved_url": "https://sciencecoop.ubc.ca/blog"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/blog?page=11",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/blog"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:418a9360-41bc-4c1e-bcfa-34eda8c651e8",
+    "resolved_url": "https://sciencecoop.ubc.ca/blog"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/blog?page=2",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/blog"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:418a9360-41bc-4c1e-bcfa-34eda8c651e8",
+    "resolved_url": "https://sciencecoop.ubc.ca/blog"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/blog?page=3",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/blog"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:418a9360-41bc-4c1e-bcfa-34eda8c651e8",
+    "resolved_url": "https://sciencecoop.ubc.ca/blog"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/blog?page=4",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/blog"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:418a9360-41bc-4c1e-bcfa-34eda8c651e8",
+    "resolved_url": "https://sciencecoop.ubc.ca/blog"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/blog?page=5",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/blog"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:418a9360-41bc-4c1e-bcfa-34eda8c651e8",
+    "resolved_url": "https://sciencecoop.ubc.ca/blog"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/blog?page=6",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/blog"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:418a9360-41bc-4c1e-bcfa-34eda8c651e8",
+    "resolved_url": "https://sciencecoop.ubc.ca/blog"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/blog?page=7",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/blog"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:418a9360-41bc-4c1e-bcfa-34eda8c651e8",
+    "resolved_url": "https://sciencecoop.ubc.ca/blog"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/blog?page=8",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/blog"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:418a9360-41bc-4c1e-bcfa-34eda8c651e8",
+    "resolved_url": "https://sciencecoop.ubc.ca/blog"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/blog?page=9",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/blog?page=5"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:418a9360-41bc-4c1e-bcfa-34eda8c651e8",
+    "resolved_url": "https://sciencecoop.ubc.ca/blog"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/brittany-laidman",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-06T10:26:08-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/brittany-laidman",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/chris-mckinnon",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-12-17T08:31:37-08:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/chris-mckinnon",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/chronichles/Ching-Zhang",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-24T15:02:57-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:3e2cfa6b-e64f-4933-978f-cbd5b74c454c",
+    "resolved_url": "https://sciencecoop.ubc.ca/chronichles/Ching-Zhang"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/chronicles/Elliott-Evans",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-11-07T10:52:48-08:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:26c92e17-e59e-4bc4-b9b2-546d9a3d8c35",
+    "resolved_url": "https://sciencecoop.ubc.ca/chronicles/Elliott-Evans"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/chronicles/Eric-Fang",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-07-24T10:55:30-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:4d845f02-3e11-43e5-b068-6ad686ef7e7a",
+    "resolved_url": "https://sciencecoop.ubc.ca/chronicles/Eric-Fang"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/chronicles/Kristy-Law",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-10-16T12:13:52-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:6b7d8736-f2a8-401c-a43b-4d00b9246e8d",
+    "resolved_url": "https://sciencecoop.ubc.ca/chronicles/Kristy-Law"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/chronicles/Kwan-Ki-Jerry-Wong",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-09-12T14:19:26-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:f6b794c8-9ffb-42d3-9167-314a6aefb170",
+    "resolved_url": "https://sciencecoop.ubc.ca/chronicles/Kwan-Ki-Jerry-Wong"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/chronicles/Marissa-Grosz",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-09-17T12:40:39-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:ff5a3579-3ef8-4b4e-bd24-cf48df6203db",
+    "resolved_url": "https://sciencecoop.ubc.ca/chronicles/Marissa-Grosz"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/chronicles/Markus-Hanson",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-11-06T15:14:58-08:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:632493b3-3fa8-4635-96cb-1245219655ac",
+    "resolved_url": "https://sciencecoop.ubc.ca/chronicles/Markus-Hanson"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/chronicles/Myles-Osenton",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-07-17T13:43:25-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:56f09335-6b3e-4e9c-b474-0b2b0b9091bb",
+    "resolved_url": "https://sciencecoop.ubc.ca/chronicles/Myles-Osenton"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/chronicles/Peipei-Zhong",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-11-07T15:30:11-08:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:3b27b07b-80d1-4bb8-ae9b-a03ccb3bbe49",
+    "resolved_url": "https://sciencecoop.ubc.ca/chronicles/Peipei-Zhong"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/chronicles/Riya-Gandhi",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-07-17T16:39:56-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:656ccbe1-d3ec-4d83-a850-c85a0077eac0",
+    "resolved_url": "https://sciencecoop.ubc.ca/chronicles/Riya-Gandhi"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/chronicles/Sarah-Bond",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-10-22T11:41:17-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:2951f326-cd0d-4637-a18f-513b9f983d21",
+    "resolved_url": "https://sciencecoop.ubc.ca/chronicles/Sarah-Bond"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/chronicles/Shauna-Ndoping",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-10-28T16:25:26-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:5c52898e-5282-4db9-ad1a-de52bd32b852",
+    "resolved_url": "https://sciencecoop.ubc.ca/chronicles/Shauna-Ndoping"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/chronicles/jiahe-jiang",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-07-17T14:43:03-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:46225502-fb78-4f1f-bb13-92aa56217387",
+    "resolved_url": "https://sciencecoop.ubc.ca/chronicles/jiahe-jiang"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/co-op-basics",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-21T10:34:26-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:b9e5aea3-1b1c-4eeb-a2ad-fc99b4d0424a",
+    "resolved_url": "https://sciencecoop.ubc.ca/co-op-basics"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_landing_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-08-05T15:07:09-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:313b1fe6-840d-4ce6-83bd-966cc7cb9cfd",
+    "resolved_url": "https://sciencecoop.ubc.ca/community"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/bingocontest",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-11T10:45:50-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:3befd6d3-d15c-435f-9715-09634bbc7f78",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/bingocontest"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_landing_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-30T13:00:16-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/Ellen-Brisley",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-07-02T16:20:05-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:53cd7123-f5d5-4749-832c-b5905c7d7f53",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/Ellen-Brisley"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/abid-salahi-esfahani",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:53:00-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:5c3fbbb2-861f-4cc0-9071-54d515bcd79d",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/abid-salahi-esfahani"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/ahmad-asdo",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-08-12T15:31:49-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:56cc90e8-2538-42d7-83c9-9c29fd02e171",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/ahmad-asdo"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/alexander-khadra",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:38:29-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:d349a41e-edf4-44e9-9783-fa1432891159",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/alexander-khadra"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/anastasia-lee",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-07-28T16:19:57-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:6546415d-f8fe-486a-b033-7965adb20724",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/anastasia-lee"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/andrea-enriquez",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T12:05:36-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:2a200e6b-1a47-428c-a204-63863c087863",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/andrea-enriquez"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/andy-thompson",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-08-12T15:19:53-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:238b950e-1844-4531-9725-4a08a9459c35",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/andy-thompson"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/ben-holmes",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:44:59-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:9cd5ece6-ac68-46c1-9943-5118101dceee",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/ben-holmes"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/caitlin-lichimo",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T12:00:20-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:1d212c02-e03d-4be6-88cd-b5587c80f2b2",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/caitlin-lichimo"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/carly-lin",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:39:10-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:648f5caf-6ae4-4dab-8fa9-851ab4b31079",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/carly-lin"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/carly-pistawka",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:47:49-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:34ecd19b-fa27-4037-96e7-20143ae63c3a",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/carly-pistawka"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/clarisse-echavez",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:54:12-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:065e62f7-7830-406f-abf3-5f98cfac8ef0",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/clarisse-echavez"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/daichi-furukawa",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-10-22T14:21:57-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:7749d220-0d70-49c7-ad6c-7837e7ae996a",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/daichi-furukawa"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/dannon-sturn",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:34:17-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:b81c12e0-95ff-42f9-8a64-1765c4e7c620",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/dannon-sturn"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/david-li",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:54:52-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:7eaba3d8-f0b6-4d1a-a8ca-0db4a8d64197",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/david-li"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/gina-bolognesi",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:50:10-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:2e6eee77-adf6-441c-9645-a817c30536b2",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/gina-bolognesi"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/himanshu-chotwani",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:58:48-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:c1ddb5ab-71cc-4183-be7f-f9cb3a37e6b7",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/himanshu-chotwani"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/jacob-gravelle",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:37:55-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:ea5238d1-b8fc-4cfc-9537-cb260a5889ce",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/jacob-gravelle"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/jennifer-macfarlane",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:35:30-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:d22989c8-9afe-4f05-9458-e72ef6965caa",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/jennifer-macfarlane"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/jerlyn-brutas",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-08-12T15:25:16-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:1ebbea7f-43ef-4fec-a89d-25d20eaa50ad",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/jerlyn-brutas"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/jintong-yan",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T12:02:39-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:ceef09dd-fdb8-4e3a-a550-7725cde11979",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/jintong-yan"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/joshua-dyer",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T12:04:48-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:2385d2cb-23da-4644-8497-c7764292978b",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/joshua-dyer"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/judy-so",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:45:36-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:0fd144c2-e665-47b0-a39f-e7327bd6f30e",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/judy-so"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/junzhuo-lu",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T12:01:33-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:1603d627-345f-4df2-92e1-c86c9eb06b6b",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/junzhuo-lu"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/kevin-gu",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T12:02:06-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:79b87f45-3664-4f5a-9629-6941d976aded",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/kevin-gu"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/kyra-west",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:56:48-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:fd6f5f6c-ae8d-4ce8-8d55-d89a7f38715c",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/kyra-west"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/lilian-mah",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:41:56-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:df11ac29-fe81-48d2-9e21-419cd1e917c6",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/lilian-mah"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/lorna-tu",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:48:29-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:944a326b-580a-4c20-9cce-de49713a44c1",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/lorna-tu"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/maddy-dunsmore",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:49:18-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:93d11171-e87a-4ad6-a4d2-dbc41e4dbad9",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/maddy-dunsmore"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/madison-levagood",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-07-28T16:05:04-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:a03e0760-9a24-451d-a738-9be675d801b9",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/madison-levagood"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/marcus-liang",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-07-17T16:46:49-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:7161ff30-f0d6-4525-9fc0-e681e02e6563",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/marcus-liang"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/megan-elkin",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T12:00:45-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:b862325b-5f2e-4573-b15f-6648ddf9d867",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/megan-elkin"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/melanie-law",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:52:10-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:2a139cef-4869-4927-982c-58a18290fb36",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/melanie-law"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/min-luo",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:44:08-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:4d3335ce-bc2b-4332-a854-2a671114cf60",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/min-luo"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/miranda-clark",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-07-28T16:19:03-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:3a77e00e-d715-4b71-99c4-cc58c75db1d0",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/miranda-clark"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/nicole-cheng",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:55:33-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:e3ca3d72-687a-4273-a5fa-3b31f36b56bc",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/nicole-cheng"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/nicole-cormack",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:51:29-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:54dad7f6-be17-421c-af65-252518eb1b8a",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/nicole-cormack"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/noah-tourigny",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:59:39-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:c2f37b9e-1e02-479e-9cb5-fd820673157f",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/noah-tourigny"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/ohn-sastrillo",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:57:36-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:9b0d0076-faf1-404b-a770-16de2cbc59da",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/ohn-sastrillo"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/patricia-balmes",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:50:48-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:0c9aa8c5-30a4-4130-a0fb-c5cab936a5a8",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/patricia-balmes"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/phoebe-wang",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:40:24-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:1d711759-9a28-4a6a-8cd0-659be7881f51",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/phoebe-wang"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/rachel-chiu",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-07-17T16:42:12-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:c09bd99d-1ec5-4fe4-aa30-d4d3d53e2a1b",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/rachel-chiu"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/rithika-nair",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-07-28T16:09:24-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:05d92458-3327-4212-ac30-abfcc44868b5",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/rithika-nair"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/roselyn-ma",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T12:03:31-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:02189996-3f15-406b-bdd5-4e0817690aaa",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/roselyn-ma"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/saambavi-charu-sankaran",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:46:48-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:98f3d5e3-d44b-4544-9167-0a1eeea96cff",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/saambavi-charu-sankaran"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/sarina-saffarian",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-07-17T16:39:06-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:1be357f7-13ef-4de8-b45b-da2134b9a4b9",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/sarina-saffarian"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/sebastian-kondratowski",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:56:08-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:a573d362-df77-40ff-9ebd-75a4dd034a1f",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/sebastian-kondratowski"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/sharisse-chan",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:53:30-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:db8e6f68-be2f-403a-8890-9fc61ee8a9a3",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/sharisse-chan"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/shreyas-goyal",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-07-17T14:50:03-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:9fec4793-924e-40fc-88f6-78fe2862092e",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/shreyas-goyal"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/tabreek-somani",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:41:25-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:ec42b743-6a47-407e-85a7-bf5aff18fb7b",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/tabreek-somani"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles/wendy-hwang",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T11:37:22-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:ca79b42c-a37b-4319-accd-dfe2f7d6e675",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/wendy-hwang"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=0",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=1",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=10",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles?page=6"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=11",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles?page=7"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=12",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles?page=8"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=13",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles?page=17"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=14",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles?page=17"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=15",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles?page=17"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=16",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles?page=17"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=17",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=2",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=3",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=4",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=5",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=6",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=7",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=8",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/chronicles?page=9",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles?page=5"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:77a5cb49-b057-405f-a9d5-449983fa28e4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/daylifecontest",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-04T09:15:06-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:e31711b8-c92d-42ea-9b3f-a3f328e7cb10",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/daylifecontest"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-09T14:29:04-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:4e2bf897-ff1e-4d70-b1c0-1e1b6f5685cb",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_landing_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-30T11:30:23-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:1e3a0efb-ea58-46b1-95bf-41a5e943ae83",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/Jennifer-Nguyen",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-03-24T11:58:55-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:631f83e0-5985-4912-96bc-5ac3375aa9d2",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/Jennifer-Nguyen"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/Thomas-van-der-Sloot",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-03-13T13:48:09-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:d94c0086-fc89-4f32-a02f-6765d82b1946",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/Thomas-van-der-Sloot"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/abhijit-parolia",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:02:53-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:956f3549-a245-4f12-9e63-3ab3b1713569",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/abhijit-parolia"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/ahmad-asdo",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T09:59:39-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:c5dde13f-dbef-4ed9-a9dc-1dfd57bf955d",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/ahmad-asdo"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/alanna-de-mello",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:03:28-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:683d90d2-2459-4e6e-b142-8701898e288a",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/alanna-de-mello"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/alec-lee",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:02:01-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:5fd81710-c9d9-4124-8c9f-2ac3e565f64e",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/alec-lee"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/brandon-huntington",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:04:57-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:f61a7142-b3c6-4651-a5ea-5d28063d5594",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/brandon-huntington"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/carly-pistawka",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:05:35-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:db44827d-e306-48df-a165-948bf19c998e",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/carly-pistawka"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/carson-leach",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:05:54-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:1517d78b-16dc-429c-9ddd-03404275a40f",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/carson-leach"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/charu-sankaran",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:05:21-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:f822cbf8-a38b-44ec-a7d6-f716faf24922",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/charu-sankaran"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/dorian-gangloff",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:04:45-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:9635c319-3cf8-45d5-a68e-cd0adc3f56f0",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/dorian-gangloff"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/gurpal-bisra",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:02:28-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:0bccb11d-7532-4826-88b2-7444ab5ac121",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/gurpal-bisra"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/jamie-magrill",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:03:40-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:9fa4d7f4-664c-482d-85ef-4db187bddf80",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/jamie-magrill"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/jessica-jun",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:04:33-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:e5431899-e160-453b-a84b-5339a52dd7d9",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/jessica-jun"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/judy-so",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:06:30-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:6c6de963-de99-42b8-831c-84dbc265e987",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/judy-so"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/julie-ng",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:00:54-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:93419c45-c5f4-482f-9268-c1b9e37dd8e9",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/julie-ng"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/lucas-cahill",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:03:13-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:1f31b4a0-7faa-4337-9ee4-ebd49193b392",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/lucas-cahill"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/maya-tong",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:02:15-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:7b432bb3-c77c-4b10-989f-ed99f19feff8",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/maya-tong"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/michelle-fan",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:06:19-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:f6692fd2-6139-4c81-9447-ff25167476ab",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/michelle-fan"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/neil-thomas",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:01:11-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:0cf00ceb-6630-49e1-b768-fbd1c6d23149",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/neil-thomas"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/samantha-sam",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:05:09-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:c1157e5b-4faa-4f8d-8380-deff1eefd69b",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/samantha-sam"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/shane-lloyd",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:00:27-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:d9649aef-d839-4354-9f9c-671ba3f2ede4",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/shane-lloyd"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/tabreek-somani",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:06:06-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:bc081949-8f8c-4d0a-b3f6-81f341be66fe",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/tabreek-somani"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/trisha-roberson",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:02:42-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:214f4c37-5b88-4955-a1b6-ae76ffb50e59",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/trisha-roberson"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners/yan-xu",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-11T10:01:46-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:7085d7e5-2e5a-4110-ab7d-28e598379d04",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners/yan-xu"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners?page=0",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/scsoty/winners"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:1e3a0efb-ea58-46b1-95bf-41a5e943ae83",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners?page=1",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/scsoty/winners"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:1e3a0efb-ea58-46b1-95bf-41a5e943ae83",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners?page=2",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/scsoty/winners"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:1e3a0efb-ea58-46b1-95bf-41a5e943ae83",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners?page=3",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/scsoty/winners"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:1e3a0efb-ea58-46b1-95bf-41a5e943ae83",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/community/scsoty/winners?page=4",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/scsoty/winners"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:1e3a0efb-ea58-46b1-95bf-41a5e943ae83",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/conservation-genetics-site-c",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-14T10:58:11-08:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:123aaf71-280a-4922-89e9-e561687ea86d",
+    "resolved_url": "https://sciencecoop.ubc.ca/conservation-genetics-site-c"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/contact",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_landing_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-02-19T16:00:15-08:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:ef8da182-66a4-41a4-8130-1a250bc2b462",
+    "resolved_url": "https://sciencecoop.ubc.ca/contact"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/dr-javed-iqbal",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-15T10:54:07-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/dr-javed-iqbal",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/draft-hire-top-emerging-talent",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_landing_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-04T14:40:15-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:9b3611cb-2227-47a8-9cd9-ae231c04b54d",
+    "resolved_url": "https://sciencecoop.ubc.ca/draft-hire-top-emerging-talent"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/eCoopaward",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-11-28T11:36:41-08:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:532f226f-267d-4617-a762-8df048b89f70",
+    "resolved_url": "https://sciencecoop.ubc.ca/eCoopaward"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/effective-cover-letters",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-03-25T10:02:57-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:ccb7a10c-c5f3-41ee-b41b-80934d330180",
+    "resolved_url": "https://sciencecoop.ubc.ca/effective-cover-letters"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/effective-resume-design",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-03-24T16:01:15-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:4aafa135-b3c1-425b-8832-0286206e1e31",
+    "resolved_url": "https://sciencecoop.ubc.ca/effective-resume-design"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/ella-chen",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-11-04T15:26:19-08:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/ella-chen",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/ellen-evangelista",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-20T09:10:56-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/ellen-evangelista",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employer-appreciation",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-19T15:06:18-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:10f6ff3d-81c1-49c7-86e9-55f8fc8b010e",
+    "resolved_url": "https://sciencecoop.ubc.ca/employer-appreciation"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_landing_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-04T11:28:56-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/award",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-14T07:49:47-08:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/awardcriteria",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-26T13:56:42-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/bestpractices",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-21T17:09:58-08:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/discipline/applied-biology",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-28T13:12:45-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/discipline/fnh",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-28T13:14:25-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/discipline/fnsc",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-02T13:58:51-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/discipline/fre",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-02T14:00:21-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/discipline/fsct",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-28T13:20:11-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/discipline/grs",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-28T13:15:33-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/atsc",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-28T12:11:11-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/bcs",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-27T15:11:44-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/biochem",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-31T13:20:02-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/biology",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-03T08:06:03-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/biop",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-27T15:13:40-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/biotech",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-27T15:13:18-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/caps",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-03T08:06:45-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/chem",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-31T13:21:16-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/cms",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-24T10:10:13-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/cognitivesystems",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-27T15:14:36-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/cpsc",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-09T13:52:23-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/engphys",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-08T17:25:31-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/ensc",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-28T14:14:10-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/eosc",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-28T12:10:46-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/geo",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-28T12:09:16-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/insc",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-27T15:12:21-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/lfs",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-28T12:36:27-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/math",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-28T12:01:19-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/microbi",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-27T15:13:29-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/neuro",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-21T13:06:39-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/pharmacology",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-28T12:02:51-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/phys",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-27T15:11:29-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/stat",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-27T15:14:13-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/disciplines/statg",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-27T15:14:03-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/equity-diversity-inclusion-and-accessibility-edia",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-07-25T14:49:11-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/expectations-and-responsibilities",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-04-10T14:10:18-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/faq",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-03-10T08:58:48-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/featured",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_landing_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-14T11:37:46-08:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/funding",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-19T16:27:07-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/hire",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-23T16:06:25-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/international",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-07T15:47:28-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/programsandskills",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-31T13:20:26-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/salaries",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-10T14:29:51-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/ubcdepartments",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-09-11T13:48:58-07:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/employers/why",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-02-19T15:58:46-08:00",
+    "status": "excluded",
+    "reason": "Faculty, staff, instructor or employer-only section.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/featured-student-gina-bolognesi",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles/gina-bolognesi"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:2e6eee77-adf6-441c-9645-a817c30536b2",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/gina-bolognesi"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/featured-student-maddy-dunsmore",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles/maddy-dunsmore"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:93d11171-e87a-4ad6-a4d2-dbc41e4dbad9",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/chronicles/maddy-dunsmore"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/find-right-talent-your-team",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-19T15:13:15-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:d2427e5b-9e5b-4eb1-8e5a-7b4f9d8177df",
+    "resolved_url": "https://sciencecoop.ubc.ca/find-right-talent-your-team"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/funding-opportunities",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-21T10:42:40-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:4933d1c9-3442-46a4-bf1a-d64fc51c778b",
+    "resolved_url": "https://sciencecoop.ubc.ca/funding-opportunities"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/girish-chandra",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-06T10:26:54-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/girish-chandra",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/hiral-sejpal",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-15T10:52:42-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/hiral-sejpal",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/hiring-outside-canada",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-19T16:00:24-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:8026f3c3-8ec4-4d93-aa69-c6be0dded49a",
+    "resolved_url": "https://sciencecoop.ubc.ca/hiring-outside-canada"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/how-do-i-hire",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-19T15:58:25-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:c4a3775d-9603-4429-b3dd-35b160d6be1c",
+    "resolved_url": "https://sciencecoop.ubc.ca/how-do-i-hire"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/kimara-wanjiru",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-03-31T13:10:34-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/kimara-wanjiru",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/krista-slaman",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-15T10:54:59-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/krista-slaman",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/lindsay-grant",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-15T10:53:20-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/lindsay-grant",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/mina-phaisaltantiwongs",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-15T10:51:31-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/mina-phaisaltantiwongs",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/node/327",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/chronicles/judy-so"
+    ],
+    "source_modified_at": null,
+    "status": "unavailable",
+    "reason": "ProseFetchError: HTTP 404: https://sciencecoop.ubc.ca/node/327",
+    "article_id": null,
+    "http_status": 404
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/node/518",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-23T12:34:28-07:00",
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:b70cac554164c4ce0f4620f6",
+    "resolved_url": "https://sciencecoop.ubc.ca/node/518"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/node/583",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/community/scsoty"
+    ],
+    "source_modified_at": null,
+    "status": "duplicate",
+    "reason": "Same canonical URL or publisher record identifier as another article.",
+    "article_id": "prose:science-coop:1e3a0efb-ea58-46b1-95bf-41a5e943ae83",
+    "resolved_url": "https://sciencecoop.ubc.ca/community/scsoty/winners"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/node/618",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_blog",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-08-12T15:05:45-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:817a0b9d-7d1a-446e-a309-3927dc4a0bac",
+    "resolved_url": "https://sciencecoop.ubc.ca/node/618"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/nora-becker",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-02T15:56:29-08:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/nora-becker",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/profiles/gui-martins",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-06T09:05:29-07:00",
+    "status": "excluded",
+    "reason": "Individual profile or event record; these are not prose article collections.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/profiles/kristina-tzetzos",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-25T08:20:21-07:00",
+    "status": "excluded",
+    "reason": "Individual profile or event record; these are not prose article collections.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/profiles/nadia-shao",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-08-12T09:03:46-07:00",
+    "status": "excluded",
+    "reason": "Individual profile or event record; these are not prose article collections.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/profiles/snigdha-madhuri",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-25T08:21:39-07:00",
+    "status": "excluded",
+    "reason": "Individual profile or event record; these are not prose article collections.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_landing_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml",
+      "Declared public source root"
+    ],
+    "source_modified_at": "2026-08-25T07:39:20-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:930cb3c4-6e0c-40cf-8f1b-6f15b7420d80",
+    "resolved_url": "https://sciencecoop.ubc.ca/prospective"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/atmospheric",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-02T14:29:30-08:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/atmospheric",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/bachelorofcomputerscience",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/prospective/applydeadlines"
+    ],
+    "source_modified_at": null,
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/bcs",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/bcs",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-23T11:24:49-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/bcs",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/biochem",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-02T14:30:26-08:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/biochem",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/biology",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-24T10:49:22-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/biology",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/biophysics",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-21T16:08:46-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/biophysics",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/bmlsc",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-08T09:43:54-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/bmlsc",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/chem",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-24T10:50:32-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/chem",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/cogs",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-23T14:43:30-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/cogs",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/cogs-cognition-and-brain",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-23T14:40:16-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/cogs-cognition-and-brain",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/cs",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-30T09:55:10-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/cs",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/data-science",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-10T15:03:12-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/data-science",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/engphys",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-02T16:13:11-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/engphys",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/ensc",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-08T09:43:09-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/ensc",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/eos",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-21T16:10:09-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/eos",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/forensic",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-08T09:43:33-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/forensic",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/geob",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-21T16:11:18-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/geob",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/geological",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-21T16:12:25-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/geological",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/geophysics",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-21T16:25:23-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/geophysics",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/gradcpsc",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-29T08:41:43-07:00",
+    "status": "excluded",
+    "reason": "The public prospective-program directory identifies this track as graduate-only.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/gradstats",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-02T14:52:08-08:00",
+    "status": "excluded",
+    "reason": "The public prospective-program directory identifies this track as graduate-only.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/gsci",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-21T16:04:59-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/gsci",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/isci",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-06T10:11:29-08:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/isci",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/land",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-21T16:26:19-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/land",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/math",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-24T10:52:44-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/math",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/microbiology",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-23T11:57:54-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/microbiology",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/nrsc",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-06T10:10:46-08:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/nrsc",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/ocean",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-21T16:36:08-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/ocean",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/pharmaceuticalsciences",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-08T09:44:28-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/pharmaceuticalsciences",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/pharmacology",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-08T09:44:11-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/pharmacology",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/physics",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-24T10:53:14-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/physics",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/physiology",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-21T16:09:18-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/physiology",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/prodigy",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-02T14:51:25-08:00",
+    "status": "excluded",
+    "reason": "The public prospective-program directory identifies this track as graduate-only.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/apply/stats",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-21T16:41:18-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/apply/stats",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/applydeadlines",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-24T10:48:37-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:8109849a-04b9-4104-aa7b-53b0f662b1a4",
+    "resolved_url": "https://sciencecoop.ubc.ca/prospective/applydeadlines"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/applyreq",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-03T13:03:23-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:0cba55a7-9bc4-4046-bfa8-29bf863f35b2",
+    "resolved_url": "https://sciencecoop.ubc.ca/prospective/applyreq"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/biotechnology",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-11-27T14:51:23-08:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/prospective/biotechnology",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/faq",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-24T10:06:08-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:6c6b2bfe-b58e-452c-ba54-4a06bc923642",
+    "resolved_url": "https://sciencecoop.ubc.ca/prospective/faq"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/fees",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-09T13:46:19-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:e3a723f2-e5b3-4dd1-b677-fcf7550d4a6c",
+    "resolved_url": "https://sciencecoop.ubc.ca/prospective/fees"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/infosessions",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-04T08:40:45-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:9b78c76b-0362-494b-b531-ec5ef0eec810",
+    "resolved_url": "https://sciencecoop.ubc.ca/prospective/infosessions"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/res",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-25T13:05:53-07:00",
+    "status": "excluded",
+    "reason": "The public prospective-program directory identifies this track as graduate-only.",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/what",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-03T12:55:57-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:c69d74cb-7cd5-4ac7-b137-370c93b915fa",
+    "resolved_url": "https://sciencecoop.ubc.ca/prospective/what"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/prospective/why",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-10-03T12:47:40-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:22876a77-ddc5-4865-a06e-0fa0012eb8c5",
+    "resolved_url": "https://sciencecoop.ubc.ca/prospective/why"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/rob-driscoll",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-20T09:10:56-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/rob-driscoll",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/salary-guidelines",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-21T12:28:00-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:72b2a64a-285b-45fb-a859-277b3b279832",
+    "resolved_url": "https://sciencecoop.ubc.ca/salary-guidelines"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/sandy-kuk",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-20T09:10:56-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/sandy-kuk",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/sanya-sivic",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-06T09:06:44-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/sanya-sivic",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/science-co-op-students-featured",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-14T11:09:12-08:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:3534e856-8239-4797-90b2-a6552e9e8fc3",
+    "resolved_url": "https://sciencecoop.ubc.ca/science-co-op-students-featured"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/senior-program-assistant",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-20T09:10:56-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/senior-program-assistant",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/sharon-chan-0",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-26T10:08:17-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/sharon-chan-0",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/sher-najafi",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-15T10:53:01-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/sher-najafi",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/student-year-award",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-03-13T07:58:46-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:a8c3fdad-4f94-4c71-b28a-a09f3cab91a0",
+    "resolved_url": "https://sciencecoop.ubc.ca/student-year-award"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_landing_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml",
+      "Declared public source root"
+    ],
+    "source_modified_at": "2026-09-01T08:47:08-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:e617b679-5f94-448d-b193-a20c156a5703",
+    "resolved_url": "https://sciencecoop.ubc.ca/students"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/academics",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-02-05T10:10:30-08:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:3e62aad2-46a9-426d-ae60-c6f471899711",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/academics"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/apply",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-10-14T13:05:12-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:d3750100-1e74-45a5-9980-023ad542bf5e",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/apply"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/help",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-06T16:48:54-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:491497d1-c462-4d61-8844-9bac0da2838b",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/help"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/indigenous",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-09-04T10:01:25-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:cf07107f-d8e4-4f86-97bf-3232169b7358",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/indigenous"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/indigenous-resources",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-09-03T15:58:09-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:2da54cb1-4ac0-4aeb-a1a0-1c5b481d66f1",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/indigenous-resources"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/international",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-04-20T08:46:26-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:71a324fc-2c92-43d6-8a4d-1d048c20e2a1",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/international"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/pacific-leaders-tuition-grants",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-23T14:48:38-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:ea4762a2-e35d-4dc5-8bdd-a7f7f7a2d298",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/pacific-leaders-tuition-grants"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/report",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-21T17:14:36-08:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:66f6fb92-25c7-49b7-b8b9-a7dd43a2248f",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/report"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/requirements",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-01-21T17:13:33-08:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:36282617-2d6b-4202-8ee3-e3d35195bd92",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/requirements"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/resources",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-10-20T12:29:00-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:475a2d34-2a32-491f-acf1-486bf498e482",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/resources"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/self",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-11-27T10:04:18-08:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:07d28326-1702-4c4e-a61e-c8873e8abb82",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/self"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/success",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-23T15:00:10-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:29785b05-85eb-42fb-ab2b-6dfebba9c446",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/success"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/terms",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-14T09:38:23-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:88a3a4dc-4b82-4a1d-b293-0714c359d6cb",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/terms"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/workabroad",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2025-08-12T10:36:32-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:5af4984b-9602-47fe-b556-9b3a19b6240d",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/workabroad"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/workabroad/grant",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-09-03T10:14:39-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:d903572d-c88f-4624-99be-c80264f85f50",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/workabroad/grant"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/workabroad/mpi",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-23T14:59:48-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:da299af2-039f-4d84-a11f-2ea3c104e67c",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/workabroad/mpi"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/workabroad/programs",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-09T13:53:08-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:a1e6091a-ea9d-4e76-a242-2abec2e2fc31",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/workabroad/programs"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/workabroad/visa",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-12-05T11:08:08-08:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:c9033a46-6aad-4dfb-9c9a-97bdb8146fee",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/workabroad/visa"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/students/workshops",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-04-21T10:11:17-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:da38eaaa-75a8-4325-bf83-1484261ad5ac",
+    "resolved_url": "https://sciencecoop.ubc.ca/students/workshops"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/supervisor-onboarding-sessions",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-20T14:47:12-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:0ce1976b-dce3-40fd-b364-c5108efc79b0",
+    "resolved_url": "https://sciencecoop.ubc.ca/supervisor-onboarding-sessions"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/tiffany-mak",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-04-21T14:10:00-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/tiffany-mak",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/vacant",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-06T10:28:53-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/vacant",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/when-can-i-hire",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-04T14:34:08-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:a50a5a33-461f-47e1-b5e7-8841add1a4a7",
+    "resolved_url": "https://sciencecoop.ubc.ca/when-can-i-hire"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/why-ubc-science-co-op",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/jsonapi/node/ubc_page",
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-21T10:26:26-07:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:science-coop:deb5f0f7-5c74-4c29-bbe3-b9ac66cee69a",
+    "resolved_url": "https://sciencecoop.ubc.ca/why-ubc-science-co-op"
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/yas-azarpajouh",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-12-17T08:31:14-08:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/yas-azarpajouh",
+    "article_id": null
+  },
+  {
+    "url": "https://sciencecoop.ubc.ca/yeen-chin",
+    "discovered_by": [
+      "https://sciencecoop.ubc.ca/sitemap.xml"
+    ],
+    "source_modified_at": "2024-08-20T09:10:56-07:00",
+    "status": "excluded",
+    "reason": "NonArticleError: Publisher identifies a profile, student listing, event or sandbox rather than a prose article: https://sciencecoop.ubc.ca/yeen-chin",
+    "article_id": null
+  }
+]

@@ -19,9 +19,8 @@
  *
  * - **Floor.** Airtable has no floor field. Informal spaces usually say it in
  *   words ("B Block 2nd Floor Lounge"); classrooms encode it in the room number.
- *   `floorFrom` reads the first, falls back to the second, and leaves the rest null
- *   rather than guessing -- see the note on that function for why IRC and FNH
- *   cannot be resolved.
+ *   `floorFrom` reads the first and falls back to the second. Nonstandard room
+ *   numbers, such as those at IRC and FNH, stay null unless the text states a floor.
  * - **Buildings carry their rooms.** The buildings endpoint returns counts and a
  *   name and nothing else, so each building is given the rooms collected for it,
  *   their floors and capacities, and a cover photo, which is what makes the table
@@ -46,7 +45,7 @@ export const DEFAULT_CONFIGS = [
   { campus: "vancouver", formal: false },
 ];
 
-// Airtable hands back ~10 rows per call; this bounds a runaway cursor.
+// Cap room pagination to bound a runaway cursor.
 export const MAX_PAGES = 500;
 
 // "2nd Floor Lounge", "B Block 3rd Floor Lounge" -- the floor written out.
@@ -54,7 +53,7 @@ const ORDINAL_FLOOR_RE = /(\d+)\s*(?:st|nd|rd|th)\s*floor/i;
 
 // A room number in UBC's usual scheme: an optional block or wing letter, three
 // or four digits whose first is the floor, an optional suffix. "B101" is Block
-// B room 101 on floor 1, not a basement -- Buchanan alone has 61 of those.
+// B room 101 on floor 1, not a basement, as in Buchanan.
 const ROOM_NUMBER_RE = /^[A-Z]?(\d{3,4})[A-Z]?$/i;
 
 // "(Room 101)" inside a longer informal name.
@@ -116,7 +115,7 @@ function stableStringify(value: AnyJson): unknown {
 }
 
 export function params(config: AnyJson): AnyJson {
-  /** admin-ajax reads booleans as the strings JavaScript would have sent. */
+  /** Encode booleans as the strings `"true"` and `"false"` that admin-ajax expects. */
   const out: AnyJson = {};
   for (const [key, value] of Object.entries(config)) {
     out[key] = value === true ? "true" : value === false ? "false" : value;
@@ -340,9 +339,9 @@ export const LearningSpaces = register(
 
       const buildings: Array<AnyJson> = [];
       const seenBuildings = new Set<string>();
-      // Every config, not one per campus: the endpoint answers for whichever
-      // tab it is asked about, so asking only once returned the 38 buildings
-      // with informal space and none of the 12 that only hold classrooms.
+      // Query every config, not just one per campus: the endpoint only returns
+      // buildings for the requested tab. An informal-only request excludes
+      // buildings that contain classrooms but no informal study space.
       for (const config of allConfigs) {
         const payload = await ajax(http, "find_a_space_buildings", found, params(config));
         for (const record of body(payload)["records"] ?? []) {

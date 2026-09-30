@@ -1,0 +1,9 @@
+The Bachelor of Design in Architecture, Landscape Architecture and Urbanism \(B\.Des\.\) provides an interdisciplinary learning environment that explores the connectedness of design across multiple scales\. Students learn to observe how design impacts society and the environment and how cultural changes can be effected through the shaping of space\. Students also learn to envision alternative constructs that are both socially and ecologically sustainable\. The B\.Des\. is not a professional degree\. The curriculum prepares students to undertake a self\-directed path towards a number of possible futures including graduate studies in Architecture, Landscape Architecture, Urban Design, and other allied fields of design\.
+
+Design is at the core of the curriculum, and is taught through a design sequence that begins with foundational skills and culminates in the design of complex spaces that are conceived of at a range of scales from the body to the city\. Additional coursework in history, theory, media, technology, and professional practice contribute to a well\-rounded design curriculum\. Elective coursework provides the student the opportunity to explore areas of his/her particular interest\.
+
+The B\.Des\. equips tomorrow’s design leaders and practitioners with the critical thinking and practical skills necessary to make positive and meaningful contributions to the creation of designed environments at any scale\.
+
+#### Academic Advising
+
+Academic Advising is available through the Bachelor of Design Office located in Macmillan 379, 2357 Main Mall, Vancouver, B\.C\., V6T 1Z4\. The office is open year\-round Monday to Friday, 9 am – 4 pm for enquiry in\-person, telephone \(604\) \(822\-6916\) or email [des@sala\.ubc\.ca](mailto:des@sala.ubc.ca)\.

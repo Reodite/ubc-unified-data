@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "hostname": "postgrad.med.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner ca37b94e-5757-4878-811c-907915e18161; primary retained-homepage review under article-only closure",
+    "rationale": "Postgraduate Medical Education publishes applicant, residency, trainee, policy, faculty-development and learning-environment information.",
+    "evidence": [
+      "https://postgrad.med.ubc.ca/ | 232fa8815b717a0b496f99e609d74e41a4dac8bef8ab585d710e79528f1f7448 | Postgraduate Medical Education"
+    ]
+  },
+  "rules": [
+    {
+      "id": "current-news",
+      "category": "news",
+      "rationale": "Explicit news, update, blog and announcement paths contain current public reporting.",
+      "path_pattern": "^/(?:news|blog|updates?|announcements?|category/(?:news|arena-news))(?:/|$)"
+    },
+    {
+      "id": "research-material",
+      "category": "research",
+      "rationale": "Explicit research, publication, project and scholarly-output paths describe research activity.",
+      "path_pattern": "^/(?:research|our-research|publications?|projects?|scholarly-output)(?:/|$)"
+    },
+    {
+      "id": "participation-opportunities",
+      "category": "opportunities",
+      "rationale": "Explicit event, career, application, admission, funding, award and volunteer paths invite participation.",
+      "path_pattern": "^/(?:events?|careers?|jobs?|employment|apply|admissions?|funding|awards?|volunteer|volunteering-opportunities|get-involved|prospective-students|summer-camps|funding-opportunities|directory-award-opportunities)(?:/|$)"
+    },
+    {
+      "id": "people-stories",
+      "category": "stories",
+      "rationale": "Explicit people, alumni, story, profile and memorial paths center personal accounts.",
+      "path_pattern": "^/(?:people|alumni|stories?|profiles?|faculty-spotlights|graduate-profiles|in-memoriam|home-page)(?:/|$)"
+    },
+    {
+      "id": "practical-support",
+      "category": "support",
+      "rationale": "Explicit contact, resource, service, safety, policy, form and student-support paths provide practical guidance.",
+      "path_pattern": "^/(?:contact|about-us/contact-us|resources?|services?|support|faq|faqs|safety|health-safety|forms?|policies|guidelines|current-students|student-resources|guest-information)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "postgrad-med-ubc-ca-academics",
+    "category": "academics",
+    "rationale": "Postgraduate Medical Education publishes applicant, residency, trainee, policy, faculty-development and learning-environment information."
+  }
+}

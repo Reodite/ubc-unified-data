@@ -48,8 +48,8 @@ export function isFloatValue(value: unknown): value is FloatValue {
   return typeof value === "object" && value !== null && (value as { __float?: unknown }).__float === true;
 }
 
-/** A non-integral double writes as its shortest round trip; the one wrinkle
- * is exponent padding (`1e-07` vs `1e-7`), fixed here. */
+/** A non-integral double writes as its shortest round trip, with two-digit
+ * exponent padding (`1e-07` rather than `1e-7`). */
 function floatRepr(value: number): string {
   return String(value).replace(/e([+-])(\d)$/, "e$10$2");
 }
@@ -162,10 +162,8 @@ function serialize(value: unknown, indent: number, separators: [string, string],
   return "null";
 }
 
-/** Non-primitive values that a CSV cell must carry survive via the same
- * compact JSON rule the output always used. Primitives (and float values,
- * which are primitives for this purpose) pass through unchanged so `cellText`
- * formats them. */
+/** Serialize non-primitive CSV cells as compact JSON. Primitives and float
+ * values pass through unchanged so `cellText` formats them. */
 export function csvScalar(value: unknown): unknown {
   if (
     value === null ||
@@ -631,6 +629,19 @@ export class Http {
       headers: { "Content-Type": "application/x-www-form-urlencoded", ...opts.headers },
     });
     return response.json();
+  }
+
+  /** POST a public form-encoded request and return its HTML/text response. */
+  async postText(url: string, data: Record<string, unknown>): Promise<string> {
+    const search = new URLSearchParams();
+    for (const [key, value] of Object.entries(data)) {
+      if (value !== undefined && value !== null) search.append(key, String(value));
+    }
+    const response = await this.request("POST", url, {
+      body: search.toString(),
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    });
+    return response.text();
   }
 
   /** Run `fn` over `items` in a pool of `workers`, preserving input order. */

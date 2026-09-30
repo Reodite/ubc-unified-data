@@ -1,0 +1,723 @@
+[
+  {
+    "url": "https://workday.students.ubc.ca/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml",
+      "Declared public source root"
+    ],
+    "source_modified_at": "2026-05-19T20:07:19+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:133",
+    "resolved_url": "https://workday.students.ubc.ca/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/alerts/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-02-18T23:29:58+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:2589",
+    "resolved_url": "https://workday.students.ubc.ca/alerts/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/course-registration/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-26T22:06:59+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:2719",
+    "resolved_url": "https://workday.students.ubc.ca/course-registration/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/course-registration/creating-viewing-and-registering-from-a-saved-schedule/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-06T18:21:37+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4950",
+    "resolved_url": "https://workday.students.ubc.ca/course-registration/creating-viewing-and-registering-from-a-saved-schedule/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/course-registration/finding-credit-d-fail-courses/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-04-22T23:50:23+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4078",
+    "resolved_url": "https://workday.students.ubc.ca/course-registration/finding-credit-d-fail-courses/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/course-registration/joining-viewing-and-registering-from-course-waitlists/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-27T22:57:36+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:5187",
+    "resolved_url": "https://workday.students.ubc.ca/course-registration/joining-viewing-and-registering-from-course-waitlists/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/course-registration/registering-for-individual-course-sections/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-26T17:12:31+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3515",
+    "resolved_url": "https://workday.students.ubc.ca/course-registration/registering-for-individual-course-sections/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/course-registration/resolving-a-hold-on-your-record/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-10T22:14:19+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3009",
+    "resolved_url": "https://workday.students.ubc.ca/course-registration/resolving-a-hold-on-your-record/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/course-registration/swapping-dropping-or-withdrawing-from-a-course/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-10T22:18:39+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:5323",
+    "resolved_url": "https://workday.students.ubc.ca/course-registration/swapping-dropping-or-withdrawing-from-a-course/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/course-registration/troubleshooting-saved-schedules/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-10T22:16:53+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4957",
+    "resolved_url": "https://workday.students.ubc.ca/course-registration/troubleshooting-saved-schedules/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/course-registration/troubleshooting-your-course-registration/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-26T22:08:00+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3704",
+    "resolved_url": "https://workday.students.ubc.ca/course-registration/troubleshooting-your-course-registration/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/course-registration/understanding-course-waitlists/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-28T16:43:01+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4109",
+    "resolved_url": "https://workday.students.ubc.ca/course-registration/understanding-course-waitlists/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/course-registration/viewing-the-course-schedule/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-04-22T23:49:01+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3002",
+    "resolved_url": "https://workday.students.ubc.ca/course-registration/viewing-the-course-schedule/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/course-registration/viewing-your-registration-appointment/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-04-22T23:49:30+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3513",
+    "resolved_url": "https://workday.students.ubc.ca/course-registration/viewing-your-registration-appointment/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/degree-planning/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-27T21:59:54+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:2708",
+    "resolved_url": "https://workday.students.ubc.ca/degree-planning/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/degree-planning/adding-a-program-of-study-second-major-or-minor/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-02-27T18:06:23+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3096",
+    "resolved_url": "https://workday.students.ubc.ca/degree-planning/adding-a-program-of-study-second-major-or-minor/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/degree-planning/applying-for-a-standing-deferred-or-supplemental-exam/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-05-01T16:33:19+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4618",
+    "resolved_url": "https://workday.students.ubc.ca/degree-planning/applying-for-a-standing-deferred-or-supplemental-exam/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/degree-planning/applying-for-graduation-program-completion/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-30T20:51:29+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4584",
+    "resolved_url": "https://workday.students.ubc.ca/degree-planning/applying-for-graduation-program-completion/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/degree-planning/declaring-or-changing-your-primary-major-honours-or-specialization/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-02-27T18:06:06+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3449",
+    "resolved_url": "https://workday.students.ubc.ca/degree-planning/declaring-or-changing-your-primary-major-honours-or-specialization/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/degree-planning/evaluate-your-academic-requirements/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-12T20:59:56+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3545",
+    "resolved_url": "https://workday.students.ubc.ca/degree-planning/evaluate-your-academic-requirements/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/degree-planning/removing-your-program-of-study-second-major-or-minor/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-02-27T18:06:26+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3100",
+    "resolved_url": "https://workday.students.ubc.ca/degree-planning/removing-your-program-of-study-second-major-or-minor/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/degree-planning/viewing-your-academic-progress-report/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-12T20:53:51+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3357",
+    "resolved_url": "https://workday.students.ubc.ca/degree-planning/viewing-your-academic-progress-report/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/degree-planning/viewing-your-exam-schedule/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-02-06T22:49:08+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4560",
+    "resolved_url": "https://workday.students.ubc.ca/degree-planning/viewing-your-exam-schedule/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/degree-planning/viewing-your-grades-and-academic-record/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-11T18:56:06+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3354",
+    "resolved_url": "https://workday.students.ubc.ca/degree-planning/viewing-your-grades-and-academic-record/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/degree-planning/viewing-your-transfer-credit-or-high-school-and-ap-ib-credit/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-02-27T18:06:33+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3347",
+    "resolved_url": "https://workday.students.ubc.ca/degree-planning/viewing-your-transfer-credit-or-high-school-and-ap-ib-credit/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/finances/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-10T21:24:38+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:2723",
+    "resolved_url": "https://workday.students.ubc.ca/finances/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/finances/applying-for-a-u-pass-exemption/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-12-10T18:23:05+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4459",
+    "resolved_url": "https://workday.students.ubc.ca/finances/applying-for-a-u-pass-exemption/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/finances/applying-to-the-ubc-bursary-program/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-10T22:07:33+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4484",
+    "resolved_url": "https://workday.students.ubc.ca/finances/applying-to-the-ubc-bursary-program/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/finances/downloading-your-proof-of-tuition-payment-account-statement/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-30T21:07:31+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4067",
+    "resolved_url": "https://workday.students.ubc.ca/finances/downloading-your-proof-of-tuition-payment-account-statement/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/finances/downloading-your-tax-forms/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-10T22:04:21+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4503",
+    "resolved_url": "https://workday.students.ubc.ca/finances/downloading-your-tax-forms/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/finances/paying-your-tuition-and-student-fees-in-touchnet-credit-card-and-signature-debit-card-payment/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-10T21:27:59+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3887",
+    "resolved_url": "https://workday.students.ubc.ca/finances/paying-your-tuition-and-student-fees-in-touchnet-credit-card-and-signature-debit-card-payment/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/finances/paying-your-tuition-and-student-fees-in-touchnet-pre-authorized-debit/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-10T21:18:51+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3947",
+    "resolved_url": "https://workday.students.ubc.ca/finances/paying-your-tuition-and-student-fees-in-touchnet-pre-authorized-debit/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/finances/paying-your-tuition-and-student-fees-in-touchnet-transfermate-payment/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-10T21:29:30+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4035",
+    "resolved_url": "https://workday.students.ubc.ca/finances/paying-your-tuition-and-student-fees-in-touchnet-transfermate-payment/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/finances/reviewing-your-ubc-award-offers/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-11T18:06:30+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4395",
+    "resolved_url": "https://workday.students.ubc.ca/finances/reviewing-your-ubc-award-offers/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/finances/setting-up-your-direct-deposit/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-10T21:30:58+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3929",
+    "resolved_url": "https://workday.students.ubc.ca/finances/setting-up-your-direct-deposit/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/finances/viewing-your-award-payments/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-17T23:22:05+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4402",
+    "resolved_url": "https://workday.students.ubc.ca/finances/viewing-your-award-payments/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/finances/viewing-your-financial-account-activity-tuition-amount-and-payments/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-10T21:26:24+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3941",
+    "resolved_url": "https://workday.students.ubc.ca/finances/viewing-your-financial-account-activity-tuition-amount-and-payments/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/logging-into-workday/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-10-23T22:58:59+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:2767",
+    "resolved_url": "https://workday.students.ubc.ca/logging-into-workday/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/navigating-workday/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-02T23:18:17+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4842",
+    "resolved_url": "https://workday.students.ubc.ca/navigating-workday/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/personal-information/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-30T21:30:51+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:2607",
+    "resolved_url": "https://workday.students.ubc.ca/personal-information/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/personal-information/adding-your-emergency-contacts/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-13T22:31:58+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:2943",
+    "resolved_url": "https://workday.students.ubc.ca/personal-information/adding-your-emergency-contacts/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/personal-information/adding-your-social-insurance-number-sin-or-international-tax-number-itn/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-02-13T22:15:50+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:2966",
+    "resolved_url": "https://workday.students.ubc.ca/personal-information/adding-your-social-insurance-number-sin-or-international-tax-number-itn/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/personal-information/adding-your-third-party-authorization/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-10T22:25:41+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:2949",
+    "resolved_url": "https://workday.students.ubc.ca/personal-information/adding-your-third-party-authorization/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/personal-information/updating-your-contact-information/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-27T19:10:04+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:2892",
+    "resolved_url": "https://workday.students.ubc.ca/personal-information/updating-your-contact-information/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/personal-information/updating-your-indigenous-self-identification/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2024-07-09T17:58:45+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3091",
+    "resolved_url": "https://workday.students.ubc.ca/personal-information/updating-your-indigenous-self-identification/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/personal-information/updating-your-preferred-name/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2024-07-15T20:41:49+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:2960",
+    "resolved_url": "https://workday.students.ubc.ca/personal-information/updating-your-preferred-name/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/personal-information/updating-your-pronouns-trans-experience-and-gender-identity/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2024-07-09T17:56:04+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:2910",
+    "resolved_url": "https://workday.students.ubc.ca/personal-information/updating-your-pronouns-trans-experience-and-gender-identity/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/personal-information/viewing-and-managing-your-student-and-worker-profiles/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-19T17:38:11+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:5382",
+    "resolved_url": "https://workday.students.ubc.ca/personal-information/viewing-and-managing-your-student-and-worker-profiles/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/personal-information/viewing-your-date-of-birth/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2024-07-09T17:56:40+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:2953",
+    "resolved_url": "https://workday.students.ubc.ca/personal-information/viewing-your-date-of-birth/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/personal-information/viewing-your-legal-name/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2025-01-15T22:18:10+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:2939",
+    "resolved_url": "https://workday.students.ubc.ca/personal-information/viewing-your-legal-name/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/personal-information/viewing-your-residency-and-citizenship/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2024-07-09T17:57:22+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:2955",
+    "resolved_url": "https://workday.students.ubc.ca/personal-information/viewing-your-residency-and-citizenship/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/student-documents/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-30T21:38:05+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3317",
+    "resolved_url": "https://workday.students.ubc.ca/student-documents/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/student-documents/downloading-your-confirmation-of-enrolment-letter/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-07-28T18:58:12+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3466",
+    "resolved_url": "https://workday.students.ubc.ca/student-documents/downloading-your-confirmation-of-enrolment-letter/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/student-documents/downloading-your-program-completion-letter/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-06-17T00:05:31+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4479",
+    "resolved_url": "https://workday.students.ubc.ca/student-documents/downloading-your-program-completion-letter/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/student-documents/ordering-a-parchment-diploma-or-certified-copy/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-19T20:06:59+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4668",
+    "resolved_url": "https://workday.students.ubc.ca/student-documents/ordering-a-parchment-diploma-or-certified-copy/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/student-documents/ordering-a-transcript/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-09-10T22:07:22+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:4508",
+    "resolved_url": "https://workday.students.ubc.ca/student-documents/ordering-a-transcript/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/student-documents/viewing-your-profile-notes/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-08-18T20:30:27+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:5387",
+    "resolved_url": "https://workday.students.ubc.ca/student-documents/viewing-your-profile-notes/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/ubc-advisor-contacts/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2024-05-17T22:14:06+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3337",
+    "resolved_url": "https://workday.students.ubc.ca/ubc-advisor-contacts/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/ubc-advisor-contacts/finding-your-accessibility-advisors-contact-information/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-06T18:17:21+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3479",
+    "resolved_url": "https://workday.students.ubc.ca/ubc-advisor-contacts/finding-your-accessibility-advisors-contact-information/"
+  },
+  {
+    "url": "https://workday.students.ubc.ca/ubc-advisor-contacts/finding-your-enrolment-services-advisors-contact-information/",
+    "discovered_by": [
+      "https://workday.students.ubc.ca/wp-json/wp/v2/pages",
+      "https://workday.students.ubc.ca/page-sitemap.xml"
+    ],
+    "source_modified_at": "2026-05-06T18:12:03+00:00",
+    "status": "collected",
+    "reason": null,
+    "article_id": "prose:workday:3470",
+    "resolved_url": "https://workday.students.ubc.ca/ubc-advisor-contacts/finding-your-enrolment-services-advisors-contact-information/"
+  }
+]

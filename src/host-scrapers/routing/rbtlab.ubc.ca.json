@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "hostname": "rbtlab.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w2 first homepage review",
+    "rationale": "The official UBC Research-based Theatre Lab homepage identifies Vancouver campus and describes collaborative research involving researchers, artists and community members, including UBC School of Social Work research. Public research projects and publications are useful beyond a personal profile. Map evidenced introductory workshops, participation and news sections separately from the research-purpose fallback.",
+    "evidence": [
+      "https://rbtlab.ubc.ca/ | 29594eda86607d6d57e4413b1acf34df37da9d1b6353ed8b90cdc809bd85da80 | The University of British Columbia; Vancouver campus; The Research-based Theatre Lab promotes theatre as research and collaborative initiatives between researchers, artists, and community members.",
+      "https://rbtlab.ubc.ca/ | 29594eda86607d6d57e4413b1acf34df37da9d1b6353ed8b90cdc809bd85da80 | Research Projects at /research-projects/; Publications at /publications/; Presentations and Videos; Dark Secrets is part of a research project being led by the UBC School of Social Work",
+      "https://rbtlab.ubc.ca/ | 29594eda86607d6d57e4413b1acf34df37da9d1b6353ed8b90cdc809bd85da80 | Research-based Theatre Intro Workshops at /about/research-themes/; Events at /calendar-of-events/; News at /news/; Get Involved at /contact-us/; Learn more about our initiatives and get involved."
+    ]
+  },
+  "rules": [
+    {
+      "id": "introductory-workshops",
+      "category": "academics",
+      "rationale": "The homepage names the introductory research-based theatre workshops as a learning section, despite the historical research-themes path.",
+      "path_pattern": "^/about/research-themes(?:/|$)"
+    },
+    {
+      "id": "participation-and-events",
+      "category": "opportunities",
+      "rationale": "Homepage Get Involved and Events navigation offers participation in the lab's collaborative activities.",
+      "path_pattern": "^/(?:contact-us|calendar-of-events)(?:/|$)"
+    },
+    {
+      "id": "lab-news",
+      "category": "news",
+      "rationale": "The homepage explicitly identifies a News section.",
+      "path_pattern": "^/news(?:/|$)"
+    },
+    {
+      "id": "research-projects-and-outputs",
+      "category": "research",
+      "rationale": "The homepage identifies current research projects and publications, including presentations and videos, as the lab's research outputs.",
+      "path_pattern": "^/(?:research-projects|publications)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "research",
+    "rationale": "The lab's stated purpose is theatre as research and collaborative initiatives among researchers, artists and community members."
+  }
+}

@@ -3,3 +3,7 @@ dist
 data
 .kiro
 .git
+# Preserve deliberately malformed and adjacency-sensitive HTML fixtures.
+test/fixtures/host-scrapers/**
+# Routing policies use canonical serialization bound to document provenance hashes.
+src/host-scrapers/routing/*.json

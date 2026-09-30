@@ -42,11 +42,15 @@ for (const [name, group] of Object.entries(catalog.groups)) {
 }
 ```
 
-Run from the repo root with `node --input-type=module`. 28 of 133 tables carry
-a `grain`/`joins` description; the rest appear without
-those fields. Undescribed does not mean undocumented — the mirrored geospatial
-layers ship their own `metadata/` CSVs defining every field, and the taxonomy
-tables are self-evident. This document covers the ones that need explaining.
+Run from the repo root with `node --input-type=module`. The undergraduate fact
+tables carry `grain` and column descriptions; some other tables omit those fields.
+Mirrored geospatial layers also ship `metadata/` CSVs defining their fields. Use the catalog for current counts and
+[UNDERGRADUATE-SOURCES.md](UNDERGRADUATE-SOURCES.md) for source and coverage details.
+
+Read `data/prose/_catalog.json` for article tables and `data/prose/_manifest.json`
+for coverage metadata. Reogent loads the catalog beneath its normal `DATA_PATH`
+for default ingestion into the same Meilisearch service as the other datasets.
+`npm run collect:prose` refreshes the tracked exports. See [PROSE.md](PROSE.md).
 
 ### File conventions
 
@@ -160,6 +164,48 @@ Library spaces only. **A snapshot**, not a standing fact — see `_snapshot.json
 | `availability` | ~1,000 | An uninterrupted stretch of one room in one state (`free`/`booked`/`unavailable`) |
 | `locations`    | 5      | A library publishing bookable space                                               |
 
+### `data/housing/`, `data/libraries/`, `data/student-support/`, `data/policies/`
+
+Undergraduate-focused collections, September 10, 2026 snapshot:
+
+| Table                                                                                        | Rows     | One row is                                                                                           |
+| -------------------------------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------- |
+| `housing/residences`                                                                         | 14       | An undergraduate-serving residence, with published bed count, quick facts and front-desk contact     |
+| `housing/room_types`                                                                         | 12       | A room type linked to those residences                                                               |
+| `housing/fee_pages`                                                                          | 16       | A residence or shared summer/early-arrival fee page                                                  |
+| `housing/fee_tables`                                                                         | 22       | Labelled numeric fee observations with exact `amount_cents`; periods and variants are not normalized |
+| `housing/guidance`                                                                           | 20       | A selected housing application, eligibility, first-year, payment or move-in guidance page            |
+| `libraries/branches`                                                                         | 15       | A physical library/service location or virtual service; not necessarily a unique building            |
+| `libraries/monthly_schedules`                                                                | 60       | A location's published rules for one calendar month                                                  |
+| `libraries/hours`                                                                            | 1,830    | A location and local date, with scheduled times and regular/holiday/exam category                    |
+| `student-support/it_services`                                                                | 19       | An IT service explicitly tagged for Students                                                         |
+| `student-support/wellbeing_resources`                                                        | 5        | An undergraduate/shared student resource selected by published audience/campus labels                |
+| `student-support/learning_commons_pages`                                                     | 34       | A Learning Commons source-index entry; prose belongs to the separate `prose` category                |
+| `student-support/*_audiences`, `*_categories`, `wellbeing_campuses`, `wellbeing_populations` | 50 total | A source taxonomy definition                                                                         |
+| `policies/index`                                                                             | 17       | An undergraduate-relevant policy's identifiers, dates and canonical URL, not its binding document    |
+
+The four structured groups use plain-string `title`, `source_url`, timestamps and
+`record_sha256`. Their field allowlists omit `content_text`, `content_html`
+and other copied prose. Use the prose category for normalized explanatory content.
+
+### `data/prose/` — explanatory articles
+
+All normalized prose uses one top-level category with source/topic subcategories,
+including `workday`, `student-housing`, `student-services`, `academic-calendar`,
+`science-advising`, `arts-advising`, `go-global` and `library`.
+
+Each `prose/<subcategory>/articles.json` is an array of records with `id`,
+plain-string `title`, `content_markdown`, `content_sha256`, `source_url`,
+`source_modified_at`, `retrieved_at`, `source_records` and `markdown_path`.
+The CSV contains the same rows. Standalone `.md` files contain the same Markdown
+body. No raw HTML field belongs to this normalized representation.
+
+Read `_coverage.json` and `_inventory.json` before claiming completeness. Counts
+refer to declared inventories, with explicit exclusions, inaccessible pages and
+processing failures. Older mirrored content keeps its original snapshot time;
+conversion does not make it fresh. [PROSE.md](PROSE.md) documents the source scope,
+field contract and catalog-led ingestion.
+
 ### `data/admissions/` — getting in
 
 | Table                                           | Rows             | One row is                                                                |
@@ -242,6 +288,24 @@ room-bookings/rooms.eid                     -> availability.eid           51/51 
 `room-bookings` covers 3 buildings (`IBLC`, `KLIB`, `WLIB`); `learning-spaces`
 covers 50. Only `IBLC` is in both — the other two are libraries that Find a Space
 does not list.
+
+### Housing and library keys
+
+```text
+housing/residences.room_type_ids[] -> housing/room_types.id
+housing/residences.fee_page_ids[]  -> housing/fee_pages.id
+housing/fee_tables.page_id        -> housing/fee_pages.id
+housing/fee_tables.residence_ids[] -> housing/residences.id
+libraries/hours.branch_id         -> libraries/branches.id
+libraries/hours.schedule_id       -> libraries/monthly_schedules.id
+libraries/branches.booking_lid    -> room-bookings/locations.lid
+```
+
+`booking_lid` is an explicit crosswalk for five library locations. It is a string,
+like the older `lid`; it is **not** `hours_id`. No housing-building-code join is
+asserted: the front desk can be in another residence. Research Commons has a
+published Koerner address that differs from the older booking dataset's `IBLC`
+assignment; do not infer a building match from the location name.
 
 ### Admissions → finances
 
@@ -377,6 +441,29 @@ Use `body["processed"]` and strip tags. WordPress-sourced tables
 `title["rendered"]`, `content["rendered"]` — and `content` can be a large
 Elementor blob, as in `food_outlets`.
 
+### Housing instalments and library opening hours
+
+A housing fee table can mix contract totals, deposits, acceptance payments and
+instalments. Each `values` observation retains `row_label`, `column_label`,
+`period_label`, `amount_text`, exact `amount_cents` and `footnote_markers`.
+A source blank or dash becomes null, not zero. `source_context_required` remains
+true because short numeric labels do not reproduce all eligibility and fee
+conditions. The `prose/student-housing` articles retain explanations and
+link to structured rows through `source_records`; still check their timestamps
+and the official page. Do not multiply a monthly payment by twelve or add
+instalments to a total that already includes them.
+
+`libraries/hours` uses `HH:mm` local wall times, not seconds after midnight.
+`closes_next_day: true` handles midnight and overnight closings. Its `status` is
+`open`, `closed` or `unknown`; `open` describes that date's scheduled hours, not
+current availability. The source supplies no timezone offset, so the documented
+interpretation is `America/Vancouver`. Dates outside the collected four-month
+window are unknown.
+
+Wellbeing's literal `missing` relationship targets have no available taxonomy
+label. `unavailable_relationships` and `_unavailable.json` identify them; they are
+not foreign keys. Unknown non-sentinel IDs cause collection to fail.
+
 ### Course text fill rates
 
 `courses/courses` parses prerequisites out of description prose. Coverage is
@@ -396,15 +483,29 @@ uneven, and querying it as if complete will silently under-report:
 `cover_photo_url` in `learning-spaces` dies within a day. `cover_photo_expires`
 gives the deadline; `Room Link` re-renders a fresh one on load.
 
-### A missing day means closed, not failed
+### Missing booking days and opening hours
 
 If a date is absent from `room-bookings/_snapshot.json`'s `days_served`, UBC
-published no slots for it — the libraries were closed. Cross-check
-`campus-services/statutory_holidays`.
+published no slots for it. Do not extend that booking-snapshot convention to the
+`libraries/hours` table: it stores closed and unknown days explicitly. Use the
+dated library rules to check opening hours and retain uncertainty when no rule is
+available; a lack of booking slots is not a general opening-hours guarantee.
 
 ---
 
 ## Recipes
+
+### Read a Workday explanation with its citation
+
+```js
+const articles = JSON.parse(await readFile("data/prose/workday/articles.json", "utf8"));
+const article = articles.find((row) => /saved schedule/i.test(row.title));
+console.log(article.title, article.source_url, article.retrieved_at);
+console.log(article.content_markdown);
+```
+
+Use the same plain-title/Markdown schema across prose subcategories rather than
+the older WordPress/Drupal field shapes.
 
 ### Find a free study room with seats, and put it on a map
 
@@ -499,15 +600,15 @@ area, so the match is name-based and its confidence varies.
 
 Stated plainly so you don't build on sand:
 
-| Question                            | Why not                                                                                                                                                       |
-| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Which room is my lecture in?**    | Section→room is published nowhere public. Verified against the JSON:API, the rendered section pages, the new course-search app, and the retired SSC endpoint. |
-| **When is lecture hall X free?**    | Same cause. `room-bookings` covers 51 library spaces, not the 343 classrooms.                                                                                 |
-| **Where is Professor Y right now?** | 494/1,718 profiles have an office string, in no consistent format; office _hours_ aren't in the data at all.                                                  |
-| **What's inside a building?**       | Footprints are 2D. `BLDG_HEIGHT` + `MAX_FLOORS` support extrusion to 2.5D, but there are no floor plans or interior geometry.                                 |
-| **How full is this class?**         | No enrolment counts, no waitlists, no historical class sizes.                                                                                                 |
-| **What grade did people get?**      | No student data of any kind. By design.                                                                                                                       |
-| **Anything about Okanagan**         | Vancouver-only by default. Re-run with `--campus both`.                                                                                                       |
+| Question                              | Why not                                                                                                                       |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Which room is my lecture in?**      | The public JSON:API, rendered section pages and course-search app expose no section-to-room mapping.                          |
+| **When is lecture hall X free?**      | Same cause. `room-bookings` covers 51 library spaces, not the 343 classrooms.                                                 |
+| **Where is Professor Y right now?**   | 494/1,718 profiles have an office string, in no consistent format; office _hours_ aren't in the data at all.                  |
+| **What's inside a building?**         | Footprints are 2D. `BLDG_HEIGHT` + `MAX_FLOORS` support extrusion to 2.5D, but there are no floor plans or interior geometry. |
+| **How full is this class?**           | No enrolment counts, no waitlists, no historical class sizes.                                                                 |
+| **What grade did an individual get?** | No individual student records. `grades/` holds historical aggregates from a third-party mirror, not personal results.         |
+| **Anything about Okanagan**           | Vancouver-only by default. Re-run with `--campus both`.                                                                       |
 
 ---
 
@@ -517,8 +618,15 @@ Stated plainly so you don't build on sand:
 npm run update                    # everything
 npm run update -- bookings        # just availability (~5s, snapshot — re-run often)
 npm run update -- --list          # what's available
-npm run update -- --min-interval 0.2 # go easier on the source servers
+npm run update -- --min-interval 300 # milliseconds between requests
+npm run update -- housing libraries support policies
+npm run validate:undergrad          # offline consistency checks for structured facts
+npm run collect:prose               # refresh Markdown article exports
+npm run validate:prose              # safety, byte equality and inventory accounting
 ```
+
+For housing TLS setup and source-specific limits, see
+[the undergraduate refresh guide](UNDERGRADUATE-SOURCES.md#refresh-and-verification).
 
 A group that fails is recorded in the manifest with its error; the rest of the
 run continues. After a group succeeds, files it didn't write are pruned, so

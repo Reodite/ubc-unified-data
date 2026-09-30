@@ -1,0 +1,95 @@
+<section class="hours">
+  <button class="prev-month" value="2">&lt; Prev</button>
+  <button class="next-month" value="2">Next &gt;</button>
+
+  <span class="monthheading">October 2026</span>
+
+  <section class="hours-table">
+    <h6><span class="hours-category regular"></span>Regular Hours (Sep 1-Dec 22)</h6>
+    <dl class="regular">
+      <dt>Mon-Thu</dt>
+      <dd>8am - 8pm</dd>
+      <dt>Fri</dt>
+      <dd>8am - 6pm</dd>
+      <dt>Sat-Sun</dt>
+      <dd>11am - 6pm</dd>
+    </dl>
+    <h6><span class="hours-category holiday"></span>Holiday Hours</h6>
+    <dl class="holiday">
+      <dt>Oct 12</dt>
+      <dd>Closed* (Thanksgiving)</dd>
+    </dl>
+  </section>
+  <!-- closes hours table -->
+
+  <section class="calendar">
+    <table class="month">
+      <thead>
+        <tr>
+          <th>Su</th>
+          <th>Mo</th>
+          <th>Tu</th>
+          <th>We</th>
+          <th>Th</th>
+          <th>Fr</th>
+          <th>Sa</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="regular">1</td>
+          <td class="regular">2</td>
+          <td class="regular">3</td>
+        </tr>
+        <tr>
+          <td class="regular">4</td>
+          <td class="regular">5</td>
+          <td class="regular">6</td>
+          <td class="regular">7</td>
+          <td class="regular">8</td>
+          <td class="regular">9</td>
+          <td class="regular">10</td>
+        </tr>
+        <tr>
+          <td class="regular">11</td>
+          <td class="holiday">12</td>
+          <td class="regular">13</td>
+          <td class="regular">14</td>
+          <td class="regular">15</td>
+          <td class="regular">16</td>
+          <td class="regular">17</td>
+        </tr>
+        <tr>
+          <td class="regular">18</td>
+          <td class="regular">19</td>
+          <td class="regular">20</td>
+          <td class="regular">21</td>
+          <td class="regular">22</td>
+          <td class="regular">23</td>
+          <td class="regular">24</td>
+        </tr>
+        <tr>
+          <td class="regular">25</td>
+          <td class="regular">26</td>
+          <td class="regular">27</td>
+          <td class="regular">28</td>
+          <td class="regular">29</td>
+          <td class="regular">30</td>
+          <td class="regular">31</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      <strong>See also:</strong>
+      <a href="https://koerner.library.ubc.ca/koerner-library/hours/">Reference Help Hours</a>
+    </p>
+  </section>
+  <!-- closes calendar -->
+</section>
+<!-- closes hours -->

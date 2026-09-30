@@ -1,0 +1,60 @@
+{
+  "authority": "UBC Student Housing and Community Services",
+  "scope": "undergraduate",
+  "representation": "facts_and_links",
+  "campus": "vancouver",
+  "retrieved_at": "2026-09-10T23:22:11Z",
+  "sources": [
+    "https://vancouver.housing.ubc.ca/wp-sitemap-posts-residences-1.xml",
+    "https://vancouver.housing.ubc.ca/wp-sitemap-posts-rooms-1.xml",
+    "https://vancouver.housing.ubc.ca/wp-json/wp/v2/pages?parent=48",
+    "https://vancouver.housing.ubc.ca/applications/"
+  ],
+  "robots_url": "https://vancouver.housing.ubc.ca/robots.txt",
+  "residences": 14,
+  "room_types": 12,
+  "upstream_room_types": 12,
+  "excluded_room_types": [],
+  "fee_pages": 16,
+  "fee_tables": 22,
+  "guidance_pages": 20,
+  "selected_guidance_ids": [
+    46,
+    50,
+    54,
+    56,
+    58,
+    65,
+    381,
+    885,
+    887,
+    895,
+    911,
+    2623,
+    6747,
+    16817,
+    17282,
+    17468,
+    21598,
+    21697,
+    23325,
+    23333
+  ],
+  "excluded_residences": [
+    {
+      "source_url": "https://vancouver.housing.ubc.ca/residences/acadia-park/",
+      "reason": "Quick facts do not explicitly identify an undergraduate audience; exclusion does not imply ineligibility"
+    }
+  ],
+  "excluded_fee_pages": [
+    "https://vancouver.housing.ubc.ca/applications/fees-payments/acadia-park/",
+    "https://vancouver.housing.ubc.ca/applications/fees-payments/green-college/"
+  ],
+  "notes": [
+    "Shared residences and guidance can also mention graduate students. Graduate-only programs and funding are outside the collection scope.",
+    "Only numeric observations and short factual labels are published. Page bodies, HTML and footnote prose are excluded. Rates have different periods, deposits, meal plans and payment schedules; consult the source before applying them.",
+    "The general pages API contains empty placeholders and public test pages. This collector uses selected public guidance IDs and the advertised fees parent instead; it does not fetch those unavailable records.",
+    "No room availability, application status or student records. Front-desk addresses are not assumed to be residence-building coordinates.",
+    "Linked PDFs and photos are not downloaded."
+  ]
+}

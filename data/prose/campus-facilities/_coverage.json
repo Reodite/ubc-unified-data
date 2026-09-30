@@ -1,0 +1,26 @@
+{
+  "source": "campus-facilities",
+  "status": "complete",
+  "mode": "mirror",
+  "format": "markdown",
+  "inventory_urls": 234,
+  "articles": 219,
+  "dispositions": {
+    "collected": 219,
+    "excluded": 15,
+    "unavailable": 0,
+    "failed": 0,
+    "duplicate": 0,
+    "no_prose": 0
+  },
+  "discovery_errors": [],
+  "discovery_notes": [
+    "Mirrored inventory: reports/facilities/pages.json; 234 rows; source snapshot 2026-08-11T08:49:30Z."
+  ],
+  "definitions": {
+    "complete": "Declared source inventories and discovered in-scope links are exhausted; not a claim about unlinked pages or the entire UBC web.",
+    "unavailable": "Advertised URL is unavailable after bounded retries, or blocked by access/robots restrictions; the inventory records the reason.",
+    "no_prose": "No explanatory body remained in the retrieved representation; interactive-only material is not reconstructed.",
+    "mirror": "Coverage refers to the existing mirrored article inventory, with its original timestamps; missing bodies may be fetched from their public pages."
+  }
+}

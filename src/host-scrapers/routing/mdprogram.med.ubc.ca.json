@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "hostname": "mdprogram.med.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w3 first homepage review",
+    "rationale": "The UBC Faculty of Medicine MD undergraduate education homepage presents its distributed academic program, explicitly including Vancouver-Fraser alongside Southern, Northern and Island programs. Public program information is useful and not exclusively Okanagan-serving. Academic program content is the default, with explicit spotlight news and student narratives classified separately.",
+    "evidence": [
+      "https://mdprogram.med.ubc.ca/ | d2637c679840dff7e5c114a16408747dd4656ebfc56209a4beaa1638b023fc2a | Home - MD Undergrad Education, UBC Faculty of Medicine; Explore our distributed medical program; Vancouver-Fraser Medical Program; Southern Medical Program; Northern Medical Program; Island Medical Program",
+      "https://mdprogram.med.ubc.ca/ | d2637c679840dff7e5c114a16408747dd4656ebfc56209a4beaa1638b023fc2a | Spotlight: UBC launches training opportunity for medical students in East Kootenays; Year-long program, in partnership with Interior Health, will strengthen clinical skills and deepen community connections",
+      "https://mdprogram.med.ubc.ca/ | d2637c679840dff7e5c114a16408747dd4656ebfc56209a4beaa1638b023fc2a | This UBC medical student is training with the surgeon who treated his cancer; Northern immersion; More UBC medical students are training — and staying on to practice as family doctors — in B.C.’s northern rural communities than ever before, thanks to a new undergraduate program"
+    ]
+  },
+  "rules": [
+    {
+      "id": "program-announcement",
+      "category": "news",
+      "rationale": "The homepage spotlight announces a newly launched regional training program.",
+      "title_pattern": "^UBC launches training opportunity\\b"
+    },
+    {
+      "id": "student-training-stories",
+      "category": "stories",
+      "rationale": "The homepage features narratives about individual students and rural training experiences.",
+      "title_pattern": "^(?:This UBC medical student\\b|Northern immersion\\b)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "The host describes UBC MD undergraduate education and its distributed medical degree program, including Vancouver-Fraser."
+  }
+}

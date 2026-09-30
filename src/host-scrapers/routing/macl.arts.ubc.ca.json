@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "hostname": "macl.arts.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w4 first homepage review",
+    "rationale": "Official UBC multidisciplinary graduate program with useful public program details and application guidance; academics is the host purpose, with thesis research and funding or conference opportunities identified explicitly on the homepage.",
+    "evidence": [
+      "https://macl.arts.ubc.ca/ | 57f4cd2b7ae2b717d91ade7e8f232455385a4e35c22bdc1edd4e89d57aecf558 | UBC’s MACL program is the only Master’s program in children’s literature in Canada and the only Master’s program in children’s literature in the world offered from such a broad, multidisciplinary perspective.",
+      "https://macl.arts.ubc.ca/ | 57f4cd2b7ae2b717d91ade7e8f232455385a4e35c22bdc1edd4e89d57aecf558 | Browse our archive of previous completed theses, or learn about our many funding options!",
+      "https://macl.arts.ubc.ca/ | 57f4cd2b7ae2b717d91ade7e8f232455385a4e35c22bdc1edd4e89d57aecf558 | Every 2 years, the graduate students in our program design, develop, and host a graduate student conference."
+    ]
+  },
+  "rules": [
+    {
+      "id": "funding-conference-opportunities",
+      "category": "opportunities",
+      "rationale": "Pages explicitly titled for funding, awards, scholarships or conferences describe participation or financial opportunities highlighted by the program homepage.",
+      "title_pattern": "^.*\\b(funding|awards?|scholarships?|bursaries|conference)\\b"
+    },
+    {
+      "id": "thesis-research",
+      "category": "research",
+      "rationale": "The program homepage identifies an archive of completed theses; explicitly thesis or research titled pages describe scholarly work.",
+      "title_pattern": "^.*\\b(theses|thesis|research)\\b"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "The host explains UBC’s Master of Arts in Children’s Literature program, its academic community, program requirements and prospective-student application process."
+  }
+}

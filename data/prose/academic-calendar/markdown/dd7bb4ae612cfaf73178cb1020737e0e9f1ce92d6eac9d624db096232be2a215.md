@@ -1,0 +1,1 @@
+See [Academic Regulations](https://vancouver.calendar.ubc.ca/node/14940)\.

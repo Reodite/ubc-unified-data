@@ -1,0 +1,13 @@
+**Admission to the B\.Sc\. in Wood Products Processing is suspended effective September 2024\. This degree program will be replaced by the** [**B\.Sc\. in Natural Resources \(Wood Products Major\)\.**](https://vancouver.calendar.ubc.ca/faculties-colleges-and-schools/faculty-forestry-and-environmental-stewardship/bsc-degrees-students-who-started-prior-september-2024/bsc-wood-products-processing "B.Sc. in Wood Products Processing") **Additional information available** [**here\.**](https://forestry.ubc.ca/news/bsc-natural-resources-with-scott-hinch)
+
+The Faculty of Forestry and Environmental Stewardship will accept applications from students with varying educational preparation:
+
+1.  directly from secondary school graduation;
+2.  following completion of university\-level work at UBC or the equivalent at another post\-secondary institution; or
+3.  after the completion of a two\-year wood products or engineering diploma program at a recognized college or institute of technology\.
+
+Achievement of the minimum academic requirements does not guarantee admission in the event that the number of applicants exceeds the number of available spaces\. Students entering from secondary school must have met the general University entrance requirements \(see [Admissions](https://vancouver.calendar.ubc.ca/node/15558)\), including Principles of Mathematics 12 or Pre\-Calculus 12, Chemistry 11, Physics 11, and one of Biology 12, Chemistry, 12, or Physics 12\. Students applying following the completion of at least 30 credits of university\-level work must have attained an overall average of at least 60% in all credits attempted\. Students applying with less than 30 credits must also meet the secondary school requirements listed above\. Students applying from a completed two\-year wood products or engineering diploma program must have attained an overall average of at least 65% on their completed diploma, plus have the required secondary school courses as outlined above\.
+
+See also [Program Approval and Advising](https://vancouver.calendar.ubc.ca/node/14938)\.
+
+Interested students may apply for the Bachelor of Science in Wood Products Processing \- Master of Management Dual Degree Option\. For details regarding this Dual Degree Option and application information see the [Faculty of Commerce and Business Administration](https://vancouver.calendar.ubc.ca/node/14792) section of the Academic Calendar\.

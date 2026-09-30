@@ -1,0 +1,20 @@
+[
+  {
+    "id": "3a82007e-2d00-41ec-bbaa-ed470abb35bf",
+    "source_url": "https://wellbeing.ubc.ca/student-population/undergraduate-students",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/taxonomy_term/student_population/3a82007e-2d00-41ec-bbaa-ed470abb35bf",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Undergraduate Students",
+    "type": "taxonomy_term--student_population",
+    "record_sha256": "201064cf396df38bc2531910bd08947fe1b8fb4170392853d4942006c4712e98"
+  },
+  {
+    "id": "4eb41171-7234-49af-99d7-df1b48690ef7",
+    "source_url": "https://wellbeing.ubc.ca/student-population/graduate-students",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/taxonomy_term/student_population/4eb41171-7234-49af-99d7-df1b48690ef7",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Graduate Students",
+    "type": "taxonomy_term--student_population",
+    "record_sha256": "0fae5829edfc4fe40f38cc8151d8c9868cced4f7cb3d262cbcabab5db9ab9409"
+  }
+]

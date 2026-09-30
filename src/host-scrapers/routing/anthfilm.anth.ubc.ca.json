@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "hostname": "anthfilm.anth.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w5 first homepage review",
+    "rationale": "Official UBC Ethnographic Film Unit homepage identifies an anthropological digital video production unit in Vancouver, with useful research, community documentary projects, courses, services and event information. Route observed academic, support, festival and news sections separately from the research-focused host purpose; no distinct stories section is evidenced.",
+    "evidence": [
+      "https://anthfilm.anth.ubc.ca/ | d51fc6074b6056cf742b776f67c2d02672ffc78ce4aa4c2394fdaa031c7a51d4 | We are an anthropological digital video production unit at the University of British Columbia in Vancouver.",
+      "https://anthfilm.anth.ubc.ca/ | d51fc6074b6056cf742b776f67c2d02672ffc78ce4aa4c2394fdaa031c7a51d4 | With a focus on film production and research, the Film Unit draws upon the combined strengths of anthropologists, filmmakers, students, and community members. The Ethnographic Film Unit has worked with local communities to produce documentary films.",
+      "https://anthfilm.anth.ubc.ca/ | d51fc6074b6056cf742b776f67c2d02672ffc78ce4aa4c2394fdaa031c7a51d4 | Homepage navigation: About; People; Services; Courses; Projects; Film Unit Festival; Facilities; Ordering Videos; News & Events; Links.",
+      "https://anthfilm.anth.ubc.ca/ | d51fc6074b6056cf742b776f67c2d02672ffc78ce4aa4c2394fdaa031c7a51d4 | News links: Fifth Annual Anthropology Film Festival, 2011; Fourth Annual Anthropology Film Festival, 2010; See all NEWS; See all EVENTS."
+    ]
+  },
+  "rules": [
+    {
+      "id": "documentary-projects",
+      "category": "research",
+      "rationale": "The homepage presents community documentary projects as the work of the anthropological research unit.",
+      "path_pattern": "^/(?:services-and-facilities/projects|courses/projects|projects)(?:/|$)"
+    },
+    {
+      "id": "film-courses",
+      "category": "academics",
+      "rationale": "The observed Courses section provides academic teaching information.",
+      "path_pattern": "^/(?:services-and-facilities/courses|courses)(?:/|$)"
+    },
+    {
+      "id": "film-festival",
+      "category": "opportunities",
+      "rationale": "The Film Unit Festival section identifies a film-related participation opportunity.",
+      "path_pattern": "^/services-and-facilities/film-unit-festival(?:/|$)"
+    },
+    {
+      "id": "unit-news-events",
+      "category": "news",
+      "rationale": "Homepage News and Events navigation and dated annual festival posts identify announcements and event updates.",
+      "path_pattern": "^/(?:news-events|news|events|(?:fifth|fourth)-annual-anthropology-film-festival-20[0-9]{2})(?:/|$)"
+    },
+    {
+      "id": "film-services",
+      "category": "support",
+      "rationale": "Services, Facilities, Ordering Videos and Links provide practical resources and access to unit services.",
+      "path_pattern": "^/(?:services-and-facilities|other-resources)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "research",
+    "rationale": "The Ethnographic Film Unit focuses on anthropological film production and research with community documentary projects."
+  }
+}

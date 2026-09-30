@@ -1,0 +1,1 @@
+The degrees of Doctor of Laws \(Honoris Causa\), Doctor of Science \(Honoris Causa\) and Doctor of Letters \(Honoris Causa\), LL\.D\., D\.Sc\., and D\.Litt\., respectively, are the honorary degrees conferred from time to time by the Senate of the University upon persons who have achieved distinction in scholarship or public service\.

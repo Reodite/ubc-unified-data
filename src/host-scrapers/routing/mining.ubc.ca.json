@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "hostname": "mining.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1fdd672; primary first category assignment after verified Markdown integration",
+    "rationale": "The saved official Mining Engineering homepage primarily presents undergraduate and graduate engineering education. It also explicitly describes institute research and separately labels news and events.",
+    "evidence": [
+      "https://mining.ubc.ca/ | c2fbe701f748fd67e685020f53d3cdf278775ce93432ceefee2b04171223b26b | Mining at UBC offers a broad professional degree integrating engineering, earth and mineral sciences, safety, environmental issues, social sciences, management and economics.",
+      "https://mining.ubc.ca/ | c2fbe701f748fd67e685020f53d3cdf278775ce93432ceefee2b04171223b26b | The Institute conducts cutting-edge research across disciplines related to the mining industry.",
+      "https://mining.ubc.ca/ | c2fbe701f748fd67e685020f53d3cdf278775ce93432ceefee2b04171223b26b | The homepage separately labels News and Events and links /news and /events."
+    ]
+  },
+  "rules": [
+    {
+      "id": "mining-research",
+      "category": "research",
+      "rationale": "The homepage explicitly identifies institute research as a distinct academic activity.",
+      "path_pattern": "^/research(?:/|$)"
+    },
+    {
+      "id": "institute-news",
+      "category": "news",
+      "rationale": "The homepage explicitly labels /news and its dated entries as institute news.",
+      "path_pattern": "^/news(?:/|$)"
+    },
+    {
+      "id": "institute-events",
+      "category": "opportunities",
+      "rationale": "The homepage's event section provides opportunities to attend institute activities.",
+      "path_pattern": "^/(?:event|events)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "mining-programs",
+    "category": "academics",
+    "rationale": "Undergraduate and graduate Mining Engineering programs, curriculum and academic community."
+  }
+}

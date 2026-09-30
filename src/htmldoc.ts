@@ -185,7 +185,7 @@ function tokenize(html: string): Token[] {
     }
     const after = html[lt + 1];
     // '<' not starting a tag (not followed by a letter, '/', '!' or '?') is
-    // data itself, delivered as its own run as in HTMLParser.
+    // data itself, delivered as its own run.
     if (after === undefined || !/[a-zA-Z/!?]/.test(after ?? "")) {
       pushData(i, lt, true);
       pushData(lt, lt + 1, true);
@@ -223,7 +223,7 @@ function tokenize(html: string): Token[] {
       continue;
     }
     const closing = after === "/";
-    // parse_endtag: only "</" + a letter is an end tag. "</>" is ignored,
+    // Only "</" + a letter is an end tag. "</>" is ignored,
     // "</" followed by anything else is a bogus comment (dropped), and a
     // bare "</" at end-of-input is data.
     const tagStart = lt + (closing ? 2 : 1);
@@ -257,7 +257,7 @@ function tokenize(html: string): Token[] {
       }
     }
     if (gt < 0) {
-      // Unterminated tag: HTMLParser drops it, no data is delivered.
+      // Drop unterminated tags without delivering their contents as data.
       break;
     }
     const tagText = html.slice(tagStart, gt).trimStart();

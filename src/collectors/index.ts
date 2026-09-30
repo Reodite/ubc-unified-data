@@ -21,6 +21,10 @@ import "./finances.ts";
 import "./people.ts";
 import "./services.ts"; // also imports ./holidays.ts
 import "./reports.ts";
+import "./support.ts";
+import "./policies.ts";
+import "./housing.ts";
+import "./libraries.ts";
 
 export { CAMPUS_CHOICES, DATA_DIR, REGISTRY, setCampus, utcnow } from "../base.ts";
 export type { CollectorClass } from "../base.ts";

@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "hostname": "www.mkrf.forestry.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w4 first homepage review",
+    "rationale": "The official Forestry-hosted Malcolm Knapp Research Forest homepage describes a longstanding research site and useful public programming, partnership opportunities, event announcements and trail guidance. No same-name host occurs in the current published host index. Research is the institutional default, with evidenced opportunities, news, support and outdoor-learning overrides; the homepage does not establish an exclusively Okanagan mandate.",
+    "evidence": [
+      "https://www.mkrf.forestry.ubc.ca/ | 9f6445827707363e96489ec15c643ded138737e373b33f6d1970f981fd69c293 | Since 1949, the Malcolm Knapp Research Forest has hosted over 1,000 research projects covering a variety of topics and studies.",
+      "https://www.mkrf.forestry.ubc.ca/ | 9f6445827707363e96489ec15c643ded138737e373b33f6d1970f981fd69c293 | Help Shape the Future of Outdoor Recreation at Loon Lake: Discover the new high and low ropes course coming in 2027 and learn about the opportunity to become Loon Lake’s recreational programming partner.",
+      "https://www.mkrf.forestry.ubc.ca/ | 9f6445827707363e96489ec15c643ded138737e373b33f6d1970f981fd69c293 | News & Events; Teen Summer Camps with Wild & Immersive!; Forest Tour! 77 Years of Research at the Malcolm Knapp Research Forest",
+      "https://www.mkrf.forestry.ubc.ca/ | 9f6445827707363e96489ec15c643ded138737e373b33f6d1970f981fd69c293 | Trail Maps: View our trail maps. Copies can also be picked up at the research forest office during office hours.",
+      "https://www.mkrf.forestry.ubc.ca/ | 9f6445827707363e96489ec15c643ded138737e373b33f6d1970f981fd69c293 | Loon Lake Lodge & Retreat Centre: A Nature based destination for corporate retreats, wellness weekends and youth school groups. Wild & Immersive: Outdoor learning programs rooted in nature for youth and adults."
+    ]
+  },
+  "rules": [
+    {
+      "id": "partnership-and-camp-opportunities",
+      "category": "opportunities",
+      "rationale": "These named homepage items invite a programming partner and participation in teen summer camps.",
+      "title_pattern": "^(?:Help Shape the Future of Outdoor Recreation at Loon Lake|Teen Summer Camps)\\b"
+    },
+    {
+      "id": "forest-announcements",
+      "category": "news",
+      "rationale": "The homepage explicitly labels News & Events and advertises a dated forest research tour as an event announcement.",
+      "title_pattern": "^(?:News\\b|Forest Tour!)"
+    },
+    {
+      "id": "visitor-support",
+      "category": "support",
+      "rationale": "Trail maps provide practical visitor help, and the lodge section describes retreat facilities and services.",
+      "title_pattern": "^(?:Trail Maps|Loon Lake Lodge)\\b"
+    },
+    {
+      "id": "outdoor-learning-programs",
+      "category": "academics",
+      "rationale": "Wild & Immersive is explicitly described as outdoor learning programs for youth and adults.",
+      "title_pattern": "^Wild & Immersive\\b"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "research",
+    "rationale": "The institutional host is the Malcolm Knapp Research Forest, described as a site supporting over 1,000 research projects since 1949."
+  }
+}

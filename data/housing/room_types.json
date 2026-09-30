@@ -1,0 +1,217 @@
+[
+  {
+    "id": "housing_room:accessible-rooms-and-suites",
+    "source_id": "housing_room",
+    "source_url": "https://vancouver.housing.ubc.ca/rooms/accessible-rooms-and-suites/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Accessible Rooms and Suites",
+    "source_modified_at": "2025-09-12T17:41:37-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "accessible-rooms-and-suites",
+    "residence_ids": [
+      "housing_residence:totem-park",
+      "housing_residence:marine-drive-residence",
+      "housing_residence:ponderosa-commons",
+      "housing_residence:thunderbird",
+      "housing_residence:walter-gage",
+      "housing_residence:brock-commons",
+      "housing_residence:exchange",
+      "housing_residence:houses-of-ones-belonging-to-saltwater"
+    ],
+    "record_sha256": "a48cf5441bbc5568119dc6e19601982c2f53229d5b102cc31201972383fa703f"
+  },
+  {
+    "id": "housing_room:connected-single-room",
+    "source_id": "housing_room",
+    "source_url": "https://vancouver.housing.ubc.ca/rooms/connected-single-room/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Connected Single Room",
+    "source_modified_at": "2024-08-22T13:59:13-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "connected-single-room",
+    "residence_ids": [
+      "housing_residence:totem-park",
+      "housing_residence:orchard-commons"
+    ],
+    "record_sha256": "a4772712425a8da044b943cf6542b941b8870890aa406f6d20eba50cc79ed0e5"
+  },
+  {
+    "id": "housing_room:four-bedroom-suite",
+    "source_id": "housing_room",
+    "source_url": "https://vancouver.housing.ubc.ca/rooms/four-bedroom-suite/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Four Bedroom Suite",
+    "source_modified_at": "2025-01-24T14:24:16-08:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "four-bedroom-suite",
+    "residence_ids": [
+      "housing_residence:fairview-crescent",
+      "housing_residence:marine-drive-residence",
+      "housing_residence:ponderosa-commons",
+      "housing_residence:ritsumeikan-ubc-house",
+      "housing_residence:thunderbird",
+      "housing_residence:brock-commons",
+      "housing_residence:exchange",
+      "housing_residence:houses-of-ones-belonging-to-saltwater"
+    ],
+    "record_sha256": "b349a6facb610806ca321d8961430201ab5fa0450d45b5286c9459c808aeeade"
+  },
+  {
+    "id": "housing_room:nano",
+    "source_id": "housing_room",
+    "source_url": "https://vancouver.housing.ubc.ca/rooms/nano/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Nano Suite",
+    "source_modified_at": "2024-06-25T14:42:26-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "nano",
+    "residence_ids": [
+      "housing_residence:exchange"
+    ],
+    "record_sha256": "31d140d42085fcd7765e91873528bf3e669b90ed2c14aa9b9d4bd0bedb4f2326"
+  },
+  {
+    "id": "housing_room:one-bedroom-suite",
+    "source_id": "housing_room",
+    "source_url": "https://vancouver.housing.ubc.ca/rooms/one-bedroom-suite/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "One Bedroom Suite",
+    "source_modified_at": "2025-06-24T12:22:14-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "one-bedroom-suite",
+    "residence_ids": [
+      "housing_residence:fairview-crescent",
+      "housing_residence:thunderbird",
+      "housing_residence:walter-gage",
+      "housing_residence:iona-house",
+      "housing_residence:exchange"
+    ],
+    "record_sha256": "4808dd48a5373594bf5f374817d2fa6ebb0e70bdee3d57726653c8b954119e31"
+  },
+  {
+    "id": "housing_room:shared-room",
+    "source_id": "housing_room",
+    "source_url": "https://vancouver.housing.ubc.ca/rooms/shared-room/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Shared Room",
+    "source_modified_at": "2024-11-21T16:26:01-08:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "shared-room",
+    "residence_ids": [
+      "housing_residence:totem-park",
+      "housing_residence:place-vanier",
+      "housing_residence:orchard-commons"
+    ],
+    "record_sha256": "f6a10ac168d2d8555beba6ac4f02585b37d18d549757fb149eeb86e23d6cdca6"
+  },
+  {
+    "id": "housing_room:single-traditional-room",
+    "source_id": "housing_room",
+    "source_url": "https://vancouver.housing.ubc.ca/rooms/single-traditional-room/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Single Traditional Room",
+    "source_modified_at": "2024-06-25T14:45:55-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "single-traditional-room",
+    "residence_ids": [
+      "housing_residence:totem-park",
+      "housing_residence:place-vanier"
+    ],
+    "record_sha256": "6a398ebc10c71cb57243a95a8dac23484f22f5cde892f72b717600e013f052ee"
+  },
+  {
+    "id": "housing_room:six-bedroom",
+    "source_id": "housing_room",
+    "source_url": "https://vancouver.housing.ubc.ca/rooms/six-bedroom/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Six Bedroom Suite",
+    "source_modified_at": "2024-06-25T14:37:12-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "six-bedroom",
+    "residence_ids": [
+      "housing_residence:fairview-crescent",
+      "housing_residence:fraser-hall",
+      "housing_residence:walter-gage"
+    ],
+    "record_sha256": "54bc0e7d0ffcb233883f95273a577903cd89a9e24d28c8d778897025b579449d"
+  },
+  {
+    "id": "housing_room:studio-suite",
+    "source_id": "housing_room",
+    "source_url": "https://vancouver.housing.ubc.ca/rooms/studio-suite/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Studio Suite",
+    "source_modified_at": "2025-03-14T10:23:49-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "studio-suite",
+    "residence_ids": [
+      "housing_residence:marine-drive-residence",
+      "housing_residence:ponderosa-commons",
+      "housing_residence:thunderbird",
+      "housing_residence:walter-gage",
+      "housing_residence:iona-house",
+      "housing_residence:brock-commons",
+      "housing_residence:exchange",
+      "housing_residence:houses-of-ones-belonging-to-saltwater"
+    ],
+    "record_sha256": "639262e42e0d681d2cafc96cc36b0493172b7c887531d4d12afb7429fc0ac277"
+  },
+  {
+    "id": "housing_room:three-bedroom-suite",
+    "source_id": "housing_room",
+    "source_url": "https://vancouver.housing.ubc.ca/rooms/three-bedroom-suite/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Three Bedroom Suite",
+    "source_modified_at": "2024-06-25T14:32:46-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "three-bedroom-suite",
+    "residence_ids": [
+      "housing_residence:marine-drive-residence"
+    ],
+    "record_sha256": "d446b588fbdb401e1ee43362bf30e5c988a1f64206c1559d9063908c003b87cc"
+  },
+  {
+    "id": "housing_room:townhouse",
+    "source_id": "housing_room",
+    "source_url": "https://vancouver.housing.ubc.ca/rooms/townhouse/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Townhouse",
+    "source_modified_at": "2025-03-14T10:09:26-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "townhouse",
+    "residence_ids": [
+      "housing_residence:exchange"
+    ],
+    "record_sha256": "784d4663bc34c77a0a6091c450fec707b7c7783a46b3c9a72bac2c17959670ec"
+  },
+  {
+    "id": "housing_room:two-bedroom-suite",
+    "source_id": "housing_room",
+    "source_url": "https://vancouver.housing.ubc.ca/rooms/two-bedroom-suite/",
+    "api_url": null,
+    "campus": "vancouver",
+    "title": "Two Bedroom Suite",
+    "source_modified_at": "2024-06-25T14:30:47-07:00",
+    "retrieved_at": "2026-09-10T23:22:11Z",
+    "slug": "two-bedroom-suite",
+    "residence_ids": [
+      "housing_residence:marine-drive-residence",
+      "housing_residence:ponderosa-commons",
+      "housing_residence:thunderbird",
+      "housing_residence:iona-house",
+      "housing_residence:exchange"
+    ],
+    "record_sha256": "eb9090e2926f0a5261704b9102dd805cb9a107ac483bc0dbc2cafacad682d876"
+  }
+]

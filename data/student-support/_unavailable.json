@@ -1,0 +1,42 @@
+[
+  {
+    "source_url": "https://wellbeing.ubc.ca/training-naloxone-use-ubc-o",
+    "upstream_id": "4a74ab86-a32a-4345-9cbe-2c2c2c74c1ab",
+    "title": "Training on Naloxone use (UBC-O)",
+    "relationships": [
+      "resource_audience_category"
+    ],
+    "retained": false,
+    "reason": "UBC returns a literal missing relationship target. Only available taxonomy labels are used; records with no verified student/undergraduate audience are excluded."
+  },
+  {
+    "source_url": "https://wellbeing.ubc.ca/suicide-awareness-intervention-training-sait",
+    "upstream_id": "5a119b52-bea6-42b6-b1c1-8016fa63050e",
+    "title": "Suicide Awareness & Intervention Training (SAIT)",
+    "relationships": [
+      "resource_audience_category"
+    ],
+    "retained": true,
+    "reason": "UBC returns a literal missing relationship target. Only available taxonomy labels are used; records with no verified student/undergraduate audience are excluded."
+  },
+  {
+    "source_url": "https://wellbeing.ubc.ca/professional-development-staff-faculty-and-tas-support-student-wellbeing",
+    "upstream_id": "6cb99038-4849-45c9-bf4b-70abffd9376b",
+    "title": "Professional development for staff, faculty, and TA's to support student wellbeing",
+    "relationships": [
+      "resource_audience_category"
+    ],
+    "retained": false,
+    "reason": "UBC returns a literal missing relationship target. Only available taxonomy labels are used; records with no verified student/undergraduate audience are excluded."
+  },
+  {
+    "source_url": "https://wellbeing.ubc.ca/ctlt-classroom-climate-series",
+    "upstream_id": "b912e084-4af3-4b4a-94fc-1e675a2307a7",
+    "title": "CTLT Classroom Climate Series",
+    "relationships": [
+      "resource_audience_category"
+    ],
+    "retained": false,
+    "reason": "UBC returns a literal missing relationship target. Only available taxonomy labels are used; records with no verified student/undergraduate audience are excluded."
+  }
+]

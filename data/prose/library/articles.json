@@ -1,0 +1,1520 @@
+[
+  {
+    "id": "prose:library:14271c16db78708970e80cf9",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216170",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "Reactivating library access may mean renewing an account to borrow physical materials, and, in some cases may also mean renewing eResource access via OpenAthens:\n\n-   **UBC Students, Faculty \\(including Emeriti\\) and Staff**: Users with an active appointment in Workday do not need to renew library access; physical borrowing and eResources access are renewed automatically as long as your status in Workday remains active\\. \n-   **Alumni**: Alumni who have [applied for access to physical borrowing at the library](https://alumni.ubc.ca/services/library/) do not need to renew their library account\\. Alumni [with an active OpenAthens account](https://guides.library.ubc.ca/connect/openathens/alumni) will receive an automated renewal reminder every 5 years\\.\n-   **Affiliated Staff**: Staff and Faculty who work at any of UBC's affiliated colleges \\(Corpus Christi College and St\\. Mark’s College; Regent College; Carey College; Vancouver School of Theology\\) renew their physical borrowing and eResources access yearly, following the academic calendar\\. Accounts will expire on September 15th of each year\\.\n-   **Faculty Authorized Users**: Faculty Authorized Users must renew their accounts \\(physical borrowing and eResources access\\) yearly, following the academic calendar\\. Accounts will expire on September 15th of each year\\. \n-   **Reciprocal Borrowing**: UBC and non\\-UBC students requesting Reciprocal Borrowing accounts must renew yearly, following the academic calendar\\. Accounts will expire on September 15th of each year\\. Note that Reciprocal Borrowing for non\\-UBC students does not include remote access to eResources\\. \n-   **Community Users**: Community users receive physical borrowing privileges\\. Most Community accounts are valid 1 year \\(or less\\) from the date of issue\\.  Note that Community users do not receive remote access to eResources\\. \n-   **Retired Staff**: Retired staff receive physical borrowing privileges\\. Retired staff must have a ‘retired’ status in Workday\\. Retired staff with a ‘retired’ status in Workday can [request a Retired Staff UBCCard](https://ubccard.ubc.ca/obtaining-a-ubccard/emeritus-retired-staff) to activate their physical borrowing privileges\\. Note that Retired Staff do not receive remote access to eResources\\.\n\nAny users looking to renew or reactivate their library privileges should fill out an [Ask Us form](https://ask.library.ubc.ca/ask/)\\.",
+    "content_sha256": "fd1eb82c05754239f2eab22567633bc971c0b88b65b1775e506e1c23687122c8",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:18:13.461Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "applied for access to physical borrowing at the library",
+        "url": "https://alumni.ubc.ca/services/library/"
+      },
+      {
+        "text": "with an active OpenAthens account",
+        "url": "https://guides.library.ubc.ca/connect/openathens/alumni"
+      },
+      {
+        "text": "request a Retired Staff UBCCard",
+        "url": "https://ubccard.ubc.ca/obtaining-a-ubccard/emeritus-retired-staff"
+      },
+      {
+        "text": "Ask Us form",
+        "url": "https://ask.library.ubc.ca/ask/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/922b22f438be9f21dbbe2385e999e823f83add84568e2ec3b1a92d0dbf018e8e.md"
+  },
+  {
+    "id": "prose:library:146152fe62ca1d60158e8f8f",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216141",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Librarians create [Research Guides](https://guides.library.ubc.ca/menu) to help you locate resources and improve your research skills\\. Find research guidance for subject areas or disciplines, broad topics, specific courses, research methods, and for finding and using different types of content and tools\\.\n\nYou can also contact your [Subject Librarian](https://directory.library.ubc.ca/subjectlibrarians/) for assistance with finding and evaluating relevant sources of information\\.",
+    "content_sha256": "ffb0285946faaa9a54b3cc626f1704cdae6fa8209a4a4d308e66a49f9b55bc3b",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:17:03.472Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Research Guides",
+        "url": "https://guides.library.ubc.ca/menu"
+      },
+      {
+        "text": "Subject Librarian",
+        "url": "https://directory.library.ubc.ca/subjectlibrarians/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/d07fc11eeb063700b2329c3d418f79ff095f2586fe8bcfce86f0c535d7abd5cd.md"
+  },
+  {
+    "id": "prose:library:14dbfe11d17890240ea41e3e",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216167",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "Please search the Library's [Catalogue](http://webcat.library.ubc.ca/) to check if a copy is already in our collection before submitting a request\\.\n\nFor course materials or reserves, please use [LOCR \\(Library Online Course Reserves\\)](https://courses.library.ubc.ca/)\n\nWhat happens after a title is suggested?\n\n1.  A librarian reviews your suggestion and may order the title if it meets our Collection Development Policies\n2.  For non\\-digital titles selected for purchase, if a library barcode is included in the form, you will be notified when the item is available for pick up\n\nNote: Due to the high volume of suggestions we are unable to respond to all submissions\n\nTo suggest a book or other material, [complete this form](https://ask.library.ubc.ca/suggestbook/)\\.",
+    "content_sha256": "ffaf45d53701dc860de56ac30199e81703c6607b0c4f324bcd962bb707f6f058",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:17:43.469Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Catalogue",
+        "url": "http://webcat.library.ubc.ca/"
+      },
+      {
+        "text": "LOCR (Library Online Course Reserves)",
+        "url": "https://courses.library.ubc.ca/"
+      },
+      {
+        "text": "complete this form",
+        "url": "https://ask.library.ubc.ca/suggestbook/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/184ba155c7ffe8d09dfdf7a4ea210b3b5b6283dd56bf6410b9c7c24d7c87f5c7.md"
+  },
+  {
+    "id": "prose:library:16e5968d6d9f6bd89db7cd9c",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216176",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Library provides guidance on how to cite sources in multiple ways:\n\n-   The [Library Skills Tutorial](https://guides.library.ubc.ca/library_tutorial/citation) provides an overview of citation topics\n-   Select a [Citation Guide](https://guides.library.ubc.ca/citation), curated by UBC Librarians, to help you cite in a specific citation style, cite different types of sources including AI, or learn about citation software\n-   [Chat](https://answers.library.ubc.ca/askus/) with a library employee live online\n-   [Visit](https://hours.library.ubc.ca/) a library location and ask your question at a service desk\n-   Attend a workshop on [citation management software](https://libcal.library.ubc.ca/calendar/vancouver?cid=-1&amp;t=g&amp;d=0000-00-00&amp;cal=-1&amp;ct=33741&amp;inc=0)\n-   Contact your [subject librarian](https://directory.library.ubc.ca/subjectlibrarians/)",
+    "content_sha256": "4c109e0d70b93ace4f3c8873ca1df0d10d67d60cd0ea46a8b6d1c6caabb07ecb",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:19:13.611Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Library Skills Tutorial",
+        "url": "https://guides.library.ubc.ca/library_tutorial/citation"
+      },
+      {
+        "text": "Citation Guide",
+        "url": "https://guides.library.ubc.ca/citation"
+      },
+      {
+        "text": "Chat",
+        "url": "https://answers.library.ubc.ca/askus/"
+      },
+      {
+        "text": "Visit",
+        "url": "https://hours.library.ubc.ca/"
+      },
+      {
+        "text": "citation management software",
+        "url": "https://libcal.library.ubc.ca/calendar/vancouver?cid=-1&t=g&d=0000-00-00&cal=-1&ct=33741&inc=0"
+      },
+      {
+        "text": "subject librarian",
+        "url": "https://directory.library.ubc.ca/subjectlibrarians/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/f3ce100a50cd6abe940f3033def830e74a044390c3d9cad485e993f2a78e369b.md"
+  },
+  {
+    "id": "prose:library:1f08eac1275bdb4f58489c3d",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216356",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "This error indicates that your account is not authorized to view the resource\\.\n\nIn some cases, the resource may be included in UBC Library's subscription, but it has not yet been correctly configured on the backend of the OpenAthens system, which is used to provide access\\.\n\nTry clearing your browser cache and signing back into OpenAthens via the [UBC Library homepage](https://www.library.ubc.ca/ \"https://www.library.ubc.ca/\")\\. Then click “Login” in the top\\-right corner and select “OpenAthens Login” from the dropdown menu\\.\n\nIf the issue persists, connect with our support team by completing an [Ask Us form](https://ask.library.ubc.ca/ask/)",
+    "content_sha256": "92ed6003437677d76170c106099c7636056662b5f5bb575ab31532a9ac350bb8",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:22:03.557Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "UBC Library homepage",
+        "url": "https://www.library.ubc.ca/"
+      },
+      {
+        "text": "Ask Us form",
+        "url": "https://ask.library.ubc.ca/ask/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/9fa764cf0e3947fe65f5ebd455cb4cc38db59082f50feac8fb9e72dbecacb985.md"
+  },
+  {
+    "id": "prose:library:2dc1737d63e3614c34680195",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216174",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "Yes, you can view books from a library storage location \\(PARC or ASRS\\), even if you do not have a library card\\! Note that materials in transit from storage locations often take several days and may not be available same\\-day\\. It is strongly recommended that users without a library card [contact UBC library](https://answers.library.ubc.ca/askus/) to request items from storage before coming to campus\\. \n\n-   **PARC materials** \\- contact [Koerner Library](https://koerner.library.ubc.ca/) to request items from PARC\\. Items from PARC may take several days to reach Koerner Library\\. Koerner Library staff will contact you when the items have arrived\\. \n-   **ASRS materials** \\- contact the [Music, Art and Architecture Library](https://maa.library.ubc.ca/) \\(MAA\\)\\. Items from the ASRS may take several hours to several days to reach MAA\\. MAA staff will contact you when the items have arrived\\.  \n\nStorage items are available for patrons without a library card to view in\\-library only\\. \n\nUsers **with** a library card can follow the steps outlined on the [Library's Access Storage](https://services.library.ubc.ca/borrowing-services/storage/#fragment-a750fa8566bf75e9a6d930107eaa35ba-0) page to request materials\\.",
+    "content_sha256": "c46da45e8de94a1c6edfc058dd23671b08523043ba0eecdb1845c8cf7b9954b6",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:18:53.411Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "contact UBC library",
+        "url": "https://answers.library.ubc.ca/askus/"
+      },
+      {
+        "text": "Koerner Library",
+        "url": "https://koerner.library.ubc.ca/"
+      },
+      {
+        "text": "Music, Art and Architecture Library",
+        "url": "https://maa.library.ubc.ca/"
+      },
+      {
+        "text": "Library's Access Storage",
+        "url": "https://services.library.ubc.ca/borrowing-services/storage/#fragment-a750fa8566bf75e9a6d930107eaa35ba-0"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/9ddfd841f777258fcd4d5cba12a1d82545a07b03489327456384e6b8032017eb.md"
+  },
+  {
+    "id": "prose:library:3d65243f0915411087a76189",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216665",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "Benefits include unified management of print and electronic resources, fewer manual workarounds, improved analytics, better system integration, enhanced security, and a clearer, more consistent discovery experience for users\\.",
+    "content_sha256": "b94b5b40cd2884205f2efdb36cab23a4b0c07ddfa09469950b891e892e0a0495",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:22:33.565Z",
+    "source_records": [],
+    "links": [],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/aa20ccdf976ec7076994ffc4c0c37e7cfeb19e04981907e65af1dcdbd8f19a8e.md"
+  },
+  {
+    "id": "prose:library:3e0fc17955277d53194838a6",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/215694",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "To book an appointment with your subject librarian for support with finding, evaluating and using all types of information sources, including literature reviews, consult the [subject librarian directory](https://directory.library.ubc.ca/subjectlibrarians/) and connect with your librarian\\. \n\nFor support with knowledge synthesis projects including systematic, scoping, and related reviews, visit the [Knowledge Synthesis service](https://knowledgesynthesis.library.ubc.ca/) page for more information\\.\n\nVisit the [Rare Books &amp; Special Collections](https://rbsc.library.ubc.ca/), [University Archives](https://archives.library.ubc.ca/), and [Okanagan Special Collections and Archives](https://library.ok.ubc.ca/spaces/special-collections-and-archives/) for details on how to plan a visit to engage with unique collections\\.",
+    "content_sha256": "672bc956c74a37b3db8760a996a23e8d42841e33fe2f574552e7510ee8b01a84",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:16:53.538Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "subject librarian directory",
+        "url": "https://directory.library.ubc.ca/subjectlibrarians/"
+      },
+      {
+        "text": "Knowledge Synthesis service",
+        "url": "https://knowledgesynthesis.library.ubc.ca/"
+      },
+      {
+        "text": "Rare Books & Special Collections",
+        "url": "https://rbsc.library.ubc.ca/"
+      },
+      {
+        "text": "University Archives",
+        "url": "https://archives.library.ubc.ca/"
+      },
+      {
+        "text": "Okanagan Special Collections and Archives",
+        "url": "https://library.ok.ubc.ca/spaces/special-collections-and-archives/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/eaa33db04b0308f74d6273878c6868078b03abc520c0f223cfea4c7e11c8288a.md"
+  },
+  {
+    "id": "prose:library:424cda0fedee7018feac3b32",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216228",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "The **General tab uses Summon**, a discovery tool that searches across many library resources at once\\.\n\nThe other tabs \\(Books &amp; Media, Indexes and Databases, Journal Titles\\) do not use Summon\\. Instead, they connect to separate library systems designed for specific purposes\\.\n\n-   Use the **Books &amp; Media** tab to search the UBC Library Catalogue for books and other catalogue materials\\. \n-   Use the **Indexes &amp; Databases** tab to locate subject\\-specific research databases\\.\n-   Use the **Journal Titles** tab to look up a specific journal by title\\.\n\nBecause these tabs search different systems, results may vary depending on which tab you use\\.\n\nVisit [How to Search Summon](https://guides.library.ubc.ca/summonhelp) for more details",
+    "content_sha256": "ecc9fc41df4c20d4bc62cff546d7586b2a8d3c52f0005b4e8bac73f7a4163e59",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:20:03.584Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "How to Search Summon",
+        "url": "https://guides.library.ubc.ca/summonhelp"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/64e05e43146355f11bec0f297acd29ed82c63f3f5a3afeed4e30b7df79d6fd57.md"
+  },
+  {
+    "id": "prose:library:43d89fc81bfb487cc1f49ed4",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/215690",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC cardholders can order books and articles from other institutions via our Interlibrary Loan \\(ILL\\) service\\.\n\nUBC cardholders can request and track orders from other institutions\\. Please review [UBC's Interlibrary Loan guide](https://services.library.ubc.ca/borrowing-services/ill/) for more information on how to order, fee information for Community Cardholders and Alumni, and contact information for UBC ILL\\.",
+    "content_sha256": "62f221ec31a2f3aaa31909febebfa42d94df7bb1043cb796dba9791c22dc07d2",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:16:20.453Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "UBC's Interlibrary Loan guide",
+        "url": "https://services.library.ubc.ca/borrowing-services/ill/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/e8261fb2e2abb4bef69c821d02bb1fee8e7bb016b95c5c2e5e9d907a74127b81.md"
+  },
+  {
+    "id": "prose:library:469ad35c5a6867542ff49da9",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/215693",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Library provides [Open Access and Publication Discounts](https://scholcomm.ubc.ca/open-access-publisher-discounts/?login) for a variety of publishers and organizations\\.\n\nAdditional [funding opportunities](https://scholcomm.ubc.ca/funding-opportunities/) support scholarly communication\\.",
+    "content_sha256": "9a65e18dd23fd36860ca7ffebda7f90af242e3bdd8af89d6ac6bd528a640f86b",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:16:43.037Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Open Access and Publication Discounts",
+        "url": "https://scholcomm.ubc.ca/open-access-publisher-discounts/?login"
+      },
+      {
+        "text": "funding opportunities",
+        "url": "https://scholcomm.ubc.ca/funding-opportunities/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/11cd9f9eeee3385c23c03045945cd421cb4aa1fd9cd104f38bbb0bc977cd9c3c.md"
+  },
+  {
+    "id": "prose:library:4ae255f62af07419496b268c",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216177",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Library provides many services for researchers\\. This list is not comprehensive, but intended to connect researchers with key contacts in the library:\n\n-   [Subject librarians](https://directory.library.ubc.ca/subjectlibrarians/) provide individualized support with many aspects of the research lifecycle\n-   [Borrowing services](https://services.library.ubc.ca/borrowing-services/get-library-access/faculty/) are available to all researchers and there are options for visiting scholar access\n-   The [Scholarly Communications Office](https://scholcomm.ubc.ca/?login) at UBC Vancouver provides support for journal discounts, open publishing, copyright and related topics\n-   The [Research Commons](https://researchcommons.library.ubc.ca/?login) is a multidisciplinary hub that provides access to services and expertise in digital scholarship, geospatial information systems \\(GIS\\), data services, research data management \\(RDM\\), and citation management\n-   The [Centre for Scholarly Communication](https://csc.ok.ubc.ca/) at UBC Okanagan, provide support for journal discounts, open publishing, copyright and related topics, data services, research data management \\(RDM\\), and citation management\n-   Visit the [Research Data Management](https://rdm.ubc.ca/) website for data management services\n-   Visit the [Knowledge Synthesis Service](https://knowledgesynthesis.library.ubc.ca/?login) website for two tiers of service which support different types of reviews\n-   Visit the [cIRcle](https://circle.ubc.ca/?login) website to review options for depositing research outputs at UBC Library",
+    "content_sha256": "50c091d1ddeca28e26237c98f54d2a76286c0082b9c983bd86bf9880b9ab3664",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:19:23.471Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Subject librarians",
+        "url": "https://directory.library.ubc.ca/subjectlibrarians/"
+      },
+      {
+        "text": "Borrowing services",
+        "url": "https://services.library.ubc.ca/borrowing-services/get-library-access/faculty/"
+      },
+      {
+        "text": "Scholarly Communications Office",
+        "url": "https://scholcomm.ubc.ca/?login"
+      },
+      {
+        "text": "Research Commons",
+        "url": "https://researchcommons.library.ubc.ca/?login"
+      },
+      {
+        "text": "Centre for Scholarly Communication",
+        "url": "https://csc.ok.ubc.ca/"
+      },
+      {
+        "text": "Research Data Management",
+        "url": "https://rdm.ubc.ca/"
+      },
+      {
+        "text": "Knowledge Synthesis Service",
+        "url": "https://knowledgesynthesis.library.ubc.ca/?login"
+      },
+      {
+        "text": "cIRcle",
+        "url": "https://circle.ubc.ca/?login"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/979924f1f88f7f0ddc81cab46f1599b3b4b31adb553f0bed593b6358a4a26231.md"
+  },
+  {
+    "id": "prose:library:51e7041f5f819ec7275d6af7",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216340",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "These instructions are for UBC students:\n\nUBC Vancouver:\n\n-   To pay online, login to [payforprint\\.ubc\\.ca](https://payforprint.ubc.ca/) and navigate to Add Money\\- UBC Card\n    -   Use the system to select a Campus Plan to add a minimum of $5\\.00 CAD\n    -   Please note that TD bank cards often do not work\n-   To pay with cash visit the card vending machine on level 3 of the [Irving K\\. Barber Learning Centre](https://ikblc.ubc.ca/)\n-   If you have a $0 balance showing for printing but have money on your meal plan, ensure your UBCCard or Residence Flex Meal plan is activated before trying to print, visit [UBC Student Housing and Community Services](https://broker.id.ubc.ca/auth/realms/idb0/protocol/saml?SAMLRequest=fZLNboMwEIRfBfkebJwAwQpINDk0UtqiQnvopTLgFqtgU6%2Fpz9sXQqOml5x39tuZ0W6Ad23P0sE26l68DwKs89W1CthxEKPBKKY5SGCKdwKYrVie3hwYdQnrjba60i1yUgBhrNRqqxUMnTC5MB%2ByEg%2F3hxg11vbAMAZRDUa4jR5Aqld3KCu34jhvZFnqVtjGBdB4glOc3eUFcnajG6n4xP2jlEa%2FCePK%2BgTgo3dsBG87wLIuCT7ZwlME5Ox3MXpecr%2BKSPkShdHK9ygh9dqPVlEYiHBNwnI5ygAGsVdgubIxooQGC%2BIvqFdQj9GALYMn5GS%2F5Cup6jHC5XbKWQTsuiiyxZzoURg4phkFKNlMBtnxsDlr%2FTKWn6pGycViN%2FiMPp%2Fq2e2I2%2B8y3crq20nbVn9ux%2BasiJGHcDKv%2FP%2BG5Ac%3D&amp;RelayState=ss%3Amem%3A3721c2e33d19d93980d04db99f2718d2f1253648496a8d248ed1e62e7e1c858e&amp;SigAlg=http%3A%2F%2Fwww.w3.org%2F2001%2F04%2Fxmldsig-more%23rsa-sha256&amp;Signature=INjm6bsmnIQodLTQqUGwN6UV5m3809DMrhW%2BSF1mT%2FYNxhs2PC7v3eDweJ7w9Mdo2vf8ActgAkhzYIIbokdMVwZJi9gwcrsxWZzgEhCviXEGY6wEN9laFHBs5yUdhO9Kd1c6nLyOjcb7W12SkI1XFkKKwncN%2Bo5Swvu9FEt6KM7WaKGbIOoK8sk5pfW9mYkggBDKWejBJZmGyXoTAGUFtTE5RS%2Bm8su9nMbA8vzPzjYu7bBXSPR%2Bu%2FccM%2FJc7cCKhECs1KJR6pFo%2FB5AEnkwx3cS5%2FcRF%2BJ%2B8tNka2E1SRB5GvJv7QIdsiGntdEY8NALpYvDszZpY5SkILr8tY5Rs09FmlJovfFnnhatDbgszP5K3Tk8wMUqCKPeVtjIinwkGdxwfRZ%2BSesVE4VgsnCWloWUV3u%2BQhpRS4uIymZRqxkY9Ry9g2KuBuU9KuajpvXMvrql6PsPzuHuUqMAp4ehVU8X3J41TDZvNsxmVZNBfspkQzq3ZTquYTfNEhpoG2rh) to activate your card\n\nUBC Okanagan:\n\n-   Login to [payforprint\\.ok\\.ubc\\.ca](https://payforprint.ok.ubc.ca/) and navigate to Add Money\\- UBC Card\n    -   Use the system to select a Campus Plan to add a minimum of $5\\.00 CAD\n    -   Please note that TD bank cards often do not work",
+    "content_sha256": "121f2b2c508f2ad0101faa6bdf83add54d1d1ec4fd0b93682d6d29999ecd7b81",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:21:23.647Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "payforprint.ubc.ca",
+        "url": "https://payforprint.ubc.ca/"
+      },
+      {
+        "text": "Irving K. Barber Learning Centre",
+        "url": "https://ikblc.ubc.ca/"
+      },
+      {
+        "text": "UBC Student Housing and Community Services",
+        "url": "https://broker.id.ubc.ca/auth/realms/idb0/protocol/saml?SAMLRequest=fZLNboMwEIRfBfkebJwAwQpINDk0UtqiQnvopTLgFqtgU6%2Fpz9sXQqOml5x39tuZ0W6Ad23P0sE26l68DwKs89W1CthxEKPBKKY5SGCKdwKYrVie3hwYdQnrjba60i1yUgBhrNRqqxUMnTC5MB%2ByEg%2F3hxg11vbAMAZRDUa4jR5Aqld3KCu34jhvZFnqVtjGBdB4glOc3eUFcnajG6n4xP2jlEa%2FCePK%2BgTgo3dsBG87wLIuCT7ZwlME5Ox3MXpecr%2BKSPkShdHK9ygh9dqPVlEYiHBNwnI5ygAGsVdgubIxooQGC%2BIvqFdQj9GALYMn5GS%2F5Cup6jHC5XbKWQTsuiiyxZzoURg4phkFKNlMBtnxsDlr%2FTKWn6pGycViN%2FiMPp%2Fq2e2I2%2B8y3crq20nbVn9ux%2BasiJGHcDKv%2FP%2BG5Ac%3D&RelayState=ss%3Amem%3A3721c2e33d19d93980d04db99f2718d2f1253648496a8d248ed1e62e7e1c858e&SigAlg=http%3A%2F%2Fwww.w3.org%2F2001%2F04%2Fxmldsig-more%23rsa-sha256&Signature=INjm6bsmnIQodLTQqUGwN6UV5m3809DMrhW%2BSF1mT%2FYNxhs2PC7v3eDweJ7w9Mdo2vf8ActgAkhzYIIbokdMVwZJi9gwcrsxWZzgEhCviXEGY6wEN9laFHBs5yUdhO9Kd1c6nLyOjcb7W12SkI1XFkKKwncN%2Bo5Swvu9FEt6KM7WaKGbIOoK8sk5pfW9mYkggBDKWejBJZmGyXoTAGUFtTE5RS%2Bm8su9nMbA8vzPzjYu7bBXSPR%2Bu%2FccM%2FJc7cCKhECs1KJR6pFo%2FB5AEnkwx3cS5%2FcRF%2BJ%2B8tNka2E1SRB5GvJv7QIdsiGntdEY8NALpYvDszZpY5SkILr8tY5Rs09FmlJovfFnnhatDbgszP5K3Tk8wMUqCKPeVtjIinwkGdxwfRZ%2BSesVE4VgsnCWloWUV3u%2BQhpRS4uIymZRqxkY9Ry9g2KuBuU9KuajpvXMvrql6PsPzuHuUqMAp4ehVU8X3J41TDZvNsxmVZNBfspkQzq3ZTquYTfNEhpoG2rh"
+      },
+      {
+        "text": "payforprint.ok.ubc.ca",
+        "url": "https://payforprint.ok.ubc.ca/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/dbffc96c33e95576b263e717105d4d8b48a1b86e24c51d1e0cf7b3cdc38eebdf.md"
+  },
+  {
+    "id": "prose:library:566116eacba0fe10c72a8f4c",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216165",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Library supports two curated repositories that meet most funder and publisher requirements for data deposit, increasingly mandated by funders like the Tri\\-Agencies:\n\n-   [UBC Dataverse Collection \\(Borealis\\)](https://researchdata.library.ubc.ca/deposit/dataverse): a national repository for more than 90 Canadian institutions, curated by UBC Library\\. Best for small to medium\\-sized datasets; supports DOI assignment, access controls, and FAIR principles\\.\n-   [Federated Research Data Repository \\(FRDR\\)](https://researchdata.library.ubc.ca/deposit/frdr/): a national platform curated by the Digital Research Alliance of Canada, designed for large\\-scale datasets \\(terabytes\\)\\.\n\nUBC Library can also help identify discipline\\-specific repositories\\. Visit the [Deposit](https://researchdata.library.ubc.ca/deposit/) page or contact [research\\.data@ubc\\.ca](mailto:research.data@ubc.ca) to request a consultation\\.",
+    "content_sha256": "f4eb15cc72cba6f9835156ddc9f006861999ddc3a100afa9a5dcf20b1621c2d2",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:17:23.483Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "UBC Dataverse Collection (Borealis)",
+        "url": "https://researchdata.library.ubc.ca/deposit/dataverse"
+      },
+      {
+        "text": "Federated Research Data Repository (FRDR)",
+        "url": "https://researchdata.library.ubc.ca/deposit/frdr/"
+      },
+      {
+        "text": "Deposit",
+        "url": "https://researchdata.library.ubc.ca/deposit/"
+      },
+      {
+        "text": "research.data@ubc.ca",
+        "url": "mailto:research.data@ubc.ca"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/98a25ca667b53ccdedac086cb9d0bbcbec48a753c92305de6cef52d1d8207516.md"
+  },
+  {
+    "id": "prose:library:572dd449793d4b96e80017dc",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/214408",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Library provides an online payment system available to all students, staff and faculty, as well as community card members\\. This system allows users to view their current library fines/fees, view their payment history, and pay library fines &amp; fees\\. Visa, Mastercard and Interac Debit are accepted in the online payment system\\. To pay using the online system visit: [https://paynow\\.library\\.ubc\\.ca/](https://paynow.library.ubc.ca/)\\. \n\nFor users looking to pay by cash or by card in person at the Vancouver Campus, please visit the circulation desk at Koerner Library, Woodward Library or the Music Art and Architecture Library\\. For users looking to pay in person by debit at the Okanagan Campus, please visit the Library Service Desk\\. To review library hours and locations: [https://hours\\.library\\.ubc\\.ca/](https://hours.library.ubc.ca/)\\. \n\nYou can also call us for support: Vancouver: 604\\-822\\-2406, Okanagan: 250\\-807\\-9107 \n\nVisit the [Loan Policies &amp; Fines](https://services.library.ubc.ca/borrowing-services/loan-policies-and-fines/) website for related information\\.",
+    "content_sha256": "856b90f9212035f8f83239fb690f1b09d456494c63612c4ec600452a9473be37",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:15:09.682Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "https://paynow.library.ubc.ca/",
+        "url": "https://paynow.library.ubc.ca/"
+      },
+      {
+        "text": "https://hours.library.ubc.ca/",
+        "url": "https://hours.library.ubc.ca/"
+      },
+      {
+        "text": "Loan Policies & Fines",
+        "url": "https://services.library.ubc.ca/borrowing-services/loan-policies-and-fines/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/14acd34dc861649e96f377050cd9cf6ab09ce4a3762f349bc533ea2792310819.md"
+  },
+  {
+    "id": "prose:library:59fc478bdbb31c98394e85c8",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216345",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "If you are not a current student, staff, or faculty member, you can print and copy at UBC Vancouver by purchasing a UBC Guest card\\. Guest cards are loaded with a minimum of $5\\.\n\nVisit the [Pay for Print for Visitors and Guests](https://services.library.ubc.ca/computers-technology/copy-print-scan/pay-for-print-visitors-guests/) page for more information about purchasing and using print cards\\.\n\nAt the Okanagan Library, guests can inquire about printing options at the service desk\\.",
+    "content_sha256": "b584ad2c8beddf891aea925234a0c33bb01ff729c078bfdd50347c8962da5ebd",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:21:53.543Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Pay for Print for Visitors and Guests",
+        "url": "https://services.library.ubc.ca/computers-technology/copy-print-scan/pay-for-print-visitors-guests/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/1999f7e11a2b108580aec3d80f05fae5ceefd0ea8861727a4fa00e85a75af59d.md"
+  },
+  {
+    "id": "prose:library:5eb3b3cf260dbbffd1a6b0c0",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216171",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "Students can view required readings for their courses using LOCR, the Library's Online Course Reserve system\\. View the [Library's Student Resource page on LOCR](https://services.library.ubc.ca/borrowing-services/using-course-reserves/#StudentResources-1) for more information and guides on how to access course readings\\. Additional information can be found in the [Learning Technology Hub LOCR Student Guide](https://lthub.ubc.ca/guides/locr-student-guide/)\\. \n\nIf you have questions about Course Reserve materials, please [contact Course Reserve staff](https://services.library.ubc.ca/borrowing-services/using-course-reserves/#Contacts-3) for more information\\.",
+    "content_sha256": "d82d0b0aa13585e2618bd5d2fc7d282512aa3d5198a1f9d3341b9fb52842b56d",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:18:23.378Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Library's Student Resource page on LOCR",
+        "url": "https://services.library.ubc.ca/borrowing-services/using-course-reserves/#StudentResources-1"
+      },
+      {
+        "text": "Learning Technology Hub LOCR Student Guide",
+        "url": "https://lthub.ubc.ca/guides/locr-student-guide/"
+      },
+      {
+        "text": "contact Course Reserve staff",
+        "url": "https://services.library.ubc.ca/borrowing-services/using-course-reserves/#Contacts-3"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/cc476eff1feb9944850b260b8ce9a8a81be151680366b3f28b1c6745818847f4.md"
+  },
+  {
+    "id": "prose:library:608b2b285576390c9c0692b0",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216231",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "Hospital staff cards are exclusively issued for one of the following UBC\\-affiliated teaching hospitals:\n\n-   BC Children’s Hospital and BC Women’s Hospital &amp; Health Centre\n-   St\\. Paul’s Hospital\n-   Vancouver General Hospital\n-   UBC Hospital\n\nVisit the [Library Access for Staff](https://services.library.ubc.ca/borrowing-services/get-library-access/staff/) webpage for more information about this service, or connect with our support team at [library\\.accounts@ubc\\.ca](mailto:library.accounts@ubc.ca) to resolve the issue\\.\n\nFor remote eResource access, users must be UBC appointed and have an active status in Workday\\. To access additional online resources that have been licensed for use on UBC computers as a non\\-UBC appointed hospital staff member, visit the [BMB Library](https://woodward.library.ubc.ca/services-at-hospitals/bmb/) \\(or any other [UBC library location](https://hours.library.ubc.ca/)\\) to register for a [Guest OpenAthens account](https://guides.library.ubc.ca/connect/openathens/guests)\\.",
+    "content_sha256": "1324e9953877b080d79424979fa28eb15a8a6dce4ea68b400909823060a41a4d",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:20:23.598Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Library Access for Staff",
+        "url": "https://services.library.ubc.ca/borrowing-services/get-library-access/staff/"
+      },
+      {
+        "text": "library.accounts@ubc.ca",
+        "url": "mailto:library.accounts@ubc.ca"
+      },
+      {
+        "text": "BMB Library",
+        "url": "https://woodward.library.ubc.ca/services-at-hospitals/bmb/"
+      },
+      {
+        "text": "UBC library location",
+        "url": "https://hours.library.ubc.ca/"
+      },
+      {
+        "text": "Guest OpenAthens account",
+        "url": "https://guides.library.ubc.ca/connect/openathens/guests"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/d9e8d385ec38b9b75d87bc58c09d6373897c52ed6e1200579a948146d18a049a.md"
+  },
+  {
+    "id": "prose:library:7343887dc02f4304c2d0d8e8",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216173",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "No, users are not able to renew a book that has been recalled\\. This policy is in place to keep items in the collection available and accessible to all users\\. If an item is recalled, please return it before the due date to avoid fines\\. \n\nNote: it is strongly recommended that you return library books if you plan to be out of town for an extended period of time\\. Books may be recalled at any time\\. Users are responsible for returning any recalled items by their due date\\.",
+    "content_sha256": "909edd7d164781d7ac4f7a00d0fa1195d9fc6e27f894787fe64f0413792e6d6c",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:18:43.418Z",
+    "source_records": [],
+    "links": [],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/47fd67a9806ba31cdfaff28642f250f895731245f873eb5d17db91ba6bb9e7cd.md"
+  },
+  {
+    "id": "prose:library:74be2db2da3d5aad3a9b1044",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216175",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Library instruction can include topics such as subject\\-specific research skills, using databases to find journal articles and specialized information, finding relevant research materials beyond UBC's collections, publishing, and more\\.\n\nTo arrange for library instruction, contact your [subject librarian](http://directory.library.ubc.ca/subjectlibrarians/)\\.",
+    "content_sha256": "f0d24388180f702d8bd6188dbfedf88a18e760dc0b3847f3cef4d8b30c22dec8",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:19:03.493Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "subject librarian",
+        "url": "http://directory.library.ubc.ca/subjectlibrarians/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/76a596e1e469507e7c7d77e7c23a330902ea7b55f73c0586dd4b4d9a8008fde5.md"
+  },
+  {
+    "id": "prose:library:765152390249333154d5d1d1",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216164",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Library offers workshops and events on a variety of topics related to conducting research, data management, copyright, writing, and more\\. To view available workshops and register see the calendars for both [Vancouver](https://libcal.library.ubc.ca/calendar/vancouver) and [Okanagan](https://events.ok.ubc.ca/events/list/?tribe_eventcategory%5B0%5D=102) campuses\\.",
+    "content_sha256": "1832c9855431a4575b82793d58a6fd308c70951f5c146f3cda6a8a3c682be17e",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:17:13.520Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Vancouver",
+        "url": "https://libcal.library.ubc.ca/calendar/vancouver"
+      },
+      {
+        "text": "Okanagan",
+        "url": "https://events.ok.ubc.ca/events/list/?tribe_eventcategory%5B0%5D=102"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/8a47b6136dfe55e5f1df94f1b7997b5216020a3dd6fdbd2cbf0e71da34e6994b.md"
+  },
+  {
+    "id": "prose:library:8555a4306505624143ddeb60",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216229",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "[cIRcle](https://circle.ubc.ca/ \"https://circle.ubc.ca/\") is UBC’s open access institutional repository for published and unpublished material created by the UBC community and its partners, including faculty, students, and staff\\.\n\nItems deposited to cIRcle are available freely, assigned persistent DOIs, and preserved for the long\\-term\\.\n\nVisit [cIRcle’s Submissions page](https://circle.ubc.ca/submissions/ \"https://circle.ubc.ca/submissions/\") to get started\\.",
+    "content_sha256": "cbc5732b2f18473f29fa98cea54dbbf209755ddf96d0acdf3c67f1aa9c8596b5",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:20:13.535Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "cIRcle",
+        "url": "https://circle.ubc.ca/"
+      },
+      {
+        "text": "cIRcle’s Submissions page",
+        "url": "https://circle.ubc.ca/submissions/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/4a48756abf7071b381f4a9a7e310a09becbcc0ceffe9ada2d66b315acda48722.md"
+  },
+  {
+    "id": "prose:library:8fc3f8ba8b6c111679c6868f",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216357",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "This is a general system error that may occur when authentication fails or a session expires\\.\n\nTry clearing your browser cache and signing back into OpenAthens via the [UBC Library homepage](https://www.library.ubc.ca/ \"https://www.library.ubc.ca/\")\\. From the library homepage, click “Login” in the top\\-right corner and select “OpenAthens Login” from the dropdown menu\\.\n\nYou may also try:\n\n1.  Disabling any VPNs or browser extensions that may interfere with login\n2.  Using a different browser \\(e\\.g\\., Chrome, Firefox, Edge\\)\n3.  Trying an incognito/private browsing window\n\nIf the issue persists, connect with our support team by completing an [Ask Us form](https://ask.library.ubc.ca/ask/)",
+    "content_sha256": "0af7d63662cf8ff8769de6352f245979ed747dac1405ddb9b674c9e2d5b520b9",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:22:13.552Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "UBC Library homepage",
+        "url": "https://www.library.ubc.ca/"
+      },
+      {
+        "text": "Ask Us form",
+        "url": "https://ask.library.ubc.ca/ask/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/4bb98860a9a12cd14ccb1fdda2e2980680334c838bfe9ceb42b88f1b8d2d8d2e.md"
+  },
+  {
+    "id": "prose:library:930b9b7560ab0022a4f68d5c",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216168",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "As part of its mission, UBC Library is committed to enhancing its collections in a manner which supports the University’s curriculum and research needs\\. The library is pleased to consider gifts\\-in\\-kind \\(GIK\\) of materials that further this goal\\. However, potential donors of non\\-archival material should be aware that the Library will generally require an itemized list of items on offer before acceptance can be entertained\\.\n\nAll offers of gifts\\-in\\-kind to the UBC Library will be reviewed by the appropriate librarians to determine their suitability\\.\n\nConnect with the [subject librarian](https://directory.library.ubc.ca/subjectlibrarians/) that matches your potential donation\\.\n\nVisit the [Give to UBC Library](https://support.library.ubc.ca/) website for more information supporting UBC Library\\.",
+    "content_sha256": "a8af16744bc32f4e4b63f03e35c0dc4cfb6225afe83b53395a8fc8feaa520e24",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:17:53.429Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "subject librarian",
+        "url": "https://directory.library.ubc.ca/subjectlibrarians/"
+      },
+      {
+        "text": "Give to UBC Library",
+        "url": "https://support.library.ubc.ca/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/aadeaa8d4ac0bdcce01acca802cb4d4e300774a02275b0cba12a4f7859e1f6a8.md"
+  },
+  {
+    "id": "prose:library:941679f8f99eb159f186e145",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/215672",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Library provides two types of accounts, one for borrowing items \\(books, media, laptops\\) and another for logging into online resources\\. Figuring out what is going on can be a bit complicated\\! \n\n**Library Account for Borrowing and Requesting Items**\n\nLogin to your [Library Account](https://services.library.ubc.ca/borrowing-services/library-account/) to view messages related to borrowing items\\. You may have items that are overdue or lost which can lead to your account being blocked\\. This will impact your ability to: borrow items at a circulation desk, renew items online, recall items that another user has borrowed, or request items through the document delivery service, interlibrary loan, or from our storage facilities \\(ASRS, PARC\\)\\. \n\nConnect with our support team to resolve this issue\\. You can complete an [Ask Us form](https://ask.library.ubc.ca/ask/), call our main support lines \\(Vancouver: 604\\-822\\-2406/ Okanagan: 250\\-807\\-9107\\), or visit [any location\\.](https://hours.library.ubc.ca/) \n\n**Library Account for Online Resources**\n\nUBC Library uses *OpenAthens* as a secure login service for digital, licensed resources \\(books, journals, media, data\\)\\. \n\nAll current UBC students, staff and faculty will automatically be able to use their CWL to login through OpenAthens to access the resources available to them\\.\n\n-   If you forgot your password or need to recover MFA access, [visit UBC IT\\.](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/problems-your-cwl)\n-   If you cannot access any resources then complete an [Ask Us form](https://ask.library.ubc.ca/ask/)\n\nFor Alumni, Emeriti, Faculty Authorized Users and Affiliated College employees, please view our [full account documentation](https://guides.library.ubc.ca/connect/openathens) for access options\\. Follow the details instructions for access that require you to login [through this link](https://openathens.library.ubc.ca/) before navigating to a licensed resource\\. If your login is not working, submit an [Ask Us form](https://ask.library.ubc.ca/ask/)\\.",
+    "content_sha256": "09857feeeb3b46998398f99a3491ca7290b83b13f03fe305bce3411cd524f720",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:15:40.222Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Library Account",
+        "url": "https://services.library.ubc.ca/borrowing-services/library-account/"
+      },
+      {
+        "text": "Ask Us form",
+        "url": "https://ask.library.ubc.ca/ask/"
+      },
+      {
+        "text": "any location.",
+        "url": "https://hours.library.ubc.ca/"
+      },
+      {
+        "text": "visit UBC IT.",
+        "url": "https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/problems-your-cwl"
+      },
+      {
+        "text": "full account documentation",
+        "url": "https://guides.library.ubc.ca/connect/openathens"
+      },
+      {
+        "text": "through this link",
+        "url": "https://openathens.library.ubc.ca/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/61435a25f0909fb99a651a1634460cccdc6b2708dff0c7fbd6d1a24aaa84b81a.md"
+  },
+  {
+    "id": "prose:library:9452fd5c8d51372c5201914c",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216336",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "First, login to [myaccount\\.ubc\\.ca](https://www.myaccount.ubc.ca/myAccount/) to verify that your CWL is working\\.\n\nSecond, you need to log in to Pay for Print using your EAD account, which requires adding **\\.stu** to your CWL username\\.\n\n**Note:**  To access [payforprint\\.ubc\\.ca](https://payforprint.ubc.ca/) you must be connected to either the [UBC secure wireless network](https://it.ubc.ca/services/email-voice-internet/wireless-internet-access/ubcsecure-wireless-network) or the [UBC VPN](https://it.ubc.ca/services/email-voice-internet/myvpn)\n\n**UBC Vancouver students:** your EAD account is your CWL username with “\\.stu” added to the end\\. Please follow the instructions for \"first time users\" at [payforprint\\.ubc\\.ca](https://payforprint.ubc.ca/) to activate your account\\. If you have followed the instructions for first time users on the Pay for Print website, including resetting your CWL password, and are still not able to log into the Pay for Print site, contact the [IT Service Centre Help Desk](https://it.ubc.ca/got-question-about-it-products-and-support#helpdesk)\n\n**UBC Okanagan students:** your EAD account is your CWL username with “\\.stu” added to the end\\. Please follow the instructions on the [UBCO IT website](https://it.ok.ubc.ca/services/computers-printers/student-printing-at-ubco/)\\.",
+    "content_sha256": "7a4345a608eda5f79b91cd6c181a5408156acd53b550acd10097926401638c67",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:21:03.554Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "myaccount.ubc.ca",
+        "url": "https://www.myaccount.ubc.ca/myAccount/"
+      },
+      {
+        "text": "payforprint.ubc.ca",
+        "url": "https://payforprint.ubc.ca/"
+      },
+      {
+        "text": "UBC secure wireless network",
+        "url": "https://it.ubc.ca/services/email-voice-internet/wireless-internet-access/ubcsecure-wireless-network"
+      },
+      {
+        "text": "UBC VPN",
+        "url": "https://it.ubc.ca/services/email-voice-internet/myvpn"
+      },
+      {
+        "text": "IT Service Centre Help Desk",
+        "url": "https://it.ubc.ca/got-question-about-it-products-and-support#helpdesk"
+      },
+      {
+        "text": "UBCO IT website",
+        "url": "https://it.ok.ubc.ca/services/computers-printers/student-printing-at-ubco/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/bc4b8e9d1722f7f6673f7de732ff4c91fe6e4886f91980a216ac4d2d39e10f56.md"
+  },
+  {
+    "id": "prose:library:988161054e7ec3be8c032b76",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216358",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Library offers many services to Alumni, though the most common question is how Alumni can access library collections\\. \n\n1.  Remote access to most UBC Library’s electronic resources is restricted by license agreement to current UBC students, faculty and staff\\. [View a list of resources](http://guides.library.ubc.ca/az/databases?am=66) that have been licensed for UBC Alumni with remote access\\. A CWL login is required for remote access; [follow these instructions](https://guides.library.ubc.ca/connect/openathens/alumni) if you are an alumni without a CWL\\.\n2.  UBC alumni who are able to visit campus can access additional licensed resources from one of the library’s public computers by using a guest OpenAthens login\\. You can obtain a guest OpenAthens login in person at a library service desk; it will only provide access within a UBC Library location\\.\n3.  To borrow physical items, activate your Alumni library barcode through the *UBC Alumni app:* [View full instructions](https://services.library.ubc.ca/borrowing-services/get-library-access/alumni-cards/)",
+    "content_sha256": "26ef1e50608fba7f2d61da1d97e28b2178b2ff776f7ff651c7ba2703f26b2e4d",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:22:23.575Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "View a list of resources",
+        "url": "http://guides.library.ubc.ca/az/databases?am=66"
+      },
+      {
+        "text": "follow these instructions",
+        "url": "https://guides.library.ubc.ca/connect/openathens/alumni"
+      },
+      {
+        "text": "View full instructions",
+        "url": "https://services.library.ubc.ca/borrowing-services/get-library-access/alumni-cards/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/dbb344be3ba0e8198a24d4b3ee2347f897b11e357200f3b23444b91c61504bd2.md"
+  },
+  {
+    "id": "prose:library:a51e3bbf3f3c4c187dad005d",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/215687",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Faculty can authorize library access to people they are working with through a Faculty Authorization library account\\. A Faculty Authorization library account provides full access to online resources as well as a card to borrow physical items\\. Faculty Authorization accounts must be renewed yearly, and require the signature and contact information of the authorizing Faculty member\\.\n\nVisit the [Library Access for Faculty page](https://services.library.ubc.ca/borrowing-services/get-library-access/faculty/) and connect with the UBC Faculty member you are working with to apply\\.",
+    "content_sha256": "5f72608a396a2f7f5d3b9a87763fb11d03d489e475149520e51a2b55c1b4c8a2",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:16:10.343Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Library Access for Faculty page",
+        "url": "https://services.library.ubc.ca/borrowing-services/get-library-access/faculty/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/f99dcb16c4ce0134062b5965f6ce91d94784d17b7a8269d75e2a6578497b3c58.md"
+  },
+  {
+    "id": "prose:library:a7f2900134b3815aeac634fb",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216339",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "You can report a lost UBCcard [online](https://services.ubccard.ubc.ca/), by calling [604\\.822\\.6786](tel:6048226786) at UBC Vancouver, or [250\\.807\\.9100](tel:2508079100) at UBC Okanagan\\.",
+    "content_sha256": "4ce45d618884e0df12988e72efd3bafe6e80016447320f164a77122d73ec9c8b",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:21:13.549Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "online",
+        "url": "https://services.ubccard.ubc.ca/"
+      },
+      {
+        "text": "604.822.6786",
+        "url": "tel:6048226786"
+      },
+      {
+        "text": "250.807.9100",
+        "url": "tel:2508079100"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/d7525c8823836e1aaa13c3c7ee257b4aff26c6382f8965dae6611106716c1f74.md"
+  },
+  {
+    "id": "prose:library:ab0948d844ec22ac08e18930",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216180",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Library strives to support the diverse needs of library users\\.\n\nVisit [access guides by building](https://services.library.ubc.ca/facilities/disability-access-by-building/) for information on accessible spaces\\.\n\nVisit this [accessible library resources guide](https://guides.library.ubc.ca/accessiblelibraryresources) for information about finding and using accessible resources at UBC, including accessible text providers\\.\n\nStudents at UBC Vancouver can register for [Enhanced Library Services](https://services.library.ubc.ca/borrowing-services/get-library-access/enhanced/) through the Centre for Accessibility\\.\n\nStudents at UBC Okanagan can register for access to the Inclusive Technology Lab in the Okanagan Library and can view all [accessibility supports](https://library.ok.ubc.ca/services/accessibility-supports/) available\\.",
+    "content_sha256": "c1089f20dd1724c9d1a1f7b107774edaa4e54731f78be0869ab45cebcbd95b93",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:19:43.634Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "access guides by building",
+        "url": "https://services.library.ubc.ca/facilities/disability-access-by-building/"
+      },
+      {
+        "text": "accessible library resources guide",
+        "url": "https://guides.library.ubc.ca/accessiblelibraryresources"
+      },
+      {
+        "text": "Enhanced Library Services",
+        "url": "https://services.library.ubc.ca/borrowing-services/get-library-access/enhanced/"
+      },
+      {
+        "text": "accessibility supports",
+        "url": "https://library.ok.ubc.ca/services/accessibility-supports/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/7df769347c860d626f1122dd2c50963485be41206d537f22df446baab67490cc.md"
+  },
+  {
+    "id": "prose:library:b15da1dfa51561eb101c2d6b",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216224",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "You can request expedited access to items the [library catalogue \\(OPAC\\)](https://webcat1.library.ubc.ca/vwebv/searchBasic?) that have a status message of: In Process, On Order, and Pre\\-Order Process\\.   \n  \nDepending on the exact stage of receiving, processing and cataloguing that the item is in, we may or may not be able to increase the speed of delivery\\.  \n\nIf we can rush the delivery of the item to you, it will be sent to the library location listed in the library catalogue record, and the contact information collected in this form will be used to notify you when the item is available\\. Due to the variation in processing stages, we cannot estimate a delivery timeline\\. \n\nNote: If a physical item in the catalogue has a call number displayed, it is already on its way to the library location and cannot be further rushed\\.\n\nComplete [this form to place rush item request](https://ask.library.ubc.ca/rushrequest/)",
+    "content_sha256": "3f2b936c3e9f1dd80c42d1f2c6b96cf4c48693850e88951407054cd218b5ed04",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:19:53.449Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "library catalogue (OPAC)",
+        "url": "https://webcat1.library.ubc.ca/vwebv/searchBasic?"
+      },
+      {
+        "text": "this form to place rush item request",
+        "url": "https://ask.library.ubc.ca/rushrequest/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/788a4b13540ebccae64c7ae625b9196f99b804e387da6bd134087e22bee23c7f.md"
+  },
+  {
+    "id": "prose:library:c0a8fa845a118458d66f9cb0",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/215679",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Library cardholders can request library materials via UBC's Document Delivery \\(DocDel\\) service \\- this service retrieves library materials for you\\. \n\nThe most common use of this service is book and article delivery between UBC campuses \\(eg\\. UBC Point Grey, UBC Robson Square, UBC Okanagan, and UBC teaching hospitals: BMB and BCCW Learning Commons\\)\\. \n\nDocDel also serves UBC undergraduate students and faculty in the Island Medical Program or Northern Medical Program, [distance education students](https://services.library.ubc.ca/borrowing-services/get-library-access/registering-for-distance-learning-library-services/), and students who qualify for [Enhanced Library Services](https://services.library.ubc.ca/borrowing-services/get-library-access/enhanced/)\\. \n\nFor more information, including details on fees attached to some DocDel services and DocDel contacts, please review the Library's [DocDel guide](https://services.library.ubc.ca/borrowing-services/docdel/#WhatisUBCDocDel-0)\\.",
+    "content_sha256": "1b81a73ce5bd2bb5a9ef984edade923c9f229748caa5b47eb6791f3dcf46448b",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:16:00.298Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "distance education students",
+        "url": "https://services.library.ubc.ca/borrowing-services/get-library-access/registering-for-distance-learning-library-services/"
+      },
+      {
+        "text": "Enhanced Library Services",
+        "url": "https://services.library.ubc.ca/borrowing-services/get-library-access/enhanced/"
+      },
+      {
+        "text": "DocDel guide",
+        "url": "https://services.library.ubc.ca/borrowing-services/docdel/#WhatisUBCDocDel-0"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/036005115602381f586632e94a38e84844bf2d010e3ef8386a7f3d855feb1367.md"
+  },
+  {
+    "id": "prose:library:c36a407d7e632fe21d5efe0b",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/215544",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Library provides [bookable study spaces](https://services.library.ubc.ca/facilities/bookable-study-spaces/) in many of our library locations\\.\n\n1.  Locate the space you want to book\n2.  Select a start and end time\n3.  Login with your CWL\n4.  Agree to the terms and conditions, which vary by location\n5.  Complete your booking\n6.  You will receive an email confirmation of your booking, and you can cancel your booking from the link in your email",
+    "content_sha256": "cd30fb15987b32b805d22f55755da3227ef0dda14ece1f296a18538fd9c2bb74",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:15:19.821Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "bookable study spaces",
+        "url": "https://services.library.ubc.ca/facilities/bookable-study-spaces/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/1c08025faa28a10e8be7033c65ff34f8d0c415cb939051b8767e97496f917c44.md"
+  },
+  {
+    "id": "prose:library:c486aa0d7e5274a80e77ccbc",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216334",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "**Does UBC Preservation offer basic collection care recommendations?**\n\nIt’s inevitable that books and other information resources will deteriorate over time\\. However, there are several simple steps that can help extend the life of a collection, including proper shelving and handling practices, food and beverage control, pest management, and prompt response to water damage\\. This [UBC Library Collections Care document](https://technicalservices.sites.olt.ubc.ca/files/2012/05/WhiteCollectionsCarePowerPoint_Staff_20120724.pdf) provides an introduction to basic preservation recommendations\\.\n\n**Can UBC Preservation repair my family heirloom or rare book?**\n\nDue to staffing and program priorities, the UBC Preservation Unit is only able to treat materials held in UBC Library collections and does not have the capacity to accept privately owned items for repair or conservation\\.\n\n**Can UBC Preservation recommend a private local conservator or bookbinder to restore the item?**\n\nTo find a conservator in your area, consult the [directory](https://capc-acrp.ca/en/conservators?___) maintained by the Canadian Association of Professional Conservators \\(CAPC\\), which can be searched by city and specialization\\.\n\nCAPC also provides resources on [selecting and working with a conservator](https://capc-acrp.ca/en/what-is-conservation/selecting-a-conservator)\\.\n\nTo find a bookbinder or book repair specialist, please visit the Canadian Bookbinders and Book Artists Guild \\(CBBAG\\) for [conservation and repair resources](https://www.cbbag.ca/restoration-repair-faqs)\\.\n\n**Does** **UBC Preservation** **teach bookbinding, book repair, conservation, or collection care?**\n\nNot at this time\\. For bookbinding workshops, the Canadian Bookbinders and Book Artists Guild Lower Mainland chapter maintains an up\\-to\\-date list of both in\\-person and online [workshops](https://vanbookarts.wordpress.com/)\\.\n\nUBC Preservation may occasionally offer presentations or outreach sessions related to collections care, which will be listed on the [UBC Library events calendar](https://libcal.library.ubc.ca/calendar/vancouver)\\.\n\n**Can** **UBC Preservation** **provide preservation advice for small community archives or personal collections?**\n\nUBC Preservation may be able to offer informal preservation guidance for small community archives or personal collections, depending on staff availability\\. Please contact the Conservator at 604\\-822\\-3441 to discuss your request\\.\n\n**Does** **UBC Preservation** **offer tours of the Conservation Space?**\n\nAt this time, the Conservation Space is not open for public tours\\.\n\n**Does** **UBC Preservation** **have any resources or advice about preparing for or responding to a library or collections disaster \\(e\\.g\\. fire, flood, etc\\.\\)?**\n\nUBC Preservation may be able to provide general advice about collections emergencies or disaster response by phone or email, depending on staff availability\\. Please contact the Conservator at 604\\-822\\-3441 for more information\\.\n\nThe [BC Heritage Emergency Response Network \\(BC HERN\\)](https://bchern.ca/what-is-bc-hern/) offers training, resources, and emergency support for cultural institutions and collections affected by disasters or localized emergencies\\.\n\nFor collections emergencies, contact the Canadian Conservation Institute \\(CCI\\) 24\\-hour emergency response line at 1\\-866\\-998\\-3721\\.",
+    "content_sha256": "e843e5e2a1116227295c52c3157a36cc262419b5317bb3851ad1d82b15ef354b",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:20:53.609Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "UBC Library Collections Care document",
+        "url": "https://technicalservices.sites.olt.ubc.ca/files/2012/05/WhiteCollectionsCarePowerPoint_Staff_20120724.pdf"
+      },
+      {
+        "text": "directory",
+        "url": "https://capc-acrp.ca/en/conservators?___"
+      },
+      {
+        "text": "selecting and working with a conservator",
+        "url": "https://capc-acrp.ca/en/what-is-conservation/selecting-a-conservator"
+      },
+      {
+        "text": "conservation and repair resources",
+        "url": "https://www.cbbag.ca/restoration-repair-faqs"
+      },
+      {
+        "text": "workshops",
+        "url": "https://vanbookarts.wordpress.com/"
+      },
+      {
+        "text": "UBC Library events calendar",
+        "url": "https://libcal.library.ubc.ca/calendar/vancouver"
+      },
+      {
+        "text": "BC Heritage Emergency Response Network (BC HERN)",
+        "url": "https://bchern.ca/what-is-bc-hern/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/37422a512a33831afcd705f8412785d21072baf2130216f379c5f126f3dcf3d4.md"
+  },
+  {
+    "id": "prose:library:c5be6c9dabae1af90ec5d3b1",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216169",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "Users will need to log in with either their CWLs or OpenAthens accounts in order to view online journals and access databases\\. To log in, navigate to the [library home page](https://www.library.ubc.ca/) and click \"Login\" and select the \"OpenAthens Login\" button on the right hand side of the page\\.\n\n[OpenAthens Login button on the Library home page Login menu](https://d1qywhc7l90rsa.cloudfront.net/accounts/156391/images/OA.png)\n\nIf you are a current student, staff or faculty member, log in with your CWL\\. Other users should log in with their OpenAthens accounts\\. Not all OpenAthens accounts provide access to online resources remotely; for more information, review the [Connect to Library Resources guide](https://guides.library.ubc.ca/connect/general)\\.\n\nNote: Alumni can log in with a CWL to access select resources\\. Please see [our FAQ about Alumni resources](https://answers.library.ubc.ca/askus/faq/215678) for more information\\. \n\nUsers can also log in via the Summon search page by clicking \"Log in\" on the top right of the results page:  \n\n[Log in button on the Summon search page](https://d1qywhc7l90rsa.cloudfront.net/accounts/156391/images/Summon.png)\n\nLogging in will show all available results, and provide access to online resources\\. \n\nFor assistance [locating journal articles](https://guides.library.ubc.ca/JournalArticles) or [navigating databases](https://guides.library.ubc.ca/library_tutorial/searching#s-lg-box-16492432), review the linked guides or reach out to your [Subject Librarian](https://directory.library.ubc.ca/subjectlibrarians/)\\. \n\nIf you have followed these steps and are unable to access online resources, submit an [Ask Us form](https://ask.library.ubc.ca/ask/)\\.",
+    "content_sha256": "4018d09884abb8ed83172b8847a98b826f014124e0835debdf9e6d4eb798e24f",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:18:03.367Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "library home page",
+        "url": "https://www.library.ubc.ca/"
+      },
+      {
+        "text": "OpenAthens Login button on the Library home page Login menu",
+        "url": "https://d1qywhc7l90rsa.cloudfront.net/accounts/156391/images/OA.png"
+      },
+      {
+        "text": "Connect to Library Resources guide",
+        "url": "https://guides.library.ubc.ca/connect/general"
+      },
+      {
+        "text": "our FAQ about Alumni resources",
+        "url": "https://answers.library.ubc.ca/askus/faq/215678"
+      },
+      {
+        "text": "Log in button on the Summon search page",
+        "url": "https://d1qywhc7l90rsa.cloudfront.net/accounts/156391/images/Summon.png"
+      },
+      {
+        "text": "locating journal articles",
+        "url": "https://guides.library.ubc.ca/JournalArticles"
+      },
+      {
+        "text": "navigating databases",
+        "url": "https://guides.library.ubc.ca/library_tutorial/searching#s-lg-box-16492432"
+      },
+      {
+        "text": "Subject Librarian",
+        "url": "https://directory.library.ubc.ca/subjectlibrarians/"
+      },
+      {
+        "text": "Ask Us form",
+        "url": "https://ask.library.ubc.ca/ask/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/63b05d39d88340e7554ed8068bfc5fa85d7637bfc3998ac30217eb2144a1cf66.md"
+  },
+  {
+    "id": "prose:library:c6536f84ebcba13d750a1be0",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216245",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "If you know the title of the article, you can begin by searching for it in [Summon](https://ubc.summon.serialssolutions.com/#!/search?pn=1&amp;ho=t&amp;include.ft.matches=f&amp;l=en&amp;q=)\\. Enter the main title using quotation marks to search for those exact words\\. If needed, select the Journal Articles filter listed under Content Type\\. \n\n[Summon search of \"The science of literature reviews\" with Journal Articles selected under Content Type\\.](https://d1qywhc7l90rsa.cloudfront.net/accounts/80416/images/FAQ_SummonArticleSearch.png)\n\nIf you have trouble finding the article or want to make sure we have a particular journal, search for a [journal by title](https://search.library.ubc.ca/#journals)\\. Under journal details, select a holding \\(via the hyperlink\\) for the relevant dates\\. Then navigate to the correct volume or issue\\. This is also a good way to browse a journal's publications\\. \n\n[Journal search showing the holdings of AlterNative : An International Journal of Indigenous Peoples](https://d1qywhc7l90rsa.cloudfront.net/accounts/80416/images/FAQ_JournalSearchExample.png)\n\nIf you are not looking for a specific journal article, but need support finding articles related to a specific research topic contact your [subject librarian](https://directory.library.ubc.ca/subjectlibrarians/)\\.",
+    "content_sha256": "2d7eaae8cacc15f109d9a9c2e6d8a8d81132198e76550ac38672a8f007ad8297",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:20:33.548Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Summon",
+        "url": "https://ubc.summon.serialssolutions.com/#!/search?pn=1&ho=t&include.ft.matches=f&l=en&q="
+      },
+      {
+        "text": "Summon search of \"The science of literature reviews\" with Journal Articles selected under Content Type.",
+        "url": "https://d1qywhc7l90rsa.cloudfront.net/accounts/80416/images/FAQ_SummonArticleSearch.png"
+      },
+      {
+        "text": "journal by title",
+        "url": "https://search.library.ubc.ca/#journals"
+      },
+      {
+        "text": "Journal search showing the holdings of AlterNative : An International Journal of Indigenous Peoples",
+        "url": "https://d1qywhc7l90rsa.cloudfront.net/accounts/80416/images/FAQ_JournalSearchExample.png"
+      },
+      {
+        "text": "subject librarian",
+        "url": "https://directory.library.ubc.ca/subjectlibrarians/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/5f455ce49fdeaa0ce1624cdd647f554e3c336bb9014917bfce818c7c7bb08911.md"
+  },
+  {
+    "id": "prose:library:c7bde5e9c20887e1f3d4869a",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216333",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Library understands the value of persistent identifiers \\(PIDs\\) in facilitating long\\-lasting digital reference to an object, contributor, or organization\\. UBC offers supports and services for many types of PIDs\\. \n\nLearn more on the [Persistent Identifier](https://guides.library.ubc.ca/PIDS \"https://guides.library.ubc.ca/PIDS\") guide about author, object, and institutional level identifiers\\. \n\nCertain UBC departments are eligible to request UBC ISBN's from the Library for departmental publications\\. Visit the [ISBN request form](https://ask.library.ubc.ca/isbnrequest/) for more details about this service\\.",
+    "content_sha256": "663519f1aca378bd9004535c7b5de477849ead5db9bea828578bfaaa350b7f42",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:20:43.550Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Persistent Identifier",
+        "url": "https://guides.library.ubc.ca/PIDS"
+      },
+      {
+        "text": "ISBN request form",
+        "url": "https://ask.library.ubc.ca/isbnrequest/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/a52994575860001c1304d4bc91b3c5a39eb8316d561e00b3dd2006eee69045ec.md"
+  },
+  {
+    "id": "prose:library:d4261510f6bd5aa078228a71",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216341",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Library provides many services for instructors\\. This list is not comprehensive, but intended to connect instructors with key contacts in the library:\n\n-   [Subject librarians](https://directory.library.ubc.ca/subjectlibrarians/) provide support with many aspects of teaching and learning\n-   [Borrowing services](https://services.library.ubc.ca/borrowing-services/get-library-access/faculty/) are available to all instructors\n-   [Library Online Course Reserves \\(LOCR\\)](https://services.library.ubc.ca/borrowing-services/using-course-reserves/) allows instructors to create a single list with all the course materials\\.\n    -   Easily add articles, books, web links and media resources or request the Library to add items via the [Syllabus Service](https://services.library.ubc.ca/borrowing-services/using-course-reserves/#fragment-cc8b788e2107211a05cdccf71c302c69-1)\n    -   Request the Library to create PDFs of book chapters or upload your own\n    -   Get a hyperlink for the course materials that is accessible \\(only\\) to students enrolled in your course\n    -   Reactivate readings in future terms quickly\n-   Visit the [Scholarly Communication Open Education](https://scholcomm.ubc.ca/open-scholarship/open-education/) page for information and support with open educational resources \\(OERs\\)\n-   Visit the [Copyright Office](https://copyright.ubc.ca/instructors/) website for resources intended to assist faculty members in applying copyright requirements in a classroom setting\n-   Visit the [cIRcle](https://circle.ubc.ca/?login) website to review options for depositing teaching outputs at UBC Library\n-   Visit the [Research Data Management](https://researchdata.library.ubc.ca/) website for resources and guidance related to finding, managing, and depositing research data\\.",
+    "content_sha256": "b6f16a1cfe8d9c3ceab058838eab798960036fa36f36cad6c8d065509cb8804e",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:21:33.546Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Subject librarians",
+        "url": "https://directory.library.ubc.ca/subjectlibrarians/"
+      },
+      {
+        "text": "Borrowing services",
+        "url": "https://services.library.ubc.ca/borrowing-services/get-library-access/faculty/"
+      },
+      {
+        "text": "Library Online Course Reserves (LOCR)",
+        "url": "https://services.library.ubc.ca/borrowing-services/using-course-reserves/"
+      },
+      {
+        "text": "Syllabus Service",
+        "url": "https://services.library.ubc.ca/borrowing-services/using-course-reserves/#fragment-cc8b788e2107211a05cdccf71c302c69-1"
+      },
+      {
+        "text": "Scholarly Communication Open Education",
+        "url": "https://scholcomm.ubc.ca/open-scholarship/open-education/"
+      },
+      {
+        "text": "Copyright Office",
+        "url": "https://copyright.ubc.ca/instructors/"
+      },
+      {
+        "text": "cIRcle",
+        "url": "https://circle.ubc.ca/?login"
+      },
+      {
+        "text": "Research Data Management",
+        "url": "https://researchdata.library.ubc.ca/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/91a80a4347ad9ce308b719704612a9242269eb0b4c5eaa78a9a1e21f3f8bb78b.md"
+  },
+  {
+    "id": "prose:library:d6df0056064659ad4469a81a",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216342",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "Refunds are issued if the quality of printing is poor or you were mistakenly charged\\.\n\nUBC Vancouver students: If you are printing at IKBLC or in any UBC Library, visit a UBC Library service desk at the nearest library branch to request a refund\\. The local desk will review and can issue a refund directly\\. If you are in residence, contact [Student Housing and Community Services](https://vancouver.housing.ubc.ca/contact-us/ \"https://vancouver.housing.ubc.ca/contact-us/\")\\.\n\nUBC Okanagan students: Visit the [UBCO IT](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019650) website for steps on requesting a refund\\.",
+    "content_sha256": "98af2434eac3b7ccaa277c7fc862851da45fde8af2085dcf68e544ee12642f0f",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:21:43.552Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Student Housing and Community Services",
+        "url": "https://vancouver.housing.ubc.ca/contact-us/"
+      },
+      {
+        "text": "UBCO IT",
+        "url": "https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019650"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/b59803848ed33e48f5feecec259999edfd2ee2d1699d1def98353e66c3540d74.md"
+  },
+  {
+    "id": "prose:library:d8053bdcb8398c11ae81d028",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/215545",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Library provides [bookable study spaces](https://services.library.ubc.ca/facilities/bookable-study-spaces/) in many of our library locations\\.\n\nEmail notifications are sent to confirm your booking and contain a link to cancel your booking\\. Depending on how you use UBC email systems, you may receive the notification at:\n\n-   the email viewable through [myaccount\\.ubc\\.ca](https://www.myaccount.ubc.ca/myAccount/)\n-   or your [student UBC email](http://it.ubc.ca/services/email-voice-internet/ubc-student-email-service)\n-   or your [UBC employee email](http://it.ubc.ca/services/email-voice-internet/ubc-faculty-staff-email-fasmail)\n\nPlease note the email in use by this system when you confirm the booking, as the address cannot be updated\\.\n\nIf you are an active UBC employee the library booking system will automatically use your business email\\.  Within the library booking system, if you are attempting to: **Book a study room**, **Book an appointment**, or **Register for an event** and your email address is appearing as an **@ubc\\.ca** or **@mail\\.ubc\\.ca** address, you are a current UBC staff member\\.\n\nIf you are no longer able to access your email, and you cannot access your email notifications, please submit an [Ask Us form](https://ask.library.ubc.ca/ask/) and we will aim to get back to you within 24 hours, Monday through Friday\\.",
+    "content_sha256": "8323708f721d0c9340a2f9bd1f29e7c5600d94c925c9ec32bd11f1080f3b292f",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:15:29.747Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "bookable study spaces",
+        "url": "https://services.library.ubc.ca/facilities/bookable-study-spaces/"
+      },
+      {
+        "text": "myaccount.ubc.ca",
+        "url": "https://www.myaccount.ubc.ca/myAccount/"
+      },
+      {
+        "text": "student UBC email",
+        "url": "http://it.ubc.ca/services/email-voice-internet/ubc-student-email-service"
+      },
+      {
+        "text": "UBC employee email",
+        "url": "http://it.ubc.ca/services/email-voice-internet/ubc-faculty-staff-email-fasmail"
+      },
+      {
+        "text": "Ask Us form",
+        "url": "https://ask.library.ubc.ca/ask/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/01cd966f5fb01a331c359530ebf22dfe09f29045a6d4dbd42b050d46d5ce65e1.md"
+  },
+  {
+    "id": "prose:library:e83bf407aad9ad72a5a1b094",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216178",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "You can cancel a study room booking at multiple points during the booking process\\. Before completing the room booking process, you will have the opportunity to review your booking; if you do not wish to proceed with the location or time you have booked, you may cancel your specific booking by clicking \"cancel\" on the Booking Review page\\. \n\n[Study Room cancellation button on the Booking Review page](https://d1qywhc7l90rsa.cloudfront.net/accounts/156391/images/Booking_Review.png)\n\nIf you have completed the room booking process, but wish to cancel, you can do so by viewing the email confirmation for your study room booking; at the bottom of the email confirmation is a link you can follow to cancel the booking\\.\n\n[Cancellation link included in the email confirmation for study rooms](https://d1qywhc7l90rsa.cloudfront.net/accounts/156391/images/Email.png)\n\nWhen you successfully cancel a booking, you will receive an email confirmation\\.",
+    "content_sha256": "9cd59a391eb89df6f9bd816373d80cb47676848de570d11de97356f67f96e95e",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:19:33.482Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Study Room cancellation button on the Booking Review page",
+        "url": "https://d1qywhc7l90rsa.cloudfront.net/accounts/156391/images/Booking_Review.png"
+      },
+      {
+        "text": "Cancellation link included in the email confirmation for study rooms",
+        "url": "https://d1qywhc7l90rsa.cloudfront.net/accounts/156391/images/Email.png"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/7c8b81edd86caac726be6a3818121087a89a2d604069933326d3b66920f22180.md"
+  },
+  {
+    "id": "prose:library:e9641c6a33af1463480518ed",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216166",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "A [Data Management Plan](https://researchdata.library.ubc.ca/plan/) \\(DMP\\) is a document outlining how you will organize, store, back up, and share your research data throughout your project\\. DMPs are an international best practice and increasingly required by funders, including the Tri\\-Agencies\\. UBC supports the following resource to help you write a DMP:\n\n-   [DMP Assistant](https://rdm.ubc.ca/data-management-plans/dmp-assistant): a national, purpose\\-built tool with UBC\\-specific guidance and templates for both pre\\-award and post\\-award plans\\.\n\nVisit the [Research Data Management](https://rdm.ubc.ca/) website or contact [research\\.data@ubc\\.ca](mailto:research.data@ubc.ca) to request a data management consultation with UBC Library\\.",
+    "content_sha256": "e3e6eb146b4b5870471d0432a3dafbf8f58f665451eb1f0ba6cfef1219dcd728",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:17:33.473Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Data Management Plan",
+        "url": "https://researchdata.library.ubc.ca/plan/"
+      },
+      {
+        "text": "DMP Assistant",
+        "url": "https://rdm.ubc.ca/data-management-plans/dmp-assistant"
+      },
+      {
+        "text": "Research Data Management",
+        "url": "https://rdm.ubc.ca/"
+      },
+      {
+        "text": "research.data@ubc.ca",
+        "url": "mailto:research.data@ubc.ca"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/4395831f764ea10af0876891d3a9f8d65625b14cf7436ff60f6f06b55ac0d404.md"
+  },
+  {
+    "id": "prose:library:ed0f67849ed2d88947c4902b",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216172",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "Yes, Library card holders can designate somebody to pick up library materials on their behalf\\! In order to do so, please complete the UBC Proxy Patron Form on the [Library's Loan Policies and Fines page](https://services.library.ubc.ca/borrowing-services/loan-policies-and-fines/)\\. \n\nNote that the Proxy Authorization form allows UBC library card holders to designate someone to borrow materials for a specified period of time, and requests longer than 1 year must be renewed\\. The proxy must be 18 years or older and must provide one piece of government\\-issued, photo ID during their registration\\.",
+    "content_sha256": "8dabd46baa68c9a44a6bafbcacb4c4df5cff0a6f020f6322bfbbe751380d2979",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:18:33.390Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "Library's Loan Policies and Fines page",
+        "url": "https://services.library.ubc.ca/borrowing-services/loan-policies-and-fines/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/f3398edfcbe63658dd1f5d9b5072528d59f190fadfb15d4b5c2791fb39210492.md"
+  },
+  {
+    "id": "prose:library:f58190a8bd6a56d94b321c8f",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/215678",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "UBC Library offers many services to Alumni, though the most common question is how Alumni can access library collections\\. \n\n1.  Remote access to most UBC Library’s electronic resources is restricted by license agreement to current UBC students, faculty and staff\\. [View a list of resources](http://guides.library.ubc.ca/az/databases?am=66) that have been licensed for UBC Alumni with remote access\\. A CWL login is required for remote access; [follow these instructions](https://guides.library.ubc.ca/connect/openathens/alumni) if you are an alumni without a CWL\\.\n2.  UBC alumni who are able to visit campus can access additional licensed resources from one of the library’s public computers by using a guest OpenAthens login\\. You can obtain a guest OpenAthens login in person at a library service desk; it will only provide access within a UBC Library location\\.\n3.  To borrow physical items, activate your Alumni library barcode through the *UBC Alumni app:* [View full instructions](https://services.library.ubc.ca/borrowing-services/get-library-access/alumni-cards/)",
+    "content_sha256": "26ef1e50608fba7f2d61da1d97e28b2178b2ff776f7ff651c7ba2703f26b2e4d",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:15:50.016Z",
+    "source_records": [],
+    "links": [
+      {
+        "text": "View a list of resources",
+        "url": "http://guides.library.ubc.ca/az/databases?am=66"
+      },
+      {
+        "text": "follow these instructions",
+        "url": "https://guides.library.ubc.ca/connect/openathens/alumni"
+      },
+      {
+        "text": "View full instructions",
+        "url": "https://services.library.ubc.ca/borrowing-services/get-library-access/alumni-cards/"
+      }
+    ],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/e25ee787ed00bbf0fee981e346f5f0306c88430faca7e6babe739dbc94c79090.md"
+  },
+  {
+    "id": "prose:library:ffe99ac0b61f793b94dd9aad",
+    "category": "prose",
+    "subcategory": "library",
+    "source_id": "library",
+    "source_url": "https://answers.library.ubc.ca/askus/faq/216673",
+    "api_url": null,
+    "upstream_id": null,
+    "title": "UBC Library FAQs",
+    "content_markdown": "Yes\\. This migration project impacts both campuses, with training, communications, and engagement tailored to local contexts while aligning with UBC’s system\\-wide approach\\.",
+    "content_sha256": "afd0439b8a1de859ac254b72fb38e06004efe626fde7a561467c9f73353d2f13",
+    "campus": null,
+    "audience": "undergraduate_and_shared",
+    "source_modified_at": null,
+    "retrieved_at": "2026-09-11T05:22:43.656Z",
+    "source_records": [],
+    "links": [],
+    "warnings": [],
+    "markdown_path": "prose/library/markdown/7b023ba2da6df7e1315637353e06d1005af971ae5b7dad7423b1cd9ec818f81c.md"
+  }
+]

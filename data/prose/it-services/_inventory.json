@@ -1,0 +1,192 @@
+[
+  {
+    "url": "https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2025-07-02T18:15:19+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:cce6587a-526a-4050-93d5-4bf8a1671b7c",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/accounts-passwords/multi-factor-authentication-mfa",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2026-05-14T22:16:50+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:113c5009-efce-4de6-b8a1-c47fd9e272d8",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/accounts-passwords/multi-factor-authentication-mfa/secure-profile-recovery",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2025-08-28T16:52:16+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:bd0178ea-7f5d-47bb-bd6a-e918a1f7776a",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/audio-visual-creative-services/digital-media-consultation",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2026-07-29T23:13:58+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:ee7f0515-6a04-4037-8031-f9696ec2e3a5",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/audio-visual-creative-services/professional-media-production",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2026-07-29T23:14:40+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:7b16557e-3bc2-4f2a-8a7e-02674c148b35",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/campus-systems/workday-hr-finance-payroll-and-student-information-system",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2026-03-10T21:10:42+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:5f80ee2b-1b30-4986-a3f1-352c0e3ae4d3",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/desktop-support-services/software-licensing",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2025-04-17T18:46:59+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:7460ac0d-a1c5-4fdd-bd1e-d5ab43561bc0",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/email-voice-internet/microsoft-planner",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2025-04-07T17:11:50+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:22af54b9-6baa-4900-86c3-0d035f461c5e",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/email-voice-internet/microsoft-teams",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2025-05-29T22:42:25+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:7292c4d4-c6c6-42fc-92bb-db3eb70030d5",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/email-voice-internet/microsoft-whiteboard",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2025-04-07T17:13:38+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:3e309a3b-3bc4-480a-904d-42366a538c9f",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/email-voice-internet/myvpn",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2026-08-28T18:24:41+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:31f5a73d-7f0e-47a0-96bf-fd4299626503",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/email-voice-internet/resnet",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2026-09-04T16:56:59+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:7c16984b-065e-4d15-b1cf-87c40e2f3748",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/email-voice-internet/ubc-student-email-service",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2026-02-02T23:51:20+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:2538795d-38fe-4cdb-9455-380f47aaf31d",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/email-voice-internet/ubcshaw-cable-tv",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2025-04-01T16:28:07+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:adea47ab-4a85-49e2-b2b7-5ccef9ba2350",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/email-voice-internet/wireless-device-registration-system",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2026-09-04T18:16:12+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:82f7ea1d-a189-4a6c-8e88-cd9f3e0e616f",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/email-voice-internet/wireless-internet-access",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2026-08-18T20:45:58+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:ace9e30a-9a85-4b4b-80c7-87fa10db5a03",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/teaching-learning-tools/canvas-0",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2025-07-02T18:06:05+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:02ae3159-c27e-49a3-953f-c1bf6f3cc131",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/teaching-learning-tools/survey-tool",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2026-01-26T19:17:13+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:71c8ab80-bba3-4897-b816-6e7ef7c3b86b",
+    "reason": null
+  },
+  {
+    "url": "https://it.ubc.ca/services/web-servers-storage/microsoft-onedrive",
+    "discovered_by": [
+      "student-support/it_services.json"
+    ],
+    "source_modified_at": "2026-06-19T17:13:38+00:00",
+    "status": "collected",
+    "article_id": "prose:it-services:it:3a78bb9c-7418-474d-8050-cba415410fdb",
+    "reason": null
+  }
+]

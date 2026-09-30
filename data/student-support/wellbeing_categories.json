@@ -1,0 +1,29 @@
+[
+  {
+    "id": "0ccca224-2ddf-4955-b4c6-f9dfea0794fa",
+    "source_url": "https://wellbeing.ubc.ca/resource-category/communication-tools-support",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/taxonomy_term/resource_category/0ccca224-2ddf-4955-b4c6-f9dfea0794fa",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Communication Tools + Support",
+    "type": "taxonomy_term--resource_category",
+    "record_sha256": "2c32b29b945dc7b1eaf4f10cf5b100b16b91a5c9143dc33b254f215b7e72193e"
+  },
+  {
+    "id": "2cf5a55e-845c-4909-b911-c6a1583b1d4a",
+    "source_url": "https://wellbeing.ubc.ca/resource-category/workshops",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/taxonomy_term/resource_category/2cf5a55e-845c-4909-b911-c6a1583b1d4a",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Workshops",
+    "type": "taxonomy_term--resource_category",
+    "record_sha256": "f29b270bc3070d170e8343bb857fb428017a3adaa94358bf2e71ee32d25d3c79"
+  },
+  {
+    "id": "62acd74e-1bf5-48aa-a831-8126b2980d66",
+    "source_url": "https://wellbeing.ubc.ca/resource-category/tools",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/taxonomy_term/resource_category/62acd74e-1bf5-48aa-a831-8126b2980d66",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "name": "Tools",
+    "type": "taxonomy_term--resource_category",
+    "record_sha256": "02d9f5699866aac575404a5f83d343320a4077139b10d3c89ad13e8b95bc29d6"
+  }
+]

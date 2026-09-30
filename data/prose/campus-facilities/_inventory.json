@@ -1,0 +1,2342 @@
+[
+  {
+    "url": "https://facilities.ubc.ca/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-05-26T20:11:15",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:169",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/about-us/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-04-23T23:03:47",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:10030",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/about-us/contact-us/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-12-05T00:33:19",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:183",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/about-us/facilities-kpi/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-12-06T00:01:28",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:10035",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/about-us/leadership/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-06-19T23:31:26",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:181",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/about-us/our-roadmap/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-12-05T23:59:27",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7460",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/about-us/service-delivery/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-03-16T22:55:50",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2833",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/bioenergy-research-demonstration-facility-brdf/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:01:03",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5531",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/biological-sciences-west-and-south-wings-ubc-renew/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T20:59:53",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5592",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/brock-hall-enrolment-services/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:19:01",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5365",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/brock-hall-west-wing-media-room-and-office-upgrades/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:04:59",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5422",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/buchanan-a-ubc-review/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T20:58:49",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5637",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/buchanan-courtyard-ubc-public-realm/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:02:40",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5506",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/buchanan-tower-bike-shelter/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:00:32",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5538",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/clog-monster/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-10-06T22:55:36",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:6730",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/continuing-studies-building-lobby-renovations/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:19:39",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5355",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/continuous-optimization/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:11:37",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5228",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/counselling-services-temporary-extension/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:14:42",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5034",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/departments/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-10-06T22:44:01",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:225",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/departments/asset-replacement-improvement/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-02T21:45:12",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4667",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/departments/building-operations/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-02T21:45:53",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2847",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/departments/capital-planning/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-02T21:46:23",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4669",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/departments/custodial-services/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-02T21:47:47",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2577",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/departments/customer-services-informatics/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-29T17:14:56",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2790",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/departments/energy-water-services/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-29T17:18:32",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2836",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/departments/facilities-planning/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-01-16T17:01:04",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4659",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/departments/municipal-services/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-29T17:23:24",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2845",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/departments/project-services/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-08-27T23:40:57",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4662",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/departments/project-services/project-services-contacts/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-02T21:55:42",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5786",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/direction-wayfinding-blades/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:01:51",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5512",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/engineering-secure-bike-parking/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:07:35",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5381",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/financial-operations-satellite-location-wesbrook-mall/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:14:58",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5050",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/fnh-food-labs-250-260-renovations/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:05:28",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5411",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/fnh-lecture-theatre-60/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:18:09",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5436",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/forest-sciences-centre-treehouse/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:16:47",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5612",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/frederic-lasserre-building-seating-module/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T20:59:29",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5619",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/friedman-3rd-4th-floor-renovations/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:08:24",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5323",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/gather-at-vanier/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:22:31",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5184",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/ge-jenbacher-engine-installation/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:06:41",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5392",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/health-sciences-courtyard/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:01:24",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5524",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/hennings-200-active-learning-theatre/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:23:43",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5126",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/hennings-building-main-floor-lobby-corridor-and-basement-level-washrooms/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:13:05",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5153",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/icics-heat-recovery-chiller/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:07:15",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5388",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/ik-barber-learning-centre-new-service-desk-coaching-and-tutorial-pavilions/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:17:59",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5442",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/infrastructure-and-systems/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-10-29T20:28:54",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7107",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/infrastructure-and-systems/bioenergy-research-demonstration-facility-brdf/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-10-14T21:21:28",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7112",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/infrastructure-and-systems/building-management-system-bms/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-02T22:01:59",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7124",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/infrastructure-and-systems/energy-management/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-10-27T23:37:11",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7180",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/infrastructure-and-systems/for-contractors-developers/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-03-19T22:38:59",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7193",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/infrastructure-and-systems/hot-water-district-energy-system-ades/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-02T22:16:23",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7129",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/infrastructure-and-systems/hot-water-district-energy-system-ades/campus-energy-centre-cec/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-02T22:15:09",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7136",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/infrastructure-and-systems/utilities-metrics-and-data/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-03-05T16:40:15",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7145",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/infrastructure-and-systems/utilities-metrics-and-data/building-energy-and-water-data/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-02T22:32:53",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7165",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/infrastructure-and-systems/utilities-metrics-and-data/campus-energy-visualization-map/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-02T22:24:04",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7150",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/instructional-resources-centre-fourth-floor/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:11:55",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5223",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/irc-woodward-library-wheelchair-vertical-platform-lift/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:10:23",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5242",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/lasserre-102-theatre-upgrade/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:10:36",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5235",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/lecture-theatre-audiovisual-av-equipment-upgrades/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:04:21",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5454",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/library-parc-preservation-and-archives/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:09:29",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5302",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/life-sciences-centre-cafe-perugia/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:08:11",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5334",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/macmillan-vertical-wheelchair-lift-project/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:08:56",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5311",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/neville-scarfe-education-library-student-commons/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:08:00",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5340",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/new-graduate-dental-teaching-clinic/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:19:29",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5305",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/news/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2022-03-30T00:23:51",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:185",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/news/facilities-weekly/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-07-28T22:41:07",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2363",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/news/staff-excellence-awards/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-07-09T22:12:18",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2180",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/news/update/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-06-19T23:33:27",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:547",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/office-of-graduate-programs-and-research-office-upgrades-scarfe-building/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:03:12",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Graduate-only topic outside the undergraduate/shared-service scope."
+  },
+  {
+    "url": "https://facilities.ubc.ca/old-auditorium-ubc-renew/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T20:58:29",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5648",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/pacific-poke-renovation/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:12:53",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5156",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/peter-wall-institute-for-advanced-studies-elevator/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:18:29",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5377",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/policies-guidelines/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-07-14T22:43:09",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:747",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/policies-guidelines/inclusive-washroom-guidelines/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-02-06T21:23:19",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:10440",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/policies-guidelines/learning-space-design-guidelines/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-02-04T23:16:59",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:3888",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/policies-guidelines/ubc-technical-guidelines/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-02-04T23:16:09",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:3879",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-10T18:45:58",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:430",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/appa-facilities-management-evaluation-program/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T21:49:44",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7090",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/construction-on-campus/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T22:25:46",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:1407",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/green-cleaning/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T21:50:31",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7086",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/planon/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-29T17:16:28",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:1922",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/planon/planon-faq/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T23:00:33",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:3915",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/planon/planon-releases/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T22:50:10",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:3903",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/planon/support-for-using-planon/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T23:01:13",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:1928",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-10T18:47:30",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2873",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:31:15",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4749",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/a-walk-through-time/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:00",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5009",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/academic-district-energy-system-steam-to-hot-water-conversion/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:00",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5262",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/allard-hall-faculty-of-law-building/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:37:06",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5562",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/aquatics-research-laboratories-bio-sci-building/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:06",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5501",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/arts-student-centre/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:01",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5026",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/back-up-generator-life-sciences-centre/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:03",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5162",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/baseball-training-facility/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:04",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5291",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/beaty-biodiversity-centre-addition/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-09-23T16:54:00",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4888",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/beaty-biodiversity-research-centre/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:37:07",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5653",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/bioenergy-facility-expansion/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-02-18T22:01:32",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4968",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/bookstore-expansion-and-renovation/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:05",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5398",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/brock-commons-phase-1-tallwood-house/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:03",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5166",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/brock-commons-phase-2/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:01",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4947",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/c%cc%93%c9%99sna%ca%94%c9%99m-house/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:02",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5138",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/campus-wide-installation-of-occupancy-sensors-for-building-optimization/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:00",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:6658",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/centre-for-interactive-research-on-sustainability/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:37:06",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5571",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/conservation-of-the-haida-house-roof/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:06",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5546",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/david-strangway-building-led-lighting-retrofit/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:00",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:6693",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/djavad-mowafaghian-centre-for-brain-health/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:03",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5231",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/douglas-t-kenny-building-psychology-fourth-floor-renovation/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:01",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5016",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/earth-sciences-building-water-conservation-through-scrubber-decommissioning/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:00",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:6698",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/earth-sciences-building/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:06",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5521",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/electric-vehicle-charging-stations/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:06",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5472",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/engineering-student-centre/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:04",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5294",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/exchange-residence-at-gage-south/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:02",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5150",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/faculty-of-applied-science-digital-design-studio/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-02-18T21:43:36",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4805",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/first-nations-longhouse-expansion/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:00",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4808",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/food-and-beverage-innovation-centre/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-02-03T18:50:17",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4885",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/forest-sciences-centre-haida-looplex-x/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:03",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5202",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/gateway-building/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-02-26T18:38:30",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4958",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/gerald-mcgavin-ubc-rugby-centre/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:06",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5483",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/h%c9%99m%cc%93l%c9%99s%c9%99m%cc%93-and-q%cc%93%c9%99l%c9%99%cf%87%c9%99n/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:37:06",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5556",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/hebb-100-seismic-upgrade-and-theatre-modernization/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:04",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5297",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/hebb-building-renewal/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:02",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5099",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/henry-angus-tower-seismic-upgrades/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:03",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5209",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/houses-of-the-ones-belonging-to-the-saltwater/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:01",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5057",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/hydrogen-refueling-station-clean-connected-and-safe-transportation-testbed/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-10T19:00:17",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4905",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/indian-residential-school-history-dialogue-centre/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:03",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5179",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/laboratory-of-archaeology-at-iona/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-02-18T21:56:16",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4802",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/life-sciences-centre-heat-recovery-chiller/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:04",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5279",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/macinnes-field-parkade/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:01",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5038",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/macleod-building-renewal/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:01",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5018",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/moa-great-hall-renewal/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-10T19:01:58",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4965",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/museum-of-anthropology-northwest-coast-masterworks-gallery/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:03",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5192",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/national-soccer-development-centre-ubc-athletics-and-vancouver-whitecaps-football-club-soccer-training-facility/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:03",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5198",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/new-aquatic-centre/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:03",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5213",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/new-greenhouse-facilities-at-botanical-gardens/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:04",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5273",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/norman-b-keevil-institute-of-mining-engineering/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:37:06",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5559",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/orchard-commons-mixed-use-student-housing-vantage-college/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:03",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5254",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/pharmaceutical-sciences-centre-for-drug-research-development-building/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:06",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5517",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/ponderosa-commons-phase-2/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:03",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5258",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/public-realm-projects/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-02-18T22:05:22",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4977",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/recreation-centre-north/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-10T18:57:25",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4938",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/renewal-of-the-jack-bell-building-for-the-school-of-social-work/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-03-04T19:01:59",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4896",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/robert-h-lee-alumni-centre/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:04",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5347",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/rodney-graham-landau-pavilion/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:37:06",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5602",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/sauder-school-of-business/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:06",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5542",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/school-of-biomedical-engineering-building/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-02-18T21:52:12",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4954",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/solar-array-clean-connected-and-safe-transportation-testbed/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-10T19:00:35",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4899",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/spph/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:37:07",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5630",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/stewart-blusson-quantum-matter-institute-qmi-ampel-brimacombe-expansion/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:03",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5206",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/temporary-energy-centre-tec/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:05",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5407",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/tennis-facility/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:37:06",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5585",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/the-centre-for-occupational-health-safety-and-wellbeing/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:04",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5371",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/the-gallery-irving-k-barber-learning-centre/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-10T19:01:04",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4912",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/the-nest-ams-student-union-building-sub/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:04",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5351",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/the-office-of-the-president/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:05",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5428",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/the-shadow/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:02",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5093",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/ubc-exchange-new-transit-bus-terminal/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:01",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5045",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/ubc-life-building-old-student-union-building-renewal/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:02",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5135",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/ubc-okanagan-arts-science-2/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:37:06",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/ubc-okanagan-engineering-management-education-building/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:37:06",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/ubc-okanagan-health-sciences-centre/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:37:06",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/ubc-okanagan-nechako-residence-and-commons-block/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:02",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/ubc-okanagan-skeena-residence/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:02",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/ubc-okanagan-student-housing-phase-3/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:37:07",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/ubc-okanagan-student-housing-phase-3b-cassiar-residence/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:37:06",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/ubc-okanagan-student-housing-phase-4-purcell-residence/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:37:06",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/ubc-okanagan-teaching-learning-centre/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:02",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/ubc-pacific-museum-of-earth-elasmosaurus-skeleton/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:02",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5085",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/ubc-una-skatepark-ubc-public-realm/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:06",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5458",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/ubc-water-pump-station/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:01",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5012",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/undergraduate-life-sciences-teaching-laboratories-renewal-and-expansion/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:02",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5132",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/university-services-building-roof-renewal/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:00",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5846",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/wayne-william-white-engineering-design-centre/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:37:06",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5568",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/completed-projects/yurt-installation-ubc-farm/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:36:05",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5416",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/current-projects/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-04-17T21:51:19",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4745",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/current-projects/ades-electric-boiler-thermal-energy-storage/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-07-09T16:16:38",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:9714",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/current-projects/anthropology-and-sociology-anso-building-renewal/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-02-18T22:04:43",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:8099",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/current-projects/douglas-t-kenny-building-seismic-upgrades/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-06-26T21:43:21",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:11244",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/current-projects/lower-mall-precinct-student-housing-redevelopment-phase-1/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-03-16T22:33:07",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:6510",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/current-projects/physical-therapy-occupational-therapy-surrey-expansion/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-02-18T22:03:41",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4915",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/current-projects/ubc-sauder-school-of-business-power-house-expansion-project/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-02-03T18:51:26",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4788",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/current-projects/ubco-downtown-project-ubc-okanagan/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:33:24",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/current-projects/x%c9%99l-sic-snpaxnwix%ca%b7tn-ubc-okanagan/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:33:24",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/future-projects/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:31:46",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4747",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/future-projects/applied-one/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-07-09T16:14:00",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4999",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/future-projects/chemistry-laboratory-complex/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-07-09T16:08:26",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4987",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/future-projects/master-of-physical-therapy-occupational-therapy-mpt-mot-expansion-kelowna/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:33:44",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:6516",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/future-projects/mathematics-building/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-07-09T16:15:04",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4992",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/future-projects/medicine-one/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-07-09T16:16:15",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4996",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/future-projects/science-central-two-chemistry-laboratory-complex-research/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-07-09T16:09:26",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:6633",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/future-projects/ubc-okanagan-fire-fire-innovation-research-and-education-facility/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-07-09T16:12:57",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/future-projects/ubco-childcare-ubc-okanagan/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T16:33:44",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/projects-on-campus/future-projects/ubco-student-housing-expansion/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-07-09T16:10:13",
+    "status": "excluded",
+    "article_id": null,
+    "reason": "Okanagan-specific content outside this Vancouver corpus."
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/seismic/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-08T17:18:25",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:459",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/sustainability/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T21:31:24",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7052",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/ubc-capital-priorities/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-07-09T18:22:21",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2929",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/ubc-capital-priorities/development-process-overview/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T22:42:03",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:3924",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/ubc-furniture-reuse-program/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T21:48:38",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4291",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/projects/understanding-facility-condition-index-fci/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T22:27:11",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:4554",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/robert-osborne-centre-unit-1-elevator-installation/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:08:43",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5317",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/sage-bistro-and-ideas-lounge/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:06:13",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5401",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-10-29T20:09:22",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2283",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/building-dispensers/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T16:37:14",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2603",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/building-temperature/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-12-04T22:11:06",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2266",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/charge-out-rates/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-03-10T16:26:26",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2802",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/cleaning/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T16:32:43",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2821",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/cleaning/custodial-services-qa-dashboard/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T15:53:50",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:6439",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/electrical-power/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-02-27T23:33:26",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:3467",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/elevators/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T17:04:53",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7078",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/fall-leaf-collection/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T16:47:36",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2917",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/fleet-vehicle-services/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T17:09:05",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7063",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/garbage-recycling-and-composting/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T17:36:08",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:3766",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/ice-prevention-and-snow-removal/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-01-27T19:27:20",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2912",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/indoor-air-quality/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-07-15T00:09:17",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:1256",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/infrastructure-and-renovation-cost-estimates-rice-for-cfi-applications/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T17:53:35",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5924",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/mapping-and-drafting/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T18:39:07",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5888",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/pest-management/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-03-25T15:55:51",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2601",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/pest-management/wildlife-on-campus/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-04-14T21:35:42",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:10717",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/project-management-services/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T17:49:15",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5854",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/records-account-request/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T17:52:01",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5782",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/renovation-or-maintenance/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T18:08:12",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2825",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/research-equipment-infrastructure-considerations/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T18:36:11",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2831",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/stores/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T18:40:42",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7069",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/styrofoam-and-soft-plastics-recycling/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-01-20T22:52:05",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:3755",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/submit-a-service-request/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-10-14T17:50:05",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:1926",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/submit-a-service-request/facilities-service-request-dashboard/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-03T15:59:10",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7506",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/services/utilities/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2026-01-15T00:17:34",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:7100",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/sports-medicine-tenancy-improvement/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:21:49",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5287",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/the-asian-centre-interior-ramp/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:19:49",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5360",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/the-office-of-the-vice-president-finance-operations/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:03:59",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5465",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/ubc-life-building-2201/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:23:27",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5107",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/ubc-logins/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-29T18:12:21",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:8934",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/ubc-studios/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:17:38",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5449",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/university-centre-lower-level-active-learning-classrooms/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:10:05",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5247",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/urban-assets-qr-code/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-02T22:44:29",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:2995",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/woodward-library-entrance-and-study-space/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:12:24",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5171",
+    "reason": null
+  },
+  {
+    "url": "https://facilities.ubc.ca/zoology-administration-office/",
+    "discovered_by": [
+      "reports/facilities/pages.json"
+    ],
+    "source_modified_at": "2025-07-04T21:12:06",
+    "status": "collected",
+    "article_id": "prose:campus-facilities:5218",
+    "reason": null
+  }
+]

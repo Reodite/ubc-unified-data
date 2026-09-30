@@ -1,0 +1,1990 @@
+id,category,subcategory,source_id,source_url,api_url,upstream_id,title,content_markdown,content_sha256,campus,audience,source_modified_at,retrieved_at,source_records,links,warnings,markdown_path
+prose:it-services:it:02ae3159-c27e-49a3-953f-c1bf6f3cc131,prose,it-services,it-services,https://about.canvas.ubc.ca/,https://it.ubc.ca/jsonapi/node/service/02ae3159-c27e-49a3-953f-c1bf6f3cc131,it:02ae3159-c27e-49a3-953f-c1bf6f3cc131,About UBC Canvas,"[Image](https://about.canvas.ubc.ca/files/2017/09/martha-piper-plaza-at-sunset_20089915475_o-e1506530154671.jpg)
+
+> Canvas is UBC’s primary learning platform for delivering online course content\. UBC instructors and students can log in to Canvas with their UBC CWL \(Campus\-Wide Login\)\.
+
+[**Log in to Canvas**](https://canvas.ubc.ca/)  
+
+## Canvas for instructors
+
+In Canvas, instructors can share materials, enable student collaboration and discussion, manage assignments and quizzes, and assign grades\. Canvas can also be used with many other UBC learning technologies\.
+
+### Learn more:
+
+[http://lthub\.ubc\.ca/guides/canvas\-instructor\-guide/](http://lthub.ubc.ca/guides/canvas-instructor-guide/)[Access UBC's instructor guide to Canvas by clicking here](https://about.canvas.ubc.ca/files/2021/12/canvas-instructor-guide.png)
+
+## Canvas for students
+
+Students can use Canvas to communicate, engage with course materials, and complete learning activities\. Additional features in Canvas can help students keep track of their work, collaborate with classmates, and preview grades\.
+
+### Learn more:
+
+[https://lthub\.ubc\.ca/guides/canvas\-student\-guide/](https://lthub.ubc.ca/guides/canvas-student-guide/)[Access UBC's student guide to Canvas by clicking here](https://about.canvas.ubc.ca/files/2021/12/canvas-student-guide.png)",b93ba6fd43ea08fed3b7c70981640027339ac0c6c57ef5d0d3569febb3ee534f,,undergraduate_and_shared,,2026-09-11T05:16:55.713Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:02ae3159-c27e-49a3-953f-c1bf6f3cc131""}]","[{""text"": ""Image"", ""url"": ""https://about.canvas.ubc.ca/files/2017/09/martha-piper-plaza-at-sunset_20089915475_o-e1506530154671.jpg""}, {""text"": ""Log in to Canvas"", ""url"": ""https://canvas.ubc.ca/""}, {""text"": ""http://lthub.ubc.ca/guides/canvas-instructor-guide/"", ""url"": ""http://lthub.ubc.ca/guides/canvas-instructor-guide/""}, {""text"": ""Access UBC's instructor guide to Canvas by clicking here"", ""url"": ""https://about.canvas.ubc.ca/files/2021/12/canvas-instructor-guide.png""}, {""text"": ""https://lthub.ubc.ca/guides/canvas-student-guide/"", ""url"": ""https://lthub.ubc.ca/guides/canvas-student-guide/""}, {""text"": ""Access UBC's student guide to Canvas by clicking here"", ""url"": ""https://about.canvas.ubc.ca/files/2021/12/canvas-student-guide.png""}]",[],prose/it-services/markdown/1a1ca36ec751699b4e954fa15c6e8a84330ea1ad21b38fdd6695c4b433e450b7.md
+prose:it-services:it:113c5009-efce-4de6-b8a1-c47fd9e272d8,prose,it-services,it-services,https://it.ubc.ca/services/accounts-passwords/multi-factor-authentication-mfa,https://it.ubc.ca/jsonapi/node/service/113c5009-efce-4de6-b8a1-c47fd9e272d8,it:113c5009-efce-4de6-b8a1-c47fd9e272d8,Multi-factor Authentication (MFA),"As part of our ongoing effort to keep personal information at UBC secure, multi\-factor authentication \(MFA\) has been introduced across the University\. By adding MFA to applications that use UBC’s Campus\-wide Login \(CWL\), we have strengthened security with an additional layer of protection, requiring two or more items to verify a user’s identity:
+
+-   something you know \(i\.e\. your password\), and
+-   something you have \(i\.e\. a trusted mobile phone or hardware token\)\.
+
+UBC's multi\-factor authentication is provided by Cisco Duo, a trusted cloud\-based MFA solution utilized by over 300 educational institutions in North America, including UCLA, Harvard, University of Toronto and Toronto Metropolitan University\.
+
+## Requirements and Eligibility
+
+UBC students, faculty and staff
+
+## Learn More
+
+#### **Additional Information**
+
+**Why is multi\-factor authentication \(MFA\) necessary?**
+
+Implementing multi\-factor authentication technology is UBC's best protection against stolen credentials and is a key mitigating tool against spam/phishing emails\.
+
+For many years at UBC, faculty and staff and students were able to log in to most UBC web applications with just their CWL username and password, regardless of physical location, risk profile, or information they were accessing\. This was a substantial risk, as anyone in possession of stolen CWL credentials could access all information available to that user\.
+
+In the current environment, where credentials are being stolen or inadvertently given away through email phishing campaigns, UBC saw the need to add another layer of authentication through MFA to ensure its private and sensitive information is kept secure\. In addition, MFA protection is a legal requirement in the case of Payment Card Industry \(PCI\) transactions and certain personal health information systems\.
+
+#### Getting Started
+
+-   [MFA: How do I enroll in Multi\-factor Authentication \(MFA\)?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016166)
+-   [MFA: How do I download the Duo Mobile App?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016167)
+-   [How do I log in to the MFA Device Management website?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016150)
+-   [MFA: I have enrolled in MFA\. How do I log in with my CWL account?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018746)
+-   [MFA: How do I use SMS text passcodes?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016326)
+-   [How do I register my token?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018728)
+
+Adding MFA protection to your CWL account takes just two steps:
+
+-   **Step 1: Log in to MFA Device Management Website**  
+    Using your CWL username and password, log in to the Self\-service MFA Enrollment and Device Management website at [https://mfadevices\.id\.ubc\.ca](https://mfadevices.id.ubc.ca/)\.
+-   **Step 2: Enroll your device**  
+    Follow the detailed step\-by\-step instructions to enroll your first device\. Once you are enrolled you can manage any of the authentication methods associated with your account, including adding or removing a device\.
+
+### Additional Knowledge Base Articles
+
+-   [How can I obtain a token?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018727)
+    
+-   [How can I prepare for MFA outside of IT Service Centre office hours?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018873)
+    
+-   [MFA: Why can't I use the Duo Mobile app on device that's running an older operating system?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018872)
+    
+-   [MFA: How do I use Duo Mobile without an internet connection?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016282)
+    
+-   [MFA: I am unable to connect to VPN using TouchID or a U2F\-only USB key](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019245)
+    
+-   [What happens if my token suddenly starts generating invalid codes?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018733)
+    
+-   [What do I do if my mobile phone is lost or damaged?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018759)
+    
+
+## Get Help
+
+If you have trouble with multi\-factor authentication:
+
+-   Visit [it\.ubc\.ca/mfa](https://it.ubc.ca/mfa) for more information
+-   Use the Self\-Service MFA Recovery option in the [MFA Device Management Portal](https://mfadevices.id.ubc.ca/) if you’ve lost or replaced your phone
+-   Contact the [IT Service Centre](https://it.ubc.ca/got-question-about-it-products-and-support ""Got a Question About IT Products and Support?"") if you need assistance
+
+  
+ 
+
+### **Knowledge Base Help**
+
+### Knowledge Base
+
+1.  #### Multi\-factor Authentication \(MFA\): Index of knowledge articles
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018724)
+    
+2.  #### MFA: I got a new phone\. How do I get it set\-up as an MFA device?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018763)
+    
+3.  #### What options are available as a second factor for MFA?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018756)
+    
+4.  #### How do I add, change or remove MFA devices?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018755)
+    
+5.  #### MFA: Who is required to enroll in MFA at UBC?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019228)
+    
+6.  #### VPN: How do I connect to VPN as a Sponsored Guest without MFA?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019172)
+    
+7.  #### MFA: Error: ""Enter a passcode or contact your administrator for a bypass code""
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018865)
+    
+
+Page last updated on May 14, 2026",b825756c1d4d323ade24edb0fcd59a431184e2bbf3fefe3ee1326a1561f42226,,undergraduate_and_shared,,2026-09-11T05:16:55.950Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:113c5009-efce-4de6-b8a1-c47fd9e272d8""}]","[{""text"": ""MFA: How do I enroll in Multi-factor Authentication (MFA)?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016166""}, {""text"": ""MFA: How do I download the Duo Mobile App?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016167""}, {""text"": ""How do I log in to the MFA Device Management website?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016150""}, {""text"": ""MFA: I have enrolled in MFA. How do I log in with my CWL account?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018746""}, {""text"": ""MFA: How do I use SMS text passcodes?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016326""}, {""text"": ""How do I register my token?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018728""}, {""text"": ""https://mfadevices.id.ubc.ca"", ""url"": ""https://mfadevices.id.ubc.ca/""}, {""text"": ""How can I obtain a token?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018727""}, {""text"": ""How can I prepare for MFA outside of IT Service Centre office hours?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018873""}, {""text"": ""MFA: Why can't I use the Duo Mobile app on device that's running an older operating system?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018872""}, {""text"": ""MFA: How do I use Duo Mobile without an internet connection?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016282""}, {""text"": ""MFA: I am unable to connect to VPN using TouchID or a U2F-only USB key"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019245""}, {""text"": ""What happens if my token suddenly starts generating invalid codes?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018733""}, {""text"": ""What do I do if my mobile phone is lost or damaged?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018759""}, {""text"": ""it.ubc.ca/mfa"", ""url"": ""https://it.ubc.ca/mfa""}, {""text"": ""MFA Device Management Portal"", ""url"": ""https://mfadevices.id.ubc.ca/""}, {""text"": ""IT Service Centre"", ""url"": ""https://it.ubc.ca/got-question-about-it-products-and-support""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018724""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018763""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018756""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018755""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019228""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019172""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018865""}]","[""A link wrapping block content is shown as a separate source link.""]",prose/it-services/markdown/c51a9ee8ef163a11ee3831bbf0ea858c871a88bb3c12aedd946e27927f7a677f.md
+prose:it-services:it:22af54b9-6baa-4900-86c3-0d035f461c5e,prose,it-services,it-services,https://it.ubc.ca/services/email-voice-internet/microsoft-planner,https://it.ubc.ca/jsonapi/node/service/22af54b9-6baa-4900-86c3-0d035f461c5e,it:22af54b9-6baa-4900-86c3-0d035f461c5e,Microsoft Planner,"UBC is building a foundation to introduce a suite of Microsoft 365 \(M365\) apps into our technology environment\.
+
+To learn more, visit the [M365 @ UBC](https://it.ubc.ca/microsoft-365 ""Microsoft 365"") portal site\.
+
+Microsoft \(MS\) Planner is a task management tool for groups to collaboratively plan, assign, and track tasks\. Planner is offered by Microsoft as part of their M365 suite\. MS Planner enables users to efficiently manage deliverables using lists, Kanban style boards, and charts directly through MS Teams\.
+
+## Features and Benefits
+
+-   Enhanced project management
+-   Collaborative task management
+-   Status tracking visualizations
+-   Assign tasks to team member
+-   All tasks can be managed in MS Teams
+
+## Requirements and Eligibility
+
+-   Active UBC Students, Faculty, and Staff
+
+**Faculty and Staff**
+
+-   An active employee status
+-   An active Enterprise Active Directory \(EAD\) account
+-   An active Faculty and Staff \(FASmail\) mailbox
+-   A [firstname\.lastname@ubc\.ca](mailto:firstname.lastname@ubc.ca) email alias that is associated with their FASmail mailbox
+
+**Students**
+
+-   An active student status
+-   An active Enterprise Active Directory \(\.stu\) account
+-   An active UBC Student Email mailbox with a [cwl@student\.ubc\.ca](mailto:cwl@student.ubc.ca) email address
+
+## Price
+
+-   This service is currently offered to eligible UBC Students, Faculty and Staff at no cost\.
+-   The service cost is based on the Microsoft Enrollment for Education Solutions \(EES\) and will be reassessed in the coming fiscal year\.
+
+## Learn More
+
+#### Getting Started
+
+-   [MS Planner: How do I access MS Planner?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017894)
+
+### How do I sign in as faculty or staff?
+
+1.  Verify service eligibility:
+    -   Ensure your FASmail is associated with *[firstname\.lastname@ubc\.ca](mailto:firstname.lastname@ubc.ca)* email alias\.
+    -   If you have a FASmail account, but do not have *[firstname\.lastname@ubc\.ca](mailto:firstname.lastname@ubc.ca)* email alias, please contact your department directory admin\.
+    -   If you do not have FASmail account, please contact your local IT help desk or [UBC IT Help Desk](https://it.ubc.ca/got-question-about-it-products-and-support ""Got a Question About IT Products and Support?"")\.
+    -   Once you meet the service eligibility, you will automatically get access to MS Planner within 48 hours\.
+2.  Sign into MS Teams
+    -   Follow the instructions under ""How do I login to MS Teams via web/PC/Mac?"" on [the MS Teams FAQ page](https://it.ubc.ca/services/email-voice-internet/microsoft-teams/microsoft-teams-faqs ""Microsoft Teams FAQs"")\.
+3.  Open MS Teams
+    -   If you have not already, sign in using [firstname\.lastname@ubc\.ca](mailto:firstname.lastname@ubc.ca) email address and CWL password
+    -   Check the left\-hand toolbar in Teams for the ""Tasks by Planner and To Do"" tab\. If it is not there:
+        -   Click ellipses on left\-hand toolbar
+        -   Click ""Find an app"" and search for ""Planner""
+        -   Click on ""Tasks by Planner and To Do""
+    -   Click into any channel within a team of your choice
+    -   Click on the \+ symbol at the top of the screen beside the channel name
+    -   In the Search box type ""Tasks by Planner and To Do"" and click on it
+    -   Type in a name for the new tab and plan and click ""Save""
+    -   Now the Planner tab will be added to that channel near the top of the window beside the channel name\.
+
+### How do I sign in as a student? 
+
+1.  Sign up for UBC Student Email
+    -   Go to [CWL MyAccount page](https://www.myaccount.ubc.ca/myAccount/login.xhtml)
+    -   Click *Activate Student Email*
+    -   Read and accept the Terms of Use
+    -   Your *[cwl@student\.ubc\.ca](mailto:cwl@student.ubc.ca)* email will be created within 2 hours and;
+    -   You will also automatically gain access to MS Planner within 48 hours\.
+2.  Sign into MS Teams
+    -   Follow the instructions under ""How do I login to MS Teams via web/PC/Mac?"" on [the MS Teams FAQ page](https://it.ubc.ca/services/email-voice-internet/microsoft-teams/microsoft-teams-faqs ""Microsoft Teams FAQs"")\.
+3.  Open MS Teams
+    -   If you have not already, sign in using your *[cwl@student\.ubc\.ca](mailto:cwl@student.ubc.ca)* or *[firstname\.lastname@ubc\.ca](mailto:firstname.lastname@ubc.ca)* email address and CWL password
+    -   To use the ""Tasks by Planner and To Do"" tab:
+        -   Click ellipses on left\-hand toolbar
+        -   Click ""Find an app"" and search for ""Planner""
+        -   Click on ""Tasks by Planner and To Do""
+    -   Click into any channel within a team of your choice
+    -   Click on the \+ symbol at the top of the screen beside the channel name
+    -   In the Search box type ""Tasks by Planner and To Do"" and click on it
+    -   Type in a name for the new tab and plan and click ""Save""
+    -   Now the Planner tab will be added to that channel near the top of the window beside the channel name\.
+
+#### Additional Information
+
+-   [M365 Terms of Service](https://it.ubc.ca/services/email-voice-internet/microsoft-teams/microsoft-365-terms-service ""Microsoft 365 - Terms of Service"")
+
+-   [Microsoft Planner FAQs](https://it.ubc.ca/services/email-voice-internet/microsoft-planner-faqs ""Microsoft Planner FAQs"")
+
+## Get Help
+
+Further Information &amp; Training Materials
+
+-   [Using Planner in Microsoft Teams](https://support.microsoft.com/en-us/office/use-planner-in-microsoft-teams-62798a9f-e8f7-4722-a700-27dd28a06ee0)
+-   [Microsoft Planner Video Training](https://support.microsoft.com/en-us/office/microsoft-planner-video-training-4d71390f-08d8-4db0-84ea-92fb078687c7)
+-   [Microsoft Planner Help &amp; Learning](https://support.microsoft.com/en-us/planner?ui=en-US&amp;rs=en-CA&amp;ad=CA)
+-   **Note:** Training for MS Planner is only available through self\-service external resources, such as the ones listed above\. UBC is currently not offering any training or support\.
+    
+    Visit [Microsoft Support Page](https://support.microsoft.com/en-us/) for additional assistance\. 
+    
+-   If you have issues concerning how to gain access to MS Planner, please contact UBC IT:
+    -   UBC Vancouver: [IT Service Centre \(ITSC\)](https://it.ubc.ca/got-question-about-it-products-and-support ""Got a Question About IT Products and Support?"")
+    -   UBC Okanagan: [IT Service Desk](https://it.ok.ubc.ca/contact) 
+
+Page last updated on April 7, 2025",41c9b66f90ebb7f65df5fa05a79d89354eda2c7fc1a77e6e48627bbbf4048095,,undergraduate_and_shared,,2026-09-11T05:16:56.753Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:22af54b9-6baa-4900-86c3-0d035f461c5e""}]","[{""text"": ""M365 @ UBC"", ""url"": ""https://it.ubc.ca/microsoft-365""}, {""text"": ""firstname.lastname@ubc.ca"", ""url"": ""mailto:firstname.lastname@ubc.ca""}, {""text"": ""cwl@student.ubc.ca"", ""url"": ""mailto:cwl@student.ubc.ca""}, {""text"": ""MS Planner: How do I access MS Planner?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017894""}, {""text"": ""UBC IT Help Desk"", ""url"": ""https://it.ubc.ca/got-question-about-it-products-and-support""}, {""text"": ""the MS Teams FAQ page"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/microsoft-teams/microsoft-teams-faqs""}, {""text"": ""CWL MyAccount page"", ""url"": ""https://www.myaccount.ubc.ca/myAccount/login.xhtml""}, {""text"": ""M365 Terms of Service"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/microsoft-teams/microsoft-365-terms-service""}, {""text"": ""Microsoft Planner FAQs"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/microsoft-planner-faqs""}, {""text"": ""Using Planner in Microsoft Teams"", ""url"": ""https://support.microsoft.com/en-us/office/use-planner-in-microsoft-teams-62798a9f-e8f7-4722-a700-27dd28a06ee0""}, {""text"": ""Microsoft Planner Video Training"", ""url"": ""https://support.microsoft.com/en-us/office/microsoft-planner-video-training-4d71390f-08d8-4db0-84ea-92fb078687c7""}, {""text"": ""Microsoft Planner Help & Learning"", ""url"": ""https://support.microsoft.com/en-us/planner?ui=en-US&rs=en-CA&ad=CA""}, {""text"": ""Microsoft Support Page"", ""url"": ""https://support.microsoft.com/en-us/""}, {""text"": ""IT Service Centre (ITSC)"", ""url"": ""https://it.ubc.ca/got-question-about-it-products-and-support""}, {""text"": ""IT Service Desk"", ""url"": ""https://it.ok.ubc.ca/contact""}]",[],prose/it-services/markdown/7b62d50cc907df21b65b89d222d33a74c527e74bd47d4d962a5bb6dddee0ff94.md
+prose:it-services:it:2538795d-38fe-4cdb-9455-380f47aaf31d,prose,it-services,it-services,https://it.ubc.ca/services/email-voice-internet/ubc-student-email-service,https://it.ubc.ca/jsonapi/node/service/2538795d-38fe-4cdb-9455-380f47aaf31d,it:2538795d-38fe-4cdb-9455-380f47aaf31d,UBC Student Email Service,"**UBC Student Email Service is migrating to Microsoft Exchange Online**
+
+The UBC Student Email Service is being migrated to **Microsoft Exchange Online** from **February 4 to March 25, 2025**\. Students will be migrated in groups during this time\. Check your UBC Student Email for more info\. If you cannot access your email, it's likely you've been migrated\. Visit the [M365 Student Migration Info Page](https://it.ubc.ca/microsoft-365/current-projects/microsoft_foundation_services_project/m365_ubc_student_migration ""M365@UBC Student Migration"") for more details
+
+## Learn More
+
+#### Getting Started
+
+**Sign up for a Student Email Address**
+
+-   Sign in to the [CWL myAcccount page](https://www.myaccount.ubc.ca/myAccount/login.xhtml) and click on *Activate Student Email*
+-   You must be registered in a course and in good standing to be eligible for this service 
+
+**Webmail Access:**  
+[Student Email: How do I login to my email?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016900)  
+  
+**Setup Instructions for Windows 11:**  
+[Student Email: How to setup Student Email on Outlook \(new\) for Windows](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019503)  
+[Student Email: How to setup Student Email on Outlook 365 for Windows](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019504)  
+  
+**Setup Instructions for MacOS:**  
+[Student Email: How do I set up UBC Student Email on MacOS Mail for Exchange Online](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019500)  
+[Student Email: How do I set up UBC Student Email on Outlook for Mac with Exchange Online](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019499)  
+  
+**Setup Instructions for iOS \(iPhone/iPad\):**  
+[Student Email: How do I access Student Email on the iOS Mail app after migration to Exchange Online](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019484)  
+[Student Email: How to setup Student Email on an iOS device using Activesync on Exchange Online](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019482)  
+[Student Email: How to setup Student Email on Outlook for iOS using Exchange Online](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019485)  
+  
+**Setup Instructions for Android**  
+[Student Email: How do I access Student Email on Android devices after migration to Exchange Online](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019488)  
+[Student Email: How to setup Student Email on an Android device using Activesync on Exchange Online](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019491)  
+[Student Email: How to setup Student Email on Outlook for Android using Exchange Online](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019492)
+
+#### Additional Information
+
+-   [UBC Student Email FAQs](https://it.ubc.ca/microsoft-365/current-projects/microsoft_foundation_services_project/m365_ubc_student_migration ""M365@UBC Student Migration"")
+-   [Changes to Student &amp; Alumni Email FAQs](https://it.ubc.ca/microsoft-365/current-projects/microsoft_foundation_services_project/m365_ubc_student_migration ""M365@UBC Student Migration"")
+-   [Terms of Service](https://it.ubc.ca/services/email-voice-internet/ubc-student-email-service/ubc-student-email-terms-service ""UBC Student Email - Terms of Service"")
+
+## Get Help
+
+-   [Problems with your CWL?](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/problems-your-cwl ""Problems With Your CWL?"")
+-   [Contact the ITSC Helpdesk](https://it.ubc.ca/got-question-about-it-products-and-support ""Got a Question About IT Products and Support?"")
+
+### **Knowledge Base Help**
+
+### Knowledge Base
+
+1.  #### Student Email: How do I create an email forwarding rule?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016974)
+    
+2.  #### Email: Known issues with email forwarding
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018609)
+    
+3.  #### Student Email: Known issues with email forwarding to Gmail and Yahoo
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018947)
+    
+4.  #### Student Email: I can't activate my Student Email after renaming my CWL
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016875)
+    
+5.  #### Student Email: How to hide my calendar's free/busy status?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019512)
+    
+6.  #### Legacy Student and Alumni Email: Known issues with email forwarding to Gmail and Yahoo
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018949)
+    
+
+Page last updated on February 2, 2026",20718079e43e9298210c16f8252aeb7afeaf52c0e6219e6771f60fc5a275c29d,,undergraduate_and_shared,,2026-09-11T05:16:56.961Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:2538795d-38fe-4cdb-9455-380f47aaf31d""}]","[{""text"": ""M365 Student Migration Info Page"", ""url"": ""https://it.ubc.ca/microsoft-365/current-projects/microsoft_foundation_services_project/m365_ubc_student_migration""}, {""text"": ""CWL myAcccount page"", ""url"": ""https://www.myaccount.ubc.ca/myAccount/login.xhtml""}, {""text"": ""Student Email: How do I login to my email?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016900""}, {""text"": ""Student Email: How to setup Student Email on Outlook (new) for Windows"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019503""}, {""text"": ""Student Email: How to setup Student Email on Outlook 365 for Windows"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019504""}, {""text"": ""Student Email: How do I set up UBC Student Email on MacOS Mail for Exchange Online"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019500""}, {""text"": ""Student Email: How do I set up UBC Student Email on Outlook for Mac with Exchange Online"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019499""}, {""text"": ""Student Email: How do I access Student Email on the iOS Mail app after migration to Exchange Online"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019484""}, {""text"": ""Student Email: How to setup Student Email on an iOS device using Activesync on Exchange Online"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019482""}, {""text"": ""Student Email: How to setup Student Email on Outlook for iOS using Exchange Online"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019485""}, {""text"": ""Student Email: How do I access Student Email on Android devices after migration to Exchange Online"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019488""}, {""text"": ""Student Email: How to setup Student Email on an Android device using Activesync on Exchange Online"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019491""}, {""text"": ""Student Email: How to setup Student Email on Outlook for Android using Exchange Online"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019492""}, {""text"": ""UBC Student Email FAQs"", ""url"": ""https://it.ubc.ca/microsoft-365/current-projects/microsoft_foundation_services_project/m365_ubc_student_migration""}, {""text"": ""Changes to Student & Alumni Email FAQs"", ""url"": ""https://it.ubc.ca/microsoft-365/current-projects/microsoft_foundation_services_project/m365_ubc_student_migration""}, {""text"": ""Terms of Service"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/ubc-student-email-service/ubc-student-email-terms-service""}, {""text"": ""Problems with your CWL?"", ""url"": ""https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/problems-your-cwl""}, {""text"": ""Contact the ITSC Helpdesk"", ""url"": ""https://it.ubc.ca/got-question-about-it-products-and-support""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016974""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018609""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018947""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016875""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019512""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018949""}]","[""A link wrapping block content is shown as a separate source link.""]",prose/it-services/markdown/8056d3454f6afa8440f5dd0f0e4b151286a9119bee370969631b1da3389c8204.md
+prose:it-services:it:31f5a73d-7f0e-47a0-96bf-fd4299626503,prose,it-services,it-services,https://it.ubc.ca/services/email-voice-internet/myvpn,https://it.ubc.ca/jsonapi/node/service/31f5a73d-7f0e-47a0-96bf-fd4299626503,it:31f5a73d-7f0e-47a0-96bf-fd4299626503,myVPN,"A Virtual Private Network \(VPN\) connection uses encryption to protect data and prevent others from listening\-in on the data that is transferred between your computer and the campus network\.
+
+UBC Information Technology offers free VPN services to UBC students, faculty, and staff at both the Vancouver and Okanagan campus\.
+
+**Please note: As of July 22, 2024 myVPN has multi\-factor authentication \(MFA\) enabled**\. UBC utilizes Cisco Duo for MFA on systems that require a CWL\. Due to the [US\-based sanctions that guide Duo's restrictions](https://help.duo.com/s/article/7544?language=en_US), individuals logging in from countries affected by these sanctions cannot access these systems\. [Canada also enforces its own set of sanctions](https://www.international.gc.ca/world-monde/international_relations-relations_internationales/sanctions/current-actuelles.aspx?lang=eng), which may overlap with US\-based sanctions\.
+
+Attempts to login to Duo MFA\-protected applications from a device with an IP address in a sanctioned country will be blocked, resulting in an “Access Denied” error message\. 
+
+**For support:**
+
+-   If you are a student studying on the Vancouver campus: [please contact Enrolment Services \(Vancouver\)](https://students.ubc.ca/about-student-services/enrolment-services-advisors)
+-   If you are a student studying on the Okanagan campus: [please contact Enrolment Services \(Okanagan\)](https://students.ok.ubc.ca/courses-money-enrolment/student-records-financial-services/)
+-   If you are faculty and staff: [please contact the IT Helpdesk](https://it.ubc.ca/got-question-about-it-products-and-support ""Got a Question About IT Products and Support?"")\.
+
+## Learn More
+
+#### Getting Started
+
+-   [MyVPN: How do I install and use the VPN client?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017956)
+-   [How do I connect to myVPN ?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016157)
+-   [myVPN: How Do Guests &amp; Affiliate/Extended Learning Students Access the Installer for myVPN?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019051)
+
+Get started with UBC's myVPN:
+
+-   [myVPN FAQ](https://it.ubc.ca/services/email-voice-internet/myvpn/myvpn-faqs ""myVPN FAQs"")
+-   [How to Access myVPN](https://it.ubc.ca/services/email-voice-internet/myvpn/how-access-myvpn ""How to Access myVPN"")
+-   [When to use VPN](https://it.ubc.ca/news/when-use-vpn ""When to use VPN"")
+
+#### Additional Information
+
+-   [Description](https://it.ubc.ca/services/email-voice-internet/myvpn/myvpn-description ""myVPN Description"")
+-   [Working remotely](https://cio.ubc.ca/information-security/policy-standards-resources/U6)
+
+## Get Help
+
+Learn how to get set up  with UBC's myVPN:
+
+-   [Setup Documents](https://it.ubc.ca/services/email-voice-internet/myvpn/setup-documents ""Setup Documents"")
+-   [Contact the Help Desk](https://it.ubc.ca/got-question-about-it-products-and-support ""Got a Question About IT Products and Support?"")
+
+### **Knowledge Base Help**
+
+### Knowledge Base
+
+1.  #### myVPN: Cisco Secure Client installer states that the software is already installed on Mac
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015915)
+    
+2.  #### VPN: Error ""Login Failed: phone app/call denied or phone not enrolled yet""
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018380)
+    
+3.  #### myVPN: Cisco AnyConnect Socket Filter Extensions Settings
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019439)
+    
+4.  #### VPN: How do I log in to a Windows computer for the first time using VPN?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016430)
+    
+5.  #### Wireless: Unable to use myVPN or access SSC while on ubcvisitor wireless
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018339)
+    
+
+Page last updated on August 28, 2026",870ac0f2f20d3ad8d0b4498439492e2b72665dede339ffbb2da75d8d952cfe07,,undergraduate_and_shared,,2026-09-11T05:16:57.461Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:31f5a73d-7f0e-47a0-96bf-fd4299626503""}]","[{""text"": ""US-based sanctions that guide Duo's restrictions"", ""url"": ""https://help.duo.com/s/article/7544?language=en_US""}, {""text"": ""Canada also enforces its own set of sanctions"", ""url"": ""https://www.international.gc.ca/world-monde/international_relations-relations_internationales/sanctions/current-actuelles.aspx?lang=eng""}, {""text"": ""please contact Enrolment Services (Vancouver)"", ""url"": ""https://students.ubc.ca/about-student-services/enrolment-services-advisors""}, {""text"": ""please contact Enrolment Services (Okanagan)"", ""url"": ""https://students.ok.ubc.ca/courses-money-enrolment/student-records-financial-services/""}, {""text"": ""please contact the IT Helpdesk"", ""url"": ""https://it.ubc.ca/got-question-about-it-products-and-support""}, {""text"": ""MyVPN: How do I install and use the VPN client?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017956""}, {""text"": ""How do I connect to myVPN ?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016157""}, {""text"": ""myVPN: How Do Guests & Affiliate/Extended Learning Students Access the Installer for myVPN?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019051""}, {""text"": ""myVPN FAQ"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/myvpn/myvpn-faqs""}, {""text"": ""How to Access myVPN"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/myvpn/how-access-myvpn""}, {""text"": ""When to use VPN"", ""url"": ""https://it.ubc.ca/news/when-use-vpn""}, {""text"": ""Description"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/myvpn/myvpn-description""}, {""text"": ""Working remotely"", ""url"": ""https://cio.ubc.ca/information-security/policy-standards-resources/U6""}, {""text"": ""Setup Documents"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/myvpn/setup-documents""}, {""text"": ""Contact the Help Desk"", ""url"": ""https://it.ubc.ca/got-question-about-it-products-and-support""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015915""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018380""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019439""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016430""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018339""}]","[""A link wrapping block content is shown as a separate source link.""]",prose/it-services/markdown/fc071965ac7e1cd9aa3ab80ed69e231e05d2a0d17690c8e230eee19b1be5abdb.md
+prose:it-services:it:3a78bb9c-7418-474d-8050-cba415410fdb,prose,it-services,it-services,https://it.ubc.ca/services/web-servers-storage/microsoft-onedrive,https://it.ubc.ca/jsonapi/node/service/3a78bb9c-7418-474d-8050-cba415410fdb,it:3a78bb9c-7418-474d-8050-cba415410fdb,Microsoft OneDrive,"UBC is building a foundation to introduce a suite of Microsoft 365 \(M365\) apps into our technology environment\.
+
+[Visit the M365 @ UBC portal site](https://it.ubc.ca/microsoft-365 ""Microsoft 365"")
+
+Microsoft \(MS\) OneDrive is a file hosting and synchronization service operated by Microsoft, as part of their suite of MS 365 applications\. MS OneDrive allows users to securely store, share, and synchronize files and folders from anywhere at anytime\.
+
+## Features and Benefits
+
+Microsoft OneDrive gives you: 
+
+-   Secure sharing storage [\(Onedrive Storage Quotas\)](https://it.ubc.ca/microsoft-365/onedrive-storage-quotas ""OneDrive Storage Quotas "")
+-   Access to your files at any time, from anywhere, on your favorite devices
+-   Ability to share within and outside of your organization
+-   Easy co\-authoring
+-   Seamless integration with your favorite Office apps \(Word, Excel, PowerPoint\)
+-   Find files with intelligent recommendations based on what you are working on and who you are working with
+
+To learn about the differences between UBC online storage solutions that are available, [click here](https://it.ubc.ca/sites/default/files/UBC%20Online%20Storage%20Solutions%20-%20Features%20Comparison%20Chart.pdf)\.  
+
+## Requirements and Eligibility
+
+UBC Students, Faculty, and Staff
+
+**Faculty and Staff:**
+
+-   An active employee status
+-   An active Enterprise Active Directory \(EAD\) account
+-   An active Faculty and Staff \(FASmail\) mailbox
+-   A *[firstname\.lastname@ubc\.ca](mailto:firstname.lastname@ubc.ca)* email alias that is associated with their FASmail mailbox
+
+**Students:**
+
+-   An active student status
+-   An active Enterprise Active Directory \(EAD\) account
+-   An active UBC Student Email mailbox with a [cwl@student\.ubc\.ca](mailto:cwl@student.ubc.ca) email address
+
+For information on eligibility requirements for Guests, please review our [FAQs](https://it.ubc.ca/services/web-servers-storage/microsoft-onedrive/microsoft-onedrive-faqs ""Microsoft OneDrive FAQs"")\. 
+
+## Price
+
+This service is offered to UBC Students, Faculty and Staff at no cost\.
+
+The service cost is based on the Microsoft Campus Agreement and will be reassessed in a year\.
+
+## Learn More
+
+#### Getting Started
+
+-   [\[PUBLIC\] OneDrive: How do I log in to OneDrive \(Desktop client and web portal\)?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016844) 
+
+### How do I sign in as faculty or staff?
+
+#### **1\. Verify service eligibility**
+
+-   Ensure your FASmail is associated with *[firstname\.lastname@ubc\.ca](mailto:firstname.lastname@ubc.ca)* email alias
+-   If you have a FASmail account, but do not have *[firstname\.lastname@ubc\.ca](mailto:firstname.lastname@ubc.ca)* email alias, please contact your department directory admin\.
+-   If you do not have FASmail account, please contact your local IT help desk or UBC IT help desk\.
+-   Once you meet the service eligibility, you will automatically get access to MS Teams and OneDrive within 48 hrs
+
+#### **2\. Sign in to portal\.office\.com**
+
+-   Sign in using your *[firstname\.lastname@ubc\.ca](mailto:firstname.lastname@ubc.ca)* email and CWL password
+-   You can either download MS Teams and OneDrive app on your device OR use MS Teams and OneDrive web version
+-   [Log into Onedrive](https://portal.office.com/)
+-   **UBC Owned Device**: If you have an UBC\-owned device, you can try to search the keyword ""OneDrive"" in the Windows search bar, or find ""OneDrive"" from the Start Menu\. If the application is not found, please download OneDrive from the Software Centre\.
+
+#### **3\. Get started**
+
+-   Click on *Get Started* icon and select ""Using OneDrive at UBC""
+
+### How do I sign in as a student?
+
+#### **1\. Sign up for UBC Student Email**
+
+-   Go to [CWL MyAccount page](https://www.myaccount.ubc.ca/myAccount/login.xhtml)
+-   \(Optional\) Rename your CWL ID
+-   Click *Activate Student Email*
+-   Read and accept Terms of Use
+-   Your *[cwl@student\.ubc\.ca](mailto:cwl@student.ubc.ca)* email will be created within 2 hrs and;
+-   you will also automatically get access to MS Teams and OneDrive within 48 hrs
+
+#### **2\. Sign in to portal\.office\.com**
+
+-   Sign in using your *[cwl@student\.ubc\.ca](mailto:cwl@student.ubc.ca)* email and CWL password You can either download MS Teams and OneDrive app on your device OR use MS Teams and OneDrive web version
+-   [Log into Onedrive](https://portal.office.com/)
+
+#### **3\. Get started**
+
+-   Click on the *Get started* icon and select ""Using OneDrive at UBC""
+
+#### Additional Information
+
+-   [M365 \- Terms of Service](https://it.ubc.ca/services/email-voice-internet/microsoft-teams/microsoft-365-terms-service ""Microsoft 365 - Terms of Service"")
+-   [Microsoft OneDrive FAQs](https://it.ubc.ca/services/web-servers-storage/microsoft-onedrive/microsoft-onedrive-faqs ""Microsoft OneDrive FAQs"")
+
+## Get Help
+
+#### Technical Support
+
+Faculty, Students and Staff can contact the following groups for technical support\.
+
+-   **UBC Vancouver**: [IT Service Centre \(ITSC\)](https://it.ubc.ca/got-question-about-it-products-and-support ""Got a Question About IT Products and Support?"")
+-   **UBC Okanagan**: [IT Service Desk](https://it.ok.ubc.ca/contact)
+-   **Or contact your local faculty IT help desk**  
+    Faculty of Medicine: Contact the MedIT Service Desk by calling 1\.877\.266\.0666 \(option 1 for MS OneDrive and option 2 for MS Teams\), or emailing [medit\.servicedesk@ubc\.ca](mailto:medit.servicedesk@ubc.ca)
+
+#### Instructional Support
+
+Below are resources available to instructors that would like to use MS Teams and/or OneDrive for their courses:
+
+-   If you are using MS Teams and/or OneDrive for the first time, please check out the [Get started Portal – Microsoft Teams for Instructors](https://ubcca.sharepoint.com/sites/M365LearningPortal/SitePages/Microsoft-Teams-for-UBC-Educators.aspx)\. This site includes links to video resources, Instructor Guide, and more\.
+-   **UBC Vancouver:** If you're based out of UBC Vancouver and would like support with MS Teams and/or OneDrive, we recommend contacting your faculty's [Instructional Support Unit](http://lthub.ubc.ca/support/instructional-units/)\.
+-   **UBC Okanagan:** If you're teaching at UBC Okanagan, please contact the Centre for Teaching and Learning \([ctl\.helpdesk@ubc\.ca](mailto:ctl.helpdesk@ubc.ca)\) for assistance\.
+-   **Learning Technology Hub:** All faculty and staff can call, email, or visit the [Learning Technology Hub](http://lthub.ubc.ca/support/lt-hub/) for assistance\. [Drop\-in Canvas Studio sessions](https://events.ctlt.ubc.ca/event-category/canvasstudio/) take every Monday afternoon in the Irving K Barber Learning Centre\.
+
+#### Student support
+
+Below are resources available to students that would like to use MS Teams and/or OneDrive:
+
+-   If you are using MS Teams and/or OneDrive for the first time, please check out the [Get started Portal – Microsoft Teams for Students](https://ubcca.sharepoint.com/sites/M365LearningPortal/SitePages/Microsoft-Teams-for-UBC-Students.aspx)\. This site includes links to video resources, a Student Guide, and more\.
+-   Students can also contact the following:
+    -   **UBC Vancouver**: [IT Service Centre \(ITSC\)](https://it.ubc.ca/got-question-about-it-products-and-support ""Got a Question About IT Products and Support?"")
+    -   **UBC Okanagan**: [IT Service Desk](https://it.ok.ubc.ca/contact)
+    -   **Or contact your local faculty IT help desk**  
+        Faculty of Medicine: Contact the MedIT Service Desk by calling 1\.877\.266\.0666 \(option 1 for MS OneDrive and option 2 for MS Teams\), or emailing [medit\.servicedesk@ubc\.ca](mailto:medit.servicedesk@ubc.ca)
+
+### **Knowledge Base Help**
+
+### Knowledge Base
+
+1.  #### OneDrive: How to re\-assign ownership of OneDrive files
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018195)
+    
+2.  #### OneDrive: How do I change the location of my OneDrive folder?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017926)
+    
+3.  #### OneDrive: How do I share a file/folder externally?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018508)
+    
+4.  #### OneDrive: How do I sync OneDrive or Teams folders to my computer?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017378)
+    
+5.  #### How do I add a shared folder to my own OneDrive?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017370)
+    
+6.  #### OneDrive: How do I stop syncing of my Desktop / Documents / Pictures files from my computer
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017438)
+    
+
+Page last updated on June 19, 2026",ed4fc02955315599358734b0859a9f6bd2580d07d004e5f77e01cae9bdb965bb,,undergraduate_and_shared,,2026-09-11T05:16:57.972Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:3a78bb9c-7418-474d-8050-cba415410fdb""}]","[{""text"": ""Visit the M365 @ UBC portal site"", ""url"": ""https://it.ubc.ca/microsoft-365""}, {""text"": ""(Onedrive Storage Quotas)"", ""url"": ""https://it.ubc.ca/microsoft-365/onedrive-storage-quotas""}, {""text"": ""click here"", ""url"": ""https://it.ubc.ca/sites/default/files/UBC%20Online%20Storage%20Solutions%20-%20Features%20Comparison%20Chart.pdf""}, {""text"": ""firstname.lastname@ubc.ca"", ""url"": ""mailto:firstname.lastname@ubc.ca""}, {""text"": ""cwl@student.ubc.ca"", ""url"": ""mailto:cwl@student.ubc.ca""}, {""text"": ""FAQs"", ""url"": ""https://it.ubc.ca/services/web-servers-storage/microsoft-onedrive/microsoft-onedrive-faqs""}, {""text"": ""[PUBLIC] OneDrive: How do I log in to OneDrive (Desktop client and web portal)?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016844""}, {""text"": ""Log into Onedrive"", ""url"": ""https://portal.office.com/""}, {""text"": ""CWL MyAccount page"", ""url"": ""https://www.myaccount.ubc.ca/myAccount/login.xhtml""}, {""text"": ""M365 - Terms of Service"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/microsoft-teams/microsoft-365-terms-service""}, {""text"": ""Microsoft OneDrive FAQs"", ""url"": ""https://it.ubc.ca/services/web-servers-storage/microsoft-onedrive/microsoft-onedrive-faqs""}, {""text"": ""IT Service Centre (ITSC)"", ""url"": ""https://it.ubc.ca/got-question-about-it-products-and-support""}, {""text"": ""IT Service Desk"", ""url"": ""https://it.ok.ubc.ca/contact""}, {""text"": ""medit.servicedesk@ubc.ca"", ""url"": ""mailto:medit.servicedesk@ubc.ca""}, {""text"": ""Get started Portal – Microsoft Teams for Instructors"", ""url"": ""https://ubcca.sharepoint.com/sites/M365LearningPortal/SitePages/Microsoft-Teams-for-UBC-Educators.aspx""}, {""text"": ""Instructional Support Unit"", ""url"": ""http://lthub.ubc.ca/support/instructional-units/""}, {""text"": ""ctl.helpdesk@ubc.ca"", ""url"": ""mailto:ctl.helpdesk@ubc.ca""}, {""text"": ""Learning Technology Hub"", ""url"": ""http://lthub.ubc.ca/support/lt-hub/""}, {""text"": ""Drop-in Canvas Studio sessions"", ""url"": ""https://events.ctlt.ubc.ca/event-category/canvasstudio/""}, {""text"": ""Get started Portal – Microsoft Teams for Students"", ""url"": ""https://ubcca.sharepoint.com/sites/M365LearningPortal/SitePages/Microsoft-Teams-for-UBC-Students.aspx""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018195""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017926""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018508""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017378""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017370""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017438""}]","[""A link wrapping block content is shown as a separate source link.""]",prose/it-services/markdown/90f0ba87920504ea46bd6bf80580196a1847088afff41a0d6853b37fa4595750.md
+prose:it-services:it:3e309a3b-3bc4-480a-904d-42366a538c9f,prose,it-services,it-services,https://it.ubc.ca/services/email-voice-internet/microsoft-whiteboard,https://it.ubc.ca/jsonapi/node/service/3e309a3b-3bc4-480a-904d-42366a538c9f,it:3e309a3b-3bc4-480a-904d-42366a538c9f,Microsoft Whiteboard,"UBC is building a foundation to introduce a suite of Microsoft 365 \(M365\) apps into our technology environment\.
+
+To learn more, visit the [M365 @ UBC](https://it.ubc.ca/microsoft-365 ""Microsoft 365"") portal site\.
+
+Microsoft Whiteboard is a digital collaboration tool that allows users to brainstorm, collaborate, and share ideas in real\-time\. With an intuitive, user\-friendly interface and a wide range of customization options, Microsoft Whiteboard enables teams to create and share their work in a seamless, organized manner\.
+
+## Features and Benefits
+
+**Collaboration:** Microsoft Whiteboard allows multiple people to work on the same board simultaneously from different locations\.
+
+**Customization:** You can customize the appearance of your board by changing the background color, adding a grid or graph paper, or setting a custom background image\.
+
+**Drawing and annotation tools:** Microsoft Whiteboard provides a range of drawing and annotation tools, including pens, highlighters, shapes, and text boxes, that you can use to add notes and draw diagrams on your board\.
+
+**Image and file insertion:** You can insert images and files from your local device or cloud storage into your board\.
+
+**History:** Microsoft Whiteboard maintains a history of all the changes made to the board, allowing you to go back and see previous versions or revert to an earlier state\.
+
+## Requirements and Eligibility
+
+-   Active UBC Students, Faculty, and Staff
+
+**Faculty and Staff**
+
+-   An active employee status
+-   An active Enterprise Active Directory \(EAD\) account
+-   An active Faculty and Staff \(FASmail\) mailbox
+-   A [firstname\.lastname@ubc\.ca](mailto:firstname.lastname@ubc.ca) email alias that is associated with their FASmail mailbox
+
+**Students**
+
+-   An active student status
+-   An active Enterprise Active Directory \(EAD\) account
+-   An active UBC Student Email mailbox with a [cwl@student\.ubc\.ca](mailto:cwl@student.ubc.ca) email address
+
+## Price
+
+-   This service is currently offered to eligible UBC Students, Faculty and Staff at no cost\. 
+
+## Learn More
+
+-   [How\-Tos, FAQs, and Known Issues](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018356)
+-   [Teams: Whiteboard](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018356)
+
+Common questions:
+
+-   [How to create a new Whiteboard in a Teams meeting](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018346)
+-   [How to transfer Whiteboard files to a new owner](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018342)
+-   [“Something went wrong” when viewing a Whiteboard](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018355) 
+
+### **Knowledge Base Help**
+
+### Knowledge Base
+
+1.  #### Teams: How do I transfer Whiteboard files to a new owner?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018342)
+    
+2.  #### Teams: Whiteboard FAQs
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018337)
+    
+3.  #### Teams: Error ""Something went wrong"" when viewing a Whiteboard
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018355)
+    
+
+Page last updated on April 7, 2025",a584ae2479de3d61562670662a3e69f78dfd30bd76b2b8ff881d17150f1644a1,,undergraduate_and_shared,,2026-09-11T05:16:58.458Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:3e309a3b-3bc4-480a-904d-42366a538c9f""}]","[{""text"": ""M365 @ UBC"", ""url"": ""https://it.ubc.ca/microsoft-365""}, {""text"": ""firstname.lastname@ubc.ca"", ""url"": ""mailto:firstname.lastname@ubc.ca""}, {""text"": ""cwl@student.ubc.ca"", ""url"": ""mailto:cwl@student.ubc.ca""}, {""text"": ""How-Tos, FAQs, and Known Issues"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018356""}, {""text"": ""Teams: Whiteboard"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018356""}, {""text"": ""How to create a new Whiteboard in a Teams meeting"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018346""}, {""text"": ""How to transfer Whiteboard files to a new owner"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018342""}, {""text"": ""“Something went wrong” when viewing a Whiteboard"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018355""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018342""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018337""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018355""}]","[""A link wrapping block content is shown as a separate source link.""]",prose/it-services/markdown/62647657e23caac2d35325767b0829e9bdfcefaefa0ee2a853605768180849ae.md
+prose:it-services:it:5f80ee2b-1b30-4986-a3f1-352c0e3ae4d3,prose,it-services,it-services,https://it.ubc.ca/services/campus-systems/workday-hr-finance-payroll-and-student-information-system,https://it.ubc.ca/jsonapi/node/service/5f80ee2b-1b30-4986-a3f1-352c0e3ae4d3,it:5f80ee2b-1b30-4986-a3f1-352c0e3ae4d3,"Workday (HR, Finance, Payroll and Student Information System)","Workday is UBC’s human resource \(HR\), finance, payroll operations and student information systems \(formerly SSC, SISC and FSC\)\. All UBC employees – faculty, staff and student employees – use Workday for personal tasks related to their position \(e\.g\. view payslip, submit vacation request\)\. Some also use Workday as part of their job at UBC \(e\.g\. run reports, post a job, pay an invoice, move a student off a waitlist\)\.
+
+UBC students use Workday to manage their academic journey, from course registration to graduation\.
+
+Workday is managed by the Integrated Service Centre \(ISC\)\.
+
+-   [About Workday](https://isc.ubc.ca/about/workday)
+-   [About ISC](https://isc.ubc.ca/about/isc)
+
+[**Log in to Workday**](https://myworkday.ubc.ca/) \(CWL account required\)
+
+**Note for Students**: If you don’t have a Student CWL, you should only create one *after* you have accepted your offer and received your student number\. You can [set up a Student CWL](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/how-create-account ""How to Create an Account"") through UBC IT\.
+
+## Features and Benefits
+
+Workday brings all of UBC’s core administration \(HR, Finance, Payroll, Student\) onto one platform\. Available 24/7 and accessible through any internet browser\.
+
+## Learn More
+
+#### Getting Started
+
+-   [Workday Resources and Support](https://isc.ubc.ca/resources/workday-support) \(faculty and staff\)
+
+## Get Help
+
+**Faculty, Staff, and Student Employee Support**
+
+Get Workday support from the Integrated Service Centre \(ISC\):
+
+-   Submit a request through [Get Workday Support](https://ubc.service-now.com/selfservice?id=sc_category&amp;sys_id=48e309381bcb54908f672fc02a4bcb5a) in the UBC Self Service Portal
+-   Contact the ISC by phone 604\-822\-8200 \(UBCV\) or 250\-807\-8163 \(UBCO\), Monday–Friday, 8:30 am–4:30 pm \(except statutory holidays\)
+-   Faculty and staff who need help with Workday Student can also email [isc\.support@ubc\.ca](mailto:isc.support@ubc.ca)\.
+
+Learn more on the ISC [Workday Support](https://isc.ubc.ca/resources/workday-support#workday-student) page\.  
+  
+Note:  While many of UBC’s administrative and operational processes run in Workday, the ISC can only provide support with how to use Workday\. Inquiries about what to do in Workday should go to the [respective operational department](https://isc.ubc.ca/resources/workday-support#operational-support) \(e\.g\. Central HR\) or your Faculty/unit administrators\.
+
+**Student Support**
+
+Students can contact Enrolment Services or their advisor for help with Workday:
+
+-   [UBC Vancouver Enrolment Services](https://students.ubc.ca/about-student-services/enrolment-services-advisors/)
+-   [UBC Okanagan Enrolment Services](https://students.ok.ubc.ca/courses-money-enrolment/advising/)
+
+Page last updated on March 10, 2026",a1622bd7da9603bfa79bc1d2309433e5e5e434f388e9294937f6ab5ee27e2ec0,,undergraduate_and_shared,,2026-09-11T05:16:58.961Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:5f80ee2b-1b30-4986-a3f1-352c0e3ae4d3""}]","[{""text"": ""About Workday"", ""url"": ""https://isc.ubc.ca/about/workday""}, {""text"": ""About ISC"", ""url"": ""https://isc.ubc.ca/about/isc""}, {""text"": ""Log in to Workday"", ""url"": ""https://myworkday.ubc.ca/""}, {""text"": ""set up a Student CWL"", ""url"": ""https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/how-create-account""}, {""text"": ""Workday Resources and Support"", ""url"": ""https://isc.ubc.ca/resources/workday-support""}, {""text"": ""Get Workday Support"", ""url"": ""https://ubc.service-now.com/selfservice?id=sc_category&sys_id=48e309381bcb54908f672fc02a4bcb5a""}, {""text"": ""isc.support@ubc.ca"", ""url"": ""mailto:isc.support@ubc.ca""}, {""text"": ""Workday Support"", ""url"": ""https://isc.ubc.ca/resources/workday-support#workday-student""}, {""text"": ""respective operational department"", ""url"": ""https://isc.ubc.ca/resources/workday-support#operational-support""}, {""text"": ""UBC Vancouver Enrolment Services"", ""url"": ""https://students.ubc.ca/about-student-services/enrolment-services-advisors/""}, {""text"": ""UBC Okanagan Enrolment Services"", ""url"": ""https://students.ok.ubc.ca/courses-money-enrolment/advising/""}]",[],prose/it-services/markdown/a90c1366245f0fa909c6c0d3f6f05306611fd8dd6707aa30479688da03cefca6.md
+prose:it-services:it:71c8ab80-bba3-4897-b816-6e7ef7c3b86b,prose,it-services,it-services,https://it.ubc.ca/services/teaching-learning-tools/survey-tool,https://it.ubc.ca/jsonapi/node/service/71c8ab80-bba3-4897-b816-6e7ef7c3b86b,it:71c8ab80-bba3-4897-b816-6e7ef7c3b86b,Survey Tool,"The UBC Survey Tool is provided by Qualtrics\. It is an easy\-to\-use, top\-tier survey tool platform that offers a wide range of features\. It complies with the BC **Freedom of Information and Protection of Privacy Act** \(FIPPA\) because the survey data is kept secure and is stored and backed up in Canada\.
+
+**NOTE:** If you use the UBC Survey Tool, your name will be available to other users of the tool\. This feature is important to facilitate collaboration\.
+
+The UBC Survey Tool is available to all UBC faculty, staff, actively enrolled students, and sponsored guests with an active CWL account\. Users can login at [https://ubc\.qualtrics\.com](https://ubc.qualtrics.com/) with their **CWL account** to access the tool immediately\.
+
+Before accessing the UBC Survey Tool for the first time, it is important for you to [read the Terms of Use](https://it.ubc.ca/services/teaching-learning-tools/survey-tool/ubc-survey-tool-terms-use ""UBC Survey Tool Terms of Use"")\.
+
+[**Login to Qualtrics**](https://ubc.qualtrics.com/)
+
+## Features and Benefits
+
+-   Over 100 question types to choose from
+-   Advanced branching and customization
+-   Extensive reporting and analytics
+-   Multi\-channel distribution
+-   Compliant with BC Privacy laws and legislations
+
+## Requirements and Eligibility
+
+The service is available to all UBC staff, faculty members, actively enrolled students and sponsored guests with an active CWL account\. To sponsor a guest please [visit the CWL site](https://access.ubc.ca/)\.
+
+## Price
+
+The Survey Tool is available for active CWL account holders at no cost\. Holders of basic CWL accounts are ineligible for this service\.
+
+## Terms of Use
+
+[Read the Terms of Use](https://it.ubc.ca/services/teaching-learning-tools/survey-tool/ubc-survey-tool-terms-use ""UBC Survey Tool Terms of Use"")
+
+## Learn More
+
+#### Additional Information
+
+-   To create a Qualtrics account go to [https://ubc\.qualtrics\.com](https://ubc.qualtrics.com/) or click on the button below; doing either will automatically redirect you to a CWL login page\. Enter your CWL credentials and upon logging in, your account will automatically be provisioned\.   
+      
+    [**Create a Qualtrics account**](https://ubc.qualtrics.com/)  
+     
+-   [Survey Tool FAQs](https://it.ubc.ca/services/teaching-learning-tools/survey-tool/survey-tool-faqs ""Survey Tool FAQs"")
+
+#### Getting Started
+
+ **Important Note**: The time zone of your Qualtrics account is set to Mountain Time by default\. To switch to Pacific Time, navigate to *Account Settings* by clicking on the icon in the top right corner of your screen\. Select the desired time zone under *Change Time Zone*\. The new setting will be saved automatically, and will remain unless manually updated\.
+
+## Get Help
+
+Support and resources are available via Qualtrics and UBC IT\. Qualtrics offer 24/7 support to answer all your inquiries about the tool and guidance on how to construct your surveys\. Contact UBC IT for account inquiries\.
+
+- **Row 1**
+
+  - **Header cell 1:**
+  
+    Qualtrics Support Centre  
+    RECOMMENDED
+  
+  - **Cell 2:**
+  
+    **Log in with your CWL to the Support site**
+    
+    1.  Go this page [https://support\-portal\.qualtrics\.com/login/?Q\_Language\=EN](https://support-portal.qualtrics.com/login/?Q_Language=EN)
+    2.  Click on the link ""Sign in with SSO""
+    3.  Type ""ubc"" in the Organization ID field and click *Continue*\.
+    4.  Input your Campus Wide Login username and password and click the *Login* button
+    
+    Qualtrics end\-user support is available to all UBC staff, faculty and students with a UBC Survey Tool account:
+    
+    -   Provide advanced expertise and support on functional and technical areas to help you on your survey needs\.
+    -   Available Support:
+        -   Phone: 1\.800\.340\.9194 \(24/7\);
+        -   Chat 4:00 a\.m\. – 4:00 p\.m\. MT;
+        -   Email \(24/7\)
+
+- **Row 2**
+
+  - **Header cell 1:**
+  
+    Qualtrics Online Resources   
+    RECOMMENDED
+  
+  - **Cell 2:**
+  
+    **Log in with your CWL to the Online Training and Resources site**
+    
+    1.  Go this page [https://basecamp\.qualtrics\.com/](https://basecamp.qualtrics.com/)
+    2.  Click on the link ""Log In""
+    3.  Click on *Qualtrics credentials*
+    4.  Click on the link ""Sign in with SSO""
+    5.  Type ""ubc"" in the Organization ID field and click *Continue*\.
+    6.  Input your Campus Wide Login username and password in the CWL login screen and click the *Login* button
+    
+    -   Qualtrics on\-line resources including Research Core and StatsIQ materials\.
+    -   On\-demand and live webinars\.
+
+- **Row 3**
+
+  - **Header cell 1:**
+  
+    Qualtrics Training
+  
+  - **Cell 2:**
+  
+    Training sessions are available to get you started on using Qualtrics\. [Visit the training section](https://it.ubc.ca/services/teaching-learning-tools/survey-tool/qualtrics-training ""Qualtrics Training"") for more information
+
+- **Row 4**
+
+  - **Header cell 1:**
+  
+    UBC Brand Administrator\(s\)
+  
+  - **Cell 2:**
+  
+    [Help Desk Contact Form](https://web.it.ubc.ca/forms/isf/)
+    
+    -   Available to all UBC Survey Tool users\.
+    -   Provide general support for the UBC Survey Tool service and work with other administrators on campus\.
+    -   Support for account administration and transfer of accounts and transfer of survey project ownership\.
+    -   9:00 a\.m\. \- 4:00 p\.m\. PT, Monday to Friday
+
+- **Row 5**
+
+  - **Header cell 1:**
+  
+    UBC IT Service Centre Helpdesk
+  
+  - **Cell 2:**
+  
+    [Help Desk Contact Form](https://web.it.ubc.ca/forms/isf/)
+    
+    -   Available to all users
+    -   Provide CWL support and basic Qualtrics account support
+    
+    For urgent issues, please contact us by phone at 604\.822\.2008
+
+- **Row 6**
+
+  - **Header cell 1:**
+  
+    Learning Technology Hub Resources
+  
+  - **Cell 2:**
+  
+    The Learning Technology Hub staff, Learning Technology Rovers and other Instructional Support Staff in both campuses \(including UBC Okanagan\) are trained to help users on how to create their surveys and they know the basic functionality of the UBC Survey Tool\.
+    
+    Visit [https://lthub\.ubc\.ca/support/](https://lthub.ubc.ca/support/) for information for the Learning Technology Hub drop\-in hours\.
+    
+    **UPDATE**: The LT Hub will be offering Qualtrics studio sessions in the coming weeks/months\. Join the Qualtrics studio to explore Qualtrics together and to receive support and guidance using this tool\.
+    
+    [Learn more about the series and register for a session](https://events.ctlt.ubc.ca/event-category/qualtrics/)
+
+- **Row 7**
+
+  - **Header cell 1:**
+  
+    Qualtrics Service Status
+  
+  - **Cell 2:**
+  
+    Visit [https://qualtrics\.com/status/](https://qualtrics.com/status/) page for current status and service updates\. Select the Canada region for Project Management, Survey Distribution and Survey Taking
+
+### **Knowledge Base Help**
+
+### Knowledge Base
+
+1.  #### Qualtrics: How do I login to the Qualtrics Support Centre?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016297)
+    
+
+Page last updated on January 26, 2026",ae4a040653c2fe917fb5cfef2d992c37327f20e3badeb30292e7501002eb0fc3,,undergraduate_and_shared,,2026-09-11T05:16:59.528Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:71c8ab80-bba3-4897-b816-6e7ef7c3b86b""}]","[{""text"": ""https://ubc.qualtrics.com"", ""url"": ""https://ubc.qualtrics.com/""}, {""text"": ""read the Terms of Use"", ""url"": ""https://it.ubc.ca/services/teaching-learning-tools/survey-tool/ubc-survey-tool-terms-use""}, {""text"": ""Login to Qualtrics"", ""url"": ""https://ubc.qualtrics.com/""}, {""text"": ""visit the CWL site"", ""url"": ""https://access.ubc.ca/""}, {""text"": ""Read the Terms of Use"", ""url"": ""https://it.ubc.ca/services/teaching-learning-tools/survey-tool/ubc-survey-tool-terms-use""}, {""text"": ""Create a Qualtrics account"", ""url"": ""https://ubc.qualtrics.com/""}, {""text"": ""Survey Tool FAQs"", ""url"": ""https://it.ubc.ca/services/teaching-learning-tools/survey-tool/survey-tool-faqs""}, {""text"": ""https://support-portal.qualtrics.com/login/?Q_Language=EN"", ""url"": ""https://support-portal.qualtrics.com/login/?Q_Language=EN""}, {""text"": ""https://basecamp.qualtrics.com/"", ""url"": ""https://basecamp.qualtrics.com/""}, {""text"": ""Visit the training section"", ""url"": ""https://it.ubc.ca/services/teaching-learning-tools/survey-tool/qualtrics-training""}, {""text"": ""Help Desk Contact Form"", ""url"": ""https://web.it.ubc.ca/forms/isf/""}, {""text"": ""https://lthub.ubc.ca/support/"", ""url"": ""https://lthub.ubc.ca/support/""}, {""text"": ""Learn more about the series and register for a session"", ""url"": ""https://events.ctlt.ubc.ca/event-category/qualtrics/""}, {""text"": ""https://qualtrics.com/status/"", ""url"": ""https://qualtrics.com/status/""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016297""}]","[""A complex table is represented as row/cell lists; merged-cell spans are labelled."", ""A link wrapping block content is shown as a separate source link.""]",prose/it-services/markdown/83375c7f3c312edd531d52f24e880c7debddfa39ab51c67b19fcbac0087a793b.md
+prose:it-services:it:7292c4d4-c6c6-42fc-92bb-db3eb70030d5,prose,it-services,it-services,https://it.ubc.ca/services/email-voice-internet/microsoft-teams,https://it.ubc.ca/jsonapi/node/service/7292c4d4-c6c6-42fc-92bb-db3eb70030d5,it:7292c4d4-c6c6-42fc-92bb-db3eb70030d5,Microsoft Teams,"UBC is building a foundation to introduce a suite of Microsoft 365 \(M365\) apps into our technology environment\.
+
+To learn more, visit the [M365 @ UBC](https://it.ubc.ca/microsoft-365 ""Microsoft 365"") portal site\.
+
+Microsoft \(MS\) Teams is a collaboration tool for groups to create content and share the information they need to work together\. The tool is operated by Microsoft as part of their MS 365 suite\. MS Teams enables users across the University to connect via instant messaging, video conferencing, online meetings, and simultaneously work on a document in real\-time together\.
+
+## Features and Benefits
+
+-   Video conferencing
+-   Persistent chat
+-   Collaborate in real time
+-   [MS Whiteboard integration](https://it.ubc.ca/services/email-voice-internet/microsoft-whiteboard ""Microsoft Whiteboard"")
+
+To learn about the differences between UBC collaboration tools that are available, [click here](https://it.ubc.ca/sites/default/files/UBC%20Collaboration%20Tools%20-%20Features%20Comparison%20Chart.pdf)
+
+## Requirements and Eligibility
+
+Active UBC Students, Faculty and Staff
+
+**Faculty and Staff:**
+
+-   An active employee status
+-   An active Enterprise Active Directory \(EAD\) account
+-   An active Faculty and Staff \(FASmail\) mailbox
+-   A *[firstname\.lastname@ubc\.ca](mailto:firstname.lastname@ubc.ca)* email alias that is associated with their FASmail mailbox
+
+**Students:**
+
+-   An active student status
+-   An active Enterprise Active Directory \(EAD\) account
+-   An active UBC Student Email mailbox with a [cwl@student\.ubc\.ca](mailto:cwl@student.ubc.ca) email address
+
+For information on eligibility requirements for Guests, please review our [FAQs](https://it.ubc.ca/services/email-voice-internet/microsoft-teams/microsoft-teams-faqs ""Microsoft Teams FAQs"")\. 
+
+## Price
+
+This service is offered to UBC Students, Faculty and Staff at no cost\.  
+
+The service cost is based on the Microsoft Campus Agreement and will be reassessed in a year\. 
+
+## Training
+
+**Self\-Learning**:
+
+Once you have access to MS Teams, please click on the ""Get Started"" icon in the MS Teams dashboard to access online learning\.
+
+Additionally, [click here](https://ubc.zoom.us/rec/share/zFj6wyghn1V0x42iIqQhFX8wytpLrRKGTWcYvuMiOfyvdVqCBDR91lNryhPAgFQJ.IhTBjJUPuKITeQEC) to watch a presentation on an overview of MS Teams\. Please input passcode ""J6w\#B\!7h"" to access it\.
+
+For Instructors: Here is an [additional Tool Guide](https://lthub.ubc.ca/guides/microsoft-teams-instructor-guide/) that you can use to help you get started
+
+## Feedback and MS Teams Stories Submission
+
+### **Give us Feedback**
+
+Give us feedback on the service, so we can continue to improve your experience with the tool\.
+
+-   [Submit your feedback](https://ubc.ca1.qualtrics.com/jfe/form/SV_5d2wwJwWnY81lRj) \.
+
+### **Stories Submission**
+
+Tell us how you have been using MS Teams in learning, teaching, research, and working at UBC\!
+
+-   [Submit your stories](https://ubc.ca1.qualtrics.com/jfe/form/SV_7OKHBKZGx3g2WC9)
+
+## **Report Content**
+
+### **Students**
+
+To report inappropriate/ unsolicited content on MS Teams or OneDrive, please take a screenshot of the content and report it to your [Student Advisor](https://ssc.adm.ubc.ca/sscportal/servlets/SSCMain.jsp?function=Finances-Summary) listed in your Workday or [Student Services](https://students.ubc.ca/campus-life/diversity-campus/discrimination-harassment) \(in case of discrimination and harassment\) or [Academic Advising \(Vancouver\)](https://students.ubc.ca/enrolment/academic-learning-resources/academic-advising)/ [Academic Advising \(Okanagan\)](https://students.ok.ubc.ca/academic-success/academic-advising/)\.
+
+If you would like the content to be removed, please request the Teams owner\.
+
+### **Faculty or Staff**
+
+To report inappropriate/ unsolicited content on MS Teams or OneDrive, please take a screenshot and discuss the content with your [HR and Faculty Relations](https://www.hr.ubc.ca/contact/) or [Equity and Inclusion Office](https://equity.ubc.ca/about/contact/) or follow the [bullying and harassment](https://bullyingandharassment.ubc.ca/) reporting process\.
+
+## Learn More
+
+#### Getting Started
+
+-   [Teams: How to create a new Whiteboard in a Teams meeting?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018346)
+-   [Teams: Live Captions General Information](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018239)
+-   [Teams: How do I log in to Teams \(Desktop client and web portal\)?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016888)
+-   [Teams: Introducing the new Microsoft Teams](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018903)
+-   [Teams: How do I join a Team?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016859)
+
+### How do I sign in as faculty or staff?
+
+#### **1\. Verify service eligibility**
+
+-   Ensure your FASmail is associated with *[firstname\.lastname@ubc\.ca](mailto:firstname.lastname@ubc.ca)* email alias
+-   If you have a FASmail account, but do not have *[firstname\.lastname@ubc\.ca](mailto:firstname.lastname@ubc.ca)* email alias, please contact your department directory admin\.
+-   If you do not have FASmail account, please contact your local IT help desk or UBC IT help desk\.
+-   Once you meet the service eligibility, you will automatically get access to MS Teams and OneDrive within 48 hrs
+
+#### **2\. Sign in to portal\.office\.com**
+
+-   Sign in using your *[firstname\.lastname@ubc\.ca](mailto:firstname.lastname@ubc.ca)* email and CWL password
+-   You can either download MS Teams and OneDrive app on your device OR use MS Teams and OneDrive web version
+-   [Log into Teams](https://portal.office.com/)
+-   **UBC Owned Device**: If you have an UBC\-owned device, you can check if you have a Teams desktop application shortcut\. If you do not, please download Teams from the Software Centre\. Note: Please reboot your device for the Teams desktop shortcut to appear
+
+#### **3\. Get started**
+
+-   Click on Get started icon in MS Teams to access training resources
+
+### How do I sign in as a student?
+
+#### **1\. Sign up for UBC Student Email**
+
+-   Go to [CWL MyAccount page](https://www.myaccount.ubc.ca/myAccount/login.xhtml)
+-   \(Optional\) Rename your CWL ID
+-   Click *Activate Student Email*
+-   Read and accept Terms of Use
+-   Your *[cwl@student\.ubc\.ca](mailto:cwl@student.ubc.ca)* email will be created within 2 hrs and;
+-   you will also automatically get access to MS Teams and OneDrive within 48 hrs
+
+#### **2\. Sign in to portal\.office\.com**
+
+-   Sign in using your *[cwl@student\.ubc\.ca](mailto:cwl@student.ubc.ca)* email and CWL password
+-   You can either download MS Teams and OneDrive app on your device OR you use MS Teams and OneDrive web version
+-   [Log into Teams](https://portal.office.com/)
+
+#### **3\. Get started**
+
+-   Click on *Get started* icon in MS Teams to access training resources
+
+#### Additional Information
+
+-   [M365 \- Terms of Service](https://it.ubc.ca/services/email-voice-internet/microsoft-teams/microsoft-365-terms-service ""Microsoft 365 - Terms of Service"")
+-   [Microsoft Teams FAQs](https://it.ubc.ca/services/email-voice-internet/microsoft-teams/microsoft-teams-faqs ""Microsoft Teams FAQs"")
+
+### Additional Knowledge Base Articles
+
+-   [Teams: How do I add someone \(Staff, Faculty, Student, Guest\) to my Team?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016896)
+    
+-   [Teams: Cannot install new Teams](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018908)
+    
+-   [Teams: How do I create a Teams Channel?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016850)
+    
+-   [Teams: How do I generate a Team code for others to join my Team?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016925)
+    
+
+## Get Help
+
+### Technical Support
+
+Faculty, Students and Staff can contact the following groups for technical support\.
+
+-   **UBC Vancouver**: [IT Service Centre \(ITSC\)](https://it.ubc.ca/got-question-about-it-products-and-support ""Got a Question About IT Products and Support?"")
+-   **UBC Okanagan**: [IT Service Desk](https://it.ok.ubc.ca/contact)
+-   **Or contact your local faculty IT help desk**   
+    Faculty of Medicine: Contact the MedIT Service Desk by calling 1\.877\.266\.0666 \(option 1 for MS OneDrive and option 2 for MS Teams\), or emailing [medit\.servicedesk@ubc\.ca](mailto:medit.servicedesk@ubc.ca)
+
+### Instructional Support
+
+Below are resources available to instructors that would like to use MS Teams and/or OneDrive for their courses:
+
+-   If you are using MS Teams and/or OneDrive for the first time, please check out the [Get started Portal – Microsoft Teams for Instructors](https://ubcca.sharepoint.com/sites/M365LearningPortal/SitePages/Microsoft-Teams-for-UBC-Educators.aspx)\. This site includes links to video resources, Instructor Guide, and more\.
+-   **UBC Vancouver:** If you're based out of UBC Vancouver and would like support with MS Teams and/or OneDrive, we recommend contacting your faculty's [Instructional Support Unit](http://lthub.ubc.ca/support/instructional-units/)\.
+-   **UBC Okanagan:** If you're teaching at UBC Okanagan, please contact the Centre for Teaching and Learning \([ctl\.helpdesk@ubc\.ca](mailto:ctl.helpdesk@ubc.ca)\) for assistance\.
+-   **Or contact your local faculty IT help desk**   
+    Faculty of Medicine: Contact the MedIT Service Desk by calling 1\.877\.266\.0666 \(option 1 for MS OneDrive and option 2 for MS Teams\), or emailing [medit\.servicedesk@ubc\.ca](mailto:medit.servicedesk@ubc.ca)
+-   **Learning Technology Hub:** All faculty and staff can call, email, or visit the [Learning Technology Hub](http://lthub.ubc.ca/support/lt-hub/) for assistance\.
+
+### Student support
+
+Below are resources available to students that would like to use MS Teams and/or OneDrive:
+
+-   If you are using MS Teams and/or OneDrive for the first time, please check out the [Get started Portal – Microsoft Teams for Students](https://ubcca.sharepoint.com/sites/M365LearningPortal/SitePages/Microsoft-Teams-for-UBC-Students.aspx)\. This site includes links to video resources, a Student Guide, and more\.
+-   Students can also contact the following:
+    -   **UBC Vancouver**: [IT Service Centre \(ITSC\)](https://it.ubc.ca/got-question-about-it-products-and-support ""Got a Question About IT Products and Support?"")
+    -   **UBC Okanagan**: [IT Service Desk](https://it.ok.ubc.ca/contact)
+    -   **Or contact your local faculty IT help desk**  
+        Faculty of Medicine: Contact the MedIT Service Desk by calling 1\.877\.266\.0666 \(option 1 for MS OneDrive and option 2 for MS Teams\), or emailing [medit\.servicedesk@ubc\.ca](mailto:medit.servicedesk@ubc.ca)
+
+### **Knowledge Base Help**
+
+### Knowledge Base
+
+1.  #### Teams: How do I create a new Teams site?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016879)
+    
+2.  #### Teams: Missing Teams button in Outlook for Mac
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016952)
+    
+3.  #### Teams: Can I request for Apps in Teams?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018539)
+    
+4.  #### Teams: Live Transcription
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018685)
+    
+5.  #### Teams: Live Transcription FAQs
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018686)
+    
+6.  #### Teams: Live Captions FAQs
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018240)
+    
+7.  #### Teams: Unable to log into an external org's Team with a UBC departmental email address
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018297)
+    
+
+Page last updated on May 29, 2025",9d1411f9a23bcfdb8420d52f4611823f8babe8570457b1a1434bea94f93caf02,,undergraduate_and_shared,,2026-09-11T05:17:00.027Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:7292c4d4-c6c6-42fc-92bb-db3eb70030d5""}]","[{""text"": ""M365 @ UBC"", ""url"": ""https://it.ubc.ca/microsoft-365""}, {""text"": ""MS Whiteboard integration"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/microsoft-whiteboard""}, {""text"": ""click here"", ""url"": ""https://it.ubc.ca/sites/default/files/UBC%20Collaboration%20Tools%20-%20Features%20Comparison%20Chart.pdf""}, {""text"": ""firstname.lastname@ubc.ca"", ""url"": ""mailto:firstname.lastname@ubc.ca""}, {""text"": ""cwl@student.ubc.ca"", ""url"": ""mailto:cwl@student.ubc.ca""}, {""text"": ""FAQs"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/microsoft-teams/microsoft-teams-faqs""}, {""text"": ""click here"", ""url"": ""https://ubc.zoom.us/rec/share/zFj6wyghn1V0x42iIqQhFX8wytpLrRKGTWcYvuMiOfyvdVqCBDR91lNryhPAgFQJ.IhTBjJUPuKITeQEC""}, {""text"": ""additional Tool Guide"", ""url"": ""https://lthub.ubc.ca/guides/microsoft-teams-instructor-guide/""}, {""text"": ""Submit your feedback"", ""url"": ""https://ubc.ca1.qualtrics.com/jfe/form/SV_5d2wwJwWnY81lRj""}, {""text"": ""Submit your stories"", ""url"": ""https://ubc.ca1.qualtrics.com/jfe/form/SV_7OKHBKZGx3g2WC9""}, {""text"": ""Student Advisor"", ""url"": ""https://ssc.adm.ubc.ca/sscportal/servlets/SSCMain.jsp?function=Finances-Summary""}, {""text"": ""Student Services"", ""url"": ""https://students.ubc.ca/campus-life/diversity-campus/discrimination-harassment""}, {""text"": ""Academic Advising (Vancouver)"", ""url"": ""https://students.ubc.ca/enrolment/academic-learning-resources/academic-advising""}, {""text"": ""Academic Advising (Okanagan)"", ""url"": ""https://students.ok.ubc.ca/academic-success/academic-advising/""}, {""text"": ""HR and Faculty Relations"", ""url"": ""https://www.hr.ubc.ca/contact/""}, {""text"": ""Equity and Inclusion Office"", ""url"": ""https://equity.ubc.ca/about/contact/""}, {""text"": ""bullying and harassment"", ""url"": ""https://bullyingandharassment.ubc.ca/""}, {""text"": ""Teams: How to create a new Whiteboard in a Teams meeting?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018346""}, {""text"": ""Teams: Live Captions General Information"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018239""}, {""text"": ""Teams: How do I log in to Teams (Desktop client and web portal)?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016888""}, {""text"": ""Teams: Introducing the new Microsoft Teams"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018903""}, {""text"": ""Teams: How do I join a Team?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016859""}, {""text"": ""Log into Teams"", ""url"": ""https://portal.office.com/""}, {""text"": ""CWL MyAccount page"", ""url"": ""https://www.myaccount.ubc.ca/myAccount/login.xhtml""}, {""text"": ""M365 - Terms of Service"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/microsoft-teams/microsoft-365-terms-service""}, {""text"": ""Microsoft Teams FAQs"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/microsoft-teams/microsoft-teams-faqs""}, {""text"": ""Teams: How do I add someone (Staff, Faculty, Student, Guest) to my Team?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016896""}, {""text"": ""Teams: Cannot install new Teams"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018908""}, {""text"": ""Teams: How do I create a Teams Channel?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016850""}, {""text"": ""Teams: How do I generate a Team code for others to join my Team?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016925""}, {""text"": ""IT Service Centre (ITSC)"", ""url"": ""https://it.ubc.ca/got-question-about-it-products-and-support""}, {""text"": ""IT Service Desk"", ""url"": ""https://it.ok.ubc.ca/contact""}, {""text"": ""medit.servicedesk@ubc.ca"", ""url"": ""mailto:medit.servicedesk@ubc.ca""}, {""text"": ""Get started Portal – Microsoft Teams for Instructors"", ""url"": ""https://ubcca.sharepoint.com/sites/M365LearningPortal/SitePages/Microsoft-Teams-for-UBC-Educators.aspx""}, {""text"": ""Instructional Support Unit"", ""url"": ""http://lthub.ubc.ca/support/instructional-units/""}, {""text"": ""ctl.helpdesk@ubc.ca"", ""url"": ""mailto:ctl.helpdesk@ubc.ca""}, {""text"": ""Learning Technology Hub"", ""url"": ""http://lthub.ubc.ca/support/lt-hub/""}, {""text"": ""Get started Portal – Microsoft Teams for Students"", ""url"": ""https://ubcca.sharepoint.com/sites/M365LearningPortal/SitePages/Microsoft-Teams-for-UBC-Students.aspx""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016879""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016952""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018539""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018685""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018686""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018240""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018297""}]","[""A link wrapping block content is shown as a separate source link.""]",prose/it-services/markdown/0ffafb9635f51e8e7676de3508a45d18c2bfe6b5d0fddfed1dae5915abea5655.md
+prose:it-services:it:7460ac0d-a1c5-4fdd-bd1e-d5ab43561bc0,prose,it-services,it-services,https://it.ubc.ca/services/desktop-support-services/software-licensing,https://it.ubc.ca/jsonapi/node/service/7460ac0d-a1c5-4fdd-bd1e-d5ab43561bc0,it:7460ac0d-a1c5-4fdd-bd1e-d5ab43561bc0,Software Licensing,"UBC IT is able to provide a variety of software programs at discounted rates and others at no cost for the university community\. Statistical products, Microsoft software, and UBC administrative system software are available through IT, with the advantage of lower prices and a convenient installation process\.
+
+For more information or to purchase software for use at the Vancouver campus, please contact your local IT support or [UBC IT Software Licensing](https://it.ubc.ca/node/3225#software)\. For staff and faculty from the UBC Okanagan campus, please contact the [UBC Okanagan IT Services Helpdesk](https://helpdesk.ok.ubc.ca/)\.
+
+**Note**: eligibility for some products may be restricted based on your affiliation with the university \(e\.g\. student, staff, or faculty\)\. In most cases license agreements are for UBC\-owned assets unless otherwise stated\.
+
+## Available Software
+
+[**Full list of software available through UBC IT**](https://it.ubc.ca/services/desktop-support-services/software-licensing/list-software-available ""List of Software Available"")
+
+[**Free software for Staff &amp; Faculty provided by UBC IT**](https://it.ubc.ca/services/desktop-support-services/software-licensing/software-available-no-cost-ubc-staff-and ""Software Available at no cost for UBC Staff and Faculty"")
+
+[**Free software for Students provided by UBC IT**](https://it.ubc.ca/services/desktop-support-services/software-licensing/software-available-no-cost-ubc-students ""Software Available at no cost for UBC Students"")
+
+## Specific Categories
+
+Image
+
+[SL\-paintbrush](https://it.ubc.ca/sites/default/files/styles/original_webp/public/SL-paintbrush.png.webp?itok=W0p35L6t)
+
+[**Adobe Products**](https://it.ubc.ca/services/desktop-support-services/software-licensing/adobe-products ""Adobe Products"")
+
+Includes: Acrobat and Creative Cloud  
+[Faculty and Staff](https://it.ubc.ca/services/desktop-support-services/software-licensing/adobe-products ""Adobe Products"")  
+and [Labs and Shared Devices](https://it.ubc.ca/services/desktop-support-services/software-licensing/adobe-products/adobe-products-labs-and-shared ""Adobe Products for Labs and Shared Devices"")
+
+Image
+
+[SL\-file\-text](https://it.ubc.ca/sites/default/files/styles/original_webp/public/SL-file-text.png.webp?itok=DVx6gpeH)
+
+[**Microsoft 365**](https://it.ubc.ca/services/desktop-support-services/software-licensing/microsoft-365-office-students ""Microsoft 365 Office for Students"")
+
+Includes: Word, Excel, PowerPoint, Outlook, and OneNote\.   
+**For Windows:** Publisher and Access
+
+Image
+
+[SL\-clipboard](https://it.ubc.ca/sites/default/files/styles/original_webp/public/SL-clipboard.png.webp?itok=cQ2Q3ojl)
+
+[**Microsoft Products**](https://it.ubc.ca/services/desktop-support-services/software-licensing/microsoft-price-listing ""Microsoft Price Listing"")
+
+**Faculty and Staff only\.**  
+Includes: Office Applications, Operating Systems, Server Options
+
+Image
+
+[SL\-line\-graph](https://it.ubc.ca/sites/default/files/styles/original_webp/public/SL-line-graph.png.webp?itok=wT6hXFvZ)
+
+[**Mathematical Software**](https://it.ubc.ca/services/desktop-support-services/software-licensing/list-software-available ""List of Software Available"")
+
+**Faculty and Staff only\.**  
+Includes: Matlab, SAS, SPSS, Maple and more\.
+
+Image
+
+[SL\-pie\-chart](https://it.ubc.ca/sites/default/files/styles/original_webp/public/SL-pie-chart.png.webp?itok=vaRLBpZB)
+
+[**Data Analysis**](https://it.ubc.ca/services/desktop-support-services/software-licensing/list-software-available ""List of Software Available"")
+
+Includes: NVivo Pro and Tableau
+
+Image
+
+[SL\-lock](https://it.ubc.ca/sites/default/files/styles/original_webp/public/SL-lock.png.webp?itok=KHJUK6cG)
+
+[**Anti\-Virus Products**](https://it.ubc.ca/services/desktop-support-services/software-licensing/list-software-available ""List of Software Available"")
+
+Includes: Malware protection
+
+Image
+
+[SL\-wrench](https://it.ubc.ca/sites/default/files/styles/original_webp/public/SL-wrench.png.webp?itok=Vqi7ckM1)
+
+[**Oracle Database**](https://it.ubc.ca/services/web-servers-storage/database-administration-services/oracle ""Oracle"")
+
+Includes: Oracle Enterprise Edition Database
+
+Image
+
+[FOLDER ICON](https://it.ubc.ca/sites/default/files/styles/original_webp/public/images/SL-folder-open.png.webp?itok=bdZeTAie)
+
+[**Other Software**](https://it.ubc.ca/services/desktop-support-services/software-licensing/other-software ""Other Software"")
+
+Includes: NVivo Pro and Tableau
+
+## Payment Details
+
+Payment transactions for software are now accomplished with [Accounting Journals](https://ubc.service-now.com/selfservice?id=kb_article&amp;sys_id=5e5e966693d7d6500d60b9aefaba10b9&amp;table=kb_knowledge) in Workday \(formerly Journal Vouchers\)\.
+
+## Software Expectations
+
+By purchasing a software license, you are only purchasing the right to use the software\. You do not own the software and cannot redistribute it to others\. Some other important policies surrounding our Software Licensing Service include:
+
+-   **Once software has been purchased, it CANNOT be returned**\. Thus, compatibility between your computer and the software should be thoroughly researched before a purchase is made\.
+-   Licenses are purchased per machine, so a single license cannot be used for multiple machines\. NOTE: Depending on the software, Departments with at least ten machines in their lab may have the opportunity to purchase a Lab License\.
+-   Most licenses are based around a yearly maintenance fee\.
+
+The IT Service Centre offers very limited technical support for this software, so we suggest that you check the manual or the vendor's website before you [contact the UBC IT Software Licensing team\.](http://www.it.ubc.ca/got-question-about-it-products-and-support#software)
+
+## Learn More
+
+#### Getting Started
+
+-   [Adobe Software: How do I get access to Adobe Acrobat Pro software?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017458)
+-   [NVivo: What is NVivo and how do I install it?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014985)
+-   [\[APSC\] IT Software: Installing SOLIDWORKS SEK](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015800)
+-   [Adobe Software: How do I get access to Adobe Creative Cloud software?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017459)
+-   [MATLAB: How do I install or activate MATLAB on a personal device?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015540)
+-   [Adobe Software: How do I sign in to Adobe CC as a Student?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016987)
+-   [How to Register and Login to Azure Dev Tools for Teaching \(ADT4T\)](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019007)
+
+[See more](https://it.ubc.ca/services/knowledge-base-help ""Knowledge Base Help"")
+
+-   Please contact your local IT support or UBC IT [software licensing](https://it.ubc.ca/got-question-about-it-products-and-support ""Got a Question About IT Products and Support?"") for installation details and assistance\.
+-   [Teamshare SLMS](https://it.ubc.ca/services/desktop-print-services/software-licensing/teamshare-slms ""Teamshare SLMS"") \(for IT Administrators only\)
+
+#### Additional Information
+
+-   [MATLAB Windows installation instructions](https://ubc.service-now.com/kb_view_customer.do?sysparm_article=KB0015953)
+-   [Other Software](https://it.ubc.ca/services/desktop-support-services/software-licensing/other-software ""Other Software"")
+
+### Additional Knowledge Base Articles
+
+-   [Adobe Software: Acrobat Pro Prompt for Serial Number](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018345)
+    
+-   [Adobe Software: Adobe Cloud Restrictions and Limitations](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018859)
+    
+-   [M365: How do I update to Office 2021 \(UBCV \- Mac\)](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019057)
+    
+-   [M365: How do I update to Office 2021 \(UBCV \- Windows\)](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019058)
+    
+-   [M365: How to re\-install Microsoft Office \(macOS\)](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017473)
+    
+-   [M365 Office: Citation Add\-Ins not appearing in Office on the Web \(macOS\)](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019407)
+    
+-   [M365 Office: How do I add citation Add\-Ins to Office on the Web?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018001)
+    
+-   [MATLAB: Error: ""You have entered an invalid File Installation Key""](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015666)
+    
+-   [MATLAB: License Expiry Error](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015748)
+    
+-   [MATLAB: Network Version Installation Guide \(UBC\-Owned Device\)](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014981)
+    
+-   [MATLAB: Standalone Version Installation Guide \(UBC\-Owned Device\)](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014394)
+    
+-   [MATLAB For Students: MATLAB Self\-Paced Online Training](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015949)
+    
+-   [MATLAB for Students: ""A MathWorks Account already exists with that email address\.\.\.""](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015665)
+    
+-   [OneNote: How do I migrate my OneNote notebooks from OneDrive to my computer in Windows?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016531)
+    
+-   [SPSS: How do I set up or renew my SPSS license?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014568)
+    
+-   [SPSS: How do I install SPSS?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014567)
+    
+-   [SPSS: How to check out an SPSS license file for offline use](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015857)
+    
+-   [SPSS: How to increase the maximum duration of an SPSS offline license](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015859) 
+    
+
+### **Knowledge Base Help**
+
+### Knowledge Base
+
+1.  #### MATLAB: How do I check if I am eligible for MATLAB?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016447)
+    
+2.  #### MATLAB: Error Creating MathWorks Account \- University Email
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018806)
+    
+3.  #### Adobe Software: How to Edit PDFs without an Adobe Acrobat Professional License
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019279)
+    
+4.  #### NVivo: How to renew an NVivo license
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015962)
+    
+5.  #### Adobe Software: How to Fill and Sign PDFs using Adobe Acrobat Reader
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019281)
+    
+6.  #### M365 Office: How do I add citation Add\-Ins to Microsoft Word?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014988)
+    
+7.  #### M365 Office: How do I add citation Add\-Ins to Office on the Web?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018001)
+    
+
+Page last updated on April 17, 2025",ac2f003f0df304d0b09d13365460ab1164efab98b0d4f82b81df74556e6a19cd,,undergraduate_and_shared,,2026-09-11T05:17:00.542Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:7460ac0d-a1c5-4fdd-bd1e-d5ab43561bc0""}]","[{""text"": ""UBC IT Software Licensing"", ""url"": ""https://it.ubc.ca/node/3225#software""}, {""text"": ""UBC Okanagan IT Services Helpdesk"", ""url"": ""https://helpdesk.ok.ubc.ca/""}, {""text"": ""Full list of software available through UBC IT"", ""url"": ""https://it.ubc.ca/services/desktop-support-services/software-licensing/list-software-available""}, {""text"": ""Free software for Staff & Faculty provided by UBC IT"", ""url"": ""https://it.ubc.ca/services/desktop-support-services/software-licensing/software-available-no-cost-ubc-staff-and""}, {""text"": ""Free software for Students provided by UBC IT"", ""url"": ""https://it.ubc.ca/services/desktop-support-services/software-licensing/software-available-no-cost-ubc-students""}, {""text"": ""SL-paintbrush"", ""url"": ""https://it.ubc.ca/sites/default/files/styles/original_webp/public/SL-paintbrush.png.webp?itok=W0p35L6t""}, {""text"": ""Adobe Products"", ""url"": ""https://it.ubc.ca/services/desktop-support-services/software-licensing/adobe-products""}, {""text"": ""Faculty and Staff"", ""url"": ""https://it.ubc.ca/services/desktop-support-services/software-licensing/adobe-products""}, {""text"": ""Labs and Shared Devices"", ""url"": ""https://it.ubc.ca/services/desktop-support-services/software-licensing/adobe-products/adobe-products-labs-and-shared""}, {""text"": ""SL-file-text"", ""url"": ""https://it.ubc.ca/sites/default/files/styles/original_webp/public/SL-file-text.png.webp?itok=DVx6gpeH""}, {""text"": ""Microsoft 365"", ""url"": ""https://it.ubc.ca/services/desktop-support-services/software-licensing/microsoft-365-office-students""}, {""text"": ""SL-clipboard"", ""url"": ""https://it.ubc.ca/sites/default/files/styles/original_webp/public/SL-clipboard.png.webp?itok=cQ2Q3ojl""}, {""text"": ""Microsoft Products"", ""url"": ""https://it.ubc.ca/services/desktop-support-services/software-licensing/microsoft-price-listing""}, {""text"": ""SL-line-graph"", ""url"": ""https://it.ubc.ca/sites/default/files/styles/original_webp/public/SL-line-graph.png.webp?itok=wT6hXFvZ""}, {""text"": ""Mathematical Software"", ""url"": ""https://it.ubc.ca/services/desktop-support-services/software-licensing/list-software-available""}, {""text"": ""SL-pie-chart"", ""url"": ""https://it.ubc.ca/sites/default/files/styles/original_webp/public/SL-pie-chart.png.webp?itok=vaRLBpZB""}, {""text"": ""Data Analysis"", ""url"": ""https://it.ubc.ca/services/desktop-support-services/software-licensing/list-software-available""}, {""text"": ""SL-lock"", ""url"": ""https://it.ubc.ca/sites/default/files/styles/original_webp/public/SL-lock.png.webp?itok=KHJUK6cG""}, {""text"": ""Anti-Virus Products"", ""url"": ""https://it.ubc.ca/services/desktop-support-services/software-licensing/list-software-available""}, {""text"": ""SL-wrench"", ""url"": ""https://it.ubc.ca/sites/default/files/styles/original_webp/public/SL-wrench.png.webp?itok=Vqi7ckM1""}, {""text"": ""Oracle Database"", ""url"": ""https://it.ubc.ca/services/web-servers-storage/database-administration-services/oracle""}, {""text"": ""FOLDER ICON"", ""url"": ""https://it.ubc.ca/sites/default/files/styles/original_webp/public/images/SL-folder-open.png.webp?itok=bdZeTAie""}, {""text"": ""Other Software"", ""url"": ""https://it.ubc.ca/services/desktop-support-services/software-licensing/other-software""}, {""text"": ""Accounting Journals"", ""url"": ""https://ubc.service-now.com/selfservice?id=kb_article&sys_id=5e5e966693d7d6500d60b9aefaba10b9&table=kb_knowledge""}, {""text"": ""contact the UBC IT Software Licensing team."", ""url"": ""http://www.it.ubc.ca/got-question-about-it-products-and-support#software""}, {""text"": ""Adobe Software: How do I get access to Adobe Acrobat Pro software?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017458""}, {""text"": ""NVivo: What is NVivo and how do I install it?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014985""}, {""text"": ""[APSC] IT Software: Installing SOLIDWORKS SEK"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015800""}, {""text"": ""Adobe Software: How do I get access to Adobe Creative Cloud software?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017459""}, {""text"": ""MATLAB: How do I install or activate MATLAB on a personal device?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015540""}, {""text"": ""Adobe Software: How do I sign in to Adobe CC as a Student?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016987""}, {""text"": ""How to Register and Login to Azure Dev Tools for Teaching (ADT4T)"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019007""}, {""text"": ""See more"", ""url"": ""https://it.ubc.ca/services/knowledge-base-help""}, {""text"": ""software licensing"", ""url"": ""https://it.ubc.ca/got-question-about-it-products-and-support""}, {""text"": ""Teamshare SLMS"", ""url"": ""https://it.ubc.ca/services/desktop-print-services/software-licensing/teamshare-slms""}, {""text"": ""MATLAB Windows installation instructions"", ""url"": ""https://ubc.service-now.com/kb_view_customer.do?sysparm_article=KB0015953""}, {""text"": ""Adobe Software: Acrobat Pro Prompt for Serial Number"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018345""}, {""text"": ""Adobe Software: Adobe Cloud Restrictions and Limitations"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018859""}, {""text"": ""M365: How do I update to Office 2021 (UBCV - Mac)"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019057""}, {""text"": ""M365: How do I update to Office 2021 (UBCV - Windows)"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019058""}, {""text"": ""M365: How to re-install Microsoft Office (macOS)"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017473""}, {""text"": ""M365 Office: Citation Add-Ins not appearing in Office on the Web (macOS)"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019407""}, {""text"": ""M365 Office: How do I add citation Add-Ins to Office on the Web?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018001""}, {""text"": ""MATLAB: Error: \""You have entered an invalid File Installation Key\"""", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015666""}, {""text"": ""MATLAB: License Expiry Error"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015748""}, {""text"": ""MATLAB: Network Version Installation Guide (UBC-Owned Device)"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014981""}, {""text"": ""MATLAB: Standalone Version Installation Guide (UBC-Owned Device)"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014394""}, {""text"": ""MATLAB For Students: MATLAB Self-Paced Online Training"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015949""}, {""text"": ""MATLAB for Students: \""A MathWorks Account already exists with that email address...\"""", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015665""}, {""text"": ""OneNote: How do I migrate my OneNote notebooks from OneDrive to my computer in Windows?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016531""}, {""text"": ""SPSS: How do I set up or renew my SPSS license?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014568""}, {""text"": ""SPSS: How do I install SPSS?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014567""}, {""text"": ""SPSS: How to check out an SPSS license file for offline use"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015857""}, {""text"": ""SPSS: How to increase the maximum duration of an SPSS offline license"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015859""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016447""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018806""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019279""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015962""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019281""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014988""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018001""}]","[""A link wrapping block content is shown as a separate source link.""]",prose/it-services/markdown/7d7768e91d11d06b506994d3f8e84527652e69f1b4c91459464b4c1947c3243c.md
+prose:it-services:it:7b16557e-3bc2-4f2a-8a7e-02674c148b35,prose,it-services,it-services,https://it.ubc.ca/services/audio-visual-creative-services/professional-media-production,https://it.ubc.ca/jsonapi/node/service/7b16557e-3bc2-4f2a-8a7e-02674c148b35,it:7b16557e-3bc2-4f2a-8a7e-02674c148b35,Professional Media Production,"The award\-winning UBC Studios produces professional quality media for the university\. Our studio space features advanced equipment and experienced staff dedicated to providing end\-to\-end creative production services with a focus on communication, recruitment, training and educational content\. Working together, we will help you determine the most effective approach for your unique audience and budget constraints\. Contact us today to kickstart the creative development process and find out how we can tailor our offerings to meet your unique needs\.
+
+## Features and Benefits
+
+UBC Studios provides full service media production, which can include:
+
+**Concept Development &amp; Production Planning**
+
+The team at UBC Studios will work with you to create innovative concepts specific to your individual communication, education, training, or recruitment needs\.
+
+**Production Planning**
+
+-   Studio &amp; On\-location Video Production
+-   Animation and Motion Graphics
+-   Immersive Media \(XR, VR, AR, 360 Video\)
+-   Photography
+-   Virtual Tours
+
+## Learn More
+
+-   [Vimeo Channel](http://vimeo.com/ubcstudios)
+-   [UBC Studios Website](http://ubcstudios.ubc.ca/)
+
+## Get Help
+
+UBC Studios is located on the ground floor of the University Services Building \(USB\) at the corner of West Mall and Agronomy Road\.
+
+0110 \- 2329 West Mall \(at Agronomy\)  
+Vancouver BC V6T 1Z4
+
+Tel: 604\-822\-9800  
+Email: [ubc\.studios@ubc\.ca](mailto:ubc.studios@ubc.ca)
+
+Hours of Operation: 9:00am – 5:00pm Monday to Friday
+
+[Map of UBC](https://it.ubc.ca/sites/default/files/inline-images/map_ubcstudios.gif)
+
+[Directions →](https://goo.gl/maps/84jVtczgr1P2)
+
+Page last updated on July 29, 2026",c1174f2a13758e6cd7f23057b53870201f61448dc5cc0adb5af7677d171cff72,,undergraduate_and_shared,,2026-09-11T05:17:01.341Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:7b16557e-3bc2-4f2a-8a7e-02674c148b35""}]","[{""text"": ""Vimeo Channel"", ""url"": ""http://vimeo.com/ubcstudios""}, {""text"": ""UBC Studios Website"", ""url"": ""http://ubcstudios.ubc.ca/""}, {""text"": ""ubc.studios@ubc.ca"", ""url"": ""mailto:ubc.studios@ubc.ca""}, {""text"": ""Map of UBC"", ""url"": ""https://it.ubc.ca/sites/default/files/inline-images/map_ubcstudios.gif""}, {""text"": ""Directions →"", ""url"": ""https://goo.gl/maps/84jVtczgr1P2""}]",[],prose/it-services/markdown/877b10852cf05150db823cc1a4c8c1f20307a1fe760b80af5e4ff34c5b6c204b.md
+prose:it-services:it:7c16984b-065e-4d15-b1cf-87c40e2f3748,prose,it-services,it-services,https://it.ubc.ca/services/email-voice-internet/resnet,https://it.ubc.ca/jsonapi/node/service/7c16984b-065e-4d15-b1cf-87c40e2f3748,it:7c16984b-065e-4d15-b1cf-87c40e2f3748,ResNet,"#### New\! An internet for your personal devices\.
+
+UBC IoT Internet of Things wi\-fi network gives your personal devices their own private network — secure, encrypted, and invisible to everyone else on campus\. Your laptop, phone, gaming console, smart TV, speaker, and other personal devices see each other and work together, just like they do at home\.
+
+UBC staff, faculty, and students can connect their devices to the network using their CWL account \(Multi\-factor Authentication required\)\.   
+  
+[**Learn More**](https://it.ubc.ca/services/email-voice-internet/ubc-internet-things-iot-wi-fi ""UBC Internet of Things (IoT) Wi-Fi"")
+
+[**Log in and add your devices**](https://iot.ubc.ca/accounts/ubc/device/) 
+
+**Heads\-up**: *for now, log in once every 4 weeks to keep your devices active\. It’s a temporary security measure while we finish automating personal devices this fall — after that, you’ll only log in to add or remove a device\.* 
+
+ResNet connects UBC student residences to the campus network and the internet\. It provides high\-speed access to the internet for students via wired or wireless service\.
+
+ResNet is a service of UBC's [Student Housing and Community Services](http://www.housing.ubc.ca/), [Green College](http://www.greencollege.ubc.ca/), [Vancouver School of Theology](http://www.vst.edu/), St\. Andrews College and UBC IT\.
+
+## Audience
+
+All students who live in a residence supported by ResNet can use the service\. Supported residences are:
+
+### Point Grey Campus
+
+- **Row 1**
+
+  - **Header cell 1:**
+  
+    Residence Name
+  
+  - **Header cell 2:**
+  
+    Internet Access
+  
+  - **Header cell 3:**
+  
+    Note
+
+- **Row 2**
+
+  - **Cell 1:**
+  
+    Acadia Park
+  
+  - **Cell 2:**
+  
+    Shaw/Telus
+  
+  - **Cell 3:**
+  
+    UBC Wireless available in commonsblock only
+
+- **Row 3**
+
+  - **Cell 1:**
+  
+    Brock Commons
+  
+  - **Cell 2:**
+  
+    Wireless Only
+  
+  - **Cell 3:**
+  
+    UBC Wireless available in commonsblock and residence rooms
+
+- **Row 4**
+
+  - **Cell 1:**
+  
+    Exchange
+  
+  - **Cell 2:**
+  
+    Wireless Only
+  
+  - **Cell 3:**
+  
+    UBC Wireless available in commonsblock and residence rooms
+
+- **Row 5**
+
+  - **Cell 1:**
+  
+    Fairview Crescent
+  
+  - **Cell 2:**
+  
+    Wired Only
+  
+  - **Cell 3:**
+  
+    Hardwired ports available in each residence room \(ethernet cable not included\)   
+    UBC Wireless available in  commonsblock only
+
+- **Row 6**
+
+  - **Cell 1:**
+  
+    Fraser Hall
+  
+  - **Cell 2:**
+  
+    Wireless Only
+  
+  - **Cell 3:**
+  
+     UBC Wireless available in commonsblock and residence rooms
+
+- **Row 7**
+
+  - **Cell 1:**
+  
+    Green College
+  
+  - **Cell 2:**
+  
+    Wired Only
+  
+  - **Cell 3:**
+  
+    UBC Wireless available in dining hall
+
+- **Row 8**
+
+  - **Cell 1:**
+  
+    Iona House
+  
+  - **Cell 2:**
+  
+    Wired Only
+  
+  - **Cell 3:**
+  
+    Hardwired ports available in each residence room \(ethernet cable not included\)   
+    UBC Wireless available in commonsblock only
+
+- **Row 9**
+
+  - **Cell 1:**
+  
+    Marine Drive
+  
+  - **Cell 2:**
+  
+    Wired Only
+  
+  - **Cell 3:**
+  
+    Hardwired ports available in each residence room \(ethernet cable not included\)   
+    UBC Wireless available in commonsblock only
+
+- **Row 10**
+
+  - **Cell 1:**
+  
+    MBA House
+  
+  - **Cell 2:**
+  
+    Wired Only
+  
+  - **Cell 3:**
+  
+    UBC Wireless available in lounges
+
+- **Row 11**
+
+  - **Cell 1:**
+  
+    Orchard Commons
+  
+  - **Cell 2:**
+  
+    Wireless Only
+  
+  - **Cell 3:**
+  
+     UBC Wireless available in commonsblock and residence rooms
+
+- **Row 12**
+
+  - **Cell 1:**
+  
+    Place Vanier
+  
+  - **Cell 2:**
+  
+    Wireless Only
+  
+  - **Cell 3:**
+  
+     UBC Wireless available in commonsblock and residence rooms
+
+- **Row 13**
+
+  - **Cell 1:**
+  
+    Ponderosa Commons
+  
+  - **Cell 2:**
+  
+    Wired Only
+  
+  - **Cell 3:**
+  
+    Hardwired ports available in each room \(ethernet cable not included\)   
+    UBC Wireless available in commonsblock only
+
+- **Row 14**
+
+  - **Cell 1:**
+  
+    Ritsumeikan\-UBC House
+  
+  - **Cell 2:**
+  
+    Wireless Only
+  
+  - **Cell 3:**
+  
+    UBC Wireless available in commonsblock and residence rooms
+
+- **Row 15**
+
+  - **Cell 1:**
+  
+    St\. Andrews
+  
+  - **Cell 2:**
+  
+    Wired Only
+  
+  - **Cell 3:**
+  
+    Hardwired ports available in each room \(ethernet cable not included\)  
+    UBC Wireless available at front desk
+
+- **Row 16**
+
+  - **Cell 1:**
+  
+    tə šxʷhəleləm̓s tə k̓ʷaƛ̓kʷəʔaʔɬ \(Saltwater\)
+  
+  - **Cell 2:**
+  
+    Wireless Only
+  
+  - **Cell 3:**
+  
+    UBC Wireless available in commonsblock and residence rooms
+
+- **Row 17**
+
+  - **Cell 1:**
+  
+    Thunderbird
+  
+  - **Cell 2:**
+  
+    Wired Only
+  
+  - **Cell 3:**
+  
+    Hardwired ports available in each room \(ethernet cable not included\)   
+    UBC Wireless available in commonsblock only
+
+- **Row 18**
+
+  - **Cell 1:**
+  
+    Totem Park
+  
+  - **Cell 2:**
+  
+    Wireless Only
+  
+  - **Cell 3:**
+  
+    UBC Wireless available in commonsblock and residence rooms
+
+- **Row 19**
+
+  - **Cell 1:**
+  
+    Walter Gage
+  
+  - **Cell 2:**
+  
+     Wireless Only
+  
+  - **Cell 3:**
+  
+     UBC Wireless available in commonsblock and residence rooms
+
+## Price
+
+ResNet is included in your room fees \- there is no extra charge to get connected\.
+
+## Learn More
+
+-   [ResNet: How to connect to ResNet?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0012636)
+-   [FAQs](https://it.ubc.ca/services/email-voice-internet/resnet/resnet-faqs ""ResNet FAQs"")
+-   [Penalty Box](https://it.ubc.ca/services/email-voice-internet/resnet/penalty-box)
+-   [Appropriate use](https://it.ubc.ca/services/email-voice-internet/resnet/policy-appropriate-use ""Policy - Appropriate Use"")
+-   [Policies](https://it.ubc.ca/services/email-voice-internet/resnet/policies ""Policies"")
+-   [Protect your computer](https://it.ubc.ca/services/email-voice-internet/resnet/protect-your-computer ""Protect Your Computer"")
+-   [Service Agreement](https://it.ubc.ca/services/email-voice-internet/resnet/policy-service-agreement ""Policy - Service Agreement"")
+
+## Get Help
+
+-   [Troubleshooting \- General](https://it.ubc.ca/services/email-voice-internet/resnet/troubleshooting-general ""Troubleshooting - General"")
+-   [Setup \- All Documents \(Start Here\)](https://ubc.service-now.com/kb_view_customer.do?sysparm_article=KB0012636)
+
+### **Knowledge Base Help**
+
+### Knowledge Base
+
+1.  #### ResNet: How do I troubleshoot my ResNet connection?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015642)
+    
+2.  #### ResNet: About the ResNet Penalty Box
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0012328)
+    
+3.  #### How do I connect my wireless printer to the wireless network in residence?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015653)
+    
+4.  #### ResNet: About Bandwidth Quotas and DHCP Leases
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0012436)
+    
+
+Page last updated on September 4, 2026",a85f7aa85281ab5e40dca20eefc20ed2d1cc0646f97331586f5ef83b51460c3d,,undergraduate_and_shared,,2026-09-11T05:17:01.481Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:7c16984b-065e-4d15-b1cf-87c40e2f3748""}]","[{""text"": ""Learn More"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/ubc-internet-things-iot-wi-fi""}, {""text"": ""Log in and add your devices"", ""url"": ""https://iot.ubc.ca/accounts/ubc/device/""}, {""text"": ""Student Housing and Community Services"", ""url"": ""http://www.housing.ubc.ca/""}, {""text"": ""Green College"", ""url"": ""http://www.greencollege.ubc.ca/""}, {""text"": ""Vancouver School of Theology"", ""url"": ""http://www.vst.edu/""}, {""text"": ""ResNet: How to connect to ResNet?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0012636""}, {""text"": ""FAQs"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/resnet/resnet-faqs""}, {""text"": ""Penalty Box"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/resnet/penalty-box""}, {""text"": ""Appropriate use"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/resnet/policy-appropriate-use""}, {""text"": ""Policies"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/resnet/policies""}, {""text"": ""Protect your computer"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/resnet/protect-your-computer""}, {""text"": ""Service Agreement"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/resnet/policy-service-agreement""}, {""text"": ""Troubleshooting - General"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/resnet/troubleshooting-general""}, {""text"": ""Setup - All Documents (Start Here)"", ""url"": ""https://ubc.service-now.com/kb_view_customer.do?sysparm_article=KB0012636""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015642""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0012328""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015653""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0012436""}]","[""A complex table is represented as row/cell lists; merged-cell spans are labelled."", ""A link wrapping block content is shown as a separate source link.""]",prose/it-services/markdown/cc2ea019172bbde043443193a883548a8afaf1eb2b38593bc5da7c6a79159026.md
+prose:it-services:it:82f7ea1d-a189-4a6c-8e88-cd9f3e0e616f,prose,it-services,it-services,https://it.ubc.ca/services/email-voice-internet/wireless-device-registration-system,https://it.ubc.ca/jsonapi/node/service/82f7ea1d-a189-4a6c-8e88-cd9f3e0e616f,it:82f7ea1d-a189-4a6c-8e88-cd9f3e0e616f,Wireless Device Registration System,"#### New\! An internet for your personal devices\.
+
+UBC IoT Internet of Things wi\-fi network gives your personal devices their own private network — secure, encrypted, and invisible to everyone else on campus\. Your laptop, phone, gaming console, smart TV, speaker, and other personal devices see each other and work together, just like they do at home\.
+
+UBC staff, faculty, and students can connect their devices to the network using their CWL account \(Multi\-factor Authentication required\)\.   
+  
+[**Learn More**](https://it.ubc.ca/services/email-voice-internet/ubc-internet-things-iot-wi-fi ""UBC Internet of Things (IoT) Wi-Fi"")
+
+[**Log in and add your devices**](https://iot.ubc.ca/accounts/ubc/device/) 
+
+**Heads\-up**: *for now, log in once every 4 weeks to keep your devices active\. It’s a temporary security measure while we finish automating personal devices this fall — after that, you’ll only log in to add or remove a device\.* 
+
+**Note:** **The Wireless Device Registration System will be decommissioned in 2027\. To connect your personal devices to the UBC wi\-fi network, please use the** [Internet of Things \(IoT\) wireless network](https://it.ubc.ca/services/email-voice-internet/ubc-internet-things-iot-wi-fi)**\.**
+
+The “Wireless Device Registration System” allows residential multimedia and gaming devices to be pre\-registered to connect to the ubcvisitor wireless network\. Once registered, these can connect to the Internet via ubcvisitor without the requirement to login\. These types of devices are typically unsupported on enterprise wireless networks like ubcsecure so this service was launched to allow seamless connectivity to the UBC Wireless Network\.
+
+## Requirements and Eligibility
+
+#### Who can use this?
+
+Students residing in RESNET Wireless supported buildings listed on the [RESNET page](https://it.ubc.ca/services/email-voice-internet/resnet ""ResNet"") are permitted to use this service only
+
+#### What type of devices can use this service?
+
+Any device that supports Open Authentication is capable of connecting\. However, we do ask that if your device is capable of connecting to ubcsecure, or eduroam WiFi networks, you should configure them to do so\. Here are a few examples of devices that are able to connect to Wireless Device Registration Service;
+
+-   Gaming Consoles
+-   Set\-top TV boxes
+-   Smart TVs
+-   Other cloud\-connected devices that are unable to connect to [ubcsecure](https://it.ubc.ca/services/email-voice-internet/wireless-internet-access/ubcsecure-wireless-network ""ubcsecure Wireless Network"") or [eduroam](https://it.ubc.ca/services/email-voice-internet/wireless-internet-access/eduroam-wireless-network/how-access-eduroam ""How to Access eduroam"")
+
+In order to register the device you will need to locate the wireless MAC address or wireless physical address\. This address is typically located physically on the device near the serial number or can be found in the menu system \(i\.e system information, about menu, etc\)\. The wireless MAC or physical address is formatted in six groups of two hexadecimal digits\. The address may be formatted like aa:bb:cc:11:22:33 or aa\-bb\-cc\-11\-22\-33\.
+
+### Service Restrictions
+
+-   This service is restricted to the registration of multimedia \(set top / smart TV\) and gaming console devices that are not capable of connecting to 802\.1x type wireless networks like ""[ubcsecure](https://it.ubc.ca/node/30771)""\. Users are not permitted to register devices such as smart phones, laptops and desktop computers, rather these devices should be connecting to the ""[ubcsecure](https://it.ubc.ca/node/30771)"" wireless network\. Registered devices not meeting the above criteria may be scrutinized and permanently removed from the service by IT staff at any time\.
+-   Each user is only permitted to register a maximum of three devices\.
+-   Bandwidth is limited but is capable of streaming video and online gaming\.
+-   You may not be able to access some UBC academic resources \(e\.g\. Library, Connect, etc\); use [ubcsecure](https://it.ubc.ca/node/30771) from a smartphone, laptop or desktop instead\.
+-   Some devices such as Google Home and Chromecast that require the use of the Bonjour or mDNS protocol may not function as expected\. These devices and protocols were designed for a typical home WiFi network that is not scalable to service 1000's of users\.
+
+### Appropriate Use
+
+All clients must agree to abide by the [Appropriate Use Policy](https://it.ubc.ca/node/1569)\.
+
+## Learn More
+
+#### Getting Started
+
+-   [Wireless: How do I connect my home entertainment device \(Playstation, Roku device, Apple TV, etc\)?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015636)
+-   The registration portal can be accessed [here](https://ubcvisitor.wireless.ubc.ca/)  
+    **Note**: Requires a campus connection \(wired, wifi or VPN\)
+-   Instructions for locating MAC addresses on a few common devices can be found here\.
+
+### **Knowledge Base Help**
+
+### Knowledge Base
+
+1.  #### Wireless: Issue registering Google Home devices on the Wireless Device Registration System
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016346)
+    
+
+Page last updated on September 4, 2026",42cab0751493d2eb97b73fce31d9426ba46d2da0e21874dc8fa86a3256f24bc5,,undergraduate_and_shared,,2026-09-11T05:17:02.082Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:82f7ea1d-a189-4a6c-8e88-cd9f3e0e616f""}]","[{""text"": ""Learn More"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/ubc-internet-things-iot-wi-fi""}, {""text"": ""Log in and add your devices"", ""url"": ""https://iot.ubc.ca/accounts/ubc/device/""}, {""text"": ""Internet of Things (IoT) wireless network"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/ubc-internet-things-iot-wi-fi""}, {""text"": ""RESNET page"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/resnet""}, {""text"": ""ubcsecure"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/wireless-internet-access/ubcsecure-wireless-network""}, {""text"": ""eduroam"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/wireless-internet-access/eduroam-wireless-network/how-access-eduroam""}, {""text"": ""ubcsecure"", ""url"": ""https://it.ubc.ca/node/30771""}, {""text"": ""Appropriate Use Policy"", ""url"": ""https://it.ubc.ca/node/1569""}, {""text"": ""Wireless: How do I connect my home entertainment device (Playstation, Roku device, Apple TV, etc)?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0015636""}, {""text"": ""here"", ""url"": ""https://ubcvisitor.wireless.ubc.ca/""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016346""}]","[""A link wrapping block content is shown as a separate source link.""]",prose/it-services/markdown/489546338a8f860cbcf219bc7b66f2a856203d310210d3887778cee51aec764f.md
+prose:it-services:it:ace9e30a-9a85-4b4b-80c7-87fa10db5a03,prose,it-services,it-services,https://it.ubc.ca/services/email-voice-internet/wireless-internet-access,https://it.ubc.ca/jsonapi/node/service/ace9e30a-9a85-4b4b-80c7-87fa10db5a03,it:ace9e30a-9a85-4b4b-80c7-87fa10db5a03,Wireless Internet Access,"#### New\! An internet for your personal devices\.
+
+UBC IoT Internet of Things wi\-fi network gives your personal devices their own private network — secure, encrypted, and invisible to everyone else on campus\. Your laptop, phone, gaming console, smart TV, speaker, and other personal devices see each other and work together, just like they do at home\.
+
+UBC staff, faculty, and students can connect their devices to the network using their CWL account \(Multi\-factor Authentication required\)\.   
+  
+[**Learn More**](https://it.ubc.ca/services/email-voice-internet/ubc-internet-things-iot-wi-fi ""UBC Internet of Things (IoT) Wi-Fi"")
+
+[**Log in and add your devices**](https://iot.ubc.ca/accounts/ubc/device/) 
+
+**Heads\-up**: *for now, log in once every 4 weeks to keep your devices active\. It’s a temporary security measure while we finish automating personal devices this fall — after that, you’ll only log in to add or remove a device\.* 
+
+UBC hosts several wireless networks to support students, faculty and staff on campus and at partner institutions\. Visit the links below to find out which wireless network will best support your needs\.
+
+#### ubcsecure
+
+[""ubcsecure""](https://it.ubc.ca/node/30771) uses WPA \(Wi\-Fi Protected Access\) Enterprise and 802\.1x for an encrypted and secure wireless connection\.
+
+*This wireless network is available to everybody within the UBC community with a valid student, faculty, or staff CWL account\.*
+
+#### UBC Internet of Things \(IoT\) Wi\-Fi
+
+[UBC Internet of Things \(IoT\) wi\-fi](https://it.ubc.ca/services/email-voice-internet/ubc-internet-things-iot-wi-fi) network gives your personal devices their own private network that is secure, encrypted, and invisible to everyone else on campus\. Your laptop, phone, gaming console, smart TV, speaker, and other personal devices will be able to see each other and work together, just like they do at home\.
+
+#### eduroam
+
+The [""eduroam"" network](https://it.ubc.ca/node/30767) is a collaborative network that provides students, staff and faculty roaming wireless access at partner institutions\. Users authenticate using the same credentials as they would at their home institution\.
+
+#### ubcprivate
+
+[""ubcprivate""](https://it.ubc.ca/node/30769) is the wireless extension of the [Virtual Networks service](https://it.ubc.ca/services/email-voice-internet/virtual-networks ""Virtual Networks"") and allows authorized users to be placed directly into their department's own network and security domain\.
+
+***Note:** that this wireless network is only available to UBC community members affiliated with departments that have their own* [*virtual network*](https://it.ubc.ca/node/41)*\.*
+
+#### ubcvisitor
+
+[""ubcvisitor""](https://it.ubc.ca/node/30773) is a public wireless network service available for guests visiting on the UBC campus\. Some restrictions apply\. We encourage staff, faculty, and students to use ubcsecure as their default UBC network\.
+
+#### RogersGuest
+
+*RogersGuest* is the updated name for the former Rogers WiFi Hotspots \(previously known as *RogersOpen*\)\. It offers free guest WiFi access across many UBC locations, including the Point Grey, Robson Square, and Okanagan campuses, as well as select remote sites where UBC WiFi services are available\.
+
+Coverage extends across both indoor and outdoor spaces where UBC wireless networks operate\.
+
+The *RogersGuest* network will appear in your list of available WiFi networks alongside [""ubcsecure""](https://it.ubc.ca/node/30771), ""[eduroam](https://it.ubc.ca/node/30767)"", ""[ubcvisitor""](https://it.ubc.ca/node/30773), and ""[ubcprivate""](https://it.ubc.ca/node/30769)\.
+
+When connecting, users will now be presented with a 1\-click guest access page, which provides **5 GB of data valid for 30 days**\. 
+
+For technical assistance, please contact **Rogers Support** at **1\-855\-877\-WIFI \(9434\)** or [visit the Rogers website](https://www.rogers.com/internet/wifi/get-started) for more information\.
+
+#### Wireless Device Registration System
+
+The [Wireless Device Registration System](https://it.ubc.ca/node/189075) allows residential multimedia and gaming devices to be pre\-registered to connect to the ubcvisitor Wireless\.
+
+For information about where wireless internet is available across UBC campuses and other locations, please refer to our [Wireless Coverage page](https://it.ubc.ca/node/2645)\.
+
+## Learn More
+
+#### Getting Started
+
+-   [Wireless: How do I setup ubcsecure using Autoconnect on Android?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014235)
+-   [Wireless: How do I setup ubcsecure using AutoConnect on iOS?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016053)
+-   [Wireless: How do I setup ubcsecure using AutoConnect in Windows?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016042)
+-   [Wireless: How do I set up the ubcsecure network in Ubuntu Linux?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0013556)
+-   [Wireless: How do I set up the eduroam network in Android?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014237)
+-   [Wireless: How do I manually set up the ubcsecure network in Windows 10?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016040)
+-   [Wireless: How do I manually configure UBCSecure on Android devices?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016065)
+-   [Appropriate Use](https://it.ubc.ca/services/email-voice-internet/wireless-internet-access/appropriate-use ""Appropriate Use"")
+-   [Wireless Coverage](https://it.ubc.ca/services/email-voice-internet/wireless-internet-access/wireless-coverage ""Wireless Coverage"")
+
+#### Additional Informaiton
+
+### Additional Knowledge Base Articles
+
+-   [Wireless: How do I setup ubcsecure using AutoConnect on macOS?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016047)
+    
+-   [WIreless: How do I manually set up the ubcsecure network in iOS \(iPhone, iPad, iPod Touch\)?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0013554)
+    
+-   [Wireless: How do I manually set up the eduroam network in Windows 10?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016044)
+    
+-   [Wireless: How do I manually set up the ubcprivate network in Windows 10?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016055)
+    
+-   [Wireless: How do I setup eduroam using AutoConnect on macOS?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016048)
+    
+-   [Wireless: How do I setup ubcprivate using AutoConnect on iOS?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016054)
+    
+-   [Wireless: How do I setup eduroam using AutoConnect on iOS?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016056)
+    
+-   [Wireless: How do I set up the ubcprivate network in Android?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014310)
+    
+-   [Wireless: How do I manually set up the eduroam network in Windows XP?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0013549)
+    
+-   [WIreless: How do I manually set up the ubcprivate network in iOS \(iPhone, iPad, iPod Touch\)?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016060)
+    
+-   [Wireless: How do I setup ubcprivate using AutoConnect on macOS?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016049)
+    
+-   [Wireless: How do I manually set up the ubcsecure network in Windows Vista or Windows 7?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0013550)
+    
+-   [Wireless: How do I manually set up the eduroam network in Windows Vista or Windows 7?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0013526)
+    
+-   [Wireless: How do I set up the ubcprivate wireless network for Windows Vista/7?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0013595)
+    
+-   [WIreless: How do I manually set up the eduroam network in iOS \(iPhone, iPad, iPod Touch\)?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016059)
+    
+-   [Wireless: How do I setup ubcprivate using AutoConnect in Windows?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016045)
+    
+-   [Wireless: How do I manually set up the ubcprivate network in Windows XP?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0013596)
+    
+-   [Wireless: How do I manually set up the ubcsecure network in Windows 8?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014227)
+    
+-   [Wireless: How do I manually set up the ubcsecure network in Windows XP?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014222)
+    
+-   [Wireless: How do I update my wireless profile via Software Centre?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016064)
+    
+-   [Wireless: How do I set up the ubcsecure network in Mac OS 10\.8 to 10\.13?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0013553)
+    
+-   [Wireless: How do I set up the eduroam network in Mac OS 10\.8 to 10\.13?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014224)
+    
+-   [Wireless: How do I set up the eduroam network in Ubuntu Linux?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016057)
+    
+-   [Wireless: How do I set up the ubcprivate network in Ubuntu Linux?](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016058)
+    
+
+## Get Help
+
+-   [Contact the UBC IT Service Centre](https://it.ubc.ca/got-question-about-it-products-and-support ""Got a Question About IT Products and Support?"")
+-   [eduroam Setup Documents](https://it.ubc.ca/services/email-voice-internet/wireless-internet-access/wireless-internet-access-setup-documents ""Wireless Internet Access Setup Documents"")
+-   [ubcprivate Setup Documents](https://it.ubc.ca/services/email-voice-internet/wireless-internet-access/wireless-internet-access-setup-documents ""Wireless Internet Access Setup Documents"")
+-   [ubcsecure Setup Documents](https://it.ubc.ca/services/email-voice-internet/wireless-internet-access/wireless-internet-access-setup-documents ""Wireless Internet Access Setup Documents"")
+
+### **Knowledge Base Help**
+
+### Knowledge Base
+
+1.  #### Wireless: WiFi issues due to Apple Wireless Direct Link \(AWDL\)
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018480)
+    
+
+Page last updated on August 18, 2026",49b1a806084c5349a3a4643c4490cfd4666a8dbf817f448e351000fb4a13fc73,,undergraduate_and_shared,,2026-09-11T05:17:02.547Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:ace9e30a-9a85-4b4b-80c7-87fa10db5a03""}]","[{""text"": ""Learn More"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/ubc-internet-things-iot-wi-fi""}, {""text"": ""Log in and add your devices"", ""url"": ""https://iot.ubc.ca/accounts/ubc/device/""}, {""text"": ""\""ubcsecure\"""", ""url"": ""https://it.ubc.ca/node/30771""}, {""text"": ""UBC Internet of Things (IoT) wi-fi"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/ubc-internet-things-iot-wi-fi""}, {""text"": ""\""eduroam\"" network"", ""url"": ""https://it.ubc.ca/node/30767""}, {""text"": ""\""ubcprivate\"""", ""url"": ""https://it.ubc.ca/node/30769""}, {""text"": ""Virtual Networks service"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/virtual-networks""}, {""text"": ""virtual network"", ""url"": ""https://it.ubc.ca/node/41""}, {""text"": ""\""ubcvisitor\"""", ""url"": ""https://it.ubc.ca/node/30773""}, {""text"": ""eduroam"", ""url"": ""https://it.ubc.ca/node/30767""}, {""text"": ""ubcvisitor\"""", ""url"": ""https://it.ubc.ca/node/30773""}, {""text"": ""ubcprivate\"""", ""url"": ""https://it.ubc.ca/node/30769""}, {""text"": ""visit the Rogers website"", ""url"": ""https://www.rogers.com/internet/wifi/get-started""}, {""text"": ""Wireless Device Registration System"", ""url"": ""https://it.ubc.ca/node/189075""}, {""text"": ""Wireless Coverage page"", ""url"": ""https://it.ubc.ca/node/2645""}, {""text"": ""Wireless: How do I setup ubcsecure using Autoconnect on Android?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014235""}, {""text"": ""Wireless: How do I setup ubcsecure using AutoConnect on iOS?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016053""}, {""text"": ""Wireless: How do I setup ubcsecure using AutoConnect in Windows?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016042""}, {""text"": ""Wireless: How do I set up the ubcsecure network in Ubuntu Linux?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0013556""}, {""text"": ""Wireless: How do I set up the eduroam network in Android?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014237""}, {""text"": ""Wireless: How do I manually set up the ubcsecure network in Windows 10?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016040""}, {""text"": ""Wireless: How do I manually configure UBCSecure on Android devices?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016065""}, {""text"": ""Appropriate Use"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/wireless-internet-access/appropriate-use""}, {""text"": ""Wireless Coverage"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/wireless-internet-access/wireless-coverage""}, {""text"": ""Wireless: How do I setup ubcsecure using AutoConnect on macOS?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016047""}, {""text"": ""WIreless: How do I manually set up the ubcsecure network in iOS (iPhone, iPad, iPod Touch)?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0013554""}, {""text"": ""Wireless: How do I manually set up the eduroam network in Windows 10?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016044""}, {""text"": ""Wireless: How do I manually set up the ubcprivate network in Windows 10?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016055""}, {""text"": ""Wireless: How do I setup eduroam using AutoConnect on macOS?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016048""}, {""text"": ""Wireless: How do I setup ubcprivate using AutoConnect on iOS?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016054""}, {""text"": ""Wireless: How do I setup eduroam using AutoConnect on iOS?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016056""}, {""text"": ""Wireless: How do I set up the ubcprivate network in Android?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014310""}, {""text"": ""Wireless: How do I manually set up the eduroam network in Windows XP?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0013549""}, {""text"": ""WIreless: How do I manually set up the ubcprivate network in iOS (iPhone, iPad, iPod Touch)?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016060""}, {""text"": ""Wireless: How do I setup ubcprivate using AutoConnect on macOS?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016049""}, {""text"": ""Wireless: How do I manually set up the ubcsecure network in Windows Vista or Windows 7?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0013550""}, {""text"": ""Wireless: How do I manually set up the eduroam network in Windows Vista or Windows 7?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0013526""}, {""text"": ""Wireless: How do I set up the ubcprivate wireless network for Windows Vista/7?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0013595""}, {""text"": ""WIreless: How do I manually set up the eduroam network in iOS (iPhone, iPad, iPod Touch)?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016059""}, {""text"": ""Wireless: How do I setup ubcprivate using AutoConnect in Windows?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016045""}, {""text"": ""Wireless: How do I manually set up the ubcprivate network in Windows XP?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0013596""}, {""text"": ""Wireless: How do I manually set up the ubcsecure network in Windows 8?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014227""}, {""text"": ""Wireless: How do I manually set up the ubcsecure network in Windows XP?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014222""}, {""text"": ""Wireless: How do I update my wireless profile via Software Centre?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016064""}, {""text"": ""Wireless: How do I set up the ubcsecure network in Mac OS 10.8 to 10.13?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0013553""}, {""text"": ""Wireless: How do I set up the eduroam network in Mac OS 10.8 to 10.13?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0014224""}, {""text"": ""Wireless: How do I set up the eduroam network in Ubuntu Linux?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016057""}, {""text"": ""Wireless: How do I set up the ubcprivate network in Ubuntu Linux?"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0016058""}, {""text"": ""Contact the UBC IT Service Centre"", ""url"": ""https://it.ubc.ca/got-question-about-it-products-and-support""}, {""text"": ""eduroam Setup Documents"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/wireless-internet-access/wireless-internet-access-setup-documents""}, {""text"": ""ubcprivate Setup Documents"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/wireless-internet-access/wireless-internet-access-setup-documents""}, {""text"": ""ubcsecure Setup Documents"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/wireless-internet-access/wireless-internet-access-setup-documents""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018480""}]","[""A link wrapping block content is shown as a separate source link.""]",prose/it-services/markdown/9a375971c91d9373e8bddbdb60b3ad6b85c24cd35d9fc336e0ee8a785e858943.md
+prose:it-services:it:adea47ab-4a85-49e2-b2b7-5ccef9ba2350,prose,it-services,it-services,https://it.ubc.ca/services/email-voice-internet/ubcshaw-cable-tv,https://it.ubc.ca/jsonapi/node/service/adea47ab-4a85-49e2-b2b7-5ccef9ba2350,it:adea47ab-4a85-49e2-b2b7-5ccef9ba2350,UBC/Shaw Cable TV,"UBC Information Technology, in partnership with Rogers Cable, offers cable television in some student residences and many administrative buildings on campus\. 
+
+Students, faculty, and residents have the option of subscribing to Rogers Cable services, including HDTV, Pay Per View, and Video on Demand\. 
+
+To access UBC/Rogers digital cable TV services, a Rogers digital terminal is required\.  
+
+For more details please call Rogers Customer Service at 1\-844\-235\-7429 if you are UBC Faculty or Staff\. Studentsin Residence can contact their front desk\. Please note that you must quote your building's full street address \(not UBC building name\) in order to be recognized as one of Rogers' serviceable areas\. More information can also be found in the [Frequently Asked Questions](https://it.ubc.ca/node/2623) section\.
+
+## Learn More
+
+-   [Cable TV FAQs](https://it.ubc.ca/services/email-voice-internet/ubcshaw-cable-tv/cable-tv-faqs ""Cable TV FAQs"")
+
+## Get Help
+
+-   Rogers Customer Support: 1\-844\-235\-7429
+-   If you are a student resident and Shaw Support has indicated you must contact UBC IT Cable TV Support, please contact the Front Desk of your Residence
+-   If you are a faculty/staff member and Shaw Support has indicated you must contact UBC IT Cable TV Support, please contact your department IT administrator
+
+Page last updated on April 1, 2025",eda3e1fa6892e1259c0b991531f48bffa523f406f330ce60e33ffc81b9ff7e04,,undergraduate_and_shared,,2026-09-11T05:17:03.220Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:adea47ab-4a85-49e2-b2b7-5ccef9ba2350""}]","[{""text"": ""Frequently Asked Questions"", ""url"": ""https://it.ubc.ca/node/2623""}, {""text"": ""Cable TV FAQs"", ""url"": ""https://it.ubc.ca/services/email-voice-internet/ubcshaw-cable-tv/cable-tv-faqs""}]",[],prose/it-services/markdown/881eac8c807cf2c2c85e49bd78b2867a381c6babea23f991b265381bfbf11ee9.md
+prose:it-services:it:bd0178ea-7f5d-47bb-bd6a-e918a1f7776a,prose,it-services,it-services,https://it.ubc.ca/services/accounts-passwords/multi-factor-authentication-mfa/secure-profile-recovery,https://it.ubc.ca/jsonapi/node/service/bd0178ea-7f5d-47bb-bd6a-e918a1f7776a,it:bd0178ea-7f5d-47bb-bd6a-e918a1f7776a,Self-service Multi-factor Authentication (MFA) Access Recovery,"#### New Self\-Service Option to Recover MFA Access
+
+On August 27, 2025, UBC IT introduced a self\-service recovery option for MFA access through the existing [MFA Device Management Portal](https://mfadevices.id.ubc.ca/)\. This enables users to securely restore their MFA access if they’ve lost or replaced their phone, without contacting the IT Service Centre\.
+
+This change is in direct response to feedback from students, faculty, and staff who asked for quicker, more modern ways to resolve urgent access issues\. While IT Service Centre support will remain available, the self\-service option gives users more flexibility and control to get back online faster\.
+
+#### What’s changing?
+
+When users need to restore access to their MFA credentials \(for instance, if they’ve lost or replaced their phone\), they will now be able to do so without contacting the IT Service Centre for support with using the new [MFA Device Management Portal](https://mfadevices.id.ubc.ca/)\. The MFA Device Management Portal provides a secure and convenient alternative to restore access, and is a part of UBC IT’s ongoing efforts to:
+
+-   Allow users to manage their own account access when it’s convenient\.
+-   Modernize UBC’s digital services so they’re faster and easier to use\.
+-   Improve time to resolution
+
+Below is a preview of what the MFA self\-service recovery option looks like in the MFA Device Management Portal \(the *Recover my MFA profile* button will take users to the new self\-service recovery option for MFA access\):
+
+[Image](https://it.ubc.ca/sites/default/files/inline-images/image2_0.jpg)
+
+#### IT Service Centre Support Remains Available
+
+This change is designed to increase options for restoring access, not replace live support\. For those that prefer speaking to a live agent over a self\-serve option, the IT Service Centre will continue to support MFA access recovery via their phone line at 604\.822\.2008\.
+
+#### FAQs for the community
+
+### 1\. What is the MFA self\-service recovery option?
+
+The MFA self\-service recovery option enables UBC community members to securely regain access to their Multi\-Factor Authentication \(MFA\) credentials if their registered device is lost or replaced\. This initiative is designed to enhance convenience and expand self\-service options for recovering MFA access\.
+
+### 2\. Why is UBC IT introducing this new service?
+
+Currently, most MFA device recovery requests require a call to the IT Service Centre for manual support\. This can be time\-consuming and inconvenient, particularly for users who prefer to manage their accounts independently\.
+
+The MFA self\-service recovery option has been developed to:
+
+-   Enable faster, more convenient recovery of MFA access\.
+-   Modernize core IT services without compromising security\.
+
+### 3\. What verification methods are supported?
+
+Currently, the portal provides self\-recovery options for employees and students who still have access to their old phones or have set up a hardware token for their account\. Additionally, employees can recover their MFA account via SMS if they have lost access to their phone\.
+
+This functionality has been expanded to allow students to also recover their MFA account via SMS if they no longer have access to their old phone and have not set up a hardware token\. This enhancement enables students to restore access to their Duo account \(UBC’s current MFA provider\) without needing to contact IT Operations\.
+
+### 4\. Who can access the MFA Self\-Service Recovery Option?
+
+All UBC users with a Campus\-Wide Login \(CWL\) account may use the portal to self\-recover their MFA account\.
+
+### 5\. Will the IT Service Centre still be available for support?
+
+Yes\. The IT Service Centre will remain available for any user who prefers direct support or is unable to complete the self\-service process\. This change is intended to increase the options available to users, not to replace live support\.
+
+### 6\. When will the MFA Self\-Service Recovery Option be available?
+
+MFA self\-service recovery option using Duo SMS codes \(via mfadevices\.id\.ubc\.ca\) will launch on August 27, 2025\.
+
+Page last updated on August 28, 2025",931f23fc9c646aa811f0297dd2ef89b0d4f9241012e01a6299d221c81cd992b1,,undergraduate_and_shared,,2026-09-11T05:17:03.709Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:bd0178ea-7f5d-47bb-bd6a-e918a1f7776a""}]","[{""text"": ""MFA Device Management Portal"", ""url"": ""https://mfadevices.id.ubc.ca/""}, {""text"": ""Image"", ""url"": ""https://it.ubc.ca/sites/default/files/inline-images/image2_0.jpg""}]",[],prose/it-services/markdown/d780e3791c7592f7045aab7e708548235e2c2f12ea852fbaff46d54f48c25ae7.md
+prose:it-services:it:cce6587a-526a-4050-93d5-4bf8a1671b7c,prose,it-services,it-services,https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl,https://it.ubc.ca/jsonapi/node/service/cce6587a-526a-4050-93d5-4bf8a1671b7c,it:cce6587a-526a-4050-93d5-4bf8a1671b7c,Campus-Wide Login (CWL),"The Campus Wide Login \(CWL\) system provides access to many of the University's online systems, such as the Student Workday and Canvas\.
+
+This is the most important login account for Students, Staff, Faculty, Alumni, Guests, Extended Learners, and others accessing UBC resources\.
+
+## Features and Benefits
+
+-   Available 24/7
+-   [Description](https://it.ubc.ca/node/999)
+
+## Requirements and Eligibility
+
+-   Create a CWL Account
+    -   For a step\-by\-step guide, please refer to our [how\-to create an account page](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/how-create-account ""How to Create an Account"")\.
+-   [Add multi\-factor authentication \(MFA\) protection](https://mfadevices.id.ubc.ca/) to your account
+    -   For more information about MFA, visit [it\.ubc\.ca/mfa](https://it.ubc.ca/mfa)
+-   [Sponsor a Guest](https://access.ubc.ca/)
+    -   For a step\-by\-step guide, please refer to our [How\-to Sponsor a Guest page](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/how-sponsor-guest ""How to Sponsor a Guest"")\.
+-   To manage your account and services, please go to [myAccount](https://www.myaccount.ubc.ca/myAccount/)
+-   Administrators, [manage integration requests here](http://web.it.ubc.ca/forms/iam/)
+
+## Learn More
+
+#### Additional Information
+
+-   [About CWL](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/about-cwl ""About CWL"")
+-   [Campus\-Wide Login FAQ](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/campus-wide-login-faqs ""Campus-Wide Login FAQs"")
+-   [Glossary](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/glossary ""Glossary"")
+-   [Terms of Service](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/campus-wide-login-cwl-account-terms-service ""Campus-Wide Login (CWL) Account Terms of Service"")
+-   [Privacy Policy](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/privacy-policy ""Privacy Policy"")
+-   [Tutorials](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/cwl-tutorials ""CWL Tutorials"")
+
+#### Getting Started
+
+-   Create a CWL Account
+    -   For a step\-by\-step guide, please refer to our [how\-to create an account page](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/how-create-account ""How to Create an Account"")\.
+-   [Add multi\-factor authentication \(MFA\) protection](https://mfadevices.id.ubc.ca/) to your account
+    -   For more information about MFA, visit [it\.ubc\.ca/mfa](https://it.ubc.ca/mfa)
+-   [Sponsor a Guest](https://access.ubc.ca/)
+    -   For a step\-by\-step guide, please refer to our [how\-to sponsor a guest page](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/how-sponsor-guest ""How to Sponsor a Guest"")\.
+-   To manage your account and services, please go to [myAccount](https://www.myaccount.ubc.ca/myAccount/)
+-   Administrators, [manage integration requests here](http://web.it.ubc.ca/forms/iam/)
+
+## Get Help
+
+If you have trouble with your Campus Wide Login account:
+
+-   [Problems with your CWL?](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/problems-your-cwl ""Problems With Your CWL?"")
+-   Support available 24/7
+-   Contact the [IT Service Centre](https://it.ubc.ca/got-question-about-it-products-and-support ""Got a Question About IT Products and Support?"")
+-   [Browser Help](https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/browser-help ""Browser Help"")
+
+### **Knowledge Base Help**
+
+### Knowledge Base
+
+1.  #### CWL: How do I reset my CWL account password?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0010282)
+    
+2.  #### UBC Campus\-Wide Login \(CWL\) Account Creation for Workday Access
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017221)
+    
+3.  #### How will I be affected when I use CWL to log in to UBC services and applications?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018745)
+    
+4.  #### CWL: Error Using Accents/Diacritics in CWL Names
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018561)
+    
+5.  #### CWL: Smart Punctuation Issue
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019091)
+    
+6.  #### How do I troubleshoot computer login not updating to new CWL password?
+    
+    [Source link](https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018338)
+    
+
+Page last updated on July 2, 2025",b11cb6d3876cd23e150039c704244df862433b526b9d7b9b5b02b92b542633d1,,undergraduate_and_shared,,2026-09-11T05:17:04.236Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:cce6587a-526a-4050-93d5-4bf8a1671b7c""}]","[{""text"": ""Description"", ""url"": ""https://it.ubc.ca/node/999""}, {""text"": ""how-to create an account page"", ""url"": ""https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/how-create-account""}, {""text"": ""Add multi-factor authentication (MFA) protection"", ""url"": ""https://mfadevices.id.ubc.ca/""}, {""text"": ""it.ubc.ca/mfa"", ""url"": ""https://it.ubc.ca/mfa""}, {""text"": ""Sponsor a Guest"", ""url"": ""https://access.ubc.ca/""}, {""text"": ""How-to Sponsor a Guest page"", ""url"": ""https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/how-sponsor-guest""}, {""text"": ""myAccount"", ""url"": ""https://www.myaccount.ubc.ca/myAccount/""}, {""text"": ""manage integration requests here"", ""url"": ""http://web.it.ubc.ca/forms/iam/""}, {""text"": ""About CWL"", ""url"": ""https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/about-cwl""}, {""text"": ""Campus-Wide Login FAQ"", ""url"": ""https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/campus-wide-login-faqs""}, {""text"": ""Glossary"", ""url"": ""https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/glossary""}, {""text"": ""Terms of Service"", ""url"": ""https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/campus-wide-login-cwl-account-terms-service""}, {""text"": ""Privacy Policy"", ""url"": ""https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/privacy-policy""}, {""text"": ""Tutorials"", ""url"": ""https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/cwl-tutorials""}, {""text"": ""how-to sponsor a guest page"", ""url"": ""https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/how-sponsor-guest""}, {""text"": ""Problems with your CWL?"", ""url"": ""https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/problems-your-cwl""}, {""text"": ""IT Service Centre"", ""url"": ""https://it.ubc.ca/got-question-about-it-products-and-support""}, {""text"": ""Browser Help"", ""url"": ""https://it.ubc.ca/services/accounts-passwords/campus-wide-login-cwl/browser-help""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0010282""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0017221""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018745""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018561""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0019091""}, {""text"": ""Source link"", ""url"": ""https://ubc.service-now.com/kb_view.do?sysparm_article=KB0018338""}]","[""A link wrapping block content is shown as a separate source link.""]",prose/it-services/markdown/f0b5436ff39147a0f4f58f865252909d8ba5dd56c3c70f0b301c3908da365772.md
+prose:it-services:it:ee7f0515-6a04-4037-8031-f9696ec2e3a5,prose,it-services,it-services,https://it.ubc.ca/services/audio-visual-creative-services/digital-media-consultation,https://it.ubc.ca/jsonapi/node/service/ee7f0515-6a04-4037-8031-f9696ec2e3a5,it:ee7f0515-6a04-4037-8031-f9696ec2e3a5,Digital Media Consultation,"Initial consultation for digital media projects are available at no cost through [UBC Studios](https://ubcstudios.ubc.ca/)\. During your professional media consultation, UBC Studios staff can assist with:
+
+-   Defining requirements
+-   Providing guidance for grant funding
+-   Scoping and budgeting
+-   Making stylistic recommendations
+
+Learn about options available to you and decide whether a professional or do\-it\-yourself approach makes the most sense for your digital media project\.
+
+## Features and Benefits
+
+UBC Studios can assist you in applying for educational or research grants by offering cost estimates for the digital media aspect for your proposal\. Experienced staff can help you avoid pitfalls that might otherwise be overlooked\.
+
+-   Learn what options are available including new technologies and innovative ideas
+-   Decide on the best approach for you project \- Do\-It\-Yourself \(DIY\) vs\. Professional
+
+## Price
+
+Media consultations are free for UBC faculty and staff members creating UBC content\.
+
+## Learn More
+
+#### Getting Started
+
+Please contact UBC Studios directly:  
+Tel: 604 822 9800  
+Email: [ubc\.studios@ubc\.ca](mailto:ubc.studios@ubc.ca)
+
+## Get Help
+
+UBC Studios is open during business hours\.
+
+0110 \- 2329 West Mall \(at Agronomy\)  
+Vancouver BC V6T 1Z4  
+Tel: 604 822 9800  
+Email: [ubc\.studios@ubc\.ca](mailto:ubc.studios@ubc.ca)
+
+[https://goo\.gl/maps/84jVtczgr1P2](https://goo.gl/maps/84jVtczgr1P2)[Image](https://it.ubc.ca/sites/default/files/inline-images/map_ubcstudios.gif)
+
+[Directions →](https://goo.gl/maps/84jVtczgr1P2)
+
+Page last updated on July 29, 2026",5cebb6fc52587bd4158be7db955d6c6aff563a8249707071553487567386455d,,undergraduate_and_shared,,2026-09-11T05:17:04.800Z,"[{""path"": ""student-support/it_services.json"", ""id"": ""it:ee7f0515-6a04-4037-8031-f9696ec2e3a5""}]","[{""text"": ""UBC Studios"", ""url"": ""https://ubcstudios.ubc.ca/""}, {""text"": ""ubc.studios@ubc.ca"", ""url"": ""mailto:ubc.studios@ubc.ca""}, {""text"": ""https://goo.gl/maps/84jVtczgr1P2"", ""url"": ""https://goo.gl/maps/84jVtczgr1P2""}, {""text"": ""Image"", ""url"": ""https://it.ubc.ca/sites/default/files/inline-images/map_ubcstudios.gif""}, {""text"": ""Directions →"", ""url"": ""https://goo.gl/maps/84jVtczgr1P2""}]",[],prose/it-services/markdown/403f6c33c5a1999f3f1962e4efdfe1fadd3d2feb544354bf76f023094b47ab74.md

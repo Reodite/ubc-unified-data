@@ -1,0 +1,237 @@
+[
+  {
+    "id": "wellbeing:1f942fc0-627c-4752-abc1-f6343e80db69",
+    "source_id": "wellbeing",
+    "source_url": "https://wellbeing.ubc.ca/move-ubc-classroom-stretching-video",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/node/resources/1f942fc0-627c-4752-abc1-f6343e80db69",
+    "campus": "vancouver",
+    "title": "Move UBC Classroom Stretching Video",
+    "source_modified_at": "2017-12-08T18:33:48+00:00",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "upstream_id": "1f942fc0-627c-4752-abc1-f6343e80db69",
+    "related": {
+      "resource_audience_category": [
+        "a0f2e209-1fbf-44f2-aae4-fdd93c9bb35b"
+      ],
+      "resource_campus": [
+        "1863a800-85c0-420e-b909-5d2e6e7f911d"
+      ],
+      "resource_category": [
+        "62acd74e-1bf5-48aa-a831-8126b2980d66"
+      ],
+      "resource_student_pop": [
+        "4eb41171-7234-49af-99d7-df1b48690ef7",
+        "3a82007e-2d00-41ec-bbaa-ed470abb35bf"
+      ],
+      "resourse_educational_strat": [
+        "07d985f4-cf8c-48a8-a188-3b490b1fc652"
+      ]
+    },
+    "unavailable_relationships": [],
+    "campus_labels": [
+      "Vancouver Campus"
+    ],
+    "audiences": [
+      "Students"
+    ],
+    "student_populations": [
+      "Graduate Students",
+      "Undergraduate Students"
+    ],
+    "categories": [
+      "Tools"
+    ],
+    "record_sha256": "f6ec5e4cc0948c05ab808580272125ad88a7822f898b6d2b25b7bf579fed1dcf"
+  },
+  {
+    "id": "wellbeing:5a119b52-bea6-42b6-b1c1-8016fa63050e",
+    "source_id": "wellbeing",
+    "source_url": "https://wellbeing.ubc.ca/suicide-awareness-intervention-training-sait",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/node/resources/5a119b52-bea6-42b6-b1c1-8016fa63050e",
+    "campus": null,
+    "title": "Suicide Awareness & Intervention Training (SAIT)",
+    "source_modified_at": "2024-05-01T22:28:02+00:00",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "upstream_id": "5a119b52-bea6-42b6-b1c1-8016fa63050e",
+    "related": {
+      "resource_audience_category": [
+        "missing",
+        "7d55f69b-a4c9-44ba-a439-34121ffb86ee",
+        "missing",
+        "2a5dcce3-34fb-46c7-950c-cb1451480e6d",
+        "a0f2e209-1fbf-44f2-aae4-fdd93c9bb35b"
+      ],
+      "resource_campus": [
+        "c078f574-ee5a-4a2c-b463-eb0ff336ed46",
+        "1863a800-85c0-420e-b909-5d2e6e7f911d",
+        "456b70ba-ea03-44a2-afef-9a5734bc1ff2"
+      ],
+      "resource_category": [
+        "2cf5a55e-845c-4909-b911-c6a1583b1d4a"
+      ],
+      "resource_student_pop": [
+        "4eb41171-7234-49af-99d7-df1b48690ef7",
+        "3a82007e-2d00-41ec-bbaa-ed470abb35bf"
+      ],
+      "resourse_educational_strat": [
+        "07d985f4-cf8c-48a8-a188-3b490b1fc652"
+      ]
+    },
+    "unavailable_relationships": [
+      "resource_audience_category"
+    ],
+    "campus_labels": [
+      "Okanagan Campus",
+      "Vancouver Campus",
+      "Virtual"
+    ],
+    "audiences": [
+      "Faculty",
+      "Staff",
+      "Students"
+    ],
+    "student_populations": [
+      "Graduate Students",
+      "Undergraduate Students"
+    ],
+    "categories": [
+      "Workshops"
+    ],
+    "record_sha256": "5c10a2823542e3fc741e1d2c5912c148d3c381559bb88a48ce902b5cbaa9a162"
+  },
+  {
+    "id": "wellbeing:7d9fe76e-82b7-4b6b-82af-ec66e7a4d4a3",
+    "source_id": "wellbeing",
+    "source_url": "https://wellbeing.ubc.ca/wellness-workshops-students",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/node/resources/7d9fe76e-82b7-4b6b-82af-ec66e7a4d4a3",
+    "campus": "vancouver",
+    "title": "Wellness Workshops for Students",
+    "source_modified_at": "2024-05-01T22:28:02+00:00",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "upstream_id": "7d9fe76e-82b7-4b6b-82af-ec66e7a4d4a3",
+    "related": {
+      "resource_audience_category": [
+        "a0f2e209-1fbf-44f2-aae4-fdd93c9bb35b"
+      ],
+      "resource_campus": [
+        "1863a800-85c0-420e-b909-5d2e6e7f911d"
+      ],
+      "resource_category": [
+        "2cf5a55e-845c-4909-b911-c6a1583b1d4a"
+      ],
+      "resource_student_pop": [
+        "4eb41171-7234-49af-99d7-df1b48690ef7",
+        "3a82007e-2d00-41ec-bbaa-ed470abb35bf"
+      ],
+      "resourse_educational_strat": [
+        "cec27951-a5d6-4122-b69d-17d2c7292f83",
+        "07d985f4-cf8c-48a8-a188-3b490b1fc652"
+      ]
+    },
+    "unavailable_relationships": [],
+    "campus_labels": [
+      "Vancouver Campus"
+    ],
+    "audiences": [
+      "Students"
+    ],
+    "student_populations": [
+      "Graduate Students",
+      "Undergraduate Students"
+    ],
+    "categories": [
+      "Workshops"
+    ],
+    "record_sha256": "a963dabdbf6894abdc253b16173b6bbf48250eda9a1db39cc862157c898ae30d"
+  },
+  {
+    "id": "wellbeing:7f15668b-0817-4e40-8cec-50afa55b2a67",
+    "source_id": "wellbeing",
+    "source_url": "https://wellbeing.ubc.ca/nurs-180-stress-and-strategies-promote-wellbeing",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/node/resources/7f15668b-0817-4e40-8cec-50afa55b2a67",
+    "campus": "vancouver",
+    "title": "NURS 180 Stress and Strategies to Promote Wellbeing",
+    "source_modified_at": "2025-03-19T21:16:29+00:00",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "upstream_id": "7f15668b-0817-4e40-8cec-50afa55b2a67",
+    "related": {
+      "resource_audience_category": [
+        "a0f2e209-1fbf-44f2-aae4-fdd93c9bb35b"
+      ],
+      "resource_campus": [
+        "1863a800-85c0-420e-b909-5d2e6e7f911d"
+      ],
+      "resource_category": [
+        "62acd74e-1bf5-48aa-a831-8126b2980d66"
+      ],
+      "resource_student_pop": [
+        "3a82007e-2d00-41ec-bbaa-ed470abb35bf"
+      ],
+      "resourse_educational_strat": [
+        "cec27951-a5d6-4122-b69d-17d2c7292f83",
+        "6eb7ad5b-e9a0-47db-8ebf-59fd42a2fe18",
+        "07d985f4-cf8c-48a8-a188-3b490b1fc652"
+      ]
+    },
+    "unavailable_relationships": [],
+    "campus_labels": [
+      "Vancouver Campus"
+    ],
+    "audiences": [
+      "Students"
+    ],
+    "student_populations": [
+      "Undergraduate Students"
+    ],
+    "categories": [
+      "Tools"
+    ],
+    "record_sha256": "de27d4439476da890c7dd0b4e3ec514bf088f533061aff434bd588d4b6e83db9"
+  },
+  {
+    "id": "wellbeing:c9fde04f-9102-473e-b8e2-fd32f50b88ef",
+    "source_id": "wellbeing",
+    "source_url": "https://wellbeing.ubc.ca/wellness-workshops-student-leaders",
+    "api_url": "https://wellbeing.ubc.ca/jsonapi/node/resources/c9fde04f-9102-473e-b8e2-fd32f50b88ef",
+    "campus": "vancouver",
+    "title": "Wellness Workshops for Student Leaders",
+    "source_modified_at": "2024-05-01T22:28:02+00:00",
+    "retrieved_at": "2026-09-10T23:21:54Z",
+    "upstream_id": "c9fde04f-9102-473e-b8e2-fd32f50b88ef",
+    "related": {
+      "resource_audience_category": [
+        "a0f2e209-1fbf-44f2-aae4-fdd93c9bb35b"
+      ],
+      "resource_campus": [
+        "1863a800-85c0-420e-b909-5d2e6e7f911d"
+      ],
+      "resource_category": [
+        "2cf5a55e-845c-4909-b911-c6a1583b1d4a"
+      ],
+      "resource_student_pop": [
+        "4eb41171-7234-49af-99d7-df1b48690ef7",
+        "3a82007e-2d00-41ec-bbaa-ed470abb35bf"
+      ],
+      "resourse_educational_strat": [
+        "cec27951-a5d6-4122-b69d-17d2c7292f83",
+        "6eb7ad5b-e9a0-47db-8ebf-59fd42a2fe18",
+        "07d985f4-cf8c-48a8-a188-3b490b1fc652"
+      ]
+    },
+    "unavailable_relationships": [],
+    "campus_labels": [
+      "Vancouver Campus"
+    ],
+    "audiences": [
+      "Students"
+    ],
+    "student_populations": [
+      "Graduate Students",
+      "Undergraduate Students"
+    ],
+    "categories": [
+      "Workshops"
+    ],
+    "record_sha256": "bf4cd9b1502f2799f69a9479cf5cb97e5907b4724f3228af165ea95eccb91e10"
+  }
+]

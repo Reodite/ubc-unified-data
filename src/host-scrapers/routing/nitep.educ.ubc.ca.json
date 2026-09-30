@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "hostname": "nitep.educ.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w2 first homepage review",
+    "rationale": "Official UBC Faculty of Education Indigenous Teacher Education Program provides public program, application and field-centre information, explicitly including UBC Vancouver and a provincial and national educational mandate.",
+    "evidence": [
+      "https://nitep.educ.ubc.ca/ | e2946f899e330c4948cfb2ea6ff8c0a14d3a070cbe270c720a82321214359d2b | NITEP, the Indigenous Teacher Education Program in The Faculty of Education, is committed to increasing the number of Indigenous educators provincially and nationally.",
+      "https://nitep.educ.ubc.ca/ | e2946f899e330c4948cfb2ea6ff8c0a14d3a070cbe270c720a82321214359d2b | Apply to NITEP; Pathways to NITEP; Getting Started; Student Stories; Field Centres; UBC Vancouver; Prince Rupert; Chilliwack"
+    ]
+  },
+  "rules": [
+    {
+      "id": "student-stories",
+      "category": "stories",
+      "rationale": "The homepage explicitly identifies a Student Stories section for personal accounts of the program.",
+      "title_pattern": "^Student Stories(?:\\s|$)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "The host describes an Indigenous teacher education academic program, its application pathways and its field centres."
+  }
+}

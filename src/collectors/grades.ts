@@ -127,7 +127,7 @@ export function gradeRow(row: Record<string, string>): GradeRow | null {
     professor: row["Professor"] ?? "",
     enrolled: toInt(row["Reported"]),
     avg: toFloat(row["Avg"]),
-    // Upstream dropped the population standard deviation; always null.
+    // Upstream does not publish the population standard deviation; always null.
     std_dev: null,
     median: toFloat(row["Median"]) ?? null,
     percentile_25: toFloat(row["Percentile (25)"]) ?? null,
@@ -176,8 +176,8 @@ export const Grades = register(
 
       const fetchOne = async (path: string): Promise<[string, string]> => {
         const bytes = await http.getBytes(`https://raw.githubusercontent.com/${slug}/${sha}/${path}`);
-        // Upstream writes CRLF; the repo's .gitattributes keeps every data
-        // file LF, so normalize before both the raw mirror and the parse.
+        // This raw mirror uses LF, so normalize upstream CRLF before both
+        // writing the file and parsing its rows.
         return [path, new TextDecoder("utf-8", { fatal: false }).decode(bytes).replaceAll("\r\n", "\n")];
       };
 

@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "hostname": "span221.arts.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "owner d1b9f3c0 / correction7d8d831e; worker w3 first homepage review",
+    "rationale": "The official UBC Arts SPAN 221 course homepage introduces Hispanic literature and literary analysis, with public course articles, critical editions, questions, and author conversations. This is an institutional course resource rather than an individual student or personal page, and the homepage states no exclusively Okanagan scope.",
+    "evidence": [
+      "https://span221.arts.ubc.ca/ | 260eb65b4cd5dc258f49f97baa3d8eddaf6810442d7ff07b5eadce73182a27ad | SPAN 221 Introduction to Hispanic Literature",
+      "https://span221.arts.ubc.ca/ | 260eb65b4cd5dc258f49f97baa3d8eddaf6810442d7ff07b5eadce73182a27ad | Major texts, authors, periods, and genres of Hispanic literature; key concepts, terminology, and practices of literary analysis that serve as a foundation for higher-level Spanish literature courses.",
+      "https://span221.arts.ubc.ca/ | 260eb65b4cd5dc258f49f97baa3d8eddaf6810442d7ff07b5eadce73182a27ad | Conversación: Rosario Castellanos; Ediciones críticas 2023; La isla desierta; Conversación: Nancy Morejón; Ediciones críticas 2021; Castellanos: Preguntas"
+    ]
+  },
+  "rules": [
+    {
+      "id": "literary-course-materials",
+      "category": "academics",
+      "rationale": "The featured course content includes author conversations, critical editions, a literary work, and study questions rather than institutional news or personal stories.",
+      "title_pattern": "^(?:Conversación:|Ediciones críticas|La isla desierta|Castellanos: Preguntas)"
+    }
+  ],
+  "fallback": {
+    "id": "host-purpose",
+    "category": "academics",
+    "rationale": "SPAN 221 Hispanic literature course materials and literary-analysis instruction."
+  }
+}

@@ -12,9 +12,9 @@
  *   added or retired by UBC is picked up rather than hard-coded.
  * - **Rooms** come from the `resources.push({...})` literals the page inlines for
  *   whichever group it is showing. That list is paginated and group-scoped, so it
- *   is *not* complete -- Koerner publishes 4 of its 8 rooms that way. The
- *   availability grid is what actually enumerates a location, and any room it
- *   returns that the page did not describe is filled in from `/space/<eid>`.
+ *   can omit rooms at a location. The availability grid enumerates the location;
+ *   any room it returns that the page does not describe is filled in from
+ *   `/space/<eid>`.
  * - **Availability** comes from `POST /spaces/availability/grid`, which returns
  *   15-minute slots. `itemId` on a slot is the `eid` of a room; those are the same
  *   identifier despite the different names, which is what lets the two join.
@@ -27,11 +27,10 @@
  *   default matters.
  * - **Intervals.** Consecutive slots in the same state are merged, because "free
  *   09:00-19:00" is the answerable form of forty consecutive quarter-hours. The
- *   raw grid is not written: at 22k rows a run it is thirty-odd times the size and
- *   says nothing the merged form does not, since every slot is recoverable by
- *   subdividing the interval that covers it. What that does drop is each slot's
- *   `checksum`, which is a per-request booking token rather than an identifier and
- *   is meaningless the moment the request that issued it ends.
+ *   raw grid is not written because the merged form preserves the same availability:
+ *   every slot is recoverable by subdividing the interval that covers it. The
+ *   omitted `checksum` is a per-request booking token rather than an identifier
+ *   and is meaningless when the request that issued it ends.
  */
 
 import type { Http, Output } from "../base.ts";
@@ -175,7 +174,7 @@ export function stateFrom(className: string | null | undefined): string {
   return "unavailable";
 }
 
-/** `datetime.strptime(stamp, "%Y-%m-%d %H:%M:%S")` in UTC-agnostic local terms. */
+/** Parse `YYYY-MM-DD HH:MM:SS` as local time without a UTC offset; return null on failure. */
 function time(stamp: string): Date | null {
   const match = /^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})$/.exec(stamp);
   if (!match) return null;
@@ -185,7 +184,7 @@ function time(stamp: string): Date | null {
 }
 
 export function roomFromPage(page: string, eid: number): AnyJson {
-  /** Name and capacity for a room the browsable list left out. */
+  /** Name and capacity for a room absent from the browsable list. */
   const match = H1_RE.exec(page);
   const heading = unescapeHtml(match ? match[1]!.replace(/<[^>]+>/g, "") : "") || "";
   const lines = heading
@@ -446,7 +445,7 @@ export const Bookings = register(
       slots: Array<AnyJson>,
       found: Array<AnyJson>,
     ): Promise<void> {
-      /** Describe the rooms only the grid knew about, and label the slots. */
+      /** Describe rooms present only in the grid, and label the slots. */
       const byLid = new Map(found.map((location) => [String(location["lid"]), location]));
       const missing = [
         ...new Set(

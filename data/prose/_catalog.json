@@ -1,0 +1,207 @@
+{
+  "category": "prose",
+  "generated_at": "2026-09-11T07:58:16Z",
+  "how_to_read": "All prose lives below prose/<subcategory>/. Read articles.json (array), articles.csv (same rows) or each row's markdown_path. Structured source tables use separate groups. Check _coverage.json and _inventory.json before claiming completeness.",
+  "tables": [
+    {
+      "subcategory": "workday",
+      "title": "Workday student tutorials",
+      "status": "complete",
+      "records": 60,
+      "json": "prose/workday/articles.json",
+      "csv": "prose/workday/articles.csv",
+      "inventory": "prose/workday/_inventory.json",
+      "coverage": "prose/workday/_coverage.json"
+    },
+    {
+      "subcategory": "student-housing",
+      "title": "Vancouver student housing articles and guidance",
+      "status": "complete_with_unavailable",
+      "records": 216,
+      "json": "prose/student-housing/articles.json",
+      "csv": "prose/student-housing/articles.csv",
+      "inventory": "prose/student-housing/_inventory.json",
+      "coverage": "prose/student-housing/_coverage.json"
+    },
+    {
+      "subcategory": "learning-technology",
+      "title": "Learning Technology Hub student guides",
+      "status": "complete",
+      "records": 8,
+      "json": "prose/learning-technology/articles.json",
+      "csv": "prose/learning-technology/articles.csv",
+      "inventory": "prose/learning-technology/_inventory.json",
+      "coverage": "prose/learning-technology/_coverage.json"
+    },
+    {
+      "subcategory": "learning-commons",
+      "title": "Learning Commons articles and study guidance",
+      "status": "complete_with_unavailable",
+      "records": 454,
+      "json": "prose/learning-commons/articles.json",
+      "csv": "prose/learning-commons/articles.csv",
+      "inventory": "prose/learning-commons/_inventory.json",
+      "coverage": "prose/learning-commons/_coverage.json"
+    },
+    {
+      "subcategory": "academic-integrity",
+      "title": "Academic integrity student and shared guidance",
+      "status": "complete_with_unavailable",
+      "records": 51,
+      "json": "prose/academic-integrity/articles.json",
+      "csv": "prose/academic-integrity/articles.csv",
+      "inventory": "prose/academic-integrity/_inventory.json",
+      "coverage": "prose/academic-integrity/_coverage.json"
+    },
+    {
+      "subcategory": "arts-advising",
+      "title": "Arts undergraduate programs, advising and student support",
+      "status": "complete_with_unavailable",
+      "records": 1070,
+      "json": "prose/arts-advising/articles.json",
+      "csv": "prose/arts-advising/articles.csv",
+      "inventory": "prose/arts-advising/_inventory.json",
+      "coverage": "prose/arts-advising/_coverage.json"
+    },
+    {
+      "subcategory": "sauder-undergraduate",
+      "title": "myBCom undergraduate handbook and articles",
+      "status": "complete_with_unavailable",
+      "records": 560,
+      "json": "prose/sauder-undergraduate/articles.json",
+      "csv": "prose/sauder-undergraduate/articles.csv",
+      "inventory": "prose/sauder-undergraduate/_inventory.json",
+      "coverage": "prose/sauder-undergraduate/_coverage.json"
+    },
+    {
+      "subcategory": "science-advising",
+      "title": "Science undergraduate guidance and advising",
+      "status": "complete_with_unavailable",
+      "records": 1470,
+      "json": "prose/science-advising/articles.json",
+      "csv": "prose/science-advising/articles.csv",
+      "inventory": "prose/science-advising/_inventory.json",
+      "coverage": "prose/science-advising/_coverage.json"
+    },
+    {
+      "subcategory": "science-coop",
+      "title": "Science Co-op undergraduate guidance",
+      "status": "complete_with_unavailable",
+      "records": 145,
+      "json": "prose/science-coop/articles.json",
+      "csv": "prose/science-coop/articles.csv",
+      "inventory": "prose/science-coop/_inventory.json",
+      "coverage": "prose/science-coop/_coverage.json"
+    },
+    {
+      "subcategory": "go-global",
+      "title": "Go Global student programs and guidance",
+      "status": "complete_with_unavailable",
+      "records": 560,
+      "json": "prose/go-global/articles.json",
+      "csv": "prose/go-global/articles.csv",
+      "inventory": "prose/go-global/_inventory.json",
+      "coverage": "prose/go-global/_coverage.json"
+    },
+    {
+      "subcategory": "library",
+      "title": "Library Ask Us questions and answers",
+      "status": "complete",
+      "records": 45,
+      "json": "prose/library/articles.json",
+      "csv": "prose/library/articles.csv",
+      "inventory": "prose/library/_inventory.json",
+      "coverage": "prose/library/_coverage.json"
+    },
+    {
+      "subcategory": "academic-calendar",
+      "title": "Vancouver Calendar undergraduate and shared prose",
+      "status": "complete",
+      "records": 1000,
+      "json": "prose/academic-calendar/articles.json",
+      "csv": "prose/academic-calendar/articles.csv",
+      "inventory": "prose/academic-calendar/_inventory.json",
+      "coverage": "prose/academic-calendar/_coverage.json"
+    },
+    {
+      "subcategory": "admissions",
+      "title": "Undergraduate admissions guidance",
+      "status": "complete_with_unavailable",
+      "records": 120,
+      "json": "prose/admissions/articles.json",
+      "csv": "prose/admissions/articles.csv",
+      "inventory": "prose/admissions/_inventory.json",
+      "coverage": "prose/admissions/_coverage.json"
+    },
+    {
+      "subcategory": "student-services",
+      "title": "Student Services guidance",
+      "status": "complete",
+      "records": 464,
+      "json": "prose/student-services/articles.json",
+      "csv": "prose/student-services/articles.csv",
+      "inventory": "prose/student-services/_inventory.json",
+      "coverage": "prose/student-services/_coverage.json"
+    },
+    {
+      "subcategory": "recreation",
+      "title": "Student and shared recreation guidance",
+      "status": "complete",
+      "records": 236,
+      "json": "prose/recreation/articles.json",
+      "csv": "prose/recreation/articles.csv",
+      "inventory": "prose/recreation/_inventory.json",
+      "coverage": "prose/recreation/_coverage.json"
+    },
+    {
+      "subcategory": "campus-facilities",
+      "title": "Shared campus facilities guidance",
+      "status": "complete",
+      "records": 219,
+      "json": "prose/campus-facilities/articles.json",
+      "csv": "prose/campus-facilities/articles.csv",
+      "inventory": "prose/campus-facilities/_inventory.json",
+      "coverage": "prose/campus-facilities/_coverage.json"
+    },
+    {
+      "subcategory": "student-finances",
+      "title": "Student-facing Finance guidance",
+      "status": "complete",
+      "records": 0,
+      "json": "prose/student-finances/articles.json",
+      "csv": null,
+      "inventory": "prose/student-finances/_inventory.json",
+      "coverage": "prose/student-finances/_coverage.json"
+    },
+    {
+      "subcategory": "it-services",
+      "title": "Student-facing IT service explanations",
+      "status": "complete",
+      "records": 19,
+      "json": "prose/it-services/articles.json",
+      "csv": "prose/it-services/articles.csv",
+      "inventory": "prose/it-services/_inventory.json",
+      "coverage": "prose/it-services/_coverage.json"
+    },
+    {
+      "subcategory": "wellbeing",
+      "title": "Undergraduate and shared Wellbeing resources",
+      "status": "complete",
+      "records": 5,
+      "json": "prose/wellbeing/articles.json",
+      "csv": "prose/wellbeing/articles.csv",
+      "inventory": "prose/wellbeing/_inventory.json",
+      "coverage": "prose/wellbeing/_coverage.json"
+    },
+    {
+      "subcategory": "policies",
+      "title": "Undergraduate-relevant policy explanatory notes",
+      "status": "complete",
+      "records": 17,
+      "json": "prose/policies/articles.json",
+      "csv": "prose/policies/articles.csv",
+      "inventory": "prose/policies/_inventory.json",
+      "coverage": "prose/policies/_coverage.json"
+    }
+  ]
+}
