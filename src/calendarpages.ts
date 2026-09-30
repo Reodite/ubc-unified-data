@@ -139,7 +139,10 @@ function degree(alias: string, title: string): [boolean, string] {
   const prefixHit = DEGREE_SLUG_PREFIXES.some((prefix) => slugText.startsWith(prefix));
   const suffixLevel = DEGREE_SLUG_SUFFIXES_BY_LEVEL.find(([suffix]) => slugText.endsWith(suffix))?.[1];
   if (!prefixHit && suffixLevel === undefined) return [false, ""];
-  if (!title || (!DEGREE_TITLE_RE.test(title) && !TRAILING_ABBREV_RE.test(title) && !DEGREE_PROGRAM_TITLE_RE.test(title)))
+  if (
+    !title ||
+    (!DEGREE_TITLE_RE.test(title) && !TRAILING_ABBREV_RE.test(title) && !DEGREE_PROGRAM_TITLE_RE.test(title))
+  )
     return [false, ""];
   for (const [pattern, level] of LEVEL_RULES) {
     if (pattern.test(title)) return [true, level];
