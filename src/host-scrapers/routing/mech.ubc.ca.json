@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "hostname": "mech.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "Owner requests complete public article collection; retain the original Mechanical Engineering homepage, research and academic scope, and exact-host access limits.",
+    "rationale": "UBC Mechanical Engineering presents undergraduate and graduate programs, mechanical research, facilities, student services, public news and events.",
+    "evidence": [
+      "Retained homepage 620097ae32b19f7a07dab829f77af4702d880e272035eb7d03772d4bf39a2114 has title UBC Mechanical Engineering.",
+      "Its navigation lists Undergraduate, Graduate, Curriculum and Options, Research, Applied Solid Mechanics, Research Centres and Facilities, Faculty and Staff, Student Resources and Services, and News + Events.",
+      "Official Mechanical Engineering department explains degree programmes, research, advising and student funding resources."
+    ]
+  },
+  "rules": [
+    {
+      "id": "mech-research",
+      "category": "research",
+      "rationale": "Explicit research and research-facility paths describe mechanical engineering research.",
+      "path_pattern": "^/(?:research|research-centres-and-facilities)(?:/|$)"
+    },
+    {
+      "id": "mech-news",
+      "category": "news",
+      "rationale": "Explicit news and announcement paths report current department activity.",
+      "path_pattern": "^/(?:news|news-and-events|category/news)(?:/|$)"
+    },
+    {
+      "id": "mech-opportunities",
+      "category": "opportunities",
+      "rationale": "Explicit career and research opportunities invite participation.",
+      "path_pattern": "^/(?:careers|research-opportunities|awards-and-funding)(?:/|$)"
+    },
+    {
+      "id": "mech-support",
+      "category": "support",
+      "rationale": "Explicit student service and safety paths provide practical departmental guidance.",
+      "path_pattern": "^/(?:student-resources-and-services|mech-safety|technical-services)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "mech-academics",
+    "category": "academics",
+    "rationale": "The department chiefly provides mechanical engineering program, research and student information."
+  }
+}

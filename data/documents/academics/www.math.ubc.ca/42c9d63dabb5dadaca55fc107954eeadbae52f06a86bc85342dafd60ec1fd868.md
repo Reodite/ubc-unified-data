@@ -1,0 +1,75 @@
+---
+{
+  "format_version": 3,
+  "id": "documents:official-web:f837cfa197d81399140cba73",
+  "hostname": "www.math.ubc.ca",
+  "title": "Differential geometry",
+  "source_url": "https://www.math.ubc.ca/topic/differential-geometry?page=64",
+  "retrieved_at": "2026-09-24T10:14:06.304Z",
+  "source_modified_at": null,
+  "snapshot_sha256": "a4295fe2b21ee180a81a8a2bada019f0d1ca3e3377ef0dfc909a0c6426891807",
+  "input_sha256": "4d5538160fa380172fe21470b21a77d0c0844a99550e84c3a8c558c91402edac",
+  "body_sha256": "f5d46b1447f7ed5e2845d9a50327d929c98b1a86693f68962cd7c832d1519b42",
+  "content_sha256": "b4f9b11a1f2926d93a8930c21200df34c56a1237896fdeb53f415c4471269dc7",
+  "warnings": [],
+  "alternate_urls": [],
+  "producer": {
+    "inputs_sha256": "00942444ca36a9f98b99a4eab11c57ee9fbf8de6e28dac776565445128e342b6",
+    "runtime": {
+      "node": "26.8.1",
+      "icu": "78.3",
+      "unicode": "17.0",
+      "platform": "linux",
+      "arch": "x64"
+    }
+  },
+  "category": "academics",
+  "routing": {
+    "rule_id": "academic-department",
+    "policy_sha256": "e283d883dcde0c0937c059c8e94b4ca4ec2c8b8129d5a9b1d431a686d1b18ff4"
+  }
+}
+---
+Speaker: 
+
+Severin Schraven
+
+Speaker Affiliation: 
+
+UBC
+
+March 15, 2022
+
+TBA
+
+Vancouver, BC V6T 1Z2
+
+Canada
+
+[View All Events](https://www.math.ubc.ca/news-events/seminars-and-colloquia)
+
+Abstract: 
+
+We study the spectrum of the family of Hamiltonian
+
+$H\_N \= \\sum\_\{j\=1\}^N \\left\[ \-\\Delta\_\{x\_j\} \+ V\_\\text\{ext\}\(x\_j\) \\right\] \+ \\sum\_\{1\\leq i&lt;j \\leq N\} N^2 V\(N\(x\_i\-x\_j\)\)$,
+
+where $H\_N$ acts on $L^2\(\\mathbb\{R\}^\{3N\}\)$\. This family of Hamiltonians models a gas of bosons confined by an external potential $ V\_\\text\{ext\}$\. These quantum\-mechanical systems are interesting
+
+as they exhibit a special state of matter, the so\-called Bose\-Einstein condensate\. In
+
+such Bose\-Einstein condensates almost all particles can be described by the same one\-
+
+particle wave function\. We will see how to make this notion mathematically precise and what the latest rigorous results are\.
+
+We show that in this regime low\-energy states exhibit complete Bose\-Einstein condensation with optimal rate of convergence\. Building upon this condensation result we determine the next order correction of the asymptotics of the ground state energy for large number of particles and also the low\-energy excitation spectrum\.
+
+Event Topic: 
+
+## [Differential geometry](https://www.math.ubc.ca/topic/differential-geometry)
+
+## [Mathematical Physics](https://www.math.ubc.ca/topic/mathematical-physics)
+
+## [Partial Differential Equations](https://www.math.ubc.ca/topic/partial-differential-equations)
+
+-   [Load more](https://www.math.ubc.ca/topic/differential-geometry?page=65)
