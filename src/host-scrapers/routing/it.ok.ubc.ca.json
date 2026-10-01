@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "hostname": "it.ok.ubc.ca",
+  "decision": {
+    "method": "model-assisted-first-classification",
+    "authority": "Owner continuation requests public exact-host HTML articles while preserving the failed saved PDF citation without retry.",
+    "rationale": "UBC Okanagan IT presents campus technology services, knowledge-base guidance, service access and public support updates.",
+    "evidence": [
+      "Retained homepage 53a68403f0c3d33e942859bfc9d038bf6233a2b20b3cbad0746e6fd60aa96f31 has title Home - Information Technology Okanagan.",
+      "Its retained navigation labels Services, Support, News & Updates, Knowledge Base, myVPN Setup, Printer Setup and Wi-Fi Access.",
+      "Official campus IT service homepage explains support access and offers public how-to knowledge articles"
+    ]
+  },
+  "rules": [
+    {
+      "id": "it-news-updates",
+      "category": "news",
+      "rationale": "Named news section publishes campus IT updates.",
+      "path_pattern": "^/(?:news|news-updates)(?:/|$)"
+    }
+  ],
+  "fallback": {
+    "id": "campus-it-support",
+    "category": "support",
+    "rationale": "Campus IT pages primarily provide public service guidance and technology support."
+  }
+}
