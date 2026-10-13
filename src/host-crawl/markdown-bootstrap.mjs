@@ -46,29 +46,36 @@ function hash(bytes) {
   return createHash("sha256").update(bytes).digest("hex");
 }
 
-function readBounded(path, cap) {
-  if (realpathSync(path) !== path) deny();
-  const fd = openSync(path, constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK);
-  try {
-    const before = fstatSync(fd, { bigint: true });
-    if (!before.isFile() || before.nlink !== 1n || before.size > BigInt(cap)) deny();
-    const bytes = Buffer.alloc(Number(before.size));
-    let offset = 0;
-    while (offset < bytes.length) {
-      const count = readSync(fd, bytes, offset, bytes.length - offset, offset);
-      if (!count) deny();
-      offset += count;
+/** Bind bounded reads to captured filesystem operations and one refusal policy. */
+export function createBoundedReader(operations) {
+  const { realpathSync, openSync, fstatSync, readSync, closeSync, deny } = operations;
+  const flags = operations.constants.O_RDONLY | operations.constants.O_NOFOLLOW | operations.constants.O_NONBLOCK;
+  return function readBounded(path, cap) {
+    if (realpathSync(path) !== path) deny();
+    const fd = openSync(path, flags);
+    try {
+      const before = fstatSync(fd, { bigint: true });
+      if (!before.isFile() || before.nlink !== 1n || before.size > BigInt(cap)) deny();
+      const bytes = Buffer.alloc(Number(before.size));
+      let offset = 0;
+      while (offset < bytes.length) {
+        const count = readSync(fd, bytes, offset, bytes.length - offset, offset);
+        if (!count) deny();
+        offset += count;
+      }
+      if (offset < cap && readSync(fd, Buffer.alloc(1), 0, 1, offset)) deny();
+      const after = fstatSync(fd, { bigint: true });
+      for (const field of ["dev", "ino", "mode", "nlink", "uid", "gid", "size", "mtimeNs", "ctimeNs"]) {
+        if (before[field] !== after[field]) deny();
+      }
+      return bytes;
+    } finally {
+      closeSync(fd);
     }
-    if (offset < cap && readSync(fd, Buffer.alloc(1), 0, 1, offset)) deny();
-    const after = fstatSync(fd, { bigint: true });
-    for (const field of ["dev", "ino", "mode", "nlink", "uid", "gid", "size", "mtimeNs", "ctimeNs"]) {
-      if (before[field] !== after[field]) deny();
-    }
-    return bytes;
-  } finally {
-    closeSync(fd);
-  }
+  };
 }
+
+const readBounded = createBoundedReader({ realpathSync, openSync, fstatSync, readSync, closeSync, constants, deny });
 
 function record(value, keys) {
   if (!value || typeof value !== "object" || Array.isArray(value)) deny();

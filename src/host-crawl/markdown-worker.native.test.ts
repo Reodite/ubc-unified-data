@@ -688,17 +688,27 @@ describe("fixed worker in exact-file sparse namespaces", () => {
   );
 
   it("verifies policy bytes before parsing them", async () => {
-    const f = await fixture("hash-before-parse");
-    const bootstrap = f.files
-      .get("/app/markdown-bootstrap.mjs")!
-      .toString()
-      .replace(
-        'const policy = JSON.parse(bytes.toString("utf8"));',
-        "process.stderr.write('POLICY_PARSED'); const policy = JSON.parse(bytes.toString(\"utf8\"));",
-      );
-    await replace(f, "/app/markdown-bootstrap.mjs", Buffer.from(bootstrap));
+    const sentinelWorker = `
+JSON.parse = () => {
+  process.stderr.write('POLICY_PARSED');
+  throw new Error('parse sentinel');
+};
+const { runMarkdownWorker } = await import('./markdown-bootstrap.mjs');
+await runMarkdownWorker();
+`;
+    const f = await fixture("hash-before-parse", { "/app/markdown-worker.mjs": sentinelWorker });
     await replace(f, "/app/markdown-guard-policy.json", Buffer.from("source-secret"));
     refused(await run(f, wire()));
+
+    const control = await run(
+      await fixture("matching-hash-reaches-parser", { "/app/markdown-worker.mjs": sentinelWorker }),
+      wire(),
+    );
+    expect(control.timeout).toBe(false);
+    expect(control.signal).toBeNull();
+    expect(control.code).toBe(1);
+    expect(control.stdout).toHaveLength(0);
+    expect(control.stderr).toBe(`POLICY_PARSED${refusal}`);
   });
 
   it.each(["/app/node_modules/mdurl/index.mjs", "/app/markdown-guard-policy.json"])(
@@ -803,14 +813,19 @@ describe("fixed worker in exact-file sparse namespaces", () => {
           : kind === "throw"
             ? "throw new Error('source-secret');"
             : "return result;";
-    const bootstrap = files
-      .get("/app/markdown-bootstrap.mjs")!
-      .toString()
-      .replace(
-        "    installGuard(policy);",
-        `    registerHooks({ load(url, context, next) { const result = next(url, context); if (url === 'file:///app/markdown-inspection.mjs') { ${intervention} } return result; } });\n    installGuard(policy);`,
-      );
-    const f = await fixture(`delegated-load-${kind}`, { "/app/markdown-bootstrap.mjs": bootstrap });
+    const competingHookWorker = `
+import { registerHooks } from 'node:module';
+registerHooks({
+  load(url, context, next) {
+    const result = next(url, context);
+    if (url === 'file:///app/markdown-inspection.mjs') { ${intervention} }
+    return result;
+  }
+});
+const { runMarkdownWorker } = await import('./markdown-bootstrap.mjs');
+await runMarkdownWorker();
+`;
+    const f = await fixture(`delegated-load-${kind}`, { "/app/markdown-worker.mjs": competingHookWorker });
     if (kind === "transparent") await accepted(f);
     else refused(await run(f, wire()));
   });
