@@ -1,94 +1,53 @@
-import { execFileSync } from "node:child_process";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { load } from "cheerio";
 import { ROOT } from "../core/output.ts";
-import { DOCUMENT_CATEGORIES } from "./categories.ts";
+import type { HostBatchConfig, ReadyHostV1 } from "./batch-model.ts";
+import { BatchPublisher } from "./batch-publication.ts";
 import {
   assertAdmittedHostname,
   formatRoutingPolicy,
-  loadRoutingPolicy,
-  loadSavedClassifications,
   parseRoutingPolicy,
-  routeCompletedHost,
-  saveFirstRoutingPolicy,
   type HostRoutingPolicy,
 } from "./category-routing.ts";
-import { assertSingleHostChange, type ChangedFile } from "./change-validation.ts";
-import type { CompletedHost, ProducerContext } from "./contracts.ts";
-import { digest, documentFilename, exactObject, sha256 } from "./document-format.ts";
+import { sha256 } from "./document-format.ts";
 import { cheapGuardCompletedHost, createGenericScraper } from "./generic.ts";
-import { lockGitPublication, saveGitPublication } from "./git-publication-lock.ts";
-import { verifyHistoricalReady } from "./historical-output.ts";
 import { currentUnavailableHosts } from "./host-dispositions.ts";
-import { assertCollectedInput, deriveCollectionInputDigest } from "./inputs.ts";
-import { withMarkdownCollectionRuntime } from "./markdown-collection-runtime.ts";
-import { assertExternalPath, DEFAULT_EXTERNAL_ROOT } from "./paths.ts";
-import { loadCachedPdfProfile } from "./pdf-profile-cache.ts";
+import { assertExternalPath } from "./paths.ts";
 import {
   isAbsent as absent,
   writeImmutable as immutable,
   readPrivateJson as json,
-  LARGE_PRIVATE_FILE,
   savePrivateJson as save,
 } from "./private-files.ts";
 import { assertSameProducer, captureProducer } from "./provenance.ts";
-import { hostDocumentRoots, readRegularFile } from "./public-validation.ts";
-import { publishCompletedHost } from "./publication.ts";
+import { verifyReadyHost } from "./ready-host.ts";
 import { collectRecordedSession, openRecordedHost } from "./recorded-host.ts";
-import type { AcquisitionBudgetGrant } from "./recording.ts";
-import { parseGenericHostnames, specializedHostnames } from "./registry.ts";
 import { normalizeHost } from "./urls.ts";
 import { HostWorkQueue, type HostWorkRecord } from "./work-queue.ts";
 
-const GENERIC_LIST = "src/host-scrapers/generic-hosts.json";
-const SPECIALIZED = specializedHostnames();
+export type { HostBatchConfig } from "./batch-model.ts";
+
 const TERMINAL = new Set(["published", "rejected", "blocked"]);
-export interface HostBatchConfig {
-  repositoryRoot: string;
-  producerRoot: string;
-  producer: ProducerContext;
-  baseline: string;
-  main: string;
-  bootstrapFiles: Record<string, string>;
-  recoverTransientFailures?: boolean;
-  acquisitionBudgetGrants?: Record<string, AcquisitionBudgetGrant>;
-  requireSavedRouting?: boolean;
-  historicalReady?: Record<
-    string,
-    { readySha256: string; producerRoot: string; producer: ProducerContext; pdfCacheDirectory?: string }
-  >;
-}
-interface ReadyHostBase {
-  hostname: string;
-  recording_seal: string;
-  seed_sha256: string;
-  pdf_profile_sha256: string | null;
-  completed: CompletedHost;
-}
-interface ReadyHostV1 extends ReadyHostBase {
-  version: 1;
-}
-interface ReadyHostV2 extends ReadyHostBase {
-  version: 2;
-  markdown_profile_sha256: string | null;
-}
-type ReadyHost = ReadyHostV1 | ReadyHostV2;
-interface GitReceipt {
-  hostname: string;
-  parent: string;
-  tree?: string;
-  commit?: string;
-  pushed?: boolean;
-}
 
 /** Collectors use an immutable source snapshot; the Git boundary alone is serialized. */
 export class HostBatch {
+  private readonly publisher: BatchPublisher;
+
   private constructor(
     readonly directory: string,
     readonly config: HostBatchConfig,
     readonly queue: HostWorkQueue,
-  ) {}
+  ) {
+    this.publisher = new BatchPublisher({
+      directory,
+      config,
+      queue,
+      owned: (hostname, token) => this.owned(hostname, token),
+      verifyReady: (row) =>
+        verifyReadyHost({ directory, config, openRecording: (hostname) => this.recording(hostname, false) }, row),
+    });
+  }
 
   static async open(directory: string): Promise<HostBatch> {
     directory = assertExternalPath(directory);
@@ -293,326 +252,7 @@ export class HostBatch {
       this.queue.update(hostname, token, "blocked", { failure: reason });
   }
 
-  private git(args: string[]): Buffer {
-    return execFileSync("git", ["--no-optional-locks", ...args], {
-      cwd: this.config.repositoryRoot,
-      maxBuffer: LARGE_PRIVATE_FILE,
-      timeout: 120000,
-    });
-  }
-
-  private async staged(tree: string, parent: string): Promise<ChangedFile[]> {
-    const fields = this.git(["diff", "--name-status", "--no-renames", "-z", parent, tree]).toString("utf8").split("\0");
-    fields.pop();
-    const files: ChangedFile[] = [];
-    for (let index = 0; index < fields.length; index += 2) {
-      const status = fields[index]!;
-      const path = fields[index + 1]!;
-      if (!["A", "M", "D"].includes(status)) throw new Error("Unsupported staged change");
-      const bytes = status === "D" ? null : this.git(["show", `${tree}:${path}`]);
-      if (bytes && !(await readRegularFile(join(this.config.repositoryRoot, path), LARGE_PRIVATE_FILE)).equals(bytes))
-        throw new Error(`Staged bytes differ: ${path}`);
-      files.push({
-        path,
-        bytes,
-        previousBytes: status === "A" ? null : this.git(["show", `${parent}:${path}`]),
-      });
-    }
-    return files;
-  }
-
-  private async verifyReady(row: HostWorkRecord): Promise<ReadyHost> {
-    const path = assertExternalPath(String(row.details.ready_path));
-    const bytes = await readRegularFile(path, LARGE_PRIVATE_FILE);
-    if (sha256(bytes) !== row.details.ready_sha256) throw new Error("Ready result bytes changed");
-    const value: unknown = JSON.parse(bytes.toString("utf8"));
-    if (!value || typeof value !== "object") throw new Error("Invalid ready result");
-    const version = Object.getOwnPropertyDescriptor(value, "version");
-    if (!version || !("value" in version) || ![1, 2].includes(version.value))
-      throw new Error("Invalid ready result version");
-    exactObject(
-      value,
-      version.value === 1
-        ? ["version", "hostname", "recording_seal", "seed_sha256", "pdf_profile_sha256", "completed"]
-        : [
-            "version",
-            "hostname",
-            "recording_seal",
-            "seed_sha256",
-            "pdf_profile_sha256",
-            "markdown_profile_sha256",
-            "completed",
-          ],
-      "ready result",
-    );
-    const ready = value as unknown as ReadyHost;
-    if (ready.hostname !== row.hostname) throw new Error("Invalid ready result owner");
-    digest(ready.recording_seal, "ready recording seal");
-    digest(ready.seed_sha256, "ready seed");
-    if (ready.pdf_profile_sha256 !== null) digest(ready.pdf_profile_sha256, "ready PDF profile");
-    const markdownProfileSha256 = ready.version === 2 ? ready.markdown_profile_sha256 : null;
-    if (markdownProfileSha256 !== null) digest(markdownProfileSha256, "ready Markdown profile");
-    exactObject(ready.completed, ["complete", "host", "documents"], "ready completed host");
-    if (JSON.stringify(cheapGuardCompletedHost(ready.completed)) !== JSON.stringify(ready.completed))
-      throw new Error("Ready output differs from guarded collection");
-    const historical = this.config.historicalReady?.[row.hostname];
-    if (historical) {
-      if (historical.readySha256 !== row.details.ready_sha256)
-        throw new Error("Historical ready authorization differs");
-      ready.completed = await verifyHistoricalReady({
-        hostname: row.hostname,
-        readyPath: path,
-        readySha256: historical.readySha256,
-        recordingDirectory: join(DEFAULT_EXTERNAL_ROOT, "hosts", row.hostname, "recording"),
-        producerRoot: historical.producerRoot,
-        producer: historical.producer,
-        archivedPdfCacheDirectory: historical.pdfCacheDirectory,
-      });
-    } else {
-      const { recording, seed } = await this.recording(row.hostname, false);
-      try {
-        if (sha256(seed.bytes) !== ready.seed_sha256) throw new Error("Ready frontier differs");
-        assertCollectedInput(ready.recording_seal, await recording.verifySeal());
-        assertSameProducer(this.config.producer, await captureProducer(this.config.producerRoot));
-        const input = deriveCollectionInputDigest({
-          recording: ready.recording_seal,
-          seed: ready.seed_sha256,
-          ...(ready.pdf_profile_sha256 ? { pdf_profile: ready.pdf_profile_sha256 } : {}),
-          ...(markdownProfileSha256 ? { markdown_profile: markdownProfileSha256 } : {}),
-        });
-        for (const document of ready.completed.documents) {
-          assertSameProducer(this.config.producer, document.producer);
-          assertCollectedInput(input, document.input_sha256);
-        }
-        const pdfDocuments = ready.completed.documents.filter((document) => document.extraction?.format === "pdf");
-        if (Boolean(pdfDocuments.length) !== Boolean(ready.pdf_profile_sha256))
-          throw new Error("Ready PDF profile and document formats disagree");
-        if (
-          ready.pdf_profile_sha256 &&
-          pdfDocuments.some((document) => document.extraction!.profile_sha256 !== ready.pdf_profile_sha256)
-        )
-          throw new Error("Ready PDF document profile differs");
-        if (
-          ready.pdf_profile_sha256 &&
-          (await loadCachedPdfProfile(join(this.directory, "pdf-profile-cache"))).sha256 !== ready.pdf_profile_sha256
-        )
-          throw new Error("Ready PDF profile differs");
-        const markdownDocuments = ready.completed.documents.filter(
-          (document) => document.extraction?.format === "markdown",
-        );
-        if (Boolean(markdownDocuments.length) !== Boolean(markdownProfileSha256))
-          throw new Error("Ready Markdown profile and document formats disagree");
-        if (
-          markdownProfileSha256 &&
-          markdownDocuments.some((document) => document.extraction!.profile_sha256 !== markdownProfileSha256)
-        )
-          throw new Error("Ready Markdown document profile differs");
-        if (markdownProfileSha256) {
-          const verified = await withMarkdownCollectionRuntime(true, async () => undefined);
-          if (verified.profile_sha256 !== markdownProfileSha256) throw new Error("Ready Markdown profile differs");
-        }
-      } finally {
-        recording.close();
-      }
-    }
-    return ready;
-  }
-
   async publish(hostname: string, token: string, sampleReview: string) {
-    assertAdmittedHostname(hostname);
-    const lock = lockGitPublication(
-      this.config.repositoryRoot,
-      this.git(["rev-parse", "--path-format=absolute", "--git-common-dir"]).toString().trim(),
-    );
-    try {
-      const row = this.owned(hostname, token);
-      if (!["ready", "publishing", "published"].includes(row.state) || !sampleReview.trim())
-        throw new Error("Publication requires ready output and one quick content sample review");
-      if (this.git(["branch", "--show-current"]).toString().trim() !== "feat/prose-documents")
-        throw new Error("Publication is restricted to feat/prose-documents");
-      if (this.git(["rev-parse", "refs/heads/main"]).toString().trim() !== this.config.main)
-        throw new Error("Protected local main changed");
-      const origin = this.git(["remote", "get-url", "--push", "--all", "origin"]).toString().trim();
-      if (
-        !["https://github.com/Reodite/ubc-unified-data", "https://github.com/Reodite/ubc-unified-data.git"].includes(
-          origin,
-        )
-      )
-        throw new Error("Unexpected publication push destination");
-      await lock.claim({ batch_directory: this.directory, hostname, token }, row.state === "published");
-      const receiptPath = assertExternalPath(
-        join(this.directory, "publications", `${hostname}.json`),
-        this.config.repositoryRoot,
-      );
-      const saveReceipt = (value: GitReceipt) => saveGitPublication(receiptPath, value, this.config.repositoryRoot);
-      let receipt: GitReceipt;
-      try {
-        receipt = (await json(receiptPath)) as GitReceipt;
-      } catch (error) {
-        if (!absent(error) || row.state === "published") throw error;
-        receipt = { hostname, parent: this.git(["rev-parse", "HEAD"]).toString().trim() };
-        await saveReceipt(receipt);
-      }
-      if (receipt.hostname !== hostname) throw new Error("Publication receipt hostname differs");
-      if (row.state === "published" && (!receipt.commit || !receipt.tree || !receipt.pushed))
-        throw new Error("Published claim lacks a completed Git receipt");
-      if (row.state === "ready") this.queue.update(hostname, token, "publishing", { sample_review: sampleReview });
-      const head = this.git(["rev-parse", "HEAD"]).toString().trim();
-      if (!receipt.commit && receipt.tree && head !== receipt.parent) {
-        if (
-          this.git(["rev-parse", "HEAD^"]).toString().trim() !== receipt.parent ||
-          this.git(["rev-parse", "HEAD^{tree}"]).toString().trim() !== receipt.tree
-        )
-          throw new Error("Unrecognized HEAD after interrupted commit");
-        receipt.commit = head;
-        await saveReceipt(receipt);
-      }
-      if (!receipt.commit) {
-        if (head !== receipt.parent) throw new Error("Publication parent changed");
-        const initial = head === this.config.baseline;
-        const routingPath = `src/host-scrapers/routing/${hostname}.json`;
-        const ownsDocument = (path: string) =>
-          [hostname, ...DOCUMENT_CATEGORIES.map((category) => `${category}/${hostname}`)].some((owner) =>
-            path.startsWith(`data/documents/${owner}/`),
-          );
-        const allowed = new Set([
-          GENERIC_LIST,
-          routingPath,
-          "data/official-hosts.json",
-          ...(initial ? Object.keys(this.config.bootstrapFiles) : []),
-        ]);
-        const dirty = new Set(
-          this.git(["ls-files", "--modified", "--others", "--exclude-standard", "-z"])
-            .toString()
-            .split("\0")
-            .filter(Boolean),
-        );
-        for (const file of dirty)
-          if (!allowed.has(file) && !ownsDocument(file))
-            throw new Error(`Unrelated working change blocks publication: ${file}`);
-        if (initial)
-          for (const [file, hash] of Object.entries(this.config.bootstrapFiles)) {
-            if (
-              file !== GENERIC_LIST &&
-              sha256(await readRegularFile(join(this.config.repositoryRoot, file), LARGE_PRIVATE_FILE)) !== hash
-            )
-              throw new Error(`Bootstrap input changed: ${file}`);
-          }
-        const ready = await this.verifyReady(row);
-        let policy: HostRoutingPolicy | undefined;
-        if (row.details.routing_policy) {
-          policy = parseRoutingPolicy(formatRoutingPolicy(row.details.routing_policy as HostRoutingPolicy));
-          if (sha256(formatRoutingPolicy(policy)) !== row.details.routing_policy_sha256)
-            throw new Error("Saved classification receipt differs");
-          await saveFirstRoutingPolicy(policy, this.config.repositoryRoot);
-        } else if (this.config.requireSavedRouting)
-          policy = await loadRoutingPolicy(hostname, this.config.repositoryRoot);
-        const completed = policy
-          ? routeCompletedHost(
-              ready.completed,
-              policy,
-              await loadSavedClassifications(this.config.repositoryRoot, hostname),
-            )
-          : ready.completed;
-        {
-          const namesPath = join(this.config.repositoryRoot, GENERIC_LIST);
-          const names = parseGenericHostnames(await readRegularFile(namesPath));
-          if (!names.includes(hostname)) {
-            names.push(hostname);
-            names.sort();
-            await writeFile(namesPath, `${JSON.stringify(names, null, 2)}\n`);
-          }
-          const verifyInputs = async () => {
-            const verified = await this.verifyReady(row);
-            const expected = policy
-              ? routeCompletedHost(
-                  verified.completed,
-                  await loadRoutingPolicy(hostname, this.config.repositoryRoot),
-                  await loadSavedClassifications(this.config.repositoryRoot, hostname),
-                )
-              : verified.completed;
-            if (JSON.stringify(expected) !== JSON.stringify(completed))
-              throw new Error("Categorized ready result changed");
-          };
-          await publishCompletedHost({
-            completed,
-            repositoryRoot: this.config.repositoryRoot,
-            externalRoot: DEFAULT_EXTERNAL_ROOT,
-            registeredHosts: [...SPECIALIZED, ...names],
-            verifyInputs,
-            incremental: true,
-          });
-        }
-        const paths = [
-          GENERIC_LIST,
-          ...(policy ? [routingPath] : []),
-          "data/official-hosts.json",
-          ...hostDocumentRoots(completed.host).map((root) => root.path),
-          ...(initial ? Object.keys(this.config.bootstrapFiles) : []),
-        ];
-        this.git(["add", "--", ...new Set(paths)]);
-        // Validate immutable tree bytes, not an index that may change across asynchronous file reads.
-        const tree = this.git(["write-tree"]).toString().trim();
-        const files = await this.staged(tree, receipt.parent);
-        if (assertSingleHostChange(files) !== hostname) throw new Error("Staged commit belongs to another hostname");
-        for (const file of files)
-          if (!allowed.has(file.path) && !ownsDocument(file.path))
-            throw new Error(`Unrelated staged change: ${file.path}`);
-        for (const document of completed.documents)
-          if (
-            !files.some(
-              (file) =>
-                file.path ===
-                `data/documents/${document.category ? `${document.category}/` : ""}${hostname}/${documentFilename(document.id)}`,
-            )
-          )
-            throw new Error("A final document is missing from the stage");
-        receipt.tree = tree;
-        await saveReceipt(receipt);
-        if (this.git(["write-tree"]).toString().trim() !== tree)
-          throw new Error("Git index changed after staged tree validation");
-        if (this.git(["rev-parse", "HEAD"]).toString().trim() !== receipt.parent)
-          throw new Error("Publication parent changed before commit");
-        this.git(["commit", "-m", `feat: publish ${hostname} documents`]);
-        // Hooks and noncooperating Git writers must not turn an unvalidated tree into a valid receipt.
-        if (
-          this.git(["rev-parse", "HEAD^{tree}"]).toString().trim() !== tree ||
-          this.git(["rev-parse", "HEAD^"]).toString().trim() !== receipt.parent
-        )
-          throw new Error("Committed tree or parent differs from validated stage");
-        receipt.commit = this.git(["rev-parse", "HEAD"]).toString().trim();
-        await saveReceipt(receipt);
-      }
-      if (this.git(["rev-parse", "HEAD"]).toString().trim() !== receipt.commit)
-        throw new Error("Committed hostname is no longer HEAD");
-      if (
-        !receipt.tree ||
-        this.git(["rev-parse", "HEAD^{tree}"]).toString().trim() !== receipt.tree ||
-        this.git(["rev-parse", "HEAD^"]).toString().trim() !== receipt.parent
-      )
-        throw new Error("Committed tree or parent differs from publication receipt");
-      if (this.git(["status", "--porcelain"]).length) throw new Error("Publication left a dirty checkout");
-      this.git(["push", "origin", "HEAD:refs/heads/feat/prose-documents"]);
-      const remote = this.git([
-        "ls-remote",
-        "--heads",
-        "origin",
-        "refs/heads/feat/prose-documents",
-        "refs/heads/main",
-      ]).toString();
-      if (
-        !remote.includes(`${receipt.commit}\trefs/heads/feat/prose-documents`) ||
-        !remote.includes(`${this.config.main}\trefs/heads/main`)
-      )
-        throw new Error("Remote feature/main verification failed");
-      receipt.pushed = true;
-      await saveReceipt(receipt);
-      if (row.state !== "published")
-        this.queue.update(hostname, token, "published", { commit: receipt.commit, pushed: true });
-      await lock.finish();
-      return { hostname, commit: receipt.commit, documents: row.details.documents, published: true };
-    } finally {
-      lock.close();
-    }
+    return this.publisher.publish(hostname, token, sampleReview);
   }
 }

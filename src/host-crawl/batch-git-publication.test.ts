@@ -4,12 +4,13 @@ import { writeFileSync } from "node:fs";
 import { mkdir, readFile, rm, stat, symlink, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
+import { BatchPublisher, type BatchPublicationContext, type BatchPublicationIO } from "./batch-publication.ts";
 import { HostBatch } from "./batch.ts";
-import type { ChangedFile } from "./change-validation.ts";
 import type { CompletedHost, ProducerContext } from "./contracts.ts";
 import { sha256 } from "./document-format.ts";
 import { lockGitPublication } from "./git-publication-lock.ts";
 import { DEFAULT_EXTERNAL_ROOT, EXTERNAL_BOUNDARY } from "./paths.ts";
+import { readRegularFile } from "./public-validation.ts";
 
 const cleanups: Array<() => void | Promise<void>> = [];
 afterEach(async () => {
@@ -29,14 +30,6 @@ const environment = {
 for (const name of ["GIT_DIR", "GIT_COMMON_DIR", "GIT_WORK_TREE", "GIT_INDEX_FILE", "GIT_OBJECT_DIRECTORY"])
   delete (environment as NodeJS.ProcessEnv)[name];
 
-interface Internals {
-  git(args: string[]): Buffer;
-  verifyReady(): Promise<{ completed: CompletedHost }>;
-  staged(tree: string, parent: string): Promise<ChangedFile[]>;
-}
-function internal(batch: HostBatch): Internals {
-  return batch as unknown as Internals;
-}
 const producer: ProducerContext = {
   inputs_sha256: "c".repeat(64),
   runtime: { node: "26.8.1", icu: "78.3", unicode: "17.0", platform: "linux", arch: "x64" },
@@ -129,8 +122,22 @@ async function fixture() {
     const { token } = (await batch.claim("w1"))!;
     batch.queue.update(hostname, token!, "collecting");
     batch.queue.update(hostname, token!, "ready", { documents: 1 });
-    internal(batch).verifyReady = async () => ({ completed: completed(hostname) });
-    internal(batch).git = (args) => {
+    const context: BatchPublicationContext = {
+      directory,
+      config: batch.config,
+      queue: batch.queue,
+      owned: (hostname, token) => batch.owned(hostname, token),
+      verifyReady: async () => ({
+        version: 1,
+        hostname,
+        recording_seal: "d".repeat(64),
+        seed_sha256: "e".repeat(64),
+        pdf_profile_sha256: null,
+        completed: completed(hostname),
+      }),
+    };
+    const io: BatchPublicationIO = { git: publicationGit, readFile: readRegularFile };
+    function publicationGit(args: string[]): Buffer {
       if (args[0] === "push") {
         expect(args).toEqual(["push", "origin", "HEAD:refs/heads/feat/prose-documents"]);
         pushes++;
@@ -147,13 +154,16 @@ async function fixture() {
         afterCommit?.();
       }
       return result;
-    };
+    }
+    const publisher = new BatchPublisher(context, io);
     return {
       batch,
+      context,
+      io,
       directory,
       hostname,
       token: token!,
-      publish: () => batch.publish(hostname, token!, "Reviewed public guidance"),
+      publish: () => publisher.publish(hostname, token!, "Reviewed public guidance"),
     };
   };
   return {
@@ -189,16 +199,44 @@ function barrier() {
 }
 
 describe("repository-wide Git publication", () => {
+  it.each([
+    ["main checkout", "Publication is restricted to feat/prose-documents"],
+    ["other branch", "Publication is restricted to feat/prose-documents"],
+    ["changed main", "Protected local main changed"],
+    ["unreviewed remote", "Unexpected publication push destination"],
+    ["multiple remotes", "Unexpected publication push destination"],
+  ])("rejects %s before claiming the publication fence", async (change, message) => {
+    const f = await fixture();
+    const a = await f.makeBatch("batch-a");
+    if (change === "main checkout") f.git(["checkout", "main"]);
+    if (change === "other branch") f.git(["checkout", "-b", "unreviewed"]);
+    if (change === "changed main") {
+      f.git(["commit", "--allow-empty", "-m", "different main"]);
+      f.git(["update-ref", "refs/heads/main", "HEAD"]);
+    }
+    if (change === "unreviewed remote")
+      f.git(["remote", "set-url", "--push", "origin", "https://github.com/other/repository.git"]);
+    if (change === "multiple remotes") {
+      f.git(["remote", "set-url", "--add", "--push", "origin", "https://github.com/Reodite/ubc-unified-data"]);
+      f.git(["remote", "set-url", "--add", "--push", "origin", "https://github.com/Reodite/ubc-unified-data.git"]);
+    }
+    await expect(a.publish()).rejects.toThrow(message);
+    expect(a.batch.queue.get(a.hostname)?.state).toBe("ready");
+    expect(f.commits).toBe(0);
+    expect(f.pushes).toBe(0);
+    await expect(readFile(f.marker)).rejects.toMatchObject({ code: "ENOENT" });
+  });
+
   it("fails fast for a second batch while the first awaits after its staged snapshot", async () => {
     const f = await fixture();
     const a = await f.makeBatch("batch-a");
     const b = await f.makeBatch("batch-b");
-    const verify = internal(a.batch).verifyReady.bind(a.batch);
-    internal(a.batch).verifyReady = async () => {
+    const verify = a.context.verifyReady;
+    a.context.verifyReady = async (row) => {
       expect(() => lockGitPublication(f.repositoryRoot, f.identity)).toThrow(
         "Git publication lock is held or unavailable",
       );
-      return verify();
+      return verify(row);
     };
     f.beforePush = () => {
       expect(() => lockGitPublication(f.repositoryRoot, f.identity)).toThrow(
@@ -207,12 +245,19 @@ describe("repository-wide Git publication", () => {
     };
     const captured = barrier();
     const resume = barrier();
-    const staged = internal(a.batch).staged.bind(a.batch);
-    internal(a.batch).staged = async (...args) => {
-      const files = await staged(...args);
-      captured.release();
-      await resume.promise;
-      return files;
+    let stagedSnapshot = false;
+    const git = a.io.git;
+    a.io.git = (args) => {
+      if (args[0] === "diff") stagedSnapshot = true;
+      return git(args);
+    };
+    a.io.readFile = async (...args) => {
+      const bytes = await readRegularFile(...args);
+      if (stagedSnapshot) {
+        captured.release();
+        await resume.promise;
+      }
+      return bytes;
     };
     const publishing = a.publish();
     try {
@@ -349,14 +394,21 @@ describe("repository-wide Git publication", () => {
   it("rejects staged changes after the validated snapshot without recording them as the receipt tree", async () => {
     const f = await fixture();
     const a = await f.makeBatch("batch-a");
-    const staged = internal(a.batch).staged.bind(a.batch);
     let snapshot = "";
-    internal(a.batch).staged = async (tree, parent) => {
-      snapshot = tree;
-      const files = await staged(tree, parent);
-      await writeFile(join(f.repositoryRoot, "unauthorized.txt"), "not part of the validated host\n");
-      f.git(["add", "unauthorized.txt"]);
-      return files;
+    const git = a.io.git;
+    a.io.git = (args) => {
+      if (args[0] === "diff") snapshot = args.at(-1)!;
+      return git(args);
+    };
+    let changed = false;
+    a.io.readFile = async (...args) => {
+      const bytes = await readRegularFile(...args);
+      if (snapshot && !changed) {
+        changed = true;
+        await writeFile(join(f.repositoryRoot, "unauthorized.txt"), "not part of the validated host\n");
+        f.git(["add", "unauthorized.txt"]);
+      }
+      return bytes;
     };
     await expect(a.publish()).rejects.toThrow("Git index changed after staged tree validation");
     const receipt = JSON.parse(await readFile(join(a.directory, "publications", `${a.hostname}.json`), "utf8"));
@@ -379,8 +431,8 @@ describe("repository-wide Git publication", () => {
           { mode: 0o700 },
         );
       } else {
-        const git = internal(a.batch).git.bind(a.batch);
-        internal(a.batch).git = (args) => {
+        const git = a.io.git;
+        a.io.git = (args) => {
           // The index changes after the final write-tree check but before Git starts the commit.
           if (args[0] === "commit") {
             writeFileSync(join(f.repositoryRoot, "unauthorized.txt"), "unexpected\n");
