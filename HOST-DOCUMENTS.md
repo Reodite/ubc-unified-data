@@ -16,12 +16,11 @@ and showcases. There is no `misc` category.
 
 ## Saved first classification
 
-A reviewer may use an LLM once when first categorizing a host or path, including
-when that gives the best semantic decision. Save the decision in
+A reviewer may use an LLM for the first categorization of a host or path. Save the decision in
 `src/host-scrapers/routing/<hostname>.json`, with its method, owner authority,
 rationale and source evidence. The ordered URL-path/title rules and host fallback
 are authoritative. `saveFirstRoutingPolicy` refuses to overwrite a different
-saved decision; missing policy blocks publication instead of invoking a model.
+saved decision; missing policy blocks publication.
 
 Subsequent collection and regeneration apply those saved rules without a model,
 network classifier or clock. A categorized document records the selected rule
@@ -34,20 +33,17 @@ regeneration output.
 
 ## Admission and scope
 
-Screen only the homepage for official UBC identity and promising public,
-search-useful content before site collection begins. This is a quick triage
-judgment, not an exhaustive source audit. Skip obvious login portals, duplicate
-sites and thin promotion without a useful public-content purpose. Branding or
-technical success alone is not an acceptance decision. Preserve explicit owner
-rejections, including `democracy.network.arts.ubc.ca`; collection and routing
-refuse that hostname. Exclude hosts whose content serves only UBC Okanagan,
-using source content to establish scope rather than inferring it from a hostname,
-unless the owner approves the host. The reviewed collections restored by
-[PR #5](https://github.com/Reodite/ubc-unified-data/pull/5) include six approved
-exceptions: `it.ok.ubc.ca`, `lilab.ok.ubc.ca`, `ors.ok.ubc.ca`,
-`principal.ok.ubc.ca`, `recreation.ok.ubc.ca` and `vems.ok.ubc.ca`. Their saved
-routing policies remain authoritative. Other explicit rejections still apply.
-Keep hosts that serve Vancouver or UBC broadly.
+Review the homepage for official UBC identity and useful public article content
+before collection. This admission review is not an exhaustive source audit.
+Reject login portals, duplicate sites and thin promotion; branding or technical
+success alone does not establish suitability. Collection and routing refuse
+explicit owner rejections, including `democracy.network.arts.ubc.ca`.
+
+Use source content, not hostname suffixes, to exclude Okanagan-only audiences
+unless the owner approves an exception. Keep Vancouver and shared UBC content.
+[HOST-COVERAGE.md](HOST-COVERAGE.md) records the approved campus exceptions,
+sensitive-source exclusion, restorations and quality holds. Saved routing
+policies remain authoritative.
 
 Active collection is limited to useful public article-style HTML reached through
 ordinary unauthenticated requests. PDF, DOC/DOCX, PPT/PPTX, standalone Markdown,
@@ -67,9 +63,17 @@ the next hostname. Accepted sites proceed through cached collection, cheap
 output guards, one quick content sample, and publication. Claims and failures
 survive restarts; an uncertain claim is not automatically reassigned.
 
-New sites use `src/host-crawl/generic.ts`, declared in the sorted
-`src/host-scrapers/generic-hosts.json` list. They do not require bespoke code or
-fixtures. The generalized policy selects standard content boundaries, retains
+### Discovery and inventories
+
+Hosts without source-specific extraction use `src/host-crawl/generic.ts`, declared
+in the sorted `src/host-scrapers/generic-hosts.json` list. They do not require
+bespoke code or fixtures. Specialized definitions use `defineHtmlHost` or
+`defineWordpressHost` in `src/host-crawl/scraper.ts` and register once in
+`src/host-crawl/registry.ts`; see the
+[site example](docs/collecting.md#specialized-html-host). Shared DOM extraction
+does not change admission or publication requirements.
+
+The generalized policy selects standard content boundaries, retains
 collapsed prose, and can use a cleaned-body fallback. Exact-host advertised
 WordPress APIs use public collection discovery; other sites use HTML-link and
 sitemap discovery. Generic inventories exclude outbound references before fetch;
@@ -96,6 +100,9 @@ the XML inventory and all its children remain required. The proven absent
 companion and its same-path redirect identities stay excluded if XML entries,
 the saved frontier or later links mention them again. Missing sole XML maps,
 denied maps and unexpected successful HTML maps still block completion.
+
+### Evidence-bound link exclusions
+
 A trackback link is a non-document action only when observed comment metadata
 identifies that page's own endpoint. Such actions are not requested; ordinary
 pages discussing trackbacks and unproved robots-denied URLs remain strict.
@@ -128,6 +135,8 @@ identical prefix spelling on its physical source and an owning form `data-action
 that resolves exactly to that source. This does not collapse public variants,
 synthesize aliases or permit nested prefixes.
 
+### Required query documents
+
 Reviewed query documents use a separate finite, hostname-bound declaration in
 `src/host-crawl/document-query-policy.ts`. CCLI's exact
 `/?post_type=team-member&p=3962` selection must appear literally in its validated
@@ -140,9 +149,10 @@ extraction, lost selections and contradictory machine evidence block publication
 API fallback and scope-exclusion shortcuts cannot discard it. This declaration
 does not replace the separate form-validated GET-view contract.
 
-Existing specialized modules retain their narrower policies
-and previously published bytes. Their recognized empty containers do not fall
-back to surrounding pages.
+### Specialized sources
+
+Specialized modules retain narrower policies and previously published bytes.
+Their recognized empty containers do not fall back to surrounding pages.
 BMLSc's declared CSS grids become semantic curriculum lists, campus-comparison
 tables, GPA tables and term schedules before Markdown conversion. Course fields,
 column labels, footnotes and source links stay associated. Exact looping-widget
@@ -169,18 +179,23 @@ pagination totals, record identities and publisher timestamps. Collection also
 traverses strictly parsed, complete XML sitemaps, the frozen saved frontier and
 same-host HTML links. Currently advertised sitemap pages are required inputs,
 not disposable historical links.
-Missing required text, unexplained representation conflicts, unsupported linked
-document formats or changed inputs block publication.
+Missing required article text, unexplained representation conflicts or changed
+inputs block publication. Declared non-HTML/media exclusions remain out of scope
+and do not become required downloads.
 
-The BMLSc and bullying-prevention modules explicitly allow an independently
-public WordPress item record when its HTML page has a recorded transport failure. The advertised item GET route,
-record identity/type/publication status, publisher permalink, modification time
-and unprotected rendered content must agree with the inventory. Empty or
-unexpanded content fails. HTTP 401/403/404 responses do not enable this path.
-Such a document cites the actual API URL, snapshot and retrieval time, with a
-warning naming the unavailable publisher page; that page is not invented as an
-observed physical alias. Relative content links use the publisher permalink.
-Recorded HTML failures remain in the private input lineage.
+The collection engine has an optional `apiContentFallback` capability for an
+independently public WordPress item after a recorded HTML transport failure.
+It requires explicit adapter configuration and recorded fallback eligibility.
+The active BMLSc and bullying-prevention definitions do not enable it;
+`defineWordpressHost` does not authorize it by default.
+
+When explicitly configured, the advertised item GET route, record identity/type,
+publication status, permalink, modification time and unprotected rendered content
+must agree with the inventory. Empty or unexpanded content fails; HTTP 401/403/404
+does not qualify. Output cites the actual API URL, snapshot and retrieval time,
+with a warning naming the unavailable page, not an invented physical alias.
+Relative links use the publisher permalink. Original HTML failures remain in the
+private input lineage.
 
 Ambiguous repeated-separator URLs are excluded without normalizing or merging
 physical identities. If the authoritative inventory advertises one, collection
@@ -189,24 +204,25 @@ this declared scope, not unknowable unlinked content or the future live website.
 
 ## Private acquisition and replay
 
-All operational material belongs under
-`~/Projects/ubc-tmp/ubc-unified-data/` by default: raw responses, snapshots, request
-intents/outcomes, failure history, source copies, queues, seals, locks, journals,
-stages and backups. No such material belongs in Git, including any
-`data/document-crawl`, `data/documents-crawl` or `data/documentation-crawl` tree.
+Keep raw responses, snapshots, request intents/outcomes, failure history, source
+copies, queues, seals, locks, journals, stages and backups in the private external
+workspace. None belong in Git, including under `data/document-crawl`,
+`data/documents-crawl` or `data/documentation-crawl`.
 
-The collector uses the read-only preserved frontier at
-`state/legacy/state.sqlite` to create a frozen per-host seed. It never changes
-that legacy database. A public checkout can validate final files without private
-inputs; acquisition and replay require the private workspace. `UBC_TMP_ROOT` may
-select a dedicated absolute, normalized external directory instead of
-`~/Projects/ubc-tmp`; the project workspace is its `ubc-unified-data` child.
-Repository overlap, symlink, boundary-escape and same-filesystem publication
-checks still apply. Set `TMPDIR` to that root for test/runtime temporary files;
-CI uses its runner-owned temporary directory.
+Set `UBC_TMP_ROOT` to a dedicated absolute, normalized parent outside the checkout;
+the project workspace is its `ubc-unified-data` child. Repository overlap,
+symlinks and boundary escapes are rejected. Publication stages and the repository
+must share a filesystem. Set `TMPDIR` to the external parent for test/runtime
+temporary files; CI prepares its own external directory.
+
+The collector reads the preserved frontier at `state/legacy/state.sqlite` within
+that workspace to freeze a per-host seed, without modifying the legacy database.
+Acquisition and replay require private inputs. A public checkout can validate
+final files without them.
 
 ```sh
-export UBC_TMP_ROOT="${UBC_TMP_ROOT:-$HOME/Projects/ubc-tmp}"
+: "${UBC_TMP_ROOT:?Set an absolute private parent directory outside the checkout}"
+export UBC_TMP_ROOT
 export TMPDIR="$UBC_TMP_ROOT"
 install -d -m 700 "$UBC_TMP_ROOT"
 export TSX_DISABLE_CACHE=1 NODE_DISABLE_COMPILE_CACHE=1
@@ -227,7 +243,7 @@ bounded redirects/retries. Article URL exclusions apply to every redirect hop
 before dispatch and again when replaying saved observations. Proven non-HTML,
 attachment, image, audio and video responses are recorded as media exclusions
 from their headers without reading payload bodies. Missing or invalid in-scope
-HTML remains an honest blocker; an excluded download does not. Existing recording
+HTML blocks completion; an excluded download does not. Existing recording
 configuration fields for PDF bytes are retained only so pre-scope evidence can be
 opened and verified without rewriting it. Production collection does not schedule
 or extract those bytes. Defaults are 1,000 cumulative physical requests, 128 MiB
@@ -276,9 +292,10 @@ network fallback. Determinism applies to saved observations, not the internet.
 
 ## Text and provenance
 
-Production discovery, classification, extraction, cleanup and serialization use
-reviewed deterministic code. Models can inspect evidence and help develop tests;
-they do not write article bytes or make runtime editorial decisions.
+Runtime discovery, saved-policy routing, extraction, cleanup and serialization
+use deterministic code. An initial reviewer may use a model to author a saved
+routing decision as described above. Models do not write article bytes or make
+runtime editorial decisions.
 
 The frontmatter records the physical citation URL, observed aliases, retrieval
 and available publisher dates, snapshot/input/body/content hashes, warnings and
@@ -342,11 +359,6 @@ gate to the full public corpus. Historical byte parsers remain separate so old
 outputs can be inspected and withdrawn without changing their evidence. No manual
 visual or exhaustive source-fidelity review is implied. See
 [HOST-COVERAGE.md](HOST-COVERAGE.md) for current inclusion and withdrawal decisions.
-The owner-approved review of restored collections removes 195 known placeholder-only
-records from the public export and reconciles category and host counts. Retained
-article bytes and routing provenance remain unchanged. This export correction
-is not a new acquisition or replay, and it does not permit collectors to discard
-required pages automatically.
 
 Collection runs concurrently from a frozen source copy. Producer fingerprints
 identify that private batch copy, not later changes to the public dispatch list.
@@ -375,31 +387,8 @@ its own withdrawal commit and preserves its original bytes privately. Push each 
 `refs/heads/feat/prose-documents`, never main, private backup refs or a forced
 history rewrite.
 
-### Test environments
-
-`npm test -- --no-file-parallelism --maxWorkers=1` runs the complete suite,
-including native integration. The named lanes partition that suite without
-changing its assertions:
-
-- `npm run test:portable -- --no-file-parallelism --maxWorkers=1` runs tests
-  independent of the fixed native Markdown deployment profile. GitHub CI runs
-  this lane on Ubuntu with Node 24, together with static and corpus validators.
-- `npm run test:native -- --no-file-parallelism --maxWorkers=1` executes the
-  `*.native.test.ts` integration files. They require the reviewed CachyOS/Linux
-  x86-64 toolchain, Node 26.8.1, matching ELF libraries and working unprivileged
-  namespaces. Missing permissions, libraries or namespace capabilities remain
-  test failures; there is no catch-and-skip fallback.
-- `npm run test:inventory` checks that the portable and native selections are
-  disjoint and together contain every default-suite test. This inventories tests;
-  it does not execute or qualify the native runtime.
-
-Native qualification must identify the exact release commit/tree, command,
-result, test counts, dependency hashes and toolchain. A locally executed result
-must be labelled as local evidence, not GitHub runner execution. Portable CI
-alone does not qualify the retained native runtime. Its fixed ownership, loader,
-filesystem and process checks remain unchanged; changing CI environments does
-not authorize relaxing them. Active article-only collection does not invoke the
-retained Markdown runtime.
+See [verification](docs/collecting.md#verification) for the portable checks and
+[separate native qualification](docs/collecting.md#native-qualification).
 
 ## Retained-file migration
 

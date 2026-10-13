@@ -1,54 +1,48 @@
-# Official-host crawl coverage
+# Official-host coverage
 
-This repository publishes validated hostname collections in
-`data/official-hosts.json`. It does not publish private queues, recordings or
-partial host output. [HOST-DOCUMENTS.md](HOST-DOCUMENTS.md) defines the article-only
-scope and publication checks.
+Use `data/official-hosts.json` for current published membership, category roots
+and document counts. Coverage means complete collection within the declared
+public article scope, not every page on every UBC site. The
+[host contract](HOST-DOCUMENTS.md) defines admission and publication checks.
+Private queues, recordings and partial outputs are not public exports.
 
-The current release contains **226 hostname collections and 42,866 documents**.
-Coverage applies to the declared public article scope, not to all UBC sites.
+## Reviewed restoration
 
-The owner-approved restoration in [PR #5](https://github.com/Reodite/ubc-unified-data/pull/5)
-keeps 50 previously withdrawn collections. Six are approved campus-scope
-exceptions: `it.ok.ubc.ca`, `lilab.ok.ubc.ca`, `ors.ok.ubc.ca`,
-`principal.ok.ubc.ca`, `recreation.ok.ubc.ca` and `vems.ok.ubc.ca`.
-The public export excludes 195 known placeholder-only records after review;
-category and host counts reflect those exclusions. Retained article bytes,
-routing policies and original provenance are unchanged. This correction does
-not establish a new acquisition or complete replay.
+[PR #5](https://github.com/Reodite/ubc-unified-data/pull/5) approved restoration of
+50 previously withdrawn collections. It also records six campus-scope exceptions:
 
-The preserved 500-host recovery queue has these current dispositions:
+- `it.ok.ubc.ca`
+- `lilab.ok.ubc.ca`
+- `ors.ok.ubc.ca`
+- `principal.ok.ubc.ca`
+- `recreation.ok.ubc.ca`
+- `vems.ok.ubc.ca`
 
-| Disposition                                                |   Hosts | Public documents |
-| ---------------------------------------------------------- | ------: | ---------------: |
-| Published collections from this queue                      |     223 |           42,798 |
-| Rejected during host suitability review                    |      72 |                0 |
-| Reviewed as whole-host unavailable                         |      42 |                0 |
-| Withdrawn after acceptance or publication review           |      24 |                0 |
-| Historically blocked, still requiring case-specific review |     139 |                0 |
-| **Total recovery queue**                                   | **500** |       **42,798** |
+The reviewed export correction excluded 195 placeholder-only records and
+reconciled host/category counts without changing retained article bytes, routing
+policies or original provenance. It establishes neither a new acquisition nor a
+complete replay, and does not authorize automatic omission of required pages.
 
-Three specialized collections sit outside that queue: `bmlscpathology.med.ubc.ca`
-(30 documents), `bullyingandharassment.ubc.ca` (6) and `coop.ubc.ca` (32). Their
-68 documents account for the difference between the queue and the full corpus.
-Matching aggregate counts alone does not establish matching host membership.
+## Coverage accounting
 
-Queue reconciliation uses the latest host-specific successor row and the
-explicit migrated-copy tie precedence. Withdrawal receipts and reviewed
-restorations determine current publication membership without rewriting earlier
-queue outcomes.
-Unavailable dispositions remain separate from withdrawals and incomplete work.
-The original queues, recordings, seals, attempts and withdrawal backups stay in
-the private external workspace. No acquisition or publication claim is active.
+Published, suitability-rejected, whole-host unavailable, withdrawn and incomplete
+identities are separate dispositions. Matching aggregate counts does not establish
+matching host membership. Specialized collections for
+`bmlscpathology.med.ubc.ca`, `bullyingandharassment.ubc.ca` and `coop.ubc.ca` sit
+outside the preserved recovery queue.
+
+Queue reconciliation uses the latest host-specific successor row and explicit
+migrated-copy tie precedence. Withdrawal receipts and reviewed restorations
+determine current publication membership without rewriting earlier queue outcomes.
+Original queues, recordings, seals, attempts and withdrawal backups remain in the
+private workspace. Their presence is not an active acquisition/publication claim.
 
 ## Reviewed unavailable identities
 
-The ledger records 35 exact-host redirects, five robots policies denying the
-homepage and two licensed-proxy exclusions. These identities are unavailable
-_under the declared exact HTTPS hostname and public article scope_. A redirect
-does not authorize collecting its destination under the old name.
+These decisions apply to the exact HTTPS hostname and public article scope.
+A redirect does not authorize collecting its destination under the old identity.
 
-**Exact-host redirects (35):**
+### Exact-host redirects
 
 - `aboriginal.forestry.ubc.ca`
 - `archivaria-ca.ezproxy.library.ubc.ca`
@@ -86,7 +80,7 @@ does not authorize collecting its destination under the old name.
 - `www.events.ctlt.ubc.ca`
 - `xwi7xwa-library-10nov2016.sites.olt.ubc.ca`
 
-**Robots denies the homepage (5):**
+### Robots denies the homepage
 
 - `daxue.ubc.ca`
 - `ezproxy.library.ubc.ca`
@@ -94,22 +88,21 @@ does not authorize collecting its destination under the old name.
 - `newbooks.library.ubc.ca`
 - `openbadgessandbox.sites.olt.ubc.ca`
 
-**Licensed-proxy exclusions (2):**
+### Licensed-proxy exclusions
 
 - `ubc.summon.serialssolutions.com.ezproxy.library.ubc.ca`
 - `www-digitaliapublishing-com.ezproxy.library.ubc.ca`
 
 ## Withdrawn collections
 
-The release excludes 24 previously accepted collections after the reviewed
-restorations. Each whole-host withdrawal retains original bytes privately and
-leaves historical acquisition evidence intact. The placeholder exclusions above
-are an explicit export review, not a collector fallback for required-page failures.
+Whole-host withdrawals preserve original bytes privately and leave acquisition
+evidence intact. Required-page failures do not permit partial publication.
 
-**Admission exclusions (8):** The owner explicitly rejected Democracy. Retained
-content establishes an Okanagan-only audience for the other listed hosts; a
-hostname suffix alone does not establish campus scope. The six approved
-exceptions listed above are not excluded.
+### Admission exclusions
+
+The owner explicitly rejected `democracy.network.arts.ubc.ca`. Source content
+establishes an Okanagan-only audience for the remaining hosts below; suffixes
+alone do not establish campus scope. The approved exceptions above remain distinct.
 
 - `democracy.network.arts.ubc.ca`
 - `irsslab.forestry.ubc.ca`
@@ -120,17 +113,19 @@ exceptions listed above are not excluded.
 - `socialwork.ok.ubc.ca`
 - `ur.ok.ubc.ca`
 
-**Sensitive source (1):** `med-fom-spph-internal.sites.olt.ubc.ca` exposed shared
-access credentials in source articles and archives. Its collection is absent
-from this release, and admission checks refuse republication. No credentials
-were used or tested. Withdrawal does not revoke credentials or erase earlier
-remote copies; source operators must assess any credential rotation.
+### Sensitive source
 
-**Required-content quality holds (15):** These collections contain required
-pages whose saved output is an unfinished template, an empty/error response,
-a broken rendering or an access-denial notice. They remain withheld pending
-source-specific review or a complete verified repair. This is not a finding
-that their entire public websites are unavailable.
+`med-fom-spph-internal.sites.olt.ubc.ca` exposed shared access credentials in source
+articles and archives. Its collection is excluded and admission checks refuse
+republication. No credentials were used or tested. Withdrawal does not revoke
+credentials or erase earlier remote copies; source operators must assess rotation.
+
+### Required-content quality holds
+
+These hosts have required pages with unfinished templates, empty/error responses,
+broken renderings or access-denial notices. They remain withheld pending
+source-specific review or complete verified repair. This does not establish that
+their entire websites are unavailable.
 
 - `campusmail.ubc.ca`
 - `enunciate.arts.ubc.ca`
@@ -148,29 +143,25 @@ that their entire public websites are unavailable.
 - `www.biology.ubc.ca`
 - `www.chinalinks.ubc.ca`
 
-Six other collections passed complete, offline replay from sealed source
-recordings: `macl.arts.ubc.ca`, `mes.arts.ubc.ca`, `mtrl.ubc.ca`,
-`nitep.educ.ubc.ca`, `rgst.arts.ubc.ca` and `smp.med.ubc.ca`. Their source receipts
-and attempts are unchanged. Exact empty archive controls require witnessed HTML
-roles and messages, with conflicting CMS, sitemap, seed, required-view or
-retained-document roles still fatal. NITEP's replay also excludes source-proven
-image/navigation-only pages and removes witnessed trackback controls from alias
-metadata. All retained substantive article bodies are unchanged.
+## Replay qualifications and remaining limits
 
-## Remaining limits
+`macl.arts.ubc.ca`, `mes.arts.ubc.ca`, `mtrl.ubc.ca`, `nitep.educ.ubc.ca`,
+`rgst.arts.ubc.ca` and `smp.med.ubc.ca` passed complete offline replay from sealed
+recordings without changing source receipts or attempts. Empty archive controls
+require witnessed HTML roles/messages; conflicting CMS, sitemap, seed,
+required-view or retained-document roles remain fatal. NITEP's replay also
+excludes source-proven image/navigation-only pages and removes witnessed
+trackback controls from alias metadata. Retained substantive bodies are unchanged.
 
-The 139 earlier blocked identities are not counted as scraped or whole-host
-unavailable. They include required pages returning HTTP 403, 404 or 500; saved
-publisher inventories whose totals changed during pagination; robots-restricted
-paths; private-login destinations; unresolved DNS/TLS failures; and bounded
-request or transport limits. A failed page or exhausted grant does not establish
-that every public page on its host is inaccessible.
+Incomplete queue identities are neither scraped nor whole-host unavailable.
+Failures include required HTTP 403/404/500 pages, changing publisher totals,
+robots-restricted paths, private-login destinations, DNS/TLS errors and bounded
+request/transport limits. A failed page or exhausted grant does not establish
+whole-host inaccessibility.
 
-For example, `orthopaedics.med.ubc.ca` reported incompatible WordPress totals
-across saved pages. `law.library.ubc.ca` exposed a CWL-only section.
-`ore.educ.ubc.ca` advertised an article whose HTML returned 404. Several
-recurring-event hosts exposed exact duplicate event records, but a later API
-page reported a different total. None can enter `data/official-hosts.json`
-without a complete, internally consistent public inventory under the current
-contract. Each retained queue and recording preserves its original attempt,
-access decision and failure evidence for later review.
+Retained evidence includes incompatible WordPress totals at
+`orthopaedics.med.ubc.ca`, a CWL-only section at `law.library.ubc.ca`, and an
+advertised article returning 404 at `ore.educ.ubc.ca`. Duplicate recurring-event
+records do not excuse changed totals on later API pages. Publication requires a
+complete, internally consistent inventory under the current contract; retained
+queues and recordings preserve each original attempt and failure for review.

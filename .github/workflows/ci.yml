@@ -54,7 +54,7 @@ jobs:
             'This Ubuntu job runs the portable test lane, not the fixed-profile native lane.' \
             'The full npm test command still includes both lanes. Inventory validation prevents lost or duplicated tests.' \
             'Native qualification must run on the reviewed CachyOS/Linux x86-64 toolchain and be reported separately for the release commit.' \
-            'A portable CI success is not evidence of native execution. See HOST-DOCUMENTS.md for commands and requirements.' \
+            'A portable CI success is not evidence of native execution. See docs/collecting.md#native-qualification for commands and requirements.' \
             >> "$GITHUB_STEP_SUMMARY"
 
       - name: Validate categorized host documents
