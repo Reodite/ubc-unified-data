@@ -4,18 +4,9 @@ import type { Output } from "../core/output.ts";
 import { register } from "../core/registry.ts";
 import { utcnow } from "../core/utils.ts";
 import { FACT_COLUMNS, publishFacts } from "../public-facts.ts";
-import {
-  drupalDocument,
-  drupalRecords,
-  object,
-  plainText,
-  richText,
-  string,
-  unavailableRelationships,
-  wordpressDocument,
-  wordpressPages,
-  type Row,
-} from "../source-documents.ts";
+import { drupalDocument, drupalRecords, richText, unavailableRelationships } from "../scraping/drupal.ts";
+import { wordpressDocument, wordpressPages } from "../scraping/wordpress.ts";
+import { object, plainText, string, type Row } from "../source-documents.ts";
 
 const IT = "it.ubc.ca";
 const WELLBEING = "wellbeing.ubc.ca";

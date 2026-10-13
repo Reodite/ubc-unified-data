@@ -1,3 +1,4 @@
+import { collectPageBatches } from "../scraping/pagination.ts";
 import type { Http, Params } from "./http.ts";
 
 /** Drop editorial/revision metadata; promote `path.alias` to its own column. */
@@ -70,15 +71,18 @@ export async function jsonapiCollection(
   const total = (first["meta"] as Record<string, unknown> | undefined)?.["count"];
 
   if (typeof total === "number" && Number.isInteger(total) && (total as number) > records.length) {
-    const fetch = async (offset: number): Promise<Array<Record<string, unknown>>> => {
-      const payload = (await http.getJson(url, { params: { ...base, "page[offset]": offset } })) as AnyJson;
-      return ((payload["data"] as unknown[]) ?? []).map((item) => simplifyJsonapi(item as Record<string, unknown>));
-    };
     const offsets = [];
-    for (let offset = opts.pageSize ?? 50; offset < (total as number); offset += opts.pageSize ?? 50)
-      offsets.push(offset);
-    for (const chunk of await http.map(fetch, offsets, opts.workers)) records.push(...chunk);
-    return records;
+    for (let offset = opts.pageSize ?? 50; offset < total; offset += opts.pageSize ?? 50) offsets.push(offset);
+    return collectPageBatches(
+      http,
+      records,
+      offsets,
+      async (offset) => {
+        const payload = (await http.getJson(url, { params: { ...base, "page[offset]": offset } })) as AnyJson;
+        return ((payload["data"] as unknown[]) ?? []).map((item) => simplifyJsonapi(item as Record<string, unknown>));
+      },
+      opts.workers,
+    );
   }
 
   let nextLink: string | undefined = (

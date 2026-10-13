@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { drupalDocument, unavailableRelationships } from "../source-documents.ts";
+import { drupalDocument, unavailableRelationships } from "../scraping/drupal.ts";
 import { policyLifecycle, policyRecord } from "./policies.ts";
 import { relatedNames, resourceCampus, undergraduateCommonsPage } from "./support.ts";
 

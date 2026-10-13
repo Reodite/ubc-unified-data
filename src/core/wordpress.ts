@@ -1,3 +1,4 @@
+import { collectNumberedPages } from "../scraping/pagination.ts";
 import { InvalidValueError, MissingKeyError, type Http, type Params } from "./http.ts";
 
 /** Read one `var <name> = [...]/{...}` literal out of a page. */
@@ -55,12 +56,13 @@ export async function wpCollection(
   const pages = Number(first.headers.get("X-WP-TotalPages") || 1);
 
   if (pages > 1) {
-    const fetch = async (page: number): Promise<unknown[]> => {
-      return (await http.getJson(url, { params: { ...base, page } })) as unknown[];
-    };
-    const rest = [];
-    for (let page = 2; page <= pages; page += 1) rest.push(page);
-    for (const chunk of await http.map(fetch, rest, opts.workers)) records.push(...chunk);
+    return collectNumberedPages(
+      http,
+      records,
+      pages,
+      async (page) => (await http.getJson(url, { params: { ...base, page } })) as unknown[],
+      opts.workers,
+    );
   }
   return records;
 }

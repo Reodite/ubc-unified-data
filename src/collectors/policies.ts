@@ -3,7 +3,8 @@ import type { Output } from "../core/output.ts";
 import { register } from "../core/registry.ts";
 import { utcnow } from "../core/utils.ts";
 import { FACT_COLUMNS, publishFacts } from "../public-facts.ts";
-import { drupalDocument, drupalRecords, string, type Row } from "../source-documents.ts";
+import { drupalDocument, drupalRecords } from "../scraping/drupal.ts";
+import { string, type Row } from "../source-documents.ts";
 
 export const POLICY_HOST = "universitycounsel.ubc.ca";
 export const POLICY_SOURCE = `https://${POLICY_HOST}/jsonapi/node/policy`;

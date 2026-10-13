@@ -338,6 +338,30 @@ describe("jsonapiCollection", () => {
     expect(calls.sort()).toEqual(["0", "50"]);
   });
 
+  it("preserves caller-supplied offset arithmetic without rounding page sizes", async () => {
+    const offsets: string[] = [];
+    const http = new Http({ retries: 0 });
+    http.responder = (_method, url) => {
+      const offset = new URL(url).searchParams.get("page[offset]")!;
+      offsets.push(offset);
+      return jsonapiPage([{ id: offset }], { count: 2 });
+    };
+    const rows = await jsonapiCollection(http, "example.com", "node/x", { pageSize: 0.3 });
+    expect(offsets).toEqual(["0", "0.3", "0.6", "0.8999999999999999", "1.2", "1.5", "1.8"]);
+    expect(rows.map((row) => row.id)).toEqual(offsets);
+  });
+
+  it("retains permissive handling of unrecognized counts and string next links", async () => {
+    let calls = 0;
+    const http = new Http({ retries: 0 });
+    http.responder = () => {
+      calls++;
+      return jsonapiPage([{ id: 1 }], { count: "2" }, { next: `${base}?page=1` });
+    };
+    expect(await jsonapiCollection(http, "example.com", "node/x")).toEqual([{ id: 1 }]);
+    expect(calls).toBe(1);
+  });
+
   it("follows links.next when no total is reported", async () => {
     const pages = new Map<string, ResponseLike>();
     pages.set(offsetUrl(0), jsonapiPage([{ id: 1 }], {}, { next: { href: `${base}?page=1` } }));
@@ -346,6 +370,40 @@ describe("jsonapiCollection", () => {
     http.responder = (_method, fullUrl) => pages.get(fullUrl) ?? jsonapiPage([]);
     const result = await jsonapiCollection(http, "example.com", "node/x");
     expect(result).toEqual([{ id: 1 }]);
+  });
+});
+
+describe("pooled CMS collection order", () => {
+  it.each(["WordPress", "Drupal"])("keeps %s pages ordered while using the caller's worker limit", async (cms) => {
+    const releaseSecond = Promise.withResolvers<void>();
+    const fourthStarted = Promise.withResolvers<void>();
+    const completed: number[] = [];
+    let active = 0;
+    let peak = 0;
+    const http = new Http({ workers: 8, retries: 0 });
+    http.responder = async (_method, value) => {
+      const url = new URL(value);
+      const page =
+        cms === "WordPress" ? Number(url.searchParams.get("page")) : Number(url.searchParams.get("page[offset]")) + 1;
+      active++;
+      peak = Math.max(peak, active);
+      if (page === 2) await releaseSecond.promise;
+      if (page === 4) fourthStarted.resolve();
+      completed.push(page);
+      active--;
+      return cms === "WordPress"
+        ? respond(200, JSON.stringify([{ id: page }]), { "x-wp-totalpages": "4" })
+        : respond(200, JSON.stringify({ data: [{ id: page }], meta: { count: 4 } }));
+    };
+    const pending =
+      cms === "WordPress"
+        ? wpCollection(http, "example.com", "wp/v2/pages", { perPage: 1, workers: 2 })
+        : jsonapiCollection(http, "example.com", "node/page", { pageSize: 1, workers: 2 });
+    await fourthStarted.promise;
+    expect(completed).toEqual([1, 3, 4]);
+    releaseSecond.resolve();
+    expect(await pending).toEqual([1, 2, 3, 4].map((id) => ({ id })));
+    expect(peak).toBe(2);
   });
 });
 
@@ -360,6 +418,26 @@ describe("wpCollection", () => {
       arrayBuffer: async () => new TextEncoder().encode(body).buffer,
     };
   }
+
+  it.each([
+    [undefined, [1]],
+    ["", [1]],
+    ["0", [1]],
+    ["garbage", [1]],
+    ["01", [1]],
+    ["2e0", [1, 2]],
+    ["2.5", [1, 2]],
+  ] as const)("retains permissive page headers and optional totals: %s", async (header, expected) => {
+    const calls: number[] = [];
+    const http = new Http({ retries: 0 });
+    http.responder = (_method, url) => {
+      const page = Number(new URL(url).searchParams.get("page"));
+      calls.push(page);
+      return respond(200, JSON.stringify([{ id: page }]), header === undefined ? {} : { "x-wp-totalpages": header });
+    };
+    expect(await wpCollection(http, "example.com", "wp/v2/pages")).toEqual(expected.map((id) => ({ id })));
+    expect(calls).toEqual(expected);
+  });
 
   it("fans out by X-WP-TotalPages", async () => {
     const calls: string[] = [];

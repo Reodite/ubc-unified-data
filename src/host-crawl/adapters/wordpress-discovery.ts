@@ -1,5 +1,6 @@
 import { load } from "cheerio";
 import { createWordpressDiscoveryPolicy } from "../../host-scrapers/policies/wordpress.ts";
+import { pageTotalsAgree, sequentialNumberedPages } from "../../scraping/pagination.ts";
 import type { HostScraper, Observation } from "../contracts.ts";
 import { hostUrl, inventoryUrl } from "../urls.ts";
 
@@ -170,13 +171,17 @@ export async function discoverWordpress(
     let observedRows = 0;
     const ids = new Set<number>();
     const recurrenceRows = new Map<number, string>();
-    for (let page = 1; ; page++) {
-      const observation = await read(wordpressCollectionUrl(collection, page));
+    let page = 0;
+    for await (const observation of sequentialNumberedPages(
+      (page) => read(wordpressCollectionUrl(collection, page)),
+      (first) => total(first, "x-wp-totalpages"),
+    )) {
+      page++;
       const records = json(observation);
       if (!Array.isArray(records) || records.length > 100) throw new Error("Invalid CMS page envelope");
       const count = total(observation, "x-wp-total");
       const pageCount = total(observation, "x-wp-totalpages");
-      if (pageCount !== Math.ceil(count / 100)) throw new Error("CMS pagination totals disagree");
+      if (!pageTotalsAgree(count, pageCount, 100)) throw new Error("CMS pagination totals disagree");
       expectedTotal ??= count;
       expectedPages ??= pageCount;
       if (count !== expectedTotal || pageCount !== expectedPages)
@@ -223,8 +228,7 @@ export async function discoverWordpress(
           api_url: itemUrl.href,
         });
       }
-      if (page >= Math.max(1, pageCount)) break;
-      if (records.length === 0) throw new Error("Premature empty CMS page");
+      if (page < Math.max(1, pageCount) && records.length === 0) throw new Error("Premature empty CMS page");
     }
     if ((collectionPolicy.allowIdenticalRecurrences ? observedRows : ids.size) !== expectedTotal)
       throw new Error("CMS inventory did not exhaust its advertised total");
