@@ -366,6 +366,42 @@ describe("jsonapiCollection", () => {
     expect(calls).toBe(1);
   });
 
+  it.each(["same-page", "other-host", "other-collection"])(
+    "rejects a %s next link before another request",
+    async (kind) => {
+      let calls = 0;
+      const http = new Http({ retries: 0 });
+      http.responder = (_method, url) => {
+        calls++;
+        const next =
+          kind === "same-page"
+            ? url
+            : kind === "other-host"
+              ? "https://other.example/jsonapi/node/x"
+              : "https://example.com/jsonapi/node/y";
+        return jsonapiPage([{ id: calls }], {}, { next: { href: next } });
+      };
+      await expect(jsonapiCollection(http, "example.com", "node/x")).rejects.toThrow(
+        "Unsafe or repeated JSON:API pagination link",
+      );
+      expect(calls).toBe(1);
+    },
+  );
+
+  it("rejects a multi-page cycle without returning partial records", async () => {
+    const calls: string[] = [];
+    const http = new Http({ retries: 0 });
+    http.responder = (_method, url) => {
+      calls.push(url);
+      const page = new URL(url).searchParams.get("page");
+      return jsonapiPage([{ id: calls.length }], {}, { next: { href: `${base}?page=${page === "1" ? "2" : "1"}` } });
+    };
+    await expect(jsonapiCollection(http, "example.com", "node/x")).rejects.toThrow(
+      "Unsafe or repeated JSON:API pagination link",
+    );
+    expect(calls).toEqual([offsetUrl(0), `${base}?page=1`, `${base}?page=2`]);
+  });
+
   it("follows links.next when no total is reported", async () => {
     const pages = new Map<string, ResponseLike>();
     pages.set(offsetUrl(0), jsonapiPage([{ id: 1 }], {}, { next: { href: `${base}?page=1` } }));

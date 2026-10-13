@@ -90,11 +90,19 @@ export async function jsonapiCollection(
     );
   }
 
+  const firstUrl = new URL(url);
+  for (const [key, value] of Object.entries({ ...base, "page[offset]": 0 }))
+    if (value !== undefined) firstUrl.searchParams.append(key, String(value));
+  const visited = new Set([firstUrl.href]);
   let nextLink: string | undefined = (
     (first["links"] as Record<string, unknown> | undefined)?.["next"] as Record<string, unknown> | undefined
   )?.["href"] as string | undefined;
   while (nextLink) {
-    const payload = (await http.getJson(nextLink)) as AnyJson;
+    const target = new URL(nextLink, url);
+    if (!isUnvisitedCollectionPage(target, firstUrl.origin, firstUrl.pathname, visited))
+      throw new InvalidValueError(`Unsafe or repeated JSON:API pagination link: ${nextLink}`);
+    visited.add(target.href);
+    const payload = (await http.getJson(target.href)) as AnyJson;
     const batch = (payload["data"] as unknown[]) ?? [];
     if (batch.length === 0) break;
     records.push(...batch.map((item) => simplifyJsonapi(item as Record<string, unknown>)));
