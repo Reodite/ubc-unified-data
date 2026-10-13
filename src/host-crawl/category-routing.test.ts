@@ -29,19 +29,27 @@ it("refuses the credential-bearing host without rejecting unrelated public SPPH 
 });
 
 it.each([
-  "it.ok.ubc.ca",
+  "irsslab.forestry.ubc.ca",
+  "learningspaces.ok.ubc.ca",
   "library.ok.ubc.ca",
-  "lilab.ok.ubc.ca",
   "nursing.ok.ubc.ca",
   "ok.ubc.ca",
+  "socialwork.ok.ubc.ca",
+  "ur.ok.ubc.ca",
+])("refuses the source-reviewed Okanagan-only audience of %s", (hostname) => {
+  expect(() => assertAdmittedHostname(hostname)).toThrow(/Owner-rejected/);
+});
+
+it.each([
+  "it.ok.ubc.ca",
+  "lilab.ok.ubc.ca",
   "ors.ok.ubc.ca",
   "principal.ok.ubc.ca",
   "recreation.ok.ubc.ca",
-  "socialwork.ok.ubc.ca",
-  "ur.ok.ubc.ca",
   "vems.ok.ubc.ca",
-])("refuses the source-reviewed Okanagan-only audience of %s", (hostname) => {
-  expect(() => assertAdmittedHostname(hostname)).toThrow(/Owner-rejected/);
+])("admits the reviewed collection and saved routing policy for %s", async (hostname) => {
+  expect(() => assertAdmittedHostname(hostname)).not.toThrow();
+  expect((await loadRoutingPolicy(hostname)).hostname).toBe(hostname);
 });
 
 it.each(["istand.ok.ubc.ca", "unitedway.ok.ubc.ca", "smp.med.ubc.ca"])(
