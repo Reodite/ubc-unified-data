@@ -1,7 +1,9 @@
-import type { Http } from "../core/http.ts";
+import { InvalidValueError, type Http } from "../core/http.ts";
 
 /** Enumerate subsequent one-based pages; the first response is always read separately. */
 function* remainingPageNumbers(pages: number): Generator<number> {
+  if (!Number.isSafeInteger(Math.floor(pages)))
+    throw new InvalidValueError("Page count exceeds safe pagination bounds");
   for (let page = 2; page <= pages; page++) yield page;
 }
 

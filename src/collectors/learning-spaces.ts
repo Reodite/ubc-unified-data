@@ -31,8 +31,8 @@ import { wants } from "../core/campus.ts";
 import type { Http } from "../core/http.ts";
 import type { Output } from "../core/output.ts";
 import { register } from "../core/registry.ts";
-import { wpCollection } from "../core/wordpress.ts";
 import { unescapeHtml } from "../htmldoc.ts";
+import { wpCollection } from "../scraping/wordpress.ts";
 
 export const HOST = "learningspaces.ubc.ca";
 export const BASE = `https://${HOST}`;

@@ -17,7 +17,8 @@ import { wants } from "../core/campus.ts";
 import type { Http } from "../core/http.ts";
 import type { Output } from "../core/output.ts";
 import { register } from "../core/registry.ts";
-import { jsLiteral, wpCollection } from "../core/wordpress.ts";
+import { jsLiteral } from "../scraping/javascript.ts";
+import { wpCollection } from "../scraping/wordpress.ts";
 import { collect as collectAdmissionreqs, ENDPOINT as REQS_ENDPOINT } from "./admissionreqs.ts";
 
 export const HOST = "you.ubc.ca";

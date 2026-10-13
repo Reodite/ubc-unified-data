@@ -2,6 +2,32 @@ import { InvalidValueError, type Http, type Params } from "../core/http.ts";
 import { document, object, records, string, uniqueRows, type Row, type SourceDocument } from "../source-documents.ts";
 import { collectNumberedPages, pageTotalsAgree } from "./pagination.ts";
 
+/** Fetch every page of a WP REST collection using X-WP-TotalPages. */
+export async function wpCollection(
+  http: Http,
+  host: string,
+  pathName: string,
+  opts: { params?: Params; perPage?: number; workers?: number } = {},
+): Promise<unknown[]> {
+  const url = `https://${host}/wp-json/${pathName}`;
+  const base: Params = { ...(opts.params ?? {}), per_page: opts.perPage ?? 100 };
+
+  const first = await http.get(url, { params: { ...base, page: 1 } });
+  const records = (await first.json()) as unknown[];
+  const pages = Number(first.headers.get("X-WP-TotalPages") || 1);
+
+  if (pages > 1) {
+    return collectNumberedPages(
+      http,
+      records,
+      pages,
+      async (page) => (await http.getJson(url, { params: { ...base, page } })) as unknown[],
+      opts.workers,
+    );
+  }
+  return records;
+}
+
 /** Follow the advertised collection; require positive first-page totals and complete, unique identities. */
 export async function wordpressPages(http: Http, host: string, filters: Params = {}): Promise<Row[]> {
   const url = `https://${host}/wp-json/wp/v2/pages`;

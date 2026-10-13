@@ -30,12 +30,12 @@
  */
 
 import { wants } from "../core/campus.ts";
-import { jsonapiCollection } from "../core/drupal.ts";
 import type { Http } from "../core/http.ts";
 import type { Output } from "../core/output.ts";
 import { register } from "../core/registry.ts";
-import { jsLiteral } from "../core/wordpress.ts";
 import * as htmldoc from "../htmldoc.ts";
+import { jsonapiCollection } from "../scraping/drupal.ts";
+import { jsLiteral } from "../scraping/javascript.ts";
 import { campusIds, onCampus, programFinderDatasets } from "./admissions.ts";
 
 export const CAMPUSES: Record<string, string> = {

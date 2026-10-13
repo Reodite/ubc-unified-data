@@ -3,11 +3,11 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
+import * as javascript from "../scraping/javascript.ts";
 import * as campus from "./campus.ts";
 import * as http from "./http.ts";
 import * as output from "./output.ts";
 import * as serialization from "./serialization.ts";
-import * as wordpress from "./wordpress.ts";
 
 describe("core infrastructure contracts", () => {
   it("preserves campus selection and rejects invalid values", () => {
@@ -121,8 +121,8 @@ describe("error and utility contracts", () => {
     expect(() => http.throwForStatus(599, "url")).toThrow(
       new http.HTTPError("599 Server Error: Server Error for url: url"),
     );
-    expect(() => wordpress.jsLiteral("", "data")).toThrow(new http.MissingKeyError("data"));
-    expect(() => wordpress.jsLiteral("var data = [", "data")).toThrow(
+    expect(() => javascript.jsLiteral("", "data")).toThrow(new http.MissingKeyError("data"));
+    expect(() => javascript.jsLiteral("var data = [", "data")).toThrow(
       new http.InvalidValueError("unterminated literal for data"),
     );
   });

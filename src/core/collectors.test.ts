@@ -2,12 +2,13 @@ import { mkdir, mkdtemp, readdir, readFile, rm, writeFile } from "node:fs/promis
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { jsonapiCollection, simplifyJsonapi } from "../scraping/drupal.ts";
+import { jsLiteral } from "../scraping/javascript.ts";
+import { wpCollection } from "../scraping/wordpress.ts";
 import { setCampus, wants } from "./campus.ts";
-import { jsonapiCollection, simplifyJsonapi } from "./drupal.ts";
 import { Http, HTTPError, InvalidValueError, RequestTimeoutError, type ResponseLike } from "./http.ts";
 import { Output } from "./output.ts";
 import { floatValue, stringifyCsv, stringifyJson, stringifyJsonItems } from "./serialization.ts";
-import { jsLiteral, wpCollection } from "./wordpress.ts";
 
 describe("stringifyJson writes JSON with conventional offsets and quoting", () => {
   it("serializes primitives and nested structures", () => {
@@ -338,18 +339,21 @@ describe("jsonapiCollection", () => {
     expect(calls.sort()).toEqual(["0", "50"]);
   });
 
-  it("preserves caller-supplied offset arithmetic without rounding page sizes", async () => {
-    const offsets: string[] = [];
-    const http = new Http({ retries: 0 });
-    http.responder = (_method, url) => {
-      const offset = new URL(url).searchParams.get("page[offset]")!;
-      offsets.push(offset);
-      return jsonapiPage([{ id: offset }], { count: 2 });
-    };
-    const rows = await jsonapiCollection(http, "example.com", "node/x", { pageSize: 0.3 });
-    expect(offsets).toEqual(["0", "0.3", "0.6", "0.8999999999999999", "1.2", "1.5", "1.8"]);
-    expect(rows.map((row) => row.id)).toEqual(offsets);
-  });
+  it.each([0, -1, 0.3, NaN, Infinity, Number.MAX_SAFE_INTEGER + 1])(
+    "rejects invalid page size %s before requesting data",
+    async (pageSize) => {
+      let calls = 0;
+      const http = new Http({ retries: 0 });
+      http.responder = () => {
+        calls++;
+        return jsonapiPage([{ id: 1 }], { count: 2 });
+      };
+      await expect(jsonapiCollection(http, "example.com", "node/x", { pageSize })).rejects.toThrow(
+        "positive safe integer",
+      );
+      expect(calls).toBe(0);
+    },
+  );
 
   it("retains permissive handling of unrecognized counts and string next links", async () => {
     let calls = 0;
@@ -437,6 +441,17 @@ describe("wpCollection", () => {
     };
     expect(await wpCollection(http, "example.com", "wp/v2/pages")).toEqual(expected.map((id) => ({ id })));
     expect(calls).toEqual(expected);
+  });
+
+  it("rejects an unbounded publisher page count before another request", async () => {
+    let calls = 0;
+    const http = new Http({ retries: 0 });
+    http.responder = () => {
+      calls++;
+      return respond(200, '[{"id":1}]', { "X-WP-TotalPages": "Infinity" });
+    };
+    await expect(wpCollection(http, "example.com", "wp/v2/pages")).rejects.toThrow("safe pagination bounds");
+    expect(calls).toBe(1);
   });
 
   it("fans out by X-WP-TotalPages", async () => {

@@ -8,10 +8,10 @@
  * This is public directory-style information only. No student data is collected.
  */
 
-import { jsonapiCollection, jsonapiIndex } from "../core/drupal.ts";
 import { errorName, type Http } from "../core/http.ts";
 import type { Output } from "../core/output.ts";
 import { register } from "../core/registry.ts";
+import { jsonapiCollection, jsonapiIndex } from "../scraping/drupal.ts";
 
 // UBC units known to run the shared Drupal platform. Hosts that are absent,
 // offline or not on the platform are skipped without failing the run.

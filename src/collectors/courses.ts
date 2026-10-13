@@ -13,11 +13,11 @@
  */
 
 import { wants } from "../core/campus.ts";
-import { jsonapiCollection, jsonapiIndex } from "../core/drupal.ts";
 import type { Http } from "../core/http.ts";
 import type { Output } from "../core/output.ts";
 import { register } from "../core/registry.ts";
 import { enrich as enrichCourseText } from "../coursetext.ts";
+import { jsonapiCollection, jsonapiIndex } from "../scraping/drupal.ts";
 
 export const HOST = "courses.students.ubc.ca";
 

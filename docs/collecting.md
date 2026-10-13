@@ -8,25 +8,44 @@ formats and publication guarantees remain separate. See the
 
 ## Architecture
 
-| Path                          | Responsibility                                                                                        |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `src/core/`                   | HTTP, JSON/CSV serialization, output accounting, campus selection, collector registry and CMS clients |
-| `src/core/response.ts`        | Response-byte reading and retryable status codes shared by `Http`, `ProseClient` and `HostRecording`  |
-| `src/scraping/github.ts`      | Commit-pinned GitHub snapshots for grades and geospatial mirrors                                      |
-| `src/scraping/ubc.ts`         | `hasUbcBranding` checks publisher branding separately from substantive homepage evidence              |
-| `src/source-documents.ts`     | Shared source-document mapping, including `drupalDocument` used by structured collectors              |
-| `src/collectors/`             | Structured source collectors; `index.ts` registers them for `src/update.ts`                           |
-| `src/scraping/html.ts`        | Shared DOM/text primitives                                                                            |
-| `src/prose/html.ts`           | `extractArticleFromDom` and shared article extraction                                                 |
-| `src/prose/`                  | Prose source discovery, conversion, coverage and exports                                              |
-| `src/host-crawl/scraper.ts`   | `defineHtmlHost` and `defineWordpressHost` snapshot/extraction wrappers                               |
-| `src/host-crawl/discovery/`   | Host discovery helpers used by the collection pipeline                                                |
-| `src/host-scrapers/policies/` | Source-specific discovery and exclusion evidence                                                      |
-| `src/host-crawl/`             | Recording, replay, routing, validation and journaled publication                                      |
-| `src/host-scrapers/`          | Specialized host definitions, generic-host declarations and saved routing policies                    |
+| Path                          | Responsibility                                                                                       |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `src/core/`                   | HTTP, JSON/CSV serialization, output accounting, campus selection and collector registration         |
+| `src/core/response.ts`        | Response-byte reading and retryable status codes shared by `Http`, `ProseClient` and `HostRecording` |
+| `src/scraping/github.ts`      | Commit-pinned GitHub snapshots for grades and geospatial mirrors                                     |
+| `src/scraping/ubc.ts`         | `hasUbcBranding` checks publisher branding separately from substantive homepage evidence             |
+| `src/source-documents.ts`     | Generic document shaping, text/URL helpers and record validation                                     |
+| `src/collectors/`             | Structured source collectors; `index.ts` registers them for `src/update.ts`                          |
+| `src/scraping/html.ts`        | Shared DOM/text primitives                                                                           |
+| `src/prose/html.ts`           | `extractArticleFromDom` and shared article extraction                                                |
+| `src/prose/`                  | Prose source discovery, conversion, coverage and exports                                             |
+| `src/host-crawl/scraper.ts`   | `defineHtmlHost` and `defineWordpressHost` snapshot/extraction wrappers                              |
+| `src/host-crawl/discovery/`   | Host discovery helpers used by the collection pipeline                                               |
+| `src/host-scrapers/policies/` | Source-specific discovery and exclusion evidence                                                     |
+| `src/host-crawl/`             | Recording, replay, routing, validation and journaled publication                                     |
+| `src/host-scrapers/`          | Specialized host definitions, generic-host declarations and saved routing policies                   |
+
+CMS clients and document mapping live in `src/scraping/wordpress.ts` and
+`src/scraping/drupal.ts`. Both use `scraping/pagination.ts`; header syntax,
+empty-page handling and completeness checks remain specific to each collection
+contract. `scraping/javascript.ts` reads inline publisher datasets without
+executing page scripts.
+
+`host-crawl/recorded-host.ts` shares seed, recording, collection and sealing work
+between the single-host CLI and batch runner. The CLI treats scope failures as
+required-input failures; the generic batch can omit destinations that its recorder
+has proved outside scope. Batch duplicate coalescing stays outside this lifecycle.
+
+Within `host-crawl/`, `collection/` owns URL roles, FIFO traversal and document
+construction; `recording/` owns immutable objects and recovery ledgers;
+`publication/` owns journal validation and filesystem recovery. `BatchPublisher`
+in `batch-publication.ts` owns the reviewed Git target, staging, commits and push
+receipts, separate from collection and admission.
 
 The shared response reader leaves byte limits, retry budgets and failure
-accounting to each caller; sharing it does not weaken host recording rules.
+accounting to each caller. Live collection uses typed recording failures and URL
+exclusion codes rather than diagnostic text. The recording boundary decodes legacy
+persisted failure messages without rewriting their evidence.
 
 ## Structured refresh
 
@@ -239,10 +258,11 @@ Add a module under `src/collectors/`, register a class implementing `CollectorDe
 `register` from `src/core/registry.ts`, and import it once in
 `src/collectors/index.ts`. Its `collect(http, out)` method uses `Http` from
 `src/core/http.ts` and `Output` from `src/core/output.ts`. Import other shared
-helpers from their owning modules: `src/core/campus.ts`, `src/core/drupal.ts`,
-`src/core/serialization.ts`, `src/core/utils.ts` and `src/core/wordpress.ts`.
-Source-document mappings belong in `src/source-documents.ts`, not in a collector
-whose import registers unrelated sources.
+helpers from their owning modules: `src/core/campus.ts`,
+`src/core/serialization.ts`, `src/core/utils.ts` and `src/scraping/`.
+CMS acquisition and mappings belong in the WordPress or Drupal module; generic
+document shaping belongs in `src/source-documents.ts`. Do not import these helpers
+from a collector whose import registers unrelated sources.
 
 Use `Output.table`, `.json`, `.csv` or `.raw` so the manifest accounts for output.
 `out.describe(stem, { grain, columns, joins })` documents the same stem passed to
@@ -287,6 +307,9 @@ boundary must not fall back to site chrome. `defineHtmlHost` supports HTML-link
 sites and optional `excludePage`, `validateSnapshot`, `extractPage` and
 `normalizeArticle` hooks. Default extraction uses `extractArticleFromDom` on the
 already parsed DOM. Specialized extraction must preserve source claims and links.
+An `excludeUrl` callback returns `null` or a `UrlExclusion` with a stable `code`
+and human-readable `reason`; use `pageUrlPolicy` and `urlExclusion` from
+`host-crawl/urls.ts` rather than branching on message text.
 
 Import the definition into `src/host-crawl/registry.ts` and add it once to its
 specialized registry. Do not also add it to the generic list or maintain a second
@@ -323,7 +346,9 @@ npm run validate:undergrad
 ```
 
 Shared collector behavior has focused coverage in `src/core/collectors.test.ts`
-and compatibility contracts in `src/core/contracts.test.ts`.
+and serialization/output contracts in `src/core/contracts.test.ts`.
+Runtime tests use isolated internal controllers and filesystem/process adapters;
+synthetic handles cannot grant authority to the public native runtime.
 
 The validators check fields, citations, hashes, joins, export equality, counts
 and sizes. Prose adds safe Markdown, standalone-body equality and inventory
