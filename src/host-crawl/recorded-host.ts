@@ -9,7 +9,7 @@ import { assertExternalPath, DEFAULT_EXTERNAL_ROOT, DEFAULT_LEGACY_STATE_FILE } 
 import { isAbsent, writeImmutable } from "./private-files.ts";
 import { readRegularFile } from "./public-validation.ts";
 import { HostRecording, type RecordingOptions } from "./recording.ts";
-import { pageExclusion } from "./urls.ts";
+import { pageUrlPolicy } from "./urls.ts";
 
 const SEED_LIMIT = 16 * 1024 * 1024;
 
@@ -78,7 +78,7 @@ export async function openRecordedHost(options: {
     resumeInterrupted: options.resumeInterrupted,
     recoverTransientFailures: options.recoverTransientFailures,
     documentUrlAllowed: (url) =>
-      (scraper.excludeUrl ? scraper.excludeUrl(url) : pageExclusion(url, scraper.hostname)) === null,
+      (scraper.excludeUrl ? scraper.excludeUrl(url) : pageUrlPolicy(url, scraper.hostname)) === null,
     htmlDocumentsOnly: true,
   });
   return { recording, directory, scraper, seed, seedPath, sealed };

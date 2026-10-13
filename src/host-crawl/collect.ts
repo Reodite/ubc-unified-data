@@ -43,7 +43,7 @@ import { validateSearchDocument } from "./document-format.ts";
 import { isFatalCollectionError } from "./errors.ts";
 import { discoverMachineLinks } from "./machine-links.ts";
 import type { MarkdownInspection } from "./markdown-contract.mjs";
-import { hostUrl, inventoryUrl, nonDocumentInventoryUrl, pageExclusion, UNSUPPORTED_DOCUMENT } from "./urls.ts";
+import { hostUrl, inventoryUrl, nonDocumentInventoryUrl, pageUrlPolicy } from "./urls.ts";
 
 const sha256 = (value: string | Uint8Array) => createHash("sha256").update(value).digest("hex");
 const isPdfUrl = (value: string) => /\.pdf$/i.test(decodeURIComponent(new URL(value).pathname));
@@ -162,8 +162,9 @@ export async function collectRecordedHost(
       const target = hostUrl(value, hostname);
       if (robots.isDisallowed(target, "ubc-data")) throw new Error("Recorded redirect violates robots policy");
       if (document) {
-        const excluded = scraper.excludeUrl ? scraper.excludeUrl(target) : pageExclusion(target, hostname);
-        if (excluded !== null) throw new DocumentPolicyError(`Document URL policy excludes ${target}: ${excluded}`);
+        const excluded = scraper.excludeUrl ? scraper.excludeUrl(target) : pageUrlPolicy(target, hostname);
+        if (excluded !== null)
+          throw new DocumentPolicyError(`Document URL policy excludes ${target}: ${excluded.reason}`);
       }
     }
   };
@@ -327,8 +328,8 @@ export async function collectRecordedHost(
         nonDocuments.add(url);
       }
       for (const url of discoverMachineLinks(observation.snapshot.body, hostname, observation.snapshot.url)) {
-        const exclusion = scraper.excludeUrl ? scraper.excludeUrl(url) : pageExclusion(url, hostname);
-        if (exclusion !== null && exclusion !== "Unsupported query or form selection") continue;
+        const exclusion = scraper.excludeUrl ? scraper.excludeUrl(url) : pageUrlPolicy(url, hostname);
+        if (exclusion !== null && exclusion.code !== "query") continue;
         machineLinks.add(url);
         excludedDiscovery(url);
       }
@@ -343,15 +344,15 @@ export async function collectRecordedHost(
     const url = exactHost ? inventoryUrl(value, hostname) : hostUrl(value, hostname);
     if (!url || excludedDiscovery(url)) return;
     if (markdownTargets.has(url)) return;
-    const exclusion = scraper.excludeUrl ? scraper.excludeUrl(url) : pageExclusion(url, hostname);
-    if (advertisedPages.has(url) && exclusion === "Ambiguous repeated path separator")
+    const exclusion = scraper.excludeUrl ? scraper.excludeUrl(url) : pageUrlPolicy(url, hostname);
+    if (advertisedPages.has(url) && exclusion?.code === "ambiguous-path")
       throw new Error("Publisher inventory advertises an ambiguous path");
-    if (exclusion === UNSUPPORTED_DOCUMENT) return;
+    if (exclusion?.code === "unsupported-document") return;
     const parsed = new URL(url);
     if (
       scraper.adapter.kind === "html" &&
       linked &&
-      exclusion === "Unsupported query or form selection" &&
+      exclusion?.code === "query" &&
       [...parsed.searchParams.keys()].some((key) => ["page", "paged"].includes(key))
     )
       throw new Error(`Linked pagination requires a declared complete query policy: ${url}`);
@@ -365,9 +366,9 @@ export async function collectRecordedHost(
     if (
       exclusion !== null &&
       ((cmsPages.has(url) && !(exactHost && nonDocumentInventoryUrl(url, hostname))) ||
-        (advertisedPages.has(url) && exclusion === "Unsupported query or form selection"))
+        (advertisedPages.has(url) && exclusion?.code === "query"))
     )
-      throw new Error(`Required publisher URL lacks a supported discovery policy: ${url} (${exclusion})`);
+      throw new Error(`Required publisher URL lacks a supported discovery policy: ${url} (${exclusion.reason})`);
     if (exclusion !== null || queued.has(url)) return;
     queued.add(url);
     queue.push(url);

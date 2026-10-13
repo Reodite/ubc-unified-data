@@ -3,7 +3,7 @@ import { extractArticleFromDom } from "../prose/html.ts";
 import type { ArticleInput } from "../prose/model.ts";
 import { HTML_MEDIA_TYPE, normalizedText } from "../scraping/html.ts";
 import type { HostScraper, Snapshot } from "./contracts.ts";
-import { hostUrl, normalizeHost, pageExclusion } from "./urls.ts";
+import { hostUrl, normalizeHost, pageUrlPolicy, type UrlExclusion } from "./urls.ts";
 
 type PageDecision = ReturnType<HostScraper["extract"]>;
 
@@ -15,7 +15,7 @@ export interface HtmlHostOptions {
   documentFormats?: HostScraper["documentFormats"];
   selectors?: readonly string[];
   officialHomepage?: ($: CheerioAPI, snapshot: Snapshot) => boolean;
-  excludeUrl?: (url: string) => string | null;
+  excludeUrl?: (url: string) => UrlExclusion | null;
   excludePage?: ($: CheerioAPI, snapshot: Snapshot) => string | null;
   validateSnapshot?: (snapshot: Snapshot) => void;
   extractPage?: ($: CheerioAPI, snapshot: Snapshot) => PageDecision;
@@ -26,7 +26,7 @@ export interface HtmlHostOptions {
 export function defineHtmlHost(options: HtmlHostOptions): HostScraper {
   const hostname = normalizeHost(options.hostname);
   const home = `https://${hostname}/`;
-  const excludeUrl = options.excludeUrl ?? ((url: string) => pageExclusion(url, hostname));
+  const excludeUrl = options.excludeUrl ?? ((url: string) => pageUrlPolicy(url, hostname));
   const adapter = options.adapter ?? { kind: "html", allowedTypes: [] };
   const validateSnapshot = (snapshot: Snapshot) => {
     hostUrl(snapshot.requested_url, hostname);
@@ -72,7 +72,7 @@ export function defineHtmlHost(options: HtmlHostOptions): HostScraper {
     extract(snapshot) {
       validateSnapshot(snapshot);
       const excluded = excludeUrl(snapshot.requested_url) ?? excludeUrl(snapshot.url);
-      if (excluded) return { kind: "excluded", reason: excluded };
+      if (excluded) return { kind: "excluded", reason: excluded.reason };
       const $ = load(snapshot.body);
       const reason = options.excludePage?.($, snapshot);
       if (reason) return { kind: "excluded", reason };
@@ -88,7 +88,7 @@ export function defineHtmlHost(options: HtmlHostOptions): HostScraper {
               strategy: adapter.kind === "wordpress" ? "wordpress" : "sitemap",
               selectors: options.selectors ? [...options.selectors] : undefined,
               strictSelectors: Boolean(options.selectors),
-              scope: excludeUrl,
+              scope: (url) => excludeUrl(url)?.reason ?? null,
             }),
           };
       if (result.kind === "excluded") return result;

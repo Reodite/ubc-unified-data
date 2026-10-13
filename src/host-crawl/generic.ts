@@ -14,7 +14,7 @@ import { digest, formatDocument, safeText, timestamp } from "./document-format.t
 import { htmlBaseUrl } from "./html-base.ts";
 import { validateVettedHost } from "./public-validation.ts";
 import { defineHtmlHost } from "./scraper.ts";
-import { hostUrl, normalizeHost, pageExclusion } from "./urls.ts";
+import { hostUrl, normalizeHost, pageUrlPolicy, urlExclusion, type UrlExclusion } from "./urls.ts";
 
 const HTML = /^(?:text\/html|application\/xhtml\+xml)(?:;|$)/i;
 const HEADINGS = "h1,h2,h3,h4,h5,h6";
@@ -38,14 +38,11 @@ const TRIGGERS = [
 ].join(",");
 const titleText = (value: string) => plainText(value).replaceAll("\u2060", "");
 
-function excludeUrl(value: string, hostname: string): string | null {
-  const excluded = pageExclusion(value, hostname);
+function excludeUrl(value: string, hostname: string): UrlExclusion | null {
+  const excluded = pageUrlPolicy(value, hostname);
   if (
     excluded !== null &&
-    !(
-      excluded === "Unsupported query or form selection" &&
-      requiredDocumentQueries(hostname).some((entry) => entry.url === value)
-    )
+    !(excluded.code === "query" && requiredDocumentQueries(hostname).some((entry) => entry.url === value))
   )
     return excluded;
   const path = decodeURIComponent(new URL(hostUrl(value, hostname)).pathname);
@@ -57,7 +54,7 @@ function excludeUrl(value: string, hostname: string): string | null {
     /\/(?:update|install|authorize)\.php(?:\/|$)/i.test(path) ||
     /^\/sites\/[^/]+\/files\/(?:css|js|styles)(?:\/|$)/i.test(path)
   )
-    return "Administration, private content, form action or embedded resource";
+    return urlExclusion("private-route", "Administration, private content, form action or embedded resource");
   return null;
 }
 
@@ -69,7 +66,7 @@ function assertPublicSnapshot(snapshot: Snapshot, hostname: string): void {
   ]) {
     publicUbcUrl(hostUrl(value, hostname));
     const excluded = excludeUrl(value, hostname);
-    if (excluded !== null) throw new Error(`Non-public document observation: ${excluded}`);
+    if (excluded !== null) throw new Error(`Non-public document observation: ${excluded.reason}`);
   }
   assertRequiredQueryIdentity(hostname, requiredDocumentQueries(hostname), snapshot.requested_url, snapshot);
   if (snapshot.status !== 200 || snapshot.binary || !HTML.test(snapshot.headers["content-type"] ?? ""))

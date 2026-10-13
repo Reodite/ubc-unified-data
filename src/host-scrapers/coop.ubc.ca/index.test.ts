@@ -252,23 +252,28 @@ describe("coopScraper URL policy", () => {
     "https://coop.ubc.ca:444/files/example.pdf",
     "file:///files/example.pdf",
   ])("never opens document exceptions outside the exact host: %s", (url) => {
-    expect(scraper.excludeUrl!(url)).toBe("Different or unsafe host destination");
+    expect(scraper.excludeUrl!(url)).toEqual({ code: "host", reason: "Different or unsafe host destination" });
   });
 
   it("does not widen traversal scope to the sitemap deployment marker", () => {
-    expect(scraper.excludeUrl!(scraper.adapter.sitemaps![0]!.rootOnlyLocation!)).toBe(
-      "Different or unsafe host destination",
-    );
-    expect(scraper.excludeUrl!("https://coop.ubc.ca/sitemap.xml")).toBe("Static asset or machine-readable resource");
+    expect(scraper.excludeUrl!(scraper.adapter.sitemaps![0]!.rootOnlyLocation!)).toEqual({
+      code: "host",
+      reason: "Different or unsafe host destination",
+    });
+    expect(scraper.excludeUrl!("https://coop.ubc.ca/sitemap.xml")).toEqual({
+      code: "resource",
+      reason: "Static asset or machine-readable resource",
+    });
   });
 
   it("uses shared host normalization while keeping downloads outside article traversal", () => {
-    expect(scraper.excludeUrl!("https://COOP.UBC.CA.:443/files/example.pdf#section")).toBe(UNSUPPORTED_DOCUMENT);
+    const excluded = { code: "unsupported-document", reason: UNSUPPORTED_DOCUMENT };
+    expect(scraper.excludeUrl!("https://COOP.UBC.CA.:443/files/example.pdf#section")).toEqual(excluded);
     const pdf = `${HOME}files/example.pdf`;
     expect(pageExclusion(pdf, scraper.hostname)).toBe(UNSUPPORTED_DOCUMENT);
-    expect(scraper.excludeUrl!(pdf)).toBe(UNSUPPORTED_DOCUMENT);
-    expect(scraper.excludeUrl!(`${pdf}?download=1`)).toBe(UNSUPPORTED_DOCUMENT);
-    expect(scraper.excludeUrl!(`${HOME}files/example.docx`)).toBe(UNSUPPORTED_DOCUMENT);
+    expect(scraper.excludeUrl!(pdf)).toEqual(excluded);
+    expect(scraper.excludeUrl!(`${pdf}?download=1`)).toEqual(excluded);
+    expect(scraper.excludeUrl!(`${HOME}files/example.docx`)).toEqual(excluded);
   });
 });
 

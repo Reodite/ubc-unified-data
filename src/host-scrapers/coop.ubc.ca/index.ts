@@ -2,7 +2,7 @@ import { load, type CheerioAPI } from "cheerio";
 import { discoverPublicViews } from "../../host-crawl/adapters/html-discovery.ts";
 import type { PublicGetView, Snapshot } from "../../host-crawl/contracts.ts";
 import { defineHtmlHost } from "../../host-crawl/scraper.ts";
-import { hostUrl, pageExclusion } from "../../host-crawl/urls.ts";
+import { hostUrl, pageUrlPolicy, urlExclusion, type UrlExclusion } from "../../host-crawl/urls.ts";
 import { extractArticleFromDom } from "../../prose/html.ts";
 import { toSafeMarkdown } from "../../prose/markdown.ts";
 import { contentRoots, normalizedText as text } from "../../scraping/html.ts";
@@ -30,9 +30,9 @@ function selectedFaq(url: URL): boolean {
   );
 }
 
-function excludeUrl(value: string): string | null {
-  const excluded = pageExclusion(value, HOST);
-  if (excluded && excluded !== "Unsupported query or form selection") return excluded;
+function excludeUrl(value: string): UrlExclusion | null {
+  const excluded = pageUrlPolicy(value, HOST);
+  if (excluded && excluded.code !== "query") return excluded;
   const url = new URL(hostUrl(value, HOST));
   const pathname = decodeURIComponent(url.pathname);
   if (
@@ -41,8 +41,8 @@ function excludeUrl(value: string): string | null {
     /^\/(?:update|install|authorize)\.php(?:\/|$)/i.test(pathname) ||
     /^\/sites\/[^/]+\/(?:files\/(?:css|js|styles)|private)(?:\/|$)/i.test(pathname)
   )
-    return "Administration, form action or embedded resource";
-  if (url.search && !selectedFaq(url)) return "Unsupported query or form selection";
+    return urlExclusion("private-route", "Administration, form action or embedded resource");
+  if (url.search && !selectedFaq(url)) return urlExclusion("query", "Unsupported query or form selection");
   if (selectedFaq(url)) return null;
   return excluded;
 }
@@ -232,7 +232,7 @@ export const coopScraper = defineHtmlHost({
       strategy: "drupal",
       selectors: [selectors.join(",")],
       strictSelectors: true,
-      scope: excludeUrl,
+      scope: (url) => excludeUrl(url)?.reason ?? null,
     });
     if (omittedPostingControls)
       input.warnings = [

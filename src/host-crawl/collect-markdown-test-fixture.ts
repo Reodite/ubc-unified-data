@@ -11,7 +11,7 @@ import type {
   SearchDocument,
 } from "./contracts.ts";
 import { inspectMarkdownSource } from "./markdown-inspection.mjs";
-import { pageExclusion } from "./urls.ts";
+import { pageUrlPolicy } from "./urls.ts";
 
 const hostname = "manufacturing.engineering.ubc.ca";
 export const origin = `https://${hostname}`;
@@ -72,7 +72,7 @@ export function fixture() {
     scope: "Synthetic complete host with one exact Markdown source.",
     adapter: { kind: "html", allowedTypes: [], exactHostInventory: true },
     documentFormats: ["markdown"],
-    excludeUrl: (url) => pageExclusion(url, hostname),
+    excludeUrl: (url) => pageUrlPolicy(url, hostname),
     vetHomepage: () => ({ accepted: true, reason: "fixture" }),
     extract(snapshot) {
       return {
