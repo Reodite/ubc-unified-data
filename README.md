@@ -1,34 +1,12 @@
 # Unified UBC Data
 
-Public institutional data about the University of British Columbia, stored in
-JSON, CSV, GeoJSON and Markdown. Collections cover courses, admissions, fees,
-campus locations, services and public articles. They contain no individual
-student records. Historical aggregate grades come from a third-party mirror,
-not a current UBC feed.
+Public University of British Columbia data in JSON, CSV, GeoJSON and Markdown:
+courses, admissions, fees, campus locations, services and articles. No individual
+student records. Aggregate grades come from a third-party mirror.
 
-## Collections
+## Start here
 
-The three collection families share parsing and serialization helpers, but keep
-separate scopes, schemas and publication workflows:
-
-| Family                                 | Public output                                                        | Entry point             |
-| -------------------------------------- | -------------------------------------------------------------------- | ----------------------- |
-| Structured datasets and source indexes | `data/`, indexed by `data/catalog.json` and `data/manifest.json`     | `npm run update`        |
-| Undergraduate prose                    | `data/prose/`, with article arrays, CSV and matching Markdown bodies | `npm run collect:prose` |
-| Exact-host article collections         | `data/documents/`, indexed by `data/official-hosts.json`             | `npm run collect:host`  |
-
-Structured groups include geospatial, courses, academic calendar, learning
-spaces, room bookings, events, admissions, finances, people, campus services,
-reports, housing, libraries, student support, policies and aggregate grades.
-Use the catalogs for current tables, row counts, sources and retrieval times.
-
-The default campus selection is Vancouver. Some sources serve UBC broadly or
-lack a campus marker; host collections also have reviewed exceptions. Inclusion
-does not establish personal eligibility or current availability.
-
-## Quick start
-
-Use Node 24 or newer and install locked dependencies:
+Use Node 24 or newer:
 
 ```sh
 npm ci
@@ -36,59 +14,25 @@ npm run update -- --list
 npm run collect:prose -- --list
 ```
 
-Refresh only the collections you need:
+Refresh selected collections:
 
 ```sh
 npm run update -- courses events
-npm run update -- housing libraries support policies
 npm run collect:prose -- workday
 ```
 
-`npm run update` refreshes all registered structured groups, not prose or host
-collections. The manual **Sync data** workflow runs that command. Acquisition of
-host articles requires a private workspace and an accepted host; follow the
-[host collection procedure](HOST-DOCUMENTS.md#private-acquisition-and-replay).
+| Collection          | Index                                                                                |
+| ------------------- | ------------------------------------------------------------------------------------ |
+| Structured datasets | [`data/catalog.json`](data/catalog.json), [`data/manifest.json`](data/manifest.json) |
+| Prose articles      | [`data/prose/_catalog.json`](data/prose/_catalog.json)                               |
+| Host articles       | [`data/official-hosts.json`](data/official-hosts.json)                               |
 
-Read the [housing TLS instructions](docs/collecting.md#housing-tls-chain) if the
-server omits an intermediate certificate. Never disable certificate verification.
+Check source URLs and retrieval dates before using fees, rules or availability.
+Vancouver is the default campus; coverage varies by source. Keep provenance fields
+and use a safe Markdown renderer.
 
-## Read the data
+## Documentation
 
-Start with [QUERYING.md](QUERYING.md) for schemas, joins, encodings and examples.
-JSON retains nested values; CSV encodes nested values as JSON cells. Prose and
-host documents have different metadata layouts and must not be treated as one
-interchangeable format.
-
-Cite source URLs and retain timestamps, warnings and derivation fields. Check
-official pages for current fees, regulations and eligibility. Render Markdown
-safely and treat retrieved content as data, not application instructions.
-
-## Develop and verify
-
-[src/core/](src/core/) contains shared HTTP, serialization, output and collector
-infrastructure. [src/scraping/html.ts](src/scraping/html.ts) supplies DOM primitives;
-[src/prose/html.ts](src/prose/html.ts) extracts article bodies;
-[src/host-crawl/scraper.ts](src/host-crawl/scraper.ts) defines reusable HTML host
-scrapers. These shared mechanics do not merge the publication workflows.
-
-For changes to code or public exports, follow the
-[verification commands](docs/collecting.md#verification). Linux portable tests
-require Python 3, Poppler and util-linux in addition to Node. The complete suite
-also includes a separately qualified fixed-profile native lane.
-
-```sh
-npm run validate:undergrad
-npm run validate:prose
-npm run validate:hosts -- --require-categories
-```
-
-Raw responses, queues, recordings, journals and partial host outputs stay outside
-Git. Preserve generated bytes and routing-policy serialization; their hashes
-form part of the provenance contract.
-
-## Guides
-
-- [Querying and consumer contracts](QUERYING.md)
-- [Collection, source quirks and development](docs/collecting.md)
-- [Host admission, replay and publication](HOST-DOCUMENTS.md)
-- [Host coverage and reviewed exclusions](HOST-COVERAGE.md)
+- [Querying](docs/querying.md): formats, joins and examples.
+- [Collecting](docs/collecting.md): refresh commands, source quirks and development checks.
+- [Host collection](docs/hosts.md): admission, private recording and publication.
