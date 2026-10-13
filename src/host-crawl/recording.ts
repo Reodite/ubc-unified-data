@@ -13,6 +13,7 @@ import {
   type ProducerContext,
   type Snapshot,
 } from "./contracts.ts";
+import { RecordingError, savedRequestFailure } from "./errors.ts";
 import { assertExternalPath } from "./paths.ts";
 import { readRegularFile } from "./public-validation.ts";
 import { decodeRecordedText } from "./text-decoding.ts";
@@ -101,14 +102,16 @@ export class HostRecording {
   private seenTextBodies = new Map<string, string>();
 
   static async open(options: RecordingOptions): Promise<HostRecording> {
-    if (normalizeHost(options.hostname) !== options.hostname) throw new Error("Noncanonical recording hostname");
+    if (normalizeHost(options.hostname) !== options.hostname)
+      throw new RecordingError("Noncanonical recording hostname");
     const directory = assertExternalPath(options.directory);
     await mkdir(directory, { recursive: true, mode: 0o700 });
     await mkdir(join(directory, "objects"), { recursive: true, mode: 0o700 });
     const lockPath = assertExternalPath(join(directory, "owner.sqlite"));
     try {
       const info = await lstat(lockPath);
-      if (!info.isFile() || info.nlink !== 1) throw new Error("Recording lock must be a regular unaliased file");
+      if (!info.isFile() || info.nlink !== 1)
+        throw new RecordingError("Recording lock must be a regular unaliased file");
     } catch (error) {
       if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
     }
@@ -121,7 +124,7 @@ export class HostRecording {
         try {
           const info = await lstat(path);
           if (!info.isFile() || info.nlink !== 1)
-            throw new Error("Recording database must be a regular unaliased file");
+            throw new RecordingError("Recording database must be a regular unaliased file");
         } catch (error) {
           if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
         }
@@ -129,7 +132,7 @@ export class HostRecording {
       if (options.acquire) {
         try {
           await lstat(join(directory, "seal.json"));
-          throw new Error("Sealed acquisition is immutable; use offline replay");
+          throw new RecordingError("Sealed acquisition is immutable; use offline replay");
         } catch (error) {
           if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
         }
@@ -157,16 +160,16 @@ export class HostRecording {
         options.documentFormats?.some((format) => format !== "pdf") ||
         new Set(options.documentFormats).size !== (options.documentFormats?.length ?? 0)
       )
-        throw new Error("Invalid declared recording document formats");
+        throw new RecordingError("Invalid declared recording document formats");
       for (const [key, value] of Object.entries(requested))
         if (typeof value === "number" && (!Number.isSafeInteger(value) || value < 1))
-          throw new Error(`Invalid acquisition bound: ${key}`);
+          throw new RecordingError(`Invalid acquisition bound: ${key}`);
       const old = db.prepare("SELECT value FROM config WHERE id=1").get()?.value;
-      if (!old && !options.acquire) throw new Error("No saved recording to replay");
+      if (!old && !options.acquire) throw new RecordingError("No saved recording to replay");
       if (!old) db.prepare("INSERT INTO config VALUES (1,?)").run(JSON.stringify(requested));
       const config = old ? JSON.parse(String(old)) : requested;
       if (config.hostname !== options.hostname || config.seed_sha256 !== (options.seedSha256 ?? null))
-        throw new Error("Recording hostname or frontier digest mismatch");
+        throw new RecordingError("Recording hostname or frontier digest mismatch");
       const compatibleRequest: Record<string, unknown> = { ...requested };
       if (old && options.htmlDocumentsOnly === true) {
         compatibleRequest.maxResponseBytes = config.maxResponseBytes;
@@ -177,7 +180,7 @@ export class HostRecording {
         options.acquire &&
         JSON.stringify({ ...config, producer: requested.producer }) !== JSON.stringify(compatibleRequest)
       )
-        throw new Error("Acquisition options changed; replay saved input or create a new explicit recording");
+        throw new RecordingError("Acquisition options changed; replay saved input or create a new explicit recording");
       if (options.acquire) {
         db.exec(
           "CREATE TABLE IF NOT EXISTS attempt_producers (attempt_id INTEGER PRIMARY KEY, producer TEXT NOT NULL); CREATE TABLE IF NOT EXISTS outcome_failures (id INTEGER PRIMARY KEY, url TEXT NOT NULL, error TEXT NOT NULL, recorded_at TEXT NOT NULL); CREATE TABLE IF NOT EXISTS repair_authorizations (url TEXT PRIMARY KEY, reason TEXT NOT NULL, authorized_at TEXT NOT NULL, producer TEXT NOT NULL, attempt_count INTEGER NOT NULL, attempt_ceiling INTEGER NOT NULL CHECK(attempt_ceiling <= 6 AND attempt_ceiling > attempt_count AND attempt_ceiling <= attempt_count + 3)); CREATE TABLE IF NOT EXISTS acquisition_budget_grants (id TEXT PRIMARY KEY, authority_sha256 TEXT NOT NULL, authorized_at TEXT NOT NULL, expected_requests INTEGER NOT NULL, expected_bytes INTEGER NOT NULL, additional_requests INTEGER NOT NULL CHECK(additional_requests > 0), additional_bytes INTEGER NOT NULL CHECK(additional_bytes > 0), minimum_interval_ms INTEGER NOT NULL CHECK(minimum_interval_ms >= 1000)); CREATE TABLE IF NOT EXISTS acquisition_budget_grants_v2 (id TEXT PRIMARY KEY, authority_sha256 TEXT NOT NULL, authorized_at TEXT NOT NULL, expected_requests INTEGER NOT NULL, expected_bytes INTEGER NOT NULL, additional_requests INTEGER NOT NULL CHECK(additional_requests >= 0), additional_bytes INTEGER NOT NULL CHECK(additional_bytes >= 0), minimum_interval_ms INTEGER NOT NULL CHECK(minimum_interval_ms >= 1000), CHECK(additional_requests > 0 OR additional_bytes > 0));",
@@ -188,7 +191,9 @@ export class HostRecording {
       }
       const pending = db.prepare("SELECT count(*) n FROM attempts WHERE state='dispatching'").get()!.n;
       if (pending && (!options.acquire || !options.resumeInterrupted))
-        throw new Error("Uncertain prior requests require explicit acquisition resume; saved outcomes are preserved");
+        throw new RecordingError(
+          "Uncertain prior requests require explicit acquisition resume; saved outcomes are preserved",
+        );
       if (pending)
         db.prepare(
           "UPDATE attempts SET state='uncertain', bytes=max(bytes,?), error='Interrupted with no committed response; explicit resume requested; maximum response bytes reserved' WHERE state='dispatching'",
@@ -206,7 +211,7 @@ export class HostRecording {
     return publicUbcUrl(hostUrl(value, this.options.hostname));
   }
   private assertOpen(): void {
-    if (this.closed) throw new Error("Recording is closed");
+    if (this.closed) throw new RecordingError("Recording is closed");
   }
   private async store(snapshot: Snapshot): Promise<Observation> {
     const bytes = Buffer.from(JSON.stringify(snapshot));
@@ -226,10 +231,10 @@ export class HostRecording {
   }
   async readSnapshot(sha256: string): Promise<Observation> {
     this.assertOpen();
-    if (!/^[a-f0-9]{64}$/.test(sha256)) throw new Error("Invalid snapshot digest");
+    if (!/^[a-f0-9]{64}$/.test(sha256)) throw new RecordingError("Invalid snapshot digest");
     const path = assertExternalPath(join(this.options.directory, "objects", `${sha256}.json`));
     const bytes = await readRegularFile(path, 64 * 1024 * 1024);
-    if (hash(bytes) !== sha256) throw new Error("Recorded snapshot bytes changed");
+    if (hash(bytes) !== sha256) throw new RecordingError("Recorded snapshot bytes changed");
     const snapshot = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(bytes)) as Snapshot;
     this.scoped(snapshot.url);
     this.scoped(snapshot.requested_url);
@@ -238,7 +243,7 @@ export class HostRecording {
       !Number.isFinite(Date.parse(snapshot.retrieved_at)) ||
       !Number.isInteger(snapshot.status)
     )
-      throw new Error("Invalid recorded observation");
+      throw new RecordingError("Invalid recorded observation");
     if (snapshot.binary) await this.binaryBytes(snapshot);
     this.seen.set(sha256, path);
     return { sha256, snapshot };
@@ -255,11 +260,11 @@ export class HostRecording {
       !Array.isArray(this.config.documentFormats) ||
       !this.config.documentFormats.includes("pdf")
     )
-      throw new Error("Invalid or undeclared binary observation");
+      throw new RecordingError("Invalid or undeclared binary observation");
     const path = assertExternalPath(join(this.options.directory, "objects", `${binary.sha256}.body`));
     const bytes = await readRegularFile(path, Number(this.config.maxResponseBytes));
     if (bytes.length !== snapshot.bytes || hash(bytes) !== binary.sha256)
-      throw new Error("Recorded binary body changed");
+      throw new RecordingError("Recorded binary body changed");
     return bytes;
   }
 
@@ -283,7 +288,7 @@ export class HostRecording {
       Object.values(snapshot.headers).some((value) => typeof value !== "string") ||
       hash(JSON.stringify(snapshot)) !== snapshotSha256
     )
-      throw new Error("Invalid physical text observation");
+      throw new RecordingError("Invalid physical text observation");
     const receipts = this.db
       .prepare("SELECT url,state,bytes,body_sha,status,headers,error FROM attempts WHERE snapshot=?")
       .all(snapshotSha256);
@@ -302,13 +307,14 @@ export class HostRecording {
           receipt.headers !== JSON.stringify(snapshot.headers),
       )
     )
-      throw new Error("Missing or disagreeing observed text receipts");
+      throw new RecordingError("Missing or disagreeing observed text receipts");
     const path = assertExternalPath(join(this.options.directory, "objects", `${sha256}.body`));
     const bytes = await readRegularFile(path, Number(this.config.maxResponseBytes));
-    if (bytes.length !== snapshot.bytes || hash(bytes) !== sha256) throw new Error("Recorded text body changed");
+    if (bytes.length !== snapshot.bytes || hash(bytes) !== sha256)
+      throw new RecordingError("Recorded text body changed");
     this.seenTextBodies.set(path, sha256);
     const decoded = decodeRecordedText(bytes, snapshot.headers["content-type"] ?? "");
-    if (decoded !== snapshot.body) throw new Error("Recorded text decoding differs from snapshot body");
+    if (decoded !== snapshot.body) throw new RecordingError("Recorded text decoding differs from snapshot body");
     return { bytes, sha256 };
   }
 
@@ -316,7 +322,7 @@ export class HostRecording {
   async readTextBytes(snapshotSha256: string): Promise<{ bytes: Buffer; sha256: string }> {
     const observation = await this.readSnapshot(snapshotSha256);
     const { snapshot } = observation;
-    if (Object.hasOwn(snapshot, "binary")) throw new Error("Binary observation is not recorded text");
+    if (Object.hasOwn(snapshot, "binary")) throw new RecordingError("Binary observation is not recorded text");
     if (!Object.hasOwn(snapshot, "redirects")) return this.readPhysicalTextBytes(observation);
 
     const { redirects, ...physical } = snapshot;
@@ -333,7 +339,7 @@ export class HostRecording {
       this.scoped(snapshot.requested_url) !== snapshot.requested_url ||
       hash(JSON.stringify(snapshot)) !== snapshotSha256
     )
-      throw new Error("Invalid recorded logical text wrapper");
+      throw new RecordingError("Invalid recorded logical text wrapper");
 
     let url = snapshot.requested_url;
     const visited = new Set<string>();
@@ -346,7 +352,7 @@ export class HostRecording {
         visited.has(url) ||
         !redirectStatuses.includes(hop.status)
       )
-        throw new Error("Invalid recorded text redirect trace");
+        throw new RecordingError("Invalid recorded text redirect trace");
       visited.add(url);
       const observed = await this.readSnapshot(hop.snapshot);
       await this.readPhysicalTextBytes(observed);
@@ -356,10 +362,10 @@ export class HostRecording {
         !observed.snapshot.headers.location ||
         this.scoped(new URL(observed.snapshot.headers.location, url).href) !== hop.location
       )
-        throw new Error("Recorded text redirect evidence disagrees");
+        throw new RecordingError("Recorded text redirect evidence disagrees");
       url = hop.location;
     }
-    if (url !== snapshot.url || visited.has(url)) throw new Error("Recorded text redirect terminal disagrees");
+    if (url !== snapshot.url || visited.has(url)) throw new RecordingError("Recorded text redirect terminal disagrees");
 
     // Assignment preserves the physical property's position in the recorder's newline-free JSON encoding.
     physical.requested_url = physical.url;
@@ -370,7 +376,7 @@ export class HostRecording {
   private async policy() {
     if (!this.rules) {
       const robots = await this.readLogical(`https://${this.options.hostname}/robots.txt`, false);
-      if (![200, 404, 410].includes(robots.snapshot.status)) throw new Error("Robots policy unavailable");
+      if (![200, 404, 410].includes(robots.snapshot.status)) throw new RecordingError("Robots policy unavailable");
       this.rules = parser(robots.snapshot.url, robots.snapshot.status === 200 ? robots.snapshot.body : "");
     }
     return this.rules;
@@ -393,7 +399,8 @@ export class HostRecording {
     const grants = [...table("acquisition_budget_grants"), ...table("acquisition_budget_grants_v2")];
     grants.sort((left, right) => String(left.id).localeCompare(String(right.id)));
     for (let index = 1; index < grants.length; index++)
-      if (grants[index - 1]!.id === grants[index]!.id) throw new Error("Duplicate acquisition budget grant identifier");
+      if (grants[index - 1]!.id === grants[index]!.id)
+        throw new RecordingError("Duplicate acquisition budget grant identifier");
     return grants;
   }
 
@@ -411,23 +418,26 @@ export class HostRecording {
       minimumIntervalMs = Math.max(minimumIntervalMs ?? 0, Number(grant.minimum_interval_ms));
     }
     if (!Number.isSafeInteger(maxRequests) || !Number.isSafeInteger(maxBytes))
-      throw new Error("Effective acquisition budget exceeds a safe integer");
+      throw new RecordingError("Effective acquisition budget exceeds a safe integer");
     return { maxRequests, maxBytes, ...(minimumIntervalMs ? { minimumIntervalMs } : {}) };
   }
 
   /** Add explicit capacity without replacing the immutable recording configuration or prior attempts. */
   authorizeBudgetGrant(grant: AcquisitionBudgetGrant): boolean {
     this.assertOpen();
-    if (!this.options.acquire || this.sealed) throw new Error("Budget grants require unsealed explicit acquisition");
-    if (this.active.size) throw new Error("Budget grants require an idle recording");
-    if (!/^[a-z0-9][a-z0-9._-]{0,127}$/.test(grant.id)) throw new Error("Invalid budget grant identifier");
-    if (!/^[a-f0-9]{64}$/.test(grant.authoritySha256)) throw new Error("Invalid budget grant authority digest");
+    if (!this.options.acquire || this.sealed)
+      throw new RecordingError("Budget grants require unsealed explicit acquisition");
+    if (this.active.size) throw new RecordingError("Budget grants require an idle recording");
+    if (!/^[a-z0-9][a-z0-9._-]{0,127}$/.test(grant.id)) throw new RecordingError("Invalid budget grant identifier");
+    if (!/^[a-f0-9]{64}$/.test(grant.authoritySha256))
+      throw new RecordingError("Invalid budget grant authority digest");
     for (const [key, value] of Object.entries(grant))
       if (typeof value === "number" && (!Number.isSafeInteger(value) || value < 0))
-        throw new Error(`Invalid budget grant bound: ${key}`);
+        throw new RecordingError(`Invalid budget grant bound: ${key}`);
     if (grant.additionalRequests === 0 && grant.additionalBytes === 0)
-      throw new Error("Budget grant must add requests, bytes or both");
-    if (grant.minimumIntervalMs < 1000) throw new Error("Budget grant request interval must be at least one second");
+      throw new RecordingError("Budget grant must add requests, bytes or both");
+    if (grant.minimumIntervalMs < 1000)
+      throw new RecordingError("Budget grant request interval must be at least one second");
     const stored = this.budgetGrants().find((row) => row.id === grant.id);
     const values = {
       id: grant.id,
@@ -440,16 +450,16 @@ export class HostRecording {
     };
     if (stored) {
       for (const [key, value] of Object.entries(values))
-        if (stored[key] !== value) throw new Error("Saved budget grant differs from the requested authority");
+        if (stored[key] !== value) throw new RecordingError("Saved budget grant differs from the requested authority");
       return false;
     }
     this.db.exec("BEGIN IMMEDIATE");
     try {
       if (this.db.prepare("SELECT 1 FROM attempts WHERE state='dispatching' LIMIT 1").get())
-        throw new Error("Budget grants require no dispatching attempts");
+        throw new RecordingError("Budget grants require no dispatching attempts");
       const stats = this.db.prepare("SELECT count(*) requests, coalesce(sum(bytes),0) bytes FROM attempts").get()!;
       if (Number(stats.requests) !== grant.expectedRequests || Number(stats.bytes) !== grant.expectedBytes)
-        throw new Error("Budget grant does not match the preserved acquisition counters");
+        throw new RecordingError("Budget grant does not match the preserved acquisition counters");
       const table =
         grant.additionalRequests > 0 && grant.additionalBytes > 0
           ? "acquisition_budget_grants"
@@ -486,25 +496,25 @@ export class HostRecording {
       const headers = JSON.parse(String(saved.headers)) as Record<string, string>;
       const mediaType = headers["content-type"]?.split(";", 1)[0]?.trim().toLowerCase() || "application/octet-stream";
       if (!/^[a-z0-9!#$&^_.+-]+\/[a-z0-9!#$&^_.+-]+$/.test(mediaType))
-        throw new Error("Invalid saved media classification");
+        throw new RecordingError("Invalid saved media classification");
       throw new NonTextMediaError(mediaType);
     }
     if (saved?.state === "observed" && saved.snapshot && (!retryable.has(Number(saved.status)) || count >= ceiling))
       return this.readSnapshot(String(saved.snapshot));
-    if (count >= ceiling) throw new Error("Physical URL attempt bound exhausted");
+    if (count >= ceiling) throw new RecordingError("Physical URL attempt bound exhausted", "unavailable");
     const stats = this.db.prepare("SELECT count(*) requests, coalesce(sum(bytes),0) bytes FROM attempts").get()!;
     const bounds = this.effectiveAcquisitionBounds();
     if (Number(stats.requests) >= bounds.maxRequests || Number(stats.bytes) >= bounds.maxBytes)
-      throw new Error("Acquisition request/byte budget exhausted");
+      throw new RecordingError("Acquisition request/byte budget exhausted", "limit");
     if (Date.now() - this.started >= Number(this.config.maxDurationMs))
-      throw new Error("Acquisition duration exhausted");
+      throw new RecordingError("Acquisition duration exhausted", "limit");
     const backoff =
       repair && saved?.state === "failed" && saved.status === null && transientTransportFailure(String(saved.error))
         ? minimum * 2 ** Math.max(0, count - Number(repair.attempt_count))
         : minimum;
     const wait = Math.max(0, this.lastStart + backoff - Date.now());
     if (Date.now() - this.started + wait >= Number(this.config.maxDurationMs))
-      throw new Error("Acquisition wait exceeds remaining duration");
+      throw new RecordingError("Acquisition wait exceeds remaining duration", "limit");
     if (wait) await new Promise((resolve) => setTimeout(resolve, wait));
     this.lastStart = Date.now();
     let id: number;
@@ -552,7 +562,7 @@ export class HostRecording {
         received = size;
         this.db.prepare("UPDATE attempts SET bytes=? WHERE id=?").run(received, id);
         if (received > Number(this.config.maxResponseBytes) || Number(stats.bytes) + received > bounds.maxBytes)
-          throw new Error("Acquisition response/total byte budget exceeded");
+          throw new RecordingError("Acquisition response/total byte budget exceeded", "limit");
       });
       const rawPath = assertExternalPath(join(this.options.directory, "objects", `${hash(raw)}.body`));
       try {
@@ -573,7 +583,7 @@ export class HostRecording {
         (mediaType === "application/pdf" ||
           (mediaType === "application/octet-stream" && raw.subarray(0, 5).toString("ascii") === "%PDF-"));
       if (raw.length > 0 && !pdf && !/text|json|xml|javascript|^$/i.test(contentType))
-        throw new Error(`Unsupported recorded document format: ${contentType}`);
+        throw new RecordingError(`Unsupported recorded document format: ${contentType}`);
       const snapshot: Snapshot = {
         requested_url: url,
         url,
@@ -662,26 +672,27 @@ export class HostRecording {
         String(cached.error),
       );
       if (media) throw new NonTextMediaError(media[1]!);
-      throw new Error(`Saved request failure: ${cached.error}`);
+      throw savedRequestFailure(String(cached.error));
     }
     if (cached?.snapshot) {
       const observation = await this.readSnapshot(String(cached.snapshot));
       if (document) this.assertDocumentObservation(observation.snapshot);
       return observation;
     }
-    if (!this.options.acquire || this.sealed) throw new Error(`Missing recorded request: ${initial}`);
-    if (this.active.has(initial)) throw new Error("Recursive request dependency");
+    if (!this.options.acquire || this.sealed)
+      throw new RecordingError(`Missing recorded request: ${initial}`, "unavailable");
+    if (this.active.has(initial)) throw new RecordingError("Recursive request dependency");
     this.active.add(initial);
     try {
       let url = initial;
       const visited = new Set<string>();
       const redirects: NonNullable<Snapshot["redirects"]> = [];
       for (;;) {
-        if (visited.has(url) || visited.size >= 8) throw new Error("Redirect loop or bound exceeded");
+        if (visited.has(url) || visited.size >= 8) throw new RecordingError("Redirect loop or bound exceeded");
         visited.add(url);
         if (document) this.assertDocumentUrl(url);
         const policy = enforceRobots ? await this.policy() : undefined;
-        if (policy?.isDisallowed(url, "ubc-data")) throw new Error(`Robots disallows ${url}`);
+        if (policy?.isDisallowed(url, "ubc-data")) throw new RecordingError(`Robots disallows ${url}`);
         const grantedInterval = this.effectiveAcquisitionBounds().minimumIntervalMs;
         const minimum = Math.max(
           Number(this.config.minimumMs),
@@ -720,12 +731,12 @@ export class HostRecording {
               : 1000 * 2 ** prior;
           const wait = Math.max(0, Number.isFinite(delay) ? delay : 1000 * 2 ** prior);
           if (Date.now() - this.started + wait >= Number(this.config.maxDurationMs))
-            throw new Error("Retry wait exceeds duration budget");
+            throw new RecordingError("Retry wait exceeds duration budget", "limit");
           await new Promise((resolve) => setTimeout(resolve, wait));
         }
         if ([301, 302, 303, 307, 308].includes(observation.snapshot.status)) {
           const location = observation.snapshot.headers.location;
-          if (!location) throw new Error("Redirect lacks Location");
+          if (!location) throw new RecordingError("Redirect lacks Location");
           const next = this.scoped(new URL(location, url).href);
           redirects.push({ url, location: next, status: observation.snapshot.status, snapshot: observation.sha256 });
           url = next;
@@ -756,10 +767,10 @@ export class HostRecording {
         .get(url);
       if (row?.state !== "observed" || ![301, 302, 303, 307, 308].includes(Number(row.status))) return [...seen];
       const headers = JSON.parse(String(row.headers)) as Record<string, string>;
-      if (!headers.location) throw new Error("Observed redirect lacks its recorded location");
+      if (!headers.location) throw new RecordingError("Observed redirect lacks its recorded location");
       url = this.scoped(new URL(headers.location, url).href);
     }
-    throw new Error("Observed redirect cycle or bound exceeded");
+    throw new RecordingError("Observed redirect cycle or bound exceeded");
   }
 
   observedDestination(value: string): string {
@@ -778,19 +789,19 @@ export class HostRecording {
         .get(url);
       if (row?.state !== "observed" || ![301, 302, 303, 307, 308].includes(Number(row.status))) return null;
       const headers = JSON.parse(String(row.headers)) as Record<string, string>;
-      if (!headers.location) throw new Error("Observed redirect lacks its recorded location");
+      if (!headers.location) throw new RecordingError("Observed redirect lacks its recorded location");
       const next = new URL(headers.location, url);
       if (next.username || next.password || !["http:", "https:"].includes(next.protocol))
-        throw new Error("Observed redirect has an unsafe destination");
+        throw new RecordingError("Observed redirect has an unsafe destination");
       if (next.protocol !== "https:" || next.hostname.toLowerCase().replace(/\.$/, "") !== this.options.hostname)
         return "Observed redirect leaves the exact HTTPS host scope";
       const scopedNext = hostUrl(next.href, this.options.hostname);
-      if (seen.has(scopedNext)) throw new Error("Observed redirect cycle or bound exceeded");
+      if (seen.has(scopedNext)) throw new RecordingError("Observed redirect cycle or bound exceeded");
       if (this.options.documentUrlAllowed?.(scopedNext) === false)
         return "Observed redirect leaves the declared document URL policy";
       url = this.scoped(scopedNext);
     }
-    throw new Error("Observed redirect cycle or bound exceeded");
+    throw new RecordingError("Observed redirect cycle or bound exceeded");
   }
 
   apiFallbackEligible(value: string): boolean {
@@ -809,7 +820,7 @@ export class HostRecording {
   }
 
   retryNetworkFailure(value: string): void {
-    if (!this.options.acquire || this.sealed) throw new Error("Retry requires unsealed explicit acquisition");
+    if (!this.options.acquire || this.sealed) throw new RecordingError("Retry requires unsealed explicit acquisition");
     const url = this.scoped(value);
     const outcome = this.db.prepare("SELECT error FROM outcomes WHERE url=?").get(url);
     const attempts = this.db.prepare("SELECT state,status,error FROM attempts WHERE url=? ORDER BY id").all(url);
@@ -822,7 +833,9 @@ export class HostRecording {
       attempts.length >= 3 ||
       !/fetch failed|TimeoutError|AbortError/.test(String(last.error))
     )
-      throw new Error("Only a recorded transient network failure within the three-attempt bound can be retried");
+      throw new RecordingError(
+        "Only a recorded transient network failure within the three-attempt bound can be retried",
+      );
     this.db.exec("BEGIN IMMEDIATE");
     try {
       this.db
@@ -839,8 +852,9 @@ export class HostRecording {
   /** Filter logical failures, authorize one bounded repair per physical URL, and return the archived failure count. */
   recoverTransientFailures(urls?: readonly string[]): number {
     this.assertOpen();
-    if (!this.options.acquire || this.sealed) throw new Error("Recovery requires unsealed explicit acquisition");
-    if (this.active.size) throw new Error("Recovery requires an idle recording");
+    if (!this.options.acquire || this.sealed)
+      throw new RecordingError("Recovery requires unsealed explicit acquisition");
+    if (this.active.size) throw new RecordingError("Recovery requires an idle recording");
     const selected = urls ? new Set(urls.map((url) => this.scoped(url))) : undefined;
     const failures = this.db
       .prepare("SELECT url,error FROM outcomes WHERE error IS NOT NULL AND snapshot IS NULL ORDER BY url")
@@ -937,15 +951,16 @@ export class HostRecording {
   /** Archive explicitly selected, byte-verified legacy HTML decode failures without changing their attempts or budgets. */
   async recoverHtmlDecodeFailures(urls: readonly string[]): Promise<number> {
     this.assertOpen();
-    if (!this.options.acquire || this.sealed) throw new Error("Decode recovery requires unsealed explicit acquisition");
-    if (this.active.size) throw new Error("Decode recovery requires an idle recording");
+    if (!this.options.acquire || this.sealed)
+      throw new RecordingError("Decode recovery requires unsealed explicit acquisition");
+    if (this.active.size) throw new RecordingError("Decode recovery requires an idle recording");
     if (!urls.length) return 0;
     const selected = new Set(urls.map((url) => this.scoped(url)));
-    if (selected.size !== urls.length) throw new Error("Decode recovery requires distinct exact URLs");
+    if (selected.size !== urls.length) throw new RecordingError("Decode recovery requires distinct exact URLs");
     const stats = this.db.prepare("SELECT count(*) requests, coalesce(sum(bytes),0) bytes FROM attempts").get()!;
     const bounds = this.effectiveAcquisitionBounds();
     if (Number(stats.requests) + selected.size > bounds.maxRequests || Number(stats.bytes) >= bounds.maxBytes)
-      throw new Error("Decode recovery requires remaining acquisition capacity");
+      throw new RecordingError("Decode recovery requires remaining acquisition capacity");
     const verified: { url: string; error: string; attemptId: number }[] = [];
     for (const url of selected) {
       const outcome = this.db.prepare("SELECT snapshot,error FROM outcomes WHERE url=?").get(url);
@@ -964,12 +979,12 @@ export class HostRecording {
         typeof outcome.error !== "string" ||
         outcome.error !== attempt.error
       )
-        throw new Error(`Not a single saved HTTP-200 decode failure: ${url}`);
+        throw new RecordingError(`Not a single saved HTTP-200 decode failure: ${url}`);
       let headers: Record<string, unknown>;
       try {
         headers = JSON.parse(String(attempt.headers));
       } catch {
-        throw new Error(`Invalid saved decode headers: ${url}`);
+        throw new RecordingError(`Invalid saved decode headers: ${url}`);
       }
       if (
         !headers ||
@@ -979,30 +994,30 @@ export class HostRecording {
         headers["content-type"].split(";", 1)[0]?.trim().toLowerCase() !== "text/html" ||
         /charset\s*=/i.test(headers["content-type"])
       )
-        throw new Error(`Not charset-absent HTML: ${url}`);
+        throw new RecordingError(`Not charset-absent HTML: ${url}`);
       const path = assertExternalPath(join(this.options.directory, "objects", `${attempt.body_sha}.body`));
       const bytes = await readRegularFile(path, Number(this.config.maxResponseBytes));
       if (bytes.length !== attempt.bytes || hash(bytes) !== attempt.body_sha)
-        throw new Error(`Saved decode body changed: ${url}`);
+        throw new RecordingError(`Saved decode body changed: ${url}`);
       let originalError: string;
       try {
         new TextDecoder("utf-8", { fatal: true }).decode(bytes);
-        throw new Error("Original UTF-8 decode succeeded");
+        throw new RecordingError("Original UTF-8 decode succeeded");
       } catch (error) {
         originalError = String(error);
       }
       if (originalError !== outcome.error || !/^(?:TypeError|Error): /.test(originalError))
-        throw new Error(`Saved failure is not the original UTF-8 decode: ${url}`);
+        throw new RecordingError(`Saved failure is not the original UTF-8 decode: ${url}`);
       decodeRecordedText(bytes, headers["content-type"]);
       verified.push({ url, error: outcome.error, attemptId: Number(attempt.id) });
     }
     this.db.exec("BEGIN IMMEDIATE");
     try {
       if (this.db.prepare("SELECT 1 FROM attempts WHERE state='dispatching' LIMIT 1").get())
-        throw new Error("Decode recovery requires no dispatching attempts");
+        throw new RecordingError("Decode recovery requires no dispatching attempts");
       const current = this.db.prepare("SELECT count(*) requests, coalesce(sum(bytes),0) bytes FROM attempts").get()!;
       if (current.requests !== stats.requests || current.bytes !== stats.bytes)
-        throw new Error("Decode recovery counters changed");
+        throw new RecordingError("Decode recovery counters changed");
       for (const item of verified) {
         const outcome = this.db.prepare("SELECT snapshot,error FROM outcomes WHERE url=?").get(item.url);
         const attempt = this.db.prepare("SELECT id FROM attempts WHERE url=?").all(item.url);
@@ -1012,7 +1027,7 @@ export class HostRecording {
           attempt.length !== 1 ||
           attempt[0]?.id !== item.attemptId
         )
-          throw new Error("Decode recovery lineage changed");
+          throw new RecordingError("Decode recovery lineage changed");
         this.db
           .prepare("INSERT INTO outcome_failures(url,error,recorded_at) VALUES (?,?,?)")
           .run(item.url, item.error, new Date().toISOString());
@@ -1029,18 +1044,19 @@ export class HostRecording {
   /** Archive selected pre-dispatch budget failures only after an additive grant creates remaining capacity. */
   resumeBudgetFailures(urls?: readonly string[]): number {
     this.assertOpen();
-    if (!this.options.acquire || this.sealed) throw new Error("Budget resume requires unsealed explicit acquisition");
-    if (this.active.size) throw new Error("Budget resume requires an idle recording");
+    if (!this.options.acquire || this.sealed)
+      throw new RecordingError("Budget resume requires unsealed explicit acquisition");
+    if (this.active.size) throw new RecordingError("Budget resume requires an idle recording");
     const selected = urls ? new Set(urls.map((url) => this.scoped(url))) : undefined;
     this.db.exec("BEGIN IMMEDIATE");
     try {
       if (this.db.prepare("SELECT 1 FROM attempts WHERE state='dispatching' LIMIT 1").get())
-        throw new Error("Budget resume requires no dispatching attempts");
-      if (!this.budgetGrants().length) throw new Error("Budget resume requires an additive grant");
+        throw new RecordingError("Budget resume requires no dispatching attempts");
+      if (!this.budgetGrants().length) throw new RecordingError("Budget resume requires an additive grant");
       const stats = this.db.prepare("SELECT count(*) requests, coalesce(sum(bytes),0) bytes FROM attempts").get()!;
       const bounds = this.effectiveAcquisitionBounds();
       if (Number(stats.requests) >= bounds.maxRequests || Number(stats.bytes) >= bounds.maxBytes)
-        throw new Error("Budget resume requires remaining effective capacity");
+        throw new RecordingError("Budget resume requires remaining effective capacity");
       const failures = this.db
         .prepare("SELECT url,error FROM outcomes WHERE snapshot IS NULL AND error=? ORDER BY url")
         .all("Error: Acquisition request/byte budget exhausted")
@@ -1066,25 +1082,25 @@ export class HostRecording {
   resumeResponseBudgetFailures(urls: readonly string[]): number {
     this.assertOpen();
     if (!this.options.acquire || this.sealed)
-      throw new Error("Response budget resume requires unsealed explicit acquisition");
-    if (this.active.size) throw new Error("Response budget resume requires an idle recording");
+      throw new RecordingError("Response budget resume requires unsealed explicit acquisition");
+    if (this.active.size) throw new RecordingError("Response budget resume requires an idle recording");
     const selected = new Set(
       urls.map((url) => {
         const scoped = this.scoped(url);
-        if (scoped !== url) throw new Error("Response budget resume requires exact same-host URLs");
+        if (scoped !== url) throw new RecordingError("Response budget resume requires exact same-host URLs");
         return scoped;
       }),
     );
-    if (selected.size !== urls.length) throw new Error("Response budget resume requires distinct exact URLs");
+    if (selected.size !== urls.length) throw new RecordingError("Response budget resume requires distinct exact URLs");
     this.db.exec("BEGIN IMMEDIATE");
     try {
       if (this.db.prepare("SELECT 1 FROM attempts WHERE state IN ('dispatching','uncertain') LIMIT 1").get())
-        throw new Error("Response budget resume requires no dispatching or uncertain attempts");
-      if (!this.budgetGrants().length) throw new Error("Response budget resume requires an additive grant");
+        throw new RecordingError("Response budget resume requires no dispatching or uncertain attempts");
+      if (!this.budgetGrants().length) throw new RecordingError("Response budget resume requires an additive grant");
       const stats = this.db.prepare("SELECT count(*) requests, coalesce(sum(bytes),0) bytes FROM attempts").get()!;
       const bounds = this.effectiveAcquisitionBounds();
       if (Number(stats.requests) + selected.size > bounds.maxRequests || Number(stats.bytes) >= bounds.maxBytes)
-        throw new Error("Response budget resume requires remaining effective request and byte capacity");
+        throw new RecordingError("Response budget resume requires remaining effective request and byte capacity");
       const error = "Error: Acquisition response/total byte budget exceeded";
       for (const url of selected) {
         const outcome = this.db.prepare("SELECT snapshot,error FROM outcomes WHERE url=?").get(url);
@@ -1106,7 +1122,7 @@ export class HostRecording {
           last.body_sha !== null ||
           last.error !== error
         )
-          throw new Error(`Not a resumable HTTP-200 response byte failure: ${url}`);
+          throw new RecordingError(`Not a resumable HTTP-200 response byte failure: ${url}`);
       }
       const now = new Date().toISOString();
       for (const url of selected) {
@@ -1124,13 +1140,14 @@ export class HostRecording {
   /** Archive selected per-invocation duration failures without renewing acquisition budgets or attempt limits. */
   resumeDurationFailures(urls?: readonly string[]): number {
     this.assertOpen();
-    if (!this.options.acquire || this.sealed) throw new Error("Duration resume requires unsealed explicit acquisition");
-    if (this.active.size) throw new Error("Duration resume requires an idle recording");
+    if (!this.options.acquire || this.sealed)
+      throw new RecordingError("Duration resume requires unsealed explicit acquisition");
+    if (this.active.size) throw new RecordingError("Duration resume requires an idle recording");
     const selected = urls ? new Set(urls.map((url) => this.scoped(url))) : undefined;
     this.db.exec("BEGIN IMMEDIATE");
     try {
       if (this.db.prepare("SELECT 1 FROM attempts WHERE state='dispatching' LIMIT 1").get())
-        throw new Error("Duration resume requires no dispatching attempts");
+        throw new RecordingError("Duration resume requires no dispatching attempts");
       const stats = this.db.prepare("SELECT count(*) requests, coalesce(sum(bytes),0) bytes FROM attempts").get()!;
       const bounds = this.effectiveAcquisitionBounds();
       const failures =
@@ -1188,7 +1205,7 @@ export class HostRecording {
     this.assertOpen();
     await this.assertUnchanged();
     if (this.db.prepare("SELECT 1 FROM attempts WHERE state='dispatching' LIMIT 1").get())
-      throw new Error("Unfinished acquisition");
+      throw new RecordingError("Unfinished acquisition");
     const digest = this.inputDigest();
     const target = assertExternalPath(join(this.options.directory, "seal.json"));
     const body = Buffer.from(
@@ -1196,7 +1213,7 @@ export class HostRecording {
     );
     try {
       const existing = await readRegularFile(target);
-      if (!existing.equals(body)) throw new Error("Existing seal differs");
+      if (!existing.equals(body)) throw new RecordingError("Existing seal differs");
     } catch (error) {
       if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
       await durableObject(`${target}.tmp`, body);
@@ -1216,9 +1233,10 @@ export class HostRecording {
       (await readRegularFile(assertExternalPath(join(this.options.directory, "seal.json")))).toString("utf8"),
     );
     if (saved.hostname !== this.options.hostname || saved.input_sha256 !== this.inputDigest())
-      throw new Error("Recording seal mismatch");
+      throw new RecordingError("Recording seal mismatch");
     await this.assertUnchanged();
-    if (saved.input_sha256 !== this.inputDigest()) throw new Error("Recording changed during seal verification");
+    if (saved.input_sha256 !== this.inputDigest())
+      throw new RecordingError("Recording changed during seal verification");
     return saved.input_sha256;
   }
   async assertUnchanged(): Promise<void> {
@@ -1228,17 +1246,18 @@ export class HostRecording {
       .all()) {
       if (row.snapshot) await this.readSnapshot(String(row.snapshot));
       if (row.body_sha) {
-        if (!/^[a-f0-9]{64}$/.test(String(row.body_sha))) throw new Error("Invalid raw-body digest");
+        if (!/^[a-f0-9]{64}$/.test(String(row.body_sha))) throw new RecordingError("Invalid raw-body digest");
         const path = assertExternalPath(join(this.options.directory, "objects", `${row.body_sha}.body`));
         if (hash(await readRegularFile(path, Number(this.config.maxResponseBytes))) !== row.body_sha)
-          throw new Error("Recorded raw body changed");
+          throw new RecordingError("Recorded raw body changed");
       }
     }
     for (const [sha, path] of this.seen)
-      if (hash(await readRegularFile(path, 64 * 1024 * 1024)) !== sha) throw new Error("Recording object changed");
+      if (hash(await readRegularFile(path, 64 * 1024 * 1024)) !== sha)
+        throw new RecordingError("Recording object changed");
     for (const [path, sha] of this.seenTextBodies)
       if (hash(await readRegularFile(path, Number(this.config.maxResponseBytes))) !== sha)
-        throw new Error("Recorded text object changed");
+        throw new RecordingError("Recorded text object changed");
   }
   close(): void {
     if (!this.closed) {

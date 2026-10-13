@@ -462,7 +462,16 @@ describe("external immutable request recording", () => {
       () => html("x".repeat(100)),
       kind === "requests" ? { maxRequests: 1 } : { maxResponseBytes: 64 },
     );
-    await expect(f.recording.read(`${origin}/page`)).rejects.toThrow(/budget/);
+    await expect(f.recording.read(`${origin}/page`)).rejects.toMatchObject({
+      kind: "limit",
+      message: expect.stringMatching(/budget/),
+    });
+    const requests = vi.mocked(f.fetcher).mock.calls.length;
+    await expect(f.recording.read(`${origin}/page`)).rejects.toMatchObject({
+      kind: "limit",
+      message: expect.stringContaining("Saved request failure"),
+    });
+    expect(f.fetcher).toHaveBeenCalledTimes(requests);
   });
   it("archives only selected streamed HTTP-200 byte failures after a byte-only grant", async () => {
     const robots = "User-agent: *\nDisallow: /private\n";

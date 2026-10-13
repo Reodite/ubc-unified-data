@@ -40,6 +40,7 @@ import {
 import { htmlLinks, pageLinks } from "./discovery/links.ts";
 import { sitemapPages } from "./discovery/sitemaps.ts";
 import { validateSearchDocument } from "./document-format.ts";
+import { isFatalCollectionError } from "./errors.ts";
 import { discoverMachineLinks } from "./machine-links.ts";
 import type { MarkdownInspection } from "./markdown-contract.mjs";
 import { hostUrl, inventoryUrl, nonDocumentInventoryUrl, pageExclusion, UNSUPPORTED_DOCUMENT } from "./urls.ts";
@@ -492,11 +493,7 @@ export async function collectRecordedHost(
           throw new Error(`Required HTML view returned non-text media: ${requested}`, { cause: error });
         continue;
       }
-      if (
-        error instanceof DocumentPolicyError ||
-        /budget|duration exhausted|changed|corrupt|ENOENT|EIO|ENOSPC/i.test(String(error))
-      )
-        throw error;
+      if (isFatalCollectionError(error)) throw error;
       const record = records.get(archive.observedDestination?.(requested) ?? requested);
       if (!scraper.adapter.apiContentFallback || !record || archive.apiFallbackEligible?.(requested) !== true) {
         unavailable.push(`${requested}: ${error instanceof Error ? error.message : String(error)}`);

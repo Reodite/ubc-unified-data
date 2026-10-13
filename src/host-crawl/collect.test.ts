@@ -12,6 +12,7 @@ import {
   type Snapshot,
 } from "./contracts.ts";
 import { formatDocument, parseDocument } from "./document-format.ts";
+import { RecordingError } from "./errors.ts";
 import { createGenericScraper } from "./generic.ts";
 import { formatHostList } from "./public-validation.ts";
 import { defineWordpressHost } from "./scraper.ts";
@@ -148,6 +149,27 @@ afterEach(() => {
 });
 
 describe("recorded complete-host collection", () => {
+  it("stops on a typed integrity failure independently of its diagnostic wording", async () => {
+    const f = setup();
+    const failure = new RecordingError("Opaque storage failure", "integrity");
+    f.archive.readDocument = async (url) => {
+      if (url === post) throw failure;
+      return f.archive.read(url);
+    };
+    await expect(collectRecordedHost(fixtureScraper, f.archive, producer)).rejects.toBe(failure);
+    expect(f.archive.assertUnchanged).not.toHaveBeenCalled();
+  });
+
+  it("does not interpret transport diagnostic words as integrity or budget codes", async () => {
+    const f = setup();
+    f.archive.readDocument = async (url) => {
+      if (url === post) throw new Error("Remote budget guide changed");
+      return f.archive.read(url);
+    };
+    await expect(collectRecordedHost(fixtureScraper, f.archive, producer)).rejects.toThrow(
+      "Required page observations are unavailable",
+    );
+  });
   it("omits ambiguous generic CMS dates without selecting an API record", async () => {
     const f = setup();
     const collection = f.values.get(wordpressCollectionUrl(`${api}wp/v2/posts`, 1))!;
