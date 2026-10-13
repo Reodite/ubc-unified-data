@@ -1,7 +1,6 @@
 import { createHash } from "node:crypto";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { wordpressCollectionUrl } from "./adapters/wordpress-discovery.ts";
-import { defineWordpressHost } from "./adapters/wordpress-page.ts";
 import { collectRecordedHost } from "./collect.ts";
 import {
   DocumentPolicyError,
@@ -15,6 +14,7 @@ import {
 import { formatDocument, parseDocument } from "./document-format.ts";
 import { createGenericScraper } from "./generic.ts";
 import { formatHostList } from "./public-validation.ts";
+import { defineWordpressHost } from "./scraper.ts";
 
 const host = "fixture.ubc.ca";
 const origin = `https://${host}`;

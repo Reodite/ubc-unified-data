@@ -1,26 +1,12 @@
-/** Make the Academic Calendar's page nodes queryable.
- *
- * `node--ubc_page` is where UBC keeps everything the calendar says that isn't a
- * course: degree and specialization requirements, faculty and school overviews,
- * admission rules, academic regulations, and the dates-and-deadlines tables.
- * The API hands back a title, a path alias and a blob of body HTML -- no
- * hierarchy, no breadcrumbs, no indication of what kind of page you are
- * holding.
- *
- * The alias is the hierarchy, though. Ancestry is recovered by matching each
- * alias prefix back to the page that owns it, which yields real titles rather
- * than de-slugified guesses. Everything else (`kind`, `level`, `faculty`,
- * `program`, `referenced_courses`) is derived from that chain plus the title.
+/** Derive Academic Calendar page hierarchy from path aliases and source titles.
+ * JSON:API supplies no parent links for node--ubc_page. Match alias prefixes to
+ * source pages, then derive kind, level, faculty, program and course references.
  */
 
 import { plainText } from "./coursetext.ts";
 import { blocks, headings } from "./htmldoc.ts";
 
 export const FACULTIES_SECTION = "faculties-colleges-and-schools";
-
-// --------------------------------------------------------------------------
-// Degree detection
-// --------------------------------------------------------------------------
 
 // UBC mixes long forms ("Bachelor of Science") with abbreviations ("M.Sc.",
 // "Ph.D.", "MBA"), so a degree title is matched against both.
@@ -157,8 +143,8 @@ function kindOf(alias: string, title: string, isDegree: boolean, depth: number, 
   return "other";
 }
 
+/** Return unique course codes in their source order, restricted to known subjects when supplied. */
 export function courseCodes(text: string, subjects?: Set<string> | null): string[] {
-  /** Course codes mentioned in a page, in the order they appear. */
   const found = new Map<string, true>();
   for (const match of text.matchAll(COURSE_CODE_RE)) {
     const subject = match[1]!;
@@ -260,10 +246,6 @@ export function enrich(
     page["referenced_courses"] = courseCodes(text, subjects ?? null);
   }
 }
-
-// --------------------------------------------------------------------------
-// Dates and deadlines
-// --------------------------------------------------------------------------
 
 const MONTHS =
   "January|February|March|April|May|June|July|August|September|October|November|December" +

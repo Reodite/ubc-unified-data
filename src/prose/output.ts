@@ -1,7 +1,8 @@
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { DATA_DIR, Output, utcnow, type DatasetInfo } from "../base.ts";
+import { DATA_DIR, Output, type DatasetInfo } from "../core/output.ts";
+import { utcnow } from "../core/utils.ts";
 import { object, string } from "../source-documents.ts";
 import { urlKey, type CollectionResult, type InventoryStatus, type ProseSource } from "./model.ts";
 

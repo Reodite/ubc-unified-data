@@ -33,8 +33,11 @@
  *   and is meaningless when the request that issued it ends.
  */
 
-import type { Http, Output } from "../base.ts";
-import { register, utcnow, wants } from "../base.ts";
+import { wants } from "../core/campus.ts";
+import type { Http } from "../core/http.ts";
+import type { Output } from "../core/output.ts";
+import { register } from "../core/registry.ts";
+import { utcnow } from "../core/utils.ts";
 import { unescapeHtml } from "../htmldoc.ts";
 
 export const HOST = "libcal.library.ubc.ca";

@@ -5,16 +5,11 @@
  * endpoint is recorded in `_sources.json` rather than failing the run.
  */
 
-import type { Http, Output } from "../base.ts";
-import {
-  errorMessage,
-  errorName,
-  jsonapiCollection,
-  jsonapiIndex,
-  register,
-  ResourceNotFoundError,
-  wpCollection,
-} from "../base.ts";
+import { jsonapiCollection, jsonapiIndex } from "../core/drupal.ts";
+import { errorMessage, errorName, ResourceNotFoundError, type Http } from "../core/http.ts";
+import type { Output } from "../core/output.ts";
+import { register } from "../core/registry.ts";
+import { wpCollection } from "../core/wordpress.ts";
 import { fetch as fetchHolidays, URL as HOLIDAYS_URL } from "./holidays.ts";
 
 type Fetcher = ((http: Http) => Promise<Array<Record<string, unknown>>>) & { source?: string };

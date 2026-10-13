@@ -8,8 +8,11 @@
  * the documents themselves stay at their source URLs.
  */
 
-import type { Http, Output } from "../base.ts";
-import { compareStrings, errorMessage, errorName, register, wpCollection } from "../base.ts";
+import { errorMessage, errorName, type Http } from "../core/http.ts";
+import type { Output } from "../core/output.ts";
+import { register } from "../core/registry.ts";
+import { compareStrings } from "../core/utils.ts";
+import { wpCollection } from "../core/wordpress.ts";
 import { unescapeHtml } from "../htmldoc.ts";
 
 export const SITES: Record<string, [string, string[]]> = {

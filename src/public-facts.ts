@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
-import { InvalidValueError, type Output } from "./base.ts";
+import { InvalidValueError } from "./core/http.ts";
+import type { Output } from "./core/output.ts";
 import type { Row } from "./source-documents.ts";
 
 const METADATA = ["id", "source_id", "source_url", "api_url", "campus", "title", "source_modified_at", "retrieved_at"];

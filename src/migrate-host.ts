@@ -1,7 +1,7 @@
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
-import { ROOT } from "./base.ts";
+import { ROOT } from "./core/output.ts";
 import { migratePublishedHost } from "./host-crawl/migration.ts";
 import { DEFAULT_EXTERNAL_ROOT } from "./host-crawl/paths.ts";
 import { registeredHostnames } from "./host-crawl/registry.ts";

@@ -1,12 +1,7 @@
 import { describe, expect, it } from "vitest";
+import { drupalDocument, unavailableRelationships } from "../source-documents.ts";
 import { policyLifecycle, policyRecord } from "./policies.ts";
-import {
-  drupalDocument,
-  relatedNames,
-  resourceCampus,
-  unavailableRelationships,
-  undergraduateCommonsPage,
-} from "./support.ts";
+import { relatedNames, resourceCampus, undergraduateCommonsPage } from "./support.ts";
 
 const ROW = {
   id: "uuid",

@@ -25,8 +25,9 @@
  * need for Engineering from Alberta?" -- can be answered from directly.
  */
 
-import type { Http, Output } from "../base.ts";
-import { errorMessage, errorName, wants } from "../base.ts";
+import { wants } from "../core/campus.ts";
+import { errorMessage, errorName, type Http } from "../core/http.ts";
+import type { Output } from "../core/output.ts";
 import { clean, text as htmldocText, items, sections } from "../htmldoc.ts";
 
 export const HOST = "you.ubc.ca";

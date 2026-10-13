@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { load } from "cheerio";
+import { normalizedText as text } from "../scraping/html.ts";
 import type { Observation } from "./contracts.ts";
 import { hostUrl, normalizeHost } from "./urls.ts";
 
@@ -45,7 +46,6 @@ const reviewedUnavailableLinks: readonly ReviewedUnavailableLink[] = [
 
 const snapshotDigest = (observation: Observation) =>
   createHash("sha256").update(JSON.stringify(observation.snapshot)).digest("hex");
-const text = (value: string) => value.replace(/\s+/g, " ").trim();
 
 /** Return only unavailable citations backed by the exact reviewed source observation and link context. */
 export function discoverReviewedUnavailableLinks(

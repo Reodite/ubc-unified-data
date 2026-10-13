@@ -4,7 +4,7 @@ import { join, resolve } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
-import { ROOT } from "./base.ts";
+import { ROOT } from "./core/output.ts";
 import { loadRoutingPolicy, loadSavedClassifications, routeCompletedHost } from "./host-crawl/category-routing.ts";
 import { collectRecordedHost } from "./host-crawl/collect.ts";
 import type { HostArchive, SavedUrl } from "./host-crawl/contracts.ts";

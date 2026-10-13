@@ -1,6 +1,8 @@
 import { createHash } from "node:crypto";
 import { createRequire } from "node:module";
 import { load } from "cheerio";
+import { REVIEWED_EMPTY_ARCHIVE_CLASSES } from "../host-scrapers/policies/archives.ts";
+import { reviewedGalleryAttachments } from "../host-scrapers/policies/gallery.ts";
 import { toSafeMarkdown } from "../prose/markdown.ts";
 import type { ArticleInput } from "../prose/model.ts";
 import { plainText } from "../source-documents.ts";
@@ -23,9 +25,10 @@ import {
   type ProducerContext,
   type SearchDocument,
 } from "./contracts.ts";
+import { htmlLinks, pageLinks } from "./discovery/links.ts";
+import { sitemapPages } from "./discovery/sitemaps.ts";
 import { validateSearchDocument } from "./document-format.ts";
 import { assertRequiredQueryIdentity, validateRequiredDocumentQueries } from "./document-query-policy.ts";
-import { htmlBaseUrl } from "./html-base.ts";
 import { discoverMachineLinks } from "./machine-links.ts";
 import type { MarkdownInspection } from "./markdown-contract.mjs";
 import {
@@ -35,22 +38,11 @@ import {
   type MarkdownSourceDeclaration,
 } from "./markdown-source-policy.ts";
 import { discoverReviewedMslUnavailableLinks } from "./msl-unavailable-citations.ts";
-import { parseSitemap } from "./sitemap.ts";
 import { discoverReviewedUnavailableLinks } from "./unavailable-link-policy.ts";
 import { hostUrl, inventoryUrl, nonDocumentInventoryUrl, pageExclusion, UNSUPPORTED_DOCUMENT } from "./urls.ts";
 
 const sha256 = (value: string | Uint8Array) => createHash("sha256").update(value).digest("hex");
 const isPdfUrl = (value: string) => /\.pdf$/i.test(decodeURIComponent(new URL(value).pathname));
-const REVIEWED_EMPTY_ARCHIVE_CLASSES: Readonly<Record<string, readonly string[]>> = {
-  "lam.library.ubc.ca": ["category"],
-  "smp.med.ubc.ca": ["user"],
-  "macl.arts.ubc.ca": ["post-type-archive-event", "tax-event-venue"],
-  "mech.ubc.ca": ["post-type-archive-event", "tax-event-venue", "tax-event-category", "tax-event-tag"],
-  "mes.arts.ubc.ca": ["post-type-archive-event", "tax-event-venue"],
-  "mtrl.ubc.ca": ["post-type-archive-event", "tax-event-category"],
-  "nitep.educ.ubc.ca": ["post-type-archive-event"],
-  "rgst.arts.ubc.ca": ["post-type-archive-event", "tax-event-category", "tax-event-venue"],
-};
 const robotsParser = createRequire(import.meta.url)("robots-parser") as (
   url: string,
   body: string,
@@ -58,343 +50,6 @@ const robotsParser = createRequire(import.meta.url)("robots-parser") as (
   isDisallowed(url: string, agent: string): boolean | undefined;
   getSitemaps(): string[];
 };
-
-function pageLinks(
-  observation: Observation,
-  hostname: string,
-  exactHost = false,
-  nonDocuments?: Set<string>,
-): string[] {
-  return htmlLinks(observation.snapshot.body, hostname, observation.snapshot.url, exactHost, nonDocuments);
-}
-
-function htmlLinks(
-  html: string,
-  hostname: string,
-  base: string,
-  exactHost = false,
-  nonDocuments?: Set<string>,
-): string[] {
-  const $ = load(html);
-  const source = new URL(base);
-  base = htmlBaseUrl(html, hostname, base, exactHost);
-  const links = new Set<string>();
-  $("a[href]").each((_, node) => {
-    const value = $(node).attr("href")?.trim();
-    if (!value || value.startsWith("#")) return;
-    let url: string;
-    try {
-      const target = exactHost ? inventoryUrl(value, hostname, base) : hostUrl(value, hostname, base);
-      if (!target) return;
-      url = target;
-    } catch {
-      return;
-    }
-    if (exactHost && nonDocuments && !source.search) {
-      const link = $(node);
-      const rel = (link.attr("rel") ?? "").toLowerCase().split(/\s+/);
-      const commentMetadata =
-        link.closest("#comments-template,#comments,.comments-area").length > 0 &&
-        (rel.includes("trackback") ||
-          (link.attr("title") === "Trackback URL for this post" &&
-            link.closest("p.comments-closed.pings-open").length > 0));
-      const endpoint = new URL(`${source.pathname.replace(/\/$/, "")}/trackback/`, source).href;
-      // Comment metadata identifies this page's machine action, not pages discussing trackbacks.
-      if (commentMetadata && url === endpoint) nonDocuments.add(url);
-    }
-    links.add(url);
-  });
-  return [...links].sort();
-}
-
-function reviewedGalleryAttachments(observation: Observation, hostname: string): Set<string> {
-  const links = new Set<string>();
-  if (hostname === "www.msl.ubc.ca") {
-    if (
-      observation.snapshot.requested_url !== observation.snapshot.url ||
-      !observation.snapshot.body.includes("wp-att-")
-    )
-      return links;
-    const source = new URL(observation.snapshot.url);
-    if (source.search || source.hash) return links;
-    const $ = load(observation.snapshot.body);
-    $("a[href][rel*='wp-att-']").each((_, node) => {
-      const anchor = $(node);
-      const match = (anchor.attr("rel") ?? "").trim().match(/^attachment wp-att-([1-9]\d*)$/);
-      const image = anchor.children("img");
-      if (
-        !match ||
-        image.length !== 1 ||
-        anchor.children().length !== 1 ||
-        anchor.text().trim() ||
-        !image.attr("class")?.split(/\s+/).includes(`wp-image-${match[1]}`)
-      )
-        return;
-      try {
-        const photo = new URL(image.attr("src")!, source);
-        const raw = new URL(anchor.attr("href")!, source).href;
-        const target = inventoryUrl(raw, hostname);
-        if (
-          photo.origin === `https://${hostname}` &&
-          photo.pathname.startsWith("/wp-content/uploads/") &&
-          target === raw &&
-          !new URL(target).search &&
-          !new URL(target).hash &&
-          new URL(target).pathname.startsWith(source.pathname) &&
-          target !== observation.snapshot.url
-        )
-          links.add(target);
-      } catch {
-        return;
-      }
-    });
-    return links;
-  }
-  if (hostname !== "rbsc.library.ubc.ca" && hostname !== "smp.med.ubc.ca" && hostname !== "mech.ubc.ca") return links;
-  const $ = load(observation.snapshot.body);
-  const base = htmlBaseUrl(observation.snapshot.body, hostname, observation.snapshot.url, true);
-  $("dt.gallery-icon > a[href]").each((_, node) => {
-    const anchor = $(node);
-    const image = anchor.children("img");
-    if (
-      image.length !== 1 ||
-      anchor.children().length !== 1 ||
-      anchor.text().trim() ||
-      !/(?:^|\s)attachment-(?:medium|medium_large|thumbnail|large|full|\d+x\d+)(?:\s|$)/.test(image.attr("class") ?? "")
-    )
-      return;
-    try {
-      const source = new URL(image.attr("src") ?? "", base);
-      if (source.origin !== `https://${hostname}` || !/^\/(?:files|wp-content\/uploads)\//.test(source.pathname))
-        return;
-      const raw = new URL(anchor.attr("href")!, base).href;
-      const target = inventoryUrl(raw, hostname);
-      if (target === raw && !new URL(target).search && !new URL(target).hash) links.add(target);
-    } catch {
-      return;
-    }
-  });
-  if (hostname === "smp.med.ubc.ca" && observation.snapshot.requested_url === observation.snapshot.url) {
-    const entry = $("body.singular-attachment.attachment-image .entry-content");
-    const photo = entry.find("> p.attachment-image > img[src]");
-    const navigation = entry.find("> nav#image-navigation");
-    const content = entry.clone();
-    content.find("nav#image-navigation").remove();
-    if (
-      entry.length === 1 &&
-      photo.length === 1 &&
-      navigation.length === 1 &&
-      !content.text().trim() &&
-      new URL(photo.attr("src")!, base).origin === `https://${hostname}` &&
-      /^\/wp-content\/uploads\//.test(new URL(photo.attr("src")!, base).pathname)
-    ) {
-      const parentPath = new URL(observation.snapshot.url).pathname.replace(/[^/]+\/$/, "");
-      navigation.find("li.previous-image > a[href],li.next-image > a[href]").each((_, node) => {
-        const anchor = $(node);
-        if (anchor.text().trim() !== (anchor.parent().hasClass("previous-image") ? "Previous" : "Next")) return;
-        try {
-          const raw = new URL(anchor.attr("href")!, base).href;
-          const target = inventoryUrl(raw, hostname);
-          if (
-            target === raw &&
-            !new URL(target).search &&
-            !new URL(target).hash &&
-            new URL(target).pathname.startsWith(parentPath) &&
-            target !== observation.snapshot.url
-          )
-            links.add(target);
-        } catch {
-          return;
-        }
-      });
-    }
-  }
-  return links;
-}
-
-async function sitemapPages(
-  starts: readonly string[],
-  hostname: string,
-  read: (url: string) => Promise<Observation>,
-  policies: NonNullable<HostScraper["adapter"]["sitemaps"]> = [],
-  exactHost = false,
-): Promise<{
-  pages: string[];
-  nonDocuments: Set<string>;
-  attachmentPages: Set<string>;
-  userArchivePages: Set<string>;
-  advertisingSitemaps: Map<string, Set<string>>;
-}> {
-  const htmlSitemap = (url: string) => /\.html?$/i.test(new URL(url).pathname);
-  const queue = [...starts];
-  if (exactHost) queue.sort((a, b) => Number(htmlSitemap(a)) - Number(htmlSitemap(b)));
-  const initial = new Set(starts);
-  const seen = new Set<string>();
-  const xmlObserved = new Set<string>();
-  const requiredChildren = new Set<string>();
-  const nonDocuments = new Set<string>();
-  const attachmentPages = new Set<string>();
-  const userArchivePages = new Set<string>();
-  const pages = new Set<string>();
-  const advertisingSitemaps = new Map<string, Set<string>>();
-  const wordpressAttachment = (sitemap: string, target: string) => {
-    if (!/(?:^|\/)attachment-sitemap(?:\d+)?\.xml$/i.test(new URL(sitemap).pathname)) return false;
-    const url = new URL(target);
-    if (url.searchParams.size === 1 && /^\d+$/.test(url.searchParams.get("attachment_id") ?? "")) return true;
-    return hostname === "moa.ubc.ca" && !url.search && !url.hash && url.pathname !== "/" && url.pathname.endsWith("/");
-  };
-  while (queue.length) {
-    const url = hostUrl(queue.shift()!, hostname);
-    if (seen.has(url)) continue;
-    seen.add(url);
-    const observation = await read(url);
-    if (exactHost && initial.has(url) && htmlSitemap(url) && [404, 410].includes(observation.snapshot.status)) {
-      const counterpart = new URL(url);
-      counterpart.pathname = counterpart.pathname.replace(/\.html?$/i, ".xml");
-      const companion = new URL(url);
-      const stem = companion.pathname.replace(/\.html?$/i, "");
-      const identities = [
-        url,
-        observation.snapshot.requested_url,
-        observation.snapshot.url,
-        ...(observation.snapshot.redirects ?? []).flatMap((hop) => [hop.url, hostUrl(hop.location, hostname, hop.url)]),
-      ].map((value) => hostUrl(value, hostname));
-      // Only the advertised companion and its same-path extensionless redirects are non-documents.
-      // The XML index and all children still have to close before these identities leave discovery.
-      if (
-        initial.has(counterpart.href) &&
-        xmlObserved.has(counterpart.href) &&
-        !companion.search &&
-        identities.every((identity) => {
-          const target = new URL(identity);
-          return (
-            !target.search &&
-            [companion.pathname, stem, `${stem}/`].includes(target.pathname) &&
-            target.pathname !== "/"
-          );
-        })
-      ) {
-        for (const identity of identities) nonDocuments.add(identity);
-        continue;
-      }
-    }
-    const mdruChildren = [
-      "posts-post",
-      "posts-page",
-      "posts-location",
-      "posts-event",
-      "posts-mdru-projects",
-      "posts-mdru-publications",
-      "posts-mdru-theses",
-      "taxonomies-category",
-      "taxonomies-post_tag",
-      "users",
-    ].map((kind) => `https://${hostname}/wp-sitemap-${kind}-1.xml`);
-    const mdruRoot = exactHost && hostname === "www.mdru.ubc.ca" && url === `https://${hostname}/wp-sitemap.xml`;
-    const mdruChild = exactHost && hostname === "www.mdru.ubc.ca" && mdruChildren.includes(url);
-    const reviewedMDRU = mdruRoot || mdruChild;
-    const mislabeledMDRU = reviewedMDRU && observation.snapshot.headers["content-type"] === "text/html; charset=UTF-8";
-    if (
-      observation.snapshot.status !== 200 ||
-      (!/xml/i.test(observation.snapshot.headers["content-type"] ?? "") && !mislabeledMDRU)
-    )
-      throw new Error("An advertised sitemap lacks a complete XML observation");
-    if (
-      reviewedMDRU &&
-      (observation.snapshot.requested_url !== url ||
-        observation.snapshot.url !== url ||
-        !observation.snapshot.body.startsWith('<?xml version="1.0" encoding="UTF-8"?>'))
-    )
-      throw new Error("Reviewed MDRU sitemap identity changed");
-    const reviewedAmsEvents =
-      exactHost && hostname === "www.ams.ubc.ca" && url === `https://${hostname}/tec_recurring_events-sitemap.xml`;
-    let sitemapBody = observation.snapshot.body;
-    if (reviewedAmsEvents) {
-      const marker = '>"\\n"\t<url>';
-      if (
-        observation.snapshot.requested_url !== url ||
-        observation.snapshot.url !== url ||
-        observation.snapshot.headers["content-type"] !== "text/xml; charset=UTF-8" ||
-        !sitemapBody.startsWith('<?xml version="1.0" encoding="UTF-8"?>') ||
-        sitemapBody.indexOf(marker) < 0 ||
-        sitemapBody.indexOf(marker) !== sitemapBody.lastIndexOf(marker) ||
-        sitemapBody.indexOf(marker) > sitemapBody.indexOf("</urlset>")
-      )
-        throw new Error("Reviewed AMS sitemap artifact changed");
-      sitemapBody = sitemapBody.replace(marker, ">\t<url>");
-    }
-    const parsed = parseSitemap(sitemapBody);
-    if (
-      reviewedAmsEvents &&
-      (parsed.kind !== "pages" ||
-        parsed.locations.length !== 65 ||
-        parsed.locations.some((target) => !target.startsWith(`https://${hostname}/event/`)))
-    )
-      throw new Error("Reviewed AMS event sitemap changed");
-    if (mdruRoot && (parsed.kind !== "index" || JSON.stringify(parsed.locations) !== JSON.stringify(mdruChildren)))
-      throw new Error("Reviewed MDRU sitemap children changed");
-    if (mdruChild && parsed.kind !== "pages") throw new Error("Reviewed MDRU sitemap child changed");
-    const reviewedUsers =
-      exactHost && hostname === "sportfacilities.ubc.ca" && url === `https://${hostname}/wp-sitemap-users-1.xml`;
-    const reviewedUserTargets = [`https://${hostname}/author/agmiu/`, `https://${hostname}/author/webadmin/`];
-    if (
-      reviewedUsers &&
-      (parsed.kind !== "pages" ||
-        observation.snapshot.requested_url !== url ||
-        observation.snapshot.url !== url ||
-        parsed.locations.length !== 2 ||
-        !reviewedUserTargets.every((target) => parsed.locations.includes(target)))
-    )
-      throw new Error("Reviewed users sitemap changed");
-    xmlObserved.add(url);
-    const policy = policies.find((entry) => hostUrl(entry.path, hostname) === url);
-    // A declared deployment-root placeholder supplies no page inventory; additional entries still require validation.
-    if (parsed.kind === "pages" && parsed.locations.length === 1 && parsed.locations[0] === policy?.rootOnlyLocation)
-      continue;
-    for (const location of parsed.locations) {
-      const target = exactHost
-        ? inventoryUrl(location, hostname, observation.snapshot.url)
-        : hostUrl(location, hostname, observation.snapshot.url);
-      if (!target) continue;
-      if (parsed.kind === "index") {
-        requiredChildren.add(target);
-        queue.push(target);
-      } else {
-        if (reviewedUsers && location === target) {
-          nonDocuments.add(target);
-          userArchivePages.add(target);
-        } else if (
-          exactHost &&
-          location === target &&
-          observation.snapshot.requested_url === url &&
-          wordpressAttachment(url, target)
-        ) {
-          nonDocuments.add(target);
-          if (hostname === "moa.ubc.ca" && !new URL(target).search) attachmentPages.add(target);
-        } else pages.add(target);
-        // Only the literal page entry and requested XML identity witness an exact query declaration.
-        if (!nonDocuments.has(target) && location === target && observation.snapshot.requested_url === url) {
-          const witnesses = advertisingSitemaps.get(target) ?? new Set<string>();
-          witnesses.add(url);
-          advertisingSitemaps.set(target, witnesses);
-        }
-      }
-    }
-  }
-  if ([...requiredChildren].some((url) => nonDocuments.has(url)))
-    throw new Error("An advertised sitemap child lacks a complete XML observation");
-  if ([...attachmentPages].some((url) => pages.has(url)))
-    throw new Error("Attachment sitemap conflicts with a required page");
-  if ([...userArchivePages].some((url) => pages.has(url)))
-    throw new Error("User archive conflicts with a required page");
-  return {
-    pages: [...pages].filter((url) => !nonDocuments.has(url)).sort(),
-    nonDocuments,
-    attachmentPages,
-    userArchivePages,
-    advertisingSitemaps,
-  };
-}
 
 function markdownHeader(observation: Observation, name: string): string | undefined {
   const fields = Object.entries(observation.snapshot.headers).filter(([key]) => key.toLowerCase() === name);

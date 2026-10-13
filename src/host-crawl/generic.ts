@@ -1,5 +1,7 @@
-import { load, type CheerioAPI } from "cheerio";
+import type { CheerioAPI } from "cheerio";
+import { compareStrings as compare } from "../core/utils.ts";
 import { publicUbcUrl } from "../prose/client.ts";
+import { contentRoots, normalizedText as text } from "../scraping/html.ts";
 import { plainText } from "../source-documents.ts";
 import type { CompletedHost, HostScraper, SearchDocument, Snapshot } from "./contracts.ts";
 import { digest, formatDocument, safeText, timestamp } from "./document-format.ts";
@@ -7,6 +9,7 @@ import { assertRequiredQueryIdentity, requiredDocumentQueries } from "./document
 import { htmlBaseUrl } from "./html-base.ts";
 import { markdownSources } from "./markdown-source-policy.ts";
 import { validateVettedHost } from "./public-validation.ts";
+import { defineHtmlHost } from "./scraper.ts";
 import { hostUrl, normalizeHost, pageExclusion } from "./urls.ts";
 
 const HTML = /^(?:text\/html|application\/xhtml\+xml)(?:;|$)/i;
@@ -29,9 +32,7 @@ const TRIGGERS = [
   "[data-toggle=collapse],[data-bs-toggle=collapse]",
   ".accordion__trigger,.accordion-trigger,.accordion-toggle,.accordion-button,.ui-accordion-header",
 ].join(",");
-const text = (value: string) => value.replace(/\s+/g, " ").trim();
 const titleText = (value: string) => plainText(value).replaceAll("\u2060", "");
-const compare = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
 
 function excludeUrl(value: string, hostname: string): string | null {
   const excluded = pageExclusion(value, hostname);
@@ -74,42 +75,33 @@ function assertPublicSnapshot(snapshot: Snapshot, hostname: string): void {
 function cleanStructure($: CheerioAPI): void {
   $(FURNITURE).remove();
   const candidates = $(TRIGGERS);
-  const nodes = new Set(candidates.toArray());
   const seen = new Set<string>();
-  candidates
-    .filter(
-      (_, node) =>
-        !$(node)
-          .parents()
-          .toArray()
-          .some((parent) => nodes.has(parent)),
-    )
-    .each((_, node) => {
-      const trigger = $(node);
-      trigger.find("svg,[aria-hidden=true],.icon").remove();
-      const label = text(trigger.text());
-      const target =
-        trigger.attr("aria-controls") ||
-        trigger.find("[aria-controls]").first().attr("aria-controls") ||
-        trigger.attr("data-target") ||
-        trigger.attr("data-bs-target") ||
-        trigger.attr("href");
-      const key = target ? JSON.stringify([target.replace(/^#/, ""), label]) : undefined;
-      if (!label || /^(?:expand|collapse|open|close) all(?:\s.*)?$/i.test(label) || (key && seen.has(key))) {
-        trigger.remove();
-        return;
-      }
-      if (key) seen.add(key);
-      trigger.find("button,a,[role=button]").each((_, control) => {
-        $(control).replaceWith($(control).contents());
-      });
-      if (trigger.is(HEADINGS)) {
-        trigger.removeAttr("role");
-        return;
-      }
-      if (trigger.find(HEADINGS).length || trigger.parents(HEADINGS).length) trigger.replaceWith(trigger.contents());
-      else trigger.replaceWith($("<h3>").append(trigger.contents()));
+  contentRoots($, candidates).each((_, node) => {
+    const trigger = $(node);
+    trigger.find("svg,[aria-hidden=true],.icon").remove();
+    const label = text(trigger.text());
+    const target =
+      trigger.attr("aria-controls") ||
+      trigger.find("[aria-controls]").first().attr("aria-controls") ||
+      trigger.attr("data-target") ||
+      trigger.attr("data-bs-target") ||
+      trigger.attr("href");
+    const key = target ? JSON.stringify([target.replace(/^#/, ""), label]) : undefined;
+    if (!label || /^(?:expand|collapse|open|close) all(?:\s.*)?$/i.test(label) || (key && seen.has(key))) {
+      trigger.remove();
+      return;
+    }
+    if (key) seen.add(key);
+    trigger.find("button,a,[role=button]").each((_, control) => {
+      $(control).replaceWith($(control).contents());
     });
+    if (trigger.is(HEADINGS)) {
+      trigger.removeAttr("role");
+      return;
+    }
+    if (trigger.find(HEADINGS).length || trigger.parents(HEADINGS).length) trigger.replaceWith(trigger.contents());
+    else trigger.replaceWith($("<h3>").append(trigger.contents()));
+  });
   // Collapsed answer panels remain intact; only their interactive controls are omitted.
   $("button,[role=button]").remove();
   $("a,span,strong,em,b,i").each((_, node) => {
@@ -124,7 +116,7 @@ export function createGenericScraper(value: string): HostScraper {
   const hostname = normalizeHost(value);
   const home = `https://${hostname}/`;
   publicUbcUrl(home);
-  return {
+  return defineHtmlHost({
     hostname,
     title: hostname,
     scope: "Useful public article-style HTML prose on this exact hostname.",
@@ -136,26 +128,12 @@ export function createGenericScraper(value: string): HostScraper {
       requiredQueries: requiredDocumentQueries(hostname),
     },
     excludeUrl: (url) => excludeUrl(url, hostname),
-    vetHomepage(snapshot) {
-      try {
-        assertPublicSnapshot(snapshot, hostname);
-        const $ = load(snapshot.body);
-        $("script,style,noscript,template").remove();
-        const accepted = hostUrl(snapshot.requested_url, hostname) === home && Boolean(text($("body").text()));
-        return {
-          accepted,
-          reason: accepted ? "Public nonempty exact-host HTML homepage" : "Empty or non-homepage observation",
-        };
-      } catch {
-        return {
-          accepted: false,
-          reason: "Invalid public exact-host HTML homepage",
-        };
-      }
+    validateSnapshot: (snapshot) => assertPublicSnapshot(snapshot, hostname),
+    officialHomepage($) {
+      $("script,style,noscript,template").remove();
+      return Boolean(text($("body").text()));
     },
-    extract(snapshot) {
-      assertPublicSnapshot(snapshot, hostname);
-      const $ = load(snapshot.body);
+    extractPage($, snapshot) {
       const base = htmlBaseUrl(snapshot.body, hostname, snapshot.url, true);
       if (base !== snapshot.url)
         $("a[href],img[src]").each((_, node) => {
@@ -199,14 +177,7 @@ export function createGenericScraper(value: string): HostScraper {
         )
           continue;
         const candidates = $(selector === ".entry-content" ? ".entry-content,.carousel-caption" : selector);
-        const nodes = new Set(candidates.toArray());
-        const roots = candidates.filter(
-          (_, node) =>
-            !$(node)
-              .parents()
-              .toArray()
-              .some((parent) => nodes.has(parent)),
-        );
+        const roots = contentRoots($, candidates);
         if (!roots.length) continue;
         const content = $("<div>");
         roots.each((_, node) => {
@@ -234,7 +205,7 @@ export function createGenericScraper(value: string): HostScraper {
         reason: "No nonempty public prose after removing page furniture",
       };
     },
-  };
+  });
 }
 
 /** Validate output and coalesce exact title/body duplicates, retaining only observed URL aliases. */

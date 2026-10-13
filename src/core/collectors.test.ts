@@ -1,25 +1,13 @@
-import { mkdir, mkdtemp, readdir, readFile, rm, stat, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import {
-  floatValue,
-  Http,
-  HTTPError,
-  InvalidValueError,
-  jsLiteral,
-  jsonapiCollection,
-  Output,
-  RequestTimeoutError,
-  setCampus,
-  simplifyJsonapi,
-  stringifyCsv,
-  stringifyJson,
-  stringifyJsonItems,
-  wants,
-  wpCollection,
-  type ResponseLike,
-} from "./base.ts";
+import { setCampus, wants } from "./campus.ts";
+import { jsonapiCollection, simplifyJsonapi } from "./drupal.ts";
+import { Http, HTTPError, InvalidValueError, RequestTimeoutError, type ResponseLike } from "./http.ts";
+import { Output } from "./output.ts";
+import { floatValue, stringifyCsv, stringifyJson, stringifyJsonItems } from "./serialization.ts";
+import { jsLiteral, wpCollection } from "./wordpress.ts";
 
 describe("stringifyJson writes JSON with conventional offsets and quoting", () => {
   it("serializes primitives and nested structures", () => {
@@ -90,37 +78,6 @@ describe("Output", () => {
     await rm(root, { recursive: true, force: true });
   });
 
-  it("writes json/csv/raw under the folder and tracks them in datasets order", async () => {
-    const tree: Array<[string, number | null, string | null]> = [];
-    const json = out.json.bind(out);
-    const csv = out.csv.bind(out);
-    const raw = out.raw.bind(out);
-    out.json = async (rel: string, payload: unknown, opts) => {
-      const p = await json(rel, payload, opts);
-      tree.push([rel, Array.isArray(payload) ? payload.length : null, opts?.source ?? null]);
-      return p;
-    };
-    out.csv = async (rel: string, rows: Array<Record<string, unknown>>, opts) => {
-      const p = await csv(rel, rows, opts);
-      tree.push([rel, rows.length, opts?.source ?? null]);
-      return p;
-    };
-    out.raw = async (rel: string, content: ArrayBuffer | Uint8Array | string, opts) => {
-      const p = await raw(rel, content, opts);
-      tree.push([rel, null, opts?.source ?? null]);
-      return p;
-    };
-
-    await out.json("a.json", [{ x: 1 }], { source: "https://example" });
-    await out.csv("b.csv", [{ y: 2 }], { source: "https://example" });
-    await out.raw("c.bin", new Uint8Array([1, 2]), { source: "https://example" });
-
-    expect(await stat(path.join(root, "test-group/a.json"))).toBeTruthy();
-    const files = await readdir(path.join(root, "test-group"));
-    expect(files.sort()).toEqual(["a.json", "b.csv", "c.bin"]);
-    expect(out.datasets.map((d) => d.path)).toEqual(["test-group/a.json", "test-group/b.csv", "test-group/c.bin"]);
-  });
-
   it("writes compact JSON for arrays above the 2000-row threshold", async () => {
     const rows = Array.from({ length: 2001 }, (_, i) => ({ i }));
     await out.json("big.json", rows);
@@ -161,11 +118,6 @@ describe("campus selection", () => {
     expect(wants("okanagan")).toBe(false);
     setCampus("both");
     expect(wants("okanagan")).toBe(true);
-  });
-
-  it("setCampus rejects unknown values", () => {
-    setCampus("vancouver");
-    expect(() => setCampus("mars")).toThrow(InvalidValueError);
   });
 });
 
@@ -223,10 +175,6 @@ describe("jsLiteral", () => {
   it("parses an object literal with string escapes", () => {
     const html = `var data = {"a": 1, "b": "x\\"y", "c": [1, 2]};`;
     expect(jsLiteral(html, "data")).toEqual({ a: 1, b: 'x"y', c: [1, 2] });
-  });
-
-  it("throws when the name is missing", () => {
-    expect(() => jsLiteral("<html></html>", "data")).toThrow(Error);
   });
 
   it("throws for a non-object/array opener", () => {

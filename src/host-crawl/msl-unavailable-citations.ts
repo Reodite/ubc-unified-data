@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { load } from "cheerio";
+import { normalizedText as normalized } from "../scraping/html.ts";
 import type { Observation } from "./contracts.ts";
 import { hostUrl } from "./urls.ts";
 
@@ -227,7 +228,6 @@ export const reviewedMslCitationSources: readonly MslCitationWitness[] = [
 
 const digest = (observation: Observation) =>
   createHash("sha256").update(JSON.stringify(observation.snapshot)).digest("hex");
-const normalized = (value: string) => value.replace(/\s+/g, " ").trim();
 
 export function discoverReviewedMslUnavailableLinks(
   observation: Observation,

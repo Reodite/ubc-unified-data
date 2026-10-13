@@ -2,7 +2,8 @@ import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import path from "node:path";
-import { USER_AGENT } from "../base.ts";
+import { USER_AGENT } from "../core/http.ts";
+import { readResponseBytes, RETRYABLE_HTTP_STATUSES } from "../core/response.ts";
 import { assertExternalPath } from "../host-crawl/paths.ts";
 
 interface RobotsRules {
@@ -13,7 +14,6 @@ interface RobotsRules {
 
 const robotsParser = createRequire(import.meta.url)("robots-parser") as (url: string, text: string) => RobotsRules;
 
-const RETRY_STATUSES = new Set([408, 429, 500, 502, 503, 504]);
 const PRIVATE_PATH =
   /^\/(?:wp-admin|wp-login\.php|admin|user|login|login_required|signin|logout|saml|idp|auth|Shibboleth\.sso)(?:\/|$)/i;
 const PRIVATE_HOST = /^(?:authentication|shib|idp|cwl|sso|accounts|shibboleth)\./i;
@@ -274,7 +274,7 @@ export class ProseClient {
           retrieved_at: new Date(this.now()).toISOString(),
           cached: false,
         });
-        if (!RETRY_STATUSES.has(response.status) || attempt >= (this.options.retries ?? 2)) break;
+        if (!RETRYABLE_HTTP_STATUSES.has(response.status) || attempt >= (this.options.retries ?? 2)) break;
         const header = response.headers.get("retry-after");
         const numeric = header === null ? NaN : Number(header);
         const delay = Number.isFinite(numeric) ? numeric * 1000 : header ? Date.parse(header) - this.now() : NaN;
@@ -298,21 +298,10 @@ export class ProseClient {
         throw new ProseFetchError(`Non-HTML binary response: ${url}`, url, 200, "nonarticle");
       }
       const maximum = this.options.maxBytes ?? 25_000_000;
-      const chunks: Uint8Array[] = [];
-      let size = 0;
-      const reader = response.body?.getReader();
-      if (reader) {
-        for (;;) {
-          const chunk = await reader.read();
-          if (chunk.done) break;
-          size += chunk.value.length;
-          if (size > maximum) {
-            await reader.cancel();
-            throw new ProseFetchError(`Response exceeds explicit ${maximum}-byte limit: ${url}`, url, 200, "invalid");
-          }
-          chunks.push(chunk.value);
-        }
-      }
+      const bytes = await readResponseBytes(response, (size) => {
+        if (size > maximum)
+          throw new ProseFetchError(`Response exceeds explicit ${maximum}-byte limit: ${url}`, url, 200, "invalid");
+      });
       const result: ProseResponse = {
         url,
         requested_url: initial,
@@ -323,7 +312,7 @@ export class ProseClient {
             return value === null ? [] : [[key, value]];
           }),
         ),
-        body: Buffer.concat(chunks).toString("utf8"),
+        body: bytes.toString("utf8"),
         retrieved_at: new Date(this.now()).toISOString(),
       };
       if (this.options.cacheDir) {

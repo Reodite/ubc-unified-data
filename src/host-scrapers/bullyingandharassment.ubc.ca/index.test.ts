@@ -2,8 +2,8 @@ import { readFileSync } from "node:fs";
 import { load, type CheerioAPI } from "cheerio";
 import MarkdownIt from "markdown-it";
 import { describe, expect, it } from "vitest";
-import { defineWordpressHost } from "../../host-crawl/adapters/wordpress-page.ts";
 import type { Snapshot } from "../../host-crawl/contracts.ts";
+import { defineWordpressHost } from "../../host-crawl/scraper.ts";
 import { assertSafeMarkdown, toSafeMarkdown } from "../../prose/markdown.ts";
 import { bullyingAndHarassmentScraper as scraper } from "./index.ts";
 
@@ -490,7 +490,7 @@ describe("bullyingAndHarassmentScraper extraction", () => {
     { status: 404 },
     { status: 503 },
     { headers: { "content-type": "application/json" } },
-  ])("rejects incomplete or denied observations despite opting into transport-only API fallback: %j", (change) => {
+  ])("rejects incomplete or denied observations: %j", (change) => {
     expect(() => scraper.extract({ ...snapshot("article"), ...change })).toThrow(
       "A complete HTML observation is required",
     );

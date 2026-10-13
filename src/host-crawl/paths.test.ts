@@ -3,7 +3,7 @@ import { mkdir, mkdtemp, rm, symlink, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { ROOT } from "../base.ts";
+import { ROOT } from "../core/output.ts";
 import {
   assertExternalPath,
   DEFAULT_EXTERNAL_ROOT,

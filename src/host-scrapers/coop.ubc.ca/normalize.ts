@@ -1,8 +1,8 @@
 import type { CheerioAPI } from "cheerio";
+import { normalizedText as text } from "../../scraping/html.ts";
 
 const MAIN = "main#main-content";
 const CONTACTS = "#unit-content #sidebar-second .view-program-views";
-const text = (value: string) => value.replace(/\s+/g, " ").trim();
 
 function labelSpotlightCampuses($: CheerioAPI): void {
   $(`${MAIN} .view-program-spotlight`).each((_, view) => {

@@ -2,7 +2,7 @@ import { mkdtemp, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { Output } from "./base.ts";
+import { Output } from "./core/output.ts";
 import { publicFacts } from "./public-facts.ts";
 import { document } from "./source-documents.ts";
 import { validateUndergradData } from "./validate-undergrad.ts";

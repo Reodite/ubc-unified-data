@@ -1,11 +1,6 @@
-/** Pull the structured bits out of a course description.
- *
- * UBC ships course detail as one prose blob. The Academic Calendar *has*
- * dedicated `field_course_prerequisite`, `field_course_co_requistite`,
- * `field_course_vector` and `field_course_equivalency` fields, but they are
- * empty in sampled records; UBC includes those details in the description.
- * Parse the description into separate columns. These fields are *derived*,
- * not fetched -- the original text is always kept alongside.
+/** Derive prerequisite, corequisite, equivalency and contact-hour columns from course prose.
+ * The Calendar's dedicated fields are empty in sampled records. Keep the source
+ * description alongside these derived values.
  */
 
 import { unescapeHtml as htmlUnescape } from "./htmldoc.ts";
@@ -34,8 +29,8 @@ function canonical(label: string): keyof CourseText {
   return CANONICAL["eq"]!;
 }
 
+/** Read plain text from a string or a Drupal {value, processed} field. */
 export function plainText(value: unknown): string {
-  /** Drupal text fields arrive as {value, processed} or a string. */
   if (typeof value === "object" && value !== null) {
     const record = value as Record<string, unknown>;
     value = record["processed"] ?? record["value"] ?? "";
@@ -55,10 +50,7 @@ export interface CourseText {
   hours_vector: string;
 }
 
-/** Split a course description into description + prereq/coreq/vector/exclusion.
- *
- * Returns empty strings for anything not present, so the columns stay stable
- * across every row. */
+/** Split course prose into derived columns; missing clauses produce empty strings. */
 export function parseCourseText(value: unknown): CourseText {
   const text = plainText(value);
   const result: CourseText = {

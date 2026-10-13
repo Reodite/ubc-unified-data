@@ -3,7 +3,7 @@ import { mkdir, rename, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { load } from "cheerio";
-import { ROOT } from "../base.ts";
+import { ROOT } from "../core/output.ts";
 import { DOCUMENT_CATEGORIES } from "./categories.ts";
 import {
   assertAdmittedHostname,
@@ -31,12 +31,12 @@ import { assertSameProducer, captureProducer } from "./provenance.ts";
 import { hostDocumentRoots, readRegularFile } from "./public-validation.ts";
 import { publishCompletedHost } from "./publication.ts";
 import { HostRecording, type AcquisitionBudgetGrant } from "./recording.ts";
-import { parseGenericHostnames } from "./registry.ts";
+import { parseGenericHostnames, specializedHostnames } from "./registry.ts";
 import { normalizeHost } from "./urls.ts";
 import { HostWorkQueue, type HostWorkRecord } from "./work-queue.ts";
 
 const GENERIC_LIST = "src/host-scrapers/generic-hosts.json";
-const SPECIALIZED = ["bmlscpathology.med.ubc.ca", "bullyingandharassment.ubc.ca", "coop.ubc.ca"];
+const SPECIALIZED = specializedHostnames();
 const TERMINAL = new Set(["published", "rejected", "blocked"]);
 const LARGE_PRIVATE_FILE = 256 * 1024 * 1024;
 export interface HostBatchConfig {

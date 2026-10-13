@@ -1,4 +1,5 @@
-import { load } from "cheerio";
+import { load, type CheerioAPI } from "cheerio";
+import { contentRoots } from "../scraping/html.ts";
 import { plainText, webUrl } from "../source-documents.ts";
 import { publicUbcUrl, type ProseResponse } from "./client.ts";
 import type { ArticleInput, ProseSource } from "./model.ts";
@@ -46,7 +47,11 @@ export function articleLinks(html: string, source: ProseSource, base: string): s
 
 /** Extract page content without global navigation; collapsed FAQ panels remain in document order. */
 export function extractArticle(response: ProseResponse, source: ProseSource): ArticleInput {
-  const $ = load(response.body);
+  return extractArticleFromDom(load(response.body), response, source);
+}
+
+/** Extract from a parsed page, including any site-specific structural normalization. */
+export function extractArticleFromDom($: CheerioAPI, response: ProseResponse, source: ProseSource): ArticleInput {
   const pageTitle = $("title").text().trim();
   const fullArticle = $("#primary-content article.node--view-mode-full, main article").first();
   const pageTypes = `${$("body").attr("class") ?? ""} ${fullArticle.attr("class") ?? ""}`;
@@ -91,13 +96,7 @@ export function extractArticle(response: ProseResponse, source: ProseSource): Ar
   let selected = "";
   for (const selector of selectors) {
     const candidates = $(selector);
-    const roots = candidates.filter(
-      (_, element) =>
-        !$(element)
-          .parents()
-          .toArray()
-          .some((parent) => candidates.toArray().includes(parent)),
-    );
+    const roots = contentRoots($, candidates);
     if (!roots.length) continue;
     matchedContainer = true;
     const fragment = load(

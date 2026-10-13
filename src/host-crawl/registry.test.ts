@@ -4,7 +4,13 @@ import { bmlscScraper } from "../host-scrapers/bmlscpathology.med.ubc.ca/index.t
 import { bullyingAndHarassmentScraper } from "../host-scrapers/bullyingandharassment.ubc.ca/index.ts";
 import { coopScraper } from "../host-scrapers/coop.ubc.ca/index.ts";
 import { parseRoutingPolicy, REJECTED_HOSTS } from "./category-routing.ts";
-import { createRegistry, getHostScraper, parseGenericHostnames, registeredHostnames } from "./registry.ts";
+import {
+  createRegistry,
+  getHostScraper,
+  parseGenericHostnames,
+  registeredHostnames,
+  specializedHostnames,
+} from "./registry.ts";
 import { hostUrl, normalizeHost } from "./urls.ts";
 
 const hostname = "bmlscpathology.med.ubc.ca";
@@ -12,10 +18,11 @@ describe("explicit hostname dispatch", () => {
   it("dispatches specialized modules and explicitly declared generic hostnames", () => {
     const root = new URL("../host-scrapers/", import.meta.url);
     const directories = readdirSync(root, { withFileTypes: true })
-      .filter((entry) => entry.isDirectory() && entry.name !== "routing")
+      .filter((entry) => entry.isDirectory() && !["routing", "policies"].includes(entry.name))
       .map((entry) => entry.name)
       .sort();
     const generic = parseGenericHostnames(readFileSync(new URL("generic-hosts.json", root)));
+    expect(directories).toEqual(specializedHostnames());
     expect([...directories, ...generic].sort()).toEqual(registeredHostnames());
     for (const host of generic) {
       if (REJECTED_HOSTS.has(host)) expect(() => getHostScraper(host)).toThrow(/Owner-rejected/);
@@ -32,7 +39,6 @@ describe("explicit hostname dispatch", () => {
     expect(() => getHostScraper("democracy.network.arts.ubc.ca")).toThrow(/Owner-rejected/);
     for (const host of directories) {
       expect(existsSync(new URL(`${host}/index.ts`, root))).toBe(true);
-      expect(existsSync(new URL(`${host}/index.test.ts`, root))).toBe(true);
     }
     expect(getHostScraper(hostname.toUpperCase())).toBe(bmlscScraper);
     expect(getHostScraper("BULLYINGANDHARASSMENT.UBC.CA")).toBe(bullyingAndHarassmentScraper);

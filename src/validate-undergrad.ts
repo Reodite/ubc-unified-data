@@ -1,6 +1,7 @@
 import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
-import { DATA_DIR, stringifyCsv } from "./base.ts";
+import { DATA_DIR } from "./core/output.ts";
+import { stringifyCsv } from "./core/serialization.ts";
 import { assertPublicFacts, PUBLIC_FIELDS, type PublicTable } from "./public-facts.ts";
 import { object, type Row } from "./source-documents.ts";
 

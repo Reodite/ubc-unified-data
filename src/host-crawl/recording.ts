@@ -3,7 +3,8 @@ import { lstat, mkdir, open, rename } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
-import { USER_AGENT } from "../base.ts";
+import { USER_AGENT } from "../core/http.ts";
+import { readResponseBytes, RETRYABLE_HTTP_STATUSES as retryable } from "../core/response.ts";
 import { publicUbcUrl } from "../prose/client.ts";
 import {
   DocumentPolicyError,
@@ -26,7 +27,6 @@ const parser = createRequire(import.meta.url)("robots-parser") as (
   getSitemaps(): string[];
 };
 const hash = (bytes: string | Uint8Array) => createHash("sha256").update(bytes).digest("hex");
-const retryable = new Set([408, 429, 500, 502, 503, 504]);
 const transientTransportFailure = (error: string): boolean =>
   /\b(?:ECONNRESET|AbortError|TimeoutError)\b|other side closed/i.test(error) &&
   !/\b(?:ENOTFOUND|EAI_[A-Z_]+|CERT_[A-Z_]+|ERR_TLS_[A-Z_]+|ERR_SSL_[A-Z_]+|DEPTH_ZERO_SELF_SIGNED_CERT|SELF_SIGNED_CERT_IN_CHAIN|UNABLE_TO_[A-Z_]+)\b|certificate|hostname mismatch|\bDNS\b/i.test(
@@ -548,21 +548,12 @@ export class HostRecording {
         await response.body?.cancel();
         throw new NonTextMediaError(mediaType || "application/octet-stream");
       }
-      const chunks: Uint8Array[] = [];
-      const reader = response.body?.getReader();
-      if (reader)
-        for (;;) {
-          const item = await reader.read();
-          if (item.done) break;
-          received += item.value.length;
-          this.db.prepare("UPDATE attempts SET bytes=? WHERE id=?").run(received, id);
-          if (received > Number(this.config.maxResponseBytes) || Number(stats.bytes) + received > bounds.maxBytes) {
-            await reader.cancel();
-            throw new Error("Acquisition response/total byte budget exceeded");
-          }
-          chunks.push(item.value);
-        }
-      const raw = Buffer.concat(chunks);
+      const raw = await readResponseBytes(response, (size) => {
+        received = size;
+        this.db.prepare("UPDATE attempts SET bytes=? WHERE id=?").run(received, id);
+        if (received > Number(this.config.maxResponseBytes) || Number(stats.bytes) + received > bounds.maxBytes)
+          throw new Error("Acquisition response/total byte budget exceeded");
+      });
       const rawPath = assertExternalPath(join(this.options.directory, "objects", `${hash(raw)}.body`));
       try {
         await durableObject(rawPath, raw);

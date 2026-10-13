@@ -1,7 +1,7 @@
 import { lstatSync, realpathSync } from "node:fs";
 import { homedir } from "node:os";
 import { isAbsolute, join, parse, relative, resolve, sep } from "node:path";
-import { ROOT } from "../base.ts";
+import { ROOT } from "../core/output.ts";
 
 /** Resolve a dedicated workspace root; overrides must already be absolute and normalized. */
 export function resolveExternalBoundary(home: string, override?: string): string {

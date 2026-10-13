@@ -29,8 +29,12 @@
  * records how it was matched and `_unmatched.json` lists what didn't.
  */
 
-import type { Http, Output } from "../base.ts";
-import { jsLiteral, jsonapiCollection, register, wants } from "../base.ts";
+import { wants } from "../core/campus.ts";
+import { jsonapiCollection } from "../core/drupal.ts";
+import type { Http } from "../core/http.ts";
+import type { Output } from "../core/output.ts";
+import { register } from "../core/registry.ts";
+import { jsLiteral } from "../core/wordpress.ts";
 import * as htmldoc from "../htmldoc.ts";
 import { campusIds, onCampus, programFinderDatasets } from "./admissions.ts";
 

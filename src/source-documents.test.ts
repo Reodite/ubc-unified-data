@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Http } from "./base.ts";
+import { Http } from "./core/http.ts";
 import {
   contentLinks,
   document,

@@ -1,19 +1,16 @@
-/* Refresh the UBC dataset.
- *
- *   npx tsx src/update.ts               # update everything
- *   npx tsx src/update.ts courses events  # update just these groups
- *   npx tsx src/update.ts --list         # show what is available
- *   npx tsx src/update.ts --skip people  # everything except one group
- *
- * Each collector writes into data/<group>/ and the run rebuilds
- * data/manifest.json and data/catalog.json. A group that fails is reported
- * and recorded, but does not stop the rest.
+/** Refresh selected structured datasets and rebuild their manifest and catalog.
+ * Record each group's failure without stopping the remaining collectors.
  */
 
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import * as path from "node:path";
 import { parseArgs } from "node:util";
-import { CAMPUS_CHOICES, DATA_DIR, Http, Output, REGISTRY, setCampus, utcnow } from "./collectors/index.ts";
+import "./collectors/index.ts";
+import { CAMPUS_CHOICES, setCampus } from "./core/campus.ts";
+import { Http } from "./core/http.ts";
+import { DATA_DIR, Output } from "./core/output.ts";
+import { REGISTRY } from "./core/registry.ts";
+import { utcnow } from "./core/utils.ts";
 
 const MANIFEST = path.join(DATA_DIR, "manifest.json");
 const CATALOG = path.join(DATA_DIR, "catalog.json");
@@ -50,13 +47,7 @@ interface Manifest {
   groups?: Record<string, GroupInfo>;
 }
 
-/** Collapse the manifest's file list into a table-level index.
- *
- * The manifest tracks files because that is what gets written and pruned; a
- * reader wants tables. Pairing `x.json` with `x.csv` and hanging the grain,
- * columns and joins off the pair is the difference between "here are 300
- * files" and "here is what this dataset holds".
- */
+/** Pair JSON and CSV files into tables with shared grain, column and join metadata. */
 function buildCatalog(manifest: Manifest): Record<string, unknown> {
   const groups: Record<string, Record<string, unknown>> = {};
 
@@ -106,7 +97,7 @@ function buildCatalog(manifest: Manifest): Record<string, unknown> {
   };
 }
 
-export function humanBytes(size: number): string {
+function humanBytes(size: number): string {
   let value = size;
   for (const unit of ["B", "KB", "MB", "GB"]) {
     if (value < 1024 || unit === "GB") {
@@ -135,20 +126,17 @@ interface CliOptions {
   minInterval: number;
 }
 
-/* Progress state: the tuple `map()` reports plus which group is running, so
- * the ticker can draw one line that keeps moving. */
+// Progress belongs to the current collector and resets between groups.
 let progressDone = 0;
 let progressTotal = 0;
 let progressLabel = "";
 let progressDirty = false;
 let progressStarted = 0;
 
-/** Redraw the current group's progress on one line, no newline. `\r`-based so
- * a dumb terminal still overwrites; the trailing spaces wipe a shorter bar. */
+/** Overwrite the current progress line and clear any trailing characters. */
 function drawProgress(): void {
   if (!progressDirty) {
-    // Nothing to measure yet (e.g. parsing HTML, writing files): show the
-    // elapsed time so the line still breathes.
+    // Parsing and disk writes have no item count; show elapsed time instead.
     const secs = Math.floor((Date.now() - progressStarted) / 1000);
     process.stdout.write(`\r  [${progressLabel}] ... ${secs}s\x1b[K`);
     return;
@@ -162,7 +150,7 @@ function drawProgress(): void {
   process.stdout.write(`\r  [${progressLabel}] ${bar} ${String(pct).padStart(3)}% ${count} ${secs}s\x1b[K`);
 }
 
-/** End the group: wipe the progress line and leave a fresh line beneath it. */
+/** Clear the current progress line. */
 function clearProgressLine(): void {
   process.stdout.write("\r\x1b[K");
 }

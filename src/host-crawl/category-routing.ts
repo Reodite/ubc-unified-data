@@ -1,7 +1,7 @@
 import { constants } from "node:fs";
 import { mkdir, open, readdir } from "node:fs/promises";
 import { dirname, join } from "node:path";
-import { ROOT } from "../base.ts";
+import { ROOT } from "../core/output.ts";
 import { assertDocumentCategory, categoryDocumentRoot, type DocumentCategory } from "./categories.ts";
 import type { CompletedHost, SearchDocument, VettedHost } from "./contracts.ts";
 import { exactObject, formatDocument, parseDocument, safeText, sha256 } from "./document-format.ts";

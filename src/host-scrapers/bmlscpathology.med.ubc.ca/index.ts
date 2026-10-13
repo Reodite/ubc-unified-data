@@ -1,29 +1,20 @@
-import { defineWordpressHost } from "../../host-crawl/adapters/wordpress-page.ts";
-import type { HostScraper } from "../../host-crawl/contracts.ts";
+import { defineWordpressHost } from "../../host-crawl/scraper.ts";
+import { normalizedText as text } from "../../scraping/html.ts";
+import { hasUbcBranding } from "../../scraping/ubc.ts";
 import { normalizeArticle } from "./normalize.ts";
 
 const HOME = "https://bmlscpathology.med.ubc.ca/";
 const PROGRAM = "Bachelor of Medical Laboratory Science (BMLSc) Program";
 const CONTENT = "#content > .hentry > .entry-content";
 const FAQ = "#faq.faq-section > .faq-container > .faq-panels > .faq-panel > .faq-grid > .faq-item";
-const text = (value: string) => value.replace(/\s+/g, " ").trim();
-
-const base = defineWordpressHost({
+export const bmlscScraper = defineWordpressHost({
   hostname: "bmlscpathology.med.ubc.ca",
   title: `UBC ${PROGRAM}`,
   scope: "Public BMLSc program, curriculum, admissions, prerequisite, laboratory training and student guidance prose.",
   selectors: [CONTENT],
+  normalizeArticle,
   officialHomepage($, snapshot) {
-    const wordmark = $("#ubc7-header #ubc7-wordmark a").first();
-    const unit = $("#ubc7-unit-name a").first();
-    if (
-      text(wordmark.text()) !== "The University of British Columbia" ||
-      new URL(wordmark.attr("href") ?? "", snapshot.url).href !== "https://www.ubc.ca/" ||
-      text(unit.find("#ubc7-unit-faculty").text()) !== "Faculty of Medicine" ||
-      text(unit.find("#ubc7-unit-identifier").text()) !== PROGRAM ||
-      !unit.attr("href") ||
-      new URL(unit.attr("href") ?? "", snapshot.url).href !== HOME
-    )
+    if (!hasUbcBranding($, snapshot.url, { homepage: HOME, unit: PROGRAM, faculty: "Faculty of Medicine" }))
       return false;
 
     const content = $(CONTENT).clone();
@@ -79,13 +70,3 @@ const base = defineWordpressHost({
     );
   },
 });
-
-export const bmlscScraper: HostScraper = {
-  ...base,
-  adapter: base.adapter,
-  normalizeArticle,
-  extract(snapshot) {
-    const result = base.extract(snapshot);
-    return result.kind === "document" ? { ...result, input: normalizeArticle(result.input) } : result;
-  },
-};
