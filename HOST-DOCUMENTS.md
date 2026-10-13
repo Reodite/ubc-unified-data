@@ -41,7 +41,12 @@ sites and thin promotion without a useful public-content purpose. Branding or
 technical success alone is not an acceptance decision. Preserve explicit owner
 rejections, including `democracy.network.arts.ubc.ca`; collection and routing
 refuse that hostname. Exclude hosts whose content serves only UBC Okanagan,
-using source content to establish scope rather than inferring it from a hostname.
+using source content to establish scope rather than inferring it from a hostname,
+unless the owner approves the host. The reviewed collections restored by
+[PR #5](https://github.com/Reodite/ubc-unified-data/pull/5) include six approved
+exceptions: `it.ok.ubc.ca`, `lilab.ok.ubc.ca`, `ors.ok.ubc.ca`,
+`principal.ok.ubc.ca`, `recreation.ok.ubc.ca` and `vems.ok.ubc.ca`. Their saved
+routing policies remain authoritative. Other explicit rejections still apply.
 Keep hosts that serve Vancouver or UBC broadly.
 
 Active collection is limited to useful public article-style HTML reached through
@@ -337,6 +342,11 @@ gate to the full public corpus. Historical byte parsers remain separate so old
 outputs can be inspected and withdrawn without changing their evidence. No manual
 visual or exhaustive source-fidelity review is implied. See
 [HOST-COVERAGE.md](HOST-COVERAGE.md) for current inclusion and withdrawal decisions.
+The owner-approved review of restored collections removes 195 known placeholder-only
+records from the public export and reconciles category and host counts. Retained
+article bytes and routing provenance remain unchanged. This export correction
+is not a new acquisition or replay, and it does not permit collectors to discard
+required pages automatically.
 
 Collection runs concurrently from a frozen source copy. Producer fingerprints
 identify that private batch copy, not later changes to the public dispatch list.

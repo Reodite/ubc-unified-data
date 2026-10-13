@@ -72,7 +72,7 @@
       {
         "category": "academics",
         "path": "data/documents/academics/audiospeech.ubc.ca",
-        "document_count": 487
+        "document_count": 486
       },
       {
         "category": "news",
@@ -90,7 +90,7 @@
         "document_count": 23
       }
     ],
-    "document_count": 610
+    "document_count": 609
   },
   {
     "hostname": "bmlscpathology.med.ubc.ca",
@@ -151,7 +151,7 @@
       {
         "category": "academics",
         "path": "data/documents/academics/cases.open.ubc.ca",
-        "document_count": 287
+        "document_count": 286
       },
       {
         "category": "opportunities",
@@ -164,7 +164,7 @@
         "document_count": 3
       }
     ],
-    "document_count": 291
+    "document_count": 290
   },
   {
     "hostname": "celebrateresearch.ubc.ca",
@@ -266,10 +266,10 @@
       {
         "category": "academics",
         "path": "data/documents/academics/enso.arts.ubc.ca",
-        "document_count": 12
+        "document_count": 10
       }
     ],
-    "document_count": 12
+    "document_count": 10
   },
   {
     "hostname": "gic.geog.ubc.ca",
@@ -313,10 +313,10 @@
       {
         "category": "support",
         "path": "data/documents/support/grad.lsi.ubc.ca",
-        "document_count": 121
+        "document_count": 116
       }
     ],
-    "document_count": 121
+    "document_count": 116
   },
   {
     "hostname": "humanities101.arts.ubc.ca",
@@ -429,7 +429,7 @@
       {
         "category": "academics",
         "path": "data/documents/academics/interdisciplinary.arts.ubc.ca",
-        "document_count": 32
+        "document_count": 24
       },
       {
         "category": "news",
@@ -442,7 +442,7 @@
         "document_count": 14
       }
     ],
-    "document_count": 60
+    "document_count": 52
   },
   {
     "hostname": "intheclass.arts.ubc.ca",
@@ -513,7 +513,7 @@
       {
         "category": "academics",
         "path": "data/documents/academics/ir.arts.ubc.ca",
-        "document_count": 21
+        "document_count": 20
       },
       {
         "category": "news",
@@ -526,7 +526,7 @@
         "document_count": 37
       }
     ],
-    "document_count": 60
+    "document_count": 59
   },
   {
     "hostname": "isc.ubc.ca",
@@ -660,7 +660,7 @@
       {
         "category": "stories",
         "path": "data/documents/stories/japanese-canadian-student-tribute.ubc.ca",
-        "document_count": 50
+        "document_count": 47
       },
       {
         "category": "support",
@@ -668,7 +668,7 @@
         "document_count": 1
       }
     ],
-    "document_count": 51
+    "document_count": 48
   },
   {
     "hostname": "joshilab.forestry.ubc.ca",
@@ -718,7 +718,7 @@
       {
         "category": "academics",
         "path": "data/documents/academics/jwam.ubc.ca",
-        "document_count": 156
+        "document_count": 155
       },
       {
         "category": "news",
@@ -746,7 +746,7 @@
         "document_count": 1
       }
     ],
-    "document_count": 786
+    "document_count": 785
   },
   {
     "hostname": "kaska.arts.ubc.ca",
@@ -759,12 +759,12 @@
       {
         "category": "academics",
         "path": "data/documents/academics/kaska.arts.ubc.ca",
-        "document_count": 96
+        "document_count": 93
       },
       {
         "category": "stories",
         "path": "data/documents/stories/kaska.arts.ubc.ca",
-        "document_count": 13
+        "document_count": 12
       },
       {
         "category": "support",
@@ -772,7 +772,7 @@
         "document_count": 1
       }
     ],
-    "document_count": 110
+    "document_count": 106
   },
   {
     "hostname": "keeplearning.ubc.ca",
@@ -880,10 +880,10 @@
       {
         "category": "support",
         "path": "data/documents/support/lam.library.ubc.ca",
-        "document_count": 157
+        "document_count": 154
       }
     ],
-    "document_count": 799
+    "document_count": 796
   },
   {
     "hostname": "landone.ubc.ca",
@@ -922,7 +922,7 @@
       {
         "category": "research",
         "path": "data/documents/research/langelab.med.ubc.ca",
-        "document_count": 9
+        "document_count": 8
       },
       {
         "category": "support",
@@ -930,7 +930,7 @@
         "document_count": 1
       }
     ],
-    "document_count": 11
+    "document_count": 10
   },
   {
     "hostname": "laso.arts.ubc.ca",
@@ -946,14 +946,9 @@
         "document_count": 33
       },
       {
-        "category": "news",
-        "path": "data/documents/news/laso.arts.ubc.ca",
-        "document_count": 1
-      },
-      {
         "category": "opportunities",
         "path": "data/documents/opportunities/laso.arts.ubc.ca",
-        "document_count": 2
+        "document_count": 1
       },
       {
         "category": "support",
@@ -961,7 +956,7 @@
         "document_count": 2
       }
     ],
-    "document_count": 38
+    "document_count": 36
   },
   {
     "hostname": "learning.chem.ubc.ca",
@@ -1043,10 +1038,10 @@
       {
         "category": "support",
         "path": "data/documents/support/learningspaces.ubc.ca",
-        "document_count": 327
+        "document_count": 326
       }
     ],
-    "document_count": 327
+    "document_count": 326
   },
   {
     "hostname": "lfsus.landfood.ubc.ca",
@@ -1180,7 +1175,7 @@
       {
         "category": "academics",
         "path": "data/documents/academics/linguistics.ubc.ca",
-        "document_count": 68
+        "document_count": 66
       },
       {
         "category": "news",
@@ -1203,7 +1198,7 @@
         "document_count": 76
       }
     ],
-    "document_count": 517
+    "document_count": 515
   },
   {
     "hostname": "loonlake.ubc.ca",
@@ -1320,7 +1315,7 @@
       {
         "category": "academics",
         "path": "data/documents/academics/macl.arts.ubc.ca",
-        "document_count": 50
+        "document_count": 48
       },
       {
         "category": "opportunities",
@@ -1333,7 +1328,7 @@
         "document_count": 2
       }
     ],
-    "document_count": 63
+    "document_count": 61
   },
   {
     "hostname": "manufacturing.engineering.ubc.ca",
@@ -1367,7 +1362,7 @@
       {
         "category": "opportunities",
         "path": "data/documents/opportunities/mastercardfdn.scholars.ubc.ca",
-        "document_count": 442
+        "document_count": 440
       },
       {
         "category": "stories",
@@ -1375,7 +1370,7 @@
         "document_count": 6
       }
     ],
-    "document_count": 448
+    "document_count": 446
   },
   {
     "hostname": "masterdatascience.ubc.ca",
@@ -1471,7 +1466,7 @@
       {
         "category": "academics",
         "path": "data/documents/academics/mech.ubc.ca",
-        "document_count": 1464
+        "document_count": 1458
       },
       {
         "category": "news",
@@ -1484,7 +1479,7 @@
         "document_count": 12
       }
     ],
-    "document_count": 1533
+    "document_count": 1527
   },
   {
     "hostname": "med-fom-childspeech.sites.olt.ubc.ca",
@@ -1597,10 +1592,10 @@
       {
         "category": "academics",
         "path": "data/documents/academics/mes.arts.ubc.ca",
-        "document_count": 45
+        "document_count": 43
       }
     ],
-    "document_count": 45
+    "document_count": 43
   },
   {
     "hostname": "met.ubc.ca",
@@ -1676,7 +1671,7 @@
       {
         "category": "academics",
         "path": "data/documents/academics/midwifery.ubc.ca",
-        "document_count": 471
+        "document_count": 470
       },
       {
         "category": "news",
@@ -1694,7 +1689,7 @@
         "document_count": 1
       }
     ],
-    "document_count": 490
+    "document_count": 489
   },
   {
     "hostname": "mining.ubc.ca",
@@ -1773,14 +1768,9 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_roots": [
       {
-        "category": "news",
-        "path": "data/documents/news/mpg.sciencecoop.ubc.ca",
-        "document_count": 1
-      },
-      {
         "category": "opportunities",
         "path": "data/documents/opportunities/mpg.sciencecoop.ubc.ca",
-        "document_count": 21
+        "document_count": 20
       },
       {
         "category": "stories",
@@ -1793,7 +1783,7 @@
         "document_count": 2
       }
     ],
-    "document_count": 97
+    "document_count": 95
   },
   {
     "hostname": "mtrl.ubc.ca",
@@ -1806,7 +1796,7 @@
       {
         "category": "academics",
         "path": "data/documents/academics/mtrl.ubc.ca",
-        "document_count": 113
+        "document_count": 111
       },
       {
         "category": "news",
@@ -1834,7 +1824,7 @@
         "document_count": 5
       }
     ],
-    "document_count": 212
+    "document_count": 210
   },
   {
     "hostname": "naisa2017.arts.ubc.ca",
@@ -1942,10 +1932,10 @@
       {
         "category": "research",
         "path": "data/documents/research/neurorehab.med.ubc.ca",
-        "document_count": 91
+        "document_count": 89
       }
     ],
-    "document_count": 91
+    "document_count": 89
   },
   {
     "hostname": "neuroscience.ubc.ca",
@@ -1974,10 +1964,10 @@
       {
         "category": "academics",
         "path": "data/documents/academics/nitep.educ.ubc.ca",
-        "document_count": 273
+        "document_count": 272
       }
     ],
-    "document_count": 273
+    "document_count": 272
   },
   {
     "hostname": "nunavutsocialhistory.arts.ubc.ca",
@@ -2142,10 +2132,10 @@
       {
         "category": "support",
         "path": "data/documents/support/orca.ubc.ca",
-        "document_count": 37
+        "document_count": 35
       }
     ],
-    "document_count": 37
+    "document_count": 35
   },
   {
     "hostname": "orientation.grad.ubc.ca",
@@ -2158,10 +2148,10 @@
       {
         "category": "support",
         "path": "data/documents/support/orientation.grad.ubc.ca",
-        "document_count": 24
+        "document_count": 22
       }
     ],
-    "document_count": 24
+    "document_count": 22
   },
   {
     "hostname": "ors.ok.ubc.ca",
@@ -2350,11 +2340,6 @@
     "scope": "Public HTML prose and native PDF text on this exact hostname.",
     "document_roots": [
       {
-        "category": "news",
-        "path": "data/documents/news/pearl.psych.ubc.ca",
-        "document_count": 1
-      },
-      {
         "category": "opportunities",
         "path": "data/documents/opportunities/pearl.psych.ubc.ca",
         "document_count": 1
@@ -2365,7 +2350,7 @@
         "document_count": 14
       }
     ],
-    "document_count": 16
+    "document_count": 15
   },
   {
     "hostname": "pediatrics.med.ubc.ca",
@@ -2454,16 +2439,6 @@
         "document_count": 12
       },
       {
-        "category": "news",
-        "path": "data/documents/news/physiorefresh.med.ubc.ca",
-        "document_count": 1
-      },
-      {
-        "category": "opportunities",
-        "path": "data/documents/opportunities/physiorefresh.med.ubc.ca",
-        "document_count": 1
-      },
-      {
         "category": "stories",
         "path": "data/documents/stories/physiorefresh.med.ubc.ca",
         "document_count": 1
@@ -2474,7 +2449,7 @@
         "document_count": 1
       }
     ],
-    "document_count": 16
+    "document_count": 14
   },
   {
     "hostname": "physoly.phas.ubc.ca",
@@ -2492,7 +2467,7 @@
       {
         "category": "opportunities",
         "path": "data/documents/opportunities/physoly.phas.ubc.ca",
-        "document_count": 33
+        "document_count": 31
       },
       {
         "category": "support",
@@ -2500,7 +2475,7 @@
         "document_count": 1
       }
     ],
-    "document_count": 35
+    "document_count": 33
   },
   {
     "hostname": "physsoc.phas.ubc.ca",
@@ -2597,10 +2572,10 @@
       {
         "category": "academics",
         "path": "data/documents/academics/polqm.med.ubc.ca",
-        "document_count": 80
+        "document_count": 79
       }
     ],
-    "document_count": 80
+    "document_count": 79
   },
   {
     "hostname": "pop-culture.arts.ubc.ca",
@@ -2613,10 +2588,10 @@
       {
         "category": "research",
         "path": "data/documents/research/pop-culture.arts.ubc.ca",
-        "document_count": 358
+        "document_count": 353
       }
     ],
-    "document_count": 358
+    "document_count": 353
   },
   {
     "hostname": "postgrad.familypractice.ubc.ca",
@@ -2629,20 +2604,10 @@
       {
         "category": "academics",
         "path": "data/documents/academics/postgrad.familypractice.ubc.ca",
-        "document_count": 200
-      },
-      {
-        "category": "news",
-        "path": "data/documents/news/postgrad.familypractice.ubc.ca",
-        "document_count": 1
-      },
-      {
-        "category": "opportunities",
-        "path": "data/documents/opportunities/postgrad.familypractice.ubc.ca",
-        "document_count": 1
+        "document_count": 198
       }
     ],
-    "document_count": 202
+    "document_count": 198
   },
   {
     "hostname": "postgrad.med.ubc.ca",
@@ -2676,10 +2641,10 @@
       {
         "category": "stories",
         "path": "data/documents/stories/powerhouse.sauder.ubc.ca",
-        "document_count": 11
+        "document_count": 8
       }
     ],
-    "document_count": 11
+    "document_count": 8
   },
   {
     "hostname": "principal.ok.ubc.ca",
@@ -2812,7 +2777,7 @@
       {
         "category": "opportunities",
         "path": "data/documents/opportunities/radiology.med.ubc.ca",
-        "document_count": 3
+        "document_count": 2
       },
       {
         "category": "research",
@@ -2825,7 +2790,7 @@
         "document_count": 2
       }
     ],
-    "document_count": 88
+    "document_count": 87
   },
   {
     "hostname": "rbsc.library.ubc.ca",
@@ -2932,10 +2897,10 @@
       {
         "category": "support",
         "path": "data/documents/support/redi.med.ubc.ca",
-        "document_count": 379
+        "document_count": 378
       }
     ],
-    "document_count": 403
+    "document_count": 402
   },
   {
     "hostname": "rel-lex.arts.ubc.ca",
@@ -2948,10 +2913,10 @@
       {
         "category": "research",
         "path": "data/documents/research/rel-lex.arts.ubc.ca",
-        "document_count": 19
+        "document_count": 18
       }
     ],
-    "document_count": 19
+    "document_count": 18
   },
   {
     "hostname": "renew.forestry.ubc.ca",
@@ -3022,10 +2987,10 @@
       {
         "category": "opportunities",
         "path": "data/documents/opportunities/rgst.arts.ubc.ca",
-        "document_count": 11
+        "document_count": 8
       }
     ],
-    "document_count": 52
+    "document_count": 49
   },
   {
     "hostname": "richardson.forestry.ubc.ca",
@@ -3038,10 +3003,10 @@
       {
         "category": "research",
         "path": "data/documents/research/richardson.forestry.ubc.ca",
-        "document_count": 77
+        "document_count": 76
       }
     ],
-    "document_count": 77
+    "document_count": 76
   },
   {
     "hostname": "riselab.forestry.ubc.ca",
@@ -3133,7 +3098,7 @@
       {
         "category": "academics",
         "path": "data/documents/academics/sap.ubc.ca",
-        "document_count": 57
+        "document_count": 56
       },
       {
         "category": "stories",
@@ -3141,7 +3106,7 @@
         "document_count": 1
       }
     ],
-    "document_count": 58
+    "document_count": 57
   },
   {
     "hostname": "sbelab.forestry.ubc.ca",
@@ -3248,10 +3213,10 @@
       {
         "category": "academics",
         "path": "data/documents/academics/scwrl.ubc.ca",
-        "document_count": 151
+        "document_count": 150
       }
     ],
-    "document_count": 151
+    "document_count": 150
   },
   {
     "hostname": "sds.ubc.ca",
@@ -3332,7 +3297,7 @@
       {
         "category": "academics",
         "path": "data/documents/academics/smp.med.ubc.ca",
-        "document_count": 1086
+        "document_count": 1006
       },
       {
         "category": "research",
@@ -3340,7 +3305,7 @@
         "document_count": 8
       }
     ],
-    "document_count": 1094
+    "document_count": 1014
   },
   {
     "hostname": "socialwork.ubc.ca",
@@ -3353,7 +3318,7 @@
       {
         "category": "academics",
         "path": "data/documents/academics/socialwork.ubc.ca",
-        "document_count": 75
+        "document_count": 60
       },
       {
         "category": "news",
@@ -3376,7 +3341,7 @@
         "document_count": 79
       }
     ],
-    "document_count": 614
+    "document_count": 599
   },
   {
     "hostname": "sogi.educ.ubc.ca",
@@ -3436,10 +3401,10 @@
       {
         "category": "academics",
         "path": "data/documents/academics/span221.arts.ubc.ca",
-        "document_count": 717
+        "document_count": 716
       }
     ],
-    "document_count": 717
+    "document_count": 716
   },
   {
     "hostname": "speaking.arts.ubc.ca",
@@ -3615,10 +3580,10 @@
       {
         "category": "support",
         "path": "data/documents/support/students.canvas.ubc.ca",
-        "document_count": 31
+        "document_count": 30
       }
     ],
-    "document_count": 31
+    "document_count": 30
   },
   {
     "hostname": "suewatts.forestry.ubc.ca",
@@ -3888,10 +3853,10 @@
       {
         "category": "support",
         "path": "data/documents/support/ubccard.ubc.ca",
-        "document_count": 34
+        "document_count": 33
       }
     ],
-    "document_count": 34
+    "document_count": 33
   },
   {
     "hostname": "ubcstudios.ubc.ca",
@@ -3904,10 +3869,10 @@
       {
         "category": "support",
         "path": "data/documents/support/ubcstudios.ubc.ca",
-        "document_count": 64
+        "document_count": 63
       }
     ],
-    "document_count": 64
+    "document_count": 63
   },
   {
     "hostname": "ubctoday.ubc.ca",
@@ -4067,10 +4032,10 @@
       {
         "category": "academics",
         "path": "data/documents/academics/usstudies.arts.ubc.ca",
-        "document_count": 24
+        "document_count": 19
       }
     ],
-    "document_count": 24
+    "document_count": 19
   },
   {
     "hostname": "vascularsurgery.med.ubc.ca",
@@ -4293,7 +4258,7 @@
       {
         "category": "opportunities",
         "path": "data/documents/opportunities/walllegacyawards.ubc.ca",
-        "document_count": 17
+        "document_count": 16
       },
       {
         "category": "support",
@@ -4301,7 +4266,7 @@
         "document_count": 1
       }
     ],
-    "document_count": 20
+    "document_count": 19
   },
   {
     "hostname": "wfrt.eoas.ubc.ca",
@@ -4709,10 +4674,10 @@
       {
         "category": "opportunities",
         "path": "data/documents/opportunities/www.inspire.chem.ubc.ca",
-        "document_count": 22
+        "document_count": 21
       }
     ],
-    "document_count": 22
+    "document_count": 21
   },
   {
     "hostname": "www.magic.ubc.ca",
@@ -4751,7 +4716,7 @@
       {
         "category": "academics",
         "path": "data/documents/academics/www.math.ubc.ca",
-        "document_count": 2214
+        "document_count": 2213
       },
       {
         "category": "news",
@@ -4769,7 +4734,7 @@
         "document_count": 1
       }
     ],
-    "document_count": 2692
+    "document_count": 2691
   },
   {
     "hostname": "www.mkrf.forestry.ubc.ca",
@@ -4886,7 +4851,7 @@
       {
         "category": "research",
         "path": "data/documents/research/www.saravyc.ubc.ca",
-        "document_count": 574
+        "document_count": 572
       },
       {
         "category": "support",
@@ -4894,7 +4859,7 @@
         "document_count": 10
       }
     ],
-    "document_count": 584
+    "document_count": 582
   },
   {
     "hostname": "www.technicalguidelines.ubc.ca",
