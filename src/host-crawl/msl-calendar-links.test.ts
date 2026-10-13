@@ -38,6 +38,17 @@ describe("reviewed Michael Smith Laboratories calendar navigation", () => {
     );
   });
 
+  it("preserves insertion order beside generic feeds and administrative controls", () => {
+    const user = "ExampleUser";
+    const log = `/index.php?title=Special:Log/block&page=User%3A${user}`;
+    const html = `<html><head><link rel="alternate" type="application/atom+xml" href="/updates.atom"></head><body>${topBar("/events-calendar/2026-08/")}<div id="contentSub"><div class="mw-contributions-user-tools"><a class="mw-contributions-link-block-log" title="Special:Log/block" href="${log.replace("&", "&amp;")}">block log</a></div></div></body></html>`;
+    expect([...detect(html, hostname, `${origin}Special:Contributions/${user}`)]).toEqual([
+      `${origin}updates.atom`,
+      `${origin}events-calendar/2026-08/`,
+      `${origin.slice(0, -1)}${log}`,
+    ]);
+  });
+
   it("does not follow unsafe, query-bearing or off-host calendar selectors", () => {
     for (const href of [
       "/events-calendar/month/?page=2",

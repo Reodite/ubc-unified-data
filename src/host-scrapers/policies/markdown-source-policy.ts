@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { load } from "cheerio";
-import type { Observation, Snapshot } from "./contracts.ts";
-import { htmlBaseUrl } from "./html-base.ts";
+import type { Observation, Snapshot } from "../../host-crawl/contracts.ts";
+import { htmlBaseUrl } from "../../host-crawl/html-base.ts";
 
 export interface MarkdownSourceDeclaration {
   readonly hostname: string;

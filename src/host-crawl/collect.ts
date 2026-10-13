@@ -2,7 +2,19 @@ import { createHash } from "node:crypto";
 import { createRequire } from "node:module";
 import { load } from "cheerio";
 import { REVIEWED_EMPTY_ARCHIVE_CLASSES } from "../host-scrapers/policies/archives.ts";
+import {
+  assertRequiredQueryIdentity,
+  validateRequiredDocumentQueries,
+} from "../host-scrapers/policies/document-query-policy.ts";
 import { reviewedGalleryAttachments } from "../host-scrapers/policies/gallery.ts";
+import {
+  assertMarkdownIdentity,
+  discoverMarkdownAlternates,
+  markdownSources,
+  type MarkdownSourceDeclaration,
+} from "../host-scrapers/policies/markdown-source-policy.ts";
+import { discoverReviewedMslUnavailableLinks } from "../host-scrapers/policies/msl-unavailable-citations.ts";
+import { discoverReviewedUnavailableLinks } from "../host-scrapers/policies/unavailable-link-policy.ts";
 import { toSafeMarkdown } from "../prose/markdown.ts";
 import type { ArticleInput } from "../prose/model.ts";
 import { plainText } from "../source-documents.ts";
@@ -28,17 +40,8 @@ import {
 import { htmlLinks, pageLinks } from "./discovery/links.ts";
 import { sitemapPages } from "./discovery/sitemaps.ts";
 import { validateSearchDocument } from "./document-format.ts";
-import { assertRequiredQueryIdentity, validateRequiredDocumentQueries } from "./document-query-policy.ts";
 import { discoverMachineLinks } from "./machine-links.ts";
 import type { MarkdownInspection } from "./markdown-contract.mjs";
-import {
-  assertMarkdownIdentity,
-  discoverMarkdownAlternates,
-  markdownSources,
-  type MarkdownSourceDeclaration,
-} from "./markdown-source-policy.ts";
-import { discoverReviewedMslUnavailableLinks } from "./msl-unavailable-citations.ts";
-import { discoverReviewedUnavailableLinks } from "./unavailable-link-policy.ts";
 import { hostUrl, inventoryUrl, nonDocumentInventoryUrl, pageExclusion, UNSUPPORTED_DOCUMENT } from "./urls.ts";
 
 const sha256 = (value: string | Uint8Array) => createHash("sha256").update(value).digest("hex");

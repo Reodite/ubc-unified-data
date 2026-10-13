@@ -138,7 +138,7 @@ synthesize aliases or permit nested prefixes.
 ### Required query documents
 
 Reviewed query documents use a separate finite, hostname-bound declaration in
-`src/host-crawl/document-query-policy.ts`. CCLI's exact
+`src/host-scrapers/policies/document-query-policy.ts`. CCLI's exact
 `/?post_type=team-member&p=3962` selection must appear literally in its validated
 `team-member-sitemap.xml` before document dispatch. API membership does not add or
 remove that requirement. Recording, extraction and output checks share the same

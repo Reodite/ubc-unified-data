@@ -1,8 +1,8 @@
 import { createHash } from "node:crypto";
 import { load } from "cheerio";
-import { normalizedText as text } from "../scraping/html.ts";
-import type { Observation } from "./contracts.ts";
-import { hostUrl, normalizeHost } from "./urls.ts";
+import type { Observation } from "../../host-crawl/contracts.ts";
+import { hostUrl, normalizeHost } from "../../host-crawl/urls.ts";
+import { normalizedText as text } from "../../scraping/html.ts";
 
 export interface ReviewedUnavailableLink {
   hostname: string;

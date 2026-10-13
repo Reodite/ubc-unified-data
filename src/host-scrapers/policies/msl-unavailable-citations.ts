@@ -1,8 +1,8 @@
 import { createHash } from "node:crypto";
 import { load } from "cheerio";
-import { normalizedText as normalized } from "../scraping/html.ts";
-import type { Observation } from "./contracts.ts";
-import { hostUrl } from "./urls.ts";
+import type { Observation } from "../../host-crawl/contracts.ts";
+import { hostUrl } from "../../host-crawl/urls.ts";
+import { normalizedText as normalized } from "../../scraping/html.ts";
 
 const hostname = "www.msl.ubc.ca";
 const origin = `https://${hostname}`;

@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import type { CompletedHost, RequiredDocumentQuery, Snapshot } from "./contracts.ts";
-import { sha256 } from "./document-format.ts";
 import {
   assertRequiredQueryIdentity,
   requiredDocumentQueries,
   validateRequiredDocumentQueries,
-} from "./document-query-policy.ts";
+} from "../host-scrapers/policies/document-query-policy.ts";
+import type { CompletedHost, RequiredDocumentQuery, Snapshot } from "./contracts.ts";
+import { sha256 } from "./document-format.ts";
 import { cheapGuardCompletedHost, createGenericScraper } from "./generic.ts";
 
 const host = "ccli.ubc.ca";

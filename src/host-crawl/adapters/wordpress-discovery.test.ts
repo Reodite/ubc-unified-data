@@ -615,6 +615,16 @@ describe("reviewed Visit UBC search-control page", () => {
     },
   );
 
+  it("requires fresh search evidence even when the caller reuses its exclusion set", async () => {
+    const f = setup();
+    await f.discover();
+    expect(f.excluded).toEqual(new Set([search]));
+    f.records[0]!.id = 999;
+    f.records[0]!.link = `${root}ordinary-page/`;
+    f.first.snapshot.body = JSON.stringify(f.records);
+    await expect(f.discover()).rejects.toThrow("Reviewed search inventory changed");
+  });
+
   it("does not suppress a different host's search page", async () => {
     const f = setup("other.ubc.ca");
     expect((await f.discover()).filter(({ url }) => url === `${f.origin}?s=search`)).toHaveLength(1);
@@ -687,6 +697,16 @@ describe("reviewed Visit UBC search-control page", () => {
     expect(pages.filter(({ type }) => type === "location")).toHaveLength(57);
     expect(f.excludedLocations).toEqual(new Set([f.missing, f.missingRestaurant]));
     expect(pages.some(({ url }) => url === f.missing || url === f.missingRestaurant)).toBe(false);
+  });
+
+  it("requires every missing-location witness again on the next discovery", async () => {
+    const f = locationFixture();
+    await f.discover();
+    const row = f.locationRows.find(({ id }) => id === 323)!;
+    row.id = 324;
+    row.link = `${root}ordinary-location/`;
+    f.locationPage.snapshot.body = JSON.stringify(f.locationRows);
+    await expect(f.discover()).rejects.toThrow("Reviewed location inventory changed");
   });
 
   it.each([
@@ -815,6 +835,16 @@ describe("reviewed Advancing Health organizer identities", () => {
       await expect(f.discover()).rejects.toThrow();
     },
   );
+
+  it("requires every organizer witness again on the next discovery", async () => {
+    const f = setup();
+    await f.discover();
+    const row = f.records.find(({ id }) => id === 11041)!;
+    row.id = 11042;
+    row.link = `${f.origin}/organizer/independent-organization/`;
+    f.page.snapshot.body = JSON.stringify(f.records);
+    await expect(f.discover()).rejects.toThrow("Reviewed organizer inventory changed");
+  });
 
   it("does not exclude similarly shaped links on another host", async () => {
     const f = setup("lsi.ubc.ca");
@@ -1101,6 +1131,26 @@ describe("reviewed Orthopaedics homepage inventory anomaly", () => {
       await expect(f.discover()).rejects.toThrow();
     },
   );
+
+  it("does not carry homepage corroboration across repeated discovery", async () => {
+    const f = fixture();
+    await f.discover();
+    const [witness] = JSON.parse(f.pages.snapshot.body);
+    witness.title.rendered = "Changed homepage";
+    f.pages.snapshot.body = JSON.stringify([witness]);
+    await expect(f.discover()).rejects.toThrow("Invalid WordPress GMT modification time");
+  });
+
+  it("does not share homepage corroboration between concurrent discoveries", async () => {
+    const valid = fixture();
+    const invalid = fixture();
+    const [witness] = JSON.parse(invalid.pages.snapshot.body);
+    witness.title.rendered = "Changed homepage";
+    invalid.pages.snapshot.body = JSON.stringify([witness]);
+    const results = await Promise.allSettled([valid.discover(), invalid.discover()]);
+    expect(results[0]!.status).toBe("fulfilled");
+    expect(results[1]).toEqual({ status: "rejected", reason: new Error("Invalid WordPress GMT modification time") });
+  });
 
   it("keeps a genuinely dated homepage post visible to downstream conflict checks", async () => {
     const f = fixture();

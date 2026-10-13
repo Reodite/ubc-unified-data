@@ -1,13 +1,17 @@
 import type { CheerioAPI } from "cheerio";
 import { compareStrings as compare } from "../core/utils.ts";
+import {
+  assertRequiredQueryIdentity,
+  requiredDocumentQueries,
+} from "../host-scrapers/policies/document-query-policy.ts";
+import { markdownSources } from "../host-scrapers/policies/markdown-source-policy.ts";
+import { isReviewedEmptyImageAttachment } from "../host-scrapers/policies/smp-med.ts";
 import { publicUbcUrl } from "../prose/client.ts";
 import { contentRoots, normalizedText as text } from "../scraping/html.ts";
 import { plainText } from "../source-documents.ts";
 import type { CompletedHost, HostScraper, SearchDocument, Snapshot } from "./contracts.ts";
 import { digest, formatDocument, safeText, timestamp } from "./document-format.ts";
-import { assertRequiredQueryIdentity, requiredDocumentQueries } from "./document-query-policy.ts";
 import { htmlBaseUrl } from "./html-base.ts";
-import { markdownSources } from "./markdown-source-policy.ts";
 import { validateVettedHost } from "./public-validation.ts";
 import { defineHtmlHost } from "./scraper.ts";
 import { hostUrl, normalizeHost, pageExclusion } from "./urls.ts";
@@ -154,16 +158,10 @@ export function createGenericScraper(value: string): HostScraper {
           .find((value) => Boolean(value) && value.length <= 160);
       if (/just a moment|access denied|captcha|sign in.*cwl|cwl.*login|page not found|404 not found/i.test(pageTitle))
         throw new Error("Access interstitial instead of public prose");
-      const photo = $(".entry-content p.attachment-image img[src]");
-      const emptyImageAttachment =
-        hostname === "smp.med.ubc.ca" &&
-        snapshot.requested_url === snapshot.url &&
-        $("body").is(".singular-attachment.attachment-image") &&
-        $(".entry-content").length === 1 &&
-        photo.length === 1 &&
-        photo.attr("src")?.startsWith(`https://${hostname}/wp-content/uploads/`) &&
-        !text($(".entry-content").text());
-      if (emptyImageAttachment || (!title && $("body").is(".attachment") && !text($(".entry-content").text())))
+      if (
+        isReviewedEmptyImageAttachment($, hostname, snapshot) ||
+        (!title && $("body").is(".attachment") && !text($(".entry-content").text()))
+      )
         return {
           kind: "excluded",
           reason: "No nonempty public prose after removing page furniture",
