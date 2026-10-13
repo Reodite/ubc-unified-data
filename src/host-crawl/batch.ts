@@ -1,7 +1,6 @@
 import { execFileSync } from "node:child_process";
-import { mkdir, rename, writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
-import { DatabaseSync } from "node:sqlite";
 import { load } from "cheerio";
 import { ROOT } from "../core/output.ts";
 import { DOCUMENT_CATEGORIES } from "./categories.ts";
@@ -16,21 +15,28 @@ import {
   type HostRoutingPolicy,
 } from "./category-routing.ts";
 import { assertSingleHostChange, type ChangedFile } from "./change-validation.ts";
-import { collectRecordedHost } from "./collect.ts";
-import type { CompletedHost, HostArchive, ProducerContext } from "./contracts.ts";
+import type { CompletedHost, ProducerContext } from "./contracts.ts";
 import { digest, documentFilename, exactObject, sha256 } from "./document-format.ts";
 import { cheapGuardCompletedHost, createGenericScraper } from "./generic.ts";
 import { lockGitPublication, saveGitPublication } from "./git-publication-lock.ts";
 import { verifyHistoricalReady } from "./historical-output.ts";
 import { currentUnavailableHosts } from "./host-dispositions.ts";
-import { assertCollectedInput, decodeFrozenSeed, deriveCollectionInputDigest } from "./inputs.ts";
+import { assertCollectedInput, deriveCollectionInputDigest } from "./inputs.ts";
 import { withMarkdownCollectionRuntime } from "./markdown-collection-runtime.ts";
-import { assertExternalPath, DEFAULT_EXTERNAL_ROOT, DEFAULT_LEGACY_STATE_FILE } from "./paths.ts";
+import { assertExternalPath, DEFAULT_EXTERNAL_ROOT } from "./paths.ts";
 import { loadCachedPdfProfile } from "./pdf-profile-cache.ts";
+import {
+  isAbsent as absent,
+  writeImmutable as immutable,
+  readPrivateJson as json,
+  LARGE_PRIVATE_FILE,
+  savePrivateJson as save,
+} from "./private-files.ts";
 import { assertSameProducer, captureProducer } from "./provenance.ts";
 import { hostDocumentRoots, readRegularFile } from "./public-validation.ts";
 import { publishCompletedHost } from "./publication.ts";
-import { HostRecording, type AcquisitionBudgetGrant } from "./recording.ts";
+import { collectRecordedSession, openRecordedHost } from "./recorded-host.ts";
+import type { AcquisitionBudgetGrant } from "./recording.ts";
 import { parseGenericHostnames, specializedHostnames } from "./registry.ts";
 import { normalizeHost } from "./urls.ts";
 import { HostWorkQueue, type HostWorkRecord } from "./work-queue.ts";
@@ -38,7 +44,6 @@ import { HostWorkQueue, type HostWorkRecord } from "./work-queue.ts";
 const GENERIC_LIST = "src/host-scrapers/generic-hosts.json";
 const SPECIALIZED = specializedHostnames();
 const TERMINAL = new Set(["published", "rejected", "blocked"]);
-const LARGE_PRIVATE_FILE = 256 * 1024 * 1024;
 export interface HostBatchConfig {
   repositoryRoot: string;
   producerRoot: string;
@@ -76,29 +81,6 @@ interface GitReceipt {
   commit?: string;
   pushed?: boolean;
 }
-
-async function json(path: string): Promise<unknown> {
-  return JSON.parse((await readRegularFile(path, LARGE_PRIVATE_FILE)).toString("utf8"));
-}
-async function save(path: string, value: unknown): Promise<void> {
-  assertExternalPath(path);
-  const bytes = `${JSON.stringify(value, null, 2)}\n`;
-  const temporary = `${path}.${process.pid}.new`;
-  await writeFile(temporary, bytes, { flag: "wx", mode: 0o600 });
-  await rename(temporary, path);
-}
-async function immutable(path: string, bytes: Buffer): Promise<void> {
-  try {
-    await writeFile(path, bytes, { flag: "wx", mode: 0o600 });
-  } catch (error) {
-    if (
-      (error as NodeJS.ErrnoException).code !== "EEXIST" ||
-      !(await readRegularFile(path, LARGE_PRIVATE_FILE)).equals(bytes)
-    )
-      throw error;
-  }
-}
-const absent = (error: unknown) => (error as NodeJS.ErrnoException).code === "ENOENT";
 
 /** Collectors use an immutable source snapshot; the Git boundary alone is serialized. */
 export class HostBatch {
@@ -169,46 +151,14 @@ export class HostBatch {
       throw new Error("Acquisition must run from the frozen batch producer");
     assertSameProducer(this.config.producer, await captureProducer(this.config.producerRoot));
     const scraper = createGenericScraper(hostname);
-    const directory = assertExternalPath(join(DEFAULT_EXTERNAL_ROOT, "hosts", hostname, "recording"));
-    await mkdir(directory, { recursive: true, mode: 0o700 });
-    const seedPath = join(directory, "seed.json");
-    let bytes: Buffer;
-    try {
-      bytes = await readRegularFile(seedPath, 16 * 1024 * 1024);
-    } catch (error) {
-      if (!absent(error) || !acquire) throw error;
-      const database = new DatabaseSync(DEFAULT_LEGACY_STATE_FILE, { readOnly: true });
-      try {
-        database.exec("PRAGMA query_only=ON");
-        const urls = database
-          .prepare(
-            "SELECT url,kind,state,disposition,reason,snapshot,article_id,source_modified_at FROM urls WHERE host=? ORDER BY url",
-          )
-          .all(hostname);
-        bytes = Buffer.from(JSON.stringify({ hostname, urls }));
-      } finally {
-        database.close();
-      }
-      await immutable(seedPath, bytes);
-    }
-    const seed = decodeFrozenSeed(bytes, hostname);
-    let sealed = false;
-    try {
-      await readRegularFile(join(directory, "seal.json"));
-      sealed = true;
-    } catch (error) {
-      if (!absent(error)) throw error;
-    }
-    const recording = await HostRecording.open({
-      hostname,
-      directory,
+    const session = await openRecordedHost({
+      scraper,
       producer: this.config.producer,
-      seedSha256: sha256(seed.bytes),
-      acquire: acquire && !sealed,
+      acquire,
+      reuseSealed: true,
       recoverTransientFailures: this.config.recoverTransientFailures === true,
-      documentUrlAllowed: (url) => scraper.excludeUrl!(url) === null,
-      htmlDocumentsOnly: true,
     });
+    const { recording, sealed } = session;
     try {
       const budgetGrant = this.config.acquisitionBudgetGrants?.[hostname];
       if (acquire && !sealed && budgetGrant) recording.authorizeBudgetGrant(budgetGrant);
@@ -217,7 +167,7 @@ export class HostBatch {
         recording.recoverTransientFailures(selected);
         recording.resumeDurationFailures(selected);
       }
-      return { recording, directory, scraper, seed, seedPath };
+      return session;
     } catch (error) {
       recording.close();
       throw error;
@@ -295,38 +245,19 @@ export class HostBatch {
     if (row.state !== "admitted")
       throw new Error("Only admitted hosts can begin collection; interrupted work is not blindly restarted");
     this.queue.update(hostname, token, "collecting");
-    const { recording, directory, scraper, seed, seedPath } = await this.recording(hostname, true);
+    const session = await this.recording(hostname, true);
+    const { recording, directory } = session;
     try {
-      const homepage = await recording.readDocument(`https://${hostname}/`);
-      const archive: HostArchive = {
-        hostname,
-        input_sha256: recording.inputDigest(),
-        homepage,
-        urls: seed.urls,
-        retained: [],
-        read: (url) => recording.read(url),
-        readDocument: (url) => recording.readDocument(url),
-        readSnapshot: (hash) => recording.readSnapshot(hash),
-        observedDestination: (url) => recording.observedDestination(url),
-        observedScopeExclusion: (url) => recording.observedScopeExclusion(url),
-        assertUnchanged: () => recording.assertUnchanged(),
-        close() {},
-      };
-      const completed = await collectRecordedHost(scraper, archive, this.config.producer);
-      const seal = await recording.seal();
-      if (!(await readRegularFile(seedPath, 16 * 1024 * 1024)).equals(seed.bytes))
-        throw new Error("Saved frontier changed");
-      const input = deriveCollectionInputDigest({
-        recording: seal,
-        seed: sha256(seed.bytes),
+      const { completed, seal, seedSha256 } = await collectRecordedSession(session, this.config.producer, {
+        mode: "acquire",
+        scopeExclusions: "skip-recorded",
       });
-      for (const document of completed.documents) document.input_sha256 = input;
       const guarded = cheapGuardCompletedHost(completed);
       const ready: ReadyHostV1 = {
         version: 1,
         hostname,
         recording_seal: seal,
-        seed_sha256: sha256(seed.bytes),
+        seed_sha256: seedSha256,
         pdf_profile_sha256: null,
         completed: guarded,
       };

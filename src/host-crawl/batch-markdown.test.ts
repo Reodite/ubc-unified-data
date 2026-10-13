@@ -123,6 +123,7 @@ async function fixture() {
     apiFallbackEligible: () => false,
     assertUnchanged: vi.fn(async () => {}),
     seal: vi.fn(async () => seal),
+    verifySeal: vi.fn(async () => seal),
     close,
   };
   const scraper = createGenericScraper(hostname);
