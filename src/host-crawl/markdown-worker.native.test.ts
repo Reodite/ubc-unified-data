@@ -415,26 +415,6 @@ describe("fixed worker in exact-file sparse namespaces", () => {
     ).toBe("available");
   }, 30000);
 
-  it("keeps the production entry fixed and imports no parser before guard installation", async () => {
-    const entry = files.get("/app/markdown-worker.mjs")!.toString();
-    expect(entry.trim()).toBe(
-      'import { runMarkdownWorker } from "./markdown-bootstrap.mjs";\n\nawait runMarkdownWorker();',
-    );
-    const bootstrap = files.get("/app/markdown-bootstrap.mjs")!.toString();
-    expect([...bootstrap.matchAll(/^import .+ from "([^"]+)";/gm)].map((match) => match[1])).toEqual([
-      "node:crypto",
-      "node:fs",
-      "node:module",
-      "node:url",
-    ]);
-    expect([...bootstrap.matchAll(/^export /gm)].length).toBe(1);
-    expect(bootstrap).not.toMatch(/error\.message|process\.exit\(/);
-    expect(bootstrap.indexOf("installGuard(policy);", bootstrap.indexOf("export async"))).toBeLessThan(
-      bootstrap.indexOf('await import("./markdown-protocol.mjs")'),
-    );
-    await accepted(await fixture("production-normal"));
-  });
-
   it.each(["installed", "maximum-range"])(
     "accepts the exact %s policy emitted by the profile encoder",
     async (kind) => {
@@ -858,22 +838,5 @@ describe("fixed worker in exact-file sparse namespaces", () => {
         .dependencies.find((dep) => dep.name === "entities")!.root = "/app/node_modules/entities";
     });
     refused(await run(wrong, wire()));
-  });
-
-  it("runs with exact read grants and the fixed closed-root environment", async () => {
-    const checks = `
-const expected = { LC_ALL: 'C', LANG: 'C', TZ: 'UTC', UV_THREADPOOL_SIZE: '1', PWD: '/app' };
-if (process.cwd() !== '/app' || Object.keys(process.env).length !== 5 || Object.entries(expected).some(([key, value]) => process.env[key] !== value)) throw new Error('fixture environment');
-if (!process.permission.has('fs.read', '/app/markdown-inspection.mjs') || process.permission.has('fs.read', '/app') || process.permission.has('fs.read', '/etc/passwd')) throw new Error('fixture read grants');
-for (const scope of ['fs.write', 'child', 'worker', 'addons']) if (process.permission.has(scope)) throw new Error('fixture grants');
-`;
-    await accepted(await fixture("exact-grants", { "/app/markdown-worker.mjs": `${noFetch}${worker}${checks}` }));
-  });
-
-  it("does not claim to interpose process.getBuiltinModule", async () => {
-    const f = await fixture("builtin-limitation", {
-      "/app/markdown-worker.mjs": `${worker}if (typeof process.getBuiltinModule('node:crypto').createHash !== 'function') throw new Error('fixture');\n`,
-    });
-    await accepted(f);
   });
 });

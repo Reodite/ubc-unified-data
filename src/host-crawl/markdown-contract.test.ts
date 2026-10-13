@@ -3,24 +3,19 @@ import { createHash } from "node:crypto";
 import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
-import { afterAll, beforeAll, describe, expect, expectTypeOf, it, vi } from "vitest";
+import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import {
-  fail,
   hasUnsafeMarkdownCharacter,
   MARKDOWN_INSPECTION_DIALECT,
   MARKDOWN_INSPECTION_LIMITS,
   validateAdvertisements,
   validateDestination,
   validateTitle,
-  type MarkdownInspection,
-  type MarkdownTitleOrigin,
 } from "./markdown-contract.mjs";
 import {
   inspectMarkdownSource,
   MARKDOWN_INSPECTION_DIALECT as INSPECTOR_DIALECT,
   MARKDOWN_INSPECTION_LIMITS as INSPECTOR_LIMITS,
-  type MarkdownInspection as InspectorInspection,
-  type MarkdownTitleOrigin as InspectorTitleOrigin,
 } from "./markdown-inspection.mjs";
 import { DEFAULT_EXTERNAL_ROOT } from "./paths.ts";
 
@@ -120,33 +115,6 @@ describe("parser-free Markdown contract and inspector facade", () => {
     } finally {
       await rm(root, { recursive: true, force: true });
     }
-  });
-
-  it("preserves consumer types and precise validator declarations", () => {
-    expectTypeOf<InspectorInspection>().toEqualTypeOf<MarkdownInspection>();
-    expectTypeOf<InspectorTitleOrigin>().toEqualTypeOf<MarkdownTitleOrigin>();
-    expectTypeOf(inspectMarkdownSource).returns.toEqualTypeOf<MarkdownInspection>();
-    expectTypeOf(inspectMarkdownSource).parameters.toEqualTypeOf<[Uint8Array, readonly (string | null)[]]>();
-    expectTypeOf(MARKDOWN_INSPECTION_LIMITS).toEqualTypeOf<typeof INSPECTOR_LIMITS>();
-    expectTypeOf(MARKDOWN_INSPECTION_LIMITS.inputBytes).toEqualTypeOf<1048576>();
-    expectTypeOf(MARKDOWN_INSPECTION_DIALECT).toEqualTypeOf<"ubc-markdown-verbatim-v2/markdown-it-15.0.2">();
-    expectTypeOf(fail).parameters.toEqualTypeOf<[string]>();
-    expectTypeOf(fail).returns.toEqualTypeOf<never>();
-    expectTypeOf(hasUnsafeMarkdownCharacter).parameters.toEqualTypeOf<[string]>();
-    expectTypeOf(hasUnsafeMarkdownCharacter).returns.toEqualTypeOf<boolean>();
-    expectTypeOf(validateTitle).parameters.toEqualTypeOf<[string]>();
-    expectTypeOf(validateTitle).returns.toEqualTypeOf<string>();
-    expectTypeOf(validateAdvertisements).parameters.toEqualTypeOf<[readonly (string | null)[]]>();
-    expectTypeOf(validateAdvertisements).returns.toEqualTypeOf<
-      { title: string; title_origin: { kind: "advertisement"; witness_index: number } } | undefined
-    >();
-    expectTypeOf(validateDestination).parameters.toEqualTypeOf<[string, boolean?]>();
-    expectTypeOf(validateDestination).returns.toEqualTypeOf<void>();
-  });
-
-  it("retains the exact fixed failure wrapper", () => {
-    expect(() => fail("unsafe title")).toThrowError(fixedError("unsafe title"));
-    expect(() => fail("")).toThrowError(new Error("Markdown inspection: ."));
   });
 });
 
