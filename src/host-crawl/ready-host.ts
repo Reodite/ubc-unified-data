@@ -9,7 +9,7 @@ import { assertExternalPath, DEFAULT_EXTERNAL_ROOT } from "./paths.ts";
 import { loadCachedPdfProfile } from "./pdf-profile-cache.ts";
 import { LARGE_PRIVATE_FILE } from "./private-files.ts";
 import { assertSameProducer, captureProducer } from "./provenance.ts";
-import { readRegularFile } from "./public-validation.ts";
+import { readRegularFile, validateVettedHost } from "./public-validation.ts";
 import type { RecordedHost } from "./recorded-host.ts";
 import type { HostWorkRecord } from "./work-queue.ts";
 
@@ -59,8 +59,7 @@ export async function verifyReadyHost(
   const markdownProfileSha256 = ready.version === 2 ? ready.markdown_profile_sha256 : null;
   if (markdownProfileSha256 !== null) digest(markdownProfileSha256, "ready Markdown profile");
   exactObject(ready.completed, ["complete", "host", "documents"], "ready completed host");
-  if (JSON.stringify(cheapGuardCompletedHost(ready.completed)) !== JSON.stringify(ready.completed))
-    throw new Error("Ready output differs from guarded collection");
+  validateVettedHost(ready.completed.host, [row.hostname]);
   const historical = config.historicalReady?.[row.hostname];
   if (historical) {
     if (historical.readySha256 !== row.details.ready_sha256) throw new Error("Historical ready authorization differs");
@@ -73,7 +72,10 @@ export async function verifyReadyHost(
       producer: historical.producer,
       archivedPdfCacheDirectory: historical.pdfCacheDirectory,
     });
+    validateVettedHost(ready.completed.host, [row.hostname]);
   } else {
+    if (JSON.stringify(cheapGuardCompletedHost(ready.completed)) !== JSON.stringify(ready.completed))
+      throw new Error("Ready output differs from guarded collection");
     const { recording, seed } = await openRecording(row.hostname);
     try {
       if (sha256(seed.bytes) !== ready.seed_sha256) throw new Error("Ready frontier differs");

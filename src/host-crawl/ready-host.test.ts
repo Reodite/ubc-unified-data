@@ -4,6 +4,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import type { HostBatchConfig, ReadyHost } from "./batch-model.ts";
 import type { SearchDocument } from "./contracts.ts";
 import { sha256 } from "./document-format.ts";
+import { cheapGuardCompletedHost } from "./generic.ts";
 import { deriveCollectionInputDigest } from "./inputs.ts";
 import { DEFAULT_EXTERNAL_ROOT } from "./paths.ts";
 import { verifyReadyHost, type ReadyHostContext } from "./ready-host.ts";
@@ -23,12 +24,13 @@ afterEach(async () => {
   vi.resetAllMocks();
 });
 
-async function fixture(format: "html" | "pdf" | "markdown" = "html", version: 1 | 2 = 2) {
+async function fixture(format: "html" | "pdf" | "markdown" = "html", version: 1 | 2 = 2, sourcePath = "") {
   await mkdir(DEFAULT_EXTERNAL_ROOT, { recursive: true });
   const directory = await mkdtemp(join(DEFAULT_EXTERNAL_ROOT, "ready-validation-"));
   directories.push(directory);
   const hostname = "ready-fixture.ubc.ca";
   const home = `https://${hostname}/`;
+  const sourceUrl = `${home}${sourcePath}`;
   const seed = Buffer.from(JSON.stringify({ hostname, urls: [] }));
   const profile = sha256("runtime profile");
   const config: HostBatchConfig = {
@@ -45,10 +47,10 @@ async function fixture(format: "html" | "pdf" | "markdown" = "html", version: 1 
   const title = "Public programme guidance";
   const body = "Public programme requirements and eligibility.\n";
   const document: SearchDocument = {
-    id: `documents:official-web:${sha256(home).slice(0, 24)}`,
+    id: `documents:official-web:${sha256(sourceUrl).slice(0, 24)}`,
     hostname,
     title,
-    source_url: home,
+    source_url: sourceUrl,
     retrieved_at: "2026-01-01T00:00:00Z",
     source_modified_at: null,
     snapshot_sha256: sha256("homepage"),
@@ -198,10 +200,80 @@ describe("internal ready-host verification", () => {
     },
   );
 
+  it.each([
+    [1, false],
+    [2, false],
+    [1, true],
+    [2, true],
+  ] as const)("rejects a valid foreign completed owner in v%s (historical=%s)", async (version, historical) => {
+    const f = await fixture("html", version);
+    const hostname = "different-ready-fixture.ubc.ca";
+    const home = `https://${hostname}/`;
+    Object.assign(f.ready.completed.host, {
+      hostname,
+      homepage_url: home,
+      document_root: `data/documents/${hostname}`,
+    });
+    Object.assign(f.document, {
+      hostname,
+      source_url: home,
+      id: `documents:official-web:${sha256(home).slice(0, 24)}`,
+    });
+    expect(cheapGuardCompletedHost(f.ready.completed)).toEqual(f.ready.completed);
+    await f.save();
+    if (historical) {
+      f.context.config.historicalReady = {
+        [f.row.hostname]: {
+          readySha256: f.row.details.ready_sha256,
+          producerRoot: join(f.context.directory, "archived-producer"),
+          producer: f.context.config.producer,
+        },
+      };
+      mocks.historical.mockResolvedValue(f.ready.completed);
+    }
+    await expect(f.verify()).rejects.toThrow("Unregistered or noncanonical vetted hostname");
+    expect(f.openRecording).not.toHaveBeenCalled();
+    expect(mocks.historical).not.toHaveBeenCalled();
+    expect(mocks.producer).not.toHaveBeenCalled();
+    expect(mocks.pdf).not.toHaveBeenCalled();
+    expect(mocks.markdown).not.toHaveBeenCalled();
+  });
+
+  it("rejects a historical verifier result owned by a different host", async () => {
+    const f = await fixture("html", 1);
+    f.context.config.historicalReady = {
+      [f.row.hostname]: {
+        readySha256: f.row.details.ready_sha256,
+        producerRoot: join(f.context.directory, "archived-producer"),
+        producer: f.context.config.producer,
+      },
+    };
+    const completed = structuredClone(f.ready.completed);
+    const hostname = "different-ready-fixture.ubc.ca";
+    completed.host = {
+      ...completed.host,
+      hostname,
+      homepage_url: `https://${hostname}/`,
+      document_root: `data/documents/${hostname}`,
+    };
+    Object.assign(completed.documents[0]!, {
+      hostname,
+      source_url: completed.host.homepage_url,
+      id: `documents:official-web:${sha256(completed.host.homepage_url).slice(0, 24)}`,
+    });
+    expect(cheapGuardCompletedHost(completed)).toEqual(completed);
+    mocks.historical.mockResolvedValue(completed);
+    await expect(f.verify()).rejects.toThrow("Unregistered or noncanonical vetted hostname");
+    expect(f.openRecording).not.toHaveBeenCalled();
+    expect(mocks.producer).not.toHaveBeenCalled();
+    expect(mocks.pdf).not.toHaveBeenCalled();
+    expect(mocks.markdown).not.toHaveBeenCalled();
+  });
+
   it.each([false, true])(
     "requires exact historical authorization (matching %s) without opening current resources",
     async (matching) => {
-      const f = await fixture("pdf", 1);
+      const f = await fixture("pdf", 1, "file.pdf");
       f.context.config.historicalReady = {
         [f.row.hostname]: {
           readySha256: matching ? f.row.details.ready_sha256 : sha256("different ready"),

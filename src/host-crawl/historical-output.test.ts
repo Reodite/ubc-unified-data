@@ -2,11 +2,13 @@ import { chmod, lstat, mkdir, mkdtemp, readdir, readFile, rm, symlink, writeFile
 import { join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import type { HostBatchConfig } from "./batch-model.ts";
 import type { CompletedHost, Observation, SearchDocument } from "./contracts.ts";
 import { formatDocument, sha256 } from "./document-format.ts";
 import { verifyHistoricalReady, type VerifyHistoricalReadyOptions } from "./historical-output.ts";
 import { DEFAULT_EXTERNAL_ROOT } from "./paths.ts";
 import { captureProducer } from "./provenance.ts";
+import { verifyReadyHost, type ReadyHostContext } from "./ready-host.ts";
 import { HostRecording } from "./recording.ts";
 
 const environment = await vi.hoisted(async () => {
@@ -32,10 +34,13 @@ vi.mock("./pdf-profile.ts", () => ({
 }));
 vi.mock("./pdf-profile-cache.ts", () => ({ loadCachedPdfProfile: native, readOrCapturePdfProfileCache: native }));
 vi.mock("./adapters/pdf.ts", () => ({ extractPdf: native }));
+vi.mock("./markdown-collection-runtime.ts", () => ({ withMarkdownCollectionRuntime: native }));
 
 let root: string;
+let batchHostDirectory: string | undefined;
 let failed = false;
 beforeEach(async () => {
+  batchHostDirectory = undefined;
   vi.clearAllMocks();
   vi.stubGlobal(
     "fetch",
@@ -52,7 +57,10 @@ afterEach(async ({ task }) => {
   vi.restoreAllMocks();
   vi.unstubAllGlobals();
   failed ||= task.result?.state === "fail";
-  if (task.result?.state !== "fail") await rm(root, { recursive: true, force: true });
+  if (task.result?.state !== "fail") {
+    await rm(root, { recursive: true, force: true });
+    if (batchHostDirectory) await rm(batchHostDirectory, { recursive: true, force: true });
+  }
 });
 afterAll(async () => {
   if (environment.previous === undefined) delete process.env.UBC_TMP_ROOT;
@@ -144,8 +152,8 @@ async function cacheFixture() {
   return { directory, receipt, payload, cached, save };
 }
 
-async function fixture(pdf = false) {
-  const hostname = "historical-fixture.ubc.ca";
+async function fixture(pdf = false, batchReady = false) {
+  const hostname = batchReady ? `historical-${sha256(root).slice(0, 12)}.ubc.ca` : "historical-fixture.ubc.ca";
   const homeUrl = `https://${hostname}/`;
   const producerRoot = join(root, "producer");
   await mkdir(join(producerRoot, "src"), { recursive: true });
@@ -153,8 +161,9 @@ async function fixture(pdf = false) {
   for (const file of ["package.json", "package-lock.json", "tsconfig.json"])
     await writeFile(join(producerRoot, file), "{}\n");
   const producer = await captureProducer(producerRoot);
-  const directory = join(root, "recording");
-  await mkdir(directory);
+  if (batchReady) batchHostDirectory = join(DEFAULT_EXTERNAL_ROOT, "hosts", hostname);
+  const directory = batchReady ? join(batchHostDirectory!, "recording") : join(root, "recording");
+  await mkdir(directory, { recursive: true });
   const seed = Buffer.from(JSON.stringify({ hostname, urls: [] }));
   await writeFile(join(directory, "seed.json"), seed);
   const rawPdf = Buffer.from("%PDF-1.4\nsynthetic retained binary; no native parser is used\n");
@@ -322,6 +331,35 @@ async function fixture(pdf = false) {
   };
 }
 
+async function readyFixture() {
+  const f = await fixture(true, true);
+  const config: HostBatchConfig = {
+    repositoryRoot: join(root, "repository"),
+    producerRoot: join(root, "unavailable-current-producer"),
+    producer: { ...f.options.producer, inputs_sha256: sha256("different current producer") },
+    baseline: "a".repeat(40),
+    main: "b".repeat(40),
+    bootstrapFiles: {},
+    historicalReady: {
+      [f.options.hostname]: {
+        readySha256: f.options.readySha256,
+        producerRoot: f.options.producerRoot,
+        producer: f.options.producer,
+        pdfCacheDirectory: f.cache!.directory,
+      },
+    },
+  };
+  const openRecording = vi.fn(async () => {
+    throw new Error("Current recording preparation is forbidden");
+  });
+  const context: ReadyHostContext = { directory: root, config, openRecording };
+  const row = {
+    hostname: f.options.hostname,
+    details: { ready_path: f.options.readyPath, ready_sha256: f.options.readySha256 },
+  };
+  return { ...f, context, row, openRecording, verify: () => verifyReadyHost(context, row) };
+}
+
 async function treeBytes(directory: string, prefix = ""): Promise<Record<string, string>> {
   const result: Record<string, string> = {};
   for (const item of await readdir(directory, { withFileTypes: true })) {
@@ -347,6 +385,55 @@ async function expectLockReleased(directory: string) {
     db.close();
   }
 }
+
+describe("batch ready verification of historical PDFs", () => {
+  it("preserves a .pdf citation through real archived verification without current resources", async () => {
+    const f = await readyFixture();
+    expect(f.pdf!.source_url).toBe(`https://${f.row.hostname}/file.pdf`);
+    const before = { fixture: await treeBytes(root), recording: await treeBytes(f.directory) };
+    const open = vi.spyOn(HostRecording, "open");
+    const verified = await f.verify();
+    expect(verified).toEqual(f.ready);
+    expect(verified.completed.host.hostname).toBe(f.row.hostname);
+    expect(open).toHaveBeenCalledOnce();
+    expect(open).toHaveBeenCalledWith(expect.objectContaining({ hostname: f.row.hostname, acquire: false }));
+    expect(f.openRecording).not.toHaveBeenCalled();
+    expect({ fixture: await treeBytes(root), recording: await treeBytes(f.directory) }).toEqual(before);
+    await expectLockReleased(f.directory);
+  });
+
+  it("requires the exact ready digest before opening the archived recording", async () => {
+    const f = await readyFixture();
+    f.context.config.historicalReady![f.row.hostname]!.readySha256 = sha256("different authorization");
+    const open = vi.spyOn(HostRecording, "open");
+    await expect(f.verify()).rejects.toThrow("Historical ready authorization differs");
+    expect(open).not.toHaveBeenCalled();
+    expect(f.openRecording).not.toHaveBeenCalled();
+    await expectLockReleased(f.directory);
+  });
+
+  it.each(["binary", "profile"])("rejects changed archived %s evidence through the ready verifier", async (what) => {
+    const f = await readyFixture();
+    if (what === "binary") {
+      await writeFile(join(f.directory, "objects", `${f.pdf!.extraction!.source_bytes_sha256}.body`), "changed");
+    } else {
+      f.cache!.cached.profile.manifest.extraction.textArguments.push("changed");
+      await f.cache!.save();
+    }
+    await expect(f.verify()).rejects.toThrow(
+      what === "binary" ? /binary body|raw body/ : "Archived PDF profile digest differs from ready output",
+    );
+    expect(f.openRecording).not.toHaveBeenCalled();
+    await expectLockReleased(f.directory);
+  });
+
+  it("does not admit the same .pdf URL as current generic HTML output", async () => {
+    const f = await readyFixture();
+    delete f.context.config.historicalReady;
+    await expect(f.verify()).rejects.toThrow(`Unsafe completed document URL: https://${f.row.hostname}/file.pdf`);
+    expect(f.openRecording).not.toHaveBeenCalled();
+  });
+});
 
 describe("historical ready output integrity", () => {
   it.each([false, true])("preserves legacy output and archived producer/profile bytes (PDF=%s)", async (pdf) => {
