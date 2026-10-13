@@ -12,7 +12,7 @@ import {
   type Snapshot,
 } from "./contracts.ts";
 import { formatDocument, parseDocument } from "./document-format.ts";
-import { RecordingError } from "./errors.ts";
+import { FileIntegrityError, RecordingError, savedRequestFailure } from "./errors.ts";
 import { createGenericScraper } from "./generic.ts";
 import { formatHostList } from "./public-validation.ts";
 import { defineWordpressHost } from "./scraper.ts";
@@ -149,9 +149,19 @@ afterEach(() => {
 });
 
 describe("recorded complete-host collection", () => {
-  it("stops on a typed integrity failure independently of its diagnostic wording", async () => {
+  it.each([
+    ["recording integrity", new RecordingError("Opaque storage failure", "integrity")],
+    ["live file change", new FileIntegrityError("Opaque changed input")],
+    ...["ENOENT", "EIO", "ENOSPC"].flatMap<[string, Error]>((code) => {
+      const detail = `${code}: storage failure, open '/objects/page'`;
+      return [
+        [`live ${code}`, Object.assign(new Error(detail), { code })],
+        [`persisted ${code}`, savedRequestFailure(`Error: ${detail}`)],
+        [`wrapped ${code}`, savedRequestFailure(`Error: Saved request failure: Error: ${detail}`)],
+      ];
+    }),
+  ])("stops on %s independently of diagnostic wording", async (_label, failure) => {
     const f = setup();
-    const failure = new RecordingError("Opaque storage failure", "integrity");
     f.archive.readDocument = async (url) => {
       if (url === post) throw failure;
       return f.archive.read(url);

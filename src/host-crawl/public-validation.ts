@@ -18,6 +18,7 @@ import {
   safeText,
   timestamp,
 } from "./document-format.ts";
+import { FileIntegrityError } from "./errors.ts";
 import { normalizeHost } from "./urls.ts";
 
 export type RegisteredHosts = readonly string[] | ReadonlySet<string>;
@@ -160,7 +161,7 @@ export async function readRegularFile(path: string, maximum = MAX_DOCUMENT_BYTES
       before.mtimeMs !== pathBefore.mtimeMs ||
       before.ctimeMs !== pathBefore.ctimeMs
     )
-      throw new Error(`File changed before reading: ${path}`);
+      throw new FileIntegrityError(`File changed before reading: ${path}`);
     const bytes = await file.readFile();
     const after = await file.stat();
     const pathAfter = await lstat(path);
@@ -177,7 +178,7 @@ export async function readRegularFile(path: string, maximum = MAX_DOCUMENT_BYTES
       before.ctimeMs !== after.ctimeMs ||
       bytes.length !== before.size
     )
-      throw new Error(`File changed while reading: ${path}`);
+      throw new FileIntegrityError(`File changed while reading: ${path}`);
     return bytes;
   } finally {
     await file.close();

@@ -2,6 +2,9 @@ import { DocumentPolicyError } from "./contracts.ts";
 
 export type RecordingFailureKind = "integrity" | "limit" | "unavailable";
 
+/** A file no longer matches the observation bound to an input read. */
+export class FileIntegrityError extends Error {}
+
 /** Keep the historical Error serialization while carrying a machine-readable collection decision. */
 export class RecordingError extends Error {
   constructor(
@@ -36,7 +39,14 @@ export function savedRequestFailure(detail: string): RecordingError {
   while (reason.startsWith("Error: Saved request failure: "))
     reason = reason.slice("Error: Saved request failure: ".length);
   if (reason.startsWith("Error: ")) reason = reason.slice("Error: ".length);
-  const kind = LIMIT_MESSAGES.has(reason) ? "limit" : INTEGRITY_MESSAGES.has(reason) ? "integrity" : "unavailable";
+  const storageFailure = /^(?:ENOENT|EIO|ENOSPC):(?:\s|$)/.test(reason);
+  const changedFile =
+    reason.startsWith("File changed before reading: ") || reason.startsWith("File changed while reading: ");
+  const kind = LIMIT_MESSAGES.has(reason)
+    ? "limit"
+    : INTEGRITY_MESSAGES.has(reason) || storageFailure || changedFile
+      ? "integrity"
+      : "unavailable";
   return new RecordingError(`Saved request failure: ${detail}`, kind);
 }
 
@@ -45,6 +55,7 @@ const STORAGE_FAILURES = new Set(["ENOENT", "EIO", "ENOSPC"]);
 export function isFatalCollectionError(error: unknown): boolean {
   return (
     error instanceof DocumentPolicyError ||
+    error instanceof FileIntegrityError ||
     (error instanceof RecordingError && error.kind !== "unavailable") ||
     (error !== null && typeof error === "object" && STORAGE_FAILURES.has(String((error as NodeJS.ErrnoException).code)))
   );
