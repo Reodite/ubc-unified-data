@@ -1,6 +1,6 @@
+import type { SpawnOptions } from "node:child_process";
 import type { EventEmitter } from "node:events";
-import { mkdir, rm } from "node:fs/promises";
-import { afterAll, beforeAll, describe, expect, expectTypeOf, it, vi } from "vitest";
+import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import type { MarkdownArtifactBindings, MarkdownArtifactCandidate } from "./markdown-artifacts.ts";
 import { inspectMarkdownSource } from "./markdown-inspection.mjs";
 import { MARKDOWN_RUNTIME_CONTRACT, type MarkdownProfileEvidence } from "./markdown-profile.ts";
@@ -10,38 +10,31 @@ import {
   prepareMarkdownRequest,
   type PreparedMarkdownRequest,
 } from "./markdown-protocol.mjs";
-import * as runtimeApi from "./markdown-runtime.ts";
 import {
-  disposeMarkdownRuntime,
-  inspectMarkdownRuntime,
-  prepareMarkdownRuntime,
-  type MarkdownRuntime,
-  type MarkdownRuntimeResult,
-} from "./markdown-runtime.ts";
-import { DEFAULT_EXTERNAL_ROOT } from "./paths.ts";
+  createMarkdownRuntimeController,
+  type ExecutionOwner,
+  type RuntimeDependencies,
+} from "./markdown-runtime-core.ts";
+import {
+  parseProcessStat,
+  superviseInvocation,
+  terminationEvidence,
+  type ProcessObservation,
+  type SupervisionDependencies,
+} from "./markdown-runtime-invocation.ts";
+import { disposeMarkdownRuntime, inspectMarkdownRuntime, type MarkdownRuntime } from "./markdown-runtime.ts";
 import {
   FakeChild,
-  loadInternals,
   SELF_TEST_BYTES,
   SELF_TEST_INSPECTION,
-  type ExecutionOwner,
   type FakeScenario,
-  type InstrumentedRuntimeModule,
-  type ProcessObservation,
-  type RuntimeDependencies,
-  type RuntimeInternals,
-  type SupervisionDependencies,
 } from "./test-support/markdown-runtime-harness.ts";
 import { createSyntheticMarkdownRuntimeProfile } from "./test-support/markdown-runtime-synthetic-profile.ts";
 
-const TEST_PARENT = `${DEFAULT_EXTERNAL_ROOT}/tests/markdown-runtime-portable-${process.pid}`;
 const syntheticProfile = createSyntheticMarkdownRuntimeProfile();
 const fetchGuard = vi.fn(() => {
   throw new Error("Network forbidden in runtime tests");
 });
-
-let internals: RuntimeInternals;
-let instrumented: InstrumentedRuntimeModule;
 
 function fakeBindings(profile: MarkdownProfileEvidence): MarkdownArtifactBindings {
   const artifacts = profile.manifest.artifacts.filter((artifact) => artifact.virtual_path !== null);
@@ -100,20 +93,20 @@ function fakeSupervision(
 ): Readonly<{
   dependencies: SupervisionDependencies;
   child(): FakeChild;
-  spawnCall(): Readonly<{ command: string; args: string[]; options: Record<string, unknown> }>;
+  spawnCall(): Readonly<{ command: string; args: readonly string[]; options: SpawnOptions }>;
 }> {
   let activeChild: FakeChild | undefined;
-  let call: { command: string; args: string[]; options: Record<string, unknown> } | undefined;
+  let call: { command: string; args: readonly string[]; options: SpawnOptions } | undefined;
   let observation = 0;
   const stdout =
     scenario.stdout ?? encodeMarkdownResponse(inspectMarkdownSource(Buffer.from("# Guide\n\nBody\n"), []), request);
   return Object.freeze({
     dependencies: {
-      spawn(command, args, options) {
+      spawn: ((command: string, args: readonly string[], options: SpawnOptions) => {
         call = { command, args, options };
         activeChild = new FakeChild({ ...scenario, stdout });
-        return activeChild;
-      },
+        return activeChild.process;
+      }) as SupervisionDependencies["spawn"],
       async observeProcess() {
         if (scenario.requiredEventsAfterClose === true || scenario.inputCallbackAfterClose === true) {
           await new Promise<void>((resolvePromise) => setTimeout(resolvePromise, 20));
@@ -138,7 +131,7 @@ async function supervise(
   observations?: ProcessObservation[],
 ): Promise<
   Readonly<{
-    result: Awaited<ReturnType<RuntimeInternals["superviseInvocation"]>>;
+    result: Awaited<ReturnType<typeof superviseInvocation>>;
     fake: ReturnType<typeof fakeSupervision>;
     owner: ExecutionOwner;
   }>
@@ -148,7 +141,7 @@ async function supervise(
   const wire = encodeMarkdownRequest(request);
   const fake = fakeSupervision(request, scenario, observations);
   const owner: ExecutionOwner = { child: null, killSent: false };
-  const result = await internals.superviseInvocation(
+  const result = await superviseInvocation(
     syntheticProfile,
     fakeBindings(syntheticProfile),
     request,
@@ -159,49 +152,40 @@ async function supervise(
   return Object.freeze({ result, fake, owner });
 }
 
-beforeAll(async () => {
-  vi.stubGlobal("fetch", fetchGuard);
-  await mkdir(TEST_PARENT, { recursive: true, mode: 0o700 });
-  instrumented = await loadInternals(TEST_PARENT);
-  internals = instrumented.__runtimeTestInternals;
-}, 180_000);
+async function refusesBindingsBeforeSpawn(bindings: unknown, reason?: RegExp): Promise<void> {
+  const request = prepareMarkdownRequest(Buffer.from("# Guide\n"), []);
+  const spawn = vi.fn(() => {
+    throw new Error("unexpected spawn");
+  });
+  await expect(
+    superviseInvocation(
+      syntheticProfile,
+      bindings as MarkdownArtifactBindings,
+      request,
+      encodeMarkdownRequest(request),
+      { child: null, killSent: false },
+      {
+        spawn,
+        async observeProcess() {
+          return { error: true };
+        },
+        async delay() {},
+      },
+    ),
+  ).rejects.toThrow(reason);
+  expect(spawn).not.toHaveBeenCalled();
+}
 
-afterAll(async () => {
-  const errors: unknown[] = [];
+beforeAll(() => {
+  vi.stubGlobal("fetch", fetchGuard);
+});
+
+afterAll(() => {
   try {
     expect(fetchGuard).not.toHaveBeenCalled();
-  } catch (error) {
-    errors.push(error);
+  } finally {
+    vi.unstubAllGlobals();
   }
-  vi.unstubAllGlobals();
-  try {
-    await rm(TEST_PARENT, { recursive: true, force: true });
-  } catch (error) {
-    errors.push(error);
-  }
-  if (errors.length === 1) throw errors[0];
-  if (errors.length > 1) throw new AggregateError(errors, "runtime test teardown failed");
-}, 180_000);
-
-describe("real fixed runtime", () => {
-  it("exports only the three exact runtime authority values and signatures", () => {
-    expect(Object.keys(runtimeApi).sort()).toEqual([
-      "disposeMarkdownRuntime",
-      "inspectMarkdownRuntime",
-      "prepareMarkdownRuntime",
-    ]);
-    expectTypeOf(prepareMarkdownRuntime).toEqualTypeOf<
-      (options?: { readonly signal?: AbortSignal }) => Promise<MarkdownRuntime>
-    >();
-    expectTypeOf(inspectMarkdownRuntime).toEqualTypeOf<
-      (
-        runtime: MarkdownRuntime,
-        request: PreparedMarkdownRequest,
-        options?: { readonly signal?: AbortSignal },
-      ) => Promise<MarkdownRuntimeResult>
-    >();
-    expectTypeOf(disposeMarkdownRuntime).toEqualTypeOf<(runtime: MarkdownRuntime) => Promise<void>>();
-  });
 });
 
 describe("fixed descriptor invocation", () => {
@@ -308,7 +292,7 @@ describe("fixed descriptor invocation", () => {
     expect(call.args).toEqual(expectedArguments);
   });
 
-  it("rejects mutable, incomplete, reordered, duplicate, and noninteger bindings before spawn", () => {
+  it("rejects mutable, incomplete, reordered, duplicate, and noninteger bindings before spawn", async () => {
     const valid = fakeBindings(syntheticProfile);
     const expected = syntheticProfile.manifest.artifacts.filter((artifact) => artifact.virtual_path !== null);
     const cases = [
@@ -335,11 +319,11 @@ describe("fixed descriptor invocation", () => {
       }),
     ];
     for (const bindings of cases) {
-      expect(() => internals.invocationArguments(syntheticProfile, bindings as MarkdownArtifactBindings)).toThrow();
+      await refusesBindingsBeforeSpawn(bindings);
     }
   });
 
-  it("rejects proxy, accessor, unusual-prototype, nonarray, and unsafe bindings without invoking hooks", () => {
+  it("rejects proxy, accessor, unusual-prototype, nonarray, and unsafe bindings without invoking hooks", async () => {
     const valid = fakeBindings(syntheticProfile);
     let proxyTraps = 0;
     const proxy = new Proxy(valid, {
@@ -352,7 +336,7 @@ describe("fixed descriptor invocation", () => {
         return Reflect.ownKeys(target);
       },
     });
-    expect(() => internals.invocationArguments(syntheticProfile, proxy)).toThrow(/invalid artifact bindings/i);
+    await refusesBindingsBeforeSpawn(proxy, /invalid artifact bindings/i);
     expect(proxyTraps).toBe(0);
 
     let getterCalls = 0;
@@ -372,9 +356,7 @@ describe("fixed descriptor invocation", () => {
       launcher_fd: valid.launcher_fd,
       mounts: Object.freeze([accessorMount, ...valid.mounts.slice(1)]),
     });
-    expect(() =>
-      internals.invocationArguments(syntheticProfile, accessorBindings as unknown as MarkdownArtifactBindings),
-    ).toThrow(/invalid artifact bindings/i);
+    await refusesBindingsBeforeSpawn(accessorBindings, /invalid artifact bindings/i);
     expect(getterCalls).toBe(0);
 
     const unusual = Object.freeze(Object.assign(Object.create({}), valid)) as MarkdownArtifactBindings;
@@ -386,9 +368,7 @@ describe("fixed descriptor invocation", () => {
     Object.freeze(extra);
     const extraBindings = Object.freeze({ launcher_fd: valid.launcher_fd, mounts: extra });
     for (const bindings of [unusual, nonarray, negativeZero, unsafe, extraBindings]) {
-      expect(() =>
-        internals.invocationArguments(syntheticProfile, bindings as unknown as MarkdownArtifactBindings),
-      ).toThrow();
+      await refusesBindingsBeforeSpawn(bindings);
     }
   });
 });
@@ -522,7 +502,7 @@ describe("conjunctive child lifecycle", () => {
     const extra = Object.freeze({ absent: true, marker: true });
     const customPrototype = Object.freeze(Object.assign(Object.create({}), { absent: true }));
     for (const observation of [inherited, getter, extra, customPrototype]) {
-      expect(internals.terminationEvidence(undefined, observation as unknown as ProcessObservation)).toBeNull();
+      expect(terminationEvidence(undefined, observation as unknown as ProcessObservation)).toBeNull();
       await expect(
         supervise({}, [Object.freeze({ state: "R", starttime: "123" }), observation as unknown as ProcessObservation]),
       ).rejects.toThrow(/termination/i);
@@ -531,7 +511,7 @@ describe("conjunctive child lifecycle", () => {
 
   it("parses exact PID prefixes, final parentheses, recognized state, and canonical uint64 starttime", () => {
     const fields = ["R", ...Array<string>(18).fill("0"), "18446744073709551615", "0", "0"];
-    expect(internals.parseProcessStat(42, `42 (name) ${fields.join(" ")}\n`)).toEqual({
+    expect(parseProcessStat(42, `42 (name) ${fields.join(" ")}\n`)).toEqual({
       state: "R",
       starttime: "18446744073709551615",
     });
@@ -542,7 +522,7 @@ describe("conjunctive child lifecycle", () => {
       `42 (name) R ${[...fields.slice(1, 19), "01", "0"].join(" ")}\n`,
       `42 (name) R ${[...fields.slice(1, 19), "18446744073709551616", "0"].join(" ")}\n`,
     ]) {
-      expect(internals.parseProcessStat(42, stat)).toBeNull();
+      expect(parseProcessStat(42, stat)).toBeNull();
     }
   });
 
@@ -553,7 +533,7 @@ describe("conjunctive child lifecycle", () => {
       const request = prepareMarkdownRequest(bytes, []);
       const fake = fakeSupervision(request, { automatic: false, closeOnKill: true });
       const owner: ExecutionOwner = { child: null, killSent: false };
-      const promise = internals.superviseInvocation(
+      const promise = superviseInvocation(
         syntheticProfile,
         fakeBindings(syntheticProfile),
         request,
@@ -574,6 +554,53 @@ describe("conjunctive child lifecycle", () => {
 });
 
 describe("authority, cancellation, revocation, and disposal", () => {
+  it("isolates handles between controllers and the public runtime authority", async () => {
+    const leftDependencies = fakeRuntimeDependencies();
+    const rightDependencies = fakeRuntimeDependencies();
+    const left = createMarkdownRuntimeController(leftDependencies);
+    const right = createMarkdownRuntimeController(rightDependencies);
+    const leftRuntime = await left.prepare();
+    const rightRuntime = await right.prepare();
+    const request = prepareMarkdownRequest(Buffer.from("# Guide\n"), []);
+    try {
+      for (const [foreign, handle] of [
+        [right, leftRuntime],
+        [left, rightRuntime],
+      ] as const) {
+        await expect(foreign.inspect(handle, request)).rejects.toThrow(/forged/i);
+        await expect(foreign.dispose(handle)).rejects.toThrow(/forged/i);
+        await expect(inspectMarkdownRuntime(handle, request)).rejects.toThrow(/forged/i);
+        await expect(disposeMarkdownRuntime(handle)).rejects.toThrow(/forged/i);
+      }
+      expect(leftDependencies.calls).toEqual({ capture: 1, verify: 2, invoke: 1, dispose: 0 });
+      expect(rightDependencies.calls).toEqual({ capture: 1, verify: 2, invoke: 1, dispose: 0 });
+      await expect(left.inspect(leftRuntime, request)).resolves.toBeDefined();
+      await expect(right.inspect(rightRuntime, request)).resolves.toBeDefined();
+      await left.dispose(leftRuntime);
+      await expect(right.inspect(rightRuntime, request)).resolves.toBeDefined();
+    } finally {
+      await left.dispose(leftRuntime);
+      await right.dispose(rightRuntime);
+    }
+    expect(leftDependencies.calls.dispose).toBe(1);
+    expect(rightDependencies.calls.dispose).toBe(1);
+  });
+
+  it("captures dependency functions once rather than retaining a mutable operation table", async () => {
+    const dependencies = fakeRuntimeDependencies();
+    const operations = { ...dependencies };
+    const controller = createMarkdownRuntimeController(operations);
+    const replacement = vi.fn(async () => {
+      throw new Error("replaced dependency");
+    });
+    Object.assign(operations, { capture: replacement, verify: replacement, invoke: replacement, dispose: replacement });
+    const runtime = await controller.prepare();
+    await controller.inspect(runtime, prepareMarkdownRequest(Buffer.from("# Guide\n"), []));
+    await controller.dispose(runtime);
+    expect(replacement).not.toHaveBeenCalled();
+    expect(dependencies.calls).toEqual({ capture: 1, verify: 2, invoke: 2, dispose: 1 });
+  });
+
   it("withholds authority until the exact self-test sequence and final verification complete", async () => {
     const expectedRequest = prepareMarkdownRequest(SELF_TEST_BYTES, [
       null,
@@ -626,7 +653,8 @@ describe("authority, cancellation, revocation, and disposal", () => {
       },
     });
     let issued = false;
-    const preparation = internals.prepareMarkdownRuntimeWithDependencies(undefined, dependencies).then((runtime) => {
+    const runtimeController = createMarkdownRuntimeController(dependencies);
+    const preparation = runtimeController.prepare().then((runtime) => {
       issued = true;
       return runtime;
     });
@@ -637,7 +665,7 @@ describe("authority, cancellation, revocation, and disposal", () => {
     releaseFinalVerify();
     const runtime = await preparation;
     expect(issued).toBe(true);
-    await instrumented.disposeMarkdownRuntime(runtime);
+    await runtimeController.dispose(runtime);
     expect(phases).toEqual(["capture", "verify-1", "invoke", "verify-2", "dispose"]);
   });
 
@@ -652,9 +680,7 @@ describe("authority, cancellation, revocation, and disposal", () => {
         });
       },
     });
-    await expect(internals.prepareMarkdownRuntimeWithDependencies(undefined, dependencies)).rejects.toThrow(
-      /self-test mismatch/i,
-    );
+    await expect(createMarkdownRuntimeController(dependencies).prepare()).rejects.toThrow(/self-test mismatch/i);
     expect(dependencies.calls).toMatchObject({ capture: 1, verify: 1, invoke: 1, dispose: 1 });
   });
 
@@ -685,7 +711,7 @@ describe("authority, cancellation, revocation, and disposal", () => {
         },
       });
       await expect(
-        internals.prepareMarkdownRuntimeWithDependencies({ signal: controller.signal }, dependencies),
+        createMarkdownRuntimeController(dependencies).prepare({ signal: controller.signal }),
       ).rejects.toThrow(/cancelled/);
       expect(dependencies.calls.dispose).toBe(1);
     }
@@ -732,16 +758,17 @@ describe("authority, cancellation, revocation, and disposal", () => {
         });
       },
     });
-    const runtime = await internals.prepareMarkdownRuntimeWithDependencies(undefined, dependencies);
+    const runtimeController = createMarkdownRuntimeController(dependencies);
+    const runtime = await runtimeController.prepare();
     const request = prepareMarkdownRequest(Buffer.from("# Guide"), []);
-    const active = instrumented.inspectMarkdownRuntime(runtime, request, { signal: controller.signal });
+    const active = runtimeController.inspect(runtime, request, { signal: controller.signal });
     await started;
     controller.abort(new Error("cancelled by caller"));
     await expect(active).rejects.toThrow(/intrinsic cancellation/i);
     expect(hooks).toEqual({ add: 0, remove: 0 });
-    await expect(instrumented.inspectMarkdownRuntime(runtime, request)).resolves.toBeDefined();
-    const first = instrumented.disposeMarkdownRuntime(runtime);
-    expect(instrumented.disposeMarkdownRuntime(runtime)).toBe(first);
+    await expect(runtimeController.inspect(runtime, request)).resolves.toBeDefined();
+    const first = runtimeController.dispose(runtime);
+    expect(runtimeController.dispose(runtime)).toBe(first);
     await expect(first).resolves.toBeUndefined();
     expect(dependencies.calls.dispose).toBe(1);
   });
@@ -783,18 +810,19 @@ describe("authority, cancellation, revocation, and disposal", () => {
         });
       },
     });
-    const runtime = await internals.prepareMarkdownRuntimeWithDependencies(undefined, dependencies);
+    const runtimeController = createMarkdownRuntimeController(dependencies);
+    const runtime = await runtimeController.prepare();
     const request = prepareMarkdownRequest(Buffer.from("# Guide"), []);
-    const active = instrumented.inspectMarkdownRuntime(runtime, request);
+    const active = runtimeController.inspect(runtime, request);
     await Promise.resolve();
-    await expect(instrumented.inspectMarkdownRuntime(runtime, request)).rejects.toThrow(/already in use/i);
+    await expect(runtimeController.inspect(runtime, request)).rejects.toThrow(/already in use/i);
     activeResolve();
     await expect(active).resolves.toMatchObject({ profile_sha256: runtime.profile.sha256 });
-    await expect(instrumented.inspectMarkdownRuntime(runtime, request)).rejects.toThrow("ordinary child refusal");
-    await expect(instrumented.inspectMarkdownRuntime(runtime, request)).resolves.toMatchObject({
+    await expect(runtimeController.inspect(runtime, request)).rejects.toThrow("ordinary child refusal");
+    await expect(runtimeController.inspect(runtime, request)).resolves.toMatchObject({
       profile_sha256: runtime.profile.sha256,
     });
-    await instrumented.disposeMarkdownRuntime(runtime);
+    await runtimeController.dispose(runtime);
   });
 
   it.each(["missing resource", "wrong resource", "mutated resource", "postcheck failure"])(
@@ -813,11 +841,12 @@ describe("authority, cancellation, revocation, and disposal", () => {
           throw new AggregateError([new Error(reason)], "Markdown runtime binding verification failed");
         },
       });
-      const runtime = await internals.prepareMarkdownRuntimeWithDependencies(undefined, dependencies);
+      const runtimeController = createMarkdownRuntimeController(dependencies);
+      const runtime = await runtimeController.prepare();
       const request = prepareMarkdownRequest(Buffer.from("# Guide"), []);
-      await expect(instrumented.inspectMarkdownRuntime(runtime, request)).rejects.toThrow(/binding verification/i);
-      await expect(instrumented.inspectMarkdownRuntime(runtime, request)).rejects.toThrow(/unavailable/i);
-      await instrumented.disposeMarkdownRuntime(runtime);
+      await expect(runtimeController.inspect(runtime, request)).rejects.toThrow(/binding verification/i);
+      await expect(runtimeController.inspect(runtime, request)).rejects.toThrow(/unavailable/i);
+      await runtimeController.dispose(runtime);
     },
   );
 
@@ -843,7 +872,7 @@ describe("authority, cancellation, revocation, and disposal", () => {
           });
         }
         const child = new FakeChild({ automatic: false, closeOnKill: true });
-        owner.child = child;
+        owner.child = child.process;
         return new Promise((_resolve, reject) => {
           signal?.addEventListener(
             "abort",
@@ -859,14 +888,15 @@ describe("authority, cancellation, revocation, and disposal", () => {
         });
       },
     });
-    const runtime = await internals.prepareMarkdownRuntimeWithDependencies(undefined, dependencies);
+    const runtimeController = createMarkdownRuntimeController(dependencies);
+    const runtime = await runtimeController.prepare();
     const request = prepareMarkdownRequest(Buffer.from("# Guide"), []);
-    const active = instrumented.inspectMarkdownRuntime(runtime, request, { signal: controller.signal });
+    const active = runtimeController.inspect(runtime, request, { signal: controller.signal });
     await Promise.resolve();
     controller.abort(new Error("cancelled work"));
     await expect(active).rejects.toThrow(/cancelled work/i);
-    await expect(instrumented.inspectMarkdownRuntime(runtime, request)).resolves.toBeDefined();
-    await instrumented.disposeMarkdownRuntime(runtime);
+    await expect(runtimeController.inspect(runtime, request)).resolves.toBeDefined();
+    await runtimeController.dispose(runtime);
   });
 
   it("suppresses a successful invocation when cancellation arrives before the final state check", async () => {
@@ -882,13 +912,14 @@ describe("authority, cancellation, revocation, and disposal", () => {
         });
       },
     });
-    const runtime = await internals.prepareMarkdownRuntimeWithDependencies(undefined, dependencies);
+    const runtimeController = createMarkdownRuntimeController(dependencies);
+    const runtime = await runtimeController.prepare();
     await expect(
-      instrumented.inspectMarkdownRuntime(runtime, prepareMarkdownRequest(Buffer.from("# Guide"), []), {
+      runtimeController.inspect(runtime, prepareMarkdownRequest(Buffer.from("# Guide"), []), {
         signal: controller.signal,
       }),
     ).rejects.toThrow(/cancelled postcheck/i);
-    await instrumented.disposeMarkdownRuntime(runtime);
+    await runtimeController.dispose(runtime);
   });
 
   it("revokes first, cancels active work, waits its settlement, and disposes idempotently", async () => {
@@ -912,19 +943,20 @@ describe("authority, cancellation, revocation, and disposal", () => {
         });
       },
     });
-    const runtime = await internals.prepareMarkdownRuntimeWithDependencies(undefined, dependencies);
+    const runtimeController = createMarkdownRuntimeController(dependencies);
+    const runtime = await runtimeController.prepare();
     const request = prepareMarkdownRequest(Buffer.from("# Guide"), []);
-    const active = instrumented.inspectMarkdownRuntime(runtime, request);
+    const active = runtimeController.inspect(runtime, request);
     const activeRefusal = expect(active).rejects.toThrow(/disposed active work/i);
     await started;
-    const first = instrumented.disposeMarkdownRuntime(runtime);
-    const second = instrumented.disposeMarkdownRuntime(runtime);
+    const first = runtimeController.dispose(runtime);
+    const second = runtimeController.dispose(runtime);
     expect(second).toBe(first);
-    await expect(instrumented.inspectMarkdownRuntime(runtime, request)).rejects.toThrow(/unavailable/i);
+    await expect(runtimeController.inspect(runtime, request)).rejects.toThrow(/unavailable/i);
     await activeRefusal;
     await expect(first).resolves.toBeUndefined();
     expect(dependencies.calls.dispose).toBe(1);
-    await expect(instrumented.disposeMarkdownRuntime(runtime)).resolves.toBeUndefined();
+    await expect(runtimeController.dispose(runtime)).resolves.toBeUndefined();
   });
 
   it("keeps the same settled disposal failure and leaves authority disposed", async () => {
@@ -934,20 +966,22 @@ describe("authority, cancellation, revocation, and disposal", () => {
         throw new Error("authenticated cleanup failed");
       },
     });
-    const runtime = await internals.prepareMarkdownRuntimeWithDependencies(undefined, dependencies);
-    const first = instrumented.disposeMarkdownRuntime(runtime);
-    const second = instrumented.disposeMarkdownRuntime(runtime);
+    const runtimeController = createMarkdownRuntimeController(dependencies);
+    const runtime = await runtimeController.prepare();
+    const first = runtimeController.dispose(runtime);
+    const second = runtimeController.dispose(runtime);
     expect(second).toBe(first);
     await expect(first).rejects.toThrow(/cleanup failed/i);
-    await expect(instrumented.disposeMarkdownRuntime(runtime)).rejects.toThrow(/cleanup failed/i);
+    await expect(runtimeController.dispose(runtime)).rejects.toThrow(/cleanup failed/i);
     await expect(
-      instrumented.inspectMarkdownRuntime(runtime, prepareMarkdownRequest(Buffer.from("# Guide"), [])),
+      runtimeController.inspect(runtime, prepareMarkdownRequest(Buffer.from("# Guide"), [])),
     ).rejects.toThrow(/unavailable/i);
   });
 
   it("authenticates fake-runtime handles against the private WeakMap", async () => {
     const dependencies = fakeRuntimeDependencies();
-    const runtime = await internals.prepareMarkdownRuntimeWithDependencies(undefined, dependencies);
+    const runtimeController = createMarkdownRuntimeController(dependencies);
+    const runtime = await runtimeController.prepare();
     const request = prepareMarkdownRequest(Buffer.from("# Guide"), []);
     const forged = [
       Object.freeze(Object.assign(Object.create(null), { profile: runtime.profile })),
@@ -956,9 +990,9 @@ describe("authority, cancellation, revocation, and disposal", () => {
       JSON.parse(JSON.stringify(runtime)),
     ] as MarkdownRuntime[];
     for (const handle of forged) {
-      await expect(instrumented.inspectMarkdownRuntime(handle, request)).rejects.toThrow(/forged/i);
-      await expect(instrumented.disposeMarkdownRuntime(handle)).rejects.toThrow(/forged/i);
+      await expect(runtimeController.inspect(handle, request)).rejects.toThrow(/forged/i);
+      await expect(runtimeController.dispose(handle)).rejects.toThrow(/forged/i);
     }
-    await instrumented.disposeMarkdownRuntime(runtime);
+    await runtimeController.dispose(runtime);
   });
 });

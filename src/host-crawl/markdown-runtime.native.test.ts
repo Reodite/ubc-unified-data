@@ -17,6 +17,8 @@ import {
   prepareMarkdownRequest,
   type PreparedMarkdownRequest,
 } from "./markdown-protocol.mjs";
+import type { ExecutionOwner } from "./markdown-runtime-core.ts";
+import { invokeCandidate, superviseInvocation, type InvocationDependencies } from "./markdown-runtime-invocation.ts";
 import {
   disposeMarkdownRuntime,
   inspectMarkdownRuntime,
@@ -24,21 +26,13 @@ import {
   type MarkdownRuntime,
 } from "./markdown-runtime.ts";
 import { DEFAULT_EXTERNAL_ROOT } from "./paths.ts";
-import {
-  FakeChild,
-  loadInternals,
-  SELF_TEST_INSPECTION,
-  type ExecutionOwner,
-  type InvocationDependencies,
-  type RuntimeInternals,
-} from "./test-support/markdown-runtime-harness.ts";
+import { FakeChild, SELF_TEST_INSPECTION } from "./test-support/markdown-runtime-harness.ts";
 
 const TEST_PARENT = `${DEFAULT_EXTERNAL_ROOT}/tests/markdown-runtime-native-${process.pid}`;
 const fetchGuard = vi.fn(() => {
   throw new Error("Network forbidden in runtime tests");
 });
 
-let internals: RuntimeInternals;
 let realRuntime: MarkdownRuntime;
 
 function maximumMetadataFixture(): Readonly<{
@@ -65,7 +59,6 @@ function maximumMetadataFixture(): Readonly<{
 beforeAll(async () => {
   vi.stubGlobal("fetch", fetchGuard);
   await mkdir(TEST_PARENT, { recursive: true, mode: 0o700 });
-  internals = (await loadInternals(TEST_PARENT)).__runtimeTestInternals;
   realRuntime = await prepareMarkdownRuntime();
 }, 180_000);
 
@@ -309,9 +302,9 @@ describe("authority, cancellation, revocation, and disposal", () => {
             return result;
           });
         },
-        supervise: internals.superviseInvocation,
+        supervise: superviseInvocation,
       };
-      await expect(internals.invokeCandidate(candidate, request, undefined, owner, dependencies)).rejects.toThrow(
+      await expect(invokeCandidate(candidate, request, undefined, owner, dependencies)).rejects.toThrow(
         /binding verification failed/i,
       );
       await expect(verifyMarkdownArtifactCandidate(candidate)).rejects.toThrow(/revoked|unavailable/i);
@@ -345,10 +338,10 @@ describe("authority, cancellation, revocation, and disposal", () => {
               return callback(Object.freeze({ launcher_fd: bindings.launcher_fd, mounts: Object.freeze(mounts) }));
             });
           },
-          supervise: internals.superviseInvocation,
+          supervise: superviseInvocation,
         };
         await expect(
-          internals.invokeCandidate(candidate, request, undefined, { child: null, killSent: false }, dependencies),
+          invokeCandidate(candidate, request, undefined, { child: null, killSent: false }, dependencies),
         ).rejects.toThrow();
         await expect(verifyMarkdownArtifactCandidate(candidate)).resolves.toBeUndefined();
       } finally {
@@ -364,7 +357,7 @@ describe("authority, cancellation, revocation, and disposal", () => {
       const owner: ExecutionOwner = { child: null, killSent: false };
       const precheck = new AbortController();
       precheck.abort(new Error("cancelled before bindings"));
-      await expect(internals.invokeCandidate(candidate, request, precheck.signal, owner)).rejects.toThrow(
+      await expect(invokeCandidate(candidate, request, precheck.signal, owner)).rejects.toThrow(
         /cancelled before bindings/i,
       );
       await expect(verifyMarkdownArtifactCandidate(candidate)).resolves.toBeUndefined();
@@ -381,9 +374,9 @@ describe("authority, cancellation, revocation, and disposal", () => {
           });
         },
       };
-      await expect(
-        internals.invokeCandidate(candidate, request, postcheck.signal, owner, dependencies),
-      ).rejects.toThrow(/cancelled after supervision/i);
+      await expect(invokeCandidate(candidate, request, postcheck.signal, owner, dependencies)).rejects.toThrow(
+        /cancelled after supervision/i,
+      );
       await expect(verifyMarkdownArtifactCandidate(candidate)).resolves.toBeUndefined();
 
       const activeController = new AbortController();
@@ -397,7 +390,7 @@ describe("authority, cancellation, revocation, and disposal", () => {
         withBindings: withVerifiedMarkdownArtifactBindings,
         async supervise(_profile, _bindings, _request, _wire, executionOwner) {
           activeChild = new FakeChild({ automatic: false, closeOnKill: true });
-          executionOwner.child = activeChild;
+          executionOwner.child = activeChild.process;
           activeStarted();
           return new Promise((_resolve, reject) => {
             activeChild!.once("close", () => {
@@ -407,13 +400,7 @@ describe("authority, cancellation, revocation, and disposal", () => {
           });
         },
       };
-      const active = internals.invokeCandidate(
-        candidate,
-        request,
-        activeController.signal,
-        activeOwner,
-        activeDependencies,
-      );
+      const active = invokeCandidate(candidate, request, activeController.signal, activeOwner, activeDependencies);
       await started;
       activeController.abort(new Error("cancelled active child"));
       await expect(active).rejects.toThrow(/cancelled active child/i);
@@ -438,7 +425,7 @@ describe("authority, cancellation, revocation, and disposal", () => {
         },
       };
       await expect(
-        internals.invokeCandidate(
+        invokeCandidate(
           candidate,
           request,
           wrapperController.signal,
