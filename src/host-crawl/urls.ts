@@ -62,15 +62,8 @@ export const UNSUPPORTED_DOCUMENT = "Download is outside article-only collection
 /** Recognize explicit resources and authentication routes, not ambiguous semantic page names. */
 export function nonDocumentInventoryUrl(value: string, hostname: string): boolean {
   const url = new URL(hostUrl(value, hostname));
-  const exclusion = pageExclusion(url.href, hostname);
-  if (
-    [
-      "Static asset or machine-readable resource",
-      "Theme, script or feed resource",
-      "Administration, form action or machine endpoint",
-    ].includes(exclusion ?? "")
-  )
-    return true;
+  const exclusion = pageUrlPolicy(url.href, hostname);
+  if (["resource", "theme-resource", "machine-endpoint"].includes(exclusion?.code ?? "")) return true;
   return /^\/(?:admin|user|login|login_required|signin|logout|saml|idp|auth|Shibboleth\.sso)(?:\/|$)/i.test(
     decodeURIComponent(url.pathname),
   );
@@ -78,16 +71,16 @@ export function nonDocumentInventoryUrl(value: string, hostname: string): boolea
 
 /** Allow declared PDF documents without widening authentication, query, or other resource boundaries. */
 export function documentPageExclusion(value: string, hostname: string, formats: readonly "pdf"[]): string | null {
-  const exclusion = pageExclusion(value, hostname);
+  const exclusion = pageUrlPolicy(value, hostname);
   let url: URL;
   try {
     url = new URL(publicUbcUrl(hostUrl(value, hostname)));
   } catch {
     return "Different or unsafe public destination";
   }
-  if (exclusion !== UNSUPPORTED_DOCUMENT) return exclusion;
+  if (exclusion?.code !== "unsupported-document") return exclusion?.reason ?? null;
   const path = decodeURIComponent(url.pathname);
-  if (!formats.includes("pdf") || !/\.pdf$/i.test(path) || url.search) return exclusion;
+  if (!formats.includes("pdf") || !/\.pdf$/i.test(path) || url.search) return exclusion.reason;
   url.pathname = path.replace(/(?:\.pdf)+$/i, "");
   if (url.pathname.startsWith("/wp-content/uploads/")) url.pathname = url.pathname.slice("/wp-content/uploads".length);
   // The stripped PDF name is a route check, not an actual screensaver-file suffix.
