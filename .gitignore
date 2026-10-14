@@ -2,7 +2,7 @@ node_modules/
 dist/
 coverage/
 .env
-.DS_Storenotes.md
+.DS_Store
 
 .cache/
 data/document-crawl/

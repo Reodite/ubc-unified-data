@@ -1,7 +1,7 @@
 import { execFileSync } from "node:child_process";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
-import { ROOT } from "./base.ts";
+import { ROOT } from "./core/output.ts";
 import { assertSingleHostChange, type ChangedFile } from "./host-crawl/change-validation.ts";
 import { readRegularFile, validatePublishedHosts } from "./host-crawl/public-validation.ts";
 import { registeredHostnames } from "./host-crawl/registry.ts";

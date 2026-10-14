@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { parseArgs } from "node:util";
-import { DATA_DIR } from "./base.ts";
+import { DATA_DIR } from "./core/output.ts";
 import { assertExternalPath, DEFAULT_EXTERNAL_ROOT } from "./host-crawl/paths.ts";
 import { ProseClient } from "./prose/client.ts";
 import { collectLiveSource } from "./prose/collect.ts";

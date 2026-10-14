@@ -2,7 +2,9 @@ import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { Http, Output, selectedCampus, setCampus, USER_AGENT } from "../base.ts";
+import { selectedCampus, setCampus } from "../core/campus.ts";
+import { Http, USER_AGENT } from "../core/http.ts";
+import { Output } from "../core/output.ts";
 import { AcademicCalendar, CAMPUSES, RESOURCES } from "./academic-calendar.ts";
 import * as cogsmodules from "./cogsmodules.ts";
 

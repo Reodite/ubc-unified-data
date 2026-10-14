@@ -1,9 +1,12 @@
 import { load, type CheerioAPI } from "cheerio";
 import { discoverPublicViews } from "../../host-crawl/adapters/html-discovery.ts";
-import type { HostScraper, PublicGetView, Snapshot } from "../../host-crawl/contracts.ts";
-import { hostUrl, pageExclusion } from "../../host-crawl/urls.ts";
-import { extractArticle } from "../../prose/html.ts";
+import type { PublicGetView, Snapshot } from "../../host-crawl/contracts.ts";
+import { defineHtmlHost } from "../../host-crawl/scraper.ts";
+import { hostUrl, pageUrlPolicy, urlExclusion, type UrlExclusion } from "../../host-crawl/urls.ts";
+import { extractArticleFromDom } from "../../prose/html.ts";
 import { toSafeMarkdown } from "../../prose/markdown.ts";
+import { contentRoots, normalizedText as text } from "../../scraping/html.ts";
+import { hasUbcBranding } from "../../scraping/ubc.ts";
 import { normalizeCoopStructure } from "./normalize.ts";
 
 const HOST = "coop.ubc.ca";
@@ -16,7 +19,6 @@ const FAQ: PublicGetView = {
   values: ["Employer Section", "Student Section"],
   placeholder: "All",
 };
-const text = (value: string) => value.replace(/\s+/g, " ").trim();
 
 function selectedFaq(url: URL): boolean {
   const entries = [...url.searchParams];
@@ -28,9 +30,9 @@ function selectedFaq(url: URL): boolean {
   );
 }
 
-function excludeUrl(value: string): string | null {
-  const excluded = pageExclusion(value, HOST);
-  if (excluded && excluded !== "Unsupported query or form selection") return excluded;
+function excludeUrl(value: string): UrlExclusion | null {
+  const excluded = pageUrlPolicy(value, HOST);
+  if (excluded && excluded.code !== "query") return excluded;
   const url = new URL(hostUrl(value, HOST));
   const pathname = decodeURIComponent(url.pathname);
   if (
@@ -39,24 +41,20 @@ function excludeUrl(value: string): string | null {
     /^\/(?:update|install|authorize)\.php(?:\/|$)/i.test(pathname) ||
     /^\/sites\/[^/]+\/(?:files\/(?:css|js|styles)|private)(?:\/|$)/i.test(pathname)
   )
-    return "Administration, form action or embedded resource";
-  if (url.search && !selectedFaq(url)) return "Unsupported query or form selection";
+    return urlExclusion("private-route", "Administration, form action or embedded resource");
+  if (url.search && !selectedFaq(url)) return urlExclusion("query", "Unsupported query or form selection");
   if (selectedFaq(url)) return null;
   return excluded;
 }
 
 function institutionalHomepage($: CheerioAPI, snapshot: Snapshot): boolean {
-  const wordmark = $("#ubc7-header #ubc7-wordmark a").first();
-  const unit = $("#ubc7-unit-name a").first();
-  if (!wordmark.attr("href") || !unit.attr("href")) return false;
-  const institution = new URL(wordmark.attr("href")!, snapshot.url);
   return (
-    text(wordmark.text()) === "The University of British Columbia" &&
-    ["http://www.ubc.ca/", "https://www.ubc.ca/"].includes(institution.href) &&
-    text(unit.find("#ubc7-unit-identifier").text()) === TITLE &&
-    new URL(unit.attr("href")!, snapshot.url).href === HOME &&
-    text($("#ubc7-footer #ubc7-address-unit-name").text()) === `${TITLE}: Vancouver & Okanagan` &&
-    $(MAIN).length === 1
+    hasUbcBranding($, snapshot.url, {
+      homepage: HOME,
+      unit: TITLE,
+      footer: `${TITLE}: Vancouver & Okanagan`,
+      allowHttpWordmark: true,
+    }) && $(MAIN).length === 1
   );
 }
 
@@ -91,13 +89,7 @@ function retainPostingInstructions($: CheerioAPI): boolean {
     const instructions = $(form).find(
       ".webform-type-processed-text,.webform-element-description,.webform-element-help[data-webform-help]",
     );
-    const roots = instructions.filter(
-      (_, node) =>
-        !$(node)
-          .parents()
-          .toArray()
-          .some((parent) => instructions.toArray().includes(parent)),
-    );
+    const roots = contentRoots($, instructions);
     const container = $("<div>");
     roots.each((_, node) => {
       const help = $(node).attr("data-webform-help");
@@ -138,7 +130,7 @@ function hasFaqAnswers($: CheerioAPI): boolean {
     });
 }
 
-export const coopScraper: HostScraper = {
+export const coopScraper = defineHtmlHost({
   hostname: HOST,
   title: TITLE,
   scope:
@@ -156,40 +148,15 @@ export const coopScraper: HostScraper = {
     ],
   },
   excludeUrl,
-  vetHomepage(snapshot) {
-    try {
-      const accepted =
-        hostUrl(snapshot.requested_url, HOST) === HOME &&
-        hostUrl(snapshot.url, HOST) === HOME &&
-        snapshot.status === 200 &&
-        /^(?:text\/html|application\/xhtml\+xml)(?:;|$)/i.test(snapshot.headers["content-type"] ?? "") &&
-        institutionalHomepage(load(snapshot.body), snapshot);
-      return {
-        accepted,
-        reason: accepted
-          ? "Declared institutional homepage evidence matches"
-          : "Institutional homepage evidence is missing",
-      };
-    } catch {
-      return { accepted: false, reason: "Invalid homepage observation" };
-    }
-  },
-  extract(snapshot) {
+  officialHomepage: ($, snapshot) => hostUrl(snapshot.url, HOST) === HOME && institutionalHomepage($, snapshot),
+  extractPage($, snapshot) {
     const requested = new URL(hostUrl(snapshot.requested_url, HOST));
     const resolved = new URL(hostUrl(snapshot.url, HOST));
-    if (
-      snapshot.status !== 200 ||
-      !/^(?:text\/html|application\/xhtml\+xml)(?:;|$)/i.test(snapshot.headers["content-type"] ?? "")
-    )
-      throw new Error("A complete HTML observation is required");
-    const excluded = excludeUrl(requested.href) ?? excludeUrl(resolved.href);
-    if (excluded) return { kind: "excluded", reason: excluded };
     if (
       selectedFaq(requested) &&
       requested.searchParams.get(FAQ.parameter) !== resolved.searchParams.get(FAQ.parameter)
     )
       throw new Error("Selected FAQ observation loses its requested view");
-    const $ = load(snapshot.body);
     if ($(MAIN).length !== 1) throw new Error(`No unique recognized prose container at ${snapshot.url}`);
     const canonical = $("link[rel=canonical]").attr("href");
     if (canonical) {
@@ -257,20 +224,16 @@ export const coopScraper: HostScraper = {
         "form,input,select,textarea,.form-actions,.views-slideshow-controls-top,.views-slideshow-controls-bottom,svg[role=presentation]",
       )
       .remove();
-    const input = extractArticle(
-      { ...snapshot, body: $.html() },
-      {
-        key: HOST,
-        title: TITLE,
-        host: HOST,
-        campus: null,
-        strategy: "drupal",
-        selectors: [selectors.join(",")],
-        strictSelectors: true,
-        scope: excludeUrl,
-      },
-    );
-    hostUrl(input.url, HOST);
+    const input = extractArticleFromDom($, snapshot, {
+      key: HOST,
+      title: TITLE,
+      host: HOST,
+      campus: null,
+      strategy: "drupal",
+      selectors: [selectors.join(",")],
+      strictSelectors: true,
+      scope: (url) => excludeUrl(url)?.reason ?? null,
+    });
     if (omittedPostingControls)
       input.warnings = [
         ...(input.warnings ?? []),
@@ -282,4 +245,4 @@ export const coopScraper: HostScraper = {
     }
     return { kind: "document", input };
   },
-};
+});

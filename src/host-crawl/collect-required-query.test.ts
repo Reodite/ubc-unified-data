@@ -5,7 +5,7 @@ import { NonTextMediaError, type HostArchive, type Observation, type ProducerCon
 import { sha256 } from "./document-format.ts";
 import { cheapGuardCompletedHost, createGenericScraper } from "./generic.ts";
 import * as machineLinks from "./machine-links.ts";
-import { pageExclusion } from "./urls.ts";
+import { pageExclusion, urlExclusion } from "./urls.ts";
 
 const host = "ccli.ubc.ca";
 const home = `https://${host}/`;
@@ -376,7 +376,8 @@ describe("required query collection", () => {
   it("rejects a missing required identity at final output coverage", async () => {
     const f = fixture();
     const exclude = f.scraper.excludeUrl!;
-    f.scraper.excludeUrl = (url) => (url === query ? "Synthetic document policy exclusion" : exclude(url));
+    f.scraper.excludeUrl = (url) =>
+      url === query ? urlExclusion("site-policy", "Synthetic document policy exclusion") : exclude(url);
     await expect(f.collect()).rejects.toThrow(/Required query is missing from complete output/);
     expect(f.archive.readDocument).not.toHaveBeenCalledWith(query);
     expect(f.archive.assertUnchanged).not.toHaveBeenCalled();

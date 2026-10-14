@@ -1,17 +1,12 @@
 import { load } from "cheerio";
-import type { Http, Output } from "../base.ts";
-import { InvalidValueError, register, utcnow, wants } from "../base.ts";
+import { wants } from "../core/campus.ts";
+import { InvalidValueError, type Http } from "../core/http.ts";
+import type { Output } from "../core/output.ts";
+import { register } from "../core/registry.ts";
+import { utcnow } from "../core/utils.ts";
 import { FACT_COLUMNS, publishFacts } from "../public-facts.ts";
-import {
-  contentLinks,
-  document,
-  plainText,
-  uniqueRows,
-  wordpressDocument,
-  wordpressPages,
-  type Row,
-  type SourceDocument,
-} from "../source-documents.ts";
+import { wordpressDocument, wordpressPages } from "../scraping/wordpress.ts";
+import { contentLinks, document, plainText, uniqueRows, type Row, type SourceDocument } from "../source-documents.ts";
 
 export const HOUSING_HOST = "vancouver.housing.ubc.ca";
 export const HOUSING_BASE = `https://${HOUSING_HOST}`;

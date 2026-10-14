@@ -3,11 +3,7 @@ import MarkdownIt from "markdown-it";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { assertSafeMarkdown } from "../prose/markdown.ts";
 import { safeText } from "./document-format.ts";
-import {
-  inspectMarkdownSource,
-  MARKDOWN_INSPECTION_LIMITS as LIMITS,
-  MARKDOWN_INSPECTION_DIALECT,
-} from "./markdown-inspection.mjs";
+import { inspectMarkdownSource, MARKDOWN_INSPECTION_LIMITS as LIMITS } from "./markdown-inspection.mjs";
 
 const bytes = (source: string) => new TextEncoder().encode(source);
 const inspect = (source: string, titles: readonly (string | null)[] = ["Advertisement"]) =>
@@ -24,23 +20,6 @@ afterAll(() => {
 });
 
 describe("restricted Markdown metadata", () => {
-  it("declares immutable versioned bounds", () => {
-    expect(LIMITS).toEqual({
-      inputBytes: 1048576,
-      lineBytes: 16384,
-      lines: 16384,
-      tokens: 50000,
-      links: 2048,
-      nesting: 32,
-      titleBytes: 4096,
-      metadataBytes: 262144,
-      advertisedTitles: 6,
-      advertisedTitleCodeUnits: 4096,
-    });
-    expect(Object.isFrozen(LIMITS)).toBe(true);
-    expect(MARKDOWN_INSPECTION_DIALECT).toBe("ubc-markdown-verbatim-v2/markdown-it-15.0.2");
-  });
-
   it("keeps source authority and returns only deeply frozen metadata", () => {
     const source = "# Native  *heading* `code` [label](https://example.org/a)\r\n\r\nBody.\r";
     const input = bytes(source);

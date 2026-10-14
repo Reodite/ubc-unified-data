@@ -8,9 +8,12 @@
  * the documents themselves stay at their source URLs.
  */
 
-import type { Http, Output } from "../base.ts";
-import { compareStrings, errorMessage, errorName, register, wpCollection } from "../base.ts";
+import { errorMessage, errorName, type Http } from "../core/http.ts";
+import type { Output } from "../core/output.ts";
+import { register } from "../core/registry.ts";
+import { compareStrings } from "../core/utils.ts";
 import { unescapeHtml } from "../htmldoc.ts";
+import { wpCollection } from "../scraping/wordpress.ts";
 
 export const SITES: Record<string, [string, string[]]> = {
   finance: ["finance.ubc.ca", ["wp/v2/pages", "wp/v2/posts", "wp/v2/resources"]],

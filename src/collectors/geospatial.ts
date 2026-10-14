@@ -1,31 +1,20 @@
-/** Campus geospatial data: buildings, addresses, trees, roads, land use, POIs.
- *
- * Source: the UBCGeodata/ubc-geospatial-opendata GitHub repository, which UBC
- * Campus + Community Planning publishes as the authoritative wayfinding and
- * operational geometry for both campuses. Files are mirrored verbatim so the
- * GeoJSON stays valid and the accompanying field-definition CSVs come along.
- *
- * Some CSVs under `ubcv/locations/csv/` label their coordinate columns the
- * wrong way round: `LAT` holds longitude and `LONG` holds latitude.
- * `fixSwappedCoordinates` identifies these from sampled values rather than
- * filenames and swaps only the header names, preserving every data byte.
- * `_source.json` names each corrected file under `corrections`, so the
- * divergence from upstream is explicit. The GeoJSON stays untouched.
- */
+/** Mirror Campus + Community Planning's UBCGeodata geometry and field definitions
+ * for both campuses. Some `ubcv/locations/csv/` files put longitude in LAT and
+ * latitude in LONG. Sampled values identify these files; only headers change,
+ * preserving data rows and GeoJSON. `_source.json` lists corrections. */
 
-import type { Http, Output } from "../base.ts";
-import { compareStrings, register, utcnow, wants } from "../base.ts";
+import { wants } from "../core/campus.ts";
+import type { Http } from "../core/http.ts";
+import type { Output } from "../core/output.ts";
+import { register } from "../core/registry.ts";
+import { compareStrings, utcnow } from "../core/utils.ts";
+import { githubSnapshot } from "../scraping/github.ts";
 
 export const ORG = "UBCGeodata";
 
-// Repository -> where its files are mounted in `data/geospatial/`.
-//
-// `ubc-geospatial-opendata` is UBC's consolidated publication and uses
-// the `<campus>/<theme>/<format>/` layout this directory mirrors, so it mounts at
-// the root. The separate `ubcv-parking` repository has a flat layout
-// (`csv/`, `geojson/`, `metadata/`), so it mounts under `ubcv/parking/` to keep
-// the campus/theme structure consistent across this directory. `_index` derives
-// campus and theme from these paths.
+// Mounts under `data/geospatial/` preserve the `<campus>/<theme>/<format>/`
+// layout used by `_index`. Parking's flat `csv/`, `geojson/`, `metadata/`
+// directories need a campus/theme prefix; the consolidated repository does not.
 export const REPOS: Record<string, string> = {
   "ubc-geospatial-opendata": "",
   "ubcv-parking": "ubcv/parking",
@@ -62,10 +51,8 @@ function stripBom(bytes: Uint8Array): Uint8Array {
   return bytes.length >= 3 && bytes[0] === 0xef && bytes[1] === 0xbb && bytes[2] === 0xbf ? bytes.slice(3) : bytes;
 }
 
-/** Parse CSV text into rows: `,` delimiter, `""` escapes, quoting that may
- * span newlines, and `\r\n` treatable as a line break. Only used to read the
- * header and a coordinate sample, so correctness on unusual rows matters
- * more than speed. */
+/** Read CSV headers and coordinate samples, supporting doubled quotes,
+ * multiline fields and LF/CRLF line breaks. */
 function csvRead(text: string): string[][] {
   const rows: string[][] = [];
   let row: string[] = [];
@@ -142,8 +129,7 @@ export function fixSwappedCoordinates(path: string, content: Uint8Array): [Uint8
   // Rewrite the header line alone, leaving every data byte where it was.
   [header[latAt], header[longAt]] = [header[longAt]!, header[latAt]!];
   const newHeader = `${csvField(header)}\n`;
-  // Split on the first newline: header, newline, rest. With no newline in the
-  // file, rest is empty (the whole file, header included, is replaced).
+  // Preserve everything after the first newline; a header-only file has no rest.
   const nl = text.indexOf("\n");
   const rest = nl >= 0 ? text.slice(nl + 1) : "";
   return [new TextEncoder().encode(newHeader + rest), true];
@@ -214,26 +200,12 @@ export const Geospatial = register(
       corrections: string[],
     ): Promise<Record<string, unknown>> {
       const slug = `${ORG}/${repo}`;
-      const meta = (await http.getJson(`https://api.github.com/repos/${slug}`)) as Record<string, unknown>;
-      const branch = (meta["default_branch"] as string | undefined) ?? "master";
-      const head = (await http.getJson(`https://api.github.com/repos/${slug}/commits/${branch}`)) as Record<
-        string,
-        unknown
-      >;
-      const sha = head["sha"] as string;
-
-      const tree = (await http.getJson(`https://api.github.com/repos/${slug}/git/trees/${sha}`, {
-        params: { recursive: "1" },
-      })) as Record<string, unknown>;
-      if (tree["truncated"]) {
-        throw new Error(`GitHub truncated ${slug}'s file tree; it outgrew one listing`);
-      }
+      const snapshot = await githubSnapshot(http, slug);
 
       const mountPath = mount ? mount.split("/").filter(Boolean) : null;
       const pairs: Array<[string, string]> = [];
-      for (const node of (tree["tree"] as Array<Record<string, unknown>>) ?? []) {
-        const path = (node["path"] as string) ?? "";
-        if ((node["type"] as string) !== "blob" || SKIP_PREFIXES.some((p) => path.startsWith(p))) continue;
+      for (const path of snapshot.paths) {
+        if (SKIP_PREFIXES.some((p) => path.startsWith(p))) continue;
         if (!path.toLowerCase().match(/\.(geojson|json|csv|kml|gpkg|zip)$/)) continue;
         const dest = mountPath ? [...mountPath, ...path.split("/")].join("/") : path;
         const first = dest.split("/")[0] ?? "";
@@ -243,14 +215,13 @@ export const Geospatial = register(
 
       const fetchPair = async (pair: [string, string]): Promise<[string, string, Uint8Array]> => {
         const [path, dest] = pair;
-        const url = `https://raw.githubusercontent.com/${slug}/${sha}/${path}`;
-        return [path, dest, await http.getBytes(url)];
+        return [path, dest, await http.getBytes(snapshot.rawUrl(path))];
       };
 
       for (const [path, dest, content] of await http.map(fetchPair, pairs, 8)) {
         const [fixed, corrected] = fixSwappedCoordinates(dest, content);
         if (corrected) corrections.push(dest);
-        await out.raw(dest, fixed, { source: `https://github.com/${slug}/blob/${sha}/${path}` });
+        await out.raw(dest, fixed, { source: snapshot.blobUrl(path) });
       }
 
       const indexRows: Array<Record<string, string>> = pairs.map(([, dest]) => {
@@ -270,11 +241,9 @@ export const Geospatial = register(
 
       return {
         repository: `https://github.com/${slug}`,
-        branch,
-        commit: sha,
-        commit_date: (
-          (head["commit"] as Record<string, unknown> | undefined)?.["committer"] as Record<string, unknown> | undefined
-        )?.["date"],
+        branch: snapshot.branch,
+        commit: snapshot.sha,
+        commit_date: snapshot.commitDate,
         mounted_at: mount || "/",
         files: pairs.length,
       };

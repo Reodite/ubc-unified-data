@@ -21,7 +21,7 @@
  * recorded as `ubc_specific` instead of being thrown away.
  */
 
-import type { Http } from "../base.ts";
+import type { Http } from "../core/http.ts";
 import type { Heading } from "../htmldoc.ts";
 import { blocks } from "../htmldoc.ts";
 

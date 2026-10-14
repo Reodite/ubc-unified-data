@@ -38,20 +38,32 @@ export function inventoryUrl(value: string, hostname: string, base = `https://${
   return hostUrl(url.href, hostname);
 }
 
+export type UrlExclusionCode =
+  | "host"
+  | "encoded-route"
+  | "ambiguous-path"
+  | "unsupported-document"
+  | "machine-endpoint"
+  | "theme-resource"
+  | "resource"
+  | "query"
+  | "private-route"
+  | "site-policy";
+export interface UrlExclusion {
+  code: UrlExclusionCode;
+  reason: string;
+}
+export function urlExclusion(code: UrlExclusionCode, reason: string): UrlExclusion {
+  return { code, reason };
+}
+
 export const UNSUPPORTED_DOCUMENT = "Download is outside article-only collection scope";
 
 /** Recognize explicit resources and authentication routes, not ambiguous semantic page names. */
 export function nonDocumentInventoryUrl(value: string, hostname: string): boolean {
   const url = new URL(hostUrl(value, hostname));
-  const exclusion = pageExclusion(url.href, hostname);
-  if (
-    [
-      "Static asset or machine-readable resource",
-      "Theme, script or feed resource",
-      "Administration, form action or machine endpoint",
-    ].includes(exclusion ?? "")
-  )
-    return true;
+  const exclusion = pageUrlPolicy(url.href, hostname);
+  if (["resource", "theme-resource", "machine-endpoint"].includes(exclusion?.code ?? "")) return true;
   return /^\/(?:admin|user|login|login_required|signin|logout|saml|idp|auth|Shibboleth\.sso)(?:\/|$)/i.test(
     decodeURIComponent(url.pathname),
   );
@@ -59,61 +71,66 @@ export function nonDocumentInventoryUrl(value: string, hostname: string): boolea
 
 /** Allow declared PDF documents without widening authentication, query, or other resource boundaries. */
 export function documentPageExclusion(value: string, hostname: string, formats: readonly "pdf"[]): string | null {
-  const exclusion = pageExclusion(value, hostname);
+  const exclusion = pageUrlPolicy(value, hostname);
   let url: URL;
   try {
     url = new URL(publicUbcUrl(hostUrl(value, hostname)));
   } catch {
     return "Different or unsafe public destination";
   }
-  if (exclusion !== UNSUPPORTED_DOCUMENT) return exclusion;
+  if (exclusion?.code !== "unsupported-document") return exclusion?.reason ?? null;
   const path = decodeURIComponent(url.pathname);
-  if (!formats.includes("pdf") || !/\.pdf$/i.test(path) || url.search) return exclusion;
+  if (!formats.includes("pdf") || !/\.pdf$/i.test(path) || url.search) return exclusion.reason;
   url.pathname = path.replace(/(?:\.pdf)+$/i, "");
   if (url.pathname.startsWith("/wp-content/uploads/")) url.pathname = url.pathname.slice("/wp-content/uploads".length);
   // The stripped PDF name is a route check, not an actual screensaver-file suffix.
-  return routeExclusion(url.href, hostname, false);
+  return routeExclusion(url.href, hostname, false)?.reason ?? null;
 }
 
 export function pageExclusion(value: string, hostname: string): string | null {
+  return pageUrlPolicy(value, hostname)?.reason ?? null;
+}
+
+export function pageUrlPolicy(value: string, hostname: string): UrlExclusion | null {
   return routeExclusion(value, hostname, true);
 }
 
-function routeExclusion(value: string, hostname: string, checkScreensaverFile: boolean): string | null {
+function routeExclusion(value: string, hostname: string, checkScreensaverFile: boolean): UrlExclusion | null {
   let url: URL;
   try {
     url = new URL(hostUrl(value, hostname));
   } catch {
-    return "Different or unsafe host destination";
+    return urlExclusion("host", "Different or unsafe host destination");
   }
   let pathname: string;
   try {
     pathname = decodeURIComponent(url.pathname);
   } catch {
-    return "Ambiguous encoded route";
+    return urlExclusion("encoded-route", "Ambiguous encoded route");
   }
-  if (/%|\\/.test(pathname)) return "Ambiguous encoded route";
-  if (/\/{2,}/.test(pathname)) return "Ambiguous repeated path separator";
+  if (/%|\\/.test(pathname)) return urlExclusion("encoded-route", "Ambiguous encoded route");
+  if (/\/{2,}/.test(pathname)) return urlExclusion("ambiguous-path", "Ambiguous repeated path separator");
   if (
     /\.(?:pdf|docx?|odt|rtf|xlsx?|pptx?|csv|md|markdown|epub|mobi|azw3?)(?:$|\/)/i.test(pathname) ||
     (/\.txt(?:$|\/)/i.test(pathname) && pathname !== "/robots.txt")
   )
-    return UNSUPPORTED_DOCUMENT;
+    return urlExclusion("unsupported-document", UNSUPPORTED_DOCUMENT);
   if (/\/(?:wp-admin|wp-login\.php|xmlrpc\.php|wp-comments-post\.php|wp-json)(?:\/|$)/i.test(pathname))
-    return "Administration, form action or machine endpoint";
-  if (/\/(?:wp-content|wp-includes|feed)(?:\/|$)/i.test(pathname)) return "Theme, script or feed resource";
+    return urlExclusion("machine-endpoint", "Administration, form action or machine endpoint");
+  if (/\/(?:wp-content|wp-includes|feed)(?:\/|$)/i.test(pathname))
+    return urlExclusion("theme-resource", "Theme, script or feed resource");
   if (
     (checkScreensaverFile && pathname.toLowerCase().endsWith(".scr")) ||
     /\.(?:css|[cm]?js|map|wasm|zip|gz|tgz|tar|bz2|xz|7z|rar|png|jpe?g|gif|webp|avif|tiff?|bmp|svg|ico|mp[34]|mov|avi|webm|wav|ogg|aac|flac|ics|xml|json|txt|woff2?|ttf|otf|eot)(?:$|\/)/i.test(
       pathname,
     )
   )
-    return "Static asset or machine-readable resource";
+    return urlExclusion("resource", "Static asset or machine-readable resource");
   if (
     [...url.searchParams].some(
       ([key, value]) => !["p", "page_id", "page", "paged"].includes(key) || !/^\d+$/.test(value),
     )
   )
-    return "Unsupported query or form selection";
+    return urlExclusion("query", "Unsupported query or form selection");
   return null;
 }

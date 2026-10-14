@@ -1,8 +1,10 @@
-import type { Http, Output } from "../base.ts";
-import { InvalidValueError, register, utcnow } from "../base.ts";
+import { InvalidValueError, type Http } from "../core/http.ts";
+import type { Output } from "../core/output.ts";
+import { register } from "../core/registry.ts";
+import { utcnow } from "../core/utils.ts";
 import { FACT_COLUMNS, publishFacts } from "../public-facts.ts";
-import { drupalRecords, string, type Row } from "../source-documents.ts";
-import { drupalDocument } from "./support.ts";
+import { drupalDocument, drupalRecords } from "../scraping/drupal.ts";
+import { string, type Row } from "../source-documents.ts";
 
 export const POLICY_HOST = "universitycounsel.ubc.ca";
 export const POLICY_SOURCE = `https://${POLICY_HOST}/jsonapi/node/policy`;

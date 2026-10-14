@@ -6,7 +6,7 @@
  * code cells fail collection rather than publishing a partial module list.
  */
 
-import type { Http } from "../base.ts";
+import type { Http } from "../core/http.ts";
 import { blocks, type Heading, type Table } from "../htmldoc.ts";
 
 export const URL = "https://cogsys.ubc.ca/module-courses/";

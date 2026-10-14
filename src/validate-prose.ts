@@ -1,6 +1,7 @@
 import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
-import { DATA_DIR, stringifyCsv } from "./base.ts";
+import { DATA_DIR } from "./core/output.ts";
+import { stringifyCsv } from "./core/serialization.ts";
 import { ProseFetchError, publicUbcUrl } from "./prose/client.ts";
 import { markdownLinks } from "./prose/markdown.ts";
 import { contentHash, type InventoryStatus } from "./prose/model.ts";

@@ -2,111 +2,43 @@ import { execFile } from "node:child_process";
 import { createHash } from "node:crypto";
 import { chmodSync, linkSync, statSync } from "node:fs";
 import { mkdir, mkdtemp, readFile, rm, symlink, truncate, writeFile, type FileHandle } from "node:fs/promises";
-import { stripTypeScriptTypes } from "node:module";
-import { dirname, join, resolve } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { join } from "node:path";
 import { promisify } from "node:util";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import {
+  captureStageTopology,
+  cleanupState,
+  initialState,
+  openAbsoluteDirectory,
+  sameDirectoryBinding,
+  scanPackageTree,
+  validateLauncherSelectionOutput,
+  validateManifest,
+  verifyRetainedDirectory,
+  type CandidateState,
+  type CaptureCounters,
+  type PackageScanResult,
+  type RetainedDirectory,
+  type Stamp,
+} from "./markdown-artifact-store.ts";
 import { MARKDOWN_ARTIFACT_LIMITS, type MarkdownArtifact } from "./markdown-profile.ts";
 import { DEFAULT_EXTERNAL_ROOT } from "./paths.ts";
 
 const execFileAsync = promisify(execFile);
 const TEST_PARENT = join(DEFAULT_EXTERNAL_ROOT, "tests", `markdown-artifacts-${process.pid}`);
-const IMPLEMENTATION_PATH = fileURLToPath(new URL("./markdown-artifacts.ts", import.meta.url));
-const SOURCE_DIRECTORY = dirname(IMPLEMENTATION_PATH);
-
-interface InternalStamp {
-  readonly dev: bigint;
-  readonly ino: bigint;
-  readonly mode: bigint;
-  readonly nlink: bigint;
-  readonly uid: bigint;
-  readonly gid: bigint;
-  readonly rdev: bigint;
-  readonly size: bigint;
-  readonly mtimeNs: bigint;
-  readonly ctimeNs: bigint;
-}
-
-interface InternalDirectory {
-  readonly path: string;
-  readonly handle: FileHandle;
-  readonly stamp: unknown;
-  readonly ancestors: readonly unknown[];
-}
-
-interface InternalState {
-  readonly handles: Set<FileHandle>;
-  containerPath: string;
-}
-
-interface InternalScan {
-  readonly files: readonly unknown[];
-  readonly directories: readonly unknown[];
-  readonly manifestBytes: Uint8Array;
-}
-
-interface Internals {
-  sameDirectoryBinding(left: InternalStamp, right: InternalStamp): boolean;
-  openAbsoluteDirectory(path: string): Promise<InternalDirectory>;
-  verifyRetainedDirectory(directory: InternalDirectory): Promise<void>;
-  initialState(path: string, directory: InternalDirectory): InternalState;
-  validateManifest(name: "argparse", bytes: Uint8Array, roots: ReadonlyMap<string, unknown>): unknown;
-  validateLauncherSelectionOutput(output: Uint8Array): void;
-  scanPackageTree(input: {
-    state: InternalState;
-    resolved: {
-      name: "argparse";
-      root: string;
-      resolution: string;
-      virtualRoot: "/app/node_modules/argparse";
-    };
-    root: InternalDirectory;
-    entityRootStamp: null;
-    capture: true;
-    counters: { files: number; directories: Set<string>; appBytes: number; totalBytes: number };
-    artifacts: MarkdownArtifact[];
-    signal?: AbortSignal;
-    seenDirectories: Set<string>;
-  }): Promise<InternalScan>;
-  captureStageTopology(state: InternalState, artifacts: readonly MarkdownArtifact[]): Promise<void>;
-  cleanupState(state: InternalState, captureFailure?: boolean): Promise<void>;
-}
-
 interface SyntheticFixture {
   readonly root: string;
   readonly packageRoot: string;
   readonly container: string;
-  readonly state: InternalState;
-  packageDirectory: InternalDirectory;
+  readonly state: CandidateState;
+  packageDirectory: RetainedDirectory;
   readonly artifacts: MarkdownArtifact[];
-  readonly counters: { files: number; directories: Set<string>; appBytes: number; totalBytes: number };
+  readonly counters: CaptureCounters;
   cleanup(): Promise<void>;
 }
 
-let internals: Internals;
-
 function digest(bytes: Uint8Array): string {
   return createHash("sha256").update(bytes).digest("hex");
-}
-
-async function loadInternals(): Promise<Internals> {
-  const source = (await readFile(IMPLEMENTATION_PATH, "utf8")).replace(
-    /(from\s+["'])(\.[^"']+)(["'])/g,
-    (_match, prefix: string, specifier: string, suffix: string) =>
-      `${prefix}${pathToFileURL(resolve(SOURCE_DIRECTORY, specifier)).href}${suffix}`,
-  );
-  const instrumented = `${source}\nexport const __artifactTestInternals = Object.freeze({ sameDirectoryBinding, openAbsoluteDirectory, verifyRetainedDirectory, initialState, validateManifest, validateLauncherSelectionOutput, scanPackageTree, captureStageTopology, cleanupState });\n`;
-  const transformed = stripTypeScriptTypes(instrumented, {
-    mode: "strip",
-    sourceUrl: pathToFileURL(IMPLEMENTATION_PATH).href,
-  });
-  const path = join(TEST_PARENT, `instrumented-${process.pid}.mjs`);
-  await writeFile(path, transformed, { mode: 0o600 });
-  const loaded = (await import(`${pathToFileURL(path).href}?${Date.now()}`)) as {
-    __artifactTestInternals: Internals;
-  };
-  return loaded.__artifactTestInternals;
 }
 
 async function syntheticFixture(): Promise<SyntheticFixture> {
@@ -116,9 +48,9 @@ async function syntheticFixture(): Promise<SyntheticFixture> {
   await mkdir(packageRoot, { mode: 0o700 });
   await mkdir(container, { mode: 0o700 });
   await writeFile(join(packageRoot, "package.json"), '{"name":"argparse","version":"3.0.2"}', { mode: 0o600 });
-  const packageDirectory = await internals.openAbsoluteDirectory(packageRoot);
-  const containerDirectory = await internals.openAbsoluteDirectory(container);
-  const state = internals.initialState(container, containerDirectory);
+  const packageDirectory = await openAbsoluteDirectory(packageRoot);
+  const containerDirectory = await openAbsoluteDirectory(container);
+  const state = initialState(container, containerDirectory);
   state.handles.add(packageDirectory.handle);
   let cleaned = false;
   return {
@@ -132,19 +64,19 @@ async function syntheticFixture(): Promise<SyntheticFixture> {
     async cleanup() {
       if (cleaned) return;
       cleaned = true;
-      await internals.cleanupState(state, true).catch(() => undefined);
+      await cleanupState(state, true).catch(() => undefined);
       await packageDirectory.handle.close().catch(() => undefined);
       await rm(root, { recursive: true, force: true });
     },
   };
 }
 
-async function scanFixture(fixture: SyntheticFixture, signal?: AbortSignal): Promise<InternalScan> {
+async function scanFixture(fixture: SyntheticFixture, signal?: AbortSignal): Promise<PackageScanResult> {
   fixture.state.handles.delete(fixture.packageDirectory.handle);
   await fixture.packageDirectory.handle.close();
-  fixture.packageDirectory = await internals.openAbsoluteDirectory(fixture.packageRoot);
+  fixture.packageDirectory = await openAbsoluteDirectory(fixture.packageRoot);
   fixture.state.handles.add(fixture.packageDirectory.handle);
-  return internals.scanPackageTree({
+  return scanPackageTree({
     state: fixture.state,
     resolved: {
       name: "argparse",
@@ -164,7 +96,6 @@ async function scanFixture(fixture: SyntheticFixture, signal?: AbortSignal): Pro
 
 beforeAll(async () => {
   await mkdir(TEST_PARENT, { recursive: true, mode: 0o700 });
-  internals = await loadInternals();
 }, 120_000);
 
 afterAll(async () => {
@@ -173,7 +104,7 @@ afterAll(async () => {
 
 describe("descriptor-anchored synthetic capture", () => {
   it("treats directory membership metadata as separate from security identity", () => {
-    const original: InternalStamp = {
+    const original: Stamp = {
       dev: 1n,
       ino: 2n,
       mode: 0o040755n,
@@ -186,7 +117,7 @@ describe("descriptor-anchored synthetic capture", () => {
       ctimeNs: 7n,
     };
     expect(
-      internals.sameDirectoryBinding(original, {
+      sameDirectoryBinding(original, {
         ...original,
         nlink: 9n,
         size: 8192n,
@@ -201,7 +132,7 @@ describe("descriptor-anchored synthetic capture", () => {
       { ...original, gid: 22n },
       { ...original, mode: 0o100755n },
     ])
-      expect(internals.sameDirectoryBinding(original, changed)).toBe(false);
+      expect(sameDirectoryBinding(original, changed)).toBe(false);
   });
 
   it("copies complete bytes, preserves empty directories, and seals the owned tree", async () => {
@@ -213,7 +144,7 @@ describe("descriptor-anchored synthetic capture", () => {
       const scan = await scanFixture(fixture);
       expect(scan.files).toHaveLength(2);
       expect(scan.directories).toHaveLength(2);
-      await internals.captureStageTopology(fixture.state, fixture.artifacts);
+      await captureStageTopology(fixture.state, fixture.artifacts);
       const copied = await readFile(join(fixture.container, "root/app/node_modules/argparse/index.js"));
       expect(copied).toEqual(content);
       expect(statSync(join(fixture.container, "root/app/node_modules/argparse/index.js")).mode & 0o777).toBe(0o400);
@@ -252,11 +183,9 @@ describe("descriptor-anchored synthetic capture", () => {
         if (chmodCalls === 2) throw new Error("injected directory seal failure");
         await originalChmod.call(this, mode);
       };
-      await expect(internals.captureStageTopology(fixture.state, artifacts)).rejects.toThrow(
-        "injected directory seal failure",
-      );
+      await expect(captureStageTopology(fixture.state, artifacts)).rejects.toThrow("injected directory seal failure");
       prototype.chmod = originalChmod;
-      await expect(internals.cleanupState(fixture.state, true)).resolves.toBeUndefined();
+      await expect(cleanupState(fixture.state, true)).resolves.toBeUndefined();
       expect(() => statSync(fixture.container)).toThrow();
     } finally {
       prototype.chmod = originalChmod;
@@ -398,7 +327,7 @@ describe("descriptor-anchored synthetic capture", () => {
     try {
       await mkdir(join(root, "real"));
       await symlink(join(root, "real"), join(root, "alias"));
-      await expect(internals.openAbsoluteDirectory(join(root, "alias"))).rejects.toThrow();
+      await expect(openAbsoluteDirectory(join(root, "alias"))).rejects.toThrow();
     } finally {
       await rm(root, { recursive: true, force: true });
     }
@@ -409,12 +338,12 @@ describe("descriptor-anchored synthetic capture", () => {
     const ancestor = join(root, "ancestor");
     const leaf = join(ancestor, "leaf");
     await mkdir(leaf, { recursive: true, mode: 0o700 });
-    const retained = await internals.openAbsoluteDirectory(leaf);
+    const retained = await openAbsoluteDirectory(leaf);
     try {
       await mkdir(join(ancestor, "unrelated"), { mode: 0o700 });
-      await expect(internals.verifyRetainedDirectory(retained)).resolves.toBeUndefined();
+      await expect(verifyRetainedDirectory(retained)).resolves.toBeUndefined();
       chmodSync(ancestor, 0o500);
-      await expect(internals.verifyRetainedDirectory(retained)).rejects.toThrow(/binding changed/i);
+      await expect(verifyRetainedDirectory(retained)).rejects.toThrow(/binding changed/i);
     } finally {
       await retained.handle.close();
       chmodSync(ancestor, 0o700);
@@ -431,7 +360,7 @@ describe("fixed package and launcher admission", () => {
           JSON.stringify({ name: "argparse", version: "3.0.2", dependencies: {}, [field]: value }),
           "utf8",
         );
-        expect(() => internals.validateManifest("argparse", manifest, new Map<string, unknown>())).toThrow(
+        expect(() => validateManifest("argparse", manifest, new Map())).toThrow(
           /unsupported package dependency field/i,
         );
       }
@@ -447,7 +376,7 @@ describe("fixed package and launcher admission", () => {
       "\t/lib64/ld-linux-x86-64.so.2 => /proc/self/fd/3 (0x5)",
     ];
     const encode = (values: readonly string[]) => Buffer.from(`${values.join("\n")}\n`, "utf8");
-    expect(() => internals.validateLauncherSelectionOutput(encode(lines))).not.toThrow();
+    expect(() => validateLauncherSelectionOutput(encode(lines))).not.toThrow();
     const rejected = [
       [lines[1]!, ...lines],
       ["\tlibcap.so.2 => /tmp/unreviewed.so (0x0)", ...lines],
@@ -458,11 +387,11 @@ describe("fixed package and launcher admission", () => {
       ["\tlibextra.so.1 => /tmp/libextra.so.1 (0x0)", ...lines],
     ];
     for (const value of rejected) {
-      expect(() => internals.validateLauncherSelectionOutput(encode(value))).toThrow();
+      expect(() => validateLauncherSelectionOutput(encode(value))).toThrow();
     }
     expect(() =>
-      internals.validateLauncherSelectionOutput(Buffer.concat([Buffer.from([0xff, 0xfe, 0x0a]), encode(lines)])),
+      validateLauncherSelectionOutput(Buffer.concat([Buffer.from([0xff, 0xfe, 0x0a]), encode(lines)])),
     ).toThrow(/UTF-8/i);
-    expect(() => internals.validateLauncherSelectionOutput(Buffer.from(lines.join("\n"), "utf8"))).toThrow(/terminal/i);
+    expect(() => validateLauncherSelectionOutput(Buffer.from(lines.join("\n"), "utf8"))).toThrow(/terminal/i);
   });
 });

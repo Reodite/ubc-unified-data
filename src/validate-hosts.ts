@@ -1,5 +1,5 @@
 import { parseArgs } from "node:util";
-import { ROOT } from "./base.ts";
+import { ROOT } from "./core/output.ts";
 import { loadRoutingPolicy, loadSavedClassifications, routeCompletedHost } from "./host-crawl/category-routing.ts";
 import { validatePublishedHosts } from "./host-crawl/public-validation.ts";
 import { registeredHostnames } from "./host-crawl/registry.ts";

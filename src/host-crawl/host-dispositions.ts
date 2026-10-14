@@ -3,7 +3,7 @@ import { chmodSync, closeSync, existsSync, globSync, lstatSync, mkdirSync, openS
 import { createRequire } from "node:module";
 import { join, relative } from "node:path";
 import { DatabaseSync } from "node:sqlite";
-import { ROOT } from "../base.ts";
+import { ROOT } from "../core/output.ts";
 import { assertExternalPath, DEFAULT_EXTERNAL_ROOT } from "./paths.ts";
 import { normalizeHost } from "./urls.ts";
 

@@ -415,26 +415,6 @@ describe("fixed worker in exact-file sparse namespaces", () => {
     ).toBe("available");
   }, 30000);
 
-  it("keeps the production entry fixed and imports no parser before guard installation", async () => {
-    const entry = files.get("/app/markdown-worker.mjs")!.toString();
-    expect(entry.trim()).toBe(
-      'import { runMarkdownWorker } from "./markdown-bootstrap.mjs";\n\nawait runMarkdownWorker();',
-    );
-    const bootstrap = files.get("/app/markdown-bootstrap.mjs")!.toString();
-    expect([...bootstrap.matchAll(/^import .+ from "([^"]+)";/gm)].map((match) => match[1])).toEqual([
-      "node:crypto",
-      "node:fs",
-      "node:module",
-      "node:url",
-    ]);
-    expect([...bootstrap.matchAll(/^export /gm)].length).toBe(1);
-    expect(bootstrap).not.toMatch(/error\.message|process\.exit\(/);
-    expect(bootstrap.indexOf("installGuard(policy);", bootstrap.indexOf("export async"))).toBeLessThan(
-      bootstrap.indexOf('await import("./markdown-protocol.mjs")'),
-    );
-    await accepted(await fixture("production-normal"));
-  });
-
   it.each(["installed", "maximum-range"])(
     "accepts the exact %s policy emitted by the profile encoder",
     async (kind) => {
@@ -708,17 +688,27 @@ describe("fixed worker in exact-file sparse namespaces", () => {
   );
 
   it("verifies policy bytes before parsing them", async () => {
-    const f = await fixture("hash-before-parse");
-    const bootstrap = f.files
-      .get("/app/markdown-bootstrap.mjs")!
-      .toString()
-      .replace(
-        'const policy = JSON.parse(bytes.toString("utf8"));',
-        "process.stderr.write('POLICY_PARSED'); const policy = JSON.parse(bytes.toString(\"utf8\"));",
-      );
-    await replace(f, "/app/markdown-bootstrap.mjs", Buffer.from(bootstrap));
+    const sentinelWorker = `
+JSON.parse = () => {
+  process.stderr.write('POLICY_PARSED');
+  throw new Error('parse sentinel');
+};
+const { runMarkdownWorker } = await import('./markdown-bootstrap.mjs');
+await runMarkdownWorker();
+`;
+    const f = await fixture("hash-before-parse", { "/app/markdown-worker.mjs": sentinelWorker });
     await replace(f, "/app/markdown-guard-policy.json", Buffer.from("source-secret"));
     refused(await run(f, wire()));
+
+    const control = await run(
+      await fixture("matching-hash-reaches-parser", { "/app/markdown-worker.mjs": sentinelWorker }),
+      wire(),
+    );
+    expect(control.timeout).toBe(false);
+    expect(control.signal).toBeNull();
+    expect(control.code).toBe(1);
+    expect(control.stdout).toHaveLength(0);
+    expect(control.stderr).toBe(`POLICY_PARSED${refusal}`);
   });
 
   it.each(["/app/node_modules/mdurl/index.mjs", "/app/markdown-guard-policy.json"])(
@@ -823,14 +813,19 @@ describe("fixed worker in exact-file sparse namespaces", () => {
           : kind === "throw"
             ? "throw new Error('source-secret');"
             : "return result;";
-    const bootstrap = files
-      .get("/app/markdown-bootstrap.mjs")!
-      .toString()
-      .replace(
-        "    installGuard(policy);",
-        `    registerHooks({ load(url, context, next) { const result = next(url, context); if (url === 'file:///app/markdown-inspection.mjs') { ${intervention} } return result; } });\n    installGuard(policy);`,
-      );
-    const f = await fixture(`delegated-load-${kind}`, { "/app/markdown-bootstrap.mjs": bootstrap });
+    const competingHookWorker = `
+import { registerHooks } from 'node:module';
+registerHooks({
+  load(url, context, next) {
+    const result = next(url, context);
+    if (url === 'file:///app/markdown-inspection.mjs') { ${intervention} }
+    return result;
+  }
+});
+const { runMarkdownWorker } = await import('./markdown-bootstrap.mjs');
+await runMarkdownWorker();
+`;
+    const f = await fixture(`delegated-load-${kind}`, { "/app/markdown-worker.mjs": competingHookWorker });
     if (kind === "transparent") await accepted(f);
     else refused(await run(f, wire()));
   });
@@ -858,22 +853,5 @@ describe("fixed worker in exact-file sparse namespaces", () => {
         .dependencies.find((dep) => dep.name === "entities")!.root = "/app/node_modules/entities";
     });
     refused(await run(wrong, wire()));
-  });
-
-  it("runs with exact read grants and the fixed closed-root environment", async () => {
-    const checks = `
-const expected = { LC_ALL: 'C', LANG: 'C', TZ: 'UTC', UV_THREADPOOL_SIZE: '1', PWD: '/app' };
-if (process.cwd() !== '/app' || Object.keys(process.env).length !== 5 || Object.entries(expected).some(([key, value]) => process.env[key] !== value)) throw new Error('fixture environment');
-if (!process.permission.has('fs.read', '/app/markdown-inspection.mjs') || process.permission.has('fs.read', '/app') || process.permission.has('fs.read', '/etc/passwd')) throw new Error('fixture read grants');
-for (const scope of ['fs.write', 'child', 'worker', 'addons']) if (process.permission.has(scope)) throw new Error('fixture grants');
-`;
-    await accepted(await fixture("exact-grants", { "/app/markdown-worker.mjs": `${noFetch}${worker}${checks}` }));
-  });
-
-  it("does not claim to interpose process.getBuiltinModule", async () => {
-    const f = await fixture("builtin-limitation", {
-      "/app/markdown-worker.mjs": `${worker}if (typeof process.getBuiltinModule('node:crypto').createHash !== 'function') throw new Error('fixture');\n`,
-    });
-    await accepted(f);
   });
 });

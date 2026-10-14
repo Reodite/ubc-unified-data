@@ -9,6 +9,7 @@ import type { CompletedHost, ProducerContext, SearchDocument } from "./contracts
 import { sha256 } from "./document-format.ts";
 import { deriveCollectionInputDigest } from "./inputs.ts";
 import { DEFAULT_EXTERNAL_ROOT, EXTERNAL_BOUNDARY } from "./paths.ts";
+import { verifyReadyHost } from "./ready-host.ts";
 
 const mocks = vi.hoisted(() => ({ git: vi.fn(), producer: vi.fn(), seal: vi.fn(), historical: vi.fn() }));
 vi.mock("./historical-output.ts", () => ({ verifyHistoricalReady: mocks.historical }));
@@ -163,14 +164,18 @@ describe("five-worker batch handoff", () => {
       const readyPath = join(directory, `ready-${kind.replaceAll(" ", "-")}.json`);
       const bytes = Buffer.from(JSON.stringify(ready));
       await writeFile(readyPath, bytes);
-      const verifyReady = (
-        batch as unknown as {
-          verifyReady(row: { hostname: string; details: Record<string, unknown> }): Promise<unknown>;
-        }
-      ).verifyReady.bind(batch);
+      const close = vi.fn();
+      const openRecording = vi.fn(async () => ({
+        recording: { verifySeal: mocks.seal, close },
+        seed: { bytes: seedBytes },
+      }));
       await expect(
-        verifyReady({ hostname, details: { ready_path: readyPath, ready_sha256: sha256(bytes) } }),
+        verifyReadyHost(
+          { directory, config: batch.config, openRecording },
+          { hostname, details: { ready_path: readyPath, ready_sha256: sha256(bytes) } },
+        ),
       ).rejects.toThrow(error);
+      expect(close).toHaveBeenCalledTimes(kind.startsWith("unknown") ? 0 : 1);
     } finally {
       batch.close();
     }

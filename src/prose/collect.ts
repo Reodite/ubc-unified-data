@@ -1,4 +1,4 @@
-import { compareStrings } from "../base.ts";
+import { compareStrings } from "../core/utils.ts";
 import { plainText } from "../source-documents.ts";
 import { fetchDisposition, ProseFetchError, type ProseClient } from "./client.ts";
 import { discoverDrupal, discoverSitemaps, discoverWordpress } from "./discovery.ts";

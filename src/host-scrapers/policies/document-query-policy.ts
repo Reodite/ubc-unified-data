@@ -1,6 +1,6 @@
-import { publicUbcUrl } from "../prose/client.ts";
-import type { RequiredDocumentQuery, Snapshot } from "./contracts.ts";
-import { hostUrl, normalizeHost } from "./urls.ts";
+import type { RequiredDocumentQuery, Snapshot } from "../../host-crawl/contracts.ts";
+import { hostUrl, normalizeHost } from "../../host-crawl/urls.ts";
+import { publicUbcUrl } from "../../prose/client.ts";
 
 const CCLI_QUERY: RequiredDocumentQuery = Object.freeze({
   hostname: "ccli.ubc.ca",

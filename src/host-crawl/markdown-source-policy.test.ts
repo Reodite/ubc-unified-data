@@ -1,12 +1,12 @@
 import { createHash } from "node:crypto";
 import { describe, expect, it } from "vitest";
-import type { Observation, Snapshot } from "./contracts.ts";
 import {
   assertMarkdownIdentity,
   discoverMarkdownAlternates,
   markdownSources,
   type MarkdownSourceDeclaration,
-} from "./markdown-source-policy.ts";
+} from "../host-scrapers/policies/markdown-source-policy.ts";
+import type { Observation, Snapshot } from "./contracts.ts";
 
 const pairs = [
   ["manufacturing.engineering.ubc.ca", "1"],

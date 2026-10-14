@@ -1,6 +1,7 @@
 import type { ProseResponse } from "../prose/client.ts";
 import type { ArticleInput } from "../prose/model.ts";
 import type { DocumentCategory } from "./categories.ts";
+import type { UrlExclusion } from "./urls.ts";
 
 export interface Snapshot extends ProseResponse {
   bytes: number;
@@ -58,7 +59,7 @@ export interface HostScraper {
     sitemaps?: readonly { path: string; rootOnlyLocation?: string }[];
   };
   documentFormats?: readonly ("pdf" | "markdown")[];
-  excludeUrl?(url: string): string | null;
+  excludeUrl?(url: string): UrlExclusion | null;
   normalizeArticle?(input: ArticleInput): ArticleInput;
   vetHomepage(snapshot: Snapshot): { accepted: boolean; reason: string };
   extract(snapshot: Snapshot): { kind: "document"; input: ArticleInput } | { kind: "excluded"; reason: string };

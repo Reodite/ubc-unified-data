@@ -6,8 +6,9 @@
  * map means matching a venue address against the geospatial address data.
  */
 
-import type { Http, Output } from "../base.ts";
-import { register } from "../base.ts";
+import type { Http } from "../core/http.ts";
+import type { Output } from "../core/output.ts";
+import { register } from "../core/registry.ts";
 
 export const BASE = "https://events.ubc.ca/wp-json/tribe/events/v1";
 

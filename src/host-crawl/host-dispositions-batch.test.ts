@@ -1,7 +1,7 @@
 import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
-import { ROOT } from "../base.ts";
+import { ROOT } from "../core/output.ts";
 import { HostBatch } from "./batch.ts";
 import { DEFAULT_EXTERNAL_ROOT } from "./paths.ts";
 

@@ -9,7 +9,7 @@ import {
   type ProducerContext,
 } from "./contracts.ts";
 import { formatDocument, parseDocument } from "./document-format.ts";
-import { pageExclusion, UNSUPPORTED_DOCUMENT } from "./urls.ts";
+import { pageUrlPolicy, urlExclusion } from "./urls.ts";
 
 const hostname = "fixture.ubc.ca",
   origin = `https://${hostname}`;
@@ -64,7 +64,7 @@ function fixture() {
     vetHomepage: () => ({ accepted: true, reason: "fixture" }),
     excludeUrl(url) {
       const u = new URL(url);
-      return u.pathname === "/guide.pdf" || u.pathname === "/faq" ? null : pageExclusion(url, hostname);
+      return u.pathname === "/guide.pdf" || u.pathname === "/faq" ? null : pageUrlPolicy(url, hostname);
     },
     extract(snapshot) {
       return {
@@ -127,8 +127,10 @@ describe("complete HTML and linked-document collection", () => {
       original = f.scraper.excludeUrl!;
     f.scraper.excludeUrl = (value) => {
       const url = new URL(value);
-      if (/\/(?:admin|private)(?:\/|$)/.test(url.pathname)) return "Private or administrative path";
-      if (url.pathname.endsWith(".pdf")) return url.search ? "Unsupported query or form selection" : null;
+      if (/\/(?:admin|private)(?:\/|$)/.test(url.pathname))
+        return urlExclusion("private-route", "Private or administrative path");
+      if (url.pathname.endsWith(".pdf"))
+        return url.search ? urlExclusion("query", "Unsupported query or form selection") : null;
       return original(value);
     };
     f.pdf.snapshot.url = `${origin}${route.final}`;
@@ -204,7 +206,7 @@ describe("complete HTML and linked-document collection", () => {
     f.home.snapshot.body += '<a href="/?page=1">Next</a>';
     const original = f.scraper.excludeUrl!;
     f.scraper.excludeUrl = (url) =>
-      new URL(url).searchParams.has("page") ? "Unsupported query or form selection" : original(url);
+      new URL(url).searchParams.has("page") ? urlExclusion("query", "Pagination view is not declared") : original(url);
     await expect(collectRecordedHost(f.scraper, f.archive, producer, f.formats)).rejects.toThrow(/Linked pagination/);
     expect(f.archive.read).not.toHaveBeenCalledWith(`${origin}/?page=1`);
   });
@@ -213,8 +215,8 @@ describe("complete HTML and linked-document collection", () => {
     f.scraper.documentFormats = undefined;
     const exclude = f.scraper.excludeUrl!;
     f.scraper.excludeUrl = (url) => {
-      const ordinary = pageExclusion(url, hostname);
-      return ordinary === UNSUPPORTED_DOCUMENT ? ordinary : exclude(url);
+      const ordinary = pageUrlPolicy(url, hostname);
+      return ordinary?.code === "unsupported-document" ? ordinary : exclude(url);
     };
     f.home.snapshot.body +=
       '<a href="/guide.docx">DOCX</a><a href="/slides.pptx">PPTX</a><a href="/source.md">Markdown</a><a href="/archive.zip">Archive</a>';

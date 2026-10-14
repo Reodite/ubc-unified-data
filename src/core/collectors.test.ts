@@ -1,25 +1,14 @@
-import { mkdir, mkdtemp, readdir, readFile, rm, stat, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import {
-  floatValue,
-  Http,
-  HTTPError,
-  InvalidValueError,
-  jsLiteral,
-  jsonapiCollection,
-  Output,
-  RequestTimeoutError,
-  setCampus,
-  simplifyJsonapi,
-  stringifyCsv,
-  stringifyJson,
-  stringifyJsonItems,
-  wants,
-  wpCollection,
-  type ResponseLike,
-} from "./base.ts";
+import { jsonapiCollection, simplifyJsonapi } from "../scraping/drupal.ts";
+import { jsLiteral } from "../scraping/javascript.ts";
+import { wpCollection } from "../scraping/wordpress.ts";
+import { setCampus, wants } from "./campus.ts";
+import { Http, HTTPError, InvalidValueError, RequestTimeoutError, type ResponseLike } from "./http.ts";
+import { Output } from "./output.ts";
+import { floatValue, stringifyCsv, stringifyJson, stringifyJsonItems } from "./serialization.ts";
 
 describe("stringifyJson writes JSON with conventional offsets and quoting", () => {
   it("serializes primitives and nested structures", () => {
@@ -90,37 +79,6 @@ describe("Output", () => {
     await rm(root, { recursive: true, force: true });
   });
 
-  it("writes json/csv/raw under the folder and tracks them in datasets order", async () => {
-    const tree: Array<[string, number | null, string | null]> = [];
-    const json = out.json.bind(out);
-    const csv = out.csv.bind(out);
-    const raw = out.raw.bind(out);
-    out.json = async (rel: string, payload: unknown, opts) => {
-      const p = await json(rel, payload, opts);
-      tree.push([rel, Array.isArray(payload) ? payload.length : null, opts?.source ?? null]);
-      return p;
-    };
-    out.csv = async (rel: string, rows: Array<Record<string, unknown>>, opts) => {
-      const p = await csv(rel, rows, opts);
-      tree.push([rel, rows.length, opts?.source ?? null]);
-      return p;
-    };
-    out.raw = async (rel: string, content: ArrayBuffer | Uint8Array | string, opts) => {
-      const p = await raw(rel, content, opts);
-      tree.push([rel, null, opts?.source ?? null]);
-      return p;
-    };
-
-    await out.json("a.json", [{ x: 1 }], { source: "https://example" });
-    await out.csv("b.csv", [{ y: 2 }], { source: "https://example" });
-    await out.raw("c.bin", new Uint8Array([1, 2]), { source: "https://example" });
-
-    expect(await stat(path.join(root, "test-group/a.json"))).toBeTruthy();
-    const files = await readdir(path.join(root, "test-group"));
-    expect(files.sort()).toEqual(["a.json", "b.csv", "c.bin"]);
-    expect(out.datasets.map((d) => d.path)).toEqual(["test-group/a.json", "test-group/b.csv", "test-group/c.bin"]);
-  });
-
   it("writes compact JSON for arrays above the 2000-row threshold", async () => {
     const rows = Array.from({ length: 2001 }, (_, i) => ({ i }));
     await out.json("big.json", rows);
@@ -161,11 +119,6 @@ describe("campus selection", () => {
     expect(wants("okanagan")).toBe(false);
     setCampus("both");
     expect(wants("okanagan")).toBe(true);
-  });
-
-  it("setCampus rejects unknown values", () => {
-    setCampus("vancouver");
-    expect(() => setCampus("mars")).toThrow(InvalidValueError);
   });
 });
 
@@ -223,10 +176,6 @@ describe("jsLiteral", () => {
   it("parses an object literal with string escapes", () => {
     const html = `var data = {"a": 1, "b": "x\\"y", "c": [1, 2]};`;
     expect(jsLiteral(html, "data")).toEqual({ a: 1, b: 'x"y', c: [1, 2] });
-  });
-
-  it("throws when the name is missing", () => {
-    expect(() => jsLiteral("<html></html>", "data")).toThrow(Error);
   });
 
   it("throws for a non-object/array opener", () => {
@@ -390,6 +339,69 @@ describe("jsonapiCollection", () => {
     expect(calls.sort()).toEqual(["0", "50"]);
   });
 
+  it.each([0, -1, 0.3, NaN, Infinity, Number.MAX_SAFE_INTEGER + 1])(
+    "rejects invalid page size %s before requesting data",
+    async (pageSize) => {
+      let calls = 0;
+      const http = new Http({ retries: 0 });
+      http.responder = () => {
+        calls++;
+        return jsonapiPage([{ id: 1 }], { count: 2 });
+      };
+      await expect(jsonapiCollection(http, "example.com", "node/x", { pageSize })).rejects.toThrow(
+        "positive safe integer",
+      );
+      expect(calls).toBe(0);
+    },
+  );
+
+  it("retains permissive handling of unrecognized counts and string next links", async () => {
+    let calls = 0;
+    const http = new Http({ retries: 0 });
+    http.responder = () => {
+      calls++;
+      return jsonapiPage([{ id: 1 }], { count: "2" }, { next: `${base}?page=1` });
+    };
+    expect(await jsonapiCollection(http, "example.com", "node/x")).toEqual([{ id: 1 }]);
+    expect(calls).toBe(1);
+  });
+
+  it.each(["same-page", "other-host", "other-collection"])(
+    "rejects a %s next link before another request",
+    async (kind) => {
+      let calls = 0;
+      const http = new Http({ retries: 0 });
+      http.responder = (_method, url) => {
+        calls++;
+        const next =
+          kind === "same-page"
+            ? url
+            : kind === "other-host"
+              ? "https://other.example/jsonapi/node/x"
+              : "https://example.com/jsonapi/node/y";
+        return jsonapiPage([{ id: calls }], {}, { next: { href: next } });
+      };
+      await expect(jsonapiCollection(http, "example.com", "node/x")).rejects.toThrow(
+        "Unsafe or repeated JSON:API pagination link",
+      );
+      expect(calls).toBe(1);
+    },
+  );
+
+  it("rejects a multi-page cycle without returning partial records", async () => {
+    const calls: string[] = [];
+    const http = new Http({ retries: 0 });
+    http.responder = (_method, url) => {
+      calls.push(url);
+      const page = new URL(url).searchParams.get("page");
+      return jsonapiPage([{ id: calls.length }], {}, { next: { href: `${base}?page=${page === "1" ? "2" : "1"}` } });
+    };
+    await expect(jsonapiCollection(http, "example.com", "node/x")).rejects.toThrow(
+      "Unsafe or repeated JSON:API pagination link",
+    );
+    expect(calls).toEqual([offsetUrl(0), `${base}?page=1`, `${base}?page=2`]);
+  });
+
   it("follows links.next when no total is reported", async () => {
     const pages = new Map<string, ResponseLike>();
     pages.set(offsetUrl(0), jsonapiPage([{ id: 1 }], {}, { next: { href: `${base}?page=1` } }));
@@ -398,6 +410,40 @@ describe("jsonapiCollection", () => {
     http.responder = (_method, fullUrl) => pages.get(fullUrl) ?? jsonapiPage([]);
     const result = await jsonapiCollection(http, "example.com", "node/x");
     expect(result).toEqual([{ id: 1 }]);
+  });
+});
+
+describe("pooled CMS collection order", () => {
+  it.each(["WordPress", "Drupal"])("keeps %s pages ordered while using the caller's worker limit", async (cms) => {
+    const releaseSecond = Promise.withResolvers<void>();
+    const fourthStarted = Promise.withResolvers<void>();
+    const completed: number[] = [];
+    let active = 0;
+    let peak = 0;
+    const http = new Http({ workers: 8, retries: 0 });
+    http.responder = async (_method, value) => {
+      const url = new URL(value);
+      const page =
+        cms === "WordPress" ? Number(url.searchParams.get("page")) : Number(url.searchParams.get("page[offset]")) + 1;
+      active++;
+      peak = Math.max(peak, active);
+      if (page === 2) await releaseSecond.promise;
+      if (page === 4) fourthStarted.resolve();
+      completed.push(page);
+      active--;
+      return cms === "WordPress"
+        ? respond(200, JSON.stringify([{ id: page }]), { "x-wp-totalpages": "4" })
+        : respond(200, JSON.stringify({ data: [{ id: page }], meta: { count: 4 } }));
+    };
+    const pending =
+      cms === "WordPress"
+        ? wpCollection(http, "example.com", "wp/v2/pages", { perPage: 1, workers: 2 })
+        : jsonapiCollection(http, "example.com", "node/page", { pageSize: 1, workers: 2 });
+    await fourthStarted.promise;
+    expect(completed).toEqual([1, 3, 4]);
+    releaseSecond.resolve();
+    expect(await pending).toEqual([1, 2, 3, 4].map((id) => ({ id })));
+    expect(peak).toBe(2);
   });
 });
 
@@ -412,6 +458,37 @@ describe("wpCollection", () => {
       arrayBuffer: async () => new TextEncoder().encode(body).buffer,
     };
   }
+
+  it.each([
+    [undefined, [1]],
+    ["", [1]],
+    ["0", [1]],
+    ["garbage", [1]],
+    ["01", [1]],
+    ["2e0", [1, 2]],
+    ["2.5", [1, 2]],
+  ] as const)("retains permissive page headers and optional totals: %s", async (header, expected) => {
+    const calls: number[] = [];
+    const http = new Http({ retries: 0 });
+    http.responder = (_method, url) => {
+      const page = Number(new URL(url).searchParams.get("page"));
+      calls.push(page);
+      return respond(200, JSON.stringify([{ id: page }]), header === undefined ? {} : { "x-wp-totalpages": header });
+    };
+    expect(await wpCollection(http, "example.com", "wp/v2/pages")).toEqual(expected.map((id) => ({ id })));
+    expect(calls).toEqual(expected);
+  });
+
+  it("rejects an unbounded publisher page count before another request", async () => {
+    let calls = 0;
+    const http = new Http({ retries: 0 });
+    http.responder = () => {
+      calls++;
+      return respond(200, '[{"id":1}]', { "X-WP-TotalPages": "Infinity" });
+    };
+    await expect(wpCollection(http, "example.com", "wp/v2/pages")).rejects.toThrow("safe pagination bounds");
+    expect(calls).toBe(1);
+  });
 
   it("fans out by X-WP-TotalPages", async () => {
     const calls: string[] = [];

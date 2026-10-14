@@ -660,7 +660,7 @@ async function runCommand(files: ChangedFile[], args: string[], publishedHosts?:
   const errors = vi.spyOn(console, "error").mockImplementation(() => {});
   vi.resetModules();
   vi.doMock("node:child_process", () => ({ execFileSync: git }));
-  vi.doMock("../base.ts", () => ({ ROOT: "/fixture" }));
+  vi.doMock("../core/output.ts", () => ({ ROOT: "/fixture" }));
   vi.doMock("./registry.ts", () => ({ registeredHostnames: () => [host, otherHost] }));
   vi.doMock("./public-validation.ts", async (importOriginal) => ({
     ...(await importOriginal<typeof import("./public-validation.ts")>()),
@@ -685,7 +685,7 @@ async function runCommand(files: ChangedFile[], args: string[], publishedHosts?:
     output.mockRestore();
     errors.mockRestore();
     vi.doUnmock("node:child_process");
-    vi.doUnmock("../base.ts");
+    vi.doUnmock("../core/output.ts");
     vi.doUnmock("./registry.ts");
     vi.doUnmock("./public-validation.ts");
     vi.resetModules();

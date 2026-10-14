@@ -1,15 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { Http } from "./base.ts";
-import {
-  contentLinks,
-  document,
-  drupalRecords,
-  plainText,
-  uniqueRows,
-  webUrl,
-  wordpressDocument,
-  wordpressPages,
-} from "./source-documents.ts";
+import { Http } from "./core/http.ts";
+import { drupalRecords } from "./scraping/drupal.ts";
+import { wordpressDocument, wordpressPages } from "./scraping/wordpress.ts";
+import { contentLinks, document, plainText, uniqueRows, webUrl } from "./source-documents.ts";
 
 const SOURCE = "https://learningcommons.ubc.ca/example/";
 

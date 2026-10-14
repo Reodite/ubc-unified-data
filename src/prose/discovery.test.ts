@@ -109,6 +109,66 @@ describe("complete prose inventories", () => {
     expect(result.entries).toEqual([]);
   });
 
+  it.each(["01", "1e0", "+1", "1.0", "0x1"])("retains Number-compatible prose totals %s", async (header) => {
+    const result = await discoverWordpress(
+      source,
+      client((url) =>
+        url.pathname.endsWith("/types")
+          ? json({ page: { rest_base: "pages" } })
+          : json([page(1)], { "x-wp-total": header, "x-wp-totalpages": header }),
+      ),
+    );
+    expect(result.errors).toEqual([]);
+    expect(result.entries).toHaveLength(1);
+  });
+
+  it("distinguishes present empty headers from absent prose totals", async () => {
+    const run = (headers: Record<string, string>) =>
+      discoverWordpress(
+        source,
+        client((url) => (url.pathname.endsWith("/types") ? json({ page: { rest_base: "pages" } }) : json([], headers))),
+      );
+    expect((await run({ "x-wp-total": "", "x-wp-totalpages": "" })).errors).toEqual([]);
+    expect((await run({})).errors.join(" ")).toContain("Missing/changing WordPress totals");
+  });
+
+  it("stops before requesting a third WordPress page after inconsistent second-page totals", async () => {
+    const calls: number[] = [];
+    const result = await discoverWordpress(
+      source,
+      client((url) => {
+        if (url.pathname.endsWith("/types")) return json({ page: { rest_base: "pages" } });
+        const number = Number(url.searchParams.get("page"));
+        calls.push(number);
+        return json(
+          Array.from({ length: 100 }, (_, id) => page((number - 1) * 100 + id)),
+          {
+            "x-wp-total": "201",
+            "x-wp-totalpages": number === 1 ? "3" : "2",
+          },
+        );
+      }),
+    );
+    expect(result.errors.join(" ")).toContain("Missing/changing WordPress totals");
+    expect(calls).toEqual([1, 2]);
+    expect(result.entries).toHaveLength(100);
+    expect(result.inventories).toHaveLength(1);
+  });
+
+  it("validates consumed WordPress identities before requesting the next page", async () => {
+    const calls: number[] = [];
+    const result = await discoverWordpress(
+      source,
+      client((url) => {
+        if (url.pathname.endsWith("/types")) return json({ page: { rest_base: "pages" } });
+        calls.push(Number(url.searchParams.get("page")));
+        return json([page(1), page(1)], { "x-wp-total": "101", "x-wp-totalpages": "2" });
+      }),
+    );
+    expect(result.errors.join(" ")).toContain("Duplicate WordPress page id 1");
+    expect(calls).toEqual([1]);
+  });
+
   it("reports unexposed placeholders without constructing private record URLs", async () => {
     const urls: string[] = [];
     const result = await discoverWordpress(
@@ -196,6 +256,40 @@ describe("complete prose inventories", () => {
     );
     expect(result.errors.join(" ")).toContain("Unsafe or cyclic");
     expect(batches).toBe(1);
+  });
+
+  it("rejects a Drupal cycle before requesting an earlier page twice", async () => {
+    const calls: string[] = [];
+    const result = await discoverDrupal(
+      { ...source, strategy: "drupal", drupalTypes: ["ubc_page"] },
+      client((url) => {
+        if (url.pathname === "/jsonapi") return json({ links: { "node--ubc_page": {} } });
+        calls.push(url.href);
+        return json({
+          data: [node(calls.length)],
+          links: { next: calls.length === 1 ? "?page%5Boffset%5D=50" : calls[0] },
+        });
+      }),
+    );
+    expect(result.errors.join(" ")).toContain("Unsafe or cyclic JSON:API next link");
+    expect(calls).toHaveLength(2);
+  });
+
+  it("accepts Number-compatible increasing Drupal offsets but rejects malformed next envelopes", async () => {
+    const run = (next: unknown) =>
+      discoverDrupal(
+        { ...source, strategy: "drupal", drupalTypes: ["ubc_page"] },
+        client((url) => {
+          if (url.pathname === "/jsonapi") return json({ links: { "node--ubc_page": {} } });
+          return url.searchParams.has("page[offset]")
+            ? json({ data: [node(2)] })
+            : json({ data: [node(1)], links: { next } });
+        }),
+      );
+    const result = await run("?page%5Boffset%5D=5e1");
+    expect(result.errors).toEqual([]);
+    expect(result.entries).toHaveLength(2);
+    expect((await run({})).errors.join(" ")).toContain("Invalid JSON:API next link:");
   });
 
   it("rejects Drupal next links that leave the requested collection", async () => {

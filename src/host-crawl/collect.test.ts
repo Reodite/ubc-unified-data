@@ -1,7 +1,6 @@
 import { createHash } from "node:crypto";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { wordpressCollectionUrl } from "./adapters/wordpress-discovery.ts";
-import { defineWordpressHost } from "./adapters/wordpress-page.ts";
 import { collectRecordedHost } from "./collect.ts";
 import {
   DocumentPolicyError,
@@ -13,8 +12,10 @@ import {
   type Snapshot,
 } from "./contracts.ts";
 import { formatDocument, parseDocument } from "./document-format.ts";
+import { FileIntegrityError, RecordingError, savedRequestFailure } from "./errors.ts";
 import { createGenericScraper } from "./generic.ts";
 import { formatHostList } from "./public-validation.ts";
+import { defineWordpressHost } from "./scraper.ts";
 
 const host = "fixture.ubc.ca";
 const origin = `https://${host}`;
@@ -148,6 +149,37 @@ afterEach(() => {
 });
 
 describe("recorded complete-host collection", () => {
+  it.each([
+    ["recording integrity", new RecordingError("Opaque storage failure", "integrity")],
+    ["live file change", new FileIntegrityError("Opaque changed input")],
+    ...["ENOENT", "EIO", "ENOSPC"].flatMap<[string, Error]>((code) => {
+      const detail = `${code}: storage failure, open '/objects/page'`;
+      return [
+        [`live ${code}`, Object.assign(new Error(detail), { code })],
+        [`persisted ${code}`, savedRequestFailure(`Error: ${detail}`)],
+        [`wrapped ${code}`, savedRequestFailure(`Error: Saved request failure: Error: ${detail}`)],
+      ];
+    }),
+  ])("stops on %s independently of diagnostic wording", async (_label, failure) => {
+    const f = setup();
+    f.archive.readDocument = async (url) => {
+      if (url === post) throw failure;
+      return f.archive.read(url);
+    };
+    await expect(collectRecordedHost(fixtureScraper, f.archive, producer)).rejects.toBe(failure);
+    expect(f.archive.assertUnchanged).not.toHaveBeenCalled();
+  });
+
+  it("does not interpret transport diagnostic words as integrity or budget codes", async () => {
+    const f = setup();
+    f.archive.readDocument = async (url) => {
+      if (url === post) throw new Error("Remote budget guide changed");
+      return f.archive.read(url);
+    };
+    await expect(collectRecordedHost(fixtureScraper, f.archive, producer)).rejects.toThrow(
+      "Required page observations are unavailable",
+    );
+  });
   it("omits ambiguous generic CMS dates without selecting an API record", async () => {
     const f = setup();
     const collection = f.values.get(wordpressCollectionUrl(`${api}wp/v2/posts`, 1))!;

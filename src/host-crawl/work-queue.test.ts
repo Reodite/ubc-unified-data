@@ -5,7 +5,7 @@ import { dirname, join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { pathToFileURL } from "node:url";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { ROOT } from "../base.ts";
+import { ROOT } from "../core/output.ts";
 import { DEFAULT_EXTERNAL_ROOT } from "./paths.ts";
 import type { HostWorkClaim, HostWorkQueue } from "./work-queue.ts";
 
@@ -25,7 +25,10 @@ beforeAll(async () => {
   repository = join(root, "repository");
   // Exact source copies keep both the repository and external SQLite fixtures inside the selected test workspace.
   for (const file of [
-    "base.ts",
+    "core/http.ts",
+    "core/output.ts",
+    "core/response.ts",
+    "core/serialization.ts",
     "prose/client.ts",
     "host-crawl/paths.ts",
     "host-crawl/urls.ts",

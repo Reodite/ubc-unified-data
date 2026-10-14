@@ -1,69 +1,16 @@
-import type { Http, Output } from "../base.ts";
-import { InvalidValueError, register, utcnow, wants } from "../base.ts";
+import { wants } from "../core/campus.ts";
+import { InvalidValueError, type Http } from "../core/http.ts";
+import type { Output } from "../core/output.ts";
+import { register } from "../core/registry.ts";
+import { utcnow } from "../core/utils.ts";
 import { FACT_COLUMNS, publishFacts } from "../public-facts.ts";
-import {
-  document,
-  drupalRecords,
-  object,
-  plainText,
-  string,
-  wordpressDocument,
-  wordpressPages,
-  type Row,
-  type SourceDocument,
-} from "../source-documents.ts";
+import { drupalDocument, drupalRecords, richText, unavailableRelationships } from "../scraping/drupal.ts";
+import { wordpressDocument, wordpressPages } from "../scraping/wordpress.ts";
+import { object, plainText, string, type Row } from "../source-documents.ts";
 
 const IT = "it.ubc.ca";
 const WELLBEING = "wellbeing.ubc.ca";
 const COMMONS = "learningcommons.ubc.ca";
-
-function richText(value: unknown): string {
-  return string(object(value).processed) || string(object(value).value);
-}
-
-export function drupalDocument(
-  row: Row,
-  sourceId: string,
-  host: string,
-  resource: string,
-  campus: string | null,
-  at: string,
-  fields: Record<string, string> = {},
-): SourceDocument {
-  if (row.status !== true) throw new InvalidValueError(`Non-public Drupal node from ${host}: ${row.id}`);
-  const alias = string(row.alias) || `/node/${row.nid}`;
-  const url = new URL(alias, `https://${host}`).href;
-  if (new URL(url).hostname !== host) throw new InvalidValueError(`Unexpected Drupal source host: ${url}`);
-  const fragments = [richText(row.body)];
-  for (const [name, label] of Object.entries(fields)) {
-    const html = richText(row[name]);
-    if (html) fragments.push(`<h2>${label}</h2>\n${html}`);
-  }
-  return {
-    ...document({
-      sourceId,
-      upstreamId: String(row.id),
-      url,
-      apiUrl: `https://${host}/jsonapi/${resource}/${row.id}`,
-      campus,
-      title: string(row.title),
-      html: fragments.join("\n"),
-      modified: string(row.changed) || string(object(row.changed).value) || null,
-      retrievedAt: at,
-    }),
-    upstream_id: row.id,
-    unavailable_relationships: unavailableRelationships(row),
-    related: Object.fromEntries(
-      Object.entries(object(row.related)).filter(([key]) => !["uid", "revision_uid", "node_type"].includes(key)),
-    ),
-  };
-}
-
-export function unavailableRelationships(row: Row): string[] {
-  return Object.entries(object(row.related))
-    .filter(([, value]) => value === "missing" || (Array.isArray(value) && value.includes("missing")))
-    .map(([key]) => key);
-}
 
 export function relatedNames(row: Row, key: string, terms: Row[]): string[] {
   const value = object(row.related)[key];

@@ -1,14 +1,11 @@
-/** Course grade distributions, by section, for UBC Vancouver.
- *
- * Source: the DonneyF/ubc-pair-grade-data GitHub repository, which mirrors the
- * distribution data behind UBC's public grade dashboard. The raw per-subject
- * CSVs are mirrored verbatim under `raw/`, then parsed into one
- * `distributions.json` table: one row per section, with the grade histogram
- * buckets as columns. UBCV rows only, matching the dashboard's coverage.
- */
+/** UBC Vancouver section grade distributions from DonneyF/ubc-pair-grade-data,
+ * a mirror of UBC's public dashboard. Subject CSVs use LF under `raw/`;
+ * `distributions.json` contains one row per section with histogram buckets. */
 
-import type { Http, Output } from "../base.ts";
-import { register } from "../base.ts";
+import type { Http } from "../core/http.ts";
+import type { Output } from "../core/output.ts";
+import { register } from "../core/registry.ts";
+import { githubSnapshot } from "../scraping/github.ts";
 
 export const ORG = "DonneyF";
 export const REPO = "ubc-pair-grade-data";
@@ -40,9 +37,7 @@ function toFloat(value: string | undefined): number | null {
   return Number.isNaN(n) ? null : n;
 }
 
-/** Simple CSV parse: split on newlines, handle quoted fields and `""` inside
- * them. Good enough for the grade CSVs, whose quoted cells never span a
- * newline. */
+/** Parse grade CSVs with quoted fields and doubled quotes, but no multiline cells. */
 export function parseCSV(text: string): Array<Record<string, string>> {
   const lines = text.split(/\r?\n/).filter((line) => line.trim().length > 0);
   if (lines.length < 2) return [];
@@ -151,40 +146,19 @@ export const Grades = register(
 
     async collect(http: Http, out: Output): Promise<void> {
       const slug = `${ORG}/${REPO}`;
-      const meta = (await http.getJson(`https://api.github.com/repos/${slug}`)) as Record<string, unknown>;
-      const branch = (meta["default_branch"] as string | undefined) ?? "master";
-      const head = (await http.getJson(`https://api.github.com/repos/${slug}/commits/${branch}`)) as Record<
-        string,
-        unknown
-      >;
-      const sha = head["sha"] as string;
-
-      const tree = (await http.getJson(`https://api.github.com/repos/${slug}/git/trees/${sha}`, {
-        params: { recursive: "1" },
-      })) as Record<string, unknown>;
-      if (tree["truncated"]) {
-        throw new Error(`GitHub truncated ${slug}'s file tree; it outgrew one listing`);
-      }
-
-      const paths: string[] = [];
-      for (const node of (tree["tree"] as Array<Record<string, unknown>>) ?? []) {
-        const path = (node["path"] as string) ?? "";
-        if ((node["type"] as string) !== "blob") continue;
-        if (!path.startsWith(`${SRC_DIR}/`) || !path.endsWith(".csv")) continue;
-        paths.push(path);
-      }
+      const snapshot = await githubSnapshot(http, slug);
+      const paths = snapshot.paths.filter((path) => path.startsWith(`${SRC_DIR}/`) && path.endsWith(".csv"));
 
       const fetchOne = async (path: string): Promise<[string, string]> => {
-        const bytes = await http.getBytes(`https://raw.githubusercontent.com/${slug}/${sha}/${path}`);
-        // This raw mirror uses LF, so normalize upstream CRLF before both
-        // writing the file and parsing its rows.
+        const bytes = await http.getBytes(snapshot.rawUrl(path));
+        // Normalize CRLF before both mirroring and parsing.
         return [path, new TextDecoder("utf-8", { fatal: false }).decode(bytes).replaceAll("\r\n", "\n")];
       };
 
       const rows: GradeRow[] = [];
       for (const [path, text] of await http.map(fetchOne, paths, 8)) {
         const dest = `raw/${path.slice(SRC_DIR.length + 1)}`;
-        await out.raw(dest, text, { source: `https://github.com/${slug}/blob/${sha}/${path}` });
+        await out.raw(dest, text, { source: snapshot.blobUrl(path) });
         for (const record of parseCSV(text)) {
           const row = gradeRow(record);
           if (row) rows.push(row);
@@ -200,7 +174,7 @@ export const Grades = register(
           a.section.localeCompare(b.section),
       );
       await out.json("distributions.json", rows, {
-        source: `https://github.com/${slug}/tree/${sha}/${SRC_DIR}`,
+        source: `https://github.com/${slug}/tree/${snapshot.sha}/${SRC_DIR}`,
         itemsPerLine: true,
       });
     }

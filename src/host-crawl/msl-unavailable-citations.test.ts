@@ -1,7 +1,10 @@
 import { createHash } from "node:crypto";
 import { describe, expect, it } from "vitest";
+import {
+  discoverReviewedMslUnavailableLinks,
+  type MslCitationWitness,
+} from "../host-scrapers/policies/msl-unavailable-citations.ts";
 import type { Observation, Snapshot } from "./contracts.ts";
-import { discoverReviewedMslUnavailableLinks, type MslCitationWitness } from "./msl-unavailable-citations.ts";
 
 const hostname = "www.msl.ubc.ca";
 const sourceUrl = `https://${hostname}/story/`;

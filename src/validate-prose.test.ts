@@ -2,7 +2,7 @@ import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { stringifyCsv } from "./base.ts";
+import { stringifyCsv } from "./core/serialization.ts";
 import { makeArticle, type CollectionResult, type ProseSource } from "./prose/model.ts";
 import { writeProseCategory, writeProseIndex } from "./prose/output.ts";
 import { validateProseData } from "./validate-prose.ts";

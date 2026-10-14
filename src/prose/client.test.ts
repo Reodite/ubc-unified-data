@@ -1,7 +1,7 @@
 import { mkdtemp, readdir, rm, stat } from "node:fs/promises";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { ROOT } from "../base.ts";
+import { ROOT } from "../core/output.ts";
 import { EXTERNAL_BOUNDARY } from "../host-crawl/paths.ts";
 import { ProseClient, publicUbcUrl } from "./client.ts";
 

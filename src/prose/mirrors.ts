@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { compareStrings, DATA_DIR } from "../base.ts";
+import { DATA_DIR } from "../core/output.ts";
+import { compareStrings } from "../core/utils.ts";
 import { object, plainText, string, webUrl, type Row } from "../source-documents.ts";
 import { fetchDisposition, ProseFetchError, type ProseClient } from "./client.ts";
 import { extractArticle, needsRenderedHtml, NonArticleError } from "./html.ts";

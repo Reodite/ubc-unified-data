@@ -1,7 +1,10 @@
 import { createHash } from "node:crypto";
 import { describe, expect, it } from "vitest";
+import {
+  discoverReviewedUnavailableLinks,
+  type ReviewedUnavailableLink,
+} from "../host-scrapers/policies/unavailable-link-policy.ts";
 import type { Observation, Snapshot } from "./contracts.ts";
-import { discoverReviewedUnavailableLinks, type ReviewedUnavailableLink } from "./unavailable-link-policy.ts";
 
 const hostname = "example.ubc.ca";
 const sourceUrl = `https://${hostname}/event`;

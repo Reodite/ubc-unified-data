@@ -3,7 +3,8 @@ import { constants, lstatSync, type BigIntStats } from "node:fs";
 import { open, readdir } from "node:fs/promises";
 import { isAbsolute, join, parse, relative, resolve, sep } from "node:path";
 import { isDeepStrictEqual } from "node:util";
-import { compareStrings, ROOT } from "../base.ts";
+import { ROOT } from "../core/output.ts";
+import { compareStrings } from "../core/utils.ts";
 import type { ProducerContext } from "./contracts.ts";
 
 function hash(value: string | Buffer): string {

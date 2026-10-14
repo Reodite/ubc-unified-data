@@ -1,21 +1,8 @@
+import type { ChildProcess } from "node:child_process";
 import { EventEmitter } from "node:events";
-import { readFile, writeFile } from "node:fs/promises";
-import { stripTypeScriptTypes } from "node:module";
 import { PassThrough } from "node:stream";
-import { fileURLToPath, pathToFileURL } from "node:url";
-import type { MarkdownArtifactBindings, MarkdownArtifactCandidate } from "../markdown-artifacts.ts";
 import type { MarkdownInspection } from "../markdown-contract.mjs";
-import type { MarkdownProfileEvidence } from "../markdown-profile.ts";
-import type { PreparedMarkdownRequest } from "../markdown-protocol.mjs";
-import type {
-  disposeMarkdownRuntime,
-  inspectMarkdownRuntime,
-  MarkdownRuntime,
-  MarkdownTerminationEvidence,
-} from "../markdown-runtime.ts";
 
-const IMPLEMENTATION_PATH = fileURLToPath(new URL("../markdown-runtime.ts", import.meta.url));
-const SOURCE_DIRECTORY = new URL("../", import.meta.url);
 export const SELF_TEST_BYTES = Buffer.from("Body\r\n", "utf8");
 export const SELF_TEST_INSPECTION: MarkdownInspection = Object.freeze({
   source_bytes: 6,
@@ -25,77 +12,6 @@ export const SELF_TEST_INSPECTION: MarkdownInspection = Object.freeze({
   links: Object.freeze([]),
   stats: Object.freeze({ emitted_tokens: 4, links: 0, max_depth: 1 }),
 });
-
-export type ProcessObservation =
-  Readonly<{ state: string; starttime: string }> | Readonly<{ absent: true }> | Readonly<{ error: true }>;
-
-export type ExecutionOwner = { child: FakeChild | null; killSent: boolean };
-
-export type RuntimeDependencies = {
-  capture(signal?: AbortSignal): Promise<MarkdownArtifactCandidate>;
-  verify(candidate: MarkdownArtifactCandidate): Promise<void>;
-  invoke(
-    candidate: MarkdownArtifactCandidate,
-    request: PreparedMarkdownRequest,
-    signal: AbortSignal | undefined,
-    owner: ExecutionOwner,
-  ): Promise<Readonly<{ ok: true; inspection: MarkdownInspection; termination: MarkdownTerminationEvidence }>>;
-  dispose(candidate: MarkdownArtifactCandidate): Promise<void>;
-};
-
-export type InvocationDependencies = {
-  withBindings<T>(
-    candidate: MarkdownArtifactCandidate,
-    callback: (bindings: MarkdownArtifactBindings) => T | Promise<T>,
-  ): Promise<T>;
-  supervise(
-    profile: MarkdownProfileEvidence,
-    bindings: MarkdownArtifactBindings,
-    request: PreparedMarkdownRequest,
-    wire: Uint8Array,
-    owner: ExecutionOwner,
-  ): Promise<Readonly<{ ok: true; inspection: MarkdownInspection; termination: MarkdownTerminationEvidence }>>;
-};
-
-export type SupervisionDependencies = {
-  spawn(command: string, args: string[], options: Record<string, unknown>): FakeChild;
-  observeProcess(pid: number): Promise<ProcessObservation>;
-  delay(milliseconds: number): Promise<unknown>;
-};
-
-export interface RuntimeInternals {
-  invocationArguments(profile: MarkdownProfileEvidence, bindings: MarkdownArtifactBindings): readonly string[];
-  parseProcessStat(pid: number, stat: string): Readonly<{ state: string; starttime: string }> | null;
-  terminationEvidence(
-    initial: ProcessObservation | undefined,
-    final: ProcessObservation,
-  ): MarkdownTerminationEvidence | null;
-  superviseInvocation(
-    profile: MarkdownProfileEvidence,
-    bindings: MarkdownArtifactBindings,
-    request: PreparedMarkdownRequest,
-    wire: Uint8Array,
-    owner: ExecutionOwner,
-    dependencies?: SupervisionDependencies,
-  ): Promise<Readonly<{ ok: true; inspection: MarkdownInspection; termination: MarkdownTerminationEvidence }>>;
-  prepareMarkdownRuntimeWithDependencies(
-    options: { signal?: AbortSignal } | undefined,
-    dependencies: RuntimeDependencies,
-  ): Promise<MarkdownRuntime>;
-  invokeCandidate(
-    candidate: MarkdownArtifactCandidate,
-    request: PreparedMarkdownRequest,
-    signal: AbortSignal | undefined,
-    owner: ExecutionOwner,
-    dependencies?: InvocationDependencies,
-  ): Promise<Readonly<{ ok: true; inspection: MarkdownInspection; termination: MarkdownTerminationEvidence }>>;
-}
-
-export interface InstrumentedRuntimeModule {
-  __runtimeTestInternals: RuntimeInternals;
-  inspectMarkdownRuntime: typeof inspectMarkdownRuntime;
-  disposeMarkdownRuntime: typeof disposeMarkdownRuntime;
-}
 
 export interface FakeScenario {
   stdout?: Uint8Array;
@@ -167,6 +83,10 @@ export class FakeChild extends EventEmitter {
     if (scenario.automatic !== false) setImmediate(() => this.complete());
   }
 
+  get process(): ChildProcess {
+    return this as unknown as ChildProcess;
+  }
+
   kill(signal: NodeJS.Signals): boolean {
     this.kills.push(signal);
     if (this.scenario.closeOnKill === true) setImmediate(() => this.complete(null, signal));
@@ -217,20 +137,4 @@ export class FakeChild extends EventEmitter {
 
 function defaultStatuses(): readonly Buffer[] {
   return [Buffer.from('{"child-pid":31337}\n'), Buffer.from('{"exit-code":0}\n')];
-}
-
-export async function loadInternals(testParent: string): Promise<InstrumentedRuntimeModule> {
-  const source = (await readFile(IMPLEMENTATION_PATH, "utf8")).replace(
-    /(from\s+["'])(\.[^"']+)(["'])/g,
-    (_match, prefix: string, specifier: string, suffix: string) =>
-      `${prefix}${new URL(specifier, SOURCE_DIRECTORY).href}${suffix}`,
-  );
-  const instrumentedSource = `${source}\nexport const __runtimeTestInternals = Object.freeze({ invocationArguments: _invocationArguments, parseProcessStat, terminationEvidence, superviseInvocation, prepareMarkdownRuntimeWithDependencies, invokeCandidate });\n`;
-  const transformed = stripTypeScriptTypes(instrumentedSource, {
-    mode: "strip",
-    sourceUrl: pathToFileURL(IMPLEMENTATION_PATH).href,
-  });
-  const path = `${testParent}/instrumented-${process.pid}.mjs`;
-  await writeFile(path, transformed, { mode: 0o600 });
-  return (await import(`${pathToFileURL(path).href}?${Date.now()}`)) as InstrumentedRuntimeModule;
 }

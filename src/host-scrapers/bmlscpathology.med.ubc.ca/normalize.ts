@@ -1,10 +1,10 @@
 import { load, type Cheerio, type CheerioAPI } from "cheerio";
 import type { Element } from "domhandler";
 import type { ArticleInput } from "../../prose/model.ts";
+import { normalizedText as text } from "../../scraping/html.ts";
 
 const MARQUEE = "#student-stories.testimonials-section > .pura-card";
 const COLUMNS = `${MARQUEE} > .pura-right > .pura-col`;
-const text = (value: string) => value.replace(/\s+/g, " ").trim();
 
 function requireShape(condition: boolean, context: string): asserts condition {
   if (!condition) throw new Error(`Malformed BMLSc ${context}`);

@@ -32,12 +32,12 @@ export function parseGenericHostnames(bytes: Uint8Array): string[] {
 const genericHostnames = parseGenericHostnames(
   readFileSync(new URL("../host-scrapers/generic-hosts.json", import.meta.url)),
 );
-const registry = createRegistry([
-  bmlscScraper,
-  bullyingAndHarassmentScraper,
-  coopScraper,
-  ...genericHostnames.map(createGenericScraper),
-]);
+const specialized = createRegistry([bmlscScraper, bullyingAndHarassmentScraper, coopScraper]);
+const registry = createRegistry([...specialized.values(), ...genericHostnames.map(createGenericScraper)]);
+
+export function specializedHostnames(): string[] {
+  return [...specialized.keys()].sort();
+}
 export function registeredHostnames(): string[] {
   return [...registry.keys()].sort();
 }

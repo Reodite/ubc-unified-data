@@ -1,30 +1,20 @@
-import { defineWordpressHost } from "../../host-crawl/adapters/wordpress-page.ts";
-import type { HostScraper } from "../../host-crawl/contracts.ts";
+import { defineWordpressHost } from "../../host-crawl/scraper.ts";
+import { normalizedText as text } from "../../scraping/html.ts";
+import { hasUbcBranding } from "../../scraping/ubc.ts";
 
 const HOME = "https://bullyingandharassment.ubc.ca/";
 const UNIT = "Bullying and Harassment Prevention at UBC";
 const CONTENT = "#content > .hentry > .entry-content";
-const text = (value: string) => value.replace(/\s+/g, " ").trim();
 const matches = (value: string, clauses: RegExp[]) => clauses.every((clause) => clause.test(value));
 
-const base = defineWordpressHost({
+export const bullyingAndHarassmentScraper = defineWordpressHost({
   hostname: "bullyingandharassment.ubc.ca",
   title: UNIT,
   scope:
     "Public UBC workplace bullying and harassment definitions, reporting, supervisor procedures, training and resources for faculty, staff and student employees.",
   selectors: [CONTENT],
   officialHomepage($, snapshot) {
-    const wordmark = $("#ubc7-header #ubc7-wordmark a").first();
-    const unit = $("#ubc7-unit-name a").first();
-    if (
-      text(wordmark.text()) !== "The University of British Columbia" ||
-      new URL(wordmark.attr("href") ?? "", snapshot.url).href !== "https://www.ubc.ca/" ||
-      text(unit.find("#ubc7-unit-identifier").text()) !== UNIT ||
-      !unit.attr("href") ||
-      new URL(unit.attr("href") ?? "", snapshot.url).href !== HOME ||
-      text($("#ubc7-footer #ubc7-address-unit-name").text()) !== "Human Resources"
-    )
-      return false;
+    if (!hasUbcBranding($, snapshot.url, { homepage: HOME, unit: UNIT, footer: "Human Resources" })) return false;
 
     const content = $(CONTENT).clone();
     // Links, labels and chrome cannot supply procedure evidence; extraction retains the original prose.
@@ -198,8 +188,3 @@ const base = defineWordpressHost({
       });
   },
 });
-
-export const bullyingAndHarassmentScraper: HostScraper = {
-  ...base,
-  adapter: base.adapter,
-};

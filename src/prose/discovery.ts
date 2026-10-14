@@ -1,4 +1,10 @@
 import { load } from "cheerio";
+import {
+  isUnvisitedCollectionPage,
+  nextLink,
+  pageTotalsAgree,
+  sequentialNumberedPages,
+} from "../scraping/pagination.ts";
 import { object, string, webUrl } from "../source-documents.ts";
 import { ProseFetchError, publicUbcUrl, type ProseClient } from "./client.ts";
 import { mergeDiscovery, type DiscoveryEntry, type ProseSource } from "./model.ts";
@@ -126,9 +132,7 @@ export async function discoverDrupal(source: ProseSource, client: ProseClient): 
         const url: URL = new URL(next);
         const offset = Number(url.searchParams.get("page[offset]") ?? "0");
         if (
-          url.origin !== origin ||
-          url.pathname !== new URL(endpoint).pathname ||
-          visited.has(url.href) ||
+          !isUnvisitedCollectionPage(url, origin, new URL(endpoint).pathname, visited) ||
           !Number.isSafeInteger(offset) ||
           offset < 0 ||
           offset <= lastOffset
@@ -163,11 +167,8 @@ export async function discoverDrupal(source: ProseSource, client: ProseClient): 
             recordType: type,
           });
         }
-        const rawNext = object(payload.links).next;
-        const link = typeof rawNext === "string" ? rawNext : object(rawNext).href;
-        if (rawNext !== null && rawNext !== undefined && (typeof link !== "string" || !link))
-          throw new Error(`Invalid JSON:API next link: ${url.href}`);
-        next = typeof link === "string" && link ? new URL(link, url).href : null;
+        const link = nextLink(object(payload.links).next, () => new Error(`Invalid JSON:API next link: ${url.href}`));
+        next = link ? new URL(link, url).href : null;
       }
       result.notes.push(
         `${endpoint}: ${ids.size} accessible records across ${visited.size} terminally exhausted pages; ${omissionPages} pages reported inaccessible-resource omissions; omission links were not requested.`,
@@ -216,39 +217,42 @@ export async function discoverWordpress(source: ProseSource, client: ProseClient
     let slots = 0;
     let omitted = 0;
     let expected: number | null = null;
-    let pages = 1;
     try {
-      for (let page = 1; page <= pages; page++) {
-        const url = new URL(endpoint);
-        for (const [key, value] of Object.entries({
-          per_page: "100",
-          page: String(page),
-          order: "asc",
-          orderby: "id",
-          _fields: "id,link,title,content,parent,slug,status,type,modified_gmt,date_gmt,categories,tags,excerpt",
-        }))
-          url.searchParams.set(key, value);
-        const response = await client.get(url.href);
-        const parsed = wordpressPayload(response.body);
-        const data = parsed.rows;
-        if (parsed.discardedPrefix)
-          result.notes.push(`Discarded theme HTML before a fully parsed WordPress JSON array: ${url.href}`);
-        const totalHeader = response.headers["x-wp-total"];
-        const pagesHeader = response.headers["x-wp-totalpages"];
-        const total = Number(totalHeader);
-        const advertisedPages = Number(pagesHeader);
-        if (
-          totalHeader === undefined ||
-          pagesHeader === undefined ||
-          !Number.isSafeInteger(total) ||
-          total < 0 ||
-          advertisedPages !== Math.ceil(total / 100) ||
-          (expected !== null && expected !== total)
-        )
-          throw new Error(`Missing/changing WordPress totals: ${url.href}`);
-        if (!Array.isArray(data)) throw new Error(`WordPress response is not an array: ${url.href}`);
-        pages = advertisedPages;
-        expected = total;
+      const batches = sequentialNumberedPages(
+        async (page) => {
+          const url = new URL(endpoint);
+          for (const [key, value] of Object.entries({
+            per_page: "100",
+            page: String(page),
+            order: "asc",
+            orderby: "id",
+            _fields: "id,link,title,content,parent,slug,status,type,modified_gmt,date_gmt,categories,tags,excerpt",
+          }))
+            url.searchParams.set(key, value);
+          const response = await client.get(url.href);
+          const parsed = wordpressPayload(response.body);
+          const data = parsed.rows;
+          if (parsed.discardedPrefix)
+            result.notes.push(`Discarded theme HTML before a fully parsed WordPress JSON array: ${url.href}`);
+          const totalHeader = response.headers["x-wp-total"];
+          const pagesHeader = response.headers["x-wp-totalpages"];
+          const total = Number(totalHeader);
+          const pages = Number(pagesHeader);
+          // Prose accepts Number-compatible headers, including zero, and verifies every response.
+          if (
+            totalHeader === undefined ||
+            pagesHeader === undefined ||
+            !pageTotalsAgree(total, pages, 100) ||
+            (expected !== null && expected !== total)
+          )
+            throw new Error(`Missing/changing WordPress totals: ${url.href}`);
+          if (!Array.isArray(data)) throw new Error(`WordPress response is not an array: ${url.href}`);
+          expected = total;
+          return { url, response, data, pages };
+        },
+        (first) => first.pages,
+      );
+      for await (const { url, response, data } of batches) {
         slots += data.length;
         result.inventories.push(url.href);
         for (const rawRow of data) {

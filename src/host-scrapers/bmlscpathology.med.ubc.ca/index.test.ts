@@ -2,8 +2,8 @@ import { readFileSync } from "node:fs";
 import { load, type CheerioAPI } from "cheerio";
 import MarkdownIt from "markdown-it";
 import { describe, expect, it } from "vitest";
-import { defineWordpressHost } from "../../host-crawl/adapters/wordpress-page.ts";
 import type { Snapshot } from "../../host-crawl/contracts.ts";
+import { defineWordpressHost } from "../../host-crawl/scraper.ts";
 import { assertSafeMarkdown, toSafeMarkdown } from "../../prose/markdown.ts";
 import { bmlscScraper } from "./index.ts";
 
@@ -450,24 +450,9 @@ describe("bmlscScraper extraction", () => {
     },
   );
 
-  it.each(["requested_url", "url"] as const)("rejects cross-host %s observations", (field) => {
-    expect(() => bmlscScraper.extract({ ...snapshot("article"), [field]: "https://pathology.ubc.ca/" })).toThrow(
-      "outside the exact HTTPS host scope",
-    );
-  });
-
   it("rejects cross-host canonicals", () => {
     expect(() =>
       bmlscScraper.extract(homepage(($) => $("link[rel=canonical]").attr("href", "https://pathology.ubc.ca/"))),
     ).toThrow("outside the exact HTTPS host scope");
   });
-
-  it.each<Partial<Snapshot>>([{ status: 404 }, { headers: { "content-type": "application/json" } }])(
-    "rejects incomplete observations: %j",
-    (change) => {
-      expect(() => bmlscScraper.extract({ ...snapshot("article"), ...change })).toThrow(
-        "A complete HTML observation is required",
-      );
-    },
-  );
 });

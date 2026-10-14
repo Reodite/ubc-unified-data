@@ -324,6 +324,27 @@ describe("generic host throughput adapter", () => {
     );
   });
 
+  it.each(["redirect", "foreign image", "two images", "two entries"])(
+    "keeps the Southern Medical attachment evidence strict for %s",
+    (change) => {
+      const hostname = "smp.med.ubc.ca";
+      const url = `https://${hostname}/attachment/`;
+      const photo = `<p class="attachment-image"><img src="https://${hostname}/wp-content/uploads/photo.jpg"></p>`;
+      const entry = `<div class="entry-content">${change === "two images" ? photo.repeat(2) : photo}</div>`;
+      const snapshot = {
+        ...observation(
+          "/",
+          `<title>Public guide</title><body class="singular-attachment attachment-image">${change === "two entries" ? entry.repeat(2) : entry}<p>Independent public guidance.</p></body>`,
+        ).snapshot,
+        url,
+        requested_url: change === "redirect" ? `https://${hostname}/old-attachment/` : url,
+      };
+      if (change === "foreign image")
+        snapshot.body = snapshot.body.replace(`${hostname}/wp-content`, "other.ubc.ca/wp-content");
+      expect(createGenericScraper(hostname).extract(snapshot).kind).toBe("document");
+    },
+  );
+
   it("vets only public nonempty homepage HTML and excludes private queries and downloads", () => {
     const valid = observation("/", "<p>Public homepage.</p>").snapshot;
     expect(scraper.vetHomepage(valid).accepted).toBe(true);
